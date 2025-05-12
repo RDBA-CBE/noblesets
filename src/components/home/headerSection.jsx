@@ -29,7 +29,7 @@ import {
 } from "@/svg";
 import useSearchFormSubmit from "@/hooks/use-search-form-submit";
 import OffCanvas from "@/components/common/off-canvas";
-import pradeLogo from "@assets/img/prade-logo.png";
+import pradeLogo from "@assets/img/header-logo.png";
 import UserMiniSidebar from "@/components/common/user-sidebar";
 import { useGetCartListQuery } from "@/redux/features/card/cardApi";
 import { useGetCartAllListQuery } from "../../redux/features/card/cardApi";
@@ -155,6 +155,7 @@ const HeaderSection = ({ style_2 = false, data }) => {
 
   const [isOpen, setIsOpen] = useState(false);
   const [isOpen2, setIsOpen2] = useState(false);
+  const [isOpen3, setIsOpen3] = useState(false);
 
   useEffect(() => {
     const handleOutsideClick = (event) => {
@@ -198,13 +199,12 @@ const HeaderSection = ({ style_2 = false, data }) => {
 
   const handleLogout = async () => {
     try {
-      const res= await logoutRefetch({});
+      const res = await logoutRefetch({});
       dispatch(userLoggedOut());
       router.push("/login");
       if (localStorage.getItem("token")) {
         dispatch(cart_list([]));
-       localStorage.clear();
-
+        localStorage.clear();
       }
     } catch (error) {
       console.log("error: ", error);
@@ -267,45 +267,8 @@ const HeaderSection = ({ style_2 = false, data }) => {
           } tp-header-height`}
         >
           <div
-            className="tp-header-top-2 p-relative z-index-11 tp-header-top-border d-none d-md-block"
-            style={{ backgroundColor: "rgba(29, 30, 32, 1)" }}
-          >
-            <div className="container-fluid">
-              <div className="row align-items-center">
-                <div className="col-md-6">
-                  <div className="tp-header-info d-flex align-items-center">
-                    <p
-                      style={{
-                        color: "white",
-                        fontWeight: "500",
-                        margin: "0px",
-                        fontSize: "14px",
-                        padding: "8px 0px",
-                      }}
-                    ></p>
-                  </div>
-                </div>
-                <div className="col-md-6">
-                  <div className="tp-header-top-right tp-header-top-black d-flex align-items-center justify-content-end">
-                    {/* <HeaderTopRight /> */}
-                    <ul
-                      style={{
-                        color: "white",
-                        listStyle: "none",
-                        display: "flex",
-                      }}
-                    >
-                      <li style={{ paddingRight: "20px" }}>News Letter</li>
-                      <li>FAQ</li>
-                    </ul>
-                  </div>
-                </div>
-              </div>
-            </div>
-          </div>
-
-          <div
-            id="header-sticky" style={{backgroundColor:"#3b021e"}}
+            id="header-sticky"
+            // style={{ backgroundColor: "#3b021e" }}
             className={`tp-header-bottom-2 tp-header-sticky ${
               sticky ? "header-sticky" : ""
             }`}
@@ -313,7 +276,7 @@ const HeaderSection = ({ style_2 = false, data }) => {
             <div style={{ padding: "0px 15px" }}>
               <div className="tp-mega-menu-wrapper p-relative">
                 <div className="row align-items-center">
-                <div className="col-xl-5 d-none d-xl-block">
+                  <div className="col-xl-5 d-none d-xl-block">
                     <div className="main-menu">
                       <nav className="tp-main-menu-content">
                         <Menus />
@@ -328,160 +291,153 @@ const HeaderSection = ({ style_2 = false, data }) => {
                           alt="logo"
                           priority
                           className="prade-navbar-logo"
+                          style={{
+                            // height:"70px",
+                            // width:'12px'
+                          }}
                         />
                       </Link>
                     </div>
                   </div>
-                 
+
                   <div className="col-xl-5 col-lg-7 col-md-7 col-sm-8 col-6">
                     <div className="tp-header-bottom-right d-flex align-items-center justify-content-end pl-30">
-                      <div
-                        className="tp-header-search-2 d-none d-sm-block"
-                        style={{ position: "relative" }}
-                      >
-                        {/* <form onSubmit={handleSubmit}> */}
-                        <input
-                          onChange={(e) => handleSearch(e.target.value)}
-                          value={searchText}
-                          type="text"
-                          placeholder="Search for Products..."
-                          onKeyPress={(e) => {
-                            if (e.key === "Enter") {
-                              // Call your search function here
-                              handleSearch(searchText);
-                            }
-                          }}
-                        />
-                        {/* <button type="submit">
-                            <Search />
-                          </button> */}
-                        {/* </form> */}
-                        {isOpen2 == true ? (
-                          <div
-                            className="dropdown-content  d-flex flex-column"
-                            style={{
-                              position: "absolute",
-                              top: "46px",
-                              background: "white",
-                              padding: "30px 20px",
-                              right: "-10px",
-                              zIndex: "2",
-                              width: "300px",
-                              boxShadow: "0px 8px 16px 0px rgba(0,0,0,0.2)",
-                              height: searchLoading
-                                ? "60px"
-                                : searchOption?.length > 5
-                                ? "400px"
-                                : "auto",
-                              overflowY: "scroll",
+                      {isOpen3 && (
+                        <div
+                          className="tp-header-search-2 d-none d-sm-block"
+                          style={{ position: "relative" }}
+                        >
+                          <input
+                            onChange={(e) => handleSearch(e.target.value)}
+                            value={searchText}
+                            type="text"
+                            placeholder="Search for Products..."
+                            onKeyPress={(e) => {
+                              if (e.key === "Enter") {
+                                handleSearch(searchText);
+                              }
                             }}
-                          >
-                            {searchLoading ? (
-                              <ButtonLoader color="#c3935b" size={30} />
-                            ) : searchOption?.length > 0 ? (
-                              searchOption?.map((item, index) => (
-                                // <Link
-                                //   href={`/product/${item?.id}`}
-                                //   key={item?.id}
-                                //   className="dropdown-item"
-                                // >
-                                //   {item?.name}
-                                // </Link>
-
-                                <div
-                                  key={index}
-                                  className="d-flex align-items-center justify-content-between"
-                                  style={{
-                                    marginBottom: "10px",
-                                    paddingBottom: "10px",
-                                    borderBottom: "1px solid #dadada",
-                                  }}
-                                >
+                          />
+                          {isOpen2 == true ? (
+                            <div
+                              className="dropdown-content  d-flex flex-column"
+                              style={{
+                                position: "absolute",
+                                top: "46px",
+                                background: "white",
+                                padding: "30px 20px",
+                                // right: "-10px",
+                                zIndex: "2",
+                                width: "350px",
+                                boxShadow: "0px 8px 16px 0px rgba(0,0,0,0.2)",
+                                height: searchLoading
+                                  ? "60px"
+                                  : searchOption?.length > 5
+                                  ? "400px"
+                                  : "auto",
+                                overflowY: "scroll",
+                              }}
+                            >
+                              {searchLoading ? (
+                                <ButtonLoader color="#c3935b" size={30} />
+                              ) : searchOption?.length > 0 ? (
+                                searchOption?.map((item, index) => (
                                   <div
+                                    key={index}
+                                    className="d-flex align-items-center justify-content-between"
                                     style={{
-                                      marginRight: "10px",
-                                      width: "50px",
-                                      height: "50px",
+                                      marginBottom: "10px",
+                                      paddingBottom: "10px",
+                                      borderBottom: "1px solid #dadada",
                                     }}
                                   >
-                                    {isImage(profilePic(item?.img)) ? (
-                                      <img
-                                        src={profilePic(item?.img)}
-                                        alt="Product Image"
-                                        width={50}
-                                        height={50}
-                                        style={{ borderRadius: "50%" }}
-                                      />
-                                    ) : (
-                                      <video
-                                        src={item?.img}
-                                        width={50}
-                                        muted
-                                        loop
-                                        height={50}
-                                        style={{ borderRadius: "50%" }}
-                                      />
-                                    )}
-                                    {/* <img
-                                      src={profilePic(item?.img)}
-                                      alt="Product Image"
-                                      width={50}
-                                      height={50}
-                                      style={{ borderRadius: "50%" }}
-                                    /> */}
-                                  </div>
+                                    <div
+                                      style={{
+                                        marginRight: "10px",
+                                        width: "50px",
+                                        height: "50px",
+                                      }}
+                                    >
+                                      {isImage(profilePic(item?.img)) ? (
+                                        <img
+                                          src={profilePic(item?.img)}
+                                          alt="Product Image"
+                                          width={50}
+                                          height={50}
+                                          style={{ borderRadius: "50%" }}
+                                        />
+                                      ) : (
+                                        <video
+                                          src={item?.img}
+                                          width={50}
+                                          muted
+                                          loop
+                                          height={50}
+                                          style={{ borderRadius: "50%" }}
+                                        />
+                                      )}
+                                    </div>
 
-                                  <Link
-                                    href={`/product-details/${item?.slug}`}
-                                    key={item?.id}
-                                    className="dropdown-item"
-                                  >
-                                    {item?.name}
-                                  </Link>
-                                  {checkChannel() === "india-channel" ? (
-                                    <p
-                                      style={{
-                                        marginLeft: "10px !important",
-                                        color: "black",
-                                        margin: "0",
-                                      }}
+                                    <Link
+                                      href={`/product-details/${item?.slug}`}
+                                      key={item?.id}
+                                      className="dropdown-item"
                                     >
-                                      ₹{item?.price}
-                                    </p>
-                                  ) : (
-                                    <p
-                                      style={{
-                                        marginLeft: "10px !important",
-                                        color: "black",
-                                        margin: "0",
-                                      }}
-                                    >
-                                      ${item?.price}
-                                    </p>
-                                  )}
-                                </div>
-                              ))
-                            ) : (
-                              <span className="item-center justify-center">
-                                No Data Found
-                              </span>
-                            )}
-                          </div>
-                        ) : null}
-                      </div>
+                                      {item?.name}
+                                    </Link>
+                                    {checkChannel() === "india-channel" ? (
+                                      <p
+                                        style={{
+                                          marginLeft: "10px !important",
+                                          color: "black",
+                                          margin: "0",
+                                        }}
+                                      >
+                                        ₹{item?.price}
+                                      </p>
+                                    ) : (
+                                      <p
+                                        style={{
+                                          marginLeft: "10px !important",
+                                          color: "black",
+                                          margin: "0",
+                                        }}
+                                      >
+                                        ${item?.price}
+                                      </p>
+                                    )}
+                                  </div>
+                                ))
+                              ) : (
+                                <span className="item-center justify-center">
+                                  No Data Found
+                                </span>
+                              )}
+                            </div>
+                          ) : null}
+                        </div>
+                      )}
                       <div className="tp-header-action d-flex align-items-center ml-30">
                         <div className="tp-header-action-item d-none d-lg-block">
-                          <Link
-                            href="/compare"
-                            className="tp-header-action-btn"
+                          <div
+                            onClick={() => setIsOpen3(!isOpen3)}
+                            className="tp-header-action-btn  rounded"
+                            style={{
+                              backgroundColor: "#cc805c",
+                              width: "30px",
+                              height: "30px",
+                              alignItems: "center",
+                              justifyContent: "center",
+                              display: "flex",
+                            }}
                           >
-                            <Compare />
-                            <span className="tp-header-action-badge">
+                            <Search />
+                            {/* <span className="tp-header-action-badge">
                               {compareList?.length || 0}
-                            </span>
-                          </Link>
+                            </span> */}
+                          </div>
                         </div>
-                        {token && (
+                        {/* {token && (
                           <div className="tp-header-action-item d-none d-lg-block">
                             <Link
                               href="/wishlist"
@@ -493,30 +449,22 @@ const HeaderSection = ({ style_2 = false, data }) => {
                               </span>
                             </Link>
                           </div>
-                        )}
-                        <div className="tp-header-action-item">
-                          <button
-                            onClick={() => {
-                              dispatch(openCartMini());
-                              cartRefetch();
-                              AllListChannelREfresh();
-                            }}
-                            className="tp-header-action-btn cartmini-open-btn"
-                          >
-                            <CartTwo />
-                            <span className="tp-header-action-badge">
-                              {cart?.length || 0}
-                            </span>
-                          </button>
-                        </div>
-                        {/* {token && ( */}
+                        )} */}
                         <div
                           className="tp-header-action-item "
                           style={{ position: "relative" }}
                         >
                           <button
                             onClick={toggleDropdown}
-                            className="tp-header-action-btn cartmini-open-btn"
+                            className="tp-header-action-btn cartmini-open-btn rounded"
+                            style={{
+                              backgroundColor: "#cc805c",
+                              width: "30px",
+                              height: "30px",
+                              alignItems: "center",
+                              justifyContent: "center",
+                              display: "flex",
+                            }}
                           >
                             <UserThree />
                           </button>
@@ -625,6 +573,31 @@ const HeaderSection = ({ style_2 = false, data }) => {
                             </div>
                           )}
                         </div>
+                        <div className="tp-header-action-item">
+                          <button
+                            onClick={() => {
+                              dispatch(openCartMini());
+                              cartRefetch();
+                              AllListChannelREfresh();
+                            }}
+                            className="tp-header-action-btn cartmini-open-btn rounded"
+                            style={{
+                              backgroundColor: "#cc805c",
+                              width: "30px",
+                              height: "30px",
+                              alignItems: "center",
+                              justifyContent: "center",
+                              display: "flex",
+                            }}
+                          >
+                            <CartTwo />
+                            {/* <span className="tp-header-action-badge">
+                              {cart?.length || 0}
+                            </span> */}
+                          </button>
+                        </div>
+                        {/* {token && ( */}
+
                         {/* )} */}
                         <div className="tp-header-action-item tp-header-hamburger mr-20 d-xl-none">
                           <button

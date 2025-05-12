@@ -4,12 +4,12 @@ import Slider from "react-slick";
 import { useRouter } from "next/router";
 
 // Internal images
-import slider_img_1 from "@assets/img/home/Banner/banner-1.jpg";
-import slider_img_2 from "@assets/img/home/Banner/banner-2.jpg";
-import slider_img_3 from "@assets/img/home/Banner/banner-3.jpg";
-import slider_img_4 from "@assets/img/home/Banner/banner-1.jpg";
-import slider_img_5 from "@assets/img/home/Banner/banner-2.jpg";
-import slider_img_6 from "@assets/img/home/Banner/banner-3.jpg";
+import slider_img_1 from "@assets/img/home/Banner/banner-img.png";
+import slider_img_2 from "@assets/img/home/Banner/banner-img.png";
+import slider_img_3 from "@assets/img/home/Banner/banner-img.png";
+import slider_img_4 from "@assets/img/home/Banner/banner-img.png";
+import slider_img_5 from "@assets/img/home/Banner/banner-img.png";
+import slider_img_6 from "@assets/img/home/Banner/banner-img.png";
 
 // SVG icons
 import { ArrowNextTwo, ArrowPrevTwo } from "@/svg";

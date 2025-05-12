@@ -13,6 +13,11 @@ import HomeCelebritySection from "@/components/home/home-celebritysection";
 import HomeBanner from "@/components/home/Homebanner";
 import HeaderSection from "@/components/home/headerSection";
 import HomeFooter from "@/components/home/HomeFooter";
+import ShopByBudget from "@/components/home/shopByBudget";
+import ShopByCategory from "@/components/home/shopByCategory";
+import ShopByCollections from "@/components/home/shopByCollections";
+import GiftSection from "@/components/home/giftSection";
+import NobelsetsPromises from "@/components/home/NobelsetsPromises";
 
 const Index = () => {
   // const dispatch = useDispatch();
@@ -71,10 +76,18 @@ const Index = () => {
       {/* <JewelryShopBanner /> */}
 
       <HomeCategorySection />
-      <GiftWrapSection />
-      <FeaturedProdectsSection />
+      <ShopByBudget />
+      <ShopByCategory />
+
+      <GiftSection />
+      <ShopByCollections />
+
+      <NobelsetsPromises />
+
+      {/* <GiftWrapSection /> */}
+      {/* <FeaturedProdectsSection />
       <InstagramSection />
-      <HomeCelebritySection />
+      <HomeCelebritySection /> */}
       {/* <JewelryAbout/> */}
       {/* <PopularProducts /> */}
       {/* <ProductArea/> */}

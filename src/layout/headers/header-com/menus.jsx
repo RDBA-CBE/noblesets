@@ -342,13 +342,13 @@ const Menus = () => {
   return (
     <ul style={{ display: "flex"}}>
       <li>
-        <Link href="/" style={{ fontWeight: "500" }}>
+        <Link href="/" style={{ fontWeight: "500",color:"black" }}>
           All Jewellery
         </Link>
       </li>
 
       <li>
-        <Link href="/myOrders" style={{ fontWeight: "500" }}>
+        <Link href="/myOrders" style={{ fontWeight: "500" ,color:"black"}}>
           Collections
         </Link>
       </li>
@@ -677,13 +677,13 @@ const Menus = () => {
       </li> */}
 
       <li>
-        <Link href="/gift-card" style={{ fontWeight: "500" }}>
+        <Link href="/gift-card" style={{ fontWeight: "500",color:"black" }}>
           Silver
         </Link>
       </li>
       {/* {token && ( */}
       <li>
-        <Link href="/myOrders" style={{ fontWeight: "500" }}>
+        <Link href="/myOrders" style={{ fontWeight: "500",color:"black" }}>
           Gifting
         </Link>
       </li>
