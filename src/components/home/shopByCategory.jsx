@@ -19,151 +19,99 @@ const InstagramSection = () => {
             </div>
           </div>
 
-          <div className="row">
-            {/* Left Column */}
-            <div className="col-md-3 mb-lg-0 mb-3">
-              <div className="row">
-                <div className="col-xl-12 col-lg-12 featured-product-1">
-                  <img
-                    src="/assets/img/home/shop_by_category/img-1.png"
-                    alt="image-1"
-                    style={{
-                      width: "100%",
-                      borderRadius: "20px",
-                      cursor: "pointer",
-                      height: "80%",
-                    }}
-                    onClick={() => router?.push("/sale")}
-                  />
-                  <div
-                    style={{
-                      display: "flex",
-                      justifyContent: "center",
-                      paddingTop: "10px",
-                    }}
-                  >
-                    <button className="gradient-btn">✦ Pedants ✦</button>
-                  </div>
-                </div>
+          <div className="d-flex flex-wrap justify-content-between">
+            {/* Column 1 */}
+            <div className="col-1-5">
+              <img
+                src="/assets/img/home/shop_by_category/img-1.png"
+                alt="Pedants"
+                className="category-img"
+                onClick={() => router?.push("/sale")}
+              />
+              <div className="category-button">
+                <button className="gradient-btn">✦ Pedants ✦</button>
+              </div>
 
-                <div className="col-xl-12 col-lg-12 featured-product-2 ">
-                  <img
-                    src="/assets/img/home/shop_by_category/img-2.png"
-                    alt="image-2"
-                    style={{
-                      width: "100%",
-                      borderRadius: "20px",
-                      cursor: "pointer",
-                    }}
-                    onClick={() => router?.push("/sale")}
-                  />
-                  <div
-                    style={{
-                      display: "flex",
-                      justifyContent: "center",
-                      paddingTop: "10px",
-                    }}
-                  >
-                    <button className="gradient-btn">✦ Rings ✦</button>
-                  </div>
-                </div>
+              <img
+                src="/assets/img/home/shop_by_category/img-2.png"
+                alt="Rings"
+                className="category-img mt-3"
+                onClick={() => router?.push("/sale")}
+              />
+              <div className="category-button">
+                <button className="gradient-btn">✦ Rings ✦</button>
               </div>
             </div>
 
-            {/* Middle Column with Video */}
-            <div className="col-md-3  mb-lg-0 mb-2" style={{ display: "flex" }}>
-              <div >
-                <img
-                  src="/assets/img/home/shop_by_category/img-3.png"
-                  alt="image-1"
-                  style={{
-                    width: "100%",
-                    borderRadius: "20px",
-                    cursor: "pointer",
-                  }}
-                  onClick={() => router?.push("/sale")}
-                />
-                 <div
-                    style={{
-                      display: "flex",
-                      justifyContent: "center",
-                      paddingTop: "10px",
-                    }}
-                  >
-                    <button className="gradient-btn">✦ Bangles ✦</button>
-                  </div>
+            {/* Column 2 */}
+            <div className="col-1-5">
+              <img
+                src="/assets/img/home/shop_by_category/img-3.png"
+                alt="Bangles"
+                className="category-img"
+                onClick={() => router?.push("/sale")}
+              />
+              <div className="category-button">
+                <button className="gradient-btn">✦ Bangles ✦</button>
               </div>
             </div>
 
-            {/* Right Column */}
-            <div className="col-md-3">
-              <div className="row">
-                <div className="col-xl-12 col-lg-12 featured-product-1">
-                  <img
-                    src="/assets/img/home/shop_by_category/img-4.png"
-                    alt="image-3"
-                    style={{
-                      width: "100%",
-                      borderRadius: "20px",
-                      cursor: "pointer",
-                    }}
-                    onClick={() => router?.push("/sale")}
-                  />
-                  <div
-                    style={{
-                      display: "flex",
-                      justifyContent: "center",
-                      paddingTop: "10px",
-                    }}
-                  >
-                    <button className="gradient-btn">✦ Nosepin ✦</button>
-                  </div>
-                </div>
+            {/* Column 3 */}
+            <div className="col-1-5">
+              <img
+                src="/assets/img/home/shop_by_category/img-4.png"
+                alt="Nosepin"
+                className="category-img"
+                onClick={() => router?.push("/sale")}
+              />
+              <div className="category-button">
+                <button className="gradient-btn">✦ Nosepin ✦</button>
+              </div>
 
-                <div className="col-xl-12 col-lg-12 featured-product-2">
-                  <img
-                    src="/assets/img/home/shop_by_category/img-5.png"
-                    alt="image-4"
-                    style={{
-                      width: "100%",
-                      borderRadius: "20px",
-                      cursor: "pointer",
-                    }}
-                    onClick={() => router?.push("/sale")}
-                  />
-                  <div
-                    style={{
-                      display: "flex",
-                      justifyContent: "center",
-                      paddingTop: "10px",
-                    }}
-                  >
-                    <button className="gradient-btn">✦ Necklace ✦</button>
-                  </div>
-                </div>
+              <img
+                src="/assets/img/home/shop_by_category/img-5.png"
+                alt="Necklace"
+                className="category-img mt-3"
+                onClick={() => router?.push("/sale")}
+              />
+              <div className="category-button">
+                <button className="gradient-btn">✦ Necklace ✦</button>
               </div>
             </div>
-            <div className="col-md-3  mb-lg-0 mb-2" style={{ display: "flex" }}>
-              <div >
-                <img
-                  src="/assets/img/home/shop_by_category/img-6.png"
-                  alt="image-1"
-                  style={{
-                    width: "100%",
-                    borderRadius: "20px",
-                    cursor: "pointer",
-                  }}
-                  onClick={() => router?.push("/sale")}
-                />
-                <div
-                    style={{
-                      display: "flex",
-                      justifyContent: "center",
-                      paddingTop: "10px",
-                    }}
-                  >
-                    <button className="gradient-btn">✦ Chains ✦</button>
-                  </div>
+
+            {/* Column 4 */}
+            <div className="col-1-5">
+              <img
+                src="/assets/img/home/shop_by_category/img-6.png"
+                alt="Chains"
+                className="category-img"
+                onClick={() => router?.push("/sale")}
+              />
+              <div className="category-button">
+                <button className="gradient-btn">✦ Chains ✦</button>
+              </div>
+            </div>
+
+            {/* Column 5 */}
+            <div className="col-1-5">
+              <img
+                src="/assets/img/home/shop_by_category/img-7.png"
+                alt="Nosepin 2"
+                className="category-img"
+                onClick={() => router?.push("/sale")}
+              />
+              <div className="category-button">
+                <button className="gradient-btn">✦ Bracelet ✦</button>
+              </div>
+
+              <img
+                src="/assets/img/home/shop_by_category/img-8.png"
+                alt="Necklace 2"
+                className="category-img mt-3"
+                onClick={() => router?.push("/sale")}
+              />
+              <div className="category-button">
+                <button className="gradient-btn">✦ Earrings ✦</button>
               </div>
             </div>
           </div>
