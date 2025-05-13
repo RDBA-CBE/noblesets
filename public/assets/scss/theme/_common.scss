@@ -1123,3 +1123,117 @@
   transform: scale(1.05);
 }
 
+
+// Footer
+
+.footer-link {
+  color: rgba(255 255 255 / 0.8);
+  font-size: 0.75rem;
+  font-weight: 300;
+  text-decoration: none;
+}
+.footer-link:hover {
+  text-decoration: underline;
+}
+.footer-title {
+  font-weight: 400;
+  font-size: 1rem;
+  margin-bottom: 1rem;
+  color: white;
+}
+.footer-subtitle {
+  font-weight: 600;
+  font-size: 0.75rem;
+  opacity: 0.7;
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+.footer-subtitle i {
+  font-size: 0.75rem;
+}
+.footer-input {
+  border-radius: 50px;
+  border: 1px solid rgba(255 255 255 / 0.5);
+  background: transparent;
+  color: white;
+  padding-left: 1.25rem;
+  padding-right: 3rem;
+  height: 2.5rem;
+  font-size: 0.875rem;
+}
+.footer-input::placeholder {
+  color: rgba(255 255 255 / 0.7);
+}
+.btn-arrow {
+  position: absolute;
+  right: 0.25rem;
+  top: 50%;
+  transform: translateY(-50%);
+  background: rgba(255 255 255 / 0.2);
+  border: none;
+  width: 2.5rem;
+  height: 2.5rem;
+  border-radius: 50%;
+  color: white;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: background-color 0.3s ease;
+}
+.btn-arrow:hover {
+  background: rgba(255 255 255 / 0.3);
+}
+.checkbox-label {
+  font-size: 0.75rem;
+  color: rgba(255 255 255 / 0.7);
+  user-select: none;
+}
+.payment-item {
+  font-weight: 600;
+  color: rgba(255 255 255 / 0.9);
+  font-size: 0.75rem;
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+.payment-item img {
+  width: 20px;
+  height: 14px;
+  object-fit: contain;
+}
+.download-text {
+  font-size: 0.75rem;
+  color: rgba(255 255 255 / 0.8);
+  margin-bottom: 1rem;
+  line-height: 1.2;
+}
+.social-btn {
+  width: 28px;
+  height: 28px;
+  border-radius: 50%;
+  background: rgba(255 255 255 / 0.9);
+  color: #d88f74;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 0.75rem;
+  border: none;
+  transition: background-color 0.3s ease;
+}
+.social-btn:hover {
+  background: rgba(255 255 255 / 1);
+}
+.social-btn.close {
+  background: white;
+}
+hr.footer-divider {
+  border-color: rgba(255 255 255 / 0.2);
+  margin-top: 2rem;
+  margin-bottom: 2rem;
+}
+@media (max-width: 767.98px) {
+  .footer-input {
+    padding-right: 2.5rem;
+  }
+}

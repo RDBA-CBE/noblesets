@@ -1,330 +1,220 @@
 import React from "react";
-import Image from "next/image";
-import Link from "next/link";
-// internal
-import social_data from "@/data/social-data";
-import { Email, Facebook, Location } from "@/svg";
-import logo from "@assets/img/prade-logo.png";
-import pay from "@assets/img/footer/footer-pay.png";
-import footerInstaPost from "@assets/img/footer-instapost-1.png";
-
-import { MobileOutlined } from "@ant-design/icons";
-import { getPaddingAndBorder } from "react-range/lib/utils";
-import { Avatar } from "antd";
-import {
-    FacebookOutlined,
-    TwitterOutlined,
-    InstagramOutlined,
-    YoutubeFilled,
-    PinterestOutlined,
-} from "@ant-design/icons";
-
-const InstagramIcon = () => (
-    <Avatar
-        shape="circle"
-        style={{
-            background: "#f09433", // Single fallback color
-            background:
-                "-moz-linear-gradient(45deg, #f09433 0%, #e6683c 25%, #dc2743 50%, #cc2366 75%, #bc1888 100%)", // For older Firefox versions
-            background:
-                "-webkit-linear-gradient(45deg, #f09433 0%, #e6683c 25%, #dc2743 50%, #cc2366 75%, #bc1888 100%)", // For older Safari versions
-            background:
-                "linear-gradient(45deg, #f09433 0%, #e6683c 25%, #dc2743 50%, #cc2366 75%, #bc1888 100%)", // Standard linear gradient
-        }}
-        icon={<InstagramOutlined style={{ color: "white" }} />} // Instagram icon with white color
-    />
-);
-
-const YoutubeIcon = () => (
-    <Avatar
-        shape="circle"
-        style={{
-            backgroundColor: "#FF0000", // YouTube red color
-        }}
-        icon={<YoutubeFilled style={{ color: "white" }} />}
-    />
-);
 
 const HomeFooter = () => {
-    return (
-        <>
-            <footer>
-                <div
-                    className="tp-footer-area tp-footer-style-2 tp-footer-style-3 tp-footer-style-4 new-footer-outer"
-                    data-bg-color="#F5F5F5"
-                    style={{ backgroundColor: `#3b021e`, borderRadius: "20px" }}
-                >
-                    <div className="tp-footer-top pt-50">
-                        <div className="container-fluid">
-                            <div className="footer-spacing">
-                                <div className="row">
-                                    <div className="col-lg-3 col-md-6 col-sm-6">
-                                        <div className="tp-footer-widget footer-col-4-1 mb-50">
-                                            <h4
-                                                className="tp-footer-widget-title text-white"
-                                                style={{ fontWeight: "400" }}
-                                            >
-                                                ABOUT US
-                                            </h4>
-                                            <div className="tp-footer-logo">
-                                                <Link href="/">
-                                                    <Image src={logo} alt="logo" />
-                                                </Link>
-                                            </div>
-                                            <div className="tp-footer-widget-content">
-                                                <div className="tp-footer-talk mb-20" style={{ color: "#c1b9bf" }}>
-                                                    <span>
-                                                        PraDe Jewels is a leading luxury jewellery label
-                                                        founded in 2017 and is based out of South India.
-                                                        PraDe deals in Pure 925 Silver Jewellery.
-                                                    </span>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-
-                                    <div className="  col-lg-3 col-md-6 col-sm-12 footer-quicklinks">
-                                        <div className="tp-footer-widget footer-col-4-2 mb-50">
-                                            <h4
-                                                className="tp-footer-widget-title"
-                                                style={{ fontWeight: "400" }}
-                                            >
-                                                QUICK LINKS
-                                            </h4>
-                                            <div className="tp-footer-widget-content">
-                                                <ul>
-                                                    <li>
-                                                        <Link href="/about" style={{ color: "#c1b9bf" }}>About</Link>
-                                                    </li>
-                                                    <li>
-                                                        <Link href="/contact" style={{ color: "#c1b9bf" }}>Contact Us</Link>
-                                                    </li>
-                                                    <li>
-                                                        <Link href="/shop" style={{ color: "#c1b9bf" }}>Shop</Link>
-                                                    </li>
-                                                    <li>
-                                                        <Link href="/gift-card" style={{ color: "#c1b9bf" }}>Gift Card</Link>
-                                                    </li>
-                                                    <li>
-                                                        <Link href="/terms-and-conditions" style={{ color: "#c1b9bf" }}>
-                                                            Terms And Conditions
-                                                        </Link>
-                                                    </li>
-                                                    <li>
-                                                        <Link href="/privacy-policy" style={{ color: "#c1b9bf" }}>Privacy Policy</Link>
-                                                    </li>
-                                                    <li>
-                                                        <Link href="/shipping-and-exchange-policy" style={{ color: "#c1b9bf" }}>
-                                                            Shipping and Exchange Policy
-                                                        </Link>
-                                                    </li>
-                                                </ul>
-                                            </div>
-                                        </div>
-                                    </div>
-
-                                    {/* <div className="col-xl-2 col-lg-4 col-md-4 col-sm-12">
-                    <div className="tp-footer-widget footer-col-4-3 mb-50">
-                      <h4 className="tp-footer-widget-title">POLICIES</h4>
-                      <div className="tp-footer-widget-content">
-                        <ul>
-                         
-                          <li>
-                            <Link href="/shipping-and-exchange-policy">
-                              Shipping and Exchange Policy
-                            </Link>
-                          </li>
-                        </ul>
-                      </div>
-                    </div>
-                  </div> */}
-
-                                    <div className="col-lg-3 col-md-6 col-sm-12">
-                                        <div className="tp-footer-widget footer-col-4-2 mb-50">
-                                            <h4
-                                                className="tp-footer-widget-title"
-                                                style={{ fontWeight: "400" }}
-                                            >
-                                                STORE ADDRESS
-                                            </h4>
-                                            <div className="tp-footer-widget-content">
-                                                <div className="tp-footer-contact">
-                                                    <div className="tp-footer-contact-item d-flex align-items-start">
-                                                        <div className="tp-footer-contact-icon">
-                                                            <span>
-                                                                <Location />
-                                                            </span>
-                                                        </div>
-                                                        <div className="tp-footer-contact-content">
-                                                            <p style={{ color: "#c1b9bf" }}>
-                                                                <a
-                                                                    href="https://maps.app.goo.gl/RoQg5oRAZ6fawCVh6"
-                                                                    target="_blank" style={{ color: "#c1b9bf" }}
-                                                                >
-                                                                    Prade Jewels and Drapes Pvt Ltd <br />
-                                                                    No.28, 1st floor, Vijay building,
-                                                                    <br /> Near Andhra club, Vijaya Raghava road,
-                                                                    <br /> Chennai – 600017.
-                                                                </a>
-                                                            </p>
-                                                        </div>
-                                                    </div>
-
-                                                    <div className="tp-footer-contact-item d-flex align-items-start">
-                                                        <div className="tp-footer-contact-icon">
-                                                            <span>
-                                                                <MobileOutlined />
-                                                            </span>
-                                                        </div>
-                                                        <div className="tp-footer-contact-content">
-                                                            <p style={{ color: "#c1b9bf" }}>
-                                                                Phone :
-                                                                <Link href="tel:+91 73052 63999" style={{ color: "#c1b9bf" }}>
-                                                                    +91 73052 63999
-                                                                </Link>
-                                                            </p>
-                                                        </div>
-                                                    </div>
-                                                    <div className="tp-footer-contact-item d-flex align-items-start">
-                                                        <div className="tp-footer-contact-icon">
-                                                            <span>
-                                                                <Email />
-                                                            </span>
-                                                        </div>
-                                                        <div className="tp-footer-contact-content">
-                                                            <p style={{ color: "#c1b9bf" }}>
-                                                                <a href="mailto:support@prade.in" style={{ color: "#c1b9bf" }}>
-                                                                    support@prade.in
-                                                                </a>
-                                                            </p>
-                                                        </div>
-                                                    </div>
-                                                    <div style={{ display: "flex", paddingTop: "15px" }}>
-                                                        <div style={{ paddingRight: "15px" }}>
-                                                            <Link className="fb-outline"
-                                                                href="https://www.facebook.com/PraDeJewels"
-                                                                target="_blank"
-                                                            >
-                                                                <Facebook />
-                                                            </Link>
-                                                        </div>
-                                                        <div
-                                                            style={{ paddingRight: "15px" }}
-                                                            className="insta-outline"
-                                                        >
-                                                            <Link
-                                                                href="https://www.instagram.com/pradejewels/"
-                                                                target="_blank"
-                                                            >
-                                                                <InstagramIcon />
-                                                            </Link>
-                                                        </div>
-                                                        <div className="printer-outline">
-                                                            <Link
-                                                                href="https://pin.it/2RQl6pL"
-                                                                target="_blank"
-                                                            >
-                                                                <PinterestOutlined />
-                                                            </Link>
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-
-                                    <div className="col-lg-3 col-md-6 col-sm-12">
-                                        <div className="tp-footer-widget footer-col-4-4 mb-50">
-                                            <h4
-                                                className="tp-footer-widget-title"
-                                                style={{ fontWeight: "400" }}
-                                            >
-                                                INSTAGRAM
-                                            </h4>
-                                            <div
-                                                className="tp-footer-widget-content"
-                                                style={{ overflow: "hidden" }}
-                                            >
-
-                                                <div className="row">
-                                                    <div className="col-md-3 col-4" style={{ paddingRight: "3px", paddingLeft: "3px" }}>
-                                                        <img src="/assets/img/home/footer/insta-image/1.jpg" style={{ width: "100%" }} />
-                                                    </div>
-                                                    <div className="col-md-3 col-4" style={{ paddingRight: "3px", paddingLeft: "3px" }}>
-                                                        <img src="/assets/img/home/footer/insta-image/2.jpg" style={{ width: "100%" }} />
-                                                    </div>
-                                                    <div className="col-md-3 col-4" style={{ paddingRight: "3px", paddingLeft: "3px" }}>
-                                                        <img src="/assets/img/home/footer/insta-image/3.jpg" style={{ width: "100%" }} />
-                                                    </div>
-                                                </div>
-
-                                                <div className="row mt-2">
-                                                    <div className="col-md-3 col-4" style={{ paddingRight: "3px", paddingLeft: "3px" }}>
-                                                        <img src="/assets/img/home/footer/insta-image/4.jpg" style={{ width: "100%" }} />
-                                                    </div>
-                                                    <div className="col-md-3 col-4" style={{ paddingRight: "3px", paddingLeft: "3px" }}>
-                                                        <img src="/assets/img/home/footer/insta-image/5.jpg" style={{ width: "100%" }} />
-                                                    </div>
-                                                    <div className="col-md-3 col-4" style={{ paddingRight: "3px", paddingLeft: "3px" }}>
-                                                        <img src="/assets/img/home/footer/insta-image/6.jpg" style={{ width: "100%" }} />
-                                                    </div>
-                                                </div>
-
-                                                {/* <iframe
-                                                    src="https://www.google.com/maps/embed?pb=!1m14!1m8!1m3!1d7960308.336715554!2d80.242347!3d13.04399!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3a5267e3de37ce75%3A0xd50eb41608bccab6!2sPraDe%20Jewels!5e0!3m2!1sen!2sin!4v1715580579688!5m2!1sen!2sin"
-                                                    style={{
-                                                        border: "0",
-                                                        width: "100%",
-                                                        height: "220px",
-                                                    }}
-                                                    allowfullscreen=""
-                                                    loading="lazy"
-                                                    referrerpolicy="no-referrer-when-downgrade"
-                                                ></iframe> */}
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    <div className="tp-footer-bottom">
-                        <div className="container-fluid">
-                            <div className="footer-spacing">
-                                <div className="tp-footer-bottom-wrapper">
-                                    <div className="row align-items-center">
-                                        <div className="col-md-12">
-                                            <div className="tp-footer-copyright">
-                                                <p style={{ color: "#c1b9bf" }}>
-                                                    Copyright {new Date().getFullYear()} © PraDe Jewels,
-                                                    Concept by
-                                                    <Link
-                                                        href="https://irepute.in/"
-                                                        target="blank"
-                                                        style={{ paddingLeft: "3px", color: "#fff" }}
-                                                    >
-                                                        repute
-                                                    </Link>
-                                                    .
-                                                </p>
-                                            </div>
-                                        </div>
-                                        {/* <div className="col-md-6">
-                    <div className="tp-footer-payment text-md-end">
-                      <p>
-                        <Image src={pay} alt="pay" />
-                      </p>
-                    </div>
-                  </div> */}
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </footer>
-        </>
-    );
+  return (
+    <div style={{ backgroundColor: "#e09a7b" }}>
+      <footer className="container py-5 text-white">
+        <div className="row gy-4">
+          <div className="col-12 col-md-3">
+            <div className="footer-subtitle mb-2">
+              {/* <i className="fas fa-times"></i> */}
+              <strong>Newsletter</strong>
+            </div>
+            <h2 className="h3 fw-normal text-white mb-4">Subscribe Today</h2>
+            <form
+              className="position-relative mb-3"
+              onsubmit="event.preventDefault()"
+            >
+              <input
+                className="footer-input w-100"
+                placeholder="Enter Your Mail Id Here"
+                required=""
+                type="email"
+              />
+              <button
+                aria-label="Submit email"
+                className="btn-arrow"
+                type="submit"
+              >
+                {/* <i className="fas fa-arrow-right"></i> */}
+              </button>
+            </form>
+            <div className="form-check">
+              <input
+                className="form-check-input"
+                id="termsCheck"
+                required=""
+                type="checkbox"
+              />
+              <label
+                className="form-check-label checkbox-label "
+                for="termsCheck"
+              >
+                I Agree with the terms &amp; Conditions
+              </label>
+            </div>
+          </div>
+          <div className="col-6 col-md-2">
+            <h3 className="footer-title">Useful Links</h3>
+            <nav className="nav flex-column">
+              <a className="footer-link mb-2" href="#">
+                Our Story
+              </a>
+              <a className="footer-link mb-2" href="#">
+                Legal Policies
+              </a>
+              <a className="footer-link mb-2" href="#">
+                Download App
+              </a>
+              <a className="footer-link mb-2" href="#">
+                Loyalty Programs
+              </a>
+              <a className="footer-link mb-2" href="#">
+                Help &amp; FAQS
+              </a>
+              <a className="footer-link" href="#">
+                Testimonials
+              </a>
+            </nav>
+          </div>
+          <div className="col-6 col-md-3">
+            <h3 className="footer-title">Contact Us</h3>
+            <div className="d-flex align-items-center mb-2">
+              {/* <i className="fas fa-phone-alt me-2" style="font-size: 10px"></i> */}
+              <span className="footer-link">(0252)8345 93421</span>
+            </div>
+            <div className="d-flex align-items-start mb-2">
+              {/* <i
+              className="fas fa-map-marker-alt me-2 mt-1"
+              style="font-size: 10px"
+            ></i> */}
+              <span className="footer-link">
+                2525 Michigan Ave, Sante Monica, United sates
+              </span>
+            </div>
+            <div className="d-flex align-items-center">
+              {/* <i className="fas fa-envelope me-2" style="font-size: 10px"></i> */}
+              <span className="footer-link">services@nobelset.com</span>
+            </div>
+          </div>
+          <div className="col-6 col-md-2">
+            <h3 className="footer-title">Payment</h3>
+            <div className="d-flex flex-column gap-2">
+              <div className="payment-item">
+                <img
+                  alt="Paypal logo with blue text on white background"
+                  height="14"
+                  src="https://storage.googleapis.com/a1aa/image/068a2278-e56f-4e89-9ce7-c40c48bddb66.jpg"
+                  width="20"
+                />
+                Paypal
+              </div>
+              <div className="payment-item">
+                <img
+                  alt="Visa logo white text on dark blue background"
+                  height="14"
+                  src="https://storage.googleapis.com/a1aa/image/c2acdc74-b8f1-4c7c-8d5c-7ba19f8d6afd.jpg"
+                  width="20"
+                />
+                Visa
+              </div>
+              <div className="payment-item">
+                <img
+                  alt="Amazon Pay logo white text on dark background"
+                  height="14"
+                  src="https://storage.googleapis.com/a1aa/image/a747cceb-28a2-4e69-13a2-918cb84bfc19.jpg"
+                  width="20"
+                />
+                Amazon Pay
+              </div>
+              <div className="payment-item">
+                <img
+                  alt="Gpay logo black text on white background"
+                  height="14"
+                  src="https://storage.googleapis.com/a1aa/image/0425e37f-52da-4140-d35b-2b24a228ffeb.jpg"
+                  width="20"
+                />
+                Gpay
+              </div>
+              <div className="payment-item">
+                <img
+                  alt="Apple Pay logo white text on black background"
+                  height="14"
+                  src="https://storage.googleapis.com/a1aa/image/ddfeb162-e72a-4a69-79a1-23648f035b74.jpg"
+                  width="20"
+                />
+                Apple Pay
+              </div>
+            </div>
+          </div>
+          <div className="col-6 col-md-2">
+            <h3 className="footer-title">Download Nobelist</h3>
+            <p className="download-text">
+              Get Exclusive Offers, 24/7 Tech Support &amp; Feet Advatage with
+              nobelist app
+            </p>
+            <div className="d-flex gap-2">
+              <a aria-label="Get it on App Store" href="#">
+                <img
+                  alt="Get it on App Store black badge with white text"
+                  height="35"
+                  src="https://storage.googleapis.com/a1aa/image/f0b5dd03-d5e1-4ce5-09ee-7a8095c12f9b.jpg"
+                  width="100%"
+                />
+              </a>
+              <a aria-label="Get it on Google Play" href="#">
+                <img
+                  alt="Get it on Google Play black badge with white text"
+                  height="35"
+                  src="https://storage.googleapis.com/a1aa/image/1c9eba55-7697-4ff6-e651-f4eb90517f4e.jpg"
+                  width="100%"
+                />
+              </a>
+            </div>
+          </div>
+        </div>
+        <hr className="footer-divider" />
+        <div
+          className="d-flex flex-column flex-md-row justify-content-between align-items-center text-white-50"
+          style={{ fontSize: "10px" }}
+        >
+          <div>Copyright 2025 © Nobelsets. Concept by repute</div>
+          <div className="d-flex gap-3 mt-3 mt-md-0">
+            <button
+              aria-label="Google"
+              className="social-btn"
+              title="Google"
+              type="button"
+            >
+              {/* <i className="fab fa-google"></i> */}
+            </button>
+            <button
+              aria-label="Instagram"
+              className="social-btn"
+              title="Instagram"
+              type="button"
+            >
+              {/* <i className="fab fa-instagram"></i> */}
+            </button>
+            <button
+              aria-label="Facebook"
+              className="social-btn"
+              title="Facebook"
+              type="button"
+            >
+              {/* <i className="fab fa-facebook-f"></i> */}
+            </button>
+            <button
+              aria-label="YouTube"
+              className="social-btn"
+              title="YouTube"
+              type="button"
+            >
+              {/* <i className="fab fa-youtube"></i> */}
+            </button>
+            <button
+              aria-label="Close"
+              className="social-btn close"
+              title="Close"
+              type="button"
+            >
+              {/* <i className="fas fa-times"></i> */}
+            </button>
+          </div>
+        </div>
+      </footer>
+    </div>
+  );
 };
 
 export default HomeFooter;
