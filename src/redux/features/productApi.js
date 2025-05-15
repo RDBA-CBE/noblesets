@@ -37,6 +37,7 @@ import {
   ATTRIBUTE_LIST,
   ADD_NEW_ADDRESS,
   LOGOUT,
+  PINCODE_LIST,
 } from "@/utils/queries/productList";
 import {
   RELATED_PRODUCT,
@@ -562,7 +563,7 @@ export const productApi = apiSlice.injectEndpoints({
     }),
 
     getCategoryName: builder.mutation({
-      query: ({ categoryid,slug }) => {
+      query: ({ categoryid, slug }) => {
         return configuration(CATEGORY_NAME({ slug }));
       },
       providesTags: ["Products"],
@@ -691,7 +692,6 @@ export const productApi = apiSlice.injectEndpoints({
 
     shopPagination: builder.mutation({
       query: ({ first = null, after = null, sortBy, page, filter = {} }) => {
-
         let channel = "";
         const channels = localStorage.getItem("channel");
         if (!channels) {
@@ -746,7 +746,7 @@ export const productApi = apiSlice.injectEndpoints({
     }),
 
     addNewAddress: builder.mutation({
-      query: ({input}) => {
+      query: ({ input }) => {
         return configuration(
           ADD_NEW_ADDRESS({
             input,
@@ -757,9 +757,18 @@ export const productApi = apiSlice.injectEndpoints({
 
     logout: builder.mutation({
       query: () => {
-        console.log("query: ", );
+        console.log("query: ");
+        return configuration(LOGOUT({}));
+      },
+    }),
+
+    pincodeList: builder.mutation({
+      query: ({ code }) => {
+        console.log("✌️code --->", code);
         return configuration(
-          LOGOUT({})
+          PINCODE_LIST({
+            code: code,
+          })
         );
       },
     }),
@@ -820,5 +829,6 @@ export const {
   useLootSaleProductQuery,
   useAttributeListMutation,
   useUserInfoMutation,
-  useLogoutMutation
+  useLogoutMutation,
+  usePincodeListMutation,
 } = productApi;

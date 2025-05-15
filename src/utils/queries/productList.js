@@ -2009,3 +2009,22 @@ export const ADD_NEW_ADDRESS = ({ input }) => {
     variables: { input },
   };
 };
+
+export const PINCODE_LIST = ({ code }) => {
+  return {
+    query: `
+     query PincodeQuery($code: [String!]) {
+  pincodes(filter: { code: $code }, first: 10) {
+    edges {
+      node {
+        code
+        name
+        slug
+      }
+    }
+  }
+}
+    `,
+    variables: { code },
+  };
+};

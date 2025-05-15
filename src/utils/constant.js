@@ -1259,3 +1259,22 @@ export const filterByStock = [
 export const COLORS = {
   primary: "#c3935b",
 };
+
+
+export const customStyles = {
+  content: {
+    maxWidth: '800px',
+    margin: 'auto',
+    borderRadius: '10px',
+    padding: '20px',
+    zIndex: 1000,
+  },
+  overlay: {
+    zIndex: 999,
+    backgroundColor: 'rgba(0, 0, 0, 0.6)',
+  },
+};
+
+export const cleanHTML = (html) => {
+  return html.replace(/<td>\s*<\/td>/g, '');
+};

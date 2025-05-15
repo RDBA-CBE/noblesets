@@ -1283,3 +1283,18 @@ hr.footer-divider {
   justify-content: center;
   padding-top: 10px;
 }
+
+.table-responsive-1 table {
+  border-collapse: separate !important; /* to allow spacing between cells */
+  border-spacing: 8px !important;       /* spacing between cells */
+  border: 1px solid #c3935b;             /* border around the whole table */
+  width: 100%;                          /* full width */
+}
+
+.table-responsive-1 th,
+.table-responsive-1 td {
+  border: 1px solid #c3935b;  /* border for each cell */
+  padding: 12px;               /* spacing inside cells */
+  text-align: center;
+  vertical-align: middle;
+}

@@ -44,8 +44,11 @@ import {
   AppstoreOutlined,
 } from "@ant-design/icons";
 import { Tooltip } from "antd";
-import { profilePic } from "@/utils/constant";
+import { cleanHTML, customStyles, profilePic } from "@/utils/constant";
 import { RWebShare } from "react-web-share";
+import PincodeChecker from "../pincode_checker/pincodeChecker";
+import PriceBreakup from "../price_breakup/priceBreakUp";
+import ReactModal from "react-modal";
 
 const DetailsWrapper = ({
   productItem,
@@ -82,6 +85,19 @@ const DetailsWrapper = ({
   const [minAmount, setMinAmount] = useState("");
   const [maxAmount, setMaxAmount] = useState("");
   const [variantDetails, setVariantDetails] = useState("");
+  const [isModalOpen, setIsModelOpen] = useState(false);
+
+  const [priceHTML, setPriceHTML] = useState(`
+        <table border="1" cellpadding="5" cellspacing="0">
+            <thead>
+                <tr>
+                    <th>Size</th><th>width</th><th>Height</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr><td>20</td><td>10</td><td>22</td><td></td></tr><tr><td>10</td><td>20</td><td>21</td><td></td></tr>
+            </tbody>
+        </table>`);
 
   const [visibility, setVisibility] = useState({
     description: false,
@@ -345,7 +361,6 @@ const DetailsWrapper = ({
     localStorage.setItem("compareList", JSON.stringify(arr));
     dispatch(compare_list(arr));
     notifySuccess("Product to added to compare list");
-
   };
 
   useEffect(() => {
@@ -1153,6 +1168,19 @@ const DetailsWrapper = ({
           </div>
         </div>
       )}
+      <div className="pt-2 pb-3">
+        <button
+          onClick={() => setIsModelOpen(true)}
+          className="btn text-white"
+          style={{ backgroundColor: "#c18a3d" }}
+        >
+          SIZE CHART
+        </button>
+      </div>
+
+      <PriceBreakup data={priceHTML} />
+
+      <PincodeChecker />
 
       {/* product-details-action-sm start */}
 
@@ -1409,7 +1437,7 @@ const DetailsWrapper = ({
                 : productItem?.defaultVariant?.sku}
             </p>
             {productItem?.category?.length > 0 && (
-              <p style={{ color: "#55585b"}}>
+              <p style={{ color: "#55585b" }}>
                 <b>Category:</b>{" "}
                 {productItem?.category?.map((category, index) => {
                   return (
@@ -1825,9 +1853,50 @@ const DetailsWrapper = ({
         </div>
       </div>
 
+      <div className="text-uppercase text-decordation color:#c3935b">
+        To Customize Product
+      </div>
+
       {detailsBottom && (
         <DetailsBottomInfo category={category?.name} sku={sku} tag={tags[0]} />
       )}
+
+      <ReactModal
+        isOpen={isModalOpen}
+        onRequestClose={() => setIsModelOpen(false)}
+        style={customStyles}
+        contentLabel="Product Modal"
+        ariaHideApp={false} // optional: disables appElement warning
+      >
+        <div className="tp-product-modal">
+          <div className="tp-product-modal-content d-lg-flex flex-column gap-4">
+            <button
+              onClick={() => setIsModelOpen(false)}
+              type="button"
+              className="btn btn-sm btn-danger align-self-end"
+            >
+              ✕ Close
+            </button>
+
+            {/* Product Image */}
+            <div className="text-center">
+              <img
+                src="https://prade.blr1.digitaloceanspaces.com/Screenshot%202025-05-13%20at%209.34.26%E2%80%AFAM-2.png" // replace with your image path
+                alt="Product"
+                width={400}
+                height={300}
+                className="img-fluid rounded"
+              />
+            </div>
+
+            {/* Table */}
+            <div
+              className="table-responsive-1 mb-3"
+              dangerouslySetInnerHTML={{ __html: cleanHTML(priceHTML) }}
+            />
+          </div>
+        </div>
+      </ReactModal>
     </div>
   );
 };
