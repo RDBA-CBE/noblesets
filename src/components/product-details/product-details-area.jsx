@@ -67,6 +67,9 @@ const ProductDetailsArea = ({
     relatedProductsRef?.current?.scrollIntoView({ behavior: "smooth" });
   };
 
+
+      
+
   return (
     <section
       className="tp-product-details-area pt-40"
