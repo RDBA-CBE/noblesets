@@ -736,7 +736,7 @@ const CheckoutBillingArea = ({ register, errors }) => {
 
       let encReq = CCAvenue.getEncryptedOrder(paymentData);
       let accessCode = "AVGO93LF57AY79OGYA";
-      let URL = `https://secure.ccavenue.com/transaction/transaction.do?command=initiateTransaction&merchant_id=${paymentData.merchant_id}6&encRequest=${encReq}&access_code=${accessCode}`;
+      let URL = `https://secure.ccavenue.com/transaction/transaction.do?command=initiateTransaction&merchant_id=${paymentData.merchant_id}&encRequest=${encReq}&access_code=${accessCode}`;
       router.push(URL);
     } catch (error) {
       console.log("error: ", error);

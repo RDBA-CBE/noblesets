@@ -54,7 +54,7 @@ const HomeCategorySection = () => {
         className=""
         style={{ paddingTop: "30px", backgroundColor: "#fff9f4" }}
       >
-        <div className="container" style={{ padding: "0px" }}>
+        <div className="container-fluid" style={{ padding: "0px" }}>
           <div className="row">
             <div className="col-12">
               <div className="feature-main" style={{ marginBottom: "30px" }}>
@@ -68,7 +68,7 @@ const HomeCategorySection = () => {
               </div>
             </div>
           </div>
-          <div className="row ">
+          {/* <div className="row "> */}
             {/* <div className="col-md-6 col-12">
               <div className="row">
                 <div className="col-xl-6 col-lg-6 category-section-1">
@@ -145,11 +145,11 @@ const HomeCategorySection = () => {
               </div>
             </div> */}
 
-            <div className="row ">
-              <div className="col-xl-12">
+            <div className="row justify-content-center">
+              <div className="col-11">
                 <div
                   className="tp-brand-slider p-relative"
-                  style={{ height: "300px" }}
+                  // style={{ height: "300px" }}
                 >
                   <Swiper
                     {...slider_setting}
@@ -160,7 +160,7 @@ const HomeCategorySection = () => {
                       <SwiperSlide
                         key={i}
                         className="tp-brand-item text-center"
-                        style={{ width: "350px", height: "500px" }}
+                        // style={{ width: "350px", height: "500px" }}
                       >
                         {/* <div className="col-xl-6 col-lg-6  category-section-5"> */}
                         <img
@@ -273,7 +273,7 @@ const HomeCategorySection = () => {
                 </div>
               </div>
             </div> */}
-          </div>
+          {/* </div> */}
         </div>
       </section>
     </>

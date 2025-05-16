@@ -71,12 +71,12 @@ const HomeBanner = () => {
     };
 
     return (
-        <section className="tp-slider-area p-relative z-index-1 fix">
+        <section className="tp-slider-area p-relative z-index-1 fix " style={{borderRadius:"20px"}}>
             <Slider
                 {...main_slider_setting}
                 asNavFor={slider2}
                 ref={(slider) => setSlider1(slider)}
-                className="tp-slider-active-4 banner-outer"
+                className="tp-slider-active-4 "
             >
                 {slider_data.map((item, i) => (
                     <div

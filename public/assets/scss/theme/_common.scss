@@ -955,21 +955,21 @@
 .budget-card {
   position: relative;
   overflow: hidden;
-  width: 214px;
-  height: 100%;
+  // width: 214px;
+  // height: 100%;
   flex-shrink: 0;
   transition: transform 0.3s ease;
 }
 
-.budget-card--2 {
-  width: 290px;
-  height: 282px;
-}
+// .budget-card--2 {
+//   width: 290px;
+//   height: 282px;
+// }
 
-.budget-card--3 {
-  width: 348px;
-  height: 333px;
-}
+// .budget-card--3 {
+//   width: 348px;
+//   height: 333px;
+// }
 
 .budget-card:hover {
   transform: scale(1.05);
@@ -1008,14 +1008,14 @@
   }
 
   .budget-card {
-    width: 80%;
+    // width: 80%;
     height: auto;
     aspect-ratio: 1/1;
   }
 
   .budget-card--2,
   .budget-card--3 {
-    width: 80%;
+    // width: 80%;
     height: auto;
     aspect-ratio: 1/1;
   }
@@ -1314,3 +1314,12 @@ hr.footer-divider {
 .review-sec h1, .review-sec h4, .review-sec h5{
   font-weight: 400;
 }
+
+.section-wd{
+  width: 95%;
+  margin: auto;
+}
+
+// @media (max-width:990px){
+//   width: ;
+// }

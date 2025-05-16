@@ -25,7 +25,7 @@ import {
   useAddToCartMutation,
   useGetCartListQuery,
 } from "@/redux/features/card/cardApi";
-import { useRouter } from "next/router";
+import { Router, useRouter } from "next/router";
 import { notifyError, notifySuccess } from "@/utils/toast";
 import { checkWishlist, handleWishlistProduct } from "@/utils/common_function";
 import ProductDetailsBreadcrumb from "../breadcrumb/product-details-breadcrumb";
@@ -50,6 +50,7 @@ import PincodeChecker from "../pincode_checker/pincodeChecker";
 import PriceBreakup from "../price_breakup/priceBreakUp";
 import ReactModal from "react-modal";
 import CCAvenue from "@/utils/CCAvenue";
+import * as Yup from "yup";
 
 
 const DetailsWrapper = ({
@@ -88,6 +89,7 @@ const DetailsWrapper = ({
   const [maxAmount, setMaxAmount] = useState("");
   const [variantDetails, setVariantDetails] = useState("");
   const [isModalOpen, setIsModelOpen] = useState(false);
+  const [isProductModalOpen, setIsProductModelOpen] = useState(false);
 
   const [priceHTML, setPriceHTML] = useState(`
         <table border="1" cellpadding="5" cellspacing="0">
@@ -100,6 +102,30 @@ const DetailsWrapper = ({
                 <tr><td>20</td><td>10</td><td>22</td><td></td></tr><tr><td>10</td><td>20</td><td>21</td><td></td></tr>
             </tbody>
         </table>`);
+
+    const [formData, setFormData] = useState({
+    name: "",
+    email: "",
+    productName: "",
+    sku: "",
+    message: "",
+    captcha: "",
+  });
+
+  const [error, setError] = useState("");
+  const [success, setSuccess] = useState("");
+
+  const correctCaptchaAnswer = 3; // because five - 2 = 3
+
+  const handleChange = (e) => {
+    const { name, value } = e.target;
+    setFormData((prev) => ({
+      ...prev,
+      [name]: value,
+    }));
+  };
+
+      
 
   const [visibility, setVisibility] = useState({
     description: false,
@@ -549,34 +575,141 @@ const DetailsWrapper = ({
   };
   const host = "https://schemes.sreethangamjewellery.com";
 
-  const paymentCCAvenue = () => {
-    let paymentData = {
-        merchant_id: '315511', // Merchant ID (Required)
-        order_id: "ORD123", // Order ID - It can be generated from our project
-        amount: "1", // Payment Amount (Required)
-        currency: "INR", // Payment Currency Type (Required)
-        billing_email: "johndoe@gmail.com", // Billing Email (Optional)
-        billing_name: "John Doe", // Billing Name (Optional)
-        billing_address: "Address Details", // Billing Address (Optional)
-        billing_city: "Ahmedabad", // Billing City (Optional)
-        billing_state: "Gujarat", // Billing State (Optional)
-        billing_zip: "380002", // Billing Zip (Optional)
-        billing_country: "India", // Billing COuntry (Optional)
-        redirect_url: `${host}/api/ccavenue-handle`, // Success URL (Required)
-        cancel_url: `${host}/api/ccavenue-handle`, // Failed/Cancel Payment URL (Required)
-        merchant_param1: "Extra Information", // Extra Information (Optional)
-        merchant_param2: "Extra Information", // Extra Information (Optional)
-        merchant_param3: "Extra Information", // Extra Information (Optional)
-        merchant_param4: "Extra Information", // Extra Information (Optional)
-        language: 'EN', // Language (Optional)
-        billing_tel: "1234567890" // Billing Mobile Number (Optional)
+//   const paymentCCAvenue = () => {
+//     let paymentData = {
+//         merchant_id: '315511', // Merchant ID (Required)
+//         order_id: "ORD123", // Order ID - It can be generated from our project
+//         amount: "1", // Payment Amount (Required)
+//         currency: "INR", // Payment Currency Type (Required)
+//         billing_email: "johndoe@gmail.com", // Billing Email (Optional)
+//         billing_name: "John Doe", // Billing Name (Optional)
+//         billing_address: "Address Details", // Billing Address (Optional)
+//         billing_city: "Ahmedabad", // Billing City (Optional)
+//         billing_state: "Gujarat", // Billing State (Optional)
+//         billing_zip: "380002", // Billing Zip (Optional)
+//         billing_country: "India", // Billing COuntry (Optional)
+//         redirect_url: `${host}/api/ccavenue-handle`, // Success URL (Required)
+//         cancel_url: `${host}/api/ccavenue-handle`, // Failed/Cancel Payment URL (Required)
+//         merchant_param1: "Extra Information", // Extra Information (Optional)
+//         merchant_param2: "Extra Information", // Extra Information (Optional)
+//         merchant_param3: "Extra Information", // Extra Information (Optional)
+//         merchant_param4: "Extra Information", // Extra Information (Optional)
+//         language: 'EN', // Language (Optional)
+//         billing_tel: "1234567890" // Billing Mobile Number (Optional)
+//     }
+
+//     let encReq = CCAvenue.getEncryptedOrder(paymentData);
+//     let accessCode = "AVEV05LC59AW38VEWA";
+//     let URL = `https://test.ccavenue.com/transaction/transaction.do?command=initiateTransaction&merchant_id=${paymentData.merchant_id}6&encRequest=${encReq}&access_code=${accessCode}`;
+//     router.push(URL);
+// }
+
+const paymentCCAvenue = () => {
+  const host = 'https://6717-2401-4900-8827-46ca-44b5-b29b-478b-2627.ngrok-free.app';
+
+
+  let paymentData = {
+    merchant_id: '315511', // Merchant ID (Required)
+    order_id: "ORD123", // Order ID - It can be generated from our project
+    amount: "1", // Payment Amount (Required)
+    currency: 'INR', // Payment Currency Type (Required)
+    billing_email:  "johndoe@gmail.com", // Billing Email (Optional)
+    billing_name: "John Doe", // Billing Name (Optional)
+    billing_address: "Address Details",
+    billing_city: "Coimbatore", // Billing City (Optional)
+    billing_state: 'Tamilnadu', // Billing State (Optional)
+    billing_zip:"641038", // Billing Zip (Optional)
+    billing_country: 'India', // Billing COuntry (Optional)
+    redirect_url: `${host}/api/ccavenue-handle1`, // Success URL (Required)
+    cancel_url: `${host}/api/ccavenue-handle`, // Cancel URL
+    merchant_param1: "Extra Information", // Extra Information (Optional)
+    merchant_param2: "Extra Information", // Extra Information (Optional)
+    merchant_param3: '', // Extra Information (Optional)
+    merchant_param4: '', // Extra Information (Optional)
+    merchant_param5: '', // Extra Information (Optional)
+    // language: 'EN', // Language (Optional)
+    billing_tel: "1234567890", // Billing Mobile Number (Optional)
+    // sub_account_id: subaccid,
+  };
+
+
+
+  console.log("paymentData",paymentData);
+  let encReq = CCAvenue.getEncryptedOrder(paymentData);
+  // const encRequest = encrypt(paymentData, WORKING_KEY);
+  let accessCode = 'AVGO93LF57AY79OGYA';
+
+  let URL = `https://secure.ccavenue.com/transaction/transaction.do?command=initiateTransaction&merchant_id=${paymentData.merchant_id}&encRequest=${encReq}&access_code=${accessCode}`;
+
+  console.log("URL",URL);
+  
+  // window.location.href = URL;
+  router.push(URL);
+
+//   if (Amount == undefined || Amount == null || Amount == '' || Amount == 0) {
+//     messageApi.open({
+//         type: 'error',
+//         content: 'Select Chit Amount',
+//     });
+// } else {
+//     router.push(URL);
+// }
+  
+
+}
+
+const validationSchema = Yup.object().shape({
+  name: Yup.string().required("Name is required"),
+  email: Yup.string().email("Invalid email").required("Email is required"),
+  captcha: Yup.string().required("Captcha is required"),
+});
+
+
+
+const handleCustomizedProduct = async (e) => {
+  e.preventDefault();
+
+  try {
+    await validationSchema.validate(formData, { abortEarly: false });
+
+    if (parseInt(formData.captcha) !== correctCaptchaAnswer) {
+      setError("Captcha is incorrect. Please try again.");
+      setSuccess("");
+      return;
     }
 
-    let encReq = CCAvenue.getEncryptedOrder(paymentData);
-    let accessCode = "AVEV05LC59AW38VEWA";
-    let URL = `https://test.ccavenue.com/transaction/transaction.do?command=initiateTransaction&merchant_id=${paymentData.merchant_id}6&encRequest=${encReq}&access_code=${accessCode}`;
-    router.push(URL);
-}
+    const bodyData = {
+      name: formData.name,
+      email: formData.email,
+      productName: formData.productName,
+      sku: formData.sku,
+      message: formData.message,
+    };
+
+   
+
+    setSuccess("Form submitted successfully!");
+    setError("");
+
+    setFormData({
+      name: "",
+      email: "",
+      productName: productItem?.name || "",
+      sku: productItem?.defaultVariant?.sku || "",
+      message: "",
+      captcha: "",
+    });
+
+  } catch (err) {
+    if (err.inner) {
+      const allErrors = err.inner.map((e) => e.message).join(" ");
+      setError(allErrors);
+    } else {
+      setError(err.message);
+    }
+    setSuccess("");
+  }
+};
 
   return (
     <div className="tp-product-details-wrapper">
@@ -1894,7 +2027,7 @@ const DetailsWrapper = ({
         </div>
       </div>
 
-      <div className="text-uppercase text-decordation color:#c3935b">
+      <div className="text-uppercase text-decordation color:#c3935b cursor-pointer" onClick={() => setIsProductModelOpen(true)}>
         To Customize Product
       </div>
 
@@ -1935,6 +2068,116 @@ const DetailsWrapper = ({
               className="table-responsive-1 mb-3"
               dangerouslySetInnerHTML={{ __html: cleanHTML(priceHTML) }}
             />
+          </div>
+        </div>
+      </ReactModal>
+
+      <ReactModal
+        isOpen={isProductModalOpen}
+        onRequestClose={() => setIsProductModelOpen(false)}
+        style={customStyles}
+        contentLabel="Product Modal"
+        ariaHideApp={false} // optional: disables appElement warning
+      >
+        <div className="tp-product-modal">
+          <div className="tp-product-modal-content d-lg-flex flex-column gap-4">
+            <button
+              onClick={() => setIsProductModelOpen(false)}
+              type="button"
+              className="btn btn-sm btn-danger align-self-end"
+            >
+              ✕ 
+            </button>
+
+            <div className="container mt-5">
+      <form onSubmit={handleCustomizedProduct} className="p-4 rounded">
+        <div className="row mb-3">
+          <div className="col-md-6">
+            <label className="form-label">Your Name</label>
+            <input
+              type="text"
+              name="name"
+              className="form-control"
+              value={formData.name}
+              onChange={handleChange}
+              required
+            />
+          </div>
+          <div className="col-md-6">
+            <label className="form-label">Your Email</label>
+            <input
+              type="email"
+              name="email"
+              className="form-control"
+              value={formData.email}
+              onChange={handleChange}
+              required
+            />
+          </div>
+        </div>
+
+        <div className="row mb-3">
+          <div className="col-md-6">
+            <label className="form-label">Product Name</label>
+            <input
+              type="text"
+              name="productName"
+              className="form-control"
+              value={productItem?.name}
+              readOnly
+            />
+          </div>
+          <div className="col-md-6">
+            <label className="form-label">SKU</label>
+            <input
+              type="text"
+              name="sku"
+              className="form-control"
+              value={productItem?.defaultVariant?.sku}
+              readOnly
+            />
+          </div>
+        </div>
+
+        <div className="mb-3">
+          <label className="form-label">Your Message (optional)</label>
+          <textarea
+            name="message"
+            className="form-control"
+            rows="4"
+            value={formData.message}
+            onChange={handleChange}
+          ></textarea>
+        </div>
+
+        <div className="mb-3">
+          <label className="form-label">Captcha (Enter Sum)</label>
+          <div className="d-flex align-items-center">
+            <span className="me-2" style={{ flex: 1 }}>5 - 2?</span>
+            <input
+              type="number"
+              name="captcha"
+              className="form-control"
+              value={formData.captcha}
+              onChange={handleChange}
+              required
+              style={{ flex: 6 }}
+            />
+          </div>
+        </div>
+
+        {error && <div className="alert alert-danger">{error}</div>}
+        {success && <div className="alert alert-success">{success}</div>}
+
+        <button type="submit" className="tp-btn tp-btn-border mt-4">
+          SUBMIT
+        </button>
+      </form>
+    </div>
+
+
+        
+           
           </div>
         </div>
       </ReactModal>

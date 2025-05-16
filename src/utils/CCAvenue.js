@@ -21,7 +21,9 @@ return initOptions && initOptions[key]? true : false;
             const m = createHash('md5');
             m.update(working_key);
             const key = m.digest();
-            const iv = '\x00\x01\x02\x03\x04\x05\x06\x07\x08\x09\x0a\x0b\x0c\x0d\x0e\x0f';
+            // const iv = '\x00\x01\x02\x03\x04\x05\x06\x07\x08\x09\x0a\x0b\x0c\x0d\x0e\x0f';
+            const iv = Buffer.from([0x00, 0x01, 0x02, 0x03, 0x04, 0x05, 0x06, 0x07,
+                0x08, 0x09, 0x0a, 0x0b, 0x0c, 0x0d, 0x0e, 0x0f]);
             const cipher = createCipheriv('aes-128-cbc', key, iv);
             let encoded = cipher.update(plainText, 'utf8', 'hex');
             encoded += cipher.final('hex');
@@ -41,7 +43,9 @@ return initOptions && initOptions[key]? true : false;
             const m = createHash('md5');
             m.update(working_key);
             const key = m.digest();
-            const iv = '\x00\x01\x02\x03\x04\x05\x06\x07\x08\x09\x0a\x0b\x0c\x0d\x0e\x0f';
+            // const iv = '\x00\x01\x02\x03\x04\x05\x06\x07\x08\x09\x0a\x0b\x0c\x0d\x0e\x0f';
+            const iv = Buffer.from([0x00, 0x01, 0x02, 0x03, 0x04, 0x05, 0x06, 0x07,
+                0x08, 0x09, 0x0a, 0x0b, 0x0c, 0x0d, 0x0e, 0x0f]);
             const decipher = createDecipheriv('aes-128-cbc', key, iv);
             let decoded = decipher.update(encText, 'hex', 'utf8');
             decoded += decipher.final('utf8');
@@ -73,8 +77,10 @@ return initOptions && initOptions[key]? true : false;
 
     getEncryptedOrder(orderParams) {
         if (this.validate('merchant_id') && orderParams) {
-            let data = `merchant_id=${initOptions.merchant_id}`;
-            data += Object.entries(orderParams).map(([key, value]) => `&${key}=${value}`).join('');
+            // let data = `merchant_id=${initOptions.merchant_id}`;
+            // data += Object.entries(orderParams).map(([key, value]) => `&${key}=${value}`).join('');
+            // return this.encrypt(data);
+            let data = Object.entries(orderParams).map(([key, value]) => `${key}=${value}`).join('&');
             return this.encrypt(data);
 
         } else if (!orderParams) {
@@ -86,9 +92,10 @@ return initOptions && initOptions[key]? true : false;
 
 }
 
+
 const CCAvenue = new Configure({
-    working_key: "D58719F6B1A4057EA02DE130AFCB12D2", // Your Working Key from CCAvenue
-    merchant_id: "315511" // Your Merchant ID from CCAvenue
+    working_key: "D58719F6B1A4057EA02DE130AFCB12D2",
+    merchant_id: "315511" // <- Correct this to match working URL
 });
 
 export default CCAvenue;
