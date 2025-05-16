@@ -11,6 +11,7 @@ import { Scrollbar, Navigation, Autoplay } from "swiper";
 import { LeftOutlined, RightOutlined } from "@ant-design/icons";
 import { slider_setting } from "../../utils/functions";
 import { useGetRelatedProductsQuery } from "@/redux/features/productApi";
+import ReviewSection from "./ReviewSection";
 const ProductDetailsArea = ({
   productItem,
   pageTitle,
@@ -173,6 +174,8 @@ const ProductDetailsArea = ({
               </div>
             </section>
           )}
+
+          <ReviewSection/>
         </>
       )}
 
