@@ -30,6 +30,7 @@ import {
   usePaymentListMutation,
   usePaymentMutation,
   usePaymentQuery,
+  usePincodeListMutation,
   useRemoveCouponMutation,
   useStateListQuery,
   useUpdateEmailMutation,
@@ -61,6 +62,7 @@ import pradeLogo from "@assets/img/prade-logo.png";
 import AddressModal from "./addressComponent";
 import { useGetAddressListQuery } from "../../redux/features/productApi";
 import CCAvenue from "../../components/ccAvenue/ccAvenue";
+import useDebounce from "../useDebounce/useDebounce";
 
 const CheckoutBillingArea = ({ register, errors }) => {
   const { user } = useSelector((state) => state.auth);
@@ -195,6 +197,8 @@ const CheckoutBillingArea = ({ register, errors }) => {
 
   const [paymentMethodList] = usePaymentMethodListMutation();
 
+  const [picodeCheck, { isLoading: loading }] = usePincodeListMutation();
+
   const { data: getAddressList, refetch: addressRefetch } =
     useGetAddressListQuery();
 
@@ -297,6 +301,22 @@ const CheckoutBillingArea = ({ register, errors }) => {
     setState({ channel: channels });
   }, []);
 
+  const debouncedPeopleSearch = useDebounce(state.postalCode);
+
+  const handleCheck = async (code) => {
+    try {
+      let isTrue = false;
+      const res = await picodeCheck({ code: code });
+      if (res?.data?.data?.pincodes?.edges.length > 0) {
+        isTrue = true;
+      } else {
+        isTrue = false;
+      }
+
+      return isTrue;
+    } catch (error) {}
+  };
+
   useEffect(() => {
     enableCOD();
   }, [
@@ -306,7 +326,7 @@ const CheckoutBillingArea = ({ register, errors }) => {
     state.selectedCountry,
     state.diffAddress,
     state.postalCode1,
-    state.postalCode,
+    debouncedPeopleSearch,
   ]);
 
   useEffect(() => {
@@ -317,32 +337,6 @@ const CheckoutBillingArea = ({ register, errors }) => {
     state.diffAddress,
     state.total,
   ]);
-
-  // useEffect(() => {
-  //   const hasPreOrders = state.orderData?.lines?.some((line) =>
-  //     line?.variant?.product?.collections?.some(
-  //       (collection) => collection.name === "Pre Orders"
-  //     )
-  //   );
-
-  //   const hasGiftCard = state.orderData?.lines?.some(
-  //     (line) => line?.variant?.product?.category.name === "Gift Card"
-  //   );
-
-  //   if (hasPreOrders) {
-  //     setState({ preOrderMsg: true });
-  //   }
-  //   if (hasGiftCard) {
-  //     setState({ preOrderMsg: true });
-  //   }
-  // }, [
-  //   state.orderData,
-  //   state.selectedCountry1,
-  //   state.selectedCountry,
-  //   state.diffAddress,
-  //   state.postalCode1,
-  //   state.postalCode,
-  // ]);
 
   const enableCOD = async () => {
     try {
@@ -394,8 +388,8 @@ const CheckoutBillingArea = ({ register, errors }) => {
         const postalCode = state.diffAddress
           ? state.postalCode1
           : state.postalCode;
-
-        if (country === "IN" && pincode.includes(Number(postalCode))) {
+        const pincodes = await handleCheck(postalCode);
+        if (country === "IN" && pincodes) {
           isShowCOD = true;
         }
       }
@@ -459,7 +453,7 @@ const CheckoutBillingArea = ({ register, errors }) => {
 
   const handleSubmit = async (data) => {
     try {
-      const errors = validateInputs();
+      const errors = await validateInputs();
       if (Object.keys(errors).length === 0) {
         if (state.createAccount) {
           await createAccount();
@@ -710,7 +704,7 @@ const CheckoutBillingArea = ({ register, errors }) => {
     try {
       let paymentData = {
         merchant_id: "315511", // Merchant ID (Required)
-        order_id:orderId, // Order ID - It can be generated from our project
+        order_id: orderId, // Order ID - It can be generated from our project
         amount: amount, // Payment Amount (Required)
         currency: "INR", // Payment Currency Type (Required)
         billing_email: "madhanumk@gmail.com", // Billing Email (Optional)
@@ -870,7 +864,7 @@ const CheckoutBillingArea = ({ register, errors }) => {
     }
   };
 
-  const validateInputs = () => {
+  const validateInputs = async () => {
     const fieldsToValidate = [
       { name: "firstName", label: "First name" },
       { name: "lastName", label: "Last name" },
@@ -920,6 +914,10 @@ const CheckoutBillingArea = ({ register, errors }) => {
         }
       });
     }
+    const isValidPostalCode = await handleCheck(state.postalCode);
+    if (!isValidPostalCode) {
+      errors.postalCode = "Delivery is not available to this area";
+    }
 
     if (state.diffAddress) {
       const fieldsToValidate2 = [
@@ -947,7 +945,13 @@ const CheckoutBillingArea = ({ register, errors }) => {
           errors[name] = `${label} is required`;
         }
       });
+      const isValidPostalCode =await handleCheck(state.postalCode1);
+      if (!isValidPostalCode) {
+        errors.postalCode1 = "Delivery is not available to this area";
+      }
     }
+    console.log("✌️errors --->", errors);
+
     setState({ errors });
     return errors;
   };

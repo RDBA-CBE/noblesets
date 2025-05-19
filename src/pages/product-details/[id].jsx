@@ -66,7 +66,6 @@ const ProductDetailsPage = ({ query }) => {
 
   useEffect(() => {
     const product = productData?.data?.product;
-
     const addMetaTag = (name, content) => {
       const meta = document.createElement("meta");
       meta.name = name;

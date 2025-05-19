@@ -1,7 +1,7 @@
 export const SINGLE_PRODUCT = ({ productId, channel }) => {
   return JSON.stringify({
     query: `
-   query MyQuery($productId: String!, $channel: String!) {
+ query MyQuery($productId: String!, $channel: String!) {
   product(slug: $productId, channel: $channel) {
     id
     name
@@ -127,6 +127,16 @@ export const SINGLE_PRODUCT = ({ productId, channel }) => {
       values {
         name
       }
+    }
+    priceBreakup {
+      breakupDetails
+      id
+    }
+    sizeGuide {
+      name
+      sizeimg
+      slug
+      sizedetail
     }
   }
 }

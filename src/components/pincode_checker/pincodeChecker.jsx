@@ -1,9 +1,11 @@
 import { useEffect, useState } from "react";
 import { EnvironmentOutlined } from "@ant-design/icons";
 import { usePincodeListMutation } from "@/redux/features/productApi";
+import Loader from "../loader/loader";
+import ButtonLoader from "../loader/button-loader";
 
 export default function PincodeChecker() {
-  const [picodeCheck, {}] = usePincodeListMutation();
+  const [picodeCheck, { isLoading: loading }] = usePincodeListMutation();
 
   const [pincode, setPincode] = useState("");
   const [isAvailable, setIsAvailable] = useState(null);
@@ -51,13 +53,13 @@ export default function PincodeChecker() {
           className="btn text-white"
           style={{ backgroundColor: "#c18a3d" }}
         >
-          CHECK
+          {loading ? <ButtonLoader /> : "CHECK"}
         </button>
       </div>
 
       {isAvailable !== null && (
         <p
-          className={`mt-1  ${isAvailable ? "text-warning" : "text-danger"}`}
+          className={`mt-1  ${isAvailable ? "text-success" : "text-danger"}`}
           style={{ color: isAvailable ? "#c18a3d" : "" }}
         >
           {isAvailable
