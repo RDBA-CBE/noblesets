@@ -2,21 +2,21 @@ import React from "react";
 
 export default function GiftSection() {
   return ( 
-    <section class="py-5 " style={{ backgroundColor: "#fff9f4" }}>
-      <div class="container">
-        <div class="row align-items-center g-5">
-          <div class="col-lg-6" data-aos="fade-right">
+    <section class="pt-60 " style={{ backgroundColor: "#fff9f4" }}>
+      <div class=" section-wd">
+        <div class="row align-items-center justify-content-center g-5">
+          <div class="col-12 col-lg-6 px-5" data-aos="fade-right">
             <div className="">
-              <h5 style={{ fontWeight: "400" }}>✦ Exceptuer occaecat</h5>
+              <h5 className="sub-ti" > <b>✦</b>  Exceptuer occaecat</h5>
               <h4
-                className="feature-adipisicing"
-                style={{ fontWeight: "400", fontSize: "30px" }}
+                className="feature-adipisicing main-ti"
+                
               >
                 Make Gifting Special
               </h4>
             </div>
 
-            <p class="text-muted">
+            <p class="text-muted sub-ti">
               Eternalize precious moments by gifting your loved ones everlasting
               jewels. We have splendid adornments for every occasion with no
               shortage of choice. Make every occasion memorable.
@@ -28,7 +28,7 @@ export default function GiftSection() {
                   src="/assets/img/home/gift_special/img-1.png"
                   alt="image-1"
                   style={{
-                    width: "100%",
+                    // width: "100%",
                     borderRadius: "20px",
                     cursor: "pointer",
                   }}
@@ -41,7 +41,7 @@ export default function GiftSection() {
                   src="/assets/img/home/gift_special/img-2.png"
                   alt="image-1"
                   style={{
-                    width: "100%",
+                    // width: "100%",
                     borderRadius: "20px",
                     cursor: "pointer",
                   }}
@@ -54,7 +54,7 @@ export default function GiftSection() {
                   src="/assets/img/home/gift_special/img-3.png"
                   alt="image-1"
                   style={{
-                    width: "100%",
+                    // width: "100%",
                     borderRadius: "20px",
                     cursor: "pointer",
                   }}
@@ -74,7 +74,7 @@ export default function GiftSection() {
             </div>
           </div>
 
-          <div class="col-lg-6 text-center" data-aos="fade-left">
+          <div class="col-12 col-lg-5 text-center" data-aos="fade-left">
            <div
   className="position-relative d-lg-flex justify-content-lg-end ps-lg-5 p-3"
 >

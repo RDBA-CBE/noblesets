@@ -9,7 +9,7 @@ export default function ShopByBudget() {
   return (
     <>
       <section
-        className="budget-section"
+        className="budget-section pt-60"
         style={{
           backgroundImage: "url(/assets/img/home/shopByBudget/bg.png)",
           backgroundSize: "cover",
@@ -17,11 +17,11 @@ export default function ShopByBudget() {
           backgroundRepeat: "no-repeat",
         }}
       >
-        <div className="feature-main" style={{ marginBottom: "30px" }}>
-          <h5 style={{ fontWeight: "400" }}>✦ Lorem ipsum dolor</h5>
+        <div className="feature-main mb-50" >
+          <h5 className="sub-ti"><b>✦</b> Lorem ipsum dolor</h5>
           <h4
-            className="feature-adipisicing"
-            style={{ fontWeight: "400", fontSize: "30px" }}
+            className="feature-adipisicing main-ti"
+            
           >
             Shop By Budget
           </h4>

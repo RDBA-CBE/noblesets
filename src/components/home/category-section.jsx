@@ -51,17 +51,17 @@ const HomeCategorySection = () => {
   return (
     <>
       <section
-        className=""
-        style={{ paddingTop: "30px", backgroundColor: "#fff9f4" }}
+        className="pt-60"
+        style={{ backgroundColor: "#fff9f4" }}
       >
         <div className="container-fluid" style={{ padding: "0px" }}>
           <div className="row">
             <div className="col-12">
-              <div className="feature-main" style={{ marginBottom: "30px" }}>
-                <h5 style={{ fontWeight: "400" }}>✦ Duis Irure dolor</h5>
+              <div className="feature-main mb-50" >
+                <h5 className="sub-ti" > <b>✦</b> Duis Irure dolor</h5>
                 <h4
-                  className="feature-adipisicing"
-                  style={{ fontWeight: "400", fontSize: "30px" }}
+                  className="feature-adipisicing main-ti"
+                 
                 >
                   Best of Noblesets
                 </h4>
