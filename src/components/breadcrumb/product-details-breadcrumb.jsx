@@ -33,7 +33,7 @@ const ProductDetailsBreadcrumb = ({ category, title, parentSlug }) => {
   }, [categories[1]]);
 
   return (
-    <section className="breadcrumb__area breadcrumb__style-2 include-bg pb-20">
+    <section className="breadcrumb__area breadcrumb__style-2 include-bg ">
       <div className="container-fluid">
         <div className="row">
           <div className="col-xxl-12">

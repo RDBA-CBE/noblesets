@@ -62,6 +62,7 @@ const RelatedProducts = ({
         {...slider_setting}
         modules={[Autoplay, Navigation]}
         className="tp-product-related-slider-active swiper-container mb-10"
+        
       >
         {products.map((item) => (
           <SwiperSlide key={item._id}>

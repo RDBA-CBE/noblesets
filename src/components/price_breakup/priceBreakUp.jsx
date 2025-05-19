@@ -7,18 +7,18 @@ export default function PriceBreakup(props) {
 
   return (
     <div className="">
-      <h5
+      {/* <h5
         className="fw-semibold border-bottom pb-2  cursor-pointer"
         onClick={() => setOpen(!open)}
       >
         <span className="me-2">+</span> Price Breakup
       </h5>
-      {open && (
+      {open && ( */}
         <div
           className="table-responsive-1 mb-3"
           dangerouslySetInnerHTML={{ __html: cleanHTML(data) }}
         />
-      )}
+      {/* )} */}
     </div>
   );
 }

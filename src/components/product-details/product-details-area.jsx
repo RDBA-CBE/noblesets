@@ -12,6 +12,8 @@ import { LeftOutlined, RightOutlined } from "@ant-design/icons";
 import { slider_setting } from "../../utils/functions";
 import { useGetRelatedProductsQuery } from "@/redux/features/productApi";
 import ReviewSection from "./ReviewSection";
+import DetailsThumbWrapper1 from "./details-thumb-wrapper1";
+import DetailsWrapper1 from "./details-wrapper-1";
 const ProductDetailsArea = ({
   productItem,
   pageTitle,
@@ -67,6 +69,32 @@ const ProductDetailsArea = ({
     relatedProductsRef?.current?.scrollIntoView({ behavior: "smooth" });
   };
 
+    const thumbRef = useRef(null);
+  
+    useEffect(() => {
+      const el = thumbRef.current;
+      const initialOffsetTop = el?.offsetTop ?? 0;
+  
+      function handleScroll() {
+        const scrollY = window.scrollY || window.pageYOffset;
+        const stickyTop = 120;
+  
+        if (scrollY + stickyTop > initialOffsetTop) {
+          el.style.position = "sticky";
+          el.style.top = `${stickyTop}px`;
+          
+          el.style.zIndex = 10;
+        } else {
+          el.style.position = "static";
+          el.style.top = "auto";
+          
+        }
+      }
+  
+      window.addEventListener("scroll", handleScroll);
+      return () => window.removeEventListener("scroll", handleScroll);
+    }, []);
+
 
       
 
@@ -77,26 +105,32 @@ const ProductDetailsArea = ({
     >
       <div className="tp-product-details-top">
         <div className="container">
-          <div className="row">
+          <div className="row ">
             <div
               className="col-xl-7 col-lg-7"
-              style={{ maxWidth: "100%", overflow: "hidden" }}
+              // style={{ maxWidth: "100%", overflow: "hidden" }}
             >
+              <div ref={thumbRef} className="manual-sticky-thumb">
+                <DetailsThumbWrapper
+                  product={productItem}
+                  imgWidth={800}
+                  imgHeight={740}
+                  imgHeightMobile={540}
+                  videoId={videoId}
+                  status={status}
+                  relatedClick={() => relatedClicked()}
+                />
+              </div>
               {/* product-details-thumb-wrapper start */}
-              <DetailsThumbWrapper
-                product={productItem}
-                imgWidth={800}
-                imgHeight={740}
-                imgHeightMobile={540}
-                videoId={videoId}
-                status={status}
-                relatedClick={() => relatedClicked()}
-              />
+              
+             
               {/* product-details-thumb-wrapper end */}
+           
             </div>
-            <div className="col-xl-5 col-lg-5">
+            <div className="col-xl-5 col-lg-5 ">
               {/* product-details-wrapper start */}
-              <DetailsWrapper
+              
+              <DetailsWrapper1
                 productItem={productItem}
                 productRefetch={detailsRefetch}
                 handleImageActive={handleImageActive}
@@ -106,6 +140,17 @@ const ProductDetailsArea = ({
                 isGiftCard={isGiftCard}
                 parentSlug={parentSlug}
               />
+              {/* <DetailsWrapper
+                productItem={productItem}
+                productRefetch={detailsRefetch}
+                handleImageActive={handleImageActive}
+                activeImg={productItem?.media[0]?.url}
+                detailsBottom={false}
+                pageTitle={pageTitle}
+                isGiftCard={isGiftCard}
+                parentSlug={parentSlug}
+              /> */}
+             
               {/* product-details-wrapper end */}
             </div>
           </div>
@@ -126,7 +171,7 @@ const ProductDetailsArea = ({
               className="tp-related-product pt-40"
               ref={relatedProductsRef}
             >
-              <div className="container-fluid">
+              <div className="container">
                 <div className="row">
                   <div className="tp-section-title-wrapper-6 mb-10">
                     {/* <span className="tp-section-title-pre-6">Next day Products</span> */}
