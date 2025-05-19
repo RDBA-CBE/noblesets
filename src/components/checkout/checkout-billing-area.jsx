@@ -32,6 +32,7 @@ import {
   usePaymentQuery,
   usePincodeListMutation,
   useRemoveCouponMutation,
+  useShippingZoneListMutation,
   useStateListQuery,
   useUpdateEmailMutation,
 } from "@/redux/features/productApi";
@@ -54,7 +55,7 @@ import CheckoutLogin from "./checkout-login";
 import Link from "next/link";
 import { cart_list } from "@/redux/features/cartSlice";
 import ButtonLoader from "../loader/button-loader";
-import { pincode } from "@/utils/constant";
+import { pincode, SHIPPING_ZONE } from "@/utils/constant";
 import { DeleteOutlined } from "@ant-design/icons";
 import PhoneInput, { isValidPhoneNumber } from "react-phone-number-input";
 import "react-phone-number-input/style.css";
@@ -75,10 +76,6 @@ const CheckoutBillingArea = ({ register, errors }) => {
   const dispatch = useDispatch();
 
   const CountryList = countryList?.data?.shop?.countries;
-
-  const [createCheckout, { data: tokens }] = useCreateCheckoutTokenMutation();
-
-  const [createDeliveryUpdate, { data: data }] = useCheckoutUpdateMutation();
 
   const [checkoutComplete, { data: complete }] = useCheckoutCompleteMutation();
 
@@ -198,6 +195,8 @@ const CheckoutBillingArea = ({ register, errors }) => {
   const [paymentMethodList] = usePaymentMethodListMutation();
 
   const [picodeCheck, { isLoading: loading }] = usePincodeListMutation();
+
+  const [shippingZoneList] = useShippingZoneListMutation();
 
   const { data: getAddressList, refetch: addressRefetch } =
     useGetAddressListQuery();
@@ -817,15 +816,21 @@ const CheckoutBillingArea = ({ register, errors }) => {
 
   const handleSelectChange = async (e) => {
     try {
+      //       const res = await shippingZoneList({});
+      // console.log('✌️res --->', res);
       setState({
         selectedCountry: e.target.value,
-        // selectedCountryCode: e.target.value
         selectedState: "",
         phone: "",
         errors: { ...state.errors, selectedState: "", phone: "" },
       });
       stateRefetch();
+      const deliveryMethodIds = deliveryMethodId(e.target.value);
+
       if (!state.diffAddress) {
+        const zone = SHIPPING_ZONE;
+        console.log("✌️zone --->", zone);
+
         const checkoutId = localStorage.getItem("checkoutId");
         const res = await checkoutShippingAddressUpdate({
           checkoutId,
@@ -834,11 +839,26 @@ const CheckoutBillingArea = ({ register, errors }) => {
           },
           note: state.notes,
         });
+
+
         updateDelivertMethod(e.target.value, state.selectedPaymentType);
       }
     } catch (error) {
       console.log("error: ", error);
     }
+  };
+
+  const deliveryMethodId = async (country) => {
+    console.log("✌️country --->", country);
+    try {
+      const checkoutId = localStorage.getItem("checkoutId");
+
+      const res = await shippingZoneList({
+        checkoutId,
+      });
+
+      console.log("✌️res --->", res);
+    } catch (error) {}
   };
 
   const shippingCoutryChange = async (e) => {
@@ -945,7 +965,7 @@ const CheckoutBillingArea = ({ register, errors }) => {
           errors[name] = `${label} is required`;
         }
       });
-      const isValidPostalCode =await handleCheck(state.postalCode1);
+      const isValidPostalCode = await handleCheck(state.postalCode1);
       if (!isValidPostalCode) {
         errors.postalCode1 = "Delivery is not available to this area";
       }
@@ -1105,87 +1125,6 @@ const CheckoutBillingArea = ({ register, errors }) => {
       console.log("error: ", error);
     }
   };
-
-  // const handleGiftWrapChanged = (checked) => {
-  //   setState({ checkedGiftwrap: checked });
-  //   if (checked) {
-  //     if (state.selectedPaymentType == "Cash On Delivery") {
-  //       checkedGiftWrap_checkedCOD(checked);
-  //     } else {
-  //       checkedGiftWrap_uncheckedCOD(checked);
-  //     }
-  //   } else {
-  //     if (state.selectedPaymentType == "Cash On Delivery") {
-  //       unCheckedGiftWrap_checkedCOD(checked);
-  //     } else {
-  //       if (state.diffAddress) {
-  //         updateDelivertMethod(state.selectedCountry1);
-  //       } else {
-  //         updateDelivertMethod(state.selectedCountry);
-  //       }
-  //     }
-  //   }
-  // };
-
-  // const checkedGiftWrap_uncheckedCOD = (checked) => {
-  //   let deliveryMethodId = "";
-  //   if (checkChannel() == "india-channel") {
-  //     deliveryMethodId = "U2hpcHBpbmdNZXRob2Q6MTA=";
-  //   } else {
-  //     deliveryMethodId = "U2hpcHBpbmdNZXRob2Q6MTI=";
-  //   }
-  //   updateDelivertMethodCodAndGift(deliveryMethodId, checked);
-  // };
-
-  // const unCheckedGiftWrap_checkedCOD = (checked) => {
-  //   let deliveryMethodId = "";
-  //   if (checkChannel() == "india-channel") {
-  //     deliveryMethodId = "U2hpcHBpbmdNZXRob2Q6MTQ=";
-  //   } else {
-  //     deliveryMethodId = "U2hpcHBpbmdNZXRob2Q6MTY=";
-  //   }
-  //   updateDelivertMethodCodAndGift(deliveryMethodId, checked);
-  // };
-
-  // const checkedGiftWrap_checkedCOD = (checked) => {
-  //   let deliveryMethodId = "";
-  //   if (checkChannel() == "india-channel") {
-  //     deliveryMethodId = "U2hpcHBpbmdNZXRob2Q6MTc=";
-  //   } else {
-  //     deliveryMethodId = "U2hpcHBpbmdNZXRob2Q6MTg=";
-  //   }
-  //   updateDelivertMethodCodAndGift(deliveryMethodId, checked);
-  // };
-
-  // const updateDelivertMethodCodAndGift = async (
-  //   deliveryMethodId,
-  //   checked = false
-  // ) => {
-  //   try {
-  //     const checkoutid = localStorage.getItem("checkoutId");
-  //     const res = await updateDeliveryMethodCODAndGiftWrap({
-  //       checkoutid,
-  //       deliveryMethodId,
-  //     });
-  //     const data = res?.data?.data?.checkoutDeliveryMethodUpdate?.checkout;
-  //     //Reduce 50 repee if giftwrap true
-  //     let shippingCost = "";
-
-  //     if (checked) {
-  //       shippingCost = data?.shippingPrice?.gross?.amount - 50;
-  //     } else {
-  //       shippingCost = data?.shippingPrice?.gross?.amount;
-  //     }
-
-  //     setState({
-  //       total: data?.totalPrice?.gross?.amount,
-  //       tax: data?.totalPrice?.tax?.amount,
-  //       shippingCost,
-  //     });
-  //   } catch (error) {
-  //     console.log("error: ", error);
-  //   }
-  // };
 
   const handleRemoveDiscount = async () => {
     try {
@@ -1509,6 +1448,7 @@ const CheckoutBillingArea = ({ register, errors }) => {
                         )}
                       </div>
                     </div>
+
                     {state.stateList?.length > 0 ? (
                       <div className="col-md-6">
                         <div className="tp-checkout-input">
@@ -1561,27 +1501,43 @@ const CheckoutBillingArea = ({ register, errors }) => {
                         </div>
                       </div>
                     )}
-                    {/* <div className="col-md-12">
-                  <div className="tp-checkout-input">
-                  <label>
-                      Country <span>*</span>
-                    </label>
-                    <select
-                      name="address"
-                      id="address"
-                      value={state.streetAddress1}
-                      onChange={(e) => handleInputChange(e, "streetAddress1")}
-                    >
-                      <option value="">Select an address</option>
-                      <option value="address1">Address 1</option>
-                      <option value="address2">Address 2</option>
-                    </select>
-                    {state.errors.streetAddress1 && (
-                      <ErrorMsg msg={state.errors.streetAddress1} />
-                    )}
-                  </div>
-                </div> */}
 
+                    <div
+                      className="flex w-full gap-10"
+                      style={{
+                        display: "flex",
+                        flexDirection: "row",
+                        gap: 20,
+                        paddingBottom: "10px",
+                      }}
+                    >
+                      <div className="tp-login-remeber flex w-full">
+                        <input
+                          id={`payment`}
+                          type="checkbox"
+                          checked={state.checked}
+                          onChange={() => {
+                            // handleCheckboxChange(item.id);
+                          }}
+                        />
+                        <label htmlFor={`payment`} style={{ color: "black" }}>
+                          Standard Shipping
+                        </label>
+                      </div>
+                      <div className="tp-login-remeber">
+                        <input
+                          id={`payment`}
+                          type="checkbox"
+                          checked={state.checked}
+                          onChange={() => {
+                            // handleCheckboxChange(item.id);
+                          }}
+                        />
+                        <label htmlFor={`payment`} style={{ color: "black" }}>
+                          Express Shipping
+                        </label>
+                      </div>
+                    </div>
                     <div className="col-md-12">
                       <div className="tp-checkout-input">
                         <label>

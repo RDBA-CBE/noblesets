@@ -181,24 +181,29 @@ export const cardApi = apiSlice.injectEndpoints({
         let deliveryMethodId;
         if (checkChannel() == "india-channel") {
           if (country == "IN") {
-            if (paymentType == "Cash On Delivery" && paymentType != "") {
-              deliveryMethodId = "U2hpcHBpbmdNZXRob2Q6MTk=";
-            } else {
-              deliveryMethodId = "U2hpcHBpbmdNZXRob2Q6Mw==";
-            }
+            // if (paymentType == "Cash On Delivery" && paymentType != "") {
+            //   deliveryMethodId = "U2hpcHBpbmdNZXRob2Q6MTk=";
+            // } else {
+            //   deliveryMethodId = "U2hpcHBpbmdNZXRob2Q6Mw==";
+            // }
           } else {
-            deliveryMethodId = "U2hpcHBpbmdNZXRob2Q6NA==";
+
+            // deliveryMethodId = "U2hpcHBpbmdNZXRob2Q6NA==";
           }
-        } else {
+        }
+        
+        
+        else {
 
           if (country == "IN") {
-            if (paymentType == "Cash On Delivery" && paymentType != "") {
-              deliveryMethodId = "U2hpcHBpbmdNZXRob2Q6MzU=";
-            } else {
-              deliveryMethodId = "U2hpcHBpbmdNZXRob2Q6OA==";
-            }
+            // if (paymentType == "Cash On Delivery" && paymentType != "") {
+            //   deliveryMethodId = "U2hpcHBpbmdNZXRob2Q6MzU=";
+            // } else {
+            //   deliveryMethodId = "U2hpcHBpbmdNZXRob2Q6OA==";
+            // }
           } else {
-            deliveryMethodId = "U2hpcHBpbmdNZXRob2Q6OQ==";
+            
+            // deliveryMethodId = "U2hpcHBpbmdNZXRob2Q6OQ==";
           }
         }
 

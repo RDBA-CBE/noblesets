@@ -2028,3 +2028,23 @@ export const PINCODE_LIST = ({ code }) => {
     variables: { code },
   };
 };
+
+export const SHIPPING_ZONE_LIST = ({ checkoutId }) => {
+  return {
+    query: `
+     query GetCheckoutShippingMethods($checkoutId: ID!) {
+  checkout(id: $checkoutId) {
+    shippingMethods {
+      id
+      name
+      price {
+        amount
+        currency
+      }
+    }
+  }
+}
+    `,
+    variables: { checkoutId },
+  };
+};

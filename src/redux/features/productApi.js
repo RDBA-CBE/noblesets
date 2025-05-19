@@ -38,6 +38,7 @@ import {
   ADD_NEW_ADDRESS,
   LOGOUT,
   PINCODE_LIST,
+  SHIPPING_ZONE_LIST,
 } from "@/utils/queries/productList";
 import {
   RELATED_PRODUCT,
@@ -772,6 +773,16 @@ export const productApi = apiSlice.injectEndpoints({
         );
       },
     }),
+
+    shippingZoneList: builder.mutation({
+      query: ({ checkoutId }) => {
+        return configuration(
+          SHIPPING_ZONE_LIST({
+            checkoutId,
+          })
+        );
+      },
+    }),
   }),
 });
 
@@ -831,4 +842,5 @@ export const {
   useUserInfoMutation,
   useLogoutMutation,
   usePincodeListMutation,
+  useShippingZoneListMutation
 } = productApi;
