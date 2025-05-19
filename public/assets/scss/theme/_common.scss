@@ -1359,3 +1359,99 @@ hr.footer-divider {
 .tp-product-title-3{
   font-size: 20px !important;
 }
+
+.product-price {
+  font-size: 1.5rem;
+  font-weight: bold;
+}
+
+.product-title {
+  font-size: 1.25rem;
+  margin-top: 10px;
+}
+
+.delivery-box h6,
+.offer-box h6 {
+  font-weight: 600;
+}
+
+.bg-pink {
+  background-color: #fce6eb;
+}
+
+.coupon-code {
+  // background-color: #fff;
+  border: 1px dashed #fff;
+  padding: 4px 10px;
+  font-weight: bold;
+  border-radius: 5px;
+  display: inline-block;
+  color: #fff;
+}
+
+.wishlist-icons svg {
+  font-size: 1.5rem;
+  cursor: pointer;
+}
+
+.pd-tabs-container {
+  // background: #fff;
+  border-radius: 10px;
+  // box-shadow: 0 0 8px rgba(0, 0, 0, 0.05);
+}
+
+.pd-nav-tabs .nav-link {
+  font-weight: 500;
+  color: #555;
+}
+
+.pd-nav-tabs .nav-link.active {
+  color: #c3935b;
+  font-weight: 600;
+  border-color: transparent transparent #c3935b transparent;
+}
+
+.pd-tab-content {
+  font-size: 14px;
+  line-height: 1.6;
+}
+
+.pd-description {
+  color: #666;
+  font-size: 14px;
+  margin-bottom: 1rem;
+}
+
+.pd-section-title {
+  font-size: 1rem;
+  margin-bottom: 0.5rem;
+  font-weight: 600;
+}
+
+.pd-row span {
+  font-size: 14px;
+}
+
+.pd-placeholder {
+  color: #999;
+  font-style: italic;
+}
+
+.pd-buy-btn {
+  background-color: #fce6eb;
+  color: #c3935b;
+  font-weight: 600;
+  border-radius: 20px;
+  padding: 8px 30px;
+  border: none;
+}
+
+.thumb-sticky-parent {
+  position: relative;
+}
+
+.manual-sticky-thumb {
+  transition: all 0.2s ease;
+}
+
+

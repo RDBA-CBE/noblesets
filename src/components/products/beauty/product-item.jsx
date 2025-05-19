@@ -161,9 +161,10 @@ const ProductItem = ({
       className={`tp-product-item-3 featured-product-section ${
         primary_style ? "tp-product-style-primary" : ""
       } ${prdCenter ? "text-center" : ""}`}
+      style={{borderRadius:"20px"}}
     >
       <div className="tp-product-thumb-3 mb-15 fix p-relative z-index-1">
-        <Link href={`/product-details/${slug}`}>
+        <Link href={`/product-details/${slug}`} style={{borderRadius:"20px"}}>
           {/* <Image
 src={profilePic(thumbnail?.url)}
 alt="product image"
@@ -178,6 +179,7 @@ height={320}
               loop // Ensure it loops indefinitely
               playsInline // Ensure it plays inline on iOS devices
               style={{
+                borderRadius:"20px",
                 width: "100%",
                 height: "100%",
               }}
@@ -190,6 +192,9 @@ height={320}
               alt="product image"
               width={282}
               height={320}
+              style={{
+                borderRadius:"20px",
+              }}
             />
           ) : (
             <video

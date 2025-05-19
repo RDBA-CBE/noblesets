@@ -10,6 +10,8 @@ import { useGetProductQuery } from '@/redux/features/productApi';
 import ProductDetailsBreadcrumb from '@/components/breadcrumb/product-details-breadcrumb';
 import ProductDetailsArea from '@/components/product-details/product-details-area';
 import PrdDetailsLoader from '@/components/loader/prd-details-loader';
+import HomeFooter from '@/components/home/HomeFooter';
+import HeaderSection from '@/components/home/headerSection';
 
 const ProductDetailsPage = ({ query }) => {
   const { data: product, isLoading, isError } = useGetProductQuery("6431364df5a812bd37e765ac");
@@ -32,9 +34,9 @@ const ProductDetailsPage = ({ query }) => {
   return (
     <Wrapper>
       <SEO pageTitle="Product Details" />
-      <HeaderTwo style_2={true} />
+      <HeaderSection/>
       {content}
-      <FooterTwo primary_style={true} />
+      <HomeFooter />
     </Wrapper>
   );
 };
