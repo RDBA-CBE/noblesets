@@ -31,6 +31,19 @@ const collections = [
     price: "₹25000 - ₹30000",
     img: "/assets/img/home/collection/4.png",
   },
+
+  {
+    title: "Bracelet",
+    desc: "Excepteur sint occaecat",
+    price: "₹15000 - ₹20000",
+    img: "/assets/img/home/collection/1.png",
+  },
+  {
+    title: "Rings",
+    desc: "Lorem ipsum dolor",
+    price: "₹25000 - ₹30000",
+    img: "/assets/img/home/collection/2.png",
+  },
 ];
 
 export default function ShopByCollections() {
@@ -38,15 +51,15 @@ export default function ShopByCollections() {
   const nextRef = useRef(null);
 
   return (
-    <section className="py-5 px-2 " style={{ backgroundColor: "#fff9f4" }}>
-      {/* Title + Buttons */}
-      <div className="d-flex flex-column flex-md-row justify-content-between align-items-start align-items-md-center px-3">
+    <section className="pt-60 ShopByCollections" style={{ backgroundColor: "#fff9f4" }}>
+      <div className="">
+      <div className="section-wd d-flex flex-column flex-md-row justify-content-between align-items-start align-items-md-center px-3">
         <div className="mb-3 mb-md-0">
-          <div className="" style={{ marginBottom: "30px" }}>
-            <h5 style={{ fontWeight: "400" }}>✦ Excepteur occaecat</h5>
+          <div className="mb-50" >
+            <h5 className="sub-ti"><b>✦ </b> Excepteur occaecat</h5>
             <h4
-              className="feature-adipisicing"
-              style={{ fontWeight: "400", fontSize: "30px" }}
+              className="feature-adipisicing main-ti"
+              
             >
               Shop by Collections
             </h4>
@@ -81,10 +94,10 @@ export default function ShopByCollections() {
       </div>
 
       {/* Swiper Carousel */}
-      <div className="position-relative px-3">
+      <div className="position-relative">
         <Swiper
           modules={[Navigation]}
-          spaceBetween={16}
+          // spaceBetween={30}
           slidesPerView={1.1}
           slidesOffsetAfter={16}
           slidesOffsetBefore={0}
@@ -103,35 +116,38 @@ export default function ShopByCollections() {
         >
           {collections.map((item, index) => (
             <SwiperSlide key={index}>
-              <div className="card border-0 h-100 shadow-sm">
+              <div className="card border-0 h-100 shadow-sm ">
                 <img
                   src={item.img}
                   className="card-img-top"
                   alt={item.title}
                   style={{
                     objectFit: "cover",
-                    height: "260px",
+                    // height: "260px",
                     borderRadius: "20px",
                   }}
                 />
-                <div className="card-body text-center">
-                  <p className="text-muted mb-1 small">{item.desc}</p>
+                <div className="card-body text-center pb-0">
+                  <p className="text-muted mb-3 mt-40" style={{fontSize:"18px"}}>{item.desc}</p>
                   <h5
-                    className=" mb-2"
+                    className=" mb-3"
                     style={{
-                      fontSize: "20px",
+                      fontSize: "35px",
                       fontWeight: "400",
                     }}
                   >
                     {item.title}
                   </h5>
-                  <p className="text-muted">Starting from {item.price}</p>
+                  <p className="text-muted" style={{fontSize:"18px"}}>Starting from {item.price}</p>
                 </div>
               </div>
             </SwiperSlide>
           ))}
         </Swiper>
       </div>
+      </div>
+      
+      
     </section>
   );
 }

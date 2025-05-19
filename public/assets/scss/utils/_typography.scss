@@ -1,15 +1,17 @@
 
 // font url
 
-$font-url: 'https://fonts.googleapis.com/css2?family=Charm:wght@400;700&family=Jost:wght@300;400;500;600;700&family=Oregano&family=Roboto:wght@300;400;500;700;900&display=swap';
+// $font-url: 'https://fonts.googleapis.com/css2?family=Charm:wght@400;700&family=Jost:wght@300;400;500;600;700&family=Oregano&family=Roboto:wght@300;400;500;700;900&display=swap';
+
+$font-url: "https://fonts.googleapis.com/css2?family=Nunito:ital,wght@0,200..1000;1,200..1000&family=Questrial&display=swap";
 
 // font family
 $font-family: (
     'ff': (
-        'body': "'Jost', sans-serif",
-        'heading': "'Jost', sans-serif",
-        'p': "'Jost', sans-serif",
-        'jost': "'Jost', sans-serif",
+        'body':"'Nunito', sans-serif",
+        'heading': "'Questrial', sans-serif",
+        'p': "'Nunito', sans-serif",
+        'jost':"'Nunito', sans-serif",
         'fontawesome': '"Font Awesome 6 Pro"',
         'roboto': "'Roboto', sans-serif",
         'oregano': "'Oregano', cursive",

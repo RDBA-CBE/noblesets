@@ -5,14 +5,14 @@ const InstagramSection = () => {
   const router = useRouter();
   return (
     <>
-      <section className="" style={{ backgroundColor: "#fff9f4" }}>
+      <section className="pt-60" style={{ backgroundColor: "#fff9f4" }}>
         <div className="row-container">
           <div className="row">
-            <div className="feature-main" style={{ marginBottom: "30px" }}>
-              <h5 style={{ fontWeight: "400" }}>✦ Excepteur occaecat</h5>
+            <div className="feature-main mb-50" >
+              <h5 className="sub-ti" ><b>✦</b> Excepteur occaecat</h5>
               <h4
-                className="feature-adipisicing"
-                style={{ fontWeight: "400", fontSize: "30px" }}
+                className="feature-adipisicing main-ti"
+               
               >
                 Shop By Category
               </h4>

@@ -67,7 +67,7 @@ const ShopBreadcrumb = ({
     <>
       <section
         className="breadcrumb__area include-bg pt-50 pb-50 "
-        style={{ backgroundImage: `url(${bgImage?.src})` }}
+        style={{ backgroundImage: `url(${bgImage?.src})`, borderRadius:"30px" }}
       >
         <div className="container-fluid">
           <div className="row">

@@ -33,6 +33,8 @@ import {
   useFilterOptionMutation,
   useMaxPriceMutation,
 } from "../redux/features/productApi";
+import HeaderSection from "@/components/home/headerSection";
+import HomeFooter from "@/components/home/HomeFooter";
 
 const ShopPage = () => {
   const dispatch = useDispatch();
@@ -830,7 +832,8 @@ const ShopPage = () => {
   return (
     <Wrapper>
       <SEO pageTitle="Shop" />
-      <HeaderTwo style_2={true} />
+      <HeaderSection/>
+      <div className="section-wd">
       <ShopBreadcrumb
         title={shopTitle}
         parentSlug={parentSlug}
@@ -840,6 +843,7 @@ const ShopPage = () => {
         catList={categoryList}
         product={productList}
       />
+      </div>
       {/* {isLoading || categoryLoading || filterLoading ? (
         <ShopLoader loading={isLoading} />
       ) : (
@@ -920,7 +924,7 @@ const ShopPage = () => {
         style={productStyles}
         attributeList={attributeList}
       />
-      <FooterTwo primary_style={true} />
+       <HomeFooter />
       {/* </>
       )} */}
     </Wrapper>
