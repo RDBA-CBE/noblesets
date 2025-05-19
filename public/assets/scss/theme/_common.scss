@@ -289,7 +289,8 @@
   text-align: center;
   color: white;
   font-size: 70px;
-  padding-bottom: 60px;
+  // padding-bottom: 60px;
+  padding: 30px 0 30px 0;
 }
 
 .other-banner-title {
@@ -436,7 +437,7 @@
   }
 
   .shop-banner-title {
-    padding-bottom: 10px;
+   padding: 5px 0 5px 0;
   }
 
   .tp-product-details-nav-main-thumb img {
@@ -1350,4 +1351,11 @@ hr.footer-divider {
 
 .sub-ti b{
   color: #c3935b;
+}
+
+.tp-product-title-2{
+  font-size: 22px !important;
+}
+.tp-product-title-3{
+  font-size: 20px !important;
 }

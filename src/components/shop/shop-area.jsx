@@ -16,6 +16,11 @@ import { filterData } from "@/redux/features/shop-filter-slice";
 import Link from "next/link";
 import { useRouter } from "next/router";
 import { objIsEmpty } from "../../utils/functions";
+import { Swiper, SwiperSlide } from "swiper/react";
+import { Navigation } from "swiper";
+import "swiper/css";
+import "swiper/css/navigation";
+import ProductItem1 from "../products/fashion/product-item-1";
 
 const ShopArea = ({
   all_products,
@@ -153,7 +158,7 @@ const ShopArea = ({
                 aria-labelledby="grid-tab"
                 tabIndex="0"
               >
-                <div className="row gx-1 gx-lg-3">
+                {/* <div className="row gx-1 gx-lg-3">
                   {products?.map((item) => (
                     <div
                       key={item._id}
@@ -162,7 +167,18 @@ const ShopArea = ({
                       <ProductItem products={item} updateData={updateData} />
                     </div>
                   ))}
-                </div>
+                </div> */}
+                  <div className=" position-relative ShopByCollections row  d-flex flex-wrap align-items-stretch">
+                    {/* <div
+                      className="swiper-wrapper "
+                     
+                    > */}
+                      {products.map((item, index) => (
+                        <ProductItem1 products={item} updateData={updateData} index={index} />                                             
+                        
+                      ))}
+                    {/* </div> */}
+                  </div>
               </div>
               <div
                 className="tab-pane fade"
@@ -267,9 +283,10 @@ const ShopArea = ({
             </div>
           </div>
 
-          <div className="row">
+          <div className="row justify-content-center">
             {/*  */}
-            <div className="col-xl-12 col-lg-12">
+            <div className="section-wd">
+            <div className="col-xl-12">
               <div className="tp-shop-main-wrapper">
                 <div className="tp-shop-top mb-45">
                   <div className="row">
@@ -381,6 +398,8 @@ const ShopArea = ({
                 {content}
               </div>
             </div>
+            </div>
+          
           </div>
         </div>
       </section>
