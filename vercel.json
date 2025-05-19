@@ -3,7 +3,7 @@
   "builds": [
     {
       "src": "package.json",
-      "use": "@vercel/build-nextjs",
+      "use": "@vercel/next",
       "config": {
         "target": "serverless",
         "https": false
