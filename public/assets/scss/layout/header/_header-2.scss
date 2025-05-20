@@ -48,7 +48,7 @@
         #{$self}{
             &-action{
                 &-badge{
-                    background-color: #c3935b;
+                    background-color: #b4633a;
                 }
                 &-item{
                     &:last-child{
@@ -59,7 +59,7 @@
                 }
                 &-btn{
                     &:hover{
-                        color: #c3935b;
+                        color: #b4633a;
                     }
                 }
             }
@@ -68,7 +68,7 @@
                     & li{
                         & a{
                             &:hover{
-                                color: #c3935b;
+                                color: #b4633a;
                             }
                         }
                     }
@@ -76,12 +76,12 @@
             }
         }
         .tp-header-sticky.header-sticky .tp-header-action-item .tp-header-action-btn .tp-header-action-badge {
-            background-color:  #c3935b;
+            background-color:  #b4633a;
             border-color:var(--tp-common-white);
             color: var(--tp-common-white);
         }
         .tp-header-sticky.header-sticky .tp-header-action-item .tp-header-action-btn:hover {
-            color:  #c3935b;
+            color:  #b4633a;
         }
     }
     &-style-primary{
@@ -91,12 +91,12 @@
         #{$self}{
             &-action{
                 &-badge{
-                    background-color: #c3935b;
+                    background-color: #b4633a;
                 }
                 &-item{
                     & button{
                         &:hover{
-                            color:#c3935b;
+                            color:#b4633a;
                         }
                     }
                     &:last-child{
@@ -120,14 +120,14 @@
         }
 
         .main-menu.menu-style-2 > nav > ul > li .tp-submenu li:hover > a {
-            color: #c3935b;
+            color: #b4633a;
         }
         .main-menu.menu-style-2 > nav > ul > li .tp-submenu li:hover > a::after {
-            color: #c3935b;
+            color: #b4633a;
         }
         .tp-header-sticky.header-sticky .tp-header-action-item .tp-header-action-btn .tp-header-action-badge {
-            background-color: #c3935b;
-            border-color: #c3935b;
+            background-color: #b4633a;
+            border-color: #b4633a;
             color: var(--tp-common-white);
         }
 
@@ -148,20 +148,20 @@
         }
 
         .tp-header-search-2 input:focus {
-            border-color: #c3935b;
+            border-color: #b4633a;
         }
         .tp-header-search-2 button:hover {
-            color:#c3935b;
+            color:#b4633a;
         }
 
         .main-menu.menu-style-2 ul li:hover > a,
         .main-menu.menu-style-2 ul li:hover > a::after {
-            color: #c3935b;
+            color: #b4633a;
         }
 
 
         .main-menu.menu-style-2 > nav > ul > li .home-menu-title a:hover {
-            color: #c3935b;
+            color: #b4633a;
         }
 
         .main-menu.menu-style-2 .tp-menu-showcase-btn-2 {
@@ -170,7 +170,7 @@
         }
 
         .tp-header-sticky.header-sticky .tp-header-action-item .tp-header-action-btn:hover {
-            color: #c3935b;
+            color: #b4633a;
         }
 
         .main-menu.menu-style-2 > nav > ul > li .home-menu-item:hover .home-menu-title {
@@ -227,7 +227,7 @@
                 color: var(--tp-text-1);
             }
             &:focus{
-                border-color: #c3935b;
+                border-color: #b4633a;
             }
         }
         & button{
@@ -238,7 +238,7 @@
             font-size: 24px;
 
             &:hover{
-                color: #c3935b;
+                color: #b4633a;
             }
 
             

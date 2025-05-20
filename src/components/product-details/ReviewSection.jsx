@@ -10,7 +10,7 @@ const initialReviews = [
     rating: 5,
     comment:
       'Easy booking, great value! Cozy rooms at a reasonable price in Sheffield’s vibrant center. Surprisingly quiet with nearby Traveller’s accommodations. Highly recommended!',
-    images: [1, 2, 3, 4].map(() => 'https://via.placeholder.com/50'),
+    images: [1, 2, 3, 4].map(() => '/assets/img/placeholder-portrait.png'),
   },
   {
     name: 'Emma Creight',
@@ -91,7 +91,7 @@ const ReviewSection = () => {
             <div className="d-flex align-items-center mb-3">
               <div className="review-score-display me-3">
                 <h1 className=" m-0 text-dark">4.0</h1>
-                <Rating count={5} value={4} edit={false} size={20} activeColor="#c3935b" />
+                <Rating count={5} value={4} edit={false} size={20} activeColor="#b4633a" />
                 <p className="text-muted small">{reviews.length} ratings</p>
               </div>
               <div className="flex-grow-1">
@@ -166,7 +166,7 @@ const ReviewSection = () => {
                     value={formData.rating}
                     onChange={(newRating) => setFormData({ ...formData, rating: newRating })}
                     size={20}
-                    activeColor="#c3935b"
+                    activeColor="#b4633a"
                   />
                 </div>
               </div>
@@ -187,10 +187,10 @@ const ReviewSection = () => {
                   </div>
                 </div>
                 <p className="text-dark mb-1">{review.comment}</p>
-                <Rating count={5} value={review.rating} edit={false} size={18} activeColor="#c3935b" />
+                <Rating count={5} value={review.rating} edit={false} size={18} activeColor="#b4633a" />
                 <div className="d-flex gap-2 mt-2">
                   {review.images.map((src, idx) => (
-                    <img key={idx} src={src} className="rounded" alt="review" />
+                    <img key={idx} src={src} className="rounded" alt="review" width={30} height={30}/>
                   ))}
                 </div>
               </div>

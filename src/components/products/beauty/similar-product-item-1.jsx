@@ -28,7 +28,7 @@ import {
 } from "@/utils/functions";
 import { profilePic } from "@/utils/constant";
 import ButtonLoader from "@/components/loader/button-loader";
-const ProductItem = ({
+const SimilarProductItem = ({
   product,
   prdCenter = false,
   primary_style = false,
@@ -163,7 +163,9 @@ const ProductItem = ({
       } ${prdCenter ? "text-center" : ""}`}
       style={{borderRadius:"20px"}}
     >
-      <div className="tp-product-thumb-3 mb-15 fix p-relative z-index-1">
+      <div className="tp-product-thumb-3 mb-15 fix p-relative z-index-1" style={{
+                borderRadius:"20px",
+              }}>
         <Link href={`/product-details/${slug}`} style={{borderRadius:"20px"}}>
           {/* <Image
 src={profilePic(thumbnail?.url)}
@@ -171,7 +173,17 @@ alt="product image"
 width={282}
 height={320}
 /> */}
-          {video ? (
+
+            <img
+              src="/assets/img/blog.webp"
+              alt="product image"
+              width={282}
+              height={320}
+              style={{
+                borderRadius:"20px",
+              }}
+            />
+          {/* {video ? (
             <video
               src={video?.url}
               autoPlay
@@ -210,7 +222,9 @@ height={320}
               alt="instagram video"
               className="actor-video"
             />
-          )}
+          )} */}
+
+
           {/* <img
 src={profilePic(thumbnail?.url)}
 alt="product image"
@@ -389,10 +403,10 @@ Add To Cart
       </div>
       <div className="tp-product-content-3" style={{ textAlign: "center" }}>
         {/* <div className="tp-product-tag-3"><span>{tags[1]}</span></div> */}
-        <h3 className="tp-product-title-3">
-          <Link href={`/product-details/${slug}`}>{name}</Link>
+        <h3 className="tp-product-title-3" >
+          <Link href={`/product-details/${slug}`} style={{fontSize:"22px"}}>{name}</Link>
         </h3>
-        <p style={{ color: "gray", marginBottom: "0px" }}>
+        <p style={{ color: "gray", marginBottom: "0px",ontSize:"16px" }}>
           {product?.category?.name}
         </p>
         <div className="tp-product-price-wrapper-3">
@@ -406,7 +420,7 @@ Add To Cart
               ) && (
                 <span
                   className="pr-5"
-                  style={{ textDecoration: "line-through", color: "gray" }}
+                  style={{ textDecoration: "line-through", color: "gray", fontSize:"22px" , fontWeight:"700"}}
                 >
                   {" "}
                   &#8377;
@@ -415,7 +429,7 @@ Add To Cart
                   )}
                 </span>
               )}
-              <span className="tp-product-price-3">
+              <span className="tp-product-price-3" style={{fontSize:"22px" , fontWeight:"700"}}>
                 &#8377;
                 {roundOff(product?.pricing?.priceRange?.start?.gross?.amount)}
               </span>
@@ -428,13 +442,13 @@ Add To Cart
               ) && (
                 <span
                   className="pr-5"
-                  style={{ textDecoration: "line-through", color: "gray" }}
+                  style={{ textDecoration: "line-through", color: "gray",fontSize:"22px" , fontWeight:"700" }}
                 >
                   {" "}
                   &#8377;{roundOff(product?.defaultVariant?.costPrice)}
                 </span>
               )}
-              <span className="tp-product-price-3">
+              <span className="tp-product-price-3" style={{fontSize:"22px" , fontWeight:"700"}}>
                 ${roundOff(pricing?.priceRange?.start?.gross?.amount)}
               </span>
             </>
@@ -444,4 +458,4 @@ Add To Cart
     </div>
   );
 };
-export default ProductItem;
+export default SimilarProductItem;

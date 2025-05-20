@@ -252,7 +252,7 @@ const ProductItem1 = ({ products, style_2 = false, updateData,index }) => {
                     
                     >
                         <div key={index}>
-                          <div className="card border-0  shadow-sm  h-100 w-100 flex-fill d-flex flex-column justify-content-between" >
+                          <div className="card border-0   h-100 w-100 flex-fill d-flex flex-column justify-content-between" >
                             {/* <img
                               src={product.img}
                               className="card-img-top"
@@ -265,14 +265,8 @@ const ProductItem1 = ({ products, style_2 = false, updateData,index }) => {
                             /> */}
                         <div className="tp-product-thumb-2 p-relative z-index-1 fix">
                             <Link href={`/product-details/${product?.slug}`}>
-                            {/* <Image
-                                // src={img}
-                                src={profilePic(img)}
-                                alt="product img"
-                                width={284}
-                                height={302}
-                            /> */}
-                            {isImage(profilePic(img)) ? (
+                            
+                            {/* {isImage(profilePic(img)) ? (
                                 <img
                                 className="card-img-top"
                                 src={profilePic(img)}
@@ -292,14 +286,19 @@ const ProductItem1 = ({ products, style_2 = false, updateData,index }) => {
                                     width: "100%",
                                     height: "100%",
                                 }}
-                                // autoPlay
-                                muted // Ensure it's muted to autoplay without user interaction
-                                loop // Ensure it loops indefinitely
-                                // playsInline // Ensure it plays inline on iOS devices
+                                
+                                muted 
+                                loop 
+                                
                                 />
-                            )}
+                            )} */}
 
-                            {/* <img src={profilePic(img)} width={284} height={302} /> */}
+                            <img  className="card-img-top" 
+                            src="/assets/img/blog.webp"
+                             style={{
+                              objectFit: "cover",
+                              borderRadius: "20px",
+                            }} />
                             </Link>
 
                             <div className="tp-product-badge">
@@ -341,7 +340,7 @@ const ProductItem1 = ({ products, style_2 = false, updateData,index }) => {
                                               key={index}
                                               className="product-trending text-center"
                                               style={{
-                                                padding: "18px 12px",
+                                                padding: "18px 15px",
                                                 textTransform: "capitalize",
                                               }}
                                             >
@@ -514,7 +513,7 @@ const ProductItem1 = ({ products, style_2 = false, updateData,index }) => {
                                       >
                                         {capitalizeFLetter(product?.category[0]?.name)}
                                       </h3>
-                                      <h3 className="tp-product-title-2">
+                                      <h3 className="tp-product-title-2 mt-2">
                                         <Link href={`/product-details/${product?.slug}`}>
                                           {capitalizeFLetter(product?.name)}
                                         </Link>
@@ -524,7 +523,7 @@ const ProductItem1 = ({ products, style_2 = false, updateData,index }) => {
                                       <Rating allowFraction size={16} initialValue={ratingVal} readonly={true} />
                                     </div> */}
                                       {channel == "india-channel" ? (
-                                        <div className="tp-product-price-wrapper">
+                                        <div className="tp-product-price-wrapper mt-2">
                                           <span
                                             className="tp-product-price-2 new-price items-center"
                                             style={{ display: "flex", justifyContent: "center" }}
@@ -556,7 +555,7 @@ const ProductItem1 = ({ products, style_2 = false, updateData,index }) => {
                                           {product?.pricing?.discount !== null && (
                                             <div
                                               style={{
-                                                color: "#c3935b",
+                                                color: "#b4633a",
                                                 fontSize: "16px",
                                               }}
                                             >{`Save ${saveOff()}% OFF`}</div>
@@ -610,7 +609,7 @@ const ProductItem1 = ({ products, style_2 = false, updateData,index }) => {
                                           {product?.pricing?.discount !== null && (
                                             <div
                                               style={{
-                                                color: "#c3935b",
+                                                color: "#b4633a",
                                                 fontSize: "16px",
                                               }}
                                             >{`Save ${saveOff()}% OFF`}</div>

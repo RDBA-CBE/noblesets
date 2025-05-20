@@ -235,7 +235,7 @@ const ShopArea = ({
     <>
       <section className="tp-shop-area  mt-50">
         <div className="container-fluid">
-          <div
+          <div className="section-wd"
             style={{
               borderBottom: "1px solid #eee",
               paddingBottom: "10px",

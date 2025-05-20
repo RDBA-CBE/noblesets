@@ -936,7 +936,7 @@ const AddressInfo = () => {
               }}
             >
               {addAddressLoading || updateAddressLoading ? (
-                <ButtonLoader color="#c3935b" />
+                <ButtonLoader color="#b4633a" />
               ) : state.editAddressId == null ? (
                 "Add Address"
               ) : (

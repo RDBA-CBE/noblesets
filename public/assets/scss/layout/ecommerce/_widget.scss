@@ -57,12 +57,12 @@
                 font-weight: 400;
                 font-size: 14px;             
                 color: white;
-                border: 1px solid #c3935b;
-                background-color: #c3935b;
+                border: 1px solid #b4633a;
+                background-color: #b4633a;
                 padding: 2px 21px;
                 &:hover{
                     color: var(--tp-common-white);
-                    background-color: #c3935b;
+                    background-color: #b4633a;
                 }
             }
         }
@@ -85,8 +85,8 @@
                     &:checked{
                         & ~ label{
                             &::after{
-                                background-color:#c3935b;
-                                border-color: #c3935b;
+                                background-color:#b4633a;
+                                border-color: #b4633a;
                             }
                             &::before{
                                 visibility: visible;
@@ -184,13 +184,13 @@
                         }
                     }
                     &:hover{
-                        color:#c3935b;
+                        color:#b4633a;
                         &::after{
-                            background-color:#c3935b;
+                            background-color:#b4633a;
                         }
                         & span{
-                            background-color: #c3935b;
-                            border-color: #c3935b;
+                            background-color: #b4633a;
+                            border-color: #b4633a;
                             color: var(--tp-common-white);
                         }
                     }
@@ -224,8 +224,8 @@
 
                     &:hover{
                         & .tp-shop-widget-checkbox-circle-number{
-                            background-color:#c3935b;
-                            border-color: #c3935b;
+                            background-color:#b4633a;
+                            border-color: #b4633a;
                             color: var(--tp-common-white);
                         }
                     }

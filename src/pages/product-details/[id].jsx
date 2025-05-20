@@ -17,6 +17,8 @@ import FooterTwo from "@/layout/footers/footer-2";
 import { useCreateCheckoutTokenWithoutEmailMutation } from "@/redux/features/card/cardApi";
 import { useRouter } from "next/router";
 import { getValueByKey } from "@/utils/functions";
+import HeaderSection from "@/components/home/headerSection";
+import HomeFooter from "@/components/home/HomeFooter";
 
 const ProductDetailsPage = ({ query }) => {
   const router = useRouter();
@@ -216,9 +218,9 @@ const ProductDetailsPage = ({ query }) => {
   return (
     <Wrapper>
       <SEO pageTitle="Product Details" />
-      <HeaderTwo style_2={true} />
+      <HeaderSection />
       {content}
-      <FooterTwo primary_style={true} />
+      <HomeFooter/>
     </Wrapper>
   );
 };

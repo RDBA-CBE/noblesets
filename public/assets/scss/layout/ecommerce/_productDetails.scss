@@ -30,14 +30,14 @@
 
       & span {
         font-weight: 500;
-        color: #c3935b;
+        color: #b4633a;
       }
     }
   }
 
   &-nav-main-thumb {
     position: relative;
-    background-color: #010f1c;
+    // background-color: #010f1c;
     // & img{
     //     object-fit: cover;
     // }
@@ -92,7 +92,7 @@
           &.active,
           &:hover {
             &::after {
-              border-color: #c3935b;
+              // border-color: #b4633a;
             }
           }
 
@@ -247,7 +247,7 @@
     & span {
       display: inline-block;
       font-size: 15px;
-      color: #c3935b;
+      color: #b4633a;
       background-color: rgb(229 225 221);
       line-height: 1;
       padding: 4px 12px;
@@ -273,10 +273,10 @@
     font-weight: 500;
     font-size: 24px;
     letter-spacing: -0.02em;
-    color: #c3935b;
+    color: #b4633a;
 
     &.new-price {
-      color: #c3935b;
+      color: #b4633a;
     }
 
     &.old-price {
@@ -422,7 +422,7 @@
 
         &:hover {
           background-color: var(--tp-common-white);
-          color: #c3935b;
+          color: #b4633a;
         }
       }
 
@@ -451,8 +451,8 @@
     border: 1px solid #e0e2e3;
 
     &:hover {
-      background-color: #c3935b;
-      border-color: #c3935b;
+      background-color: #b4633a;
+      border-color: #b4633a;
       color: var(--tp-common-white);
     }
   }
@@ -462,11 +462,11 @@
     font-size: 16px;
     font-weight: 500;
     padding: 10px 30px;
-    border: 1px solid #c3935b;
-    color: #c3935b;
+    border: 1px solid #b4633a;
+    color: #b4633a;
 
     &:hover {
-      background-color: #c3935b;
+      background-color: #b4633a;
       color: var(--tp-common-white);
     }
   }
@@ -499,7 +499,7 @@
         }
 
         &:hover {
-          color: #c3935b;
+          color: #b4633a;
         }
       }
     }
@@ -543,14 +543,14 @@
       height: 38px;
       line-height: 36px;
       text-align: center;
-      border: 1px solid #c3935b;
-      color: #c3935b;
+      border: 1px solid #b4633a;
+      color: #b4633a;
       border-radius: 50%;
       margin-right: 5px;
 
       &:hover {
-        background-color: #c3935b;
-        border-color: #c3935b;
+        background-color: #b4633a;
+        border-color: #b4633a;
         color: var(--tp-common-white);
       }
     }

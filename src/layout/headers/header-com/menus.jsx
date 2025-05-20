@@ -360,7 +360,7 @@ const Menus = () => {
           <div className="row">
             <div
               className="col-lg-2"
-              style={{ backgroundColor: "#c3935b", padding: "0px" }}
+              style={{ backgroundColor: "#b4633a", padding: "0px" }}
             >
               <ul>
                 <li
