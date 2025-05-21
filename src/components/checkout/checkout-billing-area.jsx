@@ -1,7 +1,12 @@
 import React, { useCallback, useEffect, useState } from "react";
 import ErrorMsg from "../common/error-msg";
 import { useDispatch, useSelector } from "react-redux";
-import { addCommasToNumber, roundOff, useSetState } from "@/utils/functions";
+import {
+  addCommasToNumber,
+  formatCurrency,
+  roundOff,
+  useSetState,
+} from "@/utils/functions";
 import CheckoutOrderArea from "./checkout-order-area";
 import {
   useApplyCoupenCodeMutation,
@@ -156,6 +161,7 @@ const CheckoutBillingArea = ({ register, errors }) => {
     codAmount: 0,
     isBillingOpen: false,
     isShippingOpen: false,
+    shippingMethods: [],
   });
 
   useEffect(() => {
@@ -588,9 +594,7 @@ const CheckoutBillingArea = ({ register, errors }) => {
           router.push(`/order-success/${orderId}`);
         } else if (checkedOption == "Razorpay") {
           handlePayment(orderId, state.total);
-        } else if (checkedOption == "CCAvenue") {
-          ccAvenuePayment(orderId, state.total);
-        }
+        } 
         if (localStorage.getItem("token")) {
           addressRefetch();
         }
@@ -745,8 +749,9 @@ const CheckoutBillingArea = ({ register, errors }) => {
       if (checkoutId) {
         const res = await updateDeliveryMethod({
           checkoutid: checkoutId,
-          country,
-          paymentType,
+          // country,
+          // paymentType,
+          deliveryMethodId: state.selectedShippingId,
         });
         if (res?.data?.data?.checkoutDeliveryMethodUpdate?.errors?.length > 0) {
           notifyError(
@@ -778,14 +783,19 @@ const CheckoutBillingArea = ({ register, errors }) => {
     }
   };
 
-  const updateDelivertMethod = async (country, paymentType) => {
+  const updateDelivertMethod = async (
+    country,
+    paymentType,
+    deliveryMethodId
+  ) => {
     try {
       const checkoutId = localStorage.getItem("checkoutId");
       if (checkoutId) {
         const res = await updateDeliveryMethod({
           checkoutid: checkoutId,
-          country,
-          paymentType,
+          // country,
+          // paymentType,
+          deliveryMethodId,
         });
         if (res?.data?.data?.checkoutDeliveryMethodUpdate?.errors?.length > 0) {
           notifyError(
@@ -825,7 +835,6 @@ const CheckoutBillingArea = ({ register, errors }) => {
         errors: { ...state.errors, selectedState: "", phone: "" },
       });
       stateRefetch();
-      const deliveryMethodIds = deliveryMethodId(e.target.value);
 
       if (!state.diffAddress) {
         const zone = SHIPPING_ZONE;
@@ -839,9 +848,35 @@ const CheckoutBillingArea = ({ register, errors }) => {
           },
           note: state.notes,
         });
+        console.log("call --->", res);
+        if (
+          res?.data?.data?.checkoutShippingAddressUpdate?.errors?.length > 0
+        ) {
+          notifyError(
+            res?.data?.data?.checkoutShippingAddressUpdate?.errors[0]?.message
+          );
+        } else {
+          const deliveryMethodIds = await deliveryMethodId();
+          console.log("✌️deliveryMethodIds --->", deliveryMethodIds);
+          if (deliveryMethodIds?.length > 0) {
+            const shippingMethods = deliveryMethodIds?.map((item) => ({
+              name: item?.name,
+              id: item?.id,
+              price: item?.price?.amount,
+            }));
 
-
-        updateDelivertMethod(e.target.value, state.selectedPaymentType);
+            console.log("✌️shippingMethods --->", shippingMethods);
+            setState({
+              shippingMethods,
+              selectedShippingId: shippingMethods[0]?.id,
+            });
+            updateDelivertMethod(
+              e.target.value,
+              state.selectedPaymentType,
+              shippingMethods[0]?.id
+            );
+          }
+        }
       }
     } catch (error) {
       console.log("error: ", error);
@@ -849,15 +884,16 @@ const CheckoutBillingArea = ({ register, errors }) => {
   };
 
   const deliveryMethodId = async (country) => {
-    console.log("✌️country --->", country);
+    // console.log("✌️country --->", country);
     try {
       const checkoutId = localStorage.getItem("checkoutId");
 
       const res = await shippingZoneList({
         checkoutId,
       });
-
       console.log("✌️res --->", res);
+
+      return res?.data?.data?.checkout?.shippingMethods;
     } catch (error) {}
   };
 
@@ -878,7 +914,11 @@ const CheckoutBillingArea = ({ register, errors }) => {
         },
         note: state.notes,
       });
-      updateDelivertMethod(e.target.value, state.selectedPaymentType);
+      updateDelivertMethod(
+        e.target.value,
+        state.selectedPaymentType,
+        state.selectedShippingId
+      );
     } catch (e) {
       console.log("e: ", e);
     }
@@ -1501,43 +1541,46 @@ const CheckoutBillingArea = ({ register, errors }) => {
                         </div>
                       </div>
                     )}
-
-                    <div
-                      className="flex w-full gap-10"
-                      style={{
-                        display: "flex",
-                        flexDirection: "row",
-                        gap: 20,
-                        paddingBottom: "10px",
-                      }}
-                    >
-                      <div className="tp-login-remeber flex w-full">
-                        <input
-                          id={`payment`}
-                          type="checkbox"
-                          checked={state.checked}
-                          onChange={() => {
-                            // handleCheckboxChange(item.id);
-                          }}
-                        />
-                        <label htmlFor={`payment`} style={{ color: "black" }}>
-                          Standard Shipping
-                        </label>
+                    {state.shippingMethods?.length > 0 && (
+                      <div
+                        className="flex w-full gap-10"
+                        style={{
+                          display: "flex",
+                          flexDirection: "row",
+                          gap: 20,
+                          paddingBottom: "10px",
+                        }}
+                      >
+                        {state.shippingMethods?.map((item) => (
+                          <div className="tp-login-remeber flex w-full">
+                            <input
+                              id={item?.id}
+                              type="checkbox"
+                              // checked={state.checked}
+                              checked={state.selectedShippingId === item.id}
+                              onChange={() => {
+                                setState({ selectedShippingId: item?.id });
+                                updateDelivertMethod(
+                                  state.selectedCountry,
+                                  state.selectedPaymentType,
+                                  item?.id
+                                );
+                              }}
+                            />
+                            <label
+                              htmlFor={item?.id}
+                              style={{ color: "black" }}
+                            >
+                              {`${item?.name} (${
+                                checkChannel() == "india-channel"
+                                  ? formatCurrency("INR")
+                                  : formatCurrency("USD")
+                              }${item?.price})`}
+                            </label>
+                          </div>
+                        ))}
                       </div>
-                      <div className="tp-login-remeber">
-                        <input
-                          id={`payment`}
-                          type="checkbox"
-                          checked={state.checked}
-                          onChange={() => {
-                            // handleCheckboxChange(item.id);
-                          }}
-                        />
-                        <label htmlFor={`payment`} style={{ color: "black" }}>
-                          Express Shipping
-                        </label>
-                      </div>
-                    </div>
+                    )}
                     <div className="col-md-12">
                       <div className="tp-checkout-input">
                         <label>

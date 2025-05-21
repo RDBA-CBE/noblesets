@@ -176,36 +176,31 @@ export const cardApi = apiSlice.injectEndpoints({
     }),
 
     checkoutUpdate: builder.mutation({
-      query: ({ checkoutid, country, paymentType }) => {
-        //COD and GiftWrap are false
-        let deliveryMethodId;
-        if (checkChannel() == "india-channel") {
-          if (country == "IN") {
-            // if (paymentType == "Cash On Delivery" && paymentType != "") {
-            //   deliveryMethodId = "U2hpcHBpbmdNZXRob2Q6MTk=";
-            // } else {
-            //   deliveryMethodId = "U2hpcHBpbmdNZXRob2Q6Mw==";
-            // }
-          } else {
-
-            // deliveryMethodId = "U2hpcHBpbmdNZXRob2Q6NA==";
-          }
-        }
-        
-        
-        else {
-
-          if (country == "IN") {
-            // if (paymentType == "Cash On Delivery" && paymentType != "") {
-            //   deliveryMethodId = "U2hpcHBpbmdNZXRob2Q6MzU=";
-            // } else {
-            //   deliveryMethodId = "U2hpcHBpbmdNZXRob2Q6OA==";
-            // }
-          } else {
-            
-            // deliveryMethodId = "U2hpcHBpbmdNZXRob2Q6OQ==";
-          }
-        }
+      query: ({ checkoutid,  deliveryMethodId }) => {
+console.log('✌️deliveryMethodId --->', deliveryMethodId);
+        // //COD and GiftWrap are false
+        // // let deliveryMethodId;
+        // if (checkChannel() == "india-channel") {
+        //   if (country == "IN") {
+        //     // if (paymentType == "Cash On Delivery" && paymentType != "") {
+        //     //   deliveryMethodId = "U2hpcHBpbmdNZXRob2Q6MTk=";
+        //     // } else {
+        //     //   deliveryMethodId = "U2hpcHBpbmdNZXRob2Q6Mw==";
+        //     // }
+        //   } else {
+        //     // deliveryMethodId = "U2hpcHBpbmdNZXRob2Q6NA==";
+        //   }
+        // } else {
+        //   if (country == "IN") {
+        //     // if (paymentType == "Cash On Delivery" && paymentType != "") {
+        //     //   deliveryMethodId = "U2hpcHBpbmdNZXRob2Q6MzU=";
+        //     // } else {
+        //     //   deliveryMethodId = "U2hpcHBpbmdNZXRob2Q6OA==";
+        //     // }
+        //   } else {
+        //     // deliveryMethodId = "U2hpcHBpbmdNZXRob2Q6OQ==";
+        //   }
+        // }
 
         return configuration(
           CHECKOUT_DELIVERY_METHOD({
