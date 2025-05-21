@@ -80,6 +80,26 @@ const DetailsThumbWrapper = ({ product, relatedClick }) => {
     return /\.(jpg|webp|jpeg|png|gif)$/i.test(url);
   };
 
+  const productImages=[
+   {
+    url:"/assets/img/blog.webp",
+   } ,
+   {
+    url:"/assets/img/blog.webp",
+   } ,
+   {
+    url:"/assets/img/blog.webp",
+   } ,
+   {
+    url:"/assets/img/blog.webp",
+   } ,
+   {
+    url:"/assets/img/blog.webp",
+   } 
+
+    
+  ]
+
   return (
     <>
       <div
@@ -87,7 +107,7 @@ const DetailsThumbWrapper = ({ product, relatedClick }) => {
         w-100`}
       >
         {/* {product?.media?.length > 1 && ( */}
-        <nav className="product-side-nav-img p-relative">
+        {/* <nav className="product-side-nav-img p-relative">
           <div className="nav nav-tabs flex-md-column flex-nowrap justify-content-start">
             {product?.media
               ?.slice(startIndex, startIndex + 4)
@@ -110,13 +130,9 @@ const DetailsThumbWrapper = ({ product, relatedClick }) => {
                         title={item?.title}
                         width={78}
                         height={100}
-                        style={{ width: "100%", height: "100%" }}
+                        style={{ width: "100%", height: "100%", borderRadius:"20px" }}
                       />
-                      {/* <figcaption className="hidden-for-seo">
-                          <strong>{item?.title}</strong> 
-                          <p>{item?.description}</p>
-                          <em>{item?.caption}</em> 
-                        </figcaption> */}
+                     
                     </figure>
                   ) : (
                     <figure>
@@ -125,18 +141,75 @@ const DetailsThumbWrapper = ({ product, relatedClick }) => {
                         aria-label={item?.alt}
                         width={78}
                         height={100}
-                        style={{ width: "100%", height: "100%" }}
+                        style={{ width: "100%", height: "100%" ,borderRadius:"20px" }}
                         muted
                         loop
                         description={item?.description}
                         caption={item?.caption}
                         title={item?.title}
                       />
-                      {/* <figcaption className="hidden-for-seo">
-                          <strong>{item?.title}</strong> 
-                          <p>{item?.description}</p> 
-                          <em>{item?.caption}</em> 
-                        </figcaption> */}
+                      
+                    </figure>
+                  )}
+                </button>
+              ))}
+          </div>
+          {product?.media?.length > 3 && (
+            <>
+              <UpOutlined
+                className="prev-btn"
+                onClick={() => handleNavigationClicking("prev")}
+              />
+              <DownOutlined
+                className="next-btn"
+                onClick={() => handleNavigationClicking("next")}
+              />
+            </>
+          )}
+        </nav> */}
+
+<nav className="product-side-nav-img p-relative">
+          <div className="nav nav-tabs flex-md-column flex-nowrap justify-content-start">
+            {productImages
+              ?.slice(startIndex, startIndex + 4)
+              .map((item, i) => (
+                <button
+                  key={i + startIndex}
+                  className={`nav-link ${
+                    item?.url === activeImg?.url ? "active" : ""
+                  }`}
+                  onClick={() => handleImageActive(item)}
+                  id={`image-${i}`}
+                >
+                  {isImage(profilePic(item?.url)) ? (
+                    <figure>
+                      <img
+                        src={item?.url}
+                        // alt={item?.alt}
+                        // description={item?.description}
+                        // caption={item?.caption}
+                        // title={item?.title}
+                        width={78}
+                        height={100}
+                        style={{ width: "100%", height: "100%", borderRadius:"20px" }}
+                      />
+                     
+                    </figure>
+                  ) : (
+                    <figure>
+                      <video
+                        src={item?.url}
+                        aria-label={item?.alt}
+                        width={78}
+                        height={100}
+                        style={{ width: "100%", height: "100%" ,borderRadius:"20px" }}
+                        muted
+                        loop
+                        description={item?.description}
+                        caption={item?.caption}
+                        title={item?.title}
+                      />
+                      
                     </figure>
                   )}
                 </button>
@@ -159,21 +232,33 @@ const DetailsThumbWrapper = ({ product, relatedClick }) => {
 
         <div className={`tab-content m-img full-width-image`}>
           <div className="tab-pane fade show active">
-            <div className="tp-product-details-nav-main-thumb p-relative">
+            <div className="tp-product-details-nav-main-thumb p-relative" style={{borderRadius:"20px" }}>
               {loading ? (
                 <Loader />
               ) : (
                 <>
                   <div
-                    style={{ cursor: "zoom-in" }}
+                    style={{ cursor: "zoom-in" ,borderRadius:"20px"}}
                     onClick={() => setIsOpen(true)}
                   >
                     {isImage(profilePic(activeImg?.url)) ? (
                       <figure
                         className="detail-single-image"
-                        style={{ marginBottom: "0px" }}
+                        style={{ marginBottom: "0px",borderRadius:"20px" }}
                       >
-                        <img
+                          <img
+                          className="product-details-image"
+                          src="/assets/img/blog.webp"
+                          // description={activeImg?.description}
+                          // caption={activeImg?.caption}
+                          // title={activeImg?.title}
+                          // src={profilePic(activeImg?.url)}
+                          // alt={activeImg.alt}
+                          onLoad={() => setLoading(false)}
+                          onError={() => setLoading(false)}
+                          style={{borderRadius:"20px" }}
+                        />
+                        {/* <img
                           className="product-details-image"
                           description={activeImg?.description}
                           caption={activeImg?.caption}
@@ -182,12 +267,21 @@ const DetailsThumbWrapper = ({ product, relatedClick }) => {
                           alt={activeImg.alt}
                           onLoad={() => setLoading(false)}
                           onError={() => setLoading(false)}
-                        />
+                          
+                        /> */}
+
+
+
+
+                        {/* already commented */}
+
                         {/* <figcaption className="hidden-for-seo">
                           <strong>{activeImg?.title}</strong> 
                           <p>{activeImg?.description}</p>
                           <em>{activeImg?.caption}</em> 
                         </figcaption> */}
+
+                        {/* already commented */}
                       </figure>
                     ) : (
                       <figure
@@ -235,7 +329,7 @@ const DetailsThumbWrapper = ({ product, relatedClick }) => {
                         <span className="icon">
                           <MergeCellsOutlined stytle={{ fontSize: "18px" }} />
                         </span>
-                        <span className="text">Similar Product</span>
+                        <span className="text ms-2">Similar Product</span>
                       </button>
                     </div>
                   )}

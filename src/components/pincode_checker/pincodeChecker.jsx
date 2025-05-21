@@ -51,7 +51,7 @@ export default function PincodeChecker() {
         <button
           onClick={handleCheck}
           className="btn text-white"
-          style={{ backgroundColor: "#c18a3d" }}
+          style={{ backgroundColor: "#b4633a" }}
         >
           {loading ? <ButtonLoader /> : "CHECK"}
         </button>

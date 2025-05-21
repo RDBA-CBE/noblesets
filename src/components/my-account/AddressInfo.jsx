@@ -447,7 +447,7 @@ const AddressInfo = () => {
                     <div style={{ paddingRight: "30px", textAlign: "right" }}>
                       <SettingOutlined
                         style={{
-                          color: "#c2882b",
+                          color: "#b4633a",
                           padding: "5px",
                           cursor: "pointer",
                         }}
@@ -456,7 +456,7 @@ const AddressInfo = () => {
                       {showSettingsBox === index && (
                         <div
                           style={{
-                            backgroundColor: "#c2882b",
+                            backgroundColor: "#b4633a",
                             padding: "10px",
                             borderRadius: "5px",
                             color: "white",
@@ -936,7 +936,7 @@ const AddressInfo = () => {
               }}
             >
               {addAddressLoading || updateAddressLoading ? (
-                <ButtonLoader color="#c3935b" />
+                <ButtonLoader color="#b4633a" />
               ) : state.editAddressId == null ? (
                 "Add Address"
               ) : (

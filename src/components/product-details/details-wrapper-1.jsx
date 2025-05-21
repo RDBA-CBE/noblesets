@@ -982,7 +982,7 @@ const DetailsWrapper1 = ({
                     )}
                     <span
                     className="tp-product-price-2 new-price"
-                    style={{ fontSize: "22px", fontWeight: "500" }}
+                    style={{ fontSize: "25px", fontWeight: "700" }}
                     >
                     <>
                         {/* For normal product */}
@@ -1217,7 +1217,7 @@ const DetailsWrapper1 = ({
                             color: "black",
                             display: "flex",
                             paddingBottom: "10px",
-                            borderBottom: "1px dashed #ddd",
+                            // borderBottom: "1px dashed #ddd",
                             marginBottom: "10px",
                           }}
                         >
@@ -1229,19 +1229,7 @@ const DetailsWrapper1 = ({
                             )}
                           </div>
                           <div style={{ textAlign: "end" }}>
-                            {variantId && variantDetails && (
-                              <div className="">
-                                <button
-                                  style={{ fontSize: "14px", color: "grey" }}
-                                  onClick={() => {
-                                    setVariantId("");
-                                    setVariantDetails("");
-                                  }}
-                                >
-                                  Clear
-                                </button>
-                              </div>
-                            )}
+                            
                             <select
                               name="country"
                               id="country"
@@ -1263,6 +1251,19 @@ const DetailsWrapper1 = ({
                               ))}
                             </select>
                           </div>
+                          {variantId && variantDetails && (
+                              <div className="">
+                                <button
+                                  style={{ fontSize: "14px", color: "grey" }}
+                                  onClick={() => {
+                                    setVariantId("");
+                                    setVariantDetails("");
+                                  }}
+                                >
+                                  Clear
+                                </button>
+                              </div>
+                            )}
                         </div>
                         {variantDetails && (
                           <span
@@ -1421,8 +1422,8 @@ const DetailsWrapper1 = ({
                 <div className="tab-pane fade show active" id="pd-details">
                     <div style={{
                   paddingTop: "10px",
-                  height: "500px",
-                  overflowY: "scroll",
+                  // height: "500px",
+                  // overflowY: "scroll",
                 }}>
                 <p className="pd-description">
                     Time to add a dash of glam to your earlobes! Elevate your style with our Martini Marvel 14KT Yellow Gold Diamond & Amethyst Studs. These rhombus-shaped dazzlers are the perfect recipe for a night out or any occasion where you want to reignite your sparkle!
@@ -1483,11 +1484,11 @@ const DetailsWrapper1 = ({
 
                 {/* Price Breakup */}
                 <div className="tab-pane fade" id="pd-price">
-                {productItem?.priceBreakup ? 
-                <PriceBreakup data={productItem?.priceBreakup?.breakupDetails} /> :
-                 <p className="pd-placeholder">Price breakup content will go here.</p> 
-                }
-                
+                  {productItem?.priceBreakup?.breakupDetails ? (
+                    <PriceBreakup data={productItem.priceBreakup.breakupDetails} />
+                  ) : (
+                    <p className="pd-placeholder">Price breakup content will go here.</p>
+                  )}
                 </div>
 
                 {/* Reviews */}
@@ -1495,8 +1496,8 @@ const DetailsWrapper1 = ({
                 <div
                 style={{
                   paddingTop: "10px",
-                  height: "300px",
-                  overflowY: "scroll",
+                  // height: "300px",
+                  // overflowY: "scroll",
                 }}
               >
                 <h5 style={{ fontWeight: "400" }}>Cancellation Policy:</h5>
@@ -1611,7 +1612,7 @@ const DetailsWrapper1 = ({
                     </div>
 
                 <div
-                className="text-uppercase text-decordation color:#c3935b cursor-pointer mt-20"
+                className="text-uppercase text-decordation color:#b4633a cursor-pointer mt-20"
                 onClick={() => setIsProductModelOpen(true)}
             >
                 To Customize Product

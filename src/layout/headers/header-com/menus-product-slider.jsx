@@ -257,7 +257,7 @@ const MenusProductSlider = ({ product, loginPopup, loading }) => {
                     key={index}
                     className="product-trending text-center"
                     style={{
-                      padding: "18px 12px",
+                      padding: "18px 15px",
                       textTransform: "capitalize",
                     }}
                   >

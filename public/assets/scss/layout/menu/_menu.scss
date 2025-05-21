@@ -17,7 +17,7 @@
             }
             & > a{
                 display: inline-block;
-                font-size: 14px;
+                font-size: 18px;
                 // color: var(--tp-common-black);
                 color:#eee;
                 padding: 23px 0;
@@ -241,9 +241,9 @@
 
                 &:hover{
                     & > a{
-                        color: #c3935b;
+                        color: #b4633a;
                         &::after{
-                            color: #c3935b;
+                            color: #b4633a;
                         }
                     }
                 }
@@ -252,9 +252,9 @@
                     & li{
                         &:hover{
                             & > a{
-                                color: #c3935b;
+                                color: #b4633a;
                                 &::after{
-                                    color: #c3935b;
+                                    color: #b4633a;
                                 }
                             }
                         }
@@ -264,19 +264,19 @@
                 & .home-menu-title{
                     & a{
                         &:hover{
-                            color: #c3935b;
+                            color: #b4633a;
                         }
                     }
                 }
                 & .home-menu-item:hover .home-menu-title {
-                    color:#c3935b;
+                    color:#b4633a;
                 }
             }
         }
 
         .tp-menu-showcase-btn-2 {
             border-radius: 0;
-            background-color: #c3935b;
+            background-color: #b4633a;
             
         }
     }

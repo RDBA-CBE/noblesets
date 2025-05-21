@@ -95,7 +95,7 @@
       color: rgb(47, 46, 46);
 
       &:hover {
-        color: #c3935b;
+        color: #b4633a;
       }
     }
   }
@@ -137,7 +137,7 @@
         font-weight: 500;
         font-size: 16px;
         color: var(--tp-common-white);
-        background-color: #c3935b;
+        background-color: #b4633a;
         padding: 10px 30px;
 
         &:hover {
@@ -203,7 +203,7 @@
           &:checked {
             & + label {
               &::after {
-                border-color: #c3935b;
+                border-color: #b4633a;
               }
               &::before {
                 opacity: 1;
@@ -223,7 +223,7 @@
             cursor: pointer;
           }
           & span {
-            color: #c3935b;
+            color: #b4633a;
           }
 
           &::after {
@@ -245,7 +245,7 @@
             width: 8px;
             height: 8px;
             border-radius: 50%;
-            background-color: #c3935b;
+            background-color: #b4633a;
             visibility: hidden;
             opacity: 0;
             @extend %tp-transition;
@@ -265,12 +265,12 @@
       font-size: 14px;
       font-weight: 400;
       color: var(--tp-common-white);
-      background-color: #c3935b;
+      background-color: #b4633a;
       display: inline-block;
       padding: 5px 30px;
       text-align: center;
       &:hover {
-        background-color: #c3935b;
+        background-color: #b4633a;
         color: white;
       }
     }
@@ -421,7 +421,7 @@
 }
 
 .th {
-  background-color: #c2882b !important;
+  background-color: #b4633a !important;
   color: white !important;
   font-size: 18px !important;
 }

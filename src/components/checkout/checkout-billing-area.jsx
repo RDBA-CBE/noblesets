@@ -1362,7 +1362,7 @@ const CheckoutBillingArea = ({ register, errors }) => {
                     {checkoutAllData?.voucherCode && (
                       <p
                         style={{
-                          color: "#c3935b",
+                          color: "#b4633a",
                           paddingTop: "10px",
                           fontWeight: "500",
                           fontSize: "18px",

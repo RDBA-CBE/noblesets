@@ -323,7 +323,7 @@ const ProductItem = ({ products, style_2 = false, updateData }) => {
                   key={index}
                   className="product-trending text-center"
                   style={{
-                    padding: "18px 12px",
+                    padding: "18px 15px",
                     textTransform: "capitalize",
                   }}
                 >
@@ -535,7 +535,7 @@ const ProductItem = ({ products, style_2 = false, updateData }) => {
               {product?.pricing?.discount !== null && (
                 <div
                   style={{
-                    color: "#c3935b",
+                    color: "#b4633a",
                     fontSize: "16px",
                   }}
                 >{`Save ${saveOff()}% OFF`}</div>
@@ -589,7 +589,7 @@ const ProductItem = ({ products, style_2 = false, updateData }) => {
               {product?.pricing?.discount !== null && (
                 <div
                   style={{
-                    color: "#c3935b",
+                    color: "#b4633a",
                     fontSize: "16px",
                   }}
                 >{`Save ${saveOff()}% OFF`}</div>

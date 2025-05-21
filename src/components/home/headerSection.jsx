@@ -260,7 +260,7 @@ const HeaderSection = ({ style_2 = false, data }) => {
 
   return (
     <>
-      <header>
+      <header style={{background:"#fff9f4"}}>
         <div
           className={`tp-header-area tp-header-style-${
             style_2 ? "primary" : "darkRed"
@@ -283,8 +283,8 @@ const HeaderSection = ({ style_2 = false, data }) => {
                       </nav>
                     </div>
                   </div>
-                  <div className="col-xl-2 col-lg-5 col-md-5 col-sm-4 col-6">
-                    <div className="logo">
+                  <div className="col-xl-2 col-lg-5 col-md-5 col-sm-4 col-6 d-flex justify-content-center">
+                    <div className="logo" style={{height:"auto"}}>
                       <Link href="/">
                         <Image
                           src={pradeLogo}
@@ -339,7 +339,7 @@ const HeaderSection = ({ style_2 = false, data }) => {
                               }}
                             >
                               {searchLoading ? (
-                                <ButtonLoader color="#c3935b" size={30} />
+                                <ButtonLoader color="#b4633a" size={30} />
                               ) : searchOption?.length > 0 ? (
                                 searchOption?.map((item, index) => (
                                   <div
@@ -591,9 +591,9 @@ const HeaderSection = ({ style_2 = false, data }) => {
                             }}
                           >
                             <CartTwo />
-                            {/* <span className="tp-header-action-badge">
+                            <span className="tp-header-action-badge">
                               {cart?.length || 0}
-                            </span> */}
+                            </span>
                           </button>
                         </div>
                         {/* {token && ( */}

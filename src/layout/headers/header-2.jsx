@@ -376,7 +376,7 @@ const HeaderTwo = ({ style_2 = false, data }) => {
                             }}
                           >
                             {searchLoading ? (
-                              <ButtonLoader color="#c3935b" size={30} />
+                              <ButtonLoader color="#b4633a" size={30} />
                             ) : searchOption?.length > 0 ? (
                               searchOption?.map((item, index) => (
                                 // <Link

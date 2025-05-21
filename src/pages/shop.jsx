@@ -833,6 +833,7 @@ const ShopPage = () => {
     <Wrapper>
       <SEO pageTitle="Shop" />
       <HeaderSection/>
+      <div style={{background:"#fff9f4"}}>
       <div className="section-wd">
       <ShopBreadcrumb
         title={shopTitle}
@@ -885,7 +886,7 @@ const ShopPage = () => {
         !shopPaginationLoading && (
           <div>
             <div
-              className="mb-20 "
+              className="mb-0 "
               style={{
                 display: "flex",
                 justifyContent: "center",
@@ -924,6 +925,9 @@ const ShopPage = () => {
         style={productStyles}
         attributeList={attributeList}
       />
+
+      </div>
+      
        <HomeFooter />
       {/* </>
       )} */}

@@ -8,6 +8,8 @@ import { HomeNewArrivalPrdLoader } from "../loader";
 import { LeftOutlined, RightOutlined } from "@ant-design/icons";
 import "swiper/swiper-bundle.min.css";
 import { useRouter } from "next/router";
+import ProductItem1 from "../products/fashion/product-item-1";
+import SimilarProductItem from "../products/beauty/similar-product-item-1";
 
 const slider_setting = {
   slidesPerView: 4,
@@ -41,6 +43,7 @@ const slider_setting = {
   },
 };
 
+
 const RelatedProducts = ({
   id,
   products,
@@ -66,11 +69,16 @@ const RelatedProducts = ({
       >
         {products.map((item) => (
           <SwiperSlide key={item._id}>
-            <ProductItem
+            {/* <ProductItem
               product={item?.node}
               primary_style={true}
               data={products}
-            />
+            /> */}
+            <SimilarProductItem
+            product={item?.node}
+            primary_style={true}
+            data={products}/>
+
           </SwiperSlide>
         ))}
         <div className="tp-related-slider-button-prev swiper-button-prev">

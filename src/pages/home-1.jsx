@@ -71,9 +71,12 @@ const Index = () => {
     <Wrapper>
       <SEO pageTitle="Home" />
       <HeaderSection />
+      <div style={{background:"#fff9f4"}}>
       <div className="section-wd ">
       <HomeBanner />
       </div>
+      </div>
+     
      
       {/* <FeatureAreaThree /> */}
       {/* <JewelryShopBanner /> */}

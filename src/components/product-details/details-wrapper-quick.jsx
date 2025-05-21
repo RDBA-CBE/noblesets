@@ -736,7 +736,7 @@ const DetailsWrapper = ({
       {productItem?.pricing?.discount !== null && (
         <div
           style={{
-            color: "#c3935b",
+            color: "#b4633a",
             fontSize: "16px",
             paddingBottom: "10px",
           }}

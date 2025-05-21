@@ -45,7 +45,7 @@ const BillingAddressModal = (props) => {
         } // Custom close icon
         okButtonProps={{
           style: {
-            backgroundColor: "#c3935b", // Set background color to your preference
+            backgroundColor: "#b4633a", // Set background color to your preference
             color: "white", // Set text color to white
             border: "none", // Optional: Remove border
           },

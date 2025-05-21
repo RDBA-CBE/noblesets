@@ -27,7 +27,10 @@ const ProductDetailsPage = ({ query }) => {
     content = (
       <>
       
-        <ProductDetailsArea productItem={product} />
+      <div style={{background:"#fff9f4"}}>
+      <ProductDetailsArea productItem={product} />
+      </div>
+       
       </>
     );
   }
@@ -35,7 +38,10 @@ const ProductDetailsPage = ({ query }) => {
     <Wrapper>
       <SEO pageTitle="Product Details" />
       <HeaderSection/>
+      
       {content}
+
+      
       <HomeFooter />
     </Wrapper>
   );

@@ -272,7 +272,7 @@ const ProductSliderItem = ({ product, loginPopup, loading }) => {
                     key={index}
                     className="product-trending text-center"
                     style={{
-                      padding: "18px 12px",
+                      padding: "18px 15px",
                       textTransform: "capitalize",
                     }}
                   >
@@ -461,7 +461,7 @@ const ProductSliderItem = ({ product, loginPopup, loading }) => {
             )}
             <span
               className="tp-product-price-2 new-price"
-              style={{ color: "#c2882b", margin: "0px", fontSize: "14px" }}
+              style={{ color: "#b4633a", margin: "0px", fontSize: "14px" }}
             >
               ₹{roundOff(Price)}
             </span>
@@ -481,7 +481,7 @@ const ProductSliderItem = ({ product, loginPopup, loading }) => {
                 ${roundOff(RelatedProduct?.defaultVariant?.costPrice)}
               </span>
             )}
-            <span style={{ color: "#c2882b", margin: "0px", fontSize: "14px" }}>
+            <span style={{ color: "#b4633a", margin: "0px", fontSize: "14px" }}>
               ${roundOff(Price)}
             </span>
           </>
