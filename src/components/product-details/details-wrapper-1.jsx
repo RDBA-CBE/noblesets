@@ -31,6 +31,7 @@ import { checkWishlist, handleWishlistProduct } from "@/utils/common_function";
 import ProductDetailsBreadcrumb from "../breadcrumb/product-details-breadcrumb";
 import {
   useAddWishlistMutation,
+  useCreateCustomerProductMutation,
   useGetNextProductQuery,
   useGetPrevProductQuery,
   useGetProductQuery,
@@ -52,7 +53,6 @@ import PriceBreakup from "../price_breakup/priceBreakUp";
 import ReactModal from "react-modal";
 import CCAvenue from "@/utils/CCAvenue";
 import * as Yup from "yup";
-
 
 const DetailsWrapper1 = ({
   productItem,
@@ -79,8 +79,6 @@ const DetailsWrapper1 = ({
     offerDate,
   } = productItem || {};
 
-  console.log("✌️productItem --->", productItem);
-
   const [ratingVal, setRatingVal] = useState(0);
   const [textMore, setTextMore] = useState(false);
   const [channel, setChannel] = useState("india-channel");
@@ -94,18 +92,6 @@ const DetailsWrapper1 = ({
   const [isModalOpen, setIsModelOpen] = useState(false);
   const [isProductModalOpen, setIsProductModelOpen] = useState(false);
 
-  const [priceHTML, setPriceHTML] = useState(`
-        <table border="1" cellpadding="5" cellspacing="0">
-            <thead>
-                <tr>
-                    <th>Size</th><th>width</th><th>Height</th>
-                </tr>
-            </thead>
-            <tbody>
-                <tr><td>20</td><td>10</td><td>22</td><td></td></tr><tr><td>10</td><td>20</td><td>21</td><td></td></tr>
-            </tbody>
-        </table>`);
-
   const [formData, setFormData] = useState({
     name: "",
     email: "",
@@ -114,6 +100,9 @@ const DetailsWrapper1 = ({
     message: "",
     captcha: "",
   });
+  const [userInfo, setUserInfo] = useState(null);
+
+  
 
   const [error, setError] = useState("");
   const [success, setSuccess] = useState("");
@@ -165,6 +154,8 @@ const DetailsWrapper1 = ({
   );
 
   const [addWishlist, {}] = useAddWishlistMutation();
+  const [createCustomerProduct, { loading: loading }] =
+    useCreateCustomerProductMutation();
 
   const { wishlist } = useSelector((state) => state.wishlist);
 
@@ -185,6 +176,21 @@ const DetailsWrapper1 = ({
       const maxAmount = Math.max(...amounts);
       setMaxAmount(maxAmount);
       setMinAmount(minAmount);
+    }
+  }, [productItem]);
+
+  useEffect(() => {
+    const userInfo = localStorage.getItem("userInfo");
+    if (userInfo) {
+      console.log("✌️token --->", JSON.parse(userInfo));
+      let user = JSON.parse(userInfo);
+      setUserInfo(user)
+      setFormData({
+        name: `${user?.user?.firstName} ${user?.user?.lastName}`,
+        email: user?.user?.email,
+        message: "",
+        captcha: "",
+      });
     }
   }, [productItem]);
 
@@ -574,7 +580,6 @@ const DetailsWrapper1 = ({
       return 0;
     }
   };
-  const host = "https://schemes.sreethangamjewellery.com";
 
   //   const paymentCCAvenue = () => {
   //     let paymentData = {
@@ -673,26 +678,56 @@ const DetailsWrapper1 = ({
         return;
       }
 
-      const bodyData = {
-        name: formData.name,
-        email: formData.email,
-        productName: formData.productName,
-        sku: formData.sku,
-        message: formData.message,
-      };
+      let input = {};
 
-      setSuccess("Form submitted successfully!");
-      setError("");
+      const userInfo = localStorage.getItem("userInfo");
+      if (userInfo) {
+        console.log("✌️token --->", JSON.parse(userInfo));
+        let user = JSON.parse(userInfo);
+        input = {
+          customer: user?.user?.id,
+          baseProduct: productItem?.id,
+          customizationDetails: JSON.stringify({
+            message: formData.message,
+            color: "black",
+          }),
+        };
+      } else {
+        input = {
+          customerName: formData.name,
+          email: formData.email,
+          customizationDetails: JSON.stringify({
+            message: formData.message,
+            color: "black",
+          }),
 
-      setFormData({
-        name: "",
-        email: "",
-        productName: productItem?.name || "",
-        sku: productItem?.defaultVariant?.sku || "",
-        message: "",
-        captcha: "",
+          baseProduct: productItem?.id,
+        };
+      }
+      console.log("✌️bodyData --->", input);
+
+      const res = await createCustomerProduct({
+        input,
       });
+      if (res?.data?.data?.customProductCreate?.errors?.length > 0) {
+        notifyError(res?.data?.data?.customProductCreate?.errors?.[0]?.message);
+      } else {
+        console.log("✌️res --->", res);
+        setSuccess("Form submitted successfully!");
+        setError("");
+        setIsProductModelOpen(false);
+        setFormData({
+          name: "",
+          email: "",
+          productName: productItem?.name || "",
+          sku: productItem?.defaultVariant?.sku || "",
+          message: "",
+          captcha: "",
+        });
+      }
+      notifySuccess("Form submitted successfully!");
     } catch (err) {
+      console.log("✌️err --->", err);
       if (err.inner) {
         const allErrors = err.inner.map((e) => e.message).join(" ");
         setError(allErrors);
@@ -705,7 +740,14 @@ const DetailsWrapper1 = ({
 
   return (
     <div className="tp-product-details-wrapper">
-      <div className="bg-white rounded pt-10 pb-10" style={{ display: "flex", justifyContent: "space-between", alignItems:"center" }}>
+      <div
+        className="bg-white rounded pt-10 pb-10"
+        style={{
+          display: "flex",
+          justifyContent: "space-between",
+          alignItems: "center",
+        }}
+      >
         <div>
           <ProductDetailsBreadcrumb
             category={pageTitle}
@@ -713,9 +755,6 @@ const DetailsWrapper1 = ({
             parentSlug={parentSlug}
           />
         </div>
-
-
-        
 
         {router?.route == "/gift-card" ? (
           <></>
@@ -942,391 +981,394 @@ const DetailsWrapper1 = ({
         </span>
       </div> */}
 
-
-        <div className="product-info">
-
-            {/* price */}
-            <div className="bg-white my-3 p-3 rounded">
-            <div
-                className="tp-product-details-price-wrapper"
-                // style={{ paddingBottom: "15px" }}
-            >
-                {channel == "india-channel" ? (
-                    <div className="d-flex flex-wrap justify-content-between">
+      <div className="product-info">
+        {/* price */}
+        <div className="bg-white my-3 p-3 rounded">
+          <div
+            className="tp-product-details-price-wrapper"
+            // style={{ paddingBottom: "15px" }}
+          >
+            {channel == "india-channel" ? (
+              <div className="d-flex flex-wrap justify-content-between">
                 <div className="tp-product-price-wrapper-2">
-                    {productItem?.variants?.length <= 1 &&
+                  {productItem?.variants?.length <= 1 &&
                     RegularPrice(
-                        productItem?.defaultVariant?.costPrice,
-                        productItem?.pricing?.priceRange?.start?.gross?.amount
+                      productItem?.defaultVariant?.costPrice,
+                      productItem?.pricing?.priceRange?.start?.gross?.amount
                     ) && (
-                        <span
+                      <span
                         className="pr-5"
-                        style={{ textDecoration: "line-through", color: "gray" }}
-                        >
+                        style={{
+                          textDecoration: "line-through",
+                          color: "gray",
+                        }}
+                      >
                         {variantDetails ? (
-                            <>
+                          <>
                             &#8377;
                             {addCommasToNumber(
-                                variantDetails?.pricing?.price?.gross?.amount
+                              variantDetails?.pricing?.price?.gross?.amount
                             ) || 0}
-                            </>
+                          </>
                         ) : (
-                            <>
+                          <>
                             &#8377;
                             {addCommasToNumber(
-                                productItem?.defaultVariant?.costPrice
+                              productItem?.defaultVariant?.costPrice
                             ) || 0}
-                            </>
+                          </>
                         )}
-                        </span>
+                      </span>
                     )}
-                    <span
+                  <span
                     className="tp-product-price-2 new-price"
                     style={{ fontSize: "25px", fontWeight: "700" }}
-                    >
+                  >
                     <>
-                        {/* For normal product */}
-                        {isGiftCard || productItem?.variants?.length > 1 ? (
+                      {/* For normal product */}
+                      {isGiftCard || productItem?.variants?.length > 1 ? (
                         <>
-                            &#8377;{addCommasToNumber(minAmount)} - &#8377;
-                            {addCommasToNumber(maxAmount)}
+                          &#8377;{addCommasToNumber(minAmount)} - &#8377;
+                          {addCommasToNumber(maxAmount)}
                         </>
-                        ) : (
+                      ) : (
                         <>
-                            &#8377;
-                            {addCommasToNumber(
-                            productItem?.pricing?.priceRange?.start?.gross?.amount ||
-                                productItem?.node?.pricing?.priceRange?.start?.gross
-                                ?.amount
-                            ) || 0}
+                          &#8377;
+                          {addCommasToNumber(
+                            productItem?.pricing?.priceRange?.start?.gross
+                              ?.amount ||
+                              productItem?.node?.pricing?.priceRange?.start
+                                ?.gross?.amount
+                          ) || 0}
                         </>
-                        )}
+                      )}
                     </>
-                    </span>
+                  </span>
                 </div>
                 {router?.route !== "/gift-card" && (
-                        <div
-                          className="tp-product-details-action-sm"
-                         
-                        >
-                          <button
-                            disabled={status === "out-of-stock"}
-                            onClick={() => {
-                              if (compareList?.some((prd) => prd?.id === productItem?.id)) {
-                                dispatch(handleModalClose());
-                                router.push("/compare");
-                              } else {
-                                handleCompareProduct(productItem);
-                              }
-                            }}
-                            // onClick={() => handleCompareProduct(productItem)}
-                            type="button"
-                            className="tp-product-details-action-sm-btn"
-                          >
-                            <CompareTwo />
-                            {/* {compareList?.some((prd) => prd?.id === productItem?.id)
+                  <div className="tp-product-details-action-sm">
+                    <button
+                      disabled={status === "out-of-stock"}
+                      onClick={() => {
+                        if (
+                          compareList?.some(
+                            (prd) => prd?.id === productItem?.id
+                          )
+                        ) {
+                          dispatch(handleModalClose());
+                          router.push("/compare");
+                        } else {
+                          handleCompareProduct(productItem);
+                        }
+                      }}
+                      // onClick={() => handleCompareProduct(productItem)}
+                      type="button"
+                      className="tp-product-details-action-sm-btn"
+                    >
+                      <CompareTwo />
+                      {/* {compareList?.some((prd) => prd?.id === productItem?.id)
                               ? " View Compare"
                               : " Add  Compare"} */}
-                          </button>
-                          {}
-                
-                          {isAddedToWishlist === true ? (
-                            <button
-                              disabled={status === "out-of-stock"}
-                              onClick={() => {
-                                if (token) {
-                                  router.push("/wishlist");
-                                } else {
-                                  notifyError(
-                                    "Only logged-in users can add items to their wishlist or view it"
-                                  );
-                                }
-                                // router.push("/wishlist");
-                              }}
-                              // onClick={() => handleWishlistProduct(productItem)}
-                              type="button"
-                              className="tp-product-details-action-sm-btn"
-                            >
-                              <WishlistTwo />
-                              View Wishlist
-                            </button>
-                          ) : (
-                            <button
-                              disabled={status === "out-of-stock"}
-                              onClick={() => handleWishlist(productItem)}
-                              // onClick={() => handleWishlistProduct(productItem)}
-                              type="button"
-                              className="tp-product-details-action-sm-btn"
-                            >
-                              <WishlistTwo />
-                              {/* {wishlistLoader ? "Loading..." : "Add To Wishlist"} */}
-                            </button>
-                          )}
-                
-                          {/* <button type="button" className="tp-product-details-action-sm-btn">
+                    </button>
+                    {}
+
+                    {isAddedToWishlist === true ? (
+                      <button
+                        disabled={status === "out-of-stock"}
+                        onClick={() => {
+                          if (token) {
+                            router.push("/wishlist");
+                          } else {
+                            notifyError(
+                              "Only logged-in users can add items to their wishlist or view it"
+                            );
+                          }
+                          // router.push("/wishlist");
+                        }}
+                        // onClick={() => handleWishlistProduct(productItem)}
+                        type="button"
+                        className="tp-product-details-action-sm-btn"
+                      >
+                        <WishlistTwo />
+                        View Wishlist
+                      </button>
+                    ) : (
+                      <button
+                        disabled={status === "out-of-stock"}
+                        onClick={() => handleWishlist(productItem)}
+                        // onClick={() => handleWishlistProduct(productItem)}
+                        type="button"
+                        className="tp-product-details-action-sm-btn"
+                      >
+                        <WishlistTwo />
+                        {/* {wishlistLoader ? "Loading..." : "Add To Wishlist"} */}
+                      </button>
+                    )}
+
+                    {/* <button type="button" className="tp-product-details-action-sm-btn">
                       <AskQuestion />
                       Ask a question
                     </button> */}
-                        </div>
-                      )}
-                    </div>
-               
-                ) : (
-                // <div className="tp-product-price-wrapper-2">
-                //   {RegularPrice(
-                //     productItem?.defaultVariant?.costPrice,
-                //     productItem?.pricing?.priceRange?.start?.gross?.amount
-                //   ) && (
-                //     <span
-                //       className="pr-5"
-                //       style={{ textDecoration: "line-through", color: "gray" }}
-                //     >
-                //       {variantDetails ? (
-                //         <>
-                //           {"$"} {variantDetails?.pricing?.price?.gross?.amount}
-                //         </>
-                //       ) : (
-                //         <>
-                //           {"$"}
-                //           {roundOff(productItem?.defaultVariant?.costPrice)}
-                //         </>
-                //       )}
-                //     </span>
-                //   )}
-                //   <span
-                //     className="tp-product-price-2 new-price"
-                //     style={{ fontSize: "22px", fontWeight: "500" }}
-                //   >
-                //     {variantDetails ? (
-                //       <>
-                //         {"$"}
-                //         {variantDetails?.pricing?.price?.gross?.amount}
-                //       </>
-                //     ) : (
-                //       <>
-                //         {"$"}
-                //         {roundOff(
-                //           productItem?.pricing?.priceRange?.start?.gross?.amount ||
-                //             productItem?.node?.pricing?.priceRange?.start?.gross
-                //               ?.amount
-                //         )}
-                //       </>
-                //     )}
-                //   </span>
-                // </div>
-                <div className="tp-product-price-wrapper-2">
-                    {productItem?.variants?.length <= 1 &&
-                    RegularPrice(
-                        productItem?.defaultVariant?.costPrice,
-                        productItem?.pricing?.priceRange?.start?.gross?.amount
-                    ) && (
-                        <span
-                        className="pr-5"
-                        style={{ textDecoration: "line-through", color: "gray" }}
-                        >
-                        {variantDetails ? (
-                            <>
-                            {"$"}
-                            {addCommasToNumber(
-                                variantDetails?.pricing?.price?.gross?.amount
-                            ) || 0}
-                            </>
-                        ) : (
-                            <>
-                            {"$"}
-                            {addCommasToNumber(
-                                productItem?.defaultVariant?.costPrice
-                            ) || 0}
-                            </>
-                        )}
-                        </span>
-                    )}
-                    <span
-                    className="tp-product-price-2 new-price"
-                    style={{ fontSize: "22px", fontWeight: "500" }}
-                    >
-                    <>
-                        {/* For normal product */}
-                        {isGiftCard || productItem?.variants?.length > 1 ? (
-                        <>
-                            {"$"}
-                            {addCommasToNumber(minAmount)} - {"$"}
-                            {addCommasToNumber(maxAmount)}
-                        </>
-                        ) : (
-                        <>
-                            {"$"}
-                            {addCommasToNumber(
-                            productItem?.pricing?.priceRange?.start?.gross?.amount ||
-                                productItem?.node?.pricing?.priceRange?.start?.gross
-                                ?.amount
-                            ) || 0}
-                        </>
-                        )}
-                    </>
-                    </span>
-                </div>
+                  </div>
                 )}
-            </div>
-
-             {/* variations */}
-            {imageURLs?.some((item) => item?.color && item?.color?.name) && (
-                <div className="tp-product-details-variation">
-                <div className="tp-product-details-variation-item">
-                    <h4 className="tp-product-details-variation-title">Color :</h4>
-                    <div className="tp-product-details-variation-list">
-                    {imageURLs?.map((item, i) => (
-                        <button
-                        onClick={() => handleImageActive(item)}
-                        key={i}
-                        type="button"
-                        className={`color tp-color-variation-btn ${
-                            item.img === activeImg ? "active" : ""
-                        }`}
-                        >
-                        <span
-                            data-bg-color={`${item?.color?.clrCode}`}
-                            style={{ backgroundColor: `${item.color.clrCode}` }}
-                        ></span>
-                        {item?.color && item?.color.name && (
-                            <span className="tp-color-variation-tootltip">
-                            {item.color.name}
-                            </span>
-                        )}
-                        </button>
-                    ))}
-                    </div>
-                </div>
-                </div>
+              </div>
+            ) : (
+              // <div className="tp-product-price-wrapper-2">
+              //   {RegularPrice(
+              //     productItem?.defaultVariant?.costPrice,
+              //     productItem?.pricing?.priceRange?.start?.gross?.amount
+              //   ) && (
+              //     <span
+              //       className="pr-5"
+              //       style={{ textDecoration: "line-through", color: "gray" }}
+              //     >
+              //       {variantDetails ? (
+              //         <>
+              //           {"$"} {variantDetails?.pricing?.price?.gross?.amount}
+              //         </>
+              //       ) : (
+              //         <>
+              //           {"$"}
+              //           {roundOff(productItem?.defaultVariant?.costPrice)}
+              //         </>
+              //       )}
+              //     </span>
+              //   )}
+              //   <span
+              //     className="tp-product-price-2 new-price"
+              //     style={{ fontSize: "22px", fontWeight: "500" }}
+              //   >
+              //     {variantDetails ? (
+              //       <>
+              //         {"$"}
+              //         {variantDetails?.pricing?.price?.gross?.amount}
+              //       </>
+              //     ) : (
+              //       <>
+              //         {"$"}
+              //         {roundOff(
+              //           productItem?.pricing?.priceRange?.start?.gross?.amount ||
+              //             productItem?.node?.pricing?.priceRange?.start?.gross
+              //               ?.amount
+              //         )}
+              //       </>
+              //     )}
+              //   </span>
+              // </div>
+              <div className="tp-product-price-wrapper-2">
+                {productItem?.variants?.length <= 1 &&
+                  RegularPrice(
+                    productItem?.defaultVariant?.costPrice,
+                    productItem?.pricing?.priceRange?.start?.gross?.amount
+                  ) && (
+                    <span
+                      className="pr-5"
+                      style={{ textDecoration: "line-through", color: "gray" }}
+                    >
+                      {variantDetails ? (
+                        <>
+                          {"$"}
+                          {addCommasToNumber(
+                            variantDetails?.pricing?.price?.gross?.amount
+                          ) || 0}
+                        </>
+                      ) : (
+                        <>
+                          {"$"}
+                          {addCommasToNumber(
+                            productItem?.defaultVariant?.costPrice
+                          ) || 0}
+                        </>
+                      )}
+                    </span>
+                  )}
+                <span
+                  className="tp-product-price-2 new-price"
+                  style={{ fontSize: "22px", fontWeight: "500" }}
+                >
+                  <>
+                    {/* For normal product */}
+                    {isGiftCard || productItem?.variants?.length > 1 ? (
+                      <>
+                        {"$"}
+                        {addCommasToNumber(minAmount)} - {"$"}
+                        {addCommasToNumber(maxAmount)}
+                      </>
+                    ) : (
+                      <>
+                        {"$"}
+                        {addCommasToNumber(
+                          productItem?.pricing?.priceRange?.start?.gross
+                            ?.amount ||
+                            productItem?.node?.pricing?.priceRange?.start?.gross
+                              ?.amount
+                        ) || 0}
+                      </>
+                    )}
+                  </>
+                </span>
+              </div>
             )}
+          </div>
 
-            {/* <p style={{ color: "gray" }}>
+          {/* variations */}
+          {imageURLs?.some((item) => item?.color && item?.color?.name) && (
+            <div className="tp-product-details-variation">
+              <div className="tp-product-details-variation-item">
+                <h4 className="tp-product-details-variation-title">Color :</h4>
+                <div className="tp-product-details-variation-list">
+                  {imageURLs?.map((item, i) => (
+                    <button
+                      onClick={() => handleImageActive(item)}
+                      key={i}
+                      type="button"
+                      className={`color tp-color-variation-btn ${
+                        item.img === activeImg ? "active" : ""
+                      }`}
+                    >
+                      <span
+                        data-bg-color={`${item?.color?.clrCode}`}
+                        style={{ backgroundColor: `${item.color.clrCode}` }}
+                      ></span>
+                      {item?.color && item?.color.name && (
+                        <span className="tp-color-variation-tootltip">
+                          {item.color.name}
+                        </span>
+                      )}
+                    </button>
+                  ))}
+                </div>
+              </div>
+            </div>
+          )}
+
+          {/* <p style={{ color: "gray" }}>
                     Note : The stones we use are either natural or glass stones, the
                     imperfections found on them are natural and inevitable. These
                     imperfections add characteristics to the stones making it distinct and
                     unique.
                   </p> */}
-                  <div className="w-full row">
-                    {productItem?.variants?.length > 1 && (
-                      <>
-                        <div
-                          className="text-bold text-lg gap-3"
-                          style={{
-                            alignItems: variantId ? "end" : "center",
-                            fontSize: "16px",
-                            color: "black",
-                            display: "flex",
-                            paddingBottom: "10px",
-                            // borderBottom: "1px dashed #ddd",
-                            marginBottom: "10px",
-                          }}
-                        >
-                          <div>
-                            {isGiftCard ? (
-                              <span>Select Amount:</span>
-                            ) : (
-                              <span>Select Variant:</span>
-                            )}
-                          </div>
-                          <div style={{ textAlign: "end" }}>
-                            
-                            <select
-                              name="country"
-                              id="country"
-                              value={variantId}
-                              className="nice-select"
-                              onChange={(e) => {
-                                variantsChange(e);
-                              }}
-                            >
-                              {isGiftCard ? (
-                                <option>Select Amount:</option>
-                              ) : (
-                                <option value="">Select Variant</option>
-                              )}
-                              {productItem?.variants?.map((item) => (
-                                <option key={item.id} value={item.id}>
-                                  {item?.name}
-                                </option>
-                              ))}
-                            </select>
-                          </div>
-                          {variantId && variantDetails && (
-                              <div className="">
-                                <button
-                                  style={{ fontSize: "14px", color: "grey" }}
-                                  onClick={() => {
-                                    setVariantId("");
-                                    setVariantDetails("");
-                                  }}
-                                >
-                                  Clear
-                                </button>
-                              </div>
-                            )}
-                        </div>
-                        {variantDetails && (
-                          <span
-                            className="tp-product-price-2 new-price "
-                            style={{
-                              fontSize: "22px",
-                              fontWeight: "500",
-                              paddingBottom: "10px",
-                            }}
-                          >
-                            <>
-                              {/* giftwrap changed price product */}
-                              {checkChannel() === "india-channel" ? (
-                                <>
-                                  &#8377;{" "}
-                                  {addCommasToNumber(
-                                    variantDetails?.pricing?.price?.gross?.amount
-                                  ) || 0}
-                                </>
-                              ) : (
-                                <>
-                                  $
-                                  {addCommasToNumber(
-                                    variantDetails?.pricing?.price?.gross?.amount
-                                  ) || 0}
-                                </>
-                              )}
-                            </>
-                          </span>
-                        )}
-                      </>
+          <div className="w-full row">
+            {productItem?.variants?.length > 1 && (
+              <>
+                <div
+                  className="text-bold text-lg gap-3"
+                  style={{
+                    alignItems: variantId ? "end" : "center",
+                    fontSize: "16px",
+                    color: "black",
+                    display: "flex",
+                    paddingBottom: "10px",
+                    // borderBottom: "1px dashed #ddd",
+                    marginBottom: "10px",
+                  }}
+                >
+                  <div>
+                    {isGiftCard ? (
+                      <span>Select Amount:</span>
+                    ) : (
+                      <span>Select Variant:</span>
                     )}
                   </div>
-           
-                {productItem?.pricing?.discount !== null && (
-                <p className="text-danger">{`Save ${saveOff()}% OFF`}</p>)}
+                  <div style={{ textAlign: "end" }}>
+                    <select
+                      name="country"
+                      id="country"
+                      value={variantId}
+                      className="nice-select"
+                      onChange={(e) => {
+                        variantsChange(e);
+                      }}
+                    >
+                      {isGiftCard ? (
+                        <option>Select Amount:</option>
+                      ) : (
+                        <option value="">Select Variant</option>
+                      )}
+                      {productItem?.variants?.map((item) => (
+                        <option key={item.id} value={item.id}>
+                          {item?.name}
+                        </option>
+                      ))}
+                    </select>
+                  </div>
+                  {variantId && variantDetails && (
+                    <div className="">
+                      <button
+                        style={{ fontSize: "14px", color: "grey" }}
+                        onClick={() => {
+                          setVariantId("");
+                          setVariantDetails("");
+                        }}
+                      >
+                        Clear
+                      </button>
+                    </div>
+                  )}
+                </div>
+                {variantDetails && (
+                  <span
+                    className="tp-product-price-2 new-price "
+                    style={{
+                      fontSize: "22px",
+                      fontWeight: "500",
+                      paddingBottom: "10px",
+                    }}
+                  >
+                    <>
+                      {/* giftwrap changed price product */}
+                      {checkChannel() === "india-channel" ? (
+                        <>
+                          &#8377;{" "}
+                          {addCommasToNumber(
+                            variantDetails?.pricing?.price?.gross?.amount
+                          ) || 0}
+                        </>
+                      ) : (
+                        <>
+                          $
+                          {addCommasToNumber(
+                            variantDetails?.pricing?.price?.gross?.amount
+                          ) || 0}
+                        </>
+                      )}
+                    </>
+                  </span>
+                )}
+              </>
+            )}
+          </div>
 
-                <h3 className="tp-product-details-title product-title">
-                        {capitalizeFLetter(productItem?.name || productItem?.node?.name)}
-                      </h3>
-              
-                <p className="product-desc text-muted">
-                {variantDetails?.quantityAvailable == 0 ||
-          productItem?.defaultVariant?.quantityAvailable == 0 ? (
-            <span style={{ color: "red", fontWeight: "500" }}>
-              Out of Stock
-            </span>
-          ) : (
-            <span>In Stock</span>
+          {productItem?.pricing?.discount !== null && (
+            <p className="text-danger">{`Save ${saveOff()}% OFF`}</p>
           )}
-                </p>
-                {productItem?.metadata?.length > 0 && (
-        <p className="product-desc text-muted" style={{ color: "black" }}>
-          {
-            productItem?.metadata?.find(
-              (item) => item.key === "short_description"
-            )?.value
-          }
-        </p>
-      )}
 
-      <div className="d-flex flex-wrap justify-content-between">
-      {productItem?.defaultVariant?.quantityAvailable != 0 && (
+          <h3 className="tp-product-details-title product-title">
+            {capitalizeFLetter(productItem?.name || productItem?.node?.name)}
+          </h3>
+
+          <p className="product-desc text-muted">
+            {variantDetails?.quantityAvailable == 0 ||
+            productItem?.defaultVariant?.quantityAvailable == 0 ? (
+              <span style={{ color: "red", fontWeight: "500" }}>
+                Out of Stock
+              </span>
+            ) : (
+              <span>In Stock</span>
+            )}
+          </p>
+          {productItem?.metadata?.length > 0 && (
+            <p className="product-desc text-muted" style={{ color: "black" }}>
+              {
+                productItem?.metadata?.find(
+                  (item) => item.key === "short_description"
+                )?.value
+              }
+            </p>
+          )}
+
+          <div className="d-flex flex-wrap justify-content-between">
+            {productItem?.defaultVariant?.quantityAvailable != 0 && (
               <div className="tp-product-details-action-item-wrapper d-sm-flex align-items-center">
                 <div className="tp-product-details-add-to-cart">
                   <button
@@ -1352,196 +1394,224 @@ const DetailsWrapper1 = ({
               </div>
             )}
 
-        <div className="pt-2 pb-2">
-        <button
-          onClick={() => setIsModelOpen(true)}
-          className=""
-          style={{color:"c2882b"}}
-          
-        >
-          Size Chart
-        </button>
+            <div className="pt-2 pb-2">
+              <button
+                onClick={() => setIsModelOpen(true)}
+                className=""
+                style={{ color: "c2882b" }}
+              >
+                Size Chart
+              </button>
+            </div>
+          </div>
         </div>
-      </div>
 
-      
+        {/* Delivery */}
+        <div className="delivery-box my-3 p-3 rounded  bg-white">
+          <h6>Delivery Details</h6>
+          <PincodeChecker />
+        </div>
 
+        {/* Warranty */}
+        <div className="warranty-box my-3 p-3  rounded bg-white text-center">
+          <p className="mb-0 text-black">
+            <strong>1 YEAR</strong> Warranty
+          </p>
+        </div>
+
+        {/* Offers */}
+        <div className="offer-box my-3 p-3 rounded bg-white">
+          <h6 className="">Available Offers</h6>
+          <div className="bg-gold p-3 rounded d-flex justify-content-between align-items-center">
+            <div>
+              <p className="mb-1 fw-bold text-white">Flat ₹500/- Off</p>
+              <small className="text-white">
+                Applicable for your first purchase
+              </small>
             </div>
-       
-          {/* Delivery */}
-          <div className="delivery-box my-3 p-3 rounded  bg-white">
-            <h6>Delivery Details</h6>
-            <PincodeChecker />
-            
-          </div>
-
-          {/* Warranty */}
-          <div className="warranty-box my-3 p-3  rounded bg-white text-center">
-            <p className="mb-0 text-black">
-              <strong>1 YEAR</strong> Warranty
-            </p>
-          </div>
-
-          {/* Offers */}
-          <div className="offer-box my-3 p-3 rounded bg-white">
-            <h6 className="">Available Offers</h6>
-            <div className="bg-gold p-3 rounded d-flex justify-content-between align-items-center">
-              <div>
-                <p className="mb-1 fw-bold text-white">Flat ₹500/- Off</p>
-                <small className="text-white">Applicable for your first purchase</small>
-              </div>
-              <div className="text-center">
-                <p className="mb-1 ttext-white">Use coupon code:</p>
-                <div className="coupon-code">NBS500</div>
-              </div>
+            <div className="text-center">
+              <p className="mb-1 ttext-white">Use coupon code:</p>
+              <div className="coupon-code">NBS500</div>
             </div>
           </div>
+        </div>
 
-          <div className="delivery-box my-3 p-3 rounded  bg-white">
+        <div className="delivery-box my-3 p-3 rounded  bg-white">
           <div className="pd-tabs-container">
             <ul className="nav nav-tabs pd-nav-tabs">
-                <li className="nav-item">
-                <button className="nav-link active" data-bs-toggle="tab" data-bs-target="#pd-details">
-                    Product Details
+              <li className="nav-item">
+                <button
+                  className="nav-link active"
+                  data-bs-toggle="tab"
+                  data-bs-target="#pd-details"
+                >
+                  Product Details
                 </button>
-                </li>
-                <li className="nav-item">
-                <button className="nav-link" data-bs-toggle="tab" data-bs-target="#pd-price">
-                    Price Breakup
+              </li>
+              <li className="nav-item">
+                <button
+                  className="nav-link"
+                  data-bs-toggle="tab"
+                  data-bs-target="#pd-price"
+                >
+                  Price Breakup
                 </button>
-                </li>
-                <li className="nav-item">
-                <button className="nav-link" data-bs-toggle="tab" data-bs-target="#pd-shipping">
-                    Shipping & Deliver
+              </li>
+              <li className="nav-item">
+                <button
+                  className="nav-link"
+                  data-bs-toggle="tab"
+                  data-bs-target="#pd-shipping"
+                >
+                  Shipping & Deliver
                 </button>
-                </li>
+              </li>
             </ul>
 
             <div className="tab-content pd-tab-content  rounded-bottom p-3 bg-white">
-                {/* Product Details */}
-                <div className="tab-pane fade show active" id="pd-details">
-                    <div style={{
-                  paddingTop: "10px",
-                  // height: "500px",
-                  // overflowY: "scroll",
-                }}>
-                <p className="pd-description">
-                    Time to add a dash of glam to your earlobes! Elevate your style with our Martini Marvel 14KT Yellow Gold Diamond & Amethyst Studs. These rhombus-shaped dazzlers are the perfect recipe for a night out or any occasion where you want to reignite your sparkle!
-                </p>
-
-                {/* General Section */}
-                <div className="pd-section mb-3">
-                    <h6 className="pd-section-title"><i className="bi bi-info-circle-fill me-2 text-danger"></i>General</h6>
-                    <div className="pd-row border-bottom py-1 d-flex justify-content-between">
-                    <span>Design Code</span>
-                    <span>2923STD</span>
-                    </div>
-                    <div className="pd-row py-1 d-flex justify-content-between">
-                    <span>Gross Weight</span>
-                    <span>4.200g</span>
-                    </div>
-                </div>
-
-                {/* Gold Details */}
-                <div className="pd-section mb-3">
-                    <h6 className="pd-section-title"><i className="bi bi-circle-fill me-2 text-warning"></i>Gold Details</h6>
-                    <div className="pd-row border-bottom py-1 d-flex justify-content-between">
-                    <span>Purity</span>
-                    <span>14 KT</span>
-                    </div>
-                    <div className="pd-row border-bottom py-1 d-flex justify-content-between">
-                    <span>Weight</span>
-                    <span>3.254g</span>
-                    </div>
-                    <div className="pd-row py-1 d-flex justify-content-between">
-                    <span>Colour</span>
-                    <span>Yellow</span>
-                    </div>
-                </div>
-
-                {/* Diamond Details */}
-                <div className="pd-section mb-3">
-                    <h6 className="pd-section-title"><i className="bi bi-gem me-2 text-danger"></i>Diamond Details</h6>
-                    <div className="pd-row border-bottom py-1 d-flex justify-content-between">
-                    <span>Clarity</span>
-                    <span>I2</span>
-                    </div>
-                    <div className="pd-row border-bottom py-1 d-flex justify-content-between">
-                    <span>Weight</span>
-                    <span>0.088 Ct</span>
-                    </div>
-                    <div className="pd-row border-bottom py-1 d-flex justify-content-between">
-                    <span>Count</span>
-                    <span>14</span>
-                    </div>
-                    <div className="pd-row py-1 d-flex justify-content-between">
-                    <span>Shape</span>
-                    <span>Round</span>
-                    </div>
-                </div>
-                </div>
-                </div>
-
-                {/* Price Breakup */}
-                <div className="tab-pane fade" id="pd-price">
-                  {productItem?.priceBreakup?.breakupDetails ? (
-                    <PriceBreakup data={productItem.priceBreakup.breakupDetails} />
-                  ) : (
-                    <p className="pd-placeholder">Price breakup content will go here.</p>
-                  )}
-                </div>
-
-                {/* Reviews */}
-                <div className="tab-pane fade" id="pd-shipping">
+              {/* Product Details */}
+              <div className="tab-pane fade show active" id="pd-details">
                 <div
-                style={{
-                  paddingTop: "10px",
-                  // height: "300px",
-                  // overflowY: "scroll",
-                }}
-              >
-                <h5 style={{ fontWeight: "400" }}>Cancellation Policy:</h5>
-                <p style={{ color: "#55585b" }}>
-                  If you wish to cancel your order, we shall provide you with an
-                  option to replace the ordered product with another product. In
-                  no manner shall we provide any refund of the ordered product.
-                </p>
-                <p style={{ color: "#55585b" }}>
-                  In the case where your order gets cancelled from our end for
-                  some reason, we shall notify you about the same. We will also
-                  take all efforts to refund the amount paid by yourself to your
-                  original payment method within 2 working days.
-                </p>
-                <h5 style={{ fontWeight: "400" }}>Return & Exchange Policy:</h5>
-                <p style={{ color: "#55585b" }}>
-                  {" "}
-                  &#129174;Shipping charges are not refundable.
-                </p>
+                  style={{
+                    paddingTop: "10px",
+                    // height: "500px",
+                    // overflowY: "scroll",
+                  }}
+                >
+                  <p className="pd-description">
+                    Time to add a dash of glam to your earlobes! Elevate your
+                    style with our Martini Marvel 14KT Yellow Gold Diamond &
+                    Amethyst Studs. These rhombus-shaped dazzlers are the
+                    perfect recipe for a night out or any occasion where you
+                    want to reignite your sparkle!
+                  </p>
 
-                <p style={{ color: "#55585b" }}>
-                  {" "}
-                  &#129174; The brand has put the utmost effort in showcasing
-                  the products as realistic as possible with the colour,
-                  appearance etc. Please note that the colour of the jewellery
-                  might slightly vary in person, any return/ exchange on these
-                  criteria will not be accepted.
-                </p>
-                <p style={{ color: "#55585b" }}>
-                  {" "}
-                  &#129174; We at PraDe believe in providing fair trade to our
-                  artisans and hence selected products shall not be eligible for
-                  returns.
-                </p>
-              </div>
+                  {/* General Section */}
+                  <div className="pd-section mb-3">
+                    <h6 className="pd-section-title">
+                      <i className="bi bi-info-circle-fill me-2 text-danger"></i>
+                      General
+                    </h6>
+                    <div className="pd-row border-bottom py-1 d-flex justify-content-between">
+                      <span>Design Code</span>
+                      <span>2923STD</span>
+                    </div>
+                    <div className="pd-row py-1 d-flex justify-content-between">
+                      <span>Gross Weight</span>
+                      <span>4.200g</span>
+                    </div>
+                  </div>
+
+                  {/* Gold Details */}
+                  <div className="pd-section mb-3">
+                    <h6 className="pd-section-title">
+                      <i className="bi bi-circle-fill me-2 text-warning"></i>
+                      Gold Details
+                    </h6>
+                    <div className="pd-row border-bottom py-1 d-flex justify-content-between">
+                      <span>Purity</span>
+                      <span>14 KT</span>
+                    </div>
+                    <div className="pd-row border-bottom py-1 d-flex justify-content-between">
+                      <span>Weight</span>
+                      <span>3.254g</span>
+                    </div>
+                    <div className="pd-row py-1 d-flex justify-content-between">
+                      <span>Colour</span>
+                      <span>Yellow</span>
+                    </div>
+                  </div>
+
+                  {/* Diamond Details */}
+                  <div className="pd-section mb-3">
+                    <h6 className="pd-section-title">
+                      <i className="bi bi-gem me-2 text-danger"></i>Diamond
+                      Details
+                    </h6>
+                    <div className="pd-row border-bottom py-1 d-flex justify-content-between">
+                      <span>Clarity</span>
+                      <span>I2</span>
+                    </div>
+                    <div className="pd-row border-bottom py-1 d-flex justify-content-between">
+                      <span>Weight</span>
+                      <span>0.088 Ct</span>
+                    </div>
+                    <div className="pd-row border-bottom py-1 d-flex justify-content-between">
+                      <span>Count</span>
+                      <span>14</span>
+                    </div>
+                    <div className="pd-row py-1 d-flex justify-content-between">
+                      <span>Shape</span>
+                      <span>Round</span>
+                    </div>
+                  </div>
                 </div>
-            </div>
+              </div>
 
-            
-            </div>
+              {/* Price Breakup */}
+              <div className="tab-pane fade" id="pd-price">
+                {productItem?.priceBreakup?.breakupDetails ? (
+                  <PriceBreakup
+                    data={productItem.priceBreakup.breakupDetails}
+                  />
+                ) : (
+                  <p className="pd-placeholder">
+                    Price breakup content will go here.
+                  </p>
+                )}
+              </div>
 
+              {/* Reviews */}
+              <div className="tab-pane fade" id="pd-shipping">
+                <div
+                  style={{
+                    paddingTop: "10px",
+                    // height: "300px",
+                    // overflowY: "scroll",
+                  }}
+                >
+                  <h5 style={{ fontWeight: "400" }}>Cancellation Policy:</h5>
+                  <p style={{ color: "#55585b" }}>
+                    If you wish to cancel your order, we shall provide you with
+                    an option to replace the ordered product with another
+                    product. In no manner shall we provide any refund of the
+                    ordered product.
+                  </p>
+                  <p style={{ color: "#55585b" }}>
+                    In the case where your order gets cancelled from our end for
+                    some reason, we shall notify you about the same. We will
+                    also take all efforts to refund the amount paid by yourself
+                    to your original payment method within 2 working days.
+                  </p>
+                  <h5 style={{ fontWeight: "400" }}>
+                    Return & Exchange Policy:
+                  </h5>
+                  <p style={{ color: "#55585b" }}>
+                    {" "}
+                    &#129174;Shipping charges are not refundable.
+                  </p>
+
+                  <p style={{ color: "#55585b" }}>
+                    {" "}
+                    &#129174; The brand has put the utmost effort in showcasing
+                    the products as realistic as possible with the colour,
+                    appearance etc. Please note that the colour of the jewellery
+                    might slightly vary in person, any return/ exchange on these
+                    criteria will not be accepted.
+                  </p>
+                  <p style={{ color: "#55585b" }}>
+                    {" "}
+                    &#129174; We at PraDe believe in providing fair trade to our
+                    artisans and hence selected products shall not be eligible
+                    for returns.
+                  </p>
+                </div>
+              </div>
+            </div>
           </div>
+        </div>
 
-          <div className="delivery-box my-3 p-3 rounded  bg-white">
+        <div className="delivery-box my-3 p-3 rounded  bg-white">
           <div>
             <p style={{ color: "#55585b" }}>
               <b>SKU:</b>{" "}
@@ -1594,182 +1664,184 @@ const DetailsWrapper1 = ({
               </p>
             )}
 
-             {offerDate?.endDate && (
-                    <ProductDetailsCountdown offerExpiryTime={offerDate?.endDate} />
-                  )}
+            {offerDate?.endDate && (
+              <ProductDetailsCountdown offerExpiryTime={offerDate?.endDate} />
+            )}
 
-             <div>
-                      <RWebShare
-                        data={{
-                          text: productItem.name,
-                          url: window.location.href,
-                          title: "PraDe",
-                        }}
-                        onClick={() => console.log("shared successfully!")}
-                      >
-                        <button className="tp-btn tp-btn-border ">SHARE THIS PAGE</button>
-                      </RWebShare>
-                    </div>
+            <div>
+              <RWebShare
+                data={{
+                  text: productItem.name,
+                  url: window.location.href,
+                  title: "PraDe",
+                }}
+                onClick={() => console.log("shared successfully!")}
+              >
+                <button className="tp-btn tp-btn-border ">
+                  SHARE THIS PAGE
+                </button>
+              </RWebShare>
+            </div>
 
-                <div
-                className="text-uppercase text-decordation color:#b4633a cursor-pointer mt-20"
-                onClick={() => setIsProductModelOpen(true)}
+            <div
+              className="text-uppercase text-decordation color:#b4633a cursor-pointer mt-20"
+              onClick={() => setIsProductModelOpen(true)}
             >
-                To Customize Product
+              To Customize Product
             </div>
           </div>
-          </div>
-
-         
         </div>
+      </div>
 
-        <ReactModal
-                isOpen={isModalOpen}
-                onRequestClose={() => setIsModelOpen(false)}
-                style={customStyles}
-                contentLabel="Product Modal"
-                ariaHideApp={false} // optional: disables appElement warning
-              >
-                <div className="tp-product-modal">
-                  <div className="tp-product-modal-content d-lg-flex flex-column gap-4">
-                    <button
-                      onClick={() => setIsModelOpen(false)}
-                      type="button"
-                      className="btn btn-sm btn-danger align-self-end"
-                    >
-                      ✕ 
-                    </button>
-        
-                    {/* Product Image */}
-                    <div className="text-center">
-                      <img
-                        src={productItem?.sizeGuide?.sizeimg} // replace with your image path
-                        alt="Product"
-                        width={400}
-                        height={300}
-                        className="img-fluid rounded"
-                      />
-                    </div>
-        
-                    {/* Table */}
-                    <div
-                      className="table-responsive-1 mb-3"
-                      dangerouslySetInnerHTML={{ __html: cleanHTML(productItem?.sizeGuide?.sizedetail) }}
+      <ReactModal
+        isOpen={isModalOpen}
+        onRequestClose={() => setIsModelOpen(false)}
+        style={customStyles}
+        contentLabel="Product Modal"
+        ariaHideApp={false} // optional: disables appElement warning
+      >
+        <div className="tp-product-modal">
+          <div className="tp-product-modal-content d-lg-flex flex-column gap-4">
+            <button
+              onClick={() => setIsModelOpen(false)}
+              type="button"
+              className="btn btn-sm btn-danger align-self-end"
+            >
+              ✕
+            </button>
+
+            {/* Product Image */}
+            <div className="text-center">
+              <img
+                src={productItem?.sizeGuide?.sizeimg} // replace with your image path
+                alt="Product"
+                width={400}
+                height={300}
+                className="img-fluid rounded"
+              />
+            </div>
+
+            {/* Table */}
+            <div
+              className="table-responsive-1 mb-3"
+              dangerouslySetInnerHTML={{
+                __html: cleanHTML(productItem?.sizeGuide?.sizedetail),
+              }}
+            />
+          </div>
+        </div>
+      </ReactModal>
+
+      <ReactModal
+        isOpen={isProductModalOpen}
+        onRequestClose={() => setIsProductModelOpen(false)}
+        style={customStyles}
+        contentLabel="Product Modal"
+        ariaHideApp={false} // optional: disables appElement warning
+      >
+        <div className="tp-product-modal">
+          <div className="tp-product-modal-content d-lg-flex flex-column gap-4">
+            <button
+              onClick={() => setIsProductModelOpen(false)}
+              type="button"
+              className="btn btn-sm btn-danger align-self-end"
+            >
+              ✕
+            </button>
+
+            <div className="container mt-5">
+              <form onSubmit={handleCustomizedProduct} className="p-4 rounded">
+                <div className="row mb-3">
+                  <div className="col-md-6">
+                    <label className="form-label">Your Name</label>
+                    <input
+                      type="text"
+                      name="name"
+                      className="form-control"
+                      value={formData.name}
+                      onChange={handleChange}
+                      required
+                      disabled={userInfo != null}
+                    />
+                  </div>
+                  <div className="col-md-6">
+                    <label className="form-label">Your Email</label>
+                    <input
+                      type="email"
+                      name="email"
+                      className="form-control"
+                      value={formData.email}
+                      onChange={handleChange}
+                      required
                     />
                   </div>
                 </div>
-              </ReactModal>
-        
-              <ReactModal
-                isOpen={isProductModalOpen}
-                onRequestClose={() => setIsProductModelOpen(false)}
-                style={customStyles}
-                contentLabel="Product Modal"
-                ariaHideApp={false} // optional: disables appElement warning
-              >
-                <div className="tp-product-modal">
-                  <div className="tp-product-modal-content d-lg-flex flex-column gap-4">
-                    <button
-                      onClick={() => setIsProductModelOpen(false)}
-                      type="button"
-                      className="btn btn-sm btn-danger align-self-end"
-                    >
-                      ✕
-                    </button>
-        
-                    <div className="container mt-5">
-                      <form onSubmit={handleCustomizedProduct} className="p-4 rounded">
-                        <div className="row mb-3">
-                          <div className="col-md-6">
-                            <label className="form-label">Your Name</label>
-                            <input
-                              type="text"
-                              name="name"
-                              className="form-control"
-                              value={formData.name}
-                              onChange={handleChange}
-                              required
-                            />
-                          </div>
-                          <div className="col-md-6">
-                            <label className="form-label">Your Email</label>
-                            <input
-                              type="email"
-                              name="email"
-                              className="form-control"
-                              value={formData.email}
-                              onChange={handleChange}
-                              required
-                            />
-                          </div>
-                        </div>
-        
-                        <div className="row mb-3">
-                          <div className="col-md-6">
-                            <label className="form-label">Product Name</label>
-                            <input
-                              type="text"
-                              name="productName"
-                              className="form-control"
-                              value={productItem?.name}
-                              readOnly
-                            />
-                          </div>
-                          <div className="col-md-6">
-                            <label className="form-label">SKU</label>
-                            <input
-                              type="text"
-                              name="sku"
-                              className="form-control"
-                              value={productItem?.defaultVariant?.sku}
-                              readOnly
-                            />
-                          </div>
-                        </div>
-        
-                        <div className="mb-3">
-                          <label className="form-label">Your Message (optional)</label>
-                          <textarea
-                            name="message"
-                            className="form-control"
-                            rows="4"
-                            value={formData.message}
-                            onChange={handleChange}
-                          ></textarea>
-                        </div>
-        
-                        <div className="mb-3">
-                          <label className="form-label">Captcha (Enter Sum)</label>
-                          <div className="d-flex align-items-center">
-                            <span className="me-2" style={{ flex: 1 }}>
-                              5 - 2?
-                            </span>
-                            <input
-                              type="number"
-                              name="captcha"
-                              className="form-control"
-                              value={formData.captcha}
-                              onChange={handleChange}
-                              required
-                              style={{ flex: 6 }}
-                            />
-                          </div>
-                        </div>
-        
-                        {error && <div className="alert alert-danger">{error}</div>}
-                        {success && (
-                          <div className="alert alert-success">{success}</div>
-                        )}
-        
-                        <button type="submit" className="tp-btn tp-btn-border mt-4">
-                          SUBMIT
-                        </button>
-                      </form>
-                    </div>
+
+                <div className="row mb-3">
+                  <div className="col-md-6">
+                    <label className="form-label">Product Name</label>
+                    <input
+                      type="text"
+                      name="productName"
+                      className="form-control"
+                      value={productItem?.name}
+                      readOnly
+                    />
+                  </div>
+                  <div className="col-md-6">
+                    <label className="form-label">SKU</label>
+                    <input
+                      type="text"
+                      name="sku"
+                      className="form-control"
+                      value={productItem?.defaultVariant?.sku}
+                      readOnly
+                    />
                   </div>
                 </div>
-              </ReactModal>
 
+                <div className="mb-3">
+                  <label className="form-label">Your Message (optional)</label>
+                  <textarea
+                    name="message"
+                    className="form-control"
+                    rows="4"
+                    value={formData.message}
+                    onChange={handleChange}
+                  ></textarea>
+                </div>
+
+                <div className="mb-3">
+                  <label className="form-label">Captcha (Enter Sum)</label>
+                  <div className="d-flex align-items-center">
+                    <span className="me-2" style={{ flex: 1 }}>
+                      5 - 2?
+                    </span>
+                    <input
+                      type="number"
+                      name="captcha"
+                      className="form-control"
+                      value={formData.captcha}
+                      onChange={handleChange}
+                      required
+                      style={{ flex: 6 }}
+                    />
+                  </div>
+                </div>
+
+                {error && <div className="alert alert-danger">{error}</div>}
+                {success && (
+                  <div className="alert alert-success">{success}</div>
+                )}
+
+                <button type="submit" className="tp-btn tp-btn-border mt-4">
+                  {loading ? <ButtonLoader /> : "SUBMIT"}
+                </button>
+              </form>
+            </div>
+          </div>
+        </div>
+      </ReactModal>
     </div>
   );
 };

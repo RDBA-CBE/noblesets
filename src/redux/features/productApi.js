@@ -39,6 +39,7 @@ import {
   LOGOUT,
   PINCODE_LIST,
   SHIPPING_ZONE_LIST,
+  CREATE_CUSTOMER_PRODUCT,
 } from "@/utils/queries/productList";
 import {
   RELATED_PRODUCT,
@@ -783,6 +784,12 @@ export const productApi = apiSlice.injectEndpoints({
         );
       },
     }),
+
+    createCustomerProduct: builder.mutation({
+      query: ({ input }) => {
+        return configuration(CREATE_CUSTOMER_PRODUCT({ input }));
+      },
+    }),
   }),
 });
 
@@ -842,5 +849,6 @@ export const {
   useUserInfoMutation,
   useLogoutMutation,
   usePincodeListMutation,
-  useShippingZoneListMutation
+  useShippingZoneListMutation,
+  useCreateCustomerProductMutation,
 } = productApi;

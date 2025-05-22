@@ -105,7 +105,7 @@ const Footer = ({ style_2 = false, style_3 = false,primary_style=false }) => {
               <div className="row align-items-center">
                 <div className="col-md-6">
                 <div className="tp-footer-copyright">
-                      <p>Copyright 2023 © PraDe Jewels, Concept by
+                      <p>Copyright 2025 © Noblet sets Jewels, Concept by
                         <Link href="https://irepute.in/" target='blank'> repute</Link>.
                       </p>
                     </div>

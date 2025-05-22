@@ -2048,3 +2048,21 @@ export const SHIPPING_ZONE_LIST = ({ checkoutId }) => {
     variables: { checkoutId },
   };
 };
+
+export const CREATE_CUSTOMER_PRODUCT = ({ input }) => {
+  return {
+    query: `
+    mutation CustomProductCreate($input: CustomProductInput!) {
+  customProductCreate(input: $input) {
+    errors {
+      values
+      message
+      code
+    }
+  }
+}
+
+    `,
+    variables: { input },
+  };
+};

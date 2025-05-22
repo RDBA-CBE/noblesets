@@ -919,10 +919,10 @@ const ShopPage = () => {
           dispatch(handleFilterSidebarClose());
           filterOption();
         }}
-        design={productDesigns}
-        finish={productFinishes}
-        stoneType={productStoneTypes}
-        style={productStyles}
+        // design={productDesigns}
+        // finish={productFinishes}
+        // stoneType={productStoneTypes}
+        // style={productStyles}
         attributeList={attributeList}
       />
 

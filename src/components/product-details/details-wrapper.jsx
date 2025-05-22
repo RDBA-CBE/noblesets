@@ -77,7 +77,6 @@ const DetailsWrapper = ({
     offerDate,
   } = productItem || {};
 
-  console.log("✌️productItem --->", productItem);
 
   const [ratingVal, setRatingVal] = useState(0);
   const [textMore, setTextMore] = useState(false);
@@ -678,6 +677,7 @@ const DetailsWrapper = ({
         sku: formData.sku,
         message: formData.message,
       };
+  
 
       setSuccess("Form submitted successfully!");
       setError("");

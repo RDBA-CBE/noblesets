@@ -1,18 +1,23 @@
 import React, { useEffect } from "react";
 import SEO from "@/components/seo";
 import Wrapper from "@/layout/wrapper";
-import JewelryBanner from "@/components/banner/jewelry-banner";
-import JewelryShopBanner from "@/components/shop-banner/jewelry-shop-banner";
-import PopularProducts from "@/components/products/jewelry/popular-products";
-import JewelryCollectionBanner from "@/components/shop-banner/jewelry-collection-banner";
-import InstagramAreaFour from "@/components/instagram/instagram-area-4";
-import FeatureAreaThree from "@/components/features/feature-area-3";
-import FooterTwo from "@/layout/footers/footer-2";
-import HeaderTwo from "@/layout/headers/header-2";
 import {
   useCreateCheckoutTokenWithoutEmailMutation,
   useGetCartListQuery,
 } from "@/redux/features/card/cardApi";
+import HomeCategorySection from "@/components/home/category-section";
+import GiftWrapSection from "@/components/home/gift-wrap";
+import FeaturedProdectsSection from "@/components/home/featured-products";
+import InstagramSection from "@/components/home/instagram-section";
+import HomeCelebritySection from "@/components/home/home-celebritysection";
+import HomeBanner from "@/components/home/Homebanner";
+import HeaderSection from "@/components/home/headerSection";
+import HomeFooter from "@/components/home/HomeFooter";
+import ShopByBudget from "@/components/home/shopByBudget";
+import ShopByCategory from "@/components/home/shopByCategory";
+import ShopByCollections from "@/components/home/shopByCollections";
+import GiftSection from "@/components/home/giftSection";
+import NobelsetsPromises from "@/components/home/NobelsetsPromises";
 
 const Index = () => {
   // const dispatch = useDispatch();
@@ -65,17 +70,37 @@ const Index = () => {
   return (
     <Wrapper>
       <SEO pageTitle="Home" />
-      <HeaderTwo />
-      <JewelryBanner />
-      <FeatureAreaThree />
-      <JewelryShopBanner />
+      <HeaderSection />
+      <div style={{background:"#fff9f4"}}>
+      <div className="section-wd ">
+      <HomeBanner />
+      </div>
+      </div>
+     
+     
+      {/* <FeatureAreaThree /> */}
+      {/* <JewelryShopBanner /> */}
+
+      <HomeCategorySection />
+      <ShopByBudget />
+      <ShopByCategory />
+
+      <GiftSection />
+      <ShopByCollections />
+
+      <NobelsetsPromises />
+
+      {/* <GiftWrapSection /> */}
+      {/* <FeaturedProdectsSection />
+      <InstagramSection />
+      <HomeCelebritySection /> */}
       {/* <JewelryAbout/> */}
-      <PopularProducts />
+      {/* <PopularProducts /> */}
       {/* <ProductArea/> */}
-      <JewelryCollectionBanner />
+      {/* <JewelryCollectionBanner /> */}
       {/* <BestSellerPrd/> */}
-      <InstagramAreaFour />
-      <FooterTwo />
+      {/* <InstagramAreaFour /> */}
+      <HomeFooter />
     </Wrapper>
   );
 };
