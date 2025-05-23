@@ -71,6 +71,9 @@ const DetailsWrapper = ({
     offerDate,
   } = productItem || {};
 
+console.log('DetailsWrapper --->', productItem);
+
+
   const [ratingVal, setRatingVal] = useState(0);
   const [textMore, setTextMore] = useState(false);
   const [channel, setChannel] = useState("india-channel");

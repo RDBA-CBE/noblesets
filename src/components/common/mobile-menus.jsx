@@ -1,29 +1,33 @@
 import React, { useEffect, useState } from "react";
-import Image from "next/image";
 import Link from "next/link";
 import { userLoggedOut } from "@/redux/features/auth/authSlice";
 import { cart_list, closeUserSidebar } from "@/redux/features/cartSlice";
 import { useDispatch } from "react-redux";
 import { useRouter } from "next/router";
-import { useLogoutMutation } from "@/redux/features/productApi";
+import {
+  useLogoutMutation,
+  useNobelsetCategoryListMutation,
+} from "@/redux/features/productApi";
+import { useSetState } from "@/utils/functions";
+import Loader from "../loader/loader";
 
 const MobileMenus = () => {
   const [isActiveMenu, setIsActiveMenu] = useState("");
   const [token, setToken] = useState("");
-
   const [logoutRefetch] = useLogoutMutation();
 
+  const [state, setState] = useSetState({
+    categoryList: [],
+  });
+
+  const [categoryLists, { loading: loading }] =
+    useNobelsetCategoryListMutation();
 
   const dispatch = useDispatch();
   const router = useRouter();
 
-  // handleOpenSubMenu
   const handleOpenSubMenu = (title) => {
-    if (title === isActiveMenu) {
-      setIsActiveMenu("");
-    } else {
-      setIsActiveMenu(title);
-    }
+    setIsActiveMenu((prev) => (prev === title ? "" : title));
   };
 
   useEffect(() => {
@@ -33,125 +37,108 @@ const MobileMenus = () => {
 
   const closeCart = async () => {
     try {
-      const res = await logoutRefetch({});
+      await logoutRefetch({});
       dispatch(userLoggedOut());
       dispatch(closeUserSidebar());
       router.push("/login");
       if (token) {
         dispatch(cart_list([]));
         localStorage.clear();
-
       }
     } catch (error) {
       console.log("error: ", error);
     }
   };
 
+  const categoryList = async () => {
+    try {
+      const res = await categoryLists();
+      const category = res?.data?.data?.categories?.edges;
+      if (category?.length > 0) {
+        const categoryList = res?.data?.data?.categories?.edges?.map(
+          (item) => ({
+            name: item?.node?.name,
+            id: item?.node?.id,
+            slug: item?.node?.slug,
+          })
+        );
+        setState({ categoryList });
+      }
+
+      setIsActiveMenu(!isActiveMenu);
+    } catch (error) {
+      console.log("✌️error --->", error);
+    }
+  };
+
   return (
     <>
       <ul>
-        {/* {menu_data.map((menu) =>
-        menu.homes ? (
-          <li key={menu.id} className="has-dropdown has-mega-menu">
-            <Link href={menu.link}>{menu.title}</Link>
-            <div className="home-menu tp-submenu tp-mega-menu">
-              <div className="row row-cols-1 row-cols-lg-4 row-cols-xl-4">
-                {menu.home_pages.map((home, i) => (
-                  <div key={i} className="col">
-                    <div className="home-menu-item">
-                      <Link href={home.link}>
-                        <div className="home-menu-thumb p-relative fix">
-                          <Image src={home.img} alt="home img" />
-                        </div>
-                        <div className="home-menu-content">
-                          <h5 className="home-menu-title">{home.title}</h5>
-                        </div>
-                      </Link>
-                    </div>
-                  </div>
-                ))}
-              </div>
-            </div>
-          </li>
-        ) : menu.products ? (
-          <li key={menu.id} className="has-dropdown has-mega-menu ">
-            <Link href={menu.link}>{menu.title}</Link>
-            <ul className="tp-submenu tp-mega-menu mega-menu-style-2">
-              {menu.product_pages.map((p, i) => (
-                <li key={i} className="has-dropdown">
-                  <Link href={p.link} className="mega-menu-title">
-                    {p.title}
-                  </Link>
-                  <ul className="tp-submenu">
-                    {p.mega_menus.map((m, i) => (
-                      <li key={i}>
-                        <Link href={m.link}>{m.title}</Link>
-                      </li>
-                    ))}
-                  </ul>
-                </li>
-              ))}
-            </ul>
-          </li>
-        ) : menu.sub_menu ? (
-          <li key={menu.id} className="has-dropdown">
-            <Link href={menu.link}>{menu.title}</Link>
-            <ul className="tp-submenu">
-              {menu.sub_menus.map((b, i) => (
-                <li key={i}>
-                  <Link href={b.link}>{b.title}</Link>
-                </li>
-              ))}
-            </ul>
-          </li>
-        ) : (
-          <li key={menu.id}>
-            <Link href={menu.link}>{menu.title}</Link>
-          </li>
-        )
-      )} */}
-
         <li>
           <Link href="/" style={{ fontWeight: "500" }}>
-            HOME
+            ALL JEWELLERY
           </Link>
         </li>
 
         <li className="has-dropdown has-mega-menu">
-          <Link href="/shop" style={{ fontWeight: "500" }}>
-            SHOP
-          </Link>
+          <button
+            useNobelsetCategoryListMutation
+            onMouseEnter={() => categoryList()}
+            // onMouseLeave={() => setIsActiveMenu(false)}
+            onClick={() => categoryList()}
+            style={{
+              fontWeight: "500",
+              paddingTop: "18px",
+              paddingBottom: "10px",
+              fontSize: "16px",
+              color: "black",
+            }}
+          >
+            COLLECTIONS
+          </button>
+          {isActiveMenu && (
+            <div
+              className={`transition-all duration-300 ease-in-out overflow-hidden ${
+                isActiveMenu ? "max-h-96 opacity-100" : "max-h-0 opacity-0"
+              }`}
+            >
+              {loading ? (
+                <Loader />
+              ) : state.categoryList?.length > 0 ? (
+                state.categoryList?.map((item) => (
+                  <ul className="pl-4 pt-2 space-y-2">
+                    <li>
+                      <Link
+                        href={`/shop?category=${item?.slug
+                          .toLowerCase()
+                          .replace("&", "")
+                          .split(" ")
+                          .join("-")}`}
+                      >
+                        {item?.name}
+                      </Link>
+                    </li>
+                  </ul>
+                ))
+              ) : (
+                <div>No Category Found</div>
+              )}
+            </div>
+          )}
         </li>
 
         <li>
           <Link href="/about" style={{ fontWeight: "500" }}>
-            ABOUT US
+            SILVER
           </Link>
         </li>
 
         <li>
           <Link href="/gift-card" style={{ fontWeight: "500" }}>
-            GIFT CARD
+            GIFTING
           </Link>
         </li>
 
-        <li>
-          <Link href="/pre-orders" style={{ fontWeight: "500" }}>
-            PRE-ORDERS
-          </Link>
-        </li>
-
-        <li>
-          <Link href="/sale" style={{ fontWeight: "500" }}>
-            SALE
-          </Link>
-        </li>
-
-        <li>
-          <Link href="/contact" style={{ fontWeight: "500" }}>
-            CONTACT US
-          </Link>
-        </li>
         {token && (
           <li>
             <Link href="/wishlist" style={{ fontWeight: "500" }}>
@@ -168,8 +155,8 @@ const MobileMenus = () => {
 
         <li>
           <Link href="/login" style={{ fontWeight: "500" }}>
-            <button style={{ fontWeight: "500" }} onClick={() => closeCart()}>
-              {token ? "LOGOUT" : `LOGIN / REGISTER`}
+            <button style={{ fontWeight: "500" }} onClick={closeCart}>
+              {token ? "LOGOUT" : "LOGIN / REGISTER"}
             </button>
           </Link>
         </li>

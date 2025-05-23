@@ -344,20 +344,21 @@ export const GET_PRODUCTLIST_BY_ID = ({ ids, channel }) => {
 export const CATEGORY_LIST = ({ channel, first }) => {
   return JSON.stringify({
     query: `
-    query CategoryList($first: Int!,$after: String, $channel: String!) {
-      categories(first: $first, after: $after) {
-        edges {
-          node {
-            id
-            name
-            description
-            products(channel: $channel) {
-              totalCount
-            }
-          }
+   query CategoryList($first: Int!, $after: String, $channel: String!) {
+  categories(first: $first, after: $after) {
+    edges {
+      node {
+        id
+        name
+        description
+        products(channel: $channel) {
+          totalCount
         }
+        slug
       }
     }
+  }
+}
     `,
     variables: { channel, first },
   });

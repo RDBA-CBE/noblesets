@@ -141,7 +141,7 @@ export default function App({ Component, pageProps }) {
             {/* <Elements stripe={stripePromise}> */}
             <UserInfoHandler />
             <div id="root">
-              {!paths.includes(router.pathname) &&
+              {/* {!paths.includes(router.pathname) &&
                 !isOrderSuccessPath &&
                 !isOrderFailedPath &&
                 !isOrderDetailsPath && (
@@ -171,7 +171,7 @@ export default function App({ Component, pageProps }) {
                       </div>
                     ))}
                   </div>
-                )}
+                )} */}
               {loading ? (
                 <CommonLoader loading={loading} />
               ) : (

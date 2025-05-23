@@ -7,6 +7,7 @@ import {
   useFeatureProductQuery,
   useGetProductTypeQuery,
   useGetSubCategoryListQuery,
+  useNobelsetCategoryListMutation,
   usePriceFilterMutation,
   useSubCatListMutation,
 } from "@/redux/features/productApi";
@@ -18,6 +19,7 @@ import CommonImage from "../../../../public/assets/img/earring-menu-pic-1.png";
 import Loader from "../../../components/loader/loader";
 import { useDispatch } from "react-redux";
 import { filterData } from "@/redux/features/shop-filter-slice";
+import { useSetState } from "@/utils/functions";
 
 const slider_setting = {
   slidesPerView: 4,
@@ -171,97 +173,17 @@ const CategoryContent = ({
   );
 };
 
-const CategoryComponent = ({
-  commonImage,
-  lastHoveredCategory,
-  setLastHoveredCategory,
-}) => {
+const CategoryComponent = (props) => {
+  const { productList, lastHoveredCategory, setLastHoveredCategory } = props;
+  console.log("productList --->", productList);
+
   const router = useRouter();
   const [hoveredCategory, setHoveredCategory] = useState(null);
   const [priceFilter, { isLoading: productLoading }] = usePriceFilterMutation();
-  const [productList, setProductList] = useState([]);
   const [categoryImage, setCategoryImage] = useState([]);
   const [subCategoryLists, setSubCategoryLists] = useState([]);
 
   const [subCatList, { isLoading: loadingProduct }] = useSubCatListMutation();
-
-  const categoryMap = {
-    Earrings: {
-      id: "earrings",
-      title: "ALL EARRINGS",
-    },
-    Necklaces: {
-      id: "necklaces",
-      title: "ALL NECKLACES",
-    },
-    bangles__bracelets: {
-      id: "bangles__bracelets",
-      title: "ALL BANGLES & BRACELETS",
-    },
-    finger_rings: {
-      id: "finger_rings",
-      title: "ALL RINGS",
-    },
-    Anklets: {
-      id: "anklets",
-      title: "ALL ANKLETS",
-    },
-    OtherAccessories: {
-      id: "other_accessories",
-      title: "ALL OTHER ACCESSORIES",
-    },
-    Idols: {
-      id: "idols",
-      title: "IDOLS",
-    },
-  };
-
-  const currentCategory = hoveredCategory || lastHoveredCategory;
-
-  const handleCategoryHover = (category) => {
-    setHoveredCategory(category);
-    setLastHoveredCategory(category);
-  };
-
-  const handleCategoryLeave = () => {
-    setLastHoveredCategory(hoveredCategory);
-    setHoveredCategory(hoveredCategory);
-  };
-
-  useEffect(() => {
-    if (currentCategory) {
-      filterByCategory(currentCategory);
-    }
-  }, [hoveredCategory, lastHoveredCategory]);
-
-  const filterByCategory = async (category) => {
-    const categoryId = categoryMap[category]?.id || "";
-
-    if (categoryId) {
-      const SubCategory = await subCatList({ slug: categoryId });
-      setSubCategoryLists(SubCategory?.data?.data?.category?.children?.edges);
-
-      priceFilter({
-        filter: { categorySlugs: categoryId },
-        sortBy: { direction: "DESC", field: "CREATED_AT" },
-        first: 12,
-        after: null,
-      }).then((res) => {
-        const list = res?.data?.data?.productsSearch?.edges?.slice(0, 11);
-        const result = list
-          ?.map((item) => item.node?.category)
-          ?.flatMap((subArray) =>
-            subArray.find(
-              (item) =>
-                item.slug === categoryId && item.backgroundImageUrl !== ""
-            )
-          );
-
-        setCategoryImage(result?.[0]?.backgroundImageUrl || commonImage);
-        setProductList(list);
-      });
-    }
-  };
 
   const renderContent = () => {
     if (productList?.length === 0) return null;
@@ -275,7 +197,7 @@ const CategoryComponent = ({
         className="tp-category-slider-active-4 swiper-container"
       >
         {productList?.map((item) => (
-          <SwiperSlide key={item?.id}>
+          <SwiperSlide key={item?.node?.id}>
             <div
               className="col-lg-3 menus-product-list"
               style={{ padding: "0px 8px 0px 0px", width: "250px" }}
@@ -300,12 +222,12 @@ const CategoryComponent = ({
   };
 
   const renderCategoryContent = () => {
-    if (!currentCategory || !categoryMap[currentCategory]) return null;
+    // if (!currentCategory || !categoryMap[currentCategory]) return null;
 
-    const { title } = categoryMap[currentCategory];
+    // const { title } = categoryMap[currentCategory];
     return (
       <CategoryContent
-        title={title}
+        // title={title}
         commonImage={categoryImage}
         lists={subCategoryLists}
         categoryName={lastHoveredCategory}
@@ -332,6 +254,16 @@ function SingleLoader({ loading }) {
 const Menus = () => {
   const router = useRouter();
 
+  const [state, setState] = useSetState({
+    categoryList: [],
+    productList: [],
+  });
+
+  const [categoryLists, { loading: loading }] =
+    useNobelsetCategoryListMutation();
+
+  const [priceFilter, { isLoading: productLoading }] = usePriceFilterMutation();
+
   const dispatch = useDispatch();
   const [lastHoveredCategory, setLastHoveredCategory] = useState("Earrings");
 
@@ -339,73 +271,148 @@ const Menus = () => {
     dispatch(filterData({}));
   }, [router]);
 
+  useEffect(() => {
+    categoryList();
+  }, []);
+
+  const categoryList = async () => {
+    try {
+      const res = await categoryLists();
+      const category = res?.data?.data?.categories?.edges;
+      if (category?.length > 0) {
+        const categoryList = res?.data?.data?.categories?.edges?.map(
+          (item) => ({
+            name: item?.node?.name,
+            id: item?.node?.id,
+            slug: item?.node?.slug,
+          })
+        );
+        setState({ categoryList });
+        console.log("✌️categoryList --->", categoryList);
+      }
+    } catch (error) {
+      console.log("✌️error --->", error);
+    }
+  };
+
+  const hoverCategoryProduct = async (slug) => {
+    console.log("✌️slug --->", slug);
+    setLastHoveredCategory(slug);
+
+    const res = await priceFilter({
+      filter: { categorySlugs: slug },
+      sortBy: { direction: "DESC", field: "CREATED_AT" },
+      first: 12,
+      after: null,
+    });
+    console.log("✌️res --->", res);
+    const list = res?.data?.data?.productsSearch?.edges?.slice(0, 11);
+    console.log("✌️list --->", list);
+    setState({ productList: list });
+
+    // .then((res) => {
+    //   console.log("✌️res --->", res);
+    //   // const result = list
+    //   //   ?.map((item) => item.node?.category)
+    //   //   ?.flatMap((subArray) =>
+    //   //     subArray.find(
+    //   //       (item) =>
+    //   //         item.slug === categoryId && item.backgroundImageUrl !== ""
+    //   //     )
+    //   //   );
+    //   // setCategoryImage(result?.[0]?.backgroundImageUrl || commonImage);
+    //   // setProductList(list);
+    // });
+  };
+
   return (
-    <ul style={{ display: "flex"}}>
+    <ul style={{ display: "flex" }}>
       <li>
-        <Link href="/" style={{ fontWeight: "500",color:"black" }}>
+        <Link href="/shop" style={{ fontWeight: "500", color: "black" }}>
           All Jewellery
         </Link>
       </li>
 
-      <li>
-        <Link href="/myOrders" style={{ fontWeight: "500" ,color:"black"}}>
+      {/* <li>
+        <Link href="/myOrders" style={{ fontWeight: "500", color: "black" }}>
           Collections
         </Link>
-      </li>
-      {/* <li className="has-dropdown has-mega-menu">
-        <Link href="/shop" style={{ fontWeight: "500" }}>
+      </li> */}
+      <li className="has-dropdown has-mega-menu">
+        <Link href="/shop" style={{ fontWeight: "500", color: "black" }}>
           Collections
         </Link>
         <div className="home-menu tp-submenu tp-mega-menu">
           <div className="row">
             <div
               className="col-lg-2"
-              style={{ backgroundColor: "#b4633a", padding: "0px" }}
+              style={{
+                backgroundColor: "#b4633a",
+                padding: "0px",
+                color: "black",
+              }}
             >
               <ul>
-                <li
-                  className={`shop-submenu-catageroy-list ${
-                    lastHoveredCategory === "Earrings" ? "active" : ""
-                  }`}
-                  onMouseEnter={() => setLastHoveredCategory("Earrings")}
-                  style={{
-                    display: "flex",
-                    alignItems: "center",
-                    justifyContent: "space-between",
-                    paddingRight: "10px",
-                  }}
-                  onClick={() => {
-                    router.push({
-                      pathname: "/shop",
-                      query: { category: "earrings" },
-                    });
-                  }}
-                >
-                  <a
-                    href="/shop?category=earrings"
-                    style={{ cursor: "pointer", marginBottom: "0px" }}
-                    className={`shop-submenu-catageroy-list-a cursor-pointer ${
-                      lastHoveredCategory === "Earrings" ? "active" : ""
+                {state.categoryList?.map((item) => (
+                  <li
+                    className={`shop-submenu-catageroy-list ${
+                      lastHoveredCategory == item?.slug ? "active" : ""
                     }`}
+                    onMouseEnter={() => hoverCategoryProduct(item?.slug)}
+                    style={{
+                      display: "flex",
+                      alignItems: "center",
+                      justifyContent: "space-between",
+                      paddingRight: "10px",
+                    }}
                     onClick={() => {
                       router.push({
                         pathname: "/shop",
-                        query: { category: "earrings" },
+                        query: {
+                          category: tem?.slug
+                            .toLowerCase()
+                            .replace("&", "")
+                            .split(" ")
+                            .join("-"),
+                        },
                       });
                     }}
                   >
-                    Silver
-                  </a>
+                    <a
+                      href={`/shop?category=${item?.slug
+                        .toLowerCase()
+                        .replace("&", "")
+                        .split(" ")
+                        .join("-")}`}
+                      style={{ cursor: "pointer", marginBottom: "0px" }}
+                      className={`shop-submenu-catageroy-list-a cursor-pointer ${
+                        lastHoveredCategory == item?.slug ? "active" : ""
+                      }`}
+                      onClick={() => {
+                        router.push({
+                          pathname: "/shop",
+                          query: {
+                            category: item?.slug
+                              .toLowerCase()
+                              .replace("&", "")
+                              .split(" ")
+                              .join("-"),
+                          },
+                        });
+                      }}
+                    >
+                      {item?.name}
+                    </a>
 
-                  <RightOutlined
-                    style={{ cursor: "pointer", marginBottom: "0px" }}
-                    className={`shop-submenu-catageroy-list-a ${
-                      lastHoveredCategory === "Earrings" ? "active" : ""
-                    }`}
-                  />
-                </li>
-
-                <li
+                    <RightOutlined
+                      style={{ cursor: "pointer", marginBottom: "0px" }}
+                      className={`shop-submenu-catageroy-list-a ${
+                        lastHoveredCategory == item?.slug ? "active" : ""
+                      }`}
+                    />
+                  </li>
+                ))}
+                {/* <li
                   className={`shop-submenu-catageroy-list ${
                     lastHoveredCategory === "Necklaces" ? "active" : ""
                   }`}
@@ -481,7 +488,7 @@ const Menus = () => {
                       });
                     }}
                   >
-                    Silver
+                    Silvers
                   </a>
                   <RightOutlined
                     style={{ cursor: "pointer", marginBottom: "0px" }}
@@ -660,30 +667,36 @@ const Menus = () => {
                         : ""
                     }`}
                   />
-                </li>
+                </li> */}
               </ul>
             </div>
-          <div className="col-lg-10">
+            <div className="col-lg-10">
               <div className="tp-mega-menu-item">
                 <CategoryComponent
                   commonImage="/assets/img/earring-menu-pic-1.png" // Add the path to your common image
                   lastHoveredCategory={lastHoveredCategory}
-                  setLastHoveredCategory={setLastHoveredCategory}
+                  productList={state.productList}
                 />
               </div>
             </div>
           </div>
         </div>
-      </li> */}
+      </li>
 
       <li>
-        <Link href="/gift-card" style={{ fontWeight: "500",color:"black" }}>
+        <Link
+          href={{
+            pathname: "/shop",
+            query: { category: "silver" },
+          }}
+          style={{ fontWeight: "500", color: "black" }}
+        >
           Silver
         </Link>
       </li>
       {/* {token && ( */}
       <li>
-        <Link href="/myOrders" style={{ fontWeight: "500",color:"black" }}>
+        <Link href="/gift-card" style={{ fontWeight: "500", color: "black" }}>
           Gifting
         </Link>
       </li>

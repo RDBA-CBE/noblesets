@@ -78,6 +78,7 @@ const DetailsWrapper1 = ({
     tags,
     offerDate,
   } = productItem || {};
+console.log('DetailsWrapper1 --->', productItem);
 
   const [ratingVal, setRatingVal] = useState(0);
   const [textMore, setTextMore] = useState(false);
@@ -1721,13 +1722,15 @@ const DetailsWrapper1 = ({
               />
             </div>
 
-            {/* Table */}
+         {productItem?.sizeGuide?.sizedetail &&
             <div
               className="table-responsive-1 mb-3"
               dangerouslySetInnerHTML={{
                 __html: cleanHTML(productItem?.sizeGuide?.sizedetail),
               }}
             />
+        }
+
           </div>
         </div>
       </ReactModal>

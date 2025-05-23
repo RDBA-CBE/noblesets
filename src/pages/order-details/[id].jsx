@@ -7,7 +7,7 @@ import ShopArea from "@/components/shop/shop-area";
 import FooterTwo from "@/layout/footers/footer-2";
 import HeaderTwo from "@/layout/headers/header-2";
 import Wrapper from "@/layout/wrapper";
-import React from "react";
+import React, { useState } from "react";
 import OrderBanner from "@assets/img/shop-banner.jpg";
 import { useRouter } from "next/router";
 import { useOrderListQuery } from "@/redux/features/productApi";
@@ -19,6 +19,9 @@ const OrderDetails = () => {
   const orderId = router?.query?.id;
   const { data } = useOrderListQuery({ orderId: orderId });
 
+  const [reviews, setReviews] = useState([]);
+  const [showAll, setShowAll] = useState(false);
+
   return (
     <Wrapper>
       <SEO pageTitle="Cart" />
@@ -29,6 +32,7 @@ const OrderDetails = () => {
         BgImage={OrderBanner}
       />
       <MyOrderDetails data={data} />
+
       <FooterTwo primary_style={true} />
     </Wrapper>
   );

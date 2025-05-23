@@ -73,6 +73,7 @@ const ShopPage = () => {
   const [productStoneTypes, setProductStoneTypes] = useState([]);
   const [productStyles, setProductStyles] = useState([]);
   const [attributeList, setAttributeList] = useState([]);
+console.log('✌️attributeList --->', attributeList);
 
   const categoryId = router?.query?.category;
 

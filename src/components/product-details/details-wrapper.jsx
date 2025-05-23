@@ -76,6 +76,8 @@ const DetailsWrapper = ({
     tags,
     offerDate,
   } = productItem || {};
+console.log('DetailsWrapperss --->', productItem);
+
 
 
   const [ratingVal, setRatingVal] = useState(0);

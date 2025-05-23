@@ -18,11 +18,10 @@ import ShopByCategory from "@/components/home/shopByCategory";
 import ShopByCollections from "@/components/home/shopByCollections";
 import GiftSection from "@/components/home/giftSection";
 import NobelsetsPromises from "@/components/home/NobelsetsPromises";
+import { useMaxPriceMutation } from "@/redux/features/productApi";
 
 const Index = () => {
-  // const dispatch = useDispatch();
-
-  const { data: tokens } = useGetCartListQuery();
+  const [maximumPrice] = useMaxPriceMutation();
 
   const [createCheckoutTokenWithoutEmail, { data: data }] =
     useCreateCheckoutTokenWithoutEmailMutation();
@@ -37,6 +36,7 @@ const Index = () => {
     if (!checkoutTokenUSD || checkoutTokenUSD == "undefined") {
       createCheckoutTokenUSD();
     }
+    getProductMaxPrice();
   }, []);
 
   const createCheckoutTokenINR = async () => {
@@ -67,17 +67,40 @@ const Index = () => {
     }
   };
 
+  const getProductMaxPrice = () => {
+    // const filter = commonFilter();
+    maximumPrice({
+      // filter,
+      first: 1,
+      sortBy: { direction: "DESC", field: "PRICE" },
+    }).then((res) => {
+      console.log("✌️res --->", res);
+      const list = res.data?.data?.productsSearch?.edges;
+      if (list?.length > 0) {
+        const maxPrice =
+          list[0]?.node?.pricing?.priceRange?.start?.gross?.amount;
+        console.log("✌️maxPrice --->", maxPrice);
+
+        // setPriceValue([0, maxPrice]);
+        // setInitialMaxPrice(maxPrice);
+        // setMaxPrice(maxPrice);
+      } else {
+        // setPriceValue([0, 0]);
+        // setMaxPrice(0);
+      }
+    });
+  };
+
   return (
     <Wrapper>
       <SEO pageTitle="Home" />
       <HeaderSection />
-      <div style={{background:"#fff9f4"}}>
-      <div className="section-wd ">
-      <HomeBanner />
+      <div style={{ background: "#fff9f4" }}>
+        <div className="section-wd ">
+          <HomeBanner />
+        </div>
       </div>
-      </div>
-     
-     
+
       {/* <FeatureAreaThree /> */}
       {/* <JewelryShopBanner /> */}
 

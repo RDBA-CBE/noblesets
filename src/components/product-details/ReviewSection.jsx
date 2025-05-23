@@ -117,20 +117,6 @@ const ReviewSection = () => {
               </div>
             </div>
 
-            {/* Tags */}
-            {/* <div className="d-flex gap-2 flex-wrap mb-4">
-              {[
-                { label: 'Cleanliness', score: '4.0' },
-                { label: 'Safety & Security', score: '4.0' },
-                { label: 'Staff', score: '4.0' },
-                { label: 'Amenities', score: '3.5' },
-                { label: 'Location', score: '3.0' },
-              ].map((item, i) => (
-                <span key={i} className="badge rounded-pill bg-light border text-dark p-2">
-                  <strong className="text-gold">{item.score}</strong> {item.label}
-                </span>
-              ))}
-            </div> */}
 
             {/* Write a Review */}
             <div className="mb-4">
@@ -165,7 +151,7 @@ const ReviewSection = () => {
                     count={5}
                     value={formData.rating}
                     onChange={(newRating) => setFormData({ ...formData, rating: newRating })}
-                    size={20}
+                    size={25}
                     activeColor="#b4633a"
                   />
                 </div>

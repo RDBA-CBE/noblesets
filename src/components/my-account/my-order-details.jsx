@@ -5,7 +5,8 @@ import {
   roundOff,
 } from "@/utils/functions";
 import moment from "moment/moment";
-import React, { useEffect } from "react";
+import React, { useEffect, useState } from "react";
+import { Rating } from "react-simple-star-rating";
 
 const MyOrderDetails = ({ data }) => {
   const Data = data?.data?.order;
@@ -18,6 +19,36 @@ const MyOrderDetails = ({ data }) => {
   const paymentMethod = data?.data?.order?.paymentMethod?.name;
   const codAmount = data?.data?.order?.codAmount;
   const giftWrapAmount = data?.data?.order?.giftWrapAmount;
+
+  const [formData, setFormData] = useState({
+    name: "",
+    comment: "",
+    rating: 0,
+    images: [],
+  });
+
+  const handleImageUpload = (e) => {
+    const files = Array.from(e.target.files);
+    const imageUrls = files.map((file) => URL.createObjectURL(file));
+    setFormData((prev) => ({
+      ...prev,
+      images: [...prev.images, ...imageUrls],
+    }));
+  };
+
+  const handleSubmit = () => {
+    try {
+      const body = {
+        input: {
+          product: "UHJvZHVjdDozNg==",
+          rating: 5,
+          comment: "This product is amazing!",
+        },
+      };
+    } catch (error) {
+      console.log("✌️error --->", error);
+    }
+  };
 
   const FormatDate = moment(Data?.created).format("MMMM D, YYYY");
   return (
@@ -214,6 +245,68 @@ const MyOrderDetails = ({ data }) => {
               <b>Phone:</b> {Data?.shippingAddress?.phone}
             </p>
           </div>
+        </div>
+
+        <div className="mb-4">
+          <h5 className="">Write a Review</h5>
+          <form onSubmit={handleSubmit}>
+            <input
+              type="text"
+              className="form-control mb-2"
+              placeholder="Your name"
+              value={formData.name}
+              onChange={(e) =>
+                setFormData({ ...formData, name: e.target.value })
+              }
+              required
+            />
+            <textarea
+              className="form-control mb-2"
+              placeholder="Your review"
+              value={formData.comment}
+              onChange={(e) =>
+                setFormData({ ...formData, comment: e.target.value })
+              }
+              required
+            />
+
+            <div className=" gap-2 flex-wrap mb-2">
+              <input
+                type="file"
+                className="form-control"
+                multiple
+                accept="image/*"
+                onChange={handleImageUpload}
+              />
+              <div className="d-flex gap-2 mt-2 flex-wrap">
+                {formData.images.map((img, idx) => (
+                  <img
+                    key={idx}
+                    src={img}
+                    alt="preview"
+                    className="rounded"
+                    width={50}
+                    height={50}
+                  />
+                ))}
+              </div>
+              <div className="mb-2">
+                <Rating
+                  count={5}
+                  value={formData.rating}
+                  onChange={(newRating) =>
+                    setFormData({ ...formData, rating: newRating })
+                  }
+                  size={25}
+                  activeColor="#b4633a"
+                />
+              </div>
+            </div>
+
+            <button type="submit" className="tp-btn tp-btn-border ">
+              Submit Review
+            </button>
+          </form>
         </div>
       </div>
     </section>

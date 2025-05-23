@@ -414,6 +414,7 @@ export const productApi = apiSlice.injectEndpoints({
         } else {
           channel = channels;
         }
+
         return configuration(
           PRODUCT_FILTER({
             channel: checkChannel(),
@@ -790,6 +791,21 @@ export const productApi = apiSlice.injectEndpoints({
         return configuration(CREATE_CUSTOMER_PRODUCT({ input }));
       },
     }),
+
+    nobelsetCategoryList: builder.mutation({
+      query: (data) => {
+        let channel = "";
+        const channels = localStorage.getItem("channel");
+        if (!channels) {
+          channel = "india-channel";
+        } else {
+          channel = channels;
+        }
+        return configuration(CATEGORY_LIST({ channel, first: 100 }));
+      },
+      providesTags: ["Products"],
+    }),
+
   }),
 });
 
@@ -851,4 +867,5 @@ export const {
   usePincodeListMutation,
   useShippingZoneListMutation,
   useCreateCustomerProductMutation,
+  useNobelsetCategoryListMutation
 } = productApi;

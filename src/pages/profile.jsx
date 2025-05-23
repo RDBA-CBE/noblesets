@@ -9,6 +9,7 @@ import ProfileArea from "@/components/my-account/profile-area";
 import { useGetUserOrdersQuery } from "@/redux/features/order/orderApi";
 import Loader from "@/components/loader/loader";
 import PrivateRouter from "@/layout/private-router";
+import HeaderSection from "@/components/home/headerSection";
 
 const ProfilePage = () => {
   const router = useRouter();
@@ -34,7 +35,7 @@ const ProfilePage = () => {
   return (
     <Wrapper>
       <SEO pageTitle="Profile" />
-      <HeaderTwo style_2={true} />
+      <HeaderSection/>
       <ProfileArea orderData={orderData} />
       <FooterTwo style_2={true} />
     </Wrapper>
