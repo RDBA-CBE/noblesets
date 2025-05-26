@@ -15,6 +15,7 @@ import { yupResolver } from "@hookform/resolvers/yup";
 import { useResetPasswordMutation } from "@/redux/features/auth/authApi";
 import { notifyError, notifySuccess } from "@/utils/toast";
 import ButtonLoader from "../components/loader/button-loader";
+import HeaderSection from "@/components/home/headerSection";
 
 const ForgotPage = () => {
   const [showNewPassword, setShowNewPassword] = useState(false);
@@ -69,7 +70,9 @@ const ForgotPage = () => {
   return (
     <Wrapper>
       <SEO pageTitle="Reset Password" />
-      <HeaderTwo style_2={true} />
+      {/* <HeaderTwo style_2={true} /> */}
+      <HeaderSection />
+
       <CommonBreadcrumb
         title="Forgot Password"
         subtitle="Reset Password"

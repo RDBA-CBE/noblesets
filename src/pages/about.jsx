@@ -8,12 +8,15 @@ import FooterTwo from "@/layout/footers/footer-2";
 import AboutArea from "@/components/about/about-area";
 import JewelryAbout from "@/components/about/jewelry-about";
 import aboutBanner from "../../public/assets/img/shop-banner.jpg";
+import HeaderSection from "@/components/home/headerSection";
 
 const about = () => {
   return (
     <Wrapper>
       <SEO pageTitle="About Us" />
-      <HeaderTwo style_2={true} />
+      {/* <HeaderTwo style_2={true} /> */}
+      <HeaderSection />
+
       <CommonBreadcrumb
         title="About Us"
         subtitle="About Us"

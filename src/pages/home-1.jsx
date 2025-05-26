@@ -13,6 +13,7 @@ import {
   useCreateCheckoutTokenWithoutEmailMutation,
   useGetCartListQuery,
 } from "@/redux/features/card/cardApi";
+import HeaderSection from "@/components/home/headerSection";
 
 const Index = () => {
   // const dispatch = useDispatch();
@@ -65,7 +66,9 @@ const Index = () => {
   return (
     <Wrapper>
       <SEO pageTitle="Home" />
-      <HeaderTwo />
+      {/* <HeaderTwo /> */}
+      <HeaderSection />
+
       <JewelryBanner />
       <FeatureAreaThree />
       <JewelryShopBanner />

@@ -36,6 +36,7 @@ import {
   useShopPaginationMutation,
 } from "../redux/features/productApi";
 import { useRouter } from "next/router";
+import HeaderSection from "@/components/home/headerSection";
 
 const PreOrders = () => {
   const PAGE_LIMIT = 21;
@@ -609,7 +610,10 @@ const PreOrders = () => {
   return (
     <Wrapper>
       <SEO pageTitle="Shop" />
-      <HeaderTwo style_2={true} />
+      {/* <HeaderTwo style_2={true} /> */}
+      <HeaderSection />
+
+
       <ShopBreadcrumb
         title="Pre Orders"
         subtitle="Pre Orders"

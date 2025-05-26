@@ -7,12 +7,15 @@ import CommonBreadcrumb from '@/components/breadcrumb/common-breadcrumb';
 import FooterTwo from '@/layout/footers/footer-2';
 import { useGetCartListQuery } from '@/redux/features/card/cardApi';
 import CartBanner from "../../public/assets/img/shop-banner.jpg";
+import HeaderSection from '@/components/home/headerSection';
 
 const CartPage = () => {
   return (
     <Wrapper>
       <SEO pageTitle="Cart" />
-      <HeaderTwo style_2={true} />
+      {/* <HeaderTwo style_2={true} /> */}
+      <HeaderSection />
+
       <CommonBreadcrumb title="Shopping Cart" subtitle="Shopping Cart" BgImage={CartBanner}/>
       <CartArea/>
       <FooterTwo primary_style={true} />

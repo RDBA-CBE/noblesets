@@ -7,6 +7,7 @@ import Wrapper from "@/layout/wrapper";
 import React from "react";
 import WishlistBanner from "../../public/assets/img/shop-banner.jpg";
 import CelebrityStyleMain from "@/components/celebrity/CelebrityStyleMain";
+import HeaderSection from "@/components/home/headerSection";
 
 
 const CelebrityStyle = () => {
@@ -16,7 +17,9 @@ const CelebrityStyle = () => {
     <>
       <Wrapper>
         <SEO pageTitle="celebrity style" />
-        <HeaderTwo style_2={true} />
+        {/* <HeaderTwo style_2={true} /> */}
+      <HeaderSection />
+
         <CommonBreadcrumb
           title="CELEBRITY STYLE"
           subtitle="CELEBRITY STYLE"

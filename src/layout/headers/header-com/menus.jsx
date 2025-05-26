@@ -296,7 +296,6 @@ const Menus = () => {
   };
 
   const hoverCategoryProduct = async (slug) => {
-    console.log("✌️slug --->", slug);
     setLastHoveredCategory(slug);
 
     const res = await priceFilter({

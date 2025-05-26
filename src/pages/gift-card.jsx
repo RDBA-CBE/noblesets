@@ -9,6 +9,7 @@ import banner from "../../public/assets/img/shop-banner.jpg";
 import CommonBreadcrumb from "@/components/breadcrumb/common-breadcrumb";
 import PrdDetailsLoader from "@/components/loader/prd-details-loader";
 import ErrorMsg from "@/components/common/error-msg";
+import HeaderSection from "@/components/home/headerSection";
 
 export default function GiftCart() {
   const {
@@ -102,7 +103,9 @@ export default function GiftCart() {
   return (
     <Wrapper>
       <SEO pageTitle="Gift Card" />
-      <HeaderTwo style_2={true} />
+      {/* <HeaderTwo style_2={true} /> */}
+      <HeaderSection />
+
       <CommonBreadcrumb
         title="Gift Card"
         subtitle="Gift Card"

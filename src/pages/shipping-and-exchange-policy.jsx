@@ -4,12 +4,15 @@ import HeaderTwo from "@/layout/headers/header-2";
 import Wrapper from "@/layout/wrapper";
 import FooterTwo from "@/layout/footers/footer-2";
 import ShippingAndExchangePolicyMain from "../components/shippingPolicy/shippingPolicyMain";
+import HeaderSection from "@/components/home/headerSection";
 
 const ShippingAndExchangePolicy = () => {
   return (
     <Wrapper>
       <SEO pageTitle="Shipping And Exchange Policy" />
-      <HeaderTwo style_2={true} />
+      {/* <HeaderTwo style_2={true} /> */}
+      <HeaderSection />
+
 
       <ShippingAndExchangePolicyMain />
       <FooterTwo primary_style={true} />

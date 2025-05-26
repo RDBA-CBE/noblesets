@@ -13,6 +13,7 @@ import { useRouter } from "next/router";
 import { useOrderListQuery } from "@/redux/features/productApi";
 import MyOrderDetails from "../../components/my-account/my-order-details";
 import PrivateRouter from "@/layout/private-router";
+import HeaderSection from "@/components/home/headerSection";
 
 const OrderDetails = () => {
   const router = useRouter();
@@ -25,7 +26,9 @@ const OrderDetails = () => {
   return (
     <Wrapper>
       <SEO pageTitle="Cart" />
-      <HeaderTwo style_2={true} />
+      {/* <HeaderTwo style_2={true} /> */}
+      <HeaderSection />
+
       <CommonBreadcrumb
         title="Order Details"
         subtitle="Order / Order Details"

@@ -8,6 +8,7 @@ import banner from "../../public/assets/img/shop-banner.jpg";
 import { useGetProductQuery } from "@/redux/features/productApi";
 import ProductDetailsArea from "@/components/product-details/product-details-area";
 import { useSetState } from "../utils/functions";
+import HeaderSection from "@/components/home/headerSection";
 
 const CouponPage = () => {
   const {
@@ -38,7 +39,9 @@ const CouponPage = () => {
   return (
     <Wrapper>
       <SEO pageTitle="Coupon" />
-      <HeaderTwo style_2={true} />
+      {/* <HeaderTwo style_2={true} /> */}
+      <HeaderSection />
+
       <CommonBreadcrumb
         title="Gift Cart"
         subtitle="Coupon"

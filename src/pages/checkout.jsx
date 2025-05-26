@@ -11,6 +11,7 @@ import FooterTwo from '@/layout/footers/footer-2';
 import { useGetCartListQuery } from '@/redux/features/card/cardApi';
 import CheckoutBanner from "@assets/img/shop-banner.jpg";
 import { useCountryListQuery } from '../redux/features/productApi';
+import HeaderSection from '@/components/home/headerSection';
 
 
 const CheckoutPage = () => {
@@ -22,7 +23,7 @@ const CheckoutPage = () => {
   return (
     <Wrapper>
       <SEO pageTitle="Checkout" />
-      <HeaderTwo style_2={true} />
+      <HeaderSection />
       <CommonBreadcrumb title="Checkout" subtitle="Checkout" bg_clr={true} BgImage={CheckoutBanner} />
       <CheckoutArea/>
       <FooterTwo style_2={true} />

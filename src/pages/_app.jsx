@@ -81,7 +81,7 @@ export default function App({ Component, pageProps }) {
   }
 
   const channelList = [
-    { name: "india-channel", value: "INR" },
+    { name: "india-channel", value: "india-channel" },
     { name: "default-channel", value: "USD" },
   ];
 

@@ -5,6 +5,7 @@ import Wrapper from "@/layout/wrapper";
 import FooterTwo from "@/layout/footers/footer-2";
 import { useRouter } from "next/router";
 import { useVerifyEmailMutation } from "../redux/features/auth/authApi";
+import HeaderSection from "@/components/home/headerSection";
 
 const EmailVerifyPage = () => {
   const router = useRouter();
@@ -52,7 +53,9 @@ const EmailVerifyPage = () => {
   return (
     <Wrapper>
       <SEO pageTitle="Login" />
-      <HeaderTwo style_2={true} />
+      {/* <HeaderTwo style_2={true} /> */}
+      <HeaderSection />
+
       <div className="tp-login-input-wrapper">
         <div className="tp-login-input-box">
           <section className="tp-login-area pb-140 pt-120 p-relative z-index-1 fix">

@@ -9,6 +9,7 @@ import { useOrderListQuery } from '@/redux/features/productApi';
 import {
   useCreateCheckoutTokenWithoutEmailMutation,
 } from "@/redux/features/card/cardApi";
+import HeaderSection from '@/components/home/headerSection';
 
 const PaymentSucess = () => {
   const router = useRouter();
@@ -62,7 +63,9 @@ const PaymentSucess = () => {
   return (
     <Wrapper>
     <SEO pageTitle="Payment Success" />
-    <HeaderTwo style_2={true} />
+    {/* <HeaderTwo style_2={true} /> */}
+    <HeaderSection />
+
     <Success data={data} />
     <FooterTwo primary_style={true} />
   </Wrapper>

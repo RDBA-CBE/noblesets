@@ -11,6 +11,7 @@ import {
 } from "@/redux/features/productApi";
 import { useDispatch } from 'react-redux';
 import { get_wishlist_products } from "@/redux/features/wishlist-slice";
+import HeaderSection from '@/components/home/headerSection';
 
 
 const ComparePage = () => {
@@ -32,7 +33,9 @@ const dispatch=useDispatch()
   return (
     <Wrapper>
       <SEO pageTitle="Shop" />
-      <HeaderTwo style_2={true} />
+      {/* <HeaderTwo style_2={true} /> */}
+      <HeaderSection />
+
       <CommonBreadcrumb title="Compare" subtitle="Compare" BgImage={banner}/>
       <CompareArea/>
       <FooterTwo primary_style={true} />

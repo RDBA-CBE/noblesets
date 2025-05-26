@@ -6,12 +6,15 @@ import HeaderTwo from "@/layout/headers/header-2";
 import Wrapper from "@/layout/wrapper";
 import error from "@assets/img/error/error.png";
 import FooterTwo from "@/layout/footers/footer-2";
+import HeaderSection from "@/components/home/headerSection";
 
 const ErrorPage = () => {
   return (
     <Wrapper>
       {/* <SEO pageTitle="404" /> */}
-      <HeaderTwo style_2={true} />
+      {/* <HeaderTwo style_2={true} /> */}
+      <HeaderSection />
+
       {/* 404 area start */}
       <section className="tp-error-area pt-110 pb-110">
         <div className="container">

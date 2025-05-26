@@ -8,6 +8,7 @@ import { useRouter } from "next/router";
 import { useOrderListQuery } from "@/redux/features/productApi";
 import Failed from "@/components/payment/failed";
 import { useCreateCheckoutTokenWithoutEmailMutation } from "@/redux/features/card/cardApi";
+import HeaderSection from "@/components/home/headerSection";
 
 const PaymentFailed = () => {
   const router = useRouter();
@@ -59,7 +60,9 @@ const PaymentFailed = () => {
   return (
     <Wrapper>
       <SEO pageTitle="Order Success" />
-      <HeaderTwo style_2={true} />
+      {/* <HeaderTwo style_2={true} /> */}
+      <HeaderSection />
+
       <Failed data={data} orderId={orderId} />
       <FooterTwo primary_style={true} />
     </Wrapper>
