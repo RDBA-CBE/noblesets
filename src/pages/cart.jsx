@@ -9,6 +9,8 @@ import { useGetCartListQuery } from '@/redux/features/card/cardApi';
 import CartBanner from "../../public/assets/img/shop-banner.jpg";
 import HeaderSection from '@/components/home/headerSection';
 import CartArea1 from '@/components/cart-wishlist/cart-area1';
+import HomeFooter from "@/components/home/HomeFooter";
+
 
 const CartPage = () => {
   return (
@@ -23,7 +25,7 @@ const CartPage = () => {
       {/* <CartArea/> */}
       <CartArea1/>
        </div>
-      <FooterTwo primary_style={true} />
+      <HomeFooter />
     </Wrapper>
   );
 };
