@@ -9,16 +9,11 @@ export default function ShopByBudget() {
   return (
     <>
       <section
-        className="budget-section pt-60"
-        style={{
-          backgroundImage: "url(/assets/img/home/shopByBudget/bg.png)",
-          backgroundSize: "cover",
-          backgroundPosition: "center",
-          backgroundRepeat: "no-repeat",
-        }}
+        className="budget-section pt-60 ShopByBudget position-relative"
+        
       >
         <div className="feature-main mb-50" >
-          <h5 className="sub-ti"><b>✦</b> Lorem ipsum dolor</h5>
+          <h5 className="sub-ti"><b className="pe-2">✦</b> Lorem ipsum dolor</h5>
           <h4
             className="feature-adipisicing main-ti"
             

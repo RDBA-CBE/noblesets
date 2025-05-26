@@ -401,7 +401,7 @@
   // }
 
   .prade-navbar-logo {
-    width: 100px;
+    width: 120px;
     height: 70px;
   }
 }
@@ -930,7 +930,7 @@
 .budget-section {
   text-align: center;
   padding: 3rem 1rem;
-  background-color: #fff6f2;
+  // background-color: #fff6f2;
 }
 
 .budget-section__subtitle {
@@ -1212,11 +1212,16 @@ footer input[type="email"]::placeholder{
   gap: 0.5rem;
 }
 .payment-item img {
-  width: 30px;
+  width: 40px;
   height: 25px;
   object-fit: cover;
   border-radius: 5px;
 }
+
+footer .btn-arrow{
+  background-color: white !important;
+}
+
 .download-text {
   font-size: 18px;
   color: #ffffff;
@@ -1257,6 +1262,9 @@ hr.footer-divider {
 .col-1-5 {
   width: 20%;
   padding: 0 10px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
 }
 
 @media (max-width: 1200px) {
@@ -1331,7 +1339,7 @@ hr.footer-divider {
 }
 
 .section-wd{
-  width: 95%;
+  width: 96%;
   margin: auto;
 }
 
@@ -1340,6 +1348,12 @@ hr.footer-divider {
   background-color: transparent !important;
   border: 1px solid #80808024 !important;
   border-radius: 0;
+}
+
+@media(max-width:1024px){
+  .ShopByCollections .card{
+  padding: 30px;
+  }
 }
 
 .tp-shop-items-wrapper .ShopByCollections  .card{
@@ -1470,6 +1484,100 @@ hr.footer-divider {
 
 .manual-sticky-thumb {
   transition: all 0.2s ease;
+}
+
+// .tp-header-area .main-menu > nav > ul > li > a {
+// font-family: "Questrial, sans-serif";
+// }
+
+@media (max-width:1024px){
+.tp-header-area .section-wd{
+  padding: 10px 0 !important;
+}
+}
+
+
+.bestofnoblesets::before{
+    content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  height: 100%;
+  width: 100%;
+ background-image: url("/assets/img/home/best_of_nobletset/best-of-nobelset-bg.jpg");
+ background-size: cover;
+ background-repeat: no-repeat;
+ z-index: -1000;
+}
+
+.ShopByBudget{
+  padding-top: 100px;
+}
+
+.ShopByBudget::before{
+    content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  height: 100%;
+  width: 100%;
+ background-image: url("/assets/img/home/shopByBudget/bg.png");
+ background-size: cover;
+ background-repeat: no-repeat;
+ z-index: -1000;
+}
+
+.shopbycategory::before{
+   content: "";
+  position: absolute;
+  top: 0px;
+  left: 0;
+  height: 100%;
+  width: 100%;
+ background-image: url("/assets/img/home/shop_by_category/shop-by-cat-bg.jpg");
+ background-size: cover;
+ background-repeat: no-repeat;
+ z-index: -100;
+}
+
+.giftSection::before{
+   content: "";
+  position: absolute;
+  top: 0px;
+  left: 0;
+  height: 100%;
+  width: 100%;
+ background-image: url("/assets/img/home/gift_special/gift-bg.jpg");
+ background-size: cover;
+ background-repeat: no-repeat;
+ z-index: -100;
+}
+
+
+.ShopByCollections::before{
+   content: "";
+  position: absolute;
+  top: 0px;
+  left: 0;
+  height: 100%;
+  width: 100%;
+ background-image: url("/assets/img/home/collection/shop-by-collections-bg.jpg");
+ background-size: cover;
+ background-repeat: no-repeat;
+ z-index: -100;
+}
+
+.NobelsetsPromises::before{
+   content: "";
+  position: absolute;
+  top: 0px;
+  left: 0;
+  height: 100%;
+  width: 100%;
+ background-image: url("/assets/img/home/nobletset_promises/nobel-promise-bg.jpg");
+ background-size: cover;
+ background-repeat: no-repeat;
+ z-index: -100;
 }
 
 

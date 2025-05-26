@@ -3,7 +3,8 @@ import React from "react";
 
 const HomeFooter = () => {
   return (
-    <div style={{ backgroundColor: "#e09a7b" }}>
+    // <div style={{ backgroundColor: "#e09a7b" }}>
+      <div style={{ background:"url(/assets/img/footer/bg.jpg)"}}>
       
       <footer className="container-fluid pt-50 text-white">
         <div className="row justify-content-center ">
@@ -30,21 +31,16 @@ const HomeFooter = () => {
                 className="btn-arrow"
                 type="submit"
               >
-                <svg style={{color:"#fff"}}
-                  xmlns="http://www.w3.org/2000/svg"
-                  width="20"
-                  height="20"
-                  fill="none"
-                  viewBox="0 0 24 24"
-                  stroke="currentColor"
-                  strokeWidth="1.5"
-                >
-                  <path
-                    strokeLinecap="round"
-                    strokeLinejoin="round"
-                    d="M3 10.5l18-7.5-7.5 18-2.25-7.5L3 10.5z"
-                  />
-                </svg>
+                  <svg
+                  
+    xmlns="http://www.w3.org/2000/svg"
+    viewBox="0 0 100 100"
+    // className={className}
+    style={{width: "20px", height: "20px"  }}
+    // {...props}
+  >
+    <path d="M19.9,56.2L2.7,87.3c-0.3,0.5-0.2,1.2,0.2,1.6c0.4,0.5,1,0.6,1.6,0.4l92.2-37c0.5-0.2,0.9-0.7,0.9-1.3 c0-0.6-0.3-1.1-0.9-1.3l-92.2-37c-0.6-0.2-1.2-0.1-1.6,0.4c-0.4,0.5-0.5,1.1-0.2,1.6l17.2,31.1l43.7,4.7c0.3,0,0.6,0.2,0.6,0.5 c0,0.3-0.2,0.5-0.6,0.5L19.9,56.2L19.9,56.2z" />
+  </svg>
                 {/* <i className="fas fa-arrow-right"></i> */}
               </button>
             </form>
@@ -119,8 +115,8 @@ const HomeFooter = () => {
                 <img
                   alt="Paypal logo with blue text on white background"
                   height="14"
-                  src="https://storage.googleapis.com/a1aa/image/068a2278-e56f-4e89-9ce7-c40c48bddb66.jpg"
-                  width="20"
+                  src="/assets/img/footer/payment-2.png"
+                  width="30"
                   className="me-2"
                 />
                 Paypal
@@ -129,7 +125,7 @@ const HomeFooter = () => {
                 <img
                   alt="Visa logo white text on dark blue background"
                   height="14"
-                  src="https://storage.googleapis.com/a1aa/image/c2acdc74-b8f1-4c7c-8d5c-7ba19f8d6afd.jpg"
+                  src="/assets/img/footer/payment-3.png"
                   width="20"
                   className="me-2"
                 />
@@ -139,7 +135,7 @@ const HomeFooter = () => {
                 <img
                   alt="Amazon Pay logo white text on dark background"
                   height="14"
-                  src="https://storage.googleapis.com/a1aa/image/a747cceb-28a2-4e69-13a2-918cb84bfc19.jpg"
+                  src="/assets/img/footer/payment-4.png"
                   width="20"
                   className="me-2"
                 />
@@ -149,7 +145,7 @@ const HomeFooter = () => {
                 <img
                   alt="Gpay logo black text on white background"
                   height="14"
-                  src="https://storage.googleapis.com/a1aa/image/0425e37f-52da-4140-d35b-2b24a228ffeb.jpg"
+                  src="/assets/img/footer/payment-5.png"
                   width="20"
                   className="me-2"
                 />
@@ -159,7 +155,7 @@ const HomeFooter = () => {
                 <img
                   alt="Apple Pay logo white text on black background"
                   height="14"
-                  src="https://storage.googleapis.com/a1aa/image/ddfeb162-e72a-4a69-79a1-23648f035b74.jpg"
+                  src="/assets/img/footer/payment-1.png"
                   width="20"
                   className="me-2"
                 />
@@ -178,7 +174,7 @@ const HomeFooter = () => {
                 <img
                   alt="Get it on App Store black badge with white text"
                   height="50"
-                  src="https://storage.googleapis.com/a1aa/image/f0b5dd03-d5e1-4ce5-09ee-7a8095c12f9b.jpg"
+                  src="/assets/img/footer/app-store-icon.png"
                   width="150"
                   style={{borderRadius:"10px", objectFit:"cover"}}
                 />
@@ -187,7 +183,7 @@ const HomeFooter = () => {
                 <img
                   alt="Get it on Google Play black badge with white text"
                   height="50"
-                  src="https://storage.googleapis.com/a1aa/image/1c9eba55-7697-4ff6-e651-f4eb90517f4e.jpg"
+                  src="/assets/img/footer/g-pay-icon.png"
                   width="150"
                   style={{borderRadius:"10px", objectFit:"cover"}}
                 />
@@ -239,15 +235,20 @@ const HomeFooter = () => {
               className="social-btn close"
               title="Close"
               type="button"
+              style={{color:"#000",fontSize:"20px"}}
             >
-              <i className="fas fa-times" style={{fontSize:"16px",color:"#000"}}></i>
+              {/* <i className="fas fa-times" style={{fontSize:"16px",color:"#000"}}></i> */}
+              {/* <i class="fa-brands fa-x-twitter"></i> */}
+              𝕩
             </button>
           </div>
         </div>
 
-        <div className="d-flex justify-content-center" style={{height:"330px",overflow:"hidden"}}>
+        <div className="d-flex justify-content-center" 
+        // style={{height:"330px",overflow:"hidden"}}
+        >
           {/* <div> */}
-            <img src="/assets/img/footer/light-logo.png" alt="" style={{width:"80%",height:"100%",objectFit:"cover",objectPosition:"top"}}/>
+            <img src="/assets/img/footer/logo-opt-2.png" alt="" style={{width:"70%",height:"100%",objectFit:"cover",objectPosition:"top"}}/>
           {/* </div> */}
         </div>
         </div>

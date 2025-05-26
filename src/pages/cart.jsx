@@ -14,10 +14,13 @@ const CartPage = () => {
     <Wrapper>
       <SEO pageTitle="Cart" />
       {/* <HeaderTwo style_2={true} /> */}
-      <HeaderSection />
-
+       <HeaderSection/>
+       <div style={{background:"#fff9f4"}}>
+      <div className="section-wd">
       <CommonBreadcrumb title="Shopping Cart" subtitle="Shopping Cart" BgImage={CartBanner}/>
+       </div>
       <CartArea/>
+       </div>
       <FooterTwo primary_style={true} />
     </Wrapper>
   );

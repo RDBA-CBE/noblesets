@@ -2,12 +2,14 @@ import React from "react";
 
 export default function NobelsetsPromises() {
   return (
-    <div className="pt-60"  style={{ backgroundColor: "#fff9f4" }}>
+    <div className="pt-60 NobelsetsPromises position-relative"  
+    // style={{ backgroundColor: "#fff9f4" }}
+    >
       <div className="section-wd">
       <div class="container-fluid pb-50">
         <div class="text-center mb-4 ">
-          <div className="feature-main mb-50" >
-            <h5 className="sub-ti" > <b>✦</b> Exceptuer occaecat</h5>
+          <div className="feature-main " >
+            <h5 className="sub-ti" > <b className="pe-2">✦</b> Exceptuer occaecat</h5>
             <h4
               className="feature-adipisicing main-ti"
              
@@ -18,7 +20,7 @@ export default function NobelsetsPromises() {
         </div>
 
         <div class="row align-items-center justify-content-center">
-          <div class="col-lg-5 mb-4 mb-lg-0">
+          <div class="col-9 col-xl-5 mb-4 mb-lg-0 order-1 order-xl-0">
             <div class="row">
               <div class="col-6">
                 <div class="d-flex align-items-center mb-5" style={{gap:"20px"}}>
@@ -132,10 +134,11 @@ export default function NobelsetsPromises() {
             </div>
           </div>
 
-          <div class="col-lg-5 text-center">
+          <div class="col-6 col-xl-5 text-center order-0 order-xl-1">
             <img
               src="/assets/img/home/nobletset_promises/img-right.png"
               alt="Models"
+              style={{width:"100%"}}
               // style={{ height: "100%", width: "100%" }}
             />
           </div>

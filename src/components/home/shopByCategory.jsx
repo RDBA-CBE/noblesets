@@ -5,11 +5,11 @@ const InstagramSection = () => {
   const router = useRouter();
   return (
     <>
-      <section className="pt-60" style={{ backgroundColor: "#fff9f4" }}>
+      <section className="pt-60 shopbycategory position-relative" >
         <div className="row-container">
           <div className="row">
             <div className="feature-main mb-50" >
-              <h5 className="sub-ti" ><b>✦</b> Excepteur occaecat</h5>
+              <h5 className="sub-ti" ><b className="pe-2">✦</b> Excepteur occaecat</h5>
               <h4
                 className="feature-adipisicing main-ti"
                

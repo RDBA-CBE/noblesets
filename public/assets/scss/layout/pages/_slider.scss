@@ -661,10 +661,13 @@
     }
   }
   &-height-4 {
-    min-height: 680px;
+    height: auto;
     min-height: 630px;
 
-
+ @media (max-width:1440px) {
+      min-height: 530px;
+    }
+    
     @media #{$lg} {
       min-height: 500px;
     }

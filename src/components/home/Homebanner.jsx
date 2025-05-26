@@ -23,36 +23,36 @@ const slider_data = [
         link: "/shop"
         // url: "/shop?category=earrings",
     },
-    {
-        id: 2,
-        img: slider_img_2,
-        link: "/shop"
-        // url: "/shop?category=finger_rings",
-    },
-    {
-        id: 3,
-        img: slider_img_3,
-        link: "/shop"
-        // url: "/shop?category=gold_plated_silver",
-    },
-    {
-        id: 4,
-        img: slider_img_4,
-        link: "/shop"
-        // url: "/shop?category=earrings",
-    },
-    {
-        id: 5,
-        img: slider_img_5,
-        link: "/shop"
-        // url: "/shop?category=finger_rings",
-    },
-    {
-        id: 6,
-        img: slider_img_6,
-        link: "/shop"
-        // url: "/shop?category=gold_plated_silver",
-    },
+    // {
+    //     id: 2,
+    //     img: slider_img_2,
+    //     link: "/shop"
+    //     // url: "/shop?category=finger_rings",
+    // },
+    // {
+    //     id: 3,
+    //     img: slider_img_3,
+    //     link: "/shop"
+    //     // url: "/shop?category=gold_plated_silver",
+    // },
+    // {
+    //     id: 4,
+    //     img: slider_img_4,
+    //     link: "/shop"
+    //     // url: "/shop?category=earrings",
+    // },
+    // {
+    //     id: 5,
+    //     img: slider_img_5,
+    //     link: "/shop"
+    //     // url: "/shop?category=finger_rings",
+    // },
+    // {
+    //     id: 6,
+    //     img: slider_img_6,
+    //     link: "/shop"
+    //     // url: "/shop?category=gold_plated_silver",
+    // },
 ];
 
 const HomeBanner = () => {
@@ -91,8 +91,9 @@ const HomeBanner = () => {
                                     className="mobile-view-width-change"
                                     style={{
                                         borderRadius: "20px",
-                                        objectFit: "cover",
+                                        objectFit: "contain",
                                         cursor: "pointer",
+                                        objectPosition:"bottom"
                                     }}
                                 />
                             </Link>
@@ -107,7 +108,7 @@ const HomeBanner = () => {
             </Slider>
 
             {/* Arrow buttons */}
-            <div className="tp-slider-arrow-4">
+            {/* <div className="tp-slider-arrow-4">
                 <button
                     className="tp-slider-3-button-prev slick-arrow"
                     onClick={() => slider1?.slickPrev()}
@@ -120,7 +121,7 @@ const HomeBanner = () => {
                 >
                     <ArrowNextTwo />
                 </button>
-            </div>
+            </div> */}
         </section>
     );
 };
