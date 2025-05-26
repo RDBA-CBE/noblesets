@@ -8,6 +8,7 @@ import FooterTwo from '@/layout/footers/footer-2';
 import { useGetCartListQuery } from '@/redux/features/card/cardApi';
 import CartBanner from "../../public/assets/img/shop-banner.jpg";
 import HeaderSection from '@/components/home/headerSection';
+import CartArea1 from '@/components/cart-wishlist/cart-area1';
 
 const CartPage = () => {
   return (
@@ -19,7 +20,8 @@ const CartPage = () => {
       <div className="section-wd">
       <CommonBreadcrumb title="Shopping Cart" subtitle="Shopping Cart" BgImage={CartBanner}/>
        </div>
-      <CartArea/>
+      {/* <CartArea/> */}
+      <CartArea1/>
        </div>
       <FooterTwo primary_style={true} />
     </Wrapper>

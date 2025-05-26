@@ -1581,3 +1581,80 @@ hr.footer-divider {
 }
 
 
+
+
+.cart-title {
+  font-weight: bold;
+}
+
+.cart-availability {
+  background-color: #b4633a30;
+  // border: 1px solid #b4633a;
+  color: #000;
+}
+
+.availability-icon {
+  font-size: 1.5rem;
+  color: #000;
+}
+.tp-cart-input[type=text]{
+  height: 24px  !important;
+}
+
+.item-total {
+  font-size: 0.95rem;
+  color: #333;
+}
+
+.cart-item {
+  background-color: #fff;
+  // border: 1px solid #eee;
+  border-radius: 20px;
+}
+
+.item-img {
+  width: 100px;
+  height: 100px;
+  object-fit: cover;
+}
+
+.item-name {
+  font-size: 0.95rem;
+  color: #555;
+}
+
+.item-price {
+  font-size: 1.1rem;
+  font-weight: bold;
+  color: #000;
+}
+
+.cart-summary {
+  background-color: #fff;
+  border-radius: 20px !important;
+  // border: 1px solid #eee;
+}
+
+.warranty-img {
+  width: 80px;
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+  .cart-item {
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+  }
+
+  .item-details {
+    margin-left: 0 !important;
+    margin-top: 1rem;
+  }
+
+  .cart-summary {
+    margin-top: 2rem;
+  }
+}
+
+
