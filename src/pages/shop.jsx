@@ -867,6 +867,19 @@ console.log('✌️attributeList --->', attributeList);
         maxPrice={maxPrice}
         totalCount={totalCount}
         page={currentPage}
+        // clearFilter={() => {
+        //   if (categoryId || router?.query?.tag) {
+        //     refreshFilterData(sortBy);
+        //   } else {
+        //     refresh();
+        //   }
+        //   dispatch(filterData({}));
+        //   setPriceValue([0, initialMaxPrice]);
+        //   setInitialMaxPrice(initialMaxPrice);
+        //   dispatch(handleFilterSidebarClose());
+        //   filterOption();
+        // }}
+
         clearFilter={() => {
           if (categoryId || router?.query?.tag) {
             refreshFilterData(sortBy);

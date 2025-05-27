@@ -10,7 +10,10 @@ import { Swiper, SwiperSlide } from "swiper/react";
 import { Scrollbar, Navigation, Autoplay } from "swiper";
 import { LeftOutlined, RightOutlined } from "@ant-design/icons";
 import { slider_setting } from "../../utils/functions";
-import { useGetRelatedProductsQuery } from "@/redux/features/productApi";
+import {
+  useGetRelatedProductsQuery,
+  useProductReviewMutation,
+} from "@/redux/features/productApi";
 import ReviewSection from "./ReviewSection";
 import DetailsThumbWrapper1 from "./details-thumb-wrapper1";
 import DetailsWrapper1 from "./details-wrapper-1";
@@ -20,12 +23,16 @@ const ProductDetailsArea = ({
   detailsRefetch,
   youMayLikeData,
   isGiftCard,
-  parentSlug
+  parentSlug,
 }) => {
   const router = useRouter();
   const { media, imageURLs, videoId, status } = productItem || {};
   const [activeImg, setActiveImg] = useState(null);
+  const [reviewList, setReview] = useState([]);
+
   const dispatch = useDispatch();
+
+  const [review] = useProductReviewMutation();
 
   const id = productItem?.category[0]?.id;
   const {
@@ -50,7 +57,6 @@ const ProductDetailsArea = ({
     (item) => !idsToRemove.includes(item.node.id)
   );
 
-
   // active image change when img change
   useEffect(() => {
     setActiveImg(media);
@@ -61,6 +67,10 @@ const ProductDetailsArea = ({
     setActiveImg(item);
   };
 
+  useEffect(() => {
+    getReviews();
+  }, []);
+
   // Ref to the related products section
   const relatedProductsRef = useRef(null);
 
@@ -69,34 +79,45 @@ const ProductDetailsArea = ({
     relatedProductsRef?.current?.scrollIntoView({ behavior: "smooth" });
   };
 
-    const thumbRef = useRef(null);
-  
-    useEffect(() => {
-      const el = thumbRef.current;
-      const initialOffsetTop = el?.offsetTop ?? 0;
-  
-      function handleScroll() {
-        const scrollY = window.scrollY || window.pageYOffset;
-        const stickyTop = 120;
-  
-        if (scrollY + stickyTop > initialOffsetTop) {
-          el.style.position = "sticky";
-          el.style.top = `${stickyTop}px`;
-          
-          el.style.zIndex = 10;
-        } else {
-          el.style.position = "static";
-          el.style.top = "auto";
-          
-        }
+  const thumbRef = useRef(null);
+
+  useEffect(() => {
+    const el = thumbRef.current;
+    const initialOffsetTop = el?.offsetTop ?? 0;
+
+    function handleScroll() {
+      const scrollY = window.scrollY || window.pageYOffset;
+      const stickyTop = 120;
+
+      if (scrollY + stickyTop > initialOffsetTop) {
+        el.style.position = "sticky";
+        el.style.top = `${stickyTop}px`;
+
+        el.style.zIndex = 10;
+      } else {
+        el.style.position = "static";
+        el.style.top = "auto";
       }
-  
-      window.addEventListener("scroll", handleScroll);
-      return () => window.removeEventListener("scroll", handleScroll);
-    }, []);
+    }
 
+    window.addEventListener("scroll", handleScroll);
+    return () => window.removeEventListener("scroll", handleScroll);
+  }, []);
 
-      
+  const getReviews = async () => {
+    try {
+      const res = await review({
+        productId: [productItem?.id],
+      });
+      const reviewss =
+        res?.data?.data?.productReviews?.edges?.length > 0
+          ? res?.data?.data?.productReviews?.edges?.map((item) => item?.node)
+          : [];
+      setReview(reviewss);
+    } catch (error) {
+      console.log("✌️error --->", error);
+    }
+  };
 
   return (
     <section
@@ -122,14 +143,12 @@ const ProductDetailsArea = ({
                 />
               </div>
               {/* product-details-thumb-wrapper start */}
-              
-             
+
               {/* product-details-thumb-wrapper end */}
-           
             </div>
             <div className="col-xl-5 col-lg-5 ">
               {/* product-details-wrapper start */}
-              
+
               <DetailsWrapper1
                 productItem={productItem}
                 productRefetch={detailsRefetch}
@@ -150,7 +169,7 @@ const ProductDetailsArea = ({
                 isGiftCard={isGiftCard}
                 parentSlug={parentSlug}
               /> */}
-             
+
               {/* product-details-wrapper end */}
             </div>
           </div>
@@ -180,7 +199,12 @@ const ProductDetailsArea = ({
                 </div>
 
                 <div className="row">
-                  <RelatedProducts products={relatedproducts} relatedProductLoading={isLoading} relatedProductErr={isError} id={productItem?.category[0]?.id} />
+                  <RelatedProducts
+                    products={relatedproducts}
+                    relatedProductLoading={isLoading}
+                    relatedProductErr={isError}
+                    id={productItem?.category[0]?.id}
+                  />
                 </div>
               </div>
             </section>
@@ -223,7 +247,7 @@ const ProductDetailsArea = ({
             </section>
           )}
 
-          <ReviewSection/>
+          <ReviewSection reviewList={reviewList} />
         </>
       )}
 

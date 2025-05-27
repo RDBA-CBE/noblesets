@@ -61,6 +61,7 @@ const CategoryContent = ({
   useEffect(() => {
     filterByCategory();
   }, [categoryName]);
+
   const [parentCategoryId, setParentCategoryId] = useState("");
 
   const filterByCategory = async () => {
@@ -174,8 +175,7 @@ const CategoryContent = ({
 };
 
 const CategoryComponent = (props) => {
-  const { productList, lastHoveredCategory, setLastHoveredCategory } = props;
-  console.log("productList --->", productList);
+  const { productList, lastHoveredCategory, setLastHoveredCategory,commonImage } = props;
 
   const router = useRouter();
   const [hoveredCategory, setHoveredCategory] = useState(null);
@@ -228,7 +228,7 @@ const CategoryComponent = (props) => {
     return (
       <CategoryContent
         // title={title}
-        commonImage={categoryImage}
+        commonImage={commonImage}
         lists={subCategoryLists}
         categoryName={lastHoveredCategory}
       >

@@ -40,6 +40,12 @@ import {
   PINCODE_LIST,
   SHIPPING_ZONE_LIST,
   CREATE_CUSTOMER_PRODUCT,
+  CREATE_REVIEW,
+  MEDIA_LIST,
+  CREATE_MEDIA_FILE,
+  ORDER_REVIEW,
+  PRODUCT_REVIEW,
+  USER_REVIEWS,
 } from "@/utils/queries/productList";
 import {
   RELATED_PRODUCT,
@@ -806,6 +812,68 @@ export const productApi = apiSlice.injectEndpoints({
       providesTags: ["Products"],
     }),
 
+    createReview: builder.mutation({
+      query: ({ product, rating, comment, images, user }) => {
+        return configuration(
+          CREATE_REVIEW({ product, rating, comment, images, user })
+        );
+      },
+      providesTags: ["Products"],
+    }),
+
+    mediaList: builder.mutation({
+      query: ({ uniqueFilename }) => {
+        const body = {
+          first: 24,
+          after: null,
+          fileType: "",
+          month: null,
+          year: null,
+          name: uniqueFilename,
+        };
+        console.log("✌️body --->", body);
+
+        return configuration(
+          MEDIA_LIST({
+            first: 24,
+            after: null,
+            fileType: "",
+            month: null,
+            year: null,
+            name: uniqueFilename,
+          })
+        );
+      },
+      providesTags: ["Products"],
+    }),
+
+    createMediaFile: builder.mutation({
+      query: ({ input }) => {
+        return configuration(CREATE_MEDIA_FILE({ input }));
+      },
+      providesTags: ["Products"],
+    }),
+
+    orderReview: builder.mutation({
+      query: ({ userId, productId }) => {
+        return configuration(ORDER_REVIEW({ userId, productId }));
+      },
+      providesTags: ["Products"],
+    }),
+
+    productReview: builder.mutation({
+      query: ({ productId }) => {
+        return configuration(PRODUCT_REVIEW({ productId }));
+      },
+      providesTags: ["Products"],
+    }),
+
+    userReviewsList: builder.mutation({
+      query: ({ userId }) => {
+        return configuration(USER_REVIEWS({ userId }));
+      },
+      providesTags: ["Products"],
+    }),
   }),
 });
 
@@ -867,5 +935,11 @@ export const {
   usePincodeListMutation,
   useShippingZoneListMutation,
   useCreateCustomerProductMutation,
-  useNobelsetCategoryListMutation
+  useNobelsetCategoryListMutation,
+  useCreateReviewMutation,
+  useMediaListMutation,
+  useCreateMediaFileMutation,
+  useOrderReviewMutation,
+  useProductReviewMutation,
+  useUserReviewsListMutation,
 } = productApi;

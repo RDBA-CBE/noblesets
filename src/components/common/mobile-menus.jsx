@@ -75,7 +75,7 @@ const MobileMenus = () => {
     <>
       <ul>
         <li>
-          <Link href="/" style={{ fontWeight: "500" }}>
+          <Link href="/shop" style={{ fontWeight: "500" }}>
             ALL JEWELLERY
           </Link>
         </li>
@@ -128,7 +128,7 @@ const MobileMenus = () => {
         </li>
 
         <li>
-          <Link href="/about" style={{ fontWeight: "500" }}>
+          <Link href="/shop?category=silver" style={{ fontWeight: "500" }}>
             SILVER
           </Link>
         </li>

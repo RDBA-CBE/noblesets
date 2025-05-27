@@ -1,84 +1,57 @@
-import React, { useState } from 'react';
-import Rating from 'react-rating-stars-component';
+import React, { useState } from "react";
+import Rating from "react-rating-stars-component";
 // import ProfileImage from "@assets/img/actors/actors-image";
 
 const initialReviews = [
   {
-    name: 'Alexander Rity',
+    name: "Alexander Rity",
     avatar: "/assets/img/profile-1.webp",
-    date: '4 months ago',
+    date: "4 months ago",
     rating: 5,
     comment:
-      'Easy booking, great value! Cozy rooms at a reasonable price in Sheffield’s vibrant center. Surprisingly quiet with nearby Traveller’s accommodations. Highly recommended!',
-    images: [1, 2, 3, 4].map(() => '/assets/img/placeholder-portrait.png'),
+      "Easy booking, great value! Cozy rooms at a reasonable price in Sheffield’s vibrant center. Surprisingly quiet with nearby Traveller’s accommodations. Highly recommended!",
+    images: [1, 2, 3, 4].map(() => "/assets/img/placeholder-portrait.png"),
   },
   {
-    name: 'Emma Creight',
+    name: "Emma Creight",
     avatar: "/assets/img/profile-1.webp",
-    date: '4 months ago',
+    date: "4 months ago",
     rating: 4,
     comment:
-      'Effortless booking, unbeatable affordability! Small yet comfortable rooms in the heart of Sheffield’s nightlife hub. Surrounded by elegant housing, it’s a peaceful gem. Thumbs up!',
+      "Effortless booking, unbeatable affordability! Small yet comfortable rooms in the heart of Sheffield’s nightlife hub. Surrounded by elegant housing, it’s a peaceful gem. Thumbs up!",
     images: [],
   },
   {
-    name: 'Emma Creight',
+    name: "Emma Creight",
     avatar: "/assets/img/profile-1.webp",
-    date: '4 months ago',
+    date: "4 months ago",
     rating: 4,
     comment:
-      'Effortless booking, unbeatable affordability! Small yet comfortable rooms in the heart of Sheffield’s nightlife hub. Surrounded by elegant housing, it’s a peaceful gem. Thumbs up!',
+      "Effortless booking, unbeatable affordability! Small yet comfortable rooms in the heart of Sheffield’s nightlife hub. Surrounded by elegant housing, it’s a peaceful gem. Thumbs up!",
     images: [],
   },
   {
-    name: 'Emma Creight',
+    name: "Emma Creight",
     avatar: "/assets/img/profile-1.webp",
-    date: '4 months ago',
+    date: "4 months ago",
     rating: 4,
     comment:
-      'Effortless booking, unbeatable affordability! Small yet comfortable rooms in the heart of Sheffield’s nightlife hub. Surrounded by elegant housing, it’s a peaceful gem. Thumbs up!',
+      "Effortless booking, unbeatable affordability! Small yet comfortable rooms in the heart of Sheffield’s nightlife hub. Surrounded by elegant housing, it’s a peaceful gem. Thumbs up!",
     images: [],
   },
   {
-    name: 'Emma Creight',
+    name: "Emma Creight",
     avatar: "/assets/img/profile-1.webp",
-    date: '4 months ago',
+    date: "4 months ago",
     rating: 4,
     comment:
-      'Effortless booking, unbeatable affordability! Small yet comfortable rooms in the heart of Sheffield’s nightlife hub. Surrounded by elegant housing, it’s a peaceful gem. Thumbs up!',
+      "Effortless booking, unbeatable affordability! Small yet comfortable rooms in the heart of Sheffield’s nightlife hub. Surrounded by elegant housing, it’s a peaceful gem. Thumbs up!",
     images: [],
   },
 ];
 
-const ReviewSection = () => {
-  const [reviews, setReviews] = useState(initialReviews);
-  const [showAll, setShowAll] = useState(false);
-  const [formData, setFormData] = useState({
-    name: '',
-    comment: '',
-    rating: 0,
-    images:[]
-  });
-
-  const handleSubmit = (e) => {
-    e.preventDefault();
-    const newReview = {
-      name: formData.name,
-      avatar: 'https://via.placeholder.com/40',
-      date: 'Just now',
-      rating: formData.rating,
-      comment: formData.comment,
-      images: formData.images,
-    };
-    setReviews([newReview, ...reviews]);
-    setFormData({ name: '', comment: '', rating: 0 });
-  };
-
-  const handleImageUpload = (e) => {
-    const files = Array.from(e.target.files);
-    const imageUrls = files.map((file) => URL.createObjectURL(file));
-    setFormData({ ...formData, images: imageUrls });
-  };
+const ReviewSection = (props) => {
+  const { reviewList } = props;
 
   return (
     <div className="container py-5 review-sec">
@@ -88,7 +61,7 @@ const ReviewSection = () => {
             <h4 className="review-title mb-3 ">Reviews</h4>
 
             {/* Rating Summary */}
-            <div className="d-flex align-items-center mb-3">
+            {/* <div className="d-flex align-items-center mb-3">
               <div className="review-score-display me-3">
                 <h1 className=" m-0 text-dark">4.0</h1>
                 <Rating count={5} value={4} edit={false} size={20} activeColor="#b4633a" />
@@ -115,11 +88,10 @@ const ReviewSection = () => {
                   );
                 })}
               </div>
-            </div>
-
+            </div> */}
 
             {/* Write a Review */}
-            <div className="mb-4">
+            {/* <div className="mb-4">
               <h5 className="">Write a Review</h5>
               <form onSubmit={handleSubmit}>
                 <input
@@ -160,37 +132,61 @@ const ReviewSection = () => {
                 <button type="submit" className="tp-btn tp-btn-border ">Submit Review</button>
                 
               </form>
-            </div>
+            </div> */}
 
             {/* Reviews List */}
-            {(showAll ? reviews : reviews.slice(0, 2)).map((review, index) => (
+            {reviewList?.map((review, index) => (
               <div key={index} className="mb-4">
                 <div className="d-flex align-items-center mb-2">
-                  <img src={review.avatar} alt="avatar" className="rounded-circle me-2" width={50}/>
+                  <img
+                    src={
+                      review.user?.avatar
+                        ? review.user?.avatar
+                        : "/assets/img/user.png"
+                    }
+                    alt="avatar"
+                    className="rounded-circle me-2"
+                    width={50}
+                  />
+
                   <div>
-                    <strong>{review.name}</strong>
-                    <p className="text-muted small m-0">{review.date}</p>
+                    <strong>{`${review.user?.firstName} ${review.user?.lastName}`}</strong>
+
+                    <p className="text-muted small m-0">{review.created_at}</p>
                   </div>
                 </div>
                 <p className="text-dark mb-1">{review.comment}</p>
-                <Rating count={5} value={review.rating} edit={false} size={18} activeColor="#b4633a" />
+                <Rating
+                  count={5}
+                  value={review.rating}
+                  edit={false}
+                  size={18}
+                  activeColor="#b4633a"
+                />
                 <div className="d-flex gap-2 mt-2">
                   {review.images.map((src, idx) => (
-                    <img key={idx} src={src} className="rounded" alt="review" width={30} height={30}/>
+                    <img
+                      key={idx}
+                      src={src?.fileUrl}
+                      className="rounded"
+                      alt="review"
+                      width={50}
+                      height={50}
+                    />
                   ))}
                 </div>
               </div>
             ))}
 
             {/* Read More Toggle */}
-            {!showAll && reviews.length > 2 && (
+            {/* {!showAll && reviews.length > 2 && (
               <a  className="text-gold  small cursor-pointer" onClick={() => setShowAll(true)}>
               Read all reviews <span>&#x25BC;</span>
             </a>
               // <button className="btn btn-link text-gold  small p-0" onClick={() => setShowAll(true)}>
               //   Read all reviews <span>&#x25BC;</span>
               // </button>
-            )}
+            )} */}
           </div>
         </div>
       </div>

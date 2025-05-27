@@ -59,111 +59,128 @@ query ProductListPaginated($first: Int, $last :Int, $after: String, $before: Str
 export const ORDER_LIST = ({ orderId }) => {
   return JSON.stringify({
     query: `
-    query getOrderDetails($orderId: ID!) {
-      order(id: $orderId) {
-        id
-        billingAddress {
-          firstName
-          lastName
-          streetAddress1
-          city
-          country {
-            code
-            country
-          }
-          postalCode
-          phone
+  query getOrderDetails($orderId: ID!) {
+  order(id: $orderId) {
+    id
+    billingAddress {
+      firstName
+      lastName
+      streetAddress1
+      city
+      country {
+        code
+        country
+      }
+      postalCode
+      phone
+    }
+    shippingAddress {
+      firstName
+      lastName
+      streetAddress1
+      city
+      country {
+        code
+        country
+      }
+      postalCode
+      phone
+    }
+    courierPartner {
+      name
+      trackingUrl
+      id
+    }
+    lines {
+      id
+      productVariantId
+      productName
+      productSku
+      taxRate
+      totalPrice {
+        gross {
+          amount
+          currency
         }
-        shippingAddress {
-          firstName
-          lastName
-          streetAddress1
-          city
-          country {
-            code
-            country
-          }
-          postalCode
-          phone
-        }
-        courierPartner {
-          name
-          trackingUrl
+      }
+      quantity
+      variant {
+        product {
           id
         }
-        lines {
-          id
-          productName
-          productSku
-          taxRate
-          totalPrice {
-            gross {
-              amount
-              currency
-            }
-          }
-          quantity
-        }
-        events {
-          message
-          id
-          date
-          type
-        }
-        number
-        statusDisplay
-        subtotal {
-          gross {
-            amount
-            currency
-          }
-        }
-        total {
-          gross {
-            amount
-            currency
-          }
-          tax {
-            amount
-            currency
-          }
-        }
-        shippingMethods {
-          id
-          price {
-            amount
-            currency
-          }
-        }
-        isPaid
-        paymentStatus
-        created
-        isGiftWrap
-        paymentMethod {
-          name
-        }
-        shippingPrice {
-          gross {
-            amount
-            currency
-          }
-        }
-        giftCards {
-          currentBalance {
-            amount
-            currency
-          }
-          id
-          code
-          initialBalance {
-            amount
-            currency
-          }
-        }
-    codAmount
-    giftWrapAmount
       }
     }
+    events {
+      message
+      id
+      date
+      type
+    }
+    number
+    statusDisplay
+    subtotal {
+      gross {
+        amount
+        currency
+      }
+    }
+    total {
+      gross {
+        amount
+        currency
+      }
+      tax {
+        amount
+        currency
+      }
+    }
+    shippingMethods {
+      id
+      price {
+        amount
+        currency
+      }
+    }
+    isPaid
+    paymentStatus
+    created
+    isGiftWrap
+    paymentMethod {
+      name
+    }
+    shippingPrice {
+      gross {
+        amount
+        currency
+      }
+    }
+    giftCards {
+      currentBalance {
+        amount
+        currency
+      }
+      id
+      code
+      initialBalance {
+        amount
+        currency
+      }
+      user {
+        id
+        lastName
+        firstName
+        email
+      }
+    }
+    codAmount
+    giftWrapAmount
+    user {
+      id
+      lastName
+      firstName
+    }
+  }
+}
     `,
     variables: { orderId },
   });
@@ -2065,5 +2082,207 @@ export const CREATE_CUSTOMER_PRODUCT = ({ input }) => {
 
     `,
     variables: { input },
+  };
+};
+
+export const CREATE_REVIEW = ({ product, rating, comment, images, user }) => {
+  return {
+    query: `
+    mutation CreateProductReview(
+  $product: ID!
+  $rating: Int!
+  $comment: String!
+  $images: [ID!]
+  $user: ID!
+) {
+  productReviewCreate(
+    input: {
+      product: $product
+      rating: $rating
+      comment: $comment
+      images: $images
+      user: $user
+    }
+  ) {
+    errors {
+      values
+      message
+      code
+    }
+  }
+}
+
+
+    `,
+    variables: { product, rating, comment, images, user },
+  };
+};
+
+export const MEDIA_LIST = ({ first, after, fileType, month, year, name }) => {
+  return {
+    query: `
+   query PaginatedFiles($first: Int, $last: Int, $after: String, $before: String, $fileType: String!, $month: Int, $year: Int, $name: String!) {
+        files(first: $first, last: $last, after: $after, before: $before, year: $year, name: $name, month: $month, fileType: $fileType) {
+            edges {
+                node {
+                    alt
+                    caption
+                    description
+                    fileUrl
+                    id
+                    title
+                    createdAt
+                    updatedAt
+                }
+            }
+            pageInfo {
+                hasNextPage
+                hasPreviousPage
+                endCursor
+                startCursor
+            }
+        }
+    }
+
+
+    `,
+    variables: { first, after, fileType, month, year, name },
+  };
+};
+
+export const CREATE_MEDIA_FILE = ({ input }) => {
+  return {
+    query: `
+   mutation CreateFile($input: FileInput!) {
+  fileCreate(input: $input) {
+      file {
+          id
+          fileUrl
+          alt
+          description
+          caption
+          title
+      }
+      fileErrors {
+          message
+      }
+  }
+}
+
+
+    `,
+    variables: { input },
+  };
+};
+
+export const ORDER_REVIEW = ({ userId, productId }) => {
+  return {
+    query: `
+ query GetProductReviews($userId: [ID!], $productId: [ID!]) {
+  productReviews(
+    filter: {
+      user: $userId,
+      product: $productId
+    },
+    first: 10
+  ) {
+    edges {
+      node {
+        comment
+        images {
+          fileUrl
+        }
+        rating
+        user {
+          firstName
+          lastName
+          avatar {
+            alt
+          }
+        }
+        createdAt
+      }
+    }
+  }
+}
+
+
+    `,
+    variables: { userId, productId },
+  };
+};
+
+export const PRODUCT_REVIEW = ({ productId }) => {
+  return {
+    query: `
+ query GetProductReviews( $productId: [ID!]) {
+  productReviews(
+    filter: {
+   
+      product: $productId
+    },
+    first: 10
+  ) {
+    edges {
+      node {
+        comment
+        images {
+          fileUrl
+        }
+        rating
+        user {
+          firstName
+          lastName
+          avatar {
+            alt
+          }
+        }
+        createdAt
+      }
+    }
+  }
+}
+
+
+    `,
+    variables: { productId },
+  };
+};
+
+export const USER_REVIEWS = ({ userId }) => {
+  return {
+    query: `
+ query GetProductReviews($userId: [ID!]) {
+  productReviews(filter: {user: $userId}, first: 200) {
+    edges {
+      node {
+        comment
+        images {
+          fileUrl
+        }
+        rating
+        user {
+          firstName
+          lastName
+          avatar {
+            alt
+          }
+        }
+        createdAt
+        product {
+          id
+          name
+          orderNo
+          thumbnail {
+            url
+          }
+        }
+      }
+    }
+  }
+}
+
+    `,
+    variables: { userId },
   };
 };

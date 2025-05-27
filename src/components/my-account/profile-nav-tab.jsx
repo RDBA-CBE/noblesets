@@ -59,6 +59,11 @@ const ProfileNavTab = () => {
           title="My Orders"
           icon="fa-light fa-clipboard-list-check"
         />
+         <SingleNav
+          id="review"
+          title="Reviews"
+          icon="fa-regular fa-circle-info"
+        />
         <SingleNav
           id="password"
           title="Change Password"

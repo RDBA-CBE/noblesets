@@ -1,5 +1,16 @@
 import { useState } from "react";
 import Swal from "sweetalert2";
+import Resizer from "react-image-file-resizer";
+import AWS from "aws-sdk";
+import axios from 'axios';
+
+
+export const accessKeyId = "DO00MUC2HWP9YVLPXKXT";
+
+export const secretAccessKey = "W9N9b51nxVBvpS59Er9aB6Ht7xx2ZXMrbf3vjBBR8OA";
+
+export const SERVER_URL = 'http://noblesetsbkend.irepute.co.in';
+
 
 export const capitalizeFLetter = (string = "") => {
   if (string.length > 0) {
@@ -270,5 +281,263 @@ export const formatCurrency = (currency) => {
     return "₹";
   } else {
     return "$";
+  }
+};
+
+export const resizingImage = (file) => {
+  return new Promise((resolve, reject) => {
+    Resizer.imageFileResizer(
+      file,
+      1160, // Max width
+      1340, // Max height
+      "JPEG", // Format
+      70, // Quality (adjust to get file size below 300KB)
+      0, // Rotation
+      (uri) => {
+        // Convert resized image blob to File
+        const resizedFile = new File([uri], file.name, { type: uri.type });
+        console.log("resizedFile: ", resizedFile);
+        resolve(resizedFile);
+      },
+      "blob" // Output type
+    );
+  });
+};
+
+export const resizeImage = (file, width, height) => {
+  return new Promise((resolve, reject) => {
+    const img = document.createElement("img");
+    const canvas = document.createElement("canvas");
+    const ctx = canvas.getContext("2d");
+
+    img.onload = () => {
+      canvas.width = width;
+      canvas.height = height;
+      if (ctx) {
+        ctx.drawImage(img, 0, 0, width, height);
+        canvas.toBlob((blob) => {
+          if (blob) {
+            resolve(new File([blob], file.name, { type: file.type }));
+          } else {
+            reject(new Error("Failed to resize image"));
+          }
+        }, file.type);
+      } else {
+        reject(new Error("Failed to get canvas context"));
+      }
+    };
+
+    img.onerror = (error) => {
+      reject(error);
+    };
+
+    img.src = URL.createObjectURL(file);
+  });
+};
+
+export const getImageDimensions = (file) => {
+  return new Promise((resolve, reject) => {
+    const img = document.createElement("img");
+    const reader = new FileReader();
+
+    reader.onload = (e) => {
+      if (e.target?.result) {
+        img.src = e.target.result;
+      } else {
+        reject(new Error("Failed to read file"));
+      }
+    };
+
+    reader.onerror = (error) => {
+      reject(error);
+    };
+
+    img.onload = () => {
+      resolve({ width: img.width, height: img.height });
+    };
+
+    img.onerror = (error) => {
+      reject(error);
+    };
+
+    reader.readAsDataURL(file);
+  });
+};
+
+export const addNewMediaFile = async (file, uniqueFilename) => {
+  try {
+    // let uniqueFilename = await generateUniqueFilename(file.name);
+    const isImage = file.type.startsWith("image/");
+    if (isImage) {
+      if (file.size > 300 * 1024) {
+        file = await resizingImage(file);
+        file = await resizeImage(file, 1160, 1340);
+      } else {
+        file = await resizeImage(file, 1160, 1340);
+      }
+      const { width, height } = await getImageDimensions(file);
+    }
+
+    file = new File([file], uniqueFilename, {
+      type: file.type,
+      lastModified: file.lastModified,
+    });
+    console.log("✌️file --->", file);
+
+    let presignedPostData = null;
+    if (file?.name?.endsWith(".mp4")) {
+      presignedPostData = await generatePresignedVideoPost(file);
+    } else {
+      presignedPostData = await generatePresignedPost(file);
+    }
+    console.log("✌️presignedPostData --->", presignedPostData);
+
+    const formData = new FormData();
+    Object.keys(presignedPostData.fields).forEach((key) => {
+      formData.append(key, presignedPostData.fields[key]);
+    });
+    formData.append("file", file);
+
+    await axios.post(presignedPostData.url, formData, {
+      headers: {
+        "Content-Type": "multipart/form-data",
+      },
+    });
+
+    const urls = `https://prade.blr1.digitaloceanspaces.com/${presignedPostData?.fields?.key}`;
+console.log('✌️urls --->', urls);
+    return urls;
+  } catch (error) {
+    console.error("Error uploading file:", error);
+  }
+};
+
+export const generatePresignedPost = async (file) => {
+  console.log("generatePresignedPost --->", file);
+  const spacesEndpoint = new AWS.Endpoint(
+    "https://prade.blr1.digitaloceanspaces.com"
+  );
+
+  const s3 = new AWS.S3({
+    endpoint: spacesEndpoint,
+    accessKeyId, // Add your access key here
+    secretAccessKey, // Add your secret key here
+  });
+
+  // const uniqueFilename = await generateUniqueFilename(file.name);
+
+  const params = {
+    Bucket: "prade", // Your Space name
+    Fields: {
+      key: file.name, // File name
+      acl: "public-read",
+    },
+    Conditions: [
+      ["content-length-range", 0, 104857600], // 100 MB limit
+      ["starts-with", "$Content-Type", ""], // Allow any content type
+      ["eq", "$key", file.name],
+    ],
+    Expires: 60, // 1 minute expiration
+  };
+
+  return new Promise((resolve, reject) => {
+    s3.createPresignedPost(params, (err, data) => {
+      if (err) {
+        console.log("err: ", err);
+        reject(err);
+      } else {
+        resolve(data);
+      }
+    });
+  });
+};
+
+export const generatePresignedVideoPost = async (file) => {
+  const spacesEndpoint = new AWS.Endpoint(
+    "https://prade.blr1.digitaloceanspaces.com"
+  );
+
+  const s3 = new AWS.S3({
+    endpoint: spacesEndpoint,
+    accessKeyId, // Add your access key here
+    secretAccessKey, // Add your secret key here
+  });
+  // const uniqueFilename = await generateUniqueFilename(file.name);
+
+  const params = {
+    Bucket: "prade", // Your Space name
+    Fields: {
+      key: file.name, // File name
+      acl: "public-read",
+    },
+    Conditions: [
+      ["content-length-range", 0, 104857600], // 100 MB limit (adjust as needed)
+      ["starts-with", "$Content-Type", ""], // Ensure only MP4 files are allowed
+      ["eq", "$key", file.name],
+    ],
+    Expires: 60, // 1 minute expiration
+  };
+
+  return new Promise((resolve, reject) => {
+    s3.createPresignedPost(params, (err, data) => {
+      if (err) {
+        reject(err);
+      } else {
+        resolve(data);
+      }
+    });
+  });
+};
+
+export const getFileType = async (filename) => {
+  const videoFormats = new Set([
+    "mp4",
+    "avi",
+    "mov",
+    "mkv",
+    "webm",
+    "flv",
+    "wmv",
+    "mpeg",
+    "ogv",
+  ]);
+  const imageFormats = new Set([
+    "jpeg",
+    "jpg",
+    "png",
+    "gif",
+    "bmp",
+    "tiff",
+    "webp",
+    "svg",
+    "heic",
+    "ico",
+  ]);
+  const documentFormats = new Set([
+    "pdf",
+    "doc",
+    "docx",
+    "xls",
+    "xlsx",
+    "ppt",
+    "pptx",
+    "txt",
+  ]);
+
+  const getFileExtension = (filename) => {
+    const parts = filename?.split(".");
+    return parts.length > 1 ? parts.pop().toLowerCase() : "";
+  };
+
+  const ext = getFileExtension(filename);
+
+  if (videoFormats.has(ext)) {
+    return "Video";
+  } else if (imageFormats.has(ext)) {
+    return "Image";
+  } else if (documentFormats.has(ext)) {
+    return "Doc";
+  } else {
+    return "unknown";
   }
 };

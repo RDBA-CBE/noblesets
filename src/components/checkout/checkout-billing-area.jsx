@@ -370,11 +370,11 @@ const CheckoutBillingArea = ({ register, errors }) => {
         });
       }
 
-      const hasPreOrders = state.orderData?.lines?.some((line) =>
-        line?.variant?.product?.collections?.some(
-          (collection) => collection.name === "Pre Orders"
-        )
-      );
+      // const hasPreOrders = state.orderData?.lines?.some((line) =>
+      //   line?.variant?.product?.collections?.some(
+      //     (collection) => collection.name === "Pre Orders"
+      //   )
+      // );
 
       const hasGiftCard = state.orderData?.lines?.some(
         (line) => line?.variant?.product?.category.name === "Gift Card"
@@ -387,13 +387,13 @@ const CheckoutBillingArea = ({ register, errors }) => {
       // }
 
       let totalValid = true;
-      // if (checkChannel() === "india-channel") {
-      //   totalValid = state.total > 3000 && state.total < 30000;
-      // } else {
-      //   totalValid = state.total > 39 && state.total < 390;
-      // }
+      if (checkChannel() === "india-channel") {
+        totalValid = state.total > 3000 && state.total < 30000;
+      } else {
+        totalValid = state.total > 39 && state.total < 390;
+      }
 
-      if (totalValid && !hasPreOrders && !hasGiftCard) {
+      if (totalValid && !hasGiftCard) {
         const country = state.diffAddress
           ? state.selectedCountry1
           : state.selectedCountry;
@@ -401,7 +401,7 @@ const CheckoutBillingArea = ({ register, errors }) => {
           ? state.postalCode1
           : state.postalCode;
         const pincodes = await handleCheck(postalCode);
-        if (country === "IN" && pincodes) {
+        if (country === "IN") {
           isShowCOD = true;
         }
       }
@@ -756,6 +756,15 @@ const CheckoutBillingArea = ({ register, errors }) => {
     try {
       const checkoutId = localStorage.getItem("checkoutId");
       if (checkoutId) {
+        const response = await checkoutShippingAddressUpdate({
+          checkoutId,
+          shippingAddress: {
+            countryArea: state.selectedState,
+            country,
+          },
+          note: state.notes,
+        });
+
         const res = await updateDeliveryMethod({
           checkoutid: checkoutId,
           // country,
@@ -852,27 +861,39 @@ const CheckoutBillingArea = ({ register, errors }) => {
       });
       stateRefetch();
 
-      if (!state.diffAddress) {
-        const checkoutId = localStorage.getItem("checkoutId");
-        const res = await checkoutShippingAddressUpdate({
-          checkoutId,
-          shippingAddress: {
-            country: e.target.value,
-          },
-          note: state.notes,
+      // if (!state.diffAddress) {
+      const checkoutId = localStorage.getItem("checkoutId");
+      const res = await checkoutShippingAddressUpdate({
+        checkoutId,
+        shippingAddress: {
+          country: e.target.value,
+        },
+        note: state.notes,
+      });
+
+      const stateValue = {
+        target: {
+          value: "Tamil Nadu",
+        },
+      };
+      if (e?.target?.value == "IN") {
+        handleStateChange(stateValue, e?.target?.value);
+      } else {
+        const deliveryMethodIds = "U2hpcHBpbmdNZXRob2Q6OTI=";
+
+        setState({
+          selectedShippingId: deliveryMethodIds,
+          // selectedState: e.target.value,
         });
 
-        const stateValue = {
-          target: {
-            value: "Tamil Nadu",
-          },
-        };
-        if (e?.target?.value == "IN") {
-          handleStateChange(stateValue);
-        }
-        // handleStateChange(state)
-        // updateDelivertMethod(e.target.value, state.selectedPaymentType);
+        updateDelivertMethod(
+          e.target.value,
+          state.selectedPaymentType,
+          deliveryMethodIds
+        );
       }
+      // }else{
+      // }
     } catch (error) {
       console.log("error: ", error);
     }
@@ -909,11 +930,31 @@ const CheckoutBillingArea = ({ register, errors }) => {
         },
         note: state.notes,
       });
-      // updateDelivertMethod(
-      //   e.target.value,
-      //   state.selectedPaymentType,
-      //   state.selectedShippingId
-      // );
+      const stateValue = {
+        target: {
+          value: "Tamil Nadu",
+        },
+      };
+      // if (e?.target?.value == "IN") {
+      //   handleStateChange(stateValue,e?.target?.value );
+      // }
+
+      if (e?.target?.value == "IN") {
+        handleStateChange(stateValue, e?.target?.value);
+      } else {
+        const deliveryMethodIds = "U2hpcHBpbmdNZXRob2Q6OTI=";
+
+        setState({
+          selectedShippingId: deliveryMethodIds,
+          // selectedState: e.target.value,
+        });
+
+        updateDelivertMethod(
+          e.target.value,
+          state.selectedPaymentType,
+          deliveryMethodIds
+        );
+      }
     } catch (e) {
       console.log("e: ", e);
     }
@@ -1091,6 +1132,7 @@ const CheckoutBillingArea = ({ register, errors }) => {
             promoCode: "",
           });
           notifySuccess("Coupen code applied");
+          getDetails(res?.id);
         }
       }
     } catch (error) {
@@ -1106,17 +1148,18 @@ const CheckoutBillingArea = ({ register, errors }) => {
     );
 
     const checkedOption = updatedPaymentType.find((item) => item.checked)?.name;
-
-    if (state.diffAddress) {
-      updateDelivertMethodAfterChoosePaymentMothod(
-        state.selectedCountry1,
-        checkedOption
-      );
-    } else {
-      updateDelivertMethodAfterChoosePaymentMothod(
-        state.selectedCountry,
-        checkedOption
-      );
+    if (state.selectedCountry1 || state.selectedCountry) {
+      if (state.diffAddress) {
+        updateDelivertMethodAfterChoosePaymentMothod(
+          state.selectedCountry1,
+          checkedOption
+        );
+      } else {
+        updateDelivertMethodAfterChoosePaymentMothod(
+          state.selectedCountry,
+          checkedOption
+        );
+      }
     }
 
     setState({
@@ -1234,7 +1277,7 @@ const CheckoutBillingArea = ({ register, errors }) => {
         target: { value: data?.countryArea },
       };
       handleSelectChange(body);
-      handleStateChange(bodys);
+      // handleStateChange(bodys);
     }
     setState({
       firstName: data.firstName,
@@ -1264,7 +1307,7 @@ const CheckoutBillingArea = ({ register, errors }) => {
           value: data?.country?.code,
         },
       };
-      // handleStateChange(body);
+      handleSelectChange(body);
     }
 
     setState({
@@ -1286,11 +1329,17 @@ const CheckoutBillingArea = ({ register, errors }) => {
     }
   };
 
-  const handleStateChange = async (e) => {
+  const handleStateChange = async (e, country) => {
+    console.log("✌️country --->", country);
     try {
-      console.log("✌️e.target.value --->", e.target.value);
+      console.log("✌️ e.target.value --->", e.target.value);
 
-      if (!state.diffAddress) {
+      // let country = !state.diffAddress
+      //   ? state.selectedCountry
+      //   : state.selectedCountry1;
+      // if(!state.diffAddress)
+
+      if (country == "IN") {
         const deliveryMethodIds =
           e.target.value == "Tamil Nadu"
             ? "U2hpcHBpbmdNZXRob2Q6ODg="
@@ -1298,7 +1347,18 @@ const CheckoutBillingArea = ({ register, errors }) => {
 
         setState({
           selectedShippingId: deliveryMethodIds,
+          // selectedState: e.target.value,
         });
+        if (!state.diffAddress) {
+          console.log("✌️if --->");
+          setState({
+            selectedState: e.target.value,
+          });
+        } else {
+          setState({
+            selectedState1: e.target.value,
+          });
+        }
         updateDelivertMethod(
           e.target.value,
           state.selectedPaymentType,
@@ -1530,7 +1590,7 @@ const CheckoutBillingArea = ({ register, errors }) => {
                             value={state.selectedState}
                             onChange={(e) => {
                               setState({ selectedState: e.target.value });
-                              handleStateChange(e);
+                              handleStateChange(e, state.selectedCountry);
                             }}
                           >
                             <option value="">Select State</option>
@@ -1909,7 +1969,7 @@ const CheckoutBillingArea = ({ register, errors }) => {
                               value={state.selectedState1}
                               onChange={(e) => {
                                 setState({ selectedState1: e.target.value });
-                                handleStateChange(e);
+                                handleStateChange(e, state.selectedCountry1);
                               }}
                             >
                               <option value="">Select State</option>
