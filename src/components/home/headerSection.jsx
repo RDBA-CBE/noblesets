@@ -273,7 +273,7 @@ const HeaderSection = ({ style_2 = false, data }) => {
               sticky ? "header-sticky" : ""
             }`}
           >
-            <div className="section-wd" style={{ padding: "10px 30px 0 30px" }}>
+            <div className="section-wd" style={{ padding: "10px 30px 10px 30px" }}>
               <div className="tp-mega-menu-wrapper p-relative">
                 <div className="row align-items-center">
                   <div className="col-xl-5 d-none d-xl-block">

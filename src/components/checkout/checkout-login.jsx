@@ -18,7 +18,7 @@ const CheckoutLogin = () => {
       </p>
 
       {isOpen && (
-        <div id="tpReturnCustomerLoginForm" className="tp-return-customer">
+        <div id="tpReturnCustomerLoginForm" className="tp-return-customer" style={{borderRadius:"20px"}}>
           <CheckoutLoginForm  update={()=> setIsOpen(!isOpen)}/>
         </div>
       )}

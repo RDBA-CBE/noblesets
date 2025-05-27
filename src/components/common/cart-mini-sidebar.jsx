@@ -171,7 +171,7 @@ const CartMiniSidebar = () => {
                     <>
                       {item.variant.quantityAvailable >= item.quantity ? (
                         <div key={item.id} className="cartmini__widget-item">
-                          <div className="cartmini__thumb">
+                          <div className="cartmini__thumb" style={{borderRadius:"10px"}}>
                             <div
                               onClick={() => {
                                 dispatch(closeCartMini());
@@ -179,6 +179,7 @@ const CartMiniSidebar = () => {
                                   `/product-details/${item?.variant?.product?.slug}`
                                 );
                               }}
+                              style={{borderRadius:"10px"}}
                             >
                               {/* <Image
                                 src={profilePic(
@@ -197,20 +198,28 @@ const CartMiniSidebar = () => {
                                 )
                               ) ? (
                                 <img
-                                  src={profilePic(
-                                    item?.variant?.product?.thumbnail?.url ||
-                                      item?.node?.thumbnail?.url
-                                  )}
-                                  width={70}
-                                  height={60}
+                                  // src={profilePic(
+                                  //   item?.variant?.product?.thumbnail?.url ||
+                                  //     item?.node?.thumbnail?.url
+                                  // )}
+                                  src="/assets/img/blog.webp"
+                                  width={100}
+                                  height={100}
                                   alt="product img"
+                                  style={{width: "100px",
+                                    height:"100px",
+                                    objectFit:"cover",
+                                    objectPosition: "center",
+                                    borderRadius:"10px"
+                                  }}
                                 />
                               ) : (
                                 <video
-                                  src={
-                                    item?.variant?.product?.thumbnail?.url ||
-                                    item?.node?.thumbnail?.url
-                                  }
+                                  // src={
+                                  //   item?.variant?.product?.thumbnail?.url ||
+                                  //   item?.node?.thumbnail?.url
+                                  // }
+                                  src="/assets/img/blog.webp"
                                   alt="product img"
                                   width={70}
                                   height={60}
@@ -421,7 +430,10 @@ const CartMiniSidebar = () => {
                 <Link
                   href="/cart"
                   onClick={handleCloseCartMini}
-                  className="tp-btn mb-10 w-100"
+                  className="tp-btn tp-btn-border mb-10 w-100"
+                   style={{background:"transparent", color:"#b4633a", border:"none",
+                    border:"1px solid #b4633a"
+                  }}
                 >
                   {" "}
                   view cart
@@ -449,7 +461,10 @@ const CartMiniSidebar = () => {
                     router.push("/shop");
                     handleCloseCartMini();
                   }}
-                  className="tp-btn w-100 mt-20"
+                  className="tp-btn tp-btn-border w-100 mt-10"
+                  style={{background:"transparent", color:"#b4633a", border:"none",
+                    border:"1px solid #b4633a"
+                  }}
                 >
                   Continue to Shop
                 </button>

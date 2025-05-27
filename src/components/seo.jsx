@@ -1,6 +1,6 @@
 import Head from "next/head";
 import Image from 'next/image';
-import pradeLogo from "@assets/img/prade-logo.png"
+import nobelsetLogo from "@assets/img/header-logo.png"
 
 const SEO = ({pageTitle}) => (
   <>
@@ -16,7 +16,7 @@ const SEO = ({pageTitle}) => (
         content="width=device-width, initial-scale=1, shrink-to-fit=no"
       />
       <link rel="icon" href="/favicon.png" />
-      {/* <Image src={pradeLogo} alt="logo" /> */}
+      <Image src={nobelsetLogo} alt="logo" />
     </Head>
   </>
 );

@@ -252,7 +252,7 @@
   font-size: 46px;
   font-weight: 400;
   color: black !important;
-  font-family: "Marcellus SC", Arial, Helvetica, sans-serif;
+  // font-family: "Marcellus SC", Arial, Helvetica, sans-serif;
 }
 
 .discount-2 {
@@ -1402,6 +1402,12 @@ hr.footer-divider {
   margin-top: 10px;
 }
 
+@media (max-width:990px){
+  .main-ti{
+    font-size: 30px;
+  }
+}
+
 .delivery-box h6,
 .offer-box h6 {
   font-weight: 600;
@@ -1584,7 +1590,7 @@ hr.footer-divider {
 
 
 .cart-title {
-  font-weight: bold;
+  font-weight: 500;
 }
 
 .cart-availability {
@@ -1643,8 +1649,8 @@ hr.footer-divider {
 @media (max-width: 768px) {
   .cart-item {
     flex-direction: column;
-    align-items: center;
-    text-align: center;
+    // align-items: center;
+    // text-align: center;
   }
 
   .item-details {
@@ -1658,3 +1664,109 @@ hr.footer-divider {
 }
 
 
+// .checkout-page {
+//   font-family: "Segoe UI", sans-serif;
+// }
+
+.checkout-title {
+  font-weight: 600;
+  color: #333;
+}
+
+.order-summary ul li {
+  font-size: 15px;
+}
+
+.place-order-btn {
+  background-color: #a4501e;
+  border: none;
+  font-weight: 500;
+}
+
+.place-order-btn:hover {
+  background-color: #8e3d12;
+}
+
+/* Responsive Tweaks */
+@media (max-width: 767px) {
+  .checkout-title {
+    font-size: 18px;
+  }
+
+  .order-summary {
+    padding: 1rem;
+  }
+
+  .billing-form input,
+  .billing-form select,
+  .billing-form textarea {
+    font-size: 14px;
+  }
+
+  .place-order-btn {
+    font-size: 14px;
+    padding: 10px;
+  }
+}
+
+.form-select{
+  line-height: 2.7 !important;
+}
+
+.checkoutform{
+  background-color: #fff;
+  border-radius: 20px;
+}
+.checkoutPrice{
+  background-color: #fff;
+  border-radius: 20px;
+}
+
+@media (max-width:990px){
+.tp-btn-border{
+  padding: 5px 20px !important;
+}
+}
+
+
+
+.cart-container .btn-outline-secondary:hover{
+  background-color: #b4633a !important;
+  color: #fff !important;
+}
+
+.tp-login-wrapper{
+  border-radius: 20px;
+
+}
+
+.tp-login-input input{
+  border-radius: 10px;
+}
+.tp-login-remeber label::after{
+  border-radius: 5px;
+}
+
+.login-img{
+   width: 100%;
+  height: 100%;
+}
+
+.login-img img{
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center;
+}
+
+.tp-shop-top-select .nice-select{
+  background-color: transparent !important;
+  color: #b4633a !important;
+  border: 1px solid #b4633a !important;
+  border-radius: 20px !important;
+}
+
+
+.tp-filter-offcanvas-close-btn{
+  background: #b4633a !important;
+}

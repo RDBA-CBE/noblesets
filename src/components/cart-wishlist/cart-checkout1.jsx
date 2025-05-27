@@ -89,9 +89,9 @@ const CartCheckout1 = ({ cartData }) => {
                 <span>FREE</span>
               </li>
             </ul>
-            <div className="d-flex justify-content-between mt-3 p-3 bg-light rounded">
-              <strong>Grand Total</strong>
-              <strong>
+            <div className="d-flex justify-content-between mt-3 p-3  rounded" style={{background:"#b4633a30"}}>
+              <strong className="text-black">Grand Total</strong>
+              <strong className="text-black">
                   ₹{addCommasToNumber(list?.data?.checkout?.totalPrice?.gross?.amount)}
               </strong>
             </div>
@@ -104,6 +104,23 @@ const CartCheckout1 = ({ cartData }) => {
               />
               <p className="mt-2 mb-0">1 Year Warranty</p>
             </div> */}
+
+            <div className="tp-cart-checkout-proceed mt-3">
+                    {quantityDisable?.some((item) => item === false) ? (
+                      <button
+                        type="button"
+                        className="tp-btn tp-btn-border  w-100 text-center"
+                        disabled
+                        style={{ cursor: "not-allowed" }}
+                      >
+                        Proceed To Checkout
+                      </button>
+                    ) : (
+                      <Link href="/checkout" className="tp-btn tp-btn-border  w-100 text-center">
+                       Proceed To Checkout
+                      </Link>
+                    )}
+                  </div>
     </div>
   );
 };
