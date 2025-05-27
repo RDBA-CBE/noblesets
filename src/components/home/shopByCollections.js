@@ -56,7 +56,7 @@ export default function ShopByCollections() {
     // style={{ backgroundColor: "#fff9f4" }}
     >
       <div className="">
-      <div className="section-wd d-flex flex-column flex-md-row justify-content-between align-items-start align-items-md-center " style={{padding:"0 80px"}}>
+      <div className="section-wd d-flex flex-column flex-md-row justify-content-between align-items-start align-items-md-center shp-by-col" style={{padding:"0 80px"}}>
         <div className="mb-3 mb-md-0">
           <div className="mb-50" >
             <h5 className="sub-ti"><b className="pe-2">✦ </b> Excepteur occaecat</h5>
@@ -68,7 +68,7 @@ export default function ShopByCollections() {
             </h4>
           </div>
         </div>
-        <div className="d-flex mt-2 mt-md-0">
+        <div className="d-flex mt-2 mt-md-0 shp-nav">
           <button
             ref={prevRef}
             className="btn btn-sm rounded-3  me-2"
