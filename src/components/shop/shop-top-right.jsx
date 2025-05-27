@@ -14,6 +14,7 @@ const ShopTopRight = ({ selectHandleFilter }) => {
     >
       <div className="tp-shop-top-select relative z-10">
         <NiceSelect
+         
           options={[
             { value: "New Added", text: "Sort by Latest" },
             { value: "Default Sorting", text: "Default Sorting" },
@@ -30,7 +31,7 @@ const ShopTopRight = ({ selectHandleFilter }) => {
         <button
           onClick={() => dispatch(handleFilterSidebarOpen())}
           type="button"
-          className="tp-filter-btn"
+          className=" tp-btn tp-btn-border"
         >
           <span>
             <Filter />

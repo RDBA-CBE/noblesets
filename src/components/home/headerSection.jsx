@@ -273,7 +273,7 @@ const HeaderSection = ({ style_2 = false, data }) => {
               sticky ? "header-sticky" : ""
             }`}
           >
-            <div className="section-wd" style={{ padding: "10px 15px" }}>
+            <div className="section-wd" style={{ padding: "10px 30px 10px 30px" }}>
               <div className="tp-mega-menu-wrapper p-relative">
                 <div className="row align-items-center">
                   <div className="col-xl-5 d-none d-xl-block">
@@ -283,10 +283,12 @@ const HeaderSection = ({ style_2 = false, data }) => {
                       </nav>
                     </div>
                   </div>
-                  <div className="col-xl-2 col-lg-5 col-md-5 col-sm-4 col-6 d-flex justify-content-center">
+                  <div className="col-xl-2 col-lg-5 col-md-5 col-sm-4 col-6 d-flex justify-content-xl-center">
                     <div className="logo" style={{height:"auto"}}>
                       <Link href="/">
                         <Image
+                        width={140}
+                        height={80}
                           src={pradeLogo}
                           alt="logo"
                           priority
@@ -421,14 +423,15 @@ const HeaderSection = ({ style_2 = false, data }) => {
                         <div className="tp-header-action-item d-none d-lg-block">
                           <div
                             onClick={() => setIsOpen3(!isOpen3)}
-                            className="tp-header-action-btn  rounded"
+                            className="tp-header-action-btn  "
                             style={{
-                              backgroundColor: "#cc805c",
-                              width: "30px",
-                              height: "30px",
+                              backgroundColor: "#e09a7b",
+                              width: "35px",
+                              height: "35px",
                               alignItems: "center",
                               justifyContent: "center",
                               display: "flex",
+                              borderRadius:"5px"
                             }}
                           >
                             <Search />
@@ -456,14 +459,15 @@ const HeaderSection = ({ style_2 = false, data }) => {
                         >
                           <button
                             onClick={toggleDropdown}
-                            className="tp-header-action-btn cartmini-open-btn rounded"
+                            className="tp-header-action-btn cartmini-open-btn "
                             style={{
-                              backgroundColor: "#cc805c",
-                              width: "30px",
-                              height: "30px",
+                              backgroundColor: "#e09a7b",
+                              width: "35px",
+                              height: "35px",
                               alignItems: "center",
                               justifyContent: "center",
                               display: "flex",
+                              borderRadius:"5px"
                             }}
                           >
                             <UserThree />
@@ -580,14 +584,15 @@ const HeaderSection = ({ style_2 = false, data }) => {
                               cartRefetch();
                               AllListChannelREfresh();
                             }}
-                            className="tp-header-action-btn cartmini-open-btn rounded"
+                            className="tp-header-action-btn cartmini-open-btn "
                             style={{
-                              backgroundColor: "#cc805c",
-                              width: "30px",
-                              height: "30px",
+                              backgroundColor: "#e09a7b",
+                              width: "35px",
+                              height: "35px",
                               alignItems: "center",
                               justifyContent: "center",
                               display: "flex",
+                              borderRadius:"5px"
                             }}
                           >
                             <CartTwo />
@@ -599,7 +604,7 @@ const HeaderSection = ({ style_2 = false, data }) => {
                         {/* {token && ( */}
 
                         {/* )} */}
-                        <div className="tp-header-action-item tp-header-hamburger mr-20 d-xl-none">
+                        <div className="tp-header-action-item tp-header-hamburger ps-3 d-xl-none">
                           <button
                             onClick={() => setIsCanvasOpen(true)}
                             type="button"

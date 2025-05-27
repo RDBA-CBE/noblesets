@@ -20,6 +20,11 @@
                     visibility: visible;
                     opacity: 1;
                 }
+                @media ( max-width:1600px){
+                    &-action-2{
+                        left: 60px !important;
+                    }
+                }
             }
         }
     }

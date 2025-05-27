@@ -10,9 +10,17 @@ const LoginArea = () => {
   return (
     <>
       <section className="tp-login-area pb-140 pt-120 p-relative z-index-1 fix">
-        <LoginShapes />
+        {/* <LoginShapes /> */}
         <div className="container">
           <div className="row justify-content-center">
+            {/* <div className="col-xl-6 col-lg-8">
+              <div className="tp-login-wrapper">
+                <div className="login-img">
+                   <img src="/assets/img/placeholder-portrait.png" alt="" />
+                </div>
+               
+              </div>
+            </div> */}
             <div className="col-xl-6 col-lg-8">
               <div className="tp-login-wrapper">
                 <div className="tp-login-top text-center mb-30">
@@ -31,8 +39,8 @@ const LoginArea = () => {
                     </div>
                   </div> */}
                   <div className="tp-login-mail text-center mb-40">
-                    <p>
-                      or Sign in with <a href="#">Email</a>
+                    <p className="cursor-pointer">
+                      <a href="#"> or Sign in with Email</a>
                     </p>
                   </div>
                   <LoginForm />

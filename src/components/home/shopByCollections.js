@@ -5,6 +5,7 @@ import { Swiper, SwiperSlide } from "swiper/react";
 import { Navigation } from "swiper";
 import "swiper/css";
 import "swiper/css/navigation";
+import { ArrowNextSm, ArrowPrevSm } from "@/svg";
 
 const collections = [
   {
@@ -51,12 +52,14 @@ export default function ShopByCollections() {
   const nextRef = useRef(null);
 
   return (
-    <section className="pt-60 ShopByCollections" style={{ backgroundColor: "#fff9f4" }}>
+    <section className="pt-60 ShopByCollections position-relative" 
+    // style={{ backgroundColor: "#fff9f4" }}
+    >
       <div className="">
-      <div className="section-wd d-flex flex-column flex-md-row justify-content-between align-items-start align-items-md-center px-3">
+      <div className="section-wd d-flex flex-column flex-md-row justify-content-between align-items-start align-items-md-center " style={{padding:"0 80px"}}>
         <div className="mb-3 mb-md-0">
           <div className="mb-50" >
-            <h5 className="sub-ti"><b>✦ </b> Excepteur occaecat</h5>
+            <h5 className="sub-ti"><b className="pe-2">✦ </b> Excepteur occaecat</h5>
             <h4
               className="feature-adipisicing main-ti"
               
@@ -68,33 +71,35 @@ export default function ShopByCollections() {
         <div className="d-flex mt-2 mt-md-0">
           <button
             ref={prevRef}
-            className="btn btn-sm rounded-3 px-3 py-1 me-2"
+            className="btn btn-sm rounded-3  me-2"
             style={{
               backgroundColor: "#e6a285",
               color: "white",
-              fontSize: "16px",
-              fontWeight: "bold",
+              fontSize: "15px",
+              // fontWeight: "bold",
+              padding:"5px 10px"
             }}
           >
-            ‹
+             <ArrowPrevSm />
           </button>
           <button
             ref={nextRef}
-            className="btn btn-sm rounded-3 px-3 py-1"
+            className="btn btn-sm rounded-3 "
             style={{
               backgroundColor: "#e6a285",
               color: "white",
-              fontSize: "16px",
-              fontWeight: "bold",
+              fontSize: "15px",
+              // fontWeight: "bold",
+              padding:"5px 10px"
             }}
           >
-            ›
+            <ArrowNextSm />
           </button>
         </div>
       </div>
 
       {/* Swiper Carousel */}
-      <div className="position-relative">
+      <div className="position-relative d-flex flex-wrap align-items-stretch">
         <Swiper
           modules={[Navigation]}
           // spaceBetween={30}

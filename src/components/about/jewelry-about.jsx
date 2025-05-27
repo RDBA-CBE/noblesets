@@ -17,7 +17,7 @@ const JewelryAbout = () => {
                 className="tp-about-title mb-25"
                 style={{ fontSize: "18px", lineHeight: "40px", color: "gray" }}
               >
-                PraDe strives to encapsulate Indian values and sentiments
+                Nobelsets strives to encapsulate Indian values and sentiments
                 through its designs. We look forward to maintain the Indian
                 heritage and bring out the tradition and culture.
               </p>
@@ -26,7 +26,7 @@ const JewelryAbout = () => {
             <div className="col-md-6" style={{ position: "relative" }}>
               <div className="about-section-logo">
                 <img
-                  src="/assets/img/prade-about-logo.jpg"
+                  src="assets/img/header-logo.png"
                   alt="about-thumb"
                   style={{ width: "100%" }}
                 />
@@ -50,7 +50,7 @@ const JewelryAbout = () => {
                     marginBottom: "5px",
                   }}
                 >
-                  PRADE JEWELS
+                  NOBELSETS 
                 </p>
                 <p
                   style={{
@@ -61,9 +61,9 @@ const JewelryAbout = () => {
                     lineHeight: "30px",
                   }}
                 >
-                  Since its founding in 2017, PraDe Jewels & Drapes Private
+                  Since its founding in 2017, Nobelsets  & Drapes Private
                   Limited has emerged as a top luxury jewelry brand based in
-                  South India. PraDe is renowned for its exquisite collection of
+                  South India. Nobelset is renowned for its exquisite collection of
                   pure 925 silver jewelry.
                 </p>
               </div>
@@ -75,7 +75,7 @@ const JewelryAbout = () => {
             >
               <div className="about-section-logo">
                 <img
-                  src="/assets/img/prade-about-logo.jpg"
+                  src="/assets/img/header-logo.png"
                   alt="about-thumb"
                   style={{ width: "100%" }}
                 />
@@ -129,7 +129,7 @@ const JewelryAbout = () => {
             >
               <div className="about-section-logo">
                 <img
-                  src="/assets/img/prade-about-logo.jpg"
+                  src="/assets/img/header-logo.png"
                   alt="about-thumb"
                   style={{ width: "100%" }}
                 />

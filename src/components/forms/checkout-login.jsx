@@ -67,7 +67,7 @@ const CheckoutLoginForm = ({update}) => {
 
   return (
     <form onSubmit={handleSubmit(onSubmit)}>
-      <div className="tp-login-input-wrapper">
+      <div className="tp-login-input-wrapper" >
         <div className="tp-login-input-box">
           <div className="tp-login-input">
             <input
@@ -75,7 +75,7 @@ const CheckoutLoginForm = ({update}) => {
               name="email"
               id="email"
               type="email"
-              placeholder="prade@mail.com"
+              placeholder="nobelset@mail.com"
             />
           </div>
           <div className="tp-login-input-title">
@@ -119,7 +119,7 @@ const CheckoutLoginForm = ({update}) => {
         </div>
       </div>
       <div className="tp-login-bottom">
-        <button type="submit" className="tp-login-btn w-100">
+        <button type="submit" className="tp-btn tp-btn-border w-100">
           Login
         </button>
       </div>

@@ -64,7 +64,7 @@ import { CASE_ON_DELIVERY, pincode, SHIPPING_ZONE } from "@/utils/constant";
 import { DeleteOutlined } from "@ant-design/icons";
 import PhoneInput, { isValidPhoneNumber } from "react-phone-number-input";
 import "react-phone-number-input/style.css";
-import pradeLogo from "@assets/img/prade-logo.png";
+import pradeLogo from "@assets/img/header-logo.png";
 import AddressModal from "./addressComponent";
 import { useGetAddressListQuery } from "../../redux/features/productApi";
 import CCAvenue from "../../components/ccAvenue/ccAvenue";
@@ -2340,7 +2340,7 @@ const CheckoutBillingArea = ({ register, errors }) => {
                             taken from the recipient over the call.
                           </li>
                           <li>
-                            PraDe Jewels reserves the right to disable COD
+                            Nobelsets Jewels reserves the right to disable COD
                             option for the User, If COD order is rejected. Only
                             cash/UPI payments will be accepted while delivering
                             the order under the COD format.

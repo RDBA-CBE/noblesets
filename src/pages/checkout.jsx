@@ -12,6 +12,7 @@ import { useGetCartListQuery } from '@/redux/features/card/cardApi';
 import CheckoutBanner from "@assets/img/shop-banner.jpg";
 import { useCountryListQuery } from '../redux/features/productApi';
 import HeaderSection from '@/components/home/headerSection';
+import HomeFooter from '@/components/home/HomeFooter';
 
 
 const CheckoutPage = () => {
@@ -24,9 +25,13 @@ const CheckoutPage = () => {
     <Wrapper>
       <SEO pageTitle="Checkout" />
       <HeaderSection />
+       <div style={{background:"#fff9f4"}}>
+      <div className="section-wd">
       <CommonBreadcrumb title="Checkout" subtitle="Checkout" bg_clr={true} BgImage={CheckoutBanner} />
+      </div>
       <CheckoutArea/>
-      <FooterTwo style_2={true} />
+      </div>
+     <HomeFooter />
     </Wrapper>
   );
 };

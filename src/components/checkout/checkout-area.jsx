@@ -19,6 +19,7 @@ import {
 import { notifyError, notifySuccess } from "@/utils/toast";
 import { useRouter } from "next/router";
 import { checkChannel } from "@/utils/functions";
+import CheckoutBillingArea1 from "./checkout-billing-area1";
 
 const CheckoutArea = () => {
   // const {register,handleSubmit,setValue,formState: { errors }} = useForm();
@@ -122,7 +123,8 @@ const CheckoutArea = () => {
 
   return (
     <>
-      <CheckoutBillingArea />
+      {/* <CheckoutBillingArea /> */}
+      <CheckoutBillingArea1/>
     </>
   );
 };

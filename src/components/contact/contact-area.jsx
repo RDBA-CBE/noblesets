@@ -174,7 +174,7 @@ const ContactArea = () => {
                     />
                   </div>
                   <p style={{ color: "rgb(85 85 85)", fontSize: "16px" }}>
-                    <Link href="mailto:support@prade.in">support@prade.in</Link>
+                    <Link href="mailto:support@nobelset.in">support@nobelset.in</Link>
                   </p>
                 </div>
                 <div className="contacr-social-links">
@@ -196,7 +196,7 @@ const ContactArea = () => {
                       href="https://maps.app.goo.gl/qLfBEz7ZVkcsiSxt6"
                       target="_blank"
                     >
-                      Prade jewels and Drapes private Limited
+                      Nobelsets jewels and Drapes private Limited
                       <br /> No.28, 1st floor, Vijay building,
                       <br /> Near Andhra club, Vijaya Raghava road,
                       <br />
@@ -237,7 +237,7 @@ const ContactArea = () => {
                   <div style={{ display: "flex" }}>
                     <div style={{ paddingRight: "15px" }}>
                       <Link
-                        href="https://www.facebook.com/PraDeJewels"
+                        href="#"
                         target="_blank"
                       >
                         <FacebookIcon />
@@ -245,7 +245,7 @@ const ContactArea = () => {
                     </div>
                     <div style={{ paddingRight: "15px" }}>
                       <Link
-                        href="https://www.instagram.com/pradejewels/"
+                        href="#"
                         target="_blank"
                       >
                         <InstagramIcon />

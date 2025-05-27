@@ -51,14 +51,14 @@ const HomeCategorySection = () => {
   return (
     <>
       <section
-        className="pt-60"
+        className="pt-60 bestofnoblesets position-relative"
         style={{ backgroundColor: "#fff9f4" }}
       >
         <div className="container-fluid" style={{ padding: "0px" }}>
           <div className="row">
             <div className="col-12">
               <div className="feature-main mb-50" >
-                <h5 className="sub-ti" > <b>✦</b> Duis Irure dolor</h5>
+                <h5 className="sub-ti" > <b className="pe-2">✦</b> Duis Irure dolor</h5>
                 <h4
                   className="feature-adipisicing main-ti"
                  
@@ -167,7 +167,7 @@ const HomeCategorySection = () => {
                           src={video}
                           alt="image-5"
                           style={{
-                            width: "100%",
+                            width: "95%",
                             borderRadius: "20px",
                             cursor: "pointer",
                           }}
@@ -185,6 +185,7 @@ const HomeCategorySection = () => {
                   <div className="tp-brand-slider-arrow">
                     <button className="tp-brand-slider-button-prev">
                       <ArrowPrevSm />
+                      
                     </button>
                     <button className="tp-brand-slider-button-next">
                       <ArrowNextSm />

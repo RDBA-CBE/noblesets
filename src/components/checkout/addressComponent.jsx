@@ -43,8 +43,18 @@ const BillingAddressModal = (props) => {
         closeIcon={
           <span style={{ fontSize: "16px", cursor: "pointer" }}>✖</span>
         } // Custom close icon
+        cancelButtonProps={{
+          style:{
+            padding:"20px 29px",
+            borderRadius:"20px",
+            border:"1px solid #b4633a", // Set background color to your preference
+            color:"#b4633a",
+          }
+        }}
         okButtonProps={{
           style: {
+            padding:"20px 29px",
+            borderRadius:"20px",
             backgroundColor: "#b4633a", // Set background color to your preference
             color: "white", // Set text color to white
             border: "none", // Optional: Remove border
@@ -72,7 +82,9 @@ const BillingAddressModal = (props) => {
               className="address-container"
               style={{
                 display: "grid",
-                gridTemplateColumns: "repeat(2, 1fr)", // Two columns
+                 gridTemplateColumns: "repeat(auto-fit, minmax(250px, 1fr))",
+                // gridTemplateRows: "repeat(auto-fill, minmax(200px, 1fr))", // Dynamically adjust rows based on address count
+                // gridTemplateColumns: "repeat(2, 1fr)", 
                 gap: "15px", // Space between address blocks
               }}
             >
@@ -85,13 +97,14 @@ const BillingAddressModal = (props) => {
                     padding: "15px",
                     borderRadius: "5px",
                     boxSizing: "border-box",
+                    borderRadius:"20px"
                   }}
                 >
                   <Radio value={address.id} style={{ display: "block" }}>
-                    <div>
+                    <div >
                       <div
                         className="address-name"
-                        style={{ fontWeight: "bold", fontSize: "16px" }}
+                        style={{ fontWeight: "bold", fontSize: "16px",  }}
                       >
                         {`${address?.firstName} ${address?.lastName}`}
                       </div>

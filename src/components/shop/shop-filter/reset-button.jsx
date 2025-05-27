@@ -11,7 +11,7 @@ const ResetButton = ({ shop_right = false, onClick }) => {
           onClick();
           // router.push(`/${shop_right ? "shop-right-sidebar" : "shop"}`);
         }}
-        className="tp-btn"
+        className="tp-btn tp-btn-border"
       >
         Reset Filter
       </button>

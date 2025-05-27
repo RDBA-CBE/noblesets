@@ -77,7 +77,8 @@ const ShopFilterOffCanvas = ({
                         : addCommasToNumber(maxPrice)}
                     </span>
                     <button
-                      className="tp-shop-widget-filter-btn"
+                      className="tp-btn tp-btn-border"
+                      style={{padding:"2px 25px"}}
                       type="button"
                       onClick={() => filterByPrice(priceValue)}
                     >
