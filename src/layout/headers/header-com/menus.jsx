@@ -133,9 +133,10 @@ const CategoryContent = ({
             <div>
               {commonImage ? (
                 <img
-                  src={commonImage}
+                  // src={commonImage}
+                  src="assets/img/blog.webp"
                   alt="category image"
-                  style={{ width: "100%", height: "250px" }}
+                  style={{ width: "100%", height: "300px" , objectFit:"cover", objectPosition:"center"}}
                 />
               ) : (
                 <img
@@ -346,7 +347,7 @@ const Menus = () => {
             <div
               className="col-lg-2"
               style={{
-                backgroundColor: "#b4633a",
+                backgroundColor: "#fff",
                 padding: "0px",
                 color: "black",
               }}
