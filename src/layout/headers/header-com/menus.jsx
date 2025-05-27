@@ -176,21 +176,21 @@ const CategoryContent = ({
 };
 
 const CategoryComponent = (props) => {
-  const { productList, lastHoveredCategory, setLastHoveredCategory,commonImage } = props;
+  const { productList, lastHoveredCategory, productLoading,commonImage } = props;
 
   const router = useRouter();
   const [hoveredCategory, setHoveredCategory] = useState(null);
-  const [priceFilter, { isLoading: productLoading }] = usePriceFilterMutation();
+  // const [priceFilter, { isLoading: productLoading }] = usePriceFilterMutation();
   const [categoryImage, setCategoryImage] = useState([]);
   const [subCategoryLists, setSubCategoryLists] = useState([]);
 
-  const [subCatList, { isLoading: loadingProduct }] = useSubCatListMutation();
+  // const [subCatList, { isLoading: loadingProduct }] = useSubCatListMutation();
 
   const renderContent = () => {
-    if (productList?.length === 0) return null;
+    // if (productList?.length === 0) return null;
 
-    return loadingProduct || productLoading ? (
-      <SingleLoader loading={loadingProduct} />
+    return  productLoading ? (
+      <SingleLoader loading={productLoading} />
     ) : productList?.length > 0 ? (
       <Swiper
         {...slider_setting}
@@ -676,6 +676,7 @@ const Menus = () => {
                   commonImage="/assets/img/earring-menu-pic-1.png" // Add the path to your common image
                   lastHoveredCategory={lastHoveredCategory}
                   productList={state.productList}
+                  productLoading={productLoading}
                 />
               </div>
             </div>
