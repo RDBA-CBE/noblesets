@@ -89,7 +89,7 @@ const HomeBanner = () => {
             key={i}
             className="tp-slider-item-4 tp-slider-height-4 p-relative d-flex align-items-center"
           >
-            <div className="tp-slider-thumb-4  desk">
+            {/* <div className="tp-slider-thumb-4  desk">
               <Link href={item?.link}>
                 <Image
                   src={item.img}
@@ -103,7 +103,7 @@ const HomeBanner = () => {
                   }}
                 />
               </Link>
-            </div>
+            </div> */}
             <div className="tp-slider-thumb-4  mbl">
               <Link href={item?.link}>
                 <Image
@@ -119,10 +119,10 @@ const HomeBanner = () => {
                 />
               </Link>
 
-              <div className="tp-slider-thumb-4-shape">
+              {/* <div className="tp-slider-thumb-4-shape">
                 <span className="tp-slider-thumb-4-shape-1"></span>
                 <span className="tp-slider-thumb-4-shape-2"></span>
-              </div>
+              </div> */}
             </div>
             <div className="mbl-content">
               <h1>

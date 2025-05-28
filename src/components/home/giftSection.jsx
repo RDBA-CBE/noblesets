@@ -6,7 +6,7 @@ export default function GiftSection() {
     // style={{ backgroundColor: "#fff9f4" }}
     >
       <div class=" section-wd gift-section">
-        <div class="row align-items-center justify-content-center g-5">
+        <div class="row align-items-center justify-content-between g-5 px-3">
           <div class="col-12 col-lg-6 px-5" data-aos="fade-right">
             <div className="">
               <h5 className="sub-ti" > <b className="pe-2">✦</b>  Exceptuer occaecat</h5>
@@ -25,7 +25,11 @@ export default function GiftSection() {
             </p>
 
             <div class="row  gap-3  gap-sm-0">
-              <div class="col-12 col-sm-4 text-center" data-aos="zoom-in" data-aos-delay="200">
+              <div class="col-12 col-sm-4 text-center" data-aos="zoom-in" data-aos-delay="200" onClick={() => {
+                  
+                  
+                 router.push("/shop");
+                  }}>
                 <img
                   src="/assets/img/home/gift_special/img-1.png"
                   alt="image-1"
@@ -34,11 +38,15 @@ export default function GiftSection() {
                     borderRadius: "20px",
                     cursor: "pointer",
                   }}
-                  onClick={() => router?.push("/sale")}
+                  
                 />
                 {/* <p class="small mt-2">Birthday</p> */}
               </div>
-              <div class="col-12 col-sm-4 text-center" data-aos="zoom-in" data-aos-delay="300">
+              <div class="col-12 col-sm-4 text-center" data-aos="zoom-in" data-aos-delay="300" onClick={() => {
+                  
+                  
+                 router.push("/shop");
+                  }}>
                 <img
                   src="/assets/img/home/gift_special/img-2.png"
                   alt="image-1"
@@ -47,11 +55,14 @@ export default function GiftSection() {
                     borderRadius: "20px",
                     cursor: "pointer",
                   }}
-                  onClick={() => router?.push("/sale")}
+                 
                 />
                 {/* <p class="small mt-2">Anniversary</p> */}
               </div>
-              <div class="col-12 col-sm-4 text-center" data-aos="zoom-in" data-aos-delay="400">
+              <div class="col-12 col-sm-4 text-center" data-aos="zoom-in" data-aos-delay="400" onClick={() => {
+                 
+                 router.push("/shop");
+                  }}>
                 <img
                   src="/assets/img/home/gift_special/img-3.png"
                   alt="image-1"
@@ -60,7 +71,7 @@ export default function GiftSection() {
                     borderRadius: "20px",
                     cursor: "pointer",
                   }}
-                  onClick={() => router?.push("/sale")}
+                  
                 />
                 {/* <p class="small mt-2">Valentine’s Day</p> */}
               </div>
@@ -72,7 +83,10 @@ export default function GiftSection() {
                 paddingTop: "30px",
               }}
             >
-              <button className="gradient-btn">✦ Explore Products ✦</button>
+              <button className="gradient-btn" onClick={() => {
+                  
+                 router.push("/shop");
+                  }}>✦ Explore Products ✦</button>
             </div>
           </div>
 

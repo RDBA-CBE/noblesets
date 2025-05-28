@@ -56,7 +56,7 @@ export default function ShopByCollections() {
     // style={{ backgroundColor: "#fff9f4" }}
     >
       <div className="">
-      <div className="section-wd d-flex flex-column flex-md-row justify-content-between align-items-start align-items-md-center shp-by-col" style={{padding:"0 80px"}}>
+      <div className="section-wd d-flex flex-column flex-md-row justify-content-between align-items-start align-items-md-center shp-by-col" style={{padding:"0 30px"}}>
         <div className="mb-3 mb-md-0">
           <div className="mb-50" >
             <h5 className="sub-ti"><b className="pe-2">✦ </b> Excepteur occaecat</h5>
@@ -124,7 +124,7 @@ export default function ShopByCollections() {
               <div className="card border-0 h-100 shadow-sm ">
                 <img
                   src={item.img}
-                  className="card-img-top"
+                  className="card-img-top cursor-pointer"
                   alt={item.title}
                   style={{
                     objectFit: "cover",
@@ -133,13 +133,17 @@ export default function ShopByCollections() {
                   }}
                 />
                 <div className="card-body text-center pb-0">
-                  <p className="text-muted mb-3 mt-40" style={{fontSize:"18px"}}>{item.desc}</p>
+                  <p className="text-muted mb-3 mt-40 cursor-pointer" style={{fontSize:"18px"}}>{item.desc}</p>
                   <h5
-                    className=" mb-3"
+                    className=" mb-3 cursor-pointer"
                     style={{
                       fontSize: "35px",
                       fontWeight: "400",
                     }}
+                    onClick={() => {
+                  
+                 router.push("/shop");
+                  }}
                   >
                     {item.title}
                   </h5>

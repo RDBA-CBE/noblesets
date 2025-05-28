@@ -8,9 +8,9 @@ const HomeFooter = () => {
       
       <footer className="container-fluid pt-50 text-white">
         <div className="row justify-content-center ">
-        <div className="col-11 col-lg-10">
+        <div className="col-11 col-xl-10">
         <div className="row gy-4 ">
-          <div className="col-12 col-md-3">
+          <div className="col-12  col-xl-3">
             <div className="footer-subtitle mb-2">
               {/* <i className="fas fa-times"></i> */}
               <h3 className=" text-white">Newsletter</h3>
@@ -60,7 +60,7 @@ const HomeFooter = () => {
               </label>
             </div>
           </div>
-          <div className="col-6 col-md-2 ps-5">
+          <div className="col-6 col-lg-3 col-xl-2 ps-xl-5">
             <h3 className="footer-title">Useful Links</h3>
             <nav className="nav flex-column">
               <a className="footer-link mb-3" href="#">
@@ -83,7 +83,7 @@ const HomeFooter = () => {
               </a>
             </nav>
           </div>
-          <div className="col-6 col-md-2">
+          <div className="col-6 col-lg-3 col-xl-2">
             <h3 className="footer-title">Contact Us</h3>
             <div className="d-flex align-items-center mb-3">
               {/* <i className="fas fa-phone me-2" style="font-size: 10px"></i> */}
@@ -108,7 +108,7 @@ const HomeFooter = () => {
               <span className="footer-link ps-2">services@nobelset.com</span>
             </div>
           </div>
-          <div className="col-6 col-md-2">
+          <div className="col-6  col-lg-3 col-xl-2">
             <h3 className="footer-title">Payment</h3>
             <div className="d-flex flex-column gap-3">
               <div className="payment-item">
@@ -163,7 +163,7 @@ const HomeFooter = () => {
               </div>
             </div>
           </div>
-          <div className="col-6 col-md-3">
+          <div className="col-6 col-lg-3 col-xl-3">
             <h3 className="footer-title">Download Nobelist</h3>
             <p className="download-text ">
               Get Exclusive Offers, 24/7 Tech Support &amp; Feet Advatage with

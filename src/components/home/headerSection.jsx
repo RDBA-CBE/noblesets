@@ -425,7 +425,8 @@ const HeaderSection = ({ style_2 = false, data }) => {
                             onClick={() => setIsOpen3(!isOpen3)}
                             className="tp-header-action-btn  "
                             style={{
-                              backgroundColor: "#e09a7b",
+                              // backgroundColor: "#e09a7b",
+                              background: "linear-gradient(to right,color-mix(in srgb, #fbdccc 40%, #e09a7a),#e09a7a)",
                               width: "35px",
                               height: "35px",
                               alignItems: "center",
