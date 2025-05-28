@@ -169,7 +169,7 @@ const HomeFooter = () => {
               Get Exclusive Offers, 24/7 Tech Support &amp; Feet Advatage with
               nobelist app
             </p>
-            <div className="d-flex gap-3">
+            <div className="d-flex gap-3 flex-wrap">
               <a className="" aria-label="Get it on App Store" href="#">
                 <img
                   alt="Get it on App Store black badge with white text"

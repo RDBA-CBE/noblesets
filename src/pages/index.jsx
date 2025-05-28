@@ -96,7 +96,7 @@ const Index = () => {
       <SEO pageTitle="Home" />
       <HeaderSection />
       <div style={{ background: "#fff9f4" }}>
-        <div className="section-wd ">
+        <div className="section-wd bnr">
           <HomeBanner />
         </div>
       </div>

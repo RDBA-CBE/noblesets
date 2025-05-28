@@ -51,7 +51,7 @@ const HomeCategorySection = () => {
   return (
     <>
       <section
-        className="pt-60 bestofnoblesets position-relative"
+        className="pt-60 bestofnoblesets position-relative h4size"
         style={{ backgroundColor: "#fff9f4" }}
       >
         <div className="container-fluid" style={{ padding: "0px" }}>

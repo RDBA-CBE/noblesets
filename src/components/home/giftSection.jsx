@@ -5,7 +5,7 @@ export default function GiftSection() {
     <section class="pt-60 giftSection position-relative" 
     // style={{ backgroundColor: "#fff9f4" }}
     >
-      <div class=" section-wd">
+      <div class=" section-wd gift-section">
         <div class="row align-items-center justify-content-center g-5">
           <div class="col-12 col-lg-6 px-5" data-aos="fade-right">
             <div className="">
@@ -24,8 +24,8 @@ export default function GiftSection() {
               shortage of choice. Make every occasion memorable.
             </p>
 
-            <div class="row  ">
-              <div class="col-4 text-center" data-aos="zoom-in" data-aos-delay="200">
+            <div class="row  gap-3  gap-sm-0">
+              <div class="col-12 col-sm-4 text-center" data-aos="zoom-in" data-aos-delay="200">
                 <img
                   src="/assets/img/home/gift_special/img-1.png"
                   alt="image-1"
@@ -38,7 +38,7 @@ export default function GiftSection() {
                 />
                 {/* <p class="small mt-2">Birthday</p> */}
               </div>
-              <div class="col-4 text-center" data-aos="zoom-in" data-aos-delay="300">
+              <div class="col-12 col-sm-4 text-center" data-aos="zoom-in" data-aos-delay="300">
                 <img
                   src="/assets/img/home/gift_special/img-2.png"
                   alt="image-1"
@@ -51,7 +51,7 @@ export default function GiftSection() {
                 />
                 {/* <p class="small mt-2">Anniversary</p> */}
               </div>
-              <div class="col-4 text-center" data-aos="zoom-in" data-aos-delay="400">
+              <div class="col-12 col-sm-4 text-center" data-aos="zoom-in" data-aos-delay="400">
                 <img
                   src="/assets/img/home/gift_special/img-3.png"
                   alt="image-1"
