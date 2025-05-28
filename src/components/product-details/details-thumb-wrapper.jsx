@@ -167,10 +167,10 @@ const DetailsThumbWrapper = ({ product, relatedClick }) => {
             </>
           )}
         </nav> */}
-
+{product?.media?.length > 1 && (
 <nav className="product-side-nav-img p-relative">
           <div className="nav nav-tabs flex-md-column flex-nowrap justify-content-start">
-            {productImages
+            {product?.media
               ?.slice(startIndex, startIndex + 4)
               .map((item, i) => (
                 <button
@@ -228,7 +228,7 @@ const DetailsThumbWrapper = ({ product, relatedClick }) => {
             </>
           )}
         </nav>
-        {/* )} */}
+         )} 
 
         <div className={`tab-content m-img full-width-image`}>
           <div className="tab-pane fade show active">
@@ -248,12 +248,12 @@ const DetailsThumbWrapper = ({ product, relatedClick }) => {
                       >
                           <img
                           className="product-details-image"
-                          src="/assets/img/blog.webp"
-                          // description={activeImg?.description}
-                          // caption={activeImg?.caption}
-                          // title={activeImg?.title}
-                          // src={profilePic(activeImg?.url)}
-                          // alt={activeImg.alt}
+                          // src="/assets/img/blog.webp"
+                          description={activeImg?.description}
+                          caption={activeImg?.caption}
+                          title={activeImg?.title}
+                          src={profilePic(activeImg?.url)}
+                          alt={activeImg.alt}
                           onLoad={() => setLoading(false)}
                           onError={() => setLoading(false)}
                           style={{borderRadius:"20px" }}
