@@ -1369,10 +1369,11 @@ const CheckoutBillingArea1 = () => {
        console.log("✌️error --->", error);
      }
    };
+   
    const thumbRef = useRef(null);
     
       useEffect(() => {
-        const el = thumbRef.current;
+        const el = thumbRef?.current;
         const initialOffsetTop = el?.offsetTop ?? 0;
     
         function handleScroll() {
@@ -1394,6 +1395,8 @@ const CheckoutBillingArea1 = () => {
         window.addEventListener("scroll", handleScroll);
         return () => window.removeEventListener("scroll", handleScroll);
       }, []);
+
+  
 
   return (
     <>

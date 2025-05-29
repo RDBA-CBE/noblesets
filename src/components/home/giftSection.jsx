@@ -7,7 +7,7 @@ export default function GiftSection() {
     >
       <div class=" section-wd gift-section">
         <div class="row align-items-center justify-content-between g-5 px-3">
-          <div class="col-12 col-lg-6 px-5" data-aos="fade-right">
+          <div class="col-12 col-lg-6 px-3 px-lg-5" data-aos="fade-right">
             <div className="">
               <h5 className="sub-ti" > <b className="pe-2">✦</b>  Exceptuer occaecat</h5>
               <h4
@@ -24,7 +24,7 @@ export default function GiftSection() {
               shortage of choice. Make every occasion memorable.
             </p>
 
-            <div class="row  gap-3  gap-sm-0">
+            <div class="row  gap-3  gap-sm-0 pt-4 pt-md-2">
               <div class="col-12 col-sm-4 text-center" data-aos="zoom-in" data-aos-delay="200" onClick={() => {
                   
                   
@@ -77,7 +77,7 @@ export default function GiftSection() {
               </div>
             </div>
 
-            <div
+            <div className="justify-content-center justify-content-md-start"
               style={{
                 display: "flex",
                 paddingTop: "30px",
