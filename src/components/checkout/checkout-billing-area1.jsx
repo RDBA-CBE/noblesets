@@ -311,7 +311,7 @@ const CheckoutBillingArea1 = () => {
   const handleCheck = async (code) => {
     try {
       let isTrue = false;
-      const res = await picodeCheck({ code: code });
+      const res = await picodeCheck({ code: [code] });
       if (res?.data?.data?.pincodes?.edges.length > 0) {
         isTrue = true;
       } else {

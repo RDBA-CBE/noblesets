@@ -773,7 +773,6 @@ export const productApi = apiSlice.injectEndpoints({
 
     pincodeList: builder.mutation({
       query: ({ code }) => {
-        console.log("✌️code --->", code);
         return configuration(
           PINCODE_LIST({
             code: code,
