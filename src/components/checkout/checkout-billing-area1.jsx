@@ -1395,6 +1395,8 @@ const CheckoutBillingArea1 = () => {
     return () => window.removeEventListener("scroll", handleScroll);
   }, []);
 
+  
+
   return (
     <>
       <section

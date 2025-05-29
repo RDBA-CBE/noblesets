@@ -66,8 +66,13 @@ const ShopBreadcrumb = ({
   return (
     <>
       <section
-        className="breadcrumb__area include-bg pt-50 pb-50 "
-        style={{ backgroundImage: `url(${bgImage?.src})`, borderRadius:"30px" }}
+        className="breadcrumb__area include-bg pt-20 pb-20 "
+        style={{ 
+          // backgroundImage: `url(${bgImage?.src})`,
+          background:"linear-gradient(to right,color-mix(in srgb, #fbdccc 40%, #e09a7a),#e09a7a)",
+         borderRadius:"30px", 
+         color:"#fff"
+      }}
       >
         <div className="container-fluid">
           <div className="row">
@@ -166,8 +171,9 @@ const ShopBreadcrumb = ({
                       {categoryopen && (
                         <div
                           style={{
-                            backgroundColor: "rgb(0 0 0 / 40%)",
+                            backgroundColor: "#fbf9f957",
                             padding: "20px 0px",
+                            borderRadius: "10px",
                           }}
                         >
                           <ul className="container shop-banner-categoryList ">
@@ -175,7 +181,7 @@ const ShopBreadcrumb = ({
                               catList?.map((item, index) => (
                                 <li key={index}>
                                   <h5
-                                    className="shop-banner-categoryList-title cursor-pointer"
+                                    className="shop-banner-categoryList-title cursor-pointer" style={{color:"#b4633a"}}
                                     onClick={() => {
                                       router.push({
                                         pathname: "/shop",

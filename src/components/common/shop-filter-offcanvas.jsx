@@ -42,13 +42,18 @@ const ShopFilterOffCanvas = ({
         }`}
       >
         <div className="tp-filter-offcanvas-wrapper">
+          
           <div className="tp-filter-offcanvas-close">
+            <ResetButton
+              shop_right={right_side}
+              onClick={() => resetFilter()}
+            />
             <button
               type="button"
               onClick={() => dispatch(handleFilterSidebarClose())}
               className="tp-filter-offcanvas-close-btn filter-close-btn"
             >
-              <i className="fa-solid fa-xmark"></i> Close
+              <i className="fa-solid fa-xmark"></i> 
             </button>
           </div>
           <div className="tp-shop-sidebar">
@@ -94,11 +99,11 @@ const ShopFilterOffCanvas = ({
               shop_right={right_side}
               attributeList={attributeList}
             />
-
+{/* 
             <ResetButton
               shop_right={right_side}
               onClick={() => resetFilter()}
-            />
+            /> */}
           </div>
         </div>
       </div>

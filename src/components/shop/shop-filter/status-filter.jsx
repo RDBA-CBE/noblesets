@@ -87,7 +87,8 @@ const FinishFilter = ({ attributeList }) => {
           return (
             <div key={attribute?.id} className="tp-shop-widget mb-50">
               <h3 className="tp-shop-widget-title">
-                {attribute.name?.toUpperCase()}
+                {/* {attribute.name?.toUpperCase()} */}
+                 {attribute.name}
               </h3>
               <div className="tp-shop-widget-content">
                 <div className="tp-shop-widget-checkbox">
@@ -115,8 +116,8 @@ const FinishFilter = ({ attributeList }) => {
                               )
                             }
                           />
-                          <label htmlFor={choice?.node?.slug}>
-                            {choice?.node?.name}
+                          <label htmlFor={choice?.node?.slug} style={{ textTransform: 'capitalize' }}>
+                            {choice?.node?.name?.toLowerCase()}
                           </label>
                         </li>
                       );

@@ -124,7 +124,7 @@ const HomeBanner = () => {
                 <span className="tp-slider-thumb-4-shape-2"></span>
               </div> */}
             </div>
-            <div className="mbl-content">
+            <div className="mbl-content" onClick={()=>router.push("/shop")}>
               <h1>
                 Elevate Your Style <br />
                 with Every Piece

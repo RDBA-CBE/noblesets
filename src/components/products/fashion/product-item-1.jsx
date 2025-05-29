@@ -37,11 +37,11 @@ import { profilePic } from "@/utils/constant";
 import ButtonLoader from "@/components/loader/button-loader";
 import { SwiperSlide } from "swiper/react";
 
-const ProductItem1 = ({ products, style_2 = false, updateData,index }) => {
+const ProductItem1 = ({ products, style_2 = false, updateData, index }) => {
   const [channel, setChannel] = useState("india-channel");
 
   let product = products?.node;
-console.log('ProductItem1 --->', product);
+  console.log("ProductItem1 --->", product);
 
   const router = useRouter();
 
@@ -246,15 +246,14 @@ console.log('ProductItem1 --->', product);
     //   }`}
     // >
 
-                    <div
-                    className={`tp-product-item-2 col-xl-3 col-lg-4 col-md-6  col-12 p-0  d-flex ${style_2 ? "" : "mb-40"}${
-                        product?.defaultVariant?.quantityAvailable == 0 && "bg-opacity-100"
-                      }`}
-                    
-                    >
-                        <div key={index}>
-                          <div className="card border-0   h-100 w-100 flex-fill d-flex flex-column justify-content-between" >
-                            {/* <img
+    <div
+      className={`tp-product-item-2 col-xl-3 col-lg-4 col-md-6  col-12 p-0  d-flex ${
+        style_2 ? "" : "mb-40"
+      }${product?.defaultVariant?.quantityAvailable == 0 && "bg-opacity-100"}`}
+    >
+      <div key={index}>
+        <div className="card border-0   h-100 w-100 flex-fill d-flex flex-column justify-content-between">
+          {/* <img
                               src={product.img}
                               className="card-img-top"
                               alt={products.title}
@@ -264,138 +263,135 @@ console.log('ProductItem1 --->', product);
                                 borderRadius: "20px",
                               }}
                             /> */}
-                        <div className="tp-product-thumb-2 p-relative z-index-1 fix">
-                            <Link href={`/product-details/${product?.slug}`}>
-                            
-                            {/* {isImage(profilePic(img)) ? (
-                                <img
-                                className="card-img-top"
-                                src={profilePic(img)}
-                                alt="product img"
-                                style={{
-                                    objectFit: "cover",
-                                    borderRadius: "20px",
-                                  }}
-                                />
-                            ) : (
-                                <video
-                                src={img}
-                                width={284}
-                                height={302}
-                                alt="product img"
-                                style={{
-                                    width: "100%",
-                                    height: "100%",
-                                }}
-                                
-                                muted 
-                                loop 
-                                
-                                />
-                            )} */}
+          <div className="tp-product-thumb-2 p-relative z-index-1 fix">
+            <Link href={`/product-details/${product?.slug}`}>
+              {isImage(profilePic(img)) ? (
+                <img
+                  className="card-img-top"
+                  src={profilePic(img)}
+                  alt="product img"
+                  style={{
+                    objectFit: "cover",
+                    borderRadius: "20px",
+                  }}
+                />
+              ) : (
+                <video
+                  src={img}
+                  width={284}
+                  height={302}
+                  alt="product img"
+                  style={{
+                    width: "100%",
+                    height: "100%",
+                  }}
+                  muted
+                  loop
+                />
+              )}
 
-                            <img  className="card-img-top" 
+              {/*<img  className="card-img-top" 
                             src="/assets/img/blog.webp"
                              style={{
                               objectFit: "cover",
                               borderRadius: "20px",
-                            }} />
-                            </Link>
+                            }} /> */}
+            </Link>
 
-                            <div className="tp-product-badge">
-                            {status === "out-of-stock" ? (
-                                <span
-                                className="product-hot text-center"
-                                style={{ padding: "15px 12px" }}
-                                >
-                                SOLD
-                                <br /> OUT
-                                </span>
-                            ) : (
-                                <div style={{ display: "none" }}></div>
-                            )}
-                            </div>
+            <div className="tp-product-badge">
+              {status === "out-of-stock" ? (
+                <span
+                  className="product-hot text-center"
+                  style={{ padding: "15px 12px" }}
+                >
+                  SOLD
+                  <br /> OUT
+                </span>
+              ) : (
+                <div style={{ display: "none" }}></div>
+              )}
+            </div>
 
-                            <div className="tp-product-badge-2">
-                                      {product?.defaultVariant?.quantityAvailable == 0 && (
-                                        <span className="product-hot text-center soldout-badge">
-                                          SOLD
-                                          <br /> OUT
-                                        </span>
-                                      )}
-                            </div>
-                            
-                            <div
-                                      className={`${
-                                        product?.defaultVariant?.quantityAvailable == 0
-                                          ? "tp-product-badge"
-                                          : "tp-product-badge-2"
-                                      }`}
-                                    >
-                                      {product?.metadata?.filter((item) => item.key === "label").length >
-                                        0 &&
-                                        product.metadata
-                                          .filter((item) => item.key === "label")
-                                          .map((item, index) => (
-                                            <span
-                                              key={index}
-                                              className="product-trending text-center"
-                                              style={{
-                                                padding: "18px 15px",
-                                                textTransform: "capitalize",
-                                              }}
-                                            >
-                                              {item.value}
-                                            </span>
-                                          ))}
-                            </div>
-                            
-                                    {/* product action */}
-                            <div className="tp-product-action-2 tp-product-action-blackStyle">
-                                    <div className="tp-product-action-item-2 d-flex ">
-                                        {product?.defaultVariant?.quantityAvailable != 0 && (
-                                          <>
-                                            {isAddedToCart ? (
-                                              <Link
-                                                href="/cart"
-                                                className={`tp-product-action-btn-2 ${
-                                                  isAddedToCart ? "active" : ""
-                                                } tp-product-add-cart-btn`}
-                                              >
-                                                <Cart />
-                                                <span className="tp-product-tooltip tp-product-tooltip-top">
-                                                  View Cart
-                                                </span>
-                                              </Link>
-                                            ) : (
-                                              <button
-                                                type="button"
-                                                style={{ marginRight: "5px" }}
-                                                onClick={() => {
-                                                  addToCartProductINR();
-                                                  addToCartProductUSD();
-                                                }}
-                                                className={`tp-product-action-btn-2 ${
-                                                  isAddedToCart ? "active" : ""
-                                                } tp-product-add-cart-btn`}
-                                                disabled={status === "out-of-stock"}
-                                              >
-                                                {cartLoader ? (
-                                                  <ButtonLoader loader={cartLoader} />
-                                                ) : (
-                                                  <>
-                                                    <Cart />
-                                                    <span className="tp-product-tooltip tp-product-tooltip-top">
-                                                      Add to Cart
-                                                    </span>
-                                                  </>
-                                                )}
-                                              </button>
-                                            )}
-                                          </>
-                                        )}
-                            
-                                        {/* <button
+            <div className="tp-product-badge-2">
+              {product?.defaultVariant?.quantityAvailable == 0 && (
+                <span className="product-hot text-center soldout-badge">
+                  SOLD
+                  <br /> OUT
+                </span>
+              )}
+            </div>
+
+            <div
+              className={`${
+                product?.defaultVariant?.quantityAvailable == 0
+                  ? "tp-product-badge"
+                  : "tp-product-badge-2"
+              }`}
+            >
+              {product?.metadata?.filter((item) => item.key === "label")
+                .length > 0 &&
+                product.metadata
+                  .filter((item) => item.key === "label")
+                  .map((item, index) => (
+                    <span
+                      key={index}
+                      className="product-trending text-center"
+                      style={{
+                        padding: "18px 15px",
+                        textTransform: "capitalize",
+                      }}
+                    >
+                      {item.value}
+                    </span>
+                  ))}
+            </div>
+
+            {/* product action */}
+            <div className="tp-product-action-2 tp-product-action-blackStyle">
+              <div className="tp-product-action-item-2 d-flex ">
+                {product?.defaultVariant?.quantityAvailable != 0 && (
+                  <>
+                    {isAddedToCart ? (
+                      <Link
+                        href="/cart"
+                        className={`tp-product-action-btn-2 ${
+                          isAddedToCart ? "active" : ""
+                        } tp-product-add-cart-btn`}
+                      >
+                        <Cart />
+                        <span className="tp-product-tooltip tp-product-tooltip-top">
+                          View Cart
+                        </span>
+                      </Link>
+                    ) : (
+                      <button
+                        type="button"
+                        style={{ marginRight: "5px" }}
+                        onClick={() => {
+                          addToCartProductINR();
+                          addToCartProductUSD();
+                        }}
+                        className={`tp-product-action-btn-2 ${
+                          isAddedToCart ? "active" : ""
+                        } tp-product-add-cart-btn`}
+                        disabled={status === "out-of-stock"}
+                      >
+                        {cartLoader ? (
+                          <ButtonLoader loader={cartLoader} />
+                        ) : (
+                          <>
+                            <Cart />
+                            <span className="tp-product-tooltip tp-product-tooltip-top">
+                              Add to Cart
+                            </span>
+                          </>
+                        )}
+                      </button>
+                    )}
+                  </>
+                )}
+
+                {/* <button
                                           type="button"
                                           style={{ marginRight: "5px" }}
                                           onClick={() => {
@@ -415,174 +411,172 @@ console.log('ProductItem1 --->', product);
                                             Add to Cart
                                           </span>
                                         </button> */}
-                                        <button
-                                          style={{ marginRight: "5px" }}
-                                          onClick={() => dispatch(handleProductModal(product))}
-                                          className="tp-product-action-btn-2 tp-product-quick-view-btn"
-                                        >
-                                          <QuickView />
-                                          <span className="tp-product-tooltip tp-product-tooltip-top">
-                                            Quick View
-                                          </span>
-                                        </button>
-                            
-                                        {isAddedToWishlist == true ? (
-                                          <button
-                                            style={{ marginRight: "5px" }}
-                                            disabled={status === "out-of-stock"}
-                                            onClick={() => {
-                                              if (token) {
-                                                router.push("/wishlist");
-                                              } else {
-                                                notifyError(
-                                                  "Only logged-in users can add items to their wishlist or view it"
-                                                );
-                                              }
-                                            }}
-                                            // onClick={() => addWishlistProduct(product)}
-                                            className={`tp-product-action-btn-2 active tp-product-add-to-wishlist-btn`}
-                                          >
-                                            <Wishlist />
-                                            <span className="tp-product-tooltip tp-product-tooltip-top">
-                                              View Wishlist
-                                            </span>
-                                          </button>
-                                        ) : (
-                                          <button
-                                            style={{ marginRight: "5px" }}
-                                            disabled={status === "out-of-stock"}
-                                            onClick={() => handleWishlist(product)}
-                                            // onClick={() => addWishlistProduct(product)}
-                                            className={`tp-product-action-btn-2 
+                <button
+                  style={{ marginRight: "5px" }}
+                  onClick={() => dispatch(handleProductModal(product))}
+                  className="tp-product-action-btn-2 tp-product-quick-view-btn"
+                >
+                  <QuickView />
+                  <span className="tp-product-tooltip tp-product-tooltip-top">
+                    Quick View
+                  </span>
+                </button>
+
+                {isAddedToWishlist == true ? (
+                  <button
+                    style={{ marginRight: "5px" }}
+                    disabled={status === "out-of-stock"}
+                    onClick={() => {
+                      if (token) {
+                        router.push("/wishlist");
+                      } else {
+                        notifyError(
+                          "Only logged-in users can add items to their wishlist or view it"
+                        );
+                      }
+                    }}
+                    // onClick={() => addWishlistProduct(product)}
+                    className={`tp-product-action-btn-2 active tp-product-add-to-wishlist-btn`}
+                  >
+                    <Wishlist />
+                    <span className="tp-product-tooltip tp-product-tooltip-top">
+                      View Wishlist
+                    </span>
+                  </button>
+                ) : (
+                  <button
+                    style={{ marginRight: "5px" }}
+                    disabled={status === "out-of-stock"}
+                    onClick={() => handleWishlist(product)}
+                    // onClick={() => addWishlistProduct(product)}
+                    className={`tp-product-action-btn-2 
                                             tp-product-add-to-wishlist-btn`}
-                                          >
-                                            {wishlistLoader ? (
-                                              <ButtonLoader loader={wishlistLoader} />
-                                            ) : (
-                                              <>
-                                                <Wishlist />
-                                                <span className="tp-product-tooltip tp-product-tooltip-top">
-                                                  Add To Wishlist
-                                                </span>
-                                              </>
-                                            )}
-                                          </button>
-                                        )}
-                            
-                                        <button
-                                          style={{ marginRight: "5px" }}
-                                          disabled={status === "out-of-stock"}
-                                          onClick={() => {
-                                            if (compareList?.some((prd) => prd?.id === product?.id)) {
-                                              router.push("/compare");
-                                            } else {
-                                              handleCompareProduct(product);
-                                            }
-                                          }}
-                                          className="tp-product-action-btn-2 tp-product-add-to-compare-btn"
-                                        >
-                                          <CompareThree />
-                                          <span className="tp-product-tooltip tp-product-tooltip-top">
-                                            {compareList?.some((prd) => prd?.id === product?.id)
-                                              ? "View Compare"
-                                              : "Add To Compare"}
-                                          </span>
-                                        </button>
-                                    </div>
-                            </div>
+                  >
+                    {wishlistLoader ? (
+                      <ButtonLoader loader={wishlistLoader} />
+                    ) : (
+                      <>
+                        <Wishlist />
+                        <span className="tp-product-tooltip tp-product-tooltip-top">
+                          Add To Wishlist
+                        </span>
+                      </>
+                    )}
+                  </button>
+                )}
 
-                        </div>    
+                <button
+                  style={{ marginRight: "5px" }}
+                  disabled={status === "out-of-stock"}
+                  onClick={() => {
+                    if (compareList?.some((prd) => prd?.id === product?.id)) {
+                      router.push("/compare");
+                    } else {
+                      handleCompareProduct(product);
+                    }
+                  }}
+                  className="tp-product-action-btn-2 tp-product-add-to-compare-btn"
+                >
+                  <CompareThree />
+                  <span className="tp-product-tooltip tp-product-tooltip-top">
+                    {compareList?.some((prd) => prd?.id === product?.id)
+                      ? "View Compare"
+                      : "Add To Compare"}
+                  </span>
+                </button>
+              </div>
+            </div>
+          </div>
 
+          <div className="tp-product-content-2  pt-40">
+            <div className="tp-product-tag-2">
+              {tags?.map((t, i) => (
+                <a key={i} href="#">
+                  {t}
+                  {i < tags.length - 1 && ","}
+                </a>
+              ))}
+            </div>
+            <div style={{ textAlign: "center" }}>
+              <h3
+                className="tp-product-title-3"
+                style={{
+                  fontSize: "12px",
+                  color: "rgb(144 141 141)",
+                  textTransform: "uppercase",
+                }}
+              >
+                {capitalizeFLetter(product?.category[0]?.name)}
+              </h3>
+              <h3 className="tp-product-title-2 mt-2">
+                <Link href={`/product-details/${product?.slug}`}>
+                  {capitalizeFLetter(product?.name)}
+                </Link>
+              </h3>
 
-                              <div className="tp-product-content-2  pt-40">
-                                    <div className="tp-product-tag-2">
-                                      {tags?.map((t, i) => (
-                                        <a key={i} href="#">
-                                          {t}
-                                          {i < tags.length - 1 && ","}
-                                        </a>
-                                      ))}
-                                    </div>
-                                    <div style={{ textAlign: "center" }}>
-                                      <h3
-                                        className="tp-product-title-3"
-                                        style={{
-                                          fontSize: "12px",
-                                          color: "rgb(144 141 141)",
-                                          textTransform: "uppercase",
-                                        }}
-                                      >
-                                        {capitalizeFLetter(product?.category[0]?.name)}
-                                      </h3>
-                                      <h3 className="tp-product-title-2 mt-2">
-                                        <Link href={`/product-details/${product?.slug}`}>
-                                          {capitalizeFLetter(product?.name)}
-                                        </Link>
-                                      </h3>
-                            
-                                      {/* <div className="tp-product-rating-icon tp-product-rating-icon-2">
+              {/* <div className="tp-product-rating-icon tp-product-rating-icon-2">
                                       <Rating allowFraction size={16} initialValue={ratingVal} readonly={true} />
                                     </div> */}
-                                      {channel == "india-channel" ? (
-                                        <div className="tp-product-price-wrapper mt-2">
-                                          <span
-                                            className="tp-product-price-2 new-price items-center"
-                                            style={{ display: "flex", justifyContent: "center" }}
-                                          >
-                                            {product?.pricing?.discount !== null && (
-                                              <div
-                                                className=""
-                                                style={{
-                                                  textDecoration: "line-through",
-                                                  color: "grey",
-                                                  fontWeight: 400,
-                                                  marginRight: "10px",
-                                                }}
-                                              >
-                                                &#8377;
-                                                {addCommasToNumber(
-                                                  product?.pricing?.priceRangeUndiscounted?.start?.gross
-                                                    ?.amount
-                                                )|| 0}
-                                              </div>
-                                            )}
-                                            <div>
-                                              &#8377;
-                                              {addCommasToNumber(
-                                                product?.pricing?.priceRange?.start?.gross?.amount
-                                              )|| 0}
-                                            </div>
-                                          </span>
-                                          {product?.pricing?.discount !== null && (
-                                            <div
-                                              style={{
-                                                color: "#b4633a",
-                                                fontSize: "16px",
-                                              }}
-                                            >{`Save ${saveOff()}% OFF`}</div>
-                                          )}
-                                        </div>
-                                      ) : (
-                                        <div className="tp-product-price-wrapper-2">
-                                          {product?.pricing?.discount !== null && (
-                                            <div
-                                              className=""
-                                              style={{
-                                                textDecoration: "line-through",
-                                                color: "grey",
-                                                fontWeight: 400,
-                                                marginRight: "10px",
-                                              }}
-                                            >
-                                              {"$"}
-                                              {addCommasToNumber(
-                                                product?.pricing?.priceRangeUndiscounted?.start?.gross
-                                                  ?.amount
-                                              )|| 0}
-                                            </div>
-                                          )}
-                            
-                                          {/* {RegularPrice(
+              {channel == "india-channel" ? (
+                <div className="tp-product-price-wrapper mt-2">
+                  <span
+                    className="tp-product-price-2 new-price items-center"
+                    style={{ display: "flex", justifyContent: "center" }}
+                  >
+                    {product?.pricing?.discount !== null && (
+                      <div
+                        className=""
+                        style={{
+                          textDecoration: "line-through",
+                          color: "grey",
+                          fontWeight: 400,
+                          marginRight: "10px",
+                        }}
+                      >
+                        &#8377;
+                        {addCommasToNumber(
+                          product?.pricing?.priceRangeUndiscounted?.start?.gross
+                            ?.amount
+                        ) || 0}
+                      </div>
+                    )}
+                    <div>
+                      &#8377;
+                      {addCommasToNumber(
+                        product?.pricing?.priceRange?.start?.gross?.amount
+                      ) || 0}
+                    </div>
+                  </span>
+                  {product?.pricing?.discount !== null && (
+                    <div
+                      style={{
+                        color: "#b4633a",
+                        fontSize: "16px",
+                      }}
+                    >{`Save ${saveOff()}% OFF`}</div>
+                  )}
+                </div>
+              ) : (
+                <div className="tp-product-price-wrapper-2">
+                  {product?.pricing?.discount !== null && (
+                    <div
+                      className=""
+                      style={{
+                        textDecoration: "line-through",
+                        color: "grey",
+                        fontWeight: 400,
+                        marginRight: "10px",
+                      }}
+                    >
+                      {"$"}
+                      {addCommasToNumber(
+                        product?.pricing?.priceRangeUndiscounted?.start?.gross
+                          ?.amount
+                      ) || 0}
+                    </div>
+                  )}
+
+                  {/* {RegularPrice(
                                             product?.defaultVariant?.costPrice,
                                             product?.pricing?.priceRange?.start?.gross?.amount
                                           ) && (
@@ -598,29 +592,29 @@ console.log('ProductItem1 --->', product);
                                               {addCommasToNumber(product?.defaultVariant?.costPrice)}
                                             </span>
                                           )} */}
-                                          <span
-                                            className="tp-product-price-2 new-price"
-                                            style={{ fontSize: "14px" }}
-                                          >
-                                            {"$"}
-                                            {addCommasToNumber(
-                                              product?.pricing?.priceRange?.start?.gross?.amount
-                                            )|| 0}
-                                          </span>
-                                          {product?.pricing?.discount !== null && (
-                                            <div
-                                              style={{
-                                                color: "#b4633a",
-                                                fontSize: "16px",
-                                              }}
-                                            >{`Save ${saveOff()}% OFF`}</div>
-                                          )}
-                                        </div>
-                                      )}
-                                    </div>
-                                  </div>
+                  <span
+                    className="tp-product-price-2 new-price"
+                    style={{ fontSize: "14px" }}
+                  >
+                    {"$"}
+                    {addCommasToNumber(
+                      product?.pricing?.priceRange?.start?.gross?.amount
+                    ) || 0}
+                  </span>
+                  {product?.pricing?.discount !== null && (
+                    <div
+                      style={{
+                        color: "#b4633a",
+                        fontSize: "16px",
+                      }}
+                    >{`Save ${saveOff()}% OFF`}</div>
+                  )}
+                </div>
+              )}
+            </div>
+          </div>
 
-                            {/* <div className="card-body text-center pb-0">
+          {/* <div className="card-body text-center pb-0">
                               <p className="text-muted mb-3 mt-40" style={{fontSize:"18px"}}>{product.desc}</p>
                               <h5
                                 className=" mb-3"
@@ -633,10 +627,9 @@ console.log('ProductItem1 --->', product);
                               </h5>
                               <p className="text-muted" style={{fontSize:"18px"}}>Starting from {product.price}</p>
                             </div> */}
-
-                          </div>
-                        </div>
-                    </div>
+        </div>
+      </div>
+    </div>
     //  </div>
   );
 };

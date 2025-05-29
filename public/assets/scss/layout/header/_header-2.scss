@@ -48,7 +48,7 @@
         #{$self}{
             &-action{
                 &-badge{
-                    background-color: #b4633a;
+                    background: linear-gradient(to right, color-mix(in srgb, #fbdccc 40%, #e09a7a), #e09a7a);;
                 }
                 &-item{
                     &:last-child{
@@ -91,7 +91,7 @@
         #{$self}{
             &-action{
                 &-badge{
-                    background-color: #b4633a;
+                    background: linear-gradient(to right, color-mix(in srgb, #fbdccc 40%, #e09a7a), #e09a7a);;
                 }
                 &-item{
                     & button{
@@ -126,7 +126,7 @@
             color: #b4633a;
         }
         .tp-header-sticky.header-sticky .tp-header-action-item .tp-header-action-btn .tp-header-action-badge {
-            background-color: #b4633a;
+            background: linear-gradient(to right, color-mix(in srgb, #fbdccc 40%, #e09a7a), #e09a7a);;
             border-color: #b4633a;
             color: var(--tp-common-white);
         }

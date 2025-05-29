@@ -127,11 +127,11 @@
             & #{$self}{
                 &-action-btn-2{
                     &.active{
-                        background-color: #b4633a;
+                        background: linear-gradient(to right, color-mix(in srgb, #fbdccc 40%, #e09a7a), #e09a7a);;
                         margin-right: 5px; 
                     }
                     &:hover{
-                        background-color: #b4633a;
+                        background: linear-gradient(to right, color-mix(in srgb, #fbdccc 40%, #e09a7a), #e09a7a);;
                     }
                 }
             }
@@ -140,7 +140,7 @@
             & #{$self}{
                 &-action-btn-3{
                     &:hover{
-                        background-color: #b4633a;
+                        background: linear-gradient(to right, color-mix(in srgb, #fbdccc 40%, #e09a7a), #e09a7a);;
 
                     }
                 }
@@ -177,7 +177,7 @@
             }
             &:hover{
                 color: var(--tp-common-white);
-                background-color: #b4633a;
+                background: linear-gradient(to right, color-mix(in srgb, #fbdccc 40%, #e09a7a), #e09a7a);;
 
                 #{$self}{
                     &-tooltip{
