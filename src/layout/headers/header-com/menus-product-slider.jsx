@@ -227,6 +227,10 @@ const MenusProductSlider = ({ product, loginPopup, loading }) => {
               backgroundImage: `url(${profilePic(img)})`,
               backgroundColor: "#FFFFFF",
               // backgroundPosition: "0px -80px",
+              borderRadius:"10px",
+              width:"100%",
+              height:"250px"
+            
             }}
           ></div>
           <div className="tp-product-badge-2">

@@ -212,7 +212,7 @@ const ProductDetailsArea = ({
 
           {youMayLikeData?.length > 0 && (
             <section className="tp-related-product pt-40">
-              <div className="container-fluid">
+              <div className="container">
                 <div className="row">
                   <div className="tp-section-title-wrapper-6 mb-40">
                     {/* <span className="tp-section-title-pre-6">Next day Products</span> */}

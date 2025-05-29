@@ -171,7 +171,18 @@ alt="product image"
 width={282}
 height={320}
 /> */}
-          {video ? (
+
+              <img
+              src="/assets/img/blog.webp"
+              alt="product image"
+              width={282}
+              height={320}
+              style={{
+                borderRadius:"20px",
+              }}
+            />
+
+          {/* {video ? (
             <video
               src={video?.url}
               autoPlay
@@ -210,7 +221,7 @@ height={320}
               alt="instagram video"
               className="actor-video"
             />
-          )}
+          )} */}
           {/* <img
 src={profilePic(thumbnail?.url)}
 alt="product image"
@@ -390,9 +401,10 @@ Add To Cart
       <div className="tp-product-content-3" style={{ textAlign: "center" }}>
         {/* <div className="tp-product-tag-3"><span>{tags[1]}</span></div> */}
         <h3 className="tp-product-title-3">
-          <Link href={`/product-details/${slug}`}>{name}</Link>
+          {/* <Link href={`/product-details/${slug}`}>{name}</Link> */}
+           <Link href={`/product-details/${slug}`} style={{fontSize:"22px"}}>{name}</Link>
         </h3>
-        <p style={{ color: "gray", marginBottom: "0px" }}>
+         <p style={{ color: "gray", marginBottom: "0px",ontSize:"16px" }}>
           {product?.category?.name}
         </p>
         <div className="tp-product-price-wrapper-3">
@@ -415,10 +427,10 @@ Add To Cart
                   )}
                 </span>
               )}
-              <span className="tp-product-price-3">
-                &#8377;
-                {roundOff(product?.pricing?.priceRange?.start?.gross?.amount)}
-              </span>
+              <span className="tp-product-price-3" style={{fontSize:"22px" , fontWeight:"700"}}>
+                             &#8377;
+                             {roundOff(product?.pricing?.priceRange?.start?.gross?.amount)}
+                           </span>
             </>
           ) : (
             <>
@@ -434,7 +446,7 @@ Add To Cart
                   &#8377;{roundOff(product?.defaultVariant?.costPrice)}
                 </span>
               )}
-              <span className="tp-product-price-3">
+              <span className="tp-product-price-3"  style={{fontSize:"22px" , fontWeight:"700"}}>
                 ${roundOff(pricing?.priceRange?.start?.gross?.amount)}
               </span>
             </>

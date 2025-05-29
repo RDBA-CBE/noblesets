@@ -136,7 +136,7 @@ const CategoryContent = ({
                   // src={commonImage}
                   src="assets/img/blog.webp"
                   alt="category image"
-                  style={{ width: "100%", height: "300px" , objectFit:"cover", objectPosition:"center"}}
+                  style={{ width: "100%", height: "250px" , objectFit:"cover", objectPosition:"center", borderRadius:"10px"}}
                 />
               ) : (
                 <img
@@ -147,10 +147,10 @@ const CategoryContent = ({
               )}
             </div>
             <div style={{ textAlign: "center", padding: "20px 0px" }}>
-              <h4 style={{ fontWeight: "400" }}>
+              <h5 style={{ fontWeight: "400", fontSize:"20px" }}>
                 Excepteur sint occaecat
                 <br /> cupidatat
-              </h4>
+              </h5>
               <button
                 className="tp-btn tp-btn-border"
                 onClick={() => {
@@ -159,6 +159,7 @@ const CategoryContent = ({
                     query: { category: parentCategoryId }, // Your parameters
                   });
                 }}
+                style={{padding:"5px 18px"}}
               >
                 Shop Now
               </button>
@@ -364,6 +365,7 @@ const Menus = () => {
                       alignItems: "center",
                       justifyContent: "space-between",
                       paddingRight: "10px",
+                      borderRadius:"10px"
                     }}
                     onClick={() => {
                       router.push({
@@ -384,7 +386,7 @@ const Menus = () => {
                         .replace("&", "")
                         .split(" ")
                         .join("-")}`}
-                      style={{ cursor: "pointer", marginBottom: "0px" }}
+                      style={{ cursor: "pointer", marginBottom: "0px",textTransform:"capitalize" }}
                       className={`shop-submenu-catageroy-list-a cursor-pointer ${
                         lastHoveredCategory == item?.slug ? "active" : ""
                       }`}
@@ -401,7 +403,7 @@ const Menus = () => {
                         });
                       }}
                     >
-                      {item?.name}
+                      {item?.name?.toLowerCase()}
                     </a>
 
                     <RightOutlined
