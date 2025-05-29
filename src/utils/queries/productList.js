@@ -2035,7 +2035,7 @@ export const PINCODE_LIST = ({ code }) => {
   pincodes(filter: { code: $code }, first: 10) {
     edges {
       node {
-        code
+        codes
         name
         slug
       }
