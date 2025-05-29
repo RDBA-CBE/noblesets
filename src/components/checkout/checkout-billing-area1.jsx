@@ -307,6 +307,8 @@ const CheckoutBillingArea1 = () => {
   }, []);
 
   const debouncedPeopleSearch = useDebounce(state.postalCode);
+  const debouncedCodeSearch = useDebounce(state.postalCode1);
+
 
   const handleCheck = async (code) => {
     try {
@@ -325,14 +327,14 @@ const CheckoutBillingArea1 = () => {
   useEffect(() => {
     enableCOD();
   }, [
-    state.total,
-    state.orderData,
-    state.selectedCountry1,
-    state.selectedCountry,
-    state.diffAddress,
-    state.postalCode1,
+    // state.total,
+    // state.orderData,
+    // state.selectedCountry1,
+    // state.selectedCountry,
+    // state.diffAddress,
+    // state.postalCode1,
     debouncedPeopleSearch,
-    state.diffAddress,
+    debouncedCodeSearch
   ]);
 
   useEffect(() => {
@@ -394,14 +396,15 @@ const CheckoutBillingArea1 = () => {
         totalValid = state.total > 39 && state.total < 390;
       }
       if (totalValid && !hasGiftCard) {
-        const country = state.diffAddress
-          ? state.selectedCountry1
-          : state.selectedCountry;
+        // const country = state.diffAddress
+        //   ? state.selectedCountry1
+        //   : state.selectedCountry;
         const postalCode = state.diffAddress
           ? state.postalCode1
           : state.postalCode;
         const pincodes = await handleCheck(postalCode);
-        if (country === "IN") {
+console.log('✌️pincodes --->', pincodes);
+        if (pincodes ) {
           isShowCOD = true;
         }
       }
@@ -409,6 +412,7 @@ const CheckoutBillingArea1 = () => {
       if (!isShowCOD) {
         arr = arr.filter((item) => item.name !== CASE_ON_DELIVERY);
       }
+      console.log('✌️arr --->', arr);
 
       setState({
         paymentType: arr,
