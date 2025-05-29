@@ -2,6 +2,9 @@ import React, { useCallback, useEffect, useRef, useState } from "react";
 import ErrorMsg from "../common/error-msg";
 import { useDispatch, useSelector } from "react-redux";
 import {
+  DELIVERY_ID_OTHER_IN,
+  DELIVERY_ID_TN,
+  DELIVERY_ID_OTHER_TN,
   addCommasToNumber,
   formatCurrency,
   roundOff,
@@ -330,8 +333,8 @@ const CheckoutBillingArea1 = () => {
     // state.orderData,
     // state.selectedCountry1,
     // state.selectedCountry,
-    // state.diffAddress,
-    // state.postalCode1,
+    state.diffAddress,
+
     debouncedPeopleSearch,
     debouncedCodeSearch,
   ]);
@@ -814,8 +817,6 @@ const CheckoutBillingArea1 = () => {
     deliveryMethodId
   ) => {
     try {
-      console.log("✌️deliveryMethodId --->", deliveryMethodId);
-
       const checkoutId = localStorage.getItem("checkoutId");
       if (checkoutId) {
         const res = await updateDeliveryMethod({
@@ -852,118 +853,6 @@ const CheckoutBillingArea1 = () => {
     }
   };
 
-  const handleSelectChange = async (e) => {
-    console.log("✌️e --->", e.target.value);
-    try {
-      //       const res = await shippingZoneList({});
-      // console.log('✌️res --->', res);
-      setState({
-        selectedCountry: e.target.value,
-        selectedState: "",
-        phone: "",
-        errors: { ...state.errors, selectedState: "", phone: "" },
-      });
-      stateRefetch();
-
-      if (!state.diffAddress) {
-        const checkoutId = localStorage.getItem("checkoutId");
-        const res = await checkoutShippingAddressUpdate({
-          checkoutId,
-          shippingAddress: {
-            country: e.target.value,
-          },
-          note: state.notes,
-        });
-
-        const stateValue = {
-          target: {
-            value: "Tamil Nadu",
-          },
-        };
-        if (e?.target?.value == "IN") {
-          handleStateChange(stateValue, e?.target?.value);
-        } else {
-          const deliveryMethodIds = "U2hpcHBpbmdNZXRob2Q6OTI=";
-
-          setState({
-            selectedShippingId: deliveryMethodIds,
-            // selectedState: e.target.value,
-          });
-
-          updateDelivertMethod(
-            e.target.value,
-            state.selectedPaymentType,
-            deliveryMethodIds
-          );
-        }
-        // }else{
-      }
-    } catch (error) {
-      console.log("error: ", error);
-    }
-  };
-
-  // const deliveryMethodId = async (country) => {
-  //   // console.log("✌️country --->", country);
-  //   try {
-  //     const checkoutId = localStorage.getItem("checkoutId");
-
-  //     const res = await shippingZoneList({
-  //       checkoutId,
-  //     });
-  //     console.log("✌️res --->", res);
-
-  //     return res?.data?.data?.checkout?.shippingMethods;
-  //   } catch (error) {}
-  // };
-
-  const shippingCoutryChange = async (e) => {
-    try {
-      setState({
-        selectedCountry1: e.target.value,
-        selectedState1: "",
-        phone1: "",
-        errors: { ...state.errors, selectedState1: "", phone1: "" },
-      });
-      stateRefetch1();
-      const checkoutId = localStorage.getItem("checkoutId");
-      await checkoutShippingAddressUpdate({
-        checkoutId,
-        shippingAddress: {
-          country: e.target.value,
-        },
-        note: state.notes,
-      });
-      const stateValue = {
-        target: {
-          value: "Tamil Nadu",
-        },
-      };
-      // if (e?.target?.value == "IN") {
-      //   handleStateChange(stateValue,e?.target?.value );
-      // }
-
-      if (e?.target?.value == "IN") {
-        handleStateChange(stateValue, e?.target?.value);
-      } else {
-        const deliveryMethodIds = "U2hpcHBpbmdNZXRob2Q6OTI=";
-
-        setState({
-          selectedShippingId: deliveryMethodIds,
-          // selectedState: e.target.value,
-        });
-
-        updateDelivertMethod(
-          e.target.value,
-          state.selectedPaymentType,
-          deliveryMethodIds
-        );
-      }
-    } catch (e) {
-      console.log("e: ", e);
-    }
-  };
-
   const validateInputs = async () => {
     const fieldsToValidate = [
       { name: "firstName", label: "First name" },
@@ -994,6 +883,10 @@ const CheckoutBillingArea1 = () => {
     });
 
     if (state.selectedPaymentType == "") {
+      errors.paymentType = "Payment type is required";
+    }
+    const isAnyChecked = state.paymentType.some((method) => method.checked);
+    if (!isAnyChecked) {
       errors.paymentType = "Payment type is required";
     }
 
@@ -1269,7 +1162,6 @@ const CheckoutBillingArea1 = () => {
   };
 
   const setBillingAddress = (data) => {
-    console.log("✌️data --->", data);
     const userInfo = localStorage.getItem("userInfo");
     if (!objIsEmpty(data?.country)) {
       const body = {
@@ -1277,9 +1169,7 @@ const CheckoutBillingArea1 = () => {
           value: data?.country?.code,
         },
       };
-      const bodys = {
-        target: { value: data?.countryArea },
-      };
+
       handleSelectChange(body);
       // handleStateChange(bodys);
     }
@@ -1311,7 +1201,7 @@ const CheckoutBillingArea1 = () => {
           value: data?.country?.code,
         },
       };
-      handleSelectChange(body);
+      shippingCoutryChange(body);
     }
 
     setState({
@@ -1333,36 +1223,153 @@ const CheckoutBillingArea1 = () => {
     }
   };
 
-  const handleStateChange = async (e, country) => {
-    console.log("✌️country --->", country);
+  const handleSelectChange = async (e) => {
     try {
-      console.log("✌️ e.target.value --->", e.target.value);
+      setState({
+        selectedCountry: e.target.value,
+        selectedState: "",
+        phone: "",
+        errors: { ...state.errors, selectedState: "", phone: "" },
+      });
+      stateRefetch();
+      console.log("state.diffAddress: ", state.diffAddress);
 
-      // let country = !state.diffAddress
-      //   ? state.selectedCountry
-      //   : state.selectedCountry1;
-      // if(!state.diffAddress)
+      if (!state.diffAddress) {
+        const checkoutId = localStorage.getItem("checkoutId");
+        const res = await checkoutShippingAddressUpdate({
+          checkoutId,
+          shippingAddress: {
+            country: e.target.value,
+          },
+          note: state.notes,
+        });
 
-      if (country == "IN") {
-        const deliveryMethodIds =
-          e.target.value == "Tamil Nadu"
-            ? "U2hpcHBpbmdNZXRob2Q6ODg="
-            : "U2hpcHBpbmdNZXRob2Q6ODk=";
+        const stateValue = {
+          target: {
+            value: "Tamil Nadu",
+          },
+        };
+        if (e?.target?.value == "IN") {
+          handleStateChange(stateValue, e?.target?.value);
+        } else {
+          const deliveryMethodIds = DELIVERY_ID_OTHER_IN;
+
+          setState({
+            selectedShippingId: deliveryMethodIds,
+          });
+
+          updateDelivertMethod(
+            e.target.value,
+            state.selectedPaymentType,
+            deliveryMethodIds
+          );
+        }
+      }
+    } catch (error) {
+      console.log("error: ", error);
+    }
+  };
+
+  const handleStateChange = async (e, country) => {
+    try {
+      if (!state.diffAddress) {
+        if (country == "IN") {
+          const deliveryMethodIds =
+            e.target.value == "Tamil Nadu"
+              ? DELIVERY_ID_TN
+              : DELIVERY_ID_OTHER_TN;
+
+          setState({
+            selectedShippingId: deliveryMethodIds,
+            selectedState: e.target.value,
+          });
+          const checkoutId = localStorage.getItem("checkoutId");
+          const res = await checkoutShippingAddressUpdate({
+            checkoutId,
+            shippingAddress: {
+              country: country,
+            },
+            note: state.notes,
+          });
+          updateDelivertMethod(
+            e.target.value,
+            state.selectedPaymentType,
+            deliveryMethodIds
+          );
+        }
+      } else {
+        setState({
+          selectedState: e.target.value,
+        });
+      }
+    } catch (error) {
+      console.log("✌️error --->", error);
+    }
+  };
+
+  const shippingCoutryChange = async (e) => {
+    try {
+      setState({
+        selectedCountry1: e.target.value,
+        selectedState1: "",
+        phone1: "",
+        errors: { ...state.errors, selectedState1: "", phone1: "" },
+      });
+      stateRefetch1();
+      const checkoutId = localStorage.getItem("checkoutId");
+      await checkoutShippingAddressUpdate({
+        checkoutId,
+        shippingAddress: {
+          country: e.target.value,
+        },
+        note: state.notes,
+      });
+      const stateValue = {
+        target: {
+          value: "Tamil Nadu",
+        },
+      };
+
+      if (e?.target?.value == "IN") {
+        handleShippingStateChange(stateValue, e?.target?.value);
+      } else {
+        const deliveryMethodIds = DELIVERY_ID_OTHER_IN;
 
         setState({
           selectedShippingId: deliveryMethodIds,
-          // selectedState: e.target.value,
         });
-        if (!state.diffAddress) {
-          console.log("✌️if --->");
-          setState({
-            selectedState: e.target.value,
-          });
-        } else {
-          setState({
-            selectedState1: e.target.value,
-          });
-        }
+
+        updateDelivertMethod(
+          e.target.value,
+          state.selectedPaymentType,
+          deliveryMethodIds
+        );
+      }
+    } catch (e) {
+      console.log("e: ", e);
+    }
+  };
+
+  const handleShippingStateChange = async (e, country) => {
+    try {
+      if (country == "IN") {
+        const deliveryMethodIds =
+          e.target.value == "Tamil Nadu"
+            ? DELIVERY_ID_TN
+            : DELIVERY_ID_OTHER_TN;
+
+        setState({
+          selectedShippingId: deliveryMethodIds,
+          selectedState1: e.target.value,
+        });
+        const checkoutId = localStorage.getItem("checkoutId");
+        const res = await checkoutShippingAddressUpdate({
+          checkoutId,
+          shippingAddress: {
+            country: country,
+          },
+          note: state.notes,
+        });
         updateDelivertMethod(
           e.target.value,
           state.selectedPaymentType,
@@ -1373,6 +1380,7 @@ const CheckoutBillingArea1 = () => {
       console.log("✌️error --->", error);
     }
   };
+
   const thumbRef = useRef(null);
 
   useEffect(() => {
@@ -1400,6 +1408,105 @@ const CheckoutBillingArea1 = () => {
     window.addEventListener("scroll", handleScroll);
     return () => window.removeEventListener("scroll", handleScroll);
   }, []);
+
+  const handleCheckDifferentAddress = async (isChecked) => {
+    try {
+      const isCheckbox = isChecked;
+      const checkoutId = localStorage.getItem("checkoutId");
+
+      setState({ diffAddress: isChecked });
+      if (isCheckbox) {
+        const shippingCountry = state.selectedCountry1;
+        const shippingState = state.selectedState1;
+        const shippingPincode = state.postalCode1;
+        setState({ postalCode1: shippingPincode });
+        if (shippingCountry == "IN") {
+          const deliveryMethodIds =
+            shippingState == "Tamil Nadu"
+              ? DELIVERY_ID_TN
+              : DELIVERY_ID_OTHER_TN;
+
+          setState({
+            selectedShippingId: deliveryMethodIds,
+          });
+          const res = await checkoutShippingAddressUpdate({
+            checkoutId,
+            shippingAddress: {
+              country: shippingCountry,
+            },
+            note: state.notes,
+          });
+          updateDelivertMethod(
+            shippingCountry,
+            state.selectedPaymentType,
+            deliveryMethodIds
+          );
+        } else {
+          if (shippingCountry) {
+            const deliveryMethodIds = DELIVERY_ID_OTHER_IN;
+            const res = await checkoutShippingAddressUpdate({
+              checkoutId,
+              shippingAddress: {
+                country: shippingCountry,
+              },
+              note: state.notes,
+            });
+            updateDelivertMethod(
+              shippingCountry,
+              state.selectedPaymentType,
+              deliveryMethodIds
+            );
+          }
+        }
+      } else {
+        const shippingCountry = state.selectedCountry;
+        const shippingState = state.selectedState;
+        const shippingPincode = state.postalCode;
+        setState({ postalCode: shippingPincode });
+
+        if (shippingCountry == "IN") {
+          const deliveryMethodIds =
+            shippingState == "Tamil Nadu"
+              ? DELIVERY_ID_TN
+              : DELIVERY_ID_OTHER_TN;
+
+          setState({
+            selectedShippingId: deliveryMethodIds,
+          });
+          const res = await checkoutShippingAddressUpdate({
+            checkoutId,
+            shippingAddress: {
+              country: shippingCountry,
+            },
+            note: state.notes,
+          });
+          updateDelivertMethod(
+            shippingCountry,
+            state.selectedPaymentType,
+            deliveryMethodIds
+          );
+        } else {
+          if (shippingCountry) {
+            const deliveryMethodIds = DELIVERY_ID_OTHER_IN;
+            const res = await checkoutShippingAddressUpdate({
+              checkoutId,
+              shippingAddress: {
+                country: shippingCountry,
+              },
+              note: state.notes,
+            });
+            updateDelivertMethod(
+              shippingCountry,
+              state.selectedPaymentType,
+              deliveryMethodIds
+            );
+          }
+        }
+      }
+    } catch (error) {
+      console.log("error: ", error);
+    }
+  };
 
   return (
     <>
@@ -1623,7 +1730,6 @@ const CheckoutBillingArea1 = () => {
                           className="form-select"
                           value={state.selectedState}
                           onChange={(e) => {
-                            setState({ selectedState: e.target.value });
                             handleStateChange(e, state.selectedCountry);
                           }}
                         >
@@ -1867,51 +1973,52 @@ const CheckoutBillingArea1 = () => {
                     )}
                     <div className="col-12 mb-2 d-flex justify-content-between align-items-center ">
                       <div className="d-flex align-items-center">
-                      <input
-                        id="remeber"
-                        type="checkbox"
-                        checked={state.diffAddress}
-                        onChange={(e) =>
-                          setState({ diffAddress: e.target.checked })
-                        }
-                      />
-                      <label
-                        className="ms-2"
-                        htmlFor="shipDiffAddress"
-                        onClick={() =>
-                          setState({ diffAddress: !state.diffAddress })
-                        }
-                      >
-                        Ship to a Different Address?
-                      </label>
+                        <input
+                          id="remeber"
+                          type="checkbox"
+                          checked={state.diffAddress}
+                          onChange={(e) =>
+                            handleCheckDifferentAddress(e.target.checked)
+                          }
+                        />
+                        <label
+                          className="ms-2 "
+                          htmlFor="shipDiffAddress"
+                          style={{
+                            cursor: "pointer",
+                          }}
+                          onClick={() =>
+                            handleCheckDifferentAddress(!state.diffAddress)
+                          }
+                        >
+                          Ship to a Different Address?
+                        </label>
                       </div>
                       <div className="mt-8">
-                      {localStorage.getItem("token") &&
-                      addressList &&
-                      addressList?.length > 0 &&
-                      state.diffAddress && (
-                        <button
-                          type="button"
-                          style={{
-                            padding: "5px 20px 5px 20px",
-                            backgroundColor: "#e09a7a",
-                            borderRadius: 20,
-                            color: "white",
-                            marginBottom: 30,
-                            marginLeft: 10,
-                            marginTop: "10px",
-                            className: "tp-btn tp-btn-border",
-                            width:"auto"
-                          }}
-                          onClick={() => setState({ isShippingOpen: true })}
-                        >
-                          {"Set Address"}
-                        </button>
-                      )}
-                        </div>
-
+                        {localStorage.getItem("token") &&
+                          addressList &&
+                          addressList?.length > 0 &&
+                          state.diffAddress && (
+                            <button
+                              type="button"
+                              style={{
+                                padding: "5px 20px 5px 20px",
+                                backgroundColor: "#e09a7a",
+                                borderRadius: 20,
+                                color: "white",
+                                marginBottom: 30,
+                                marginLeft: 10,
+                                marginTop: "10px",
+                                className: "tp-btn tp-btn-border",
+                                width: "auto",
+                              }}
+                              onClick={() => setState({ isShippingOpen: true })}
+                            >
+                              {"Set Address"}
+                            </button>
+                          )}
+                      </div>
                     </div>
-                    
 
                     {state.diffAddress && (
                       <div className="tp-checkout-bill-form">
@@ -2018,10 +2125,8 @@ const CheckoutBillingArea1 = () => {
                                     className="form-select"
                                     value={state.selectedState1}
                                     onChange={(e) => {
-                                      setState({
-                                        selectedState1: e.target.value,
-                                      });
-                                      handleStateChange(
+                                      setState({});
+                                      handleShippingStateChange(
                                         e,
                                         state.selectedCountry1
                                       );
@@ -2479,8 +2584,7 @@ const CheckoutBillingArea1 = () => {
                             <ErrorMsg msg={state.errors.paymentType} />
                           )}
                           <div className=" text-grey">
-                            Cash on Delivery is not applicable on Pre-order and
-                            gift cart products
+                            Cash on Delivery is not applicable on gift cart products
                           </div>
                         </div>
                         {state.isGiftWrap && (

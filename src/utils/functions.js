@@ -2,15 +2,19 @@ import { useState } from "react";
 import Swal from "sweetalert2";
 import Resizer from "react-image-file-resizer";
 import AWS from "aws-sdk";
-import axios from 'axios';
-
+import axios from "axios";
 
 export const accessKeyId = "DO00MUC2HWP9YVLPXKXT";
 
 export const secretAccessKey = "W9N9b51nxVBvpS59Er9aB6Ht7xx2ZXMrbf3vjBBR8OA";
 
-export const SERVER_URL = 'http://noblesetsbkend.irepute.co.in';
+export const SERVER_URL = "http://noblesetsbkend.irepute.co.in";
 
+export const DELIVERY_ID_TN = "U2hpcHBpbmdNZXRob2Q6ODg=";
+
+export const DELIVERY_ID_OTHER_TN = "U2hpcHBpbmdNZXRob2Q6ODk=";
+
+export const DELIVERY_ID_OTHER_IN = "U2hpcHBpbmdNZXRob2Q6OTI=";
 
 export const capitalizeFLetter = (string = "") => {
   if (string.length > 0) {
@@ -405,7 +409,6 @@ export const addNewMediaFile = async (file, uniqueFilename) => {
     });
 
     const urls = `https://prade.blr1.digitaloceanspaces.com/${presignedPostData?.fields?.key}`;
-console.log('✌️urls --->', urls);
     return urls;
   } catch (error) {
     console.error("Error uploading file:", error);
