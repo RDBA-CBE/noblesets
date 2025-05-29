@@ -246,8 +246,7 @@ const ProductDetailsArea = ({
               </div>
             </section>
           )}
-
-          <ReviewSection reviewList={reviewList} />
+          {reviewList?.length > 0 && <ReviewSection reviewList={reviewList} />}
         </>
       )}
 
