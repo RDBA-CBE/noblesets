@@ -174,8 +174,7 @@ const MyOrderDetails = ({ data }) => {
 
       if (res?.data?.data?.productReviewCreate?.errors?.length > 0) {
         notifyError(res?.data?.data?.productReviewCreate?.errors[0]?.message);
-        setState({isOpen:false})
-
+        setState({ isOpen: false });
       } else {
         setFormData({
           rating: 0,
@@ -186,7 +185,7 @@ const MyOrderDetails = ({ data }) => {
         });
         notifySuccess("Reviews Submitted Successfully");
         reviews();
-        setState({isOpen:false})
+        setState({ isOpen: false });
       }
       // });
     } catch (error) {
@@ -575,9 +574,9 @@ const MyOrderDetails = ({ data }) => {
                 <Rating
                   count={5}
                   value={formData.rating}
-                  onChange={(newRating) =>
-                    setFormData({ ...formData, rating: newRating })
-                  }
+                  onClick={(e) => {
+                    setFormData({ ...formData, rating: e });
+                  }}
                   size={25}
                   activeColor="#b4633a"
                 />

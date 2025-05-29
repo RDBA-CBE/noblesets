@@ -307,11 +307,12 @@ const CheckoutBillingArea1 = () => {
   }, []);
 
   const debouncedPeopleSearch = useDebounce(state.postalCode);
+  const debouncedCodeSearch = useDebounce(state.postalCode1);
 
   const handleCheck = async (code) => {
     try {
       let isTrue = false;
-      const res = await picodeCheck({ code: code });
+      const res = await picodeCheck({ code: [code] });
       if (res?.data?.data?.pincodes?.edges.length > 0) {
         isTrue = true;
       } else {
@@ -325,14 +326,14 @@ const CheckoutBillingArea1 = () => {
   useEffect(() => {
     enableCOD();
   }, [
-    state.total,
-    state.orderData,
-    state.selectedCountry1,
-    state.selectedCountry,
-    state.diffAddress,
-    state.postalCode1,
+    // state.total,
+    // state.orderData,
+    // state.selectedCountry1,
+    // state.selectedCountry,
+    // state.diffAddress,
+    // state.postalCode1,
     debouncedPeopleSearch,
-    state.diffAddress,
+    debouncedCodeSearch,
   ]);
 
   useEffect(() => {
@@ -394,14 +395,15 @@ const CheckoutBillingArea1 = () => {
         totalValid = state.total > 39 && state.total < 390;
       }
       if (totalValid && !hasGiftCard) {
-        const country = state.diffAddress
-          ? state.selectedCountry1
-          : state.selectedCountry;
+        // const country = state.diffAddress
+        //   ? state.selectedCountry1
+        //   : state.selectedCountry;
         const postalCode = state.diffAddress
           ? state.postalCode1
           : state.postalCode;
         const pincodes = await handleCheck(postalCode);
-        if (country === "IN") {
+        console.log("✌️pincodes --->", pincodes);
+        if (pincodes) {
           isShowCOD = true;
         }
       }
@@ -409,6 +411,7 @@ const CheckoutBillingArea1 = () => {
       if (!isShowCOD) {
         arr = arr.filter((item) => item.name !== CASE_ON_DELIVERY);
       }
+      console.log("✌️arr --->", arr);
 
       setState({
         paymentType: arr,
@@ -1377,13 +1380,14 @@ const CheckoutBillingArea1 = () => {
     const initialOffsetTop = el?.offsetTop ?? 0;
 
     function handleScroll() {
-      const scrollY = window.scrollY || window.pageYOffset;
+      if (!el) return;
+
+      const scrollY = window?.scrollY || window?.pageYOffset;
       const stickyTop = 120;
 
       if (scrollY + stickyTop > initialOffsetTop) {
         el.style.position = "sticky";
         el.style.top = `${stickyTop}px`;
-
         el.style.zIndex = 10;
       } else {
         el.style.position = "static";
@@ -1391,11 +1395,11 @@ const CheckoutBillingArea1 = () => {
       }
     }
 
+    if (!el) return;
+
     window.addEventListener("scroll", handleScroll);
     return () => window.removeEventListener("scroll", handleScroll);
   }, []);
-
-  
 
   return (
     <>
@@ -1861,8 +1865,8 @@ const CheckoutBillingArea1 = () => {
                         </>
                       </>
                     )}
-
-                    <div className="col-12 mb-2">
+                    <div className="col-12 mb-2 d-flex justify-content-between align-items-center ">
+                      <div className="d-flex align-items-center">
                       <input
                         id="remeber"
                         type="checkbox"
@@ -1871,11 +1875,18 @@ const CheckoutBillingArea1 = () => {
                           setState({ diffAddress: e.target.checked })
                         }
                       />
-                      <label className="ms-2" htmlFor="shipDiffAddress">
+                      <label
+                        className="ms-2"
+                        htmlFor="shipDiffAddress"
+                        onClick={() =>
+                          setState({ diffAddress: !state.diffAddress })
+                        }
+                      >
                         Ship to a Different Address?
                       </label>
-                    </div>
-                    {localStorage.getItem("token") &&
+                      </div>
+                      <div className="mt-8">
+                      {localStorage.getItem("token") &&
                       addressList &&
                       addressList?.length > 0 &&
                       state.diffAddress && (
@@ -1883,19 +1894,24 @@ const CheckoutBillingArea1 = () => {
                           type="button"
                           style={{
                             padding: "5px 20px 5px 20px",
-
+                            backgroundColor: "#e09a7a",
                             borderRadius: 20,
                             color: "white",
                             marginBottom: 30,
                             marginLeft: 10,
-                            marginTop: "-10px",
+                            marginTop: "10px",
                             className: "tp-btn tp-btn-border",
+                            width:"auto"
                           }}
                           onClick={() => setState({ isShippingOpen: true })}
                         >
                           {"Set Address"}
                         </button>
                       )}
+                        </div>
+
+                    </div>
+                    
 
                     {state.diffAddress && (
                       <div className="tp-checkout-bill-form">
