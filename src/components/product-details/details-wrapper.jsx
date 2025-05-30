@@ -76,9 +76,6 @@ const DetailsWrapper = ({
     tags,
     offerDate,
   } = productItem || {};
-console.log('DetailsWrapperss --->', productItem);
-
-
 
   const [ratingVal, setRatingVal] = useState(0);
   const [textMore, setTextMore] = useState(false);
@@ -632,7 +629,6 @@ console.log('DetailsWrapperss --->', productItem);
       // sub_account_id: subaccid,
     };
 
-    console.log("paymentData", paymentData);
     let encReq = CCAvenue.getEncryptedOrder(paymentData);
     // const encRequest = encrypt(paymentData, WORKING_KEY);
     let accessCode = "AVGO93LF57AY79OGYA";

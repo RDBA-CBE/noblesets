@@ -74,12 +74,10 @@ const Index = () => {
       first: 1,
       sortBy: { direction: "DESC", field: "PRICE" },
     }).then((res) => {
-      console.log("✌️res --->", res);
       const list = res.data?.data?.productsSearch?.edges;
       if (list?.length > 0) {
         const maxPrice =
           list[0]?.node?.pricing?.priceRange?.start?.gross?.amount;
-        console.log("✌️maxPrice --->", maxPrice);
 
         // setPriceValue([0, maxPrice]);
         // setInitialMaxPrice(maxPrice);

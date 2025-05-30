@@ -766,7 +766,6 @@ export const productApi = apiSlice.injectEndpoints({
 
     logout: builder.mutation({
       query: () => {
-        console.log("query: ");
         return configuration(LOGOUT({}));
       },
     }),
@@ -830,7 +829,6 @@ export const productApi = apiSlice.injectEndpoints({
           year: null,
           name: uniqueFilename,
         };
-        console.log("✌️body --->", body);
 
         return configuration(
           MEDIA_LIST({

@@ -122,10 +122,8 @@ const CartArea1 = () => {
 
   useEffect(() => {
     const el = thumbRef.current;
-    console.log(el);
 
     const initialOffsetTop = el?.offsetTop ?? 0;
-    console.log(initialOffsetTop);
 
     function handleScroll() {
       const scrollY = window.scrollY || window.pageYOffset;

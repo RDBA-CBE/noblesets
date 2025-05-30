@@ -736,7 +736,6 @@ const CheckoutBillingArea = ({ register, errors }) => {
         // sub_account_id: "",
       };
 
-      console.log(paymentData);
 
       let encReq = CCAvenue.getEncryptedOrder(paymentData);
       let accessCode = "AVGO93LF57AY79OGYA";
@@ -751,7 +750,6 @@ const CheckoutBillingArea = ({ register, errors }) => {
     country,
     paymentType
   ) => {
-    console.log("✌️paymentType --->", paymentType);
 
     try {
       const checkoutId = localStorage.getItem("checkoutId");
@@ -811,7 +809,6 @@ const CheckoutBillingArea = ({ register, errors }) => {
     deliveryMethodId
   ) => {
     try {
-      console.log("✌️deliveryMethodId --->", deliveryMethodId);
 
       const checkoutId = localStorage.getItem("checkoutId");
       if (checkoutId) {
@@ -849,7 +846,6 @@ const CheckoutBillingArea = ({ register, errors }) => {
   };
 
   const handleSelectChange = async (e) => {
-    console.log("✌️e --->", e.target.value);
     try {
       //       const res = await shippingZoneList({});
       // console.log('✌️res --->', res);
@@ -1192,7 +1188,6 @@ const CheckoutBillingArea = ({ register, errors }) => {
       } else {
         shippingCost = response?.codAmount;
       }
-      console.log("✌️shippingCost --->", shippingCost);
 
       setState({
         shippingCost,
@@ -1265,7 +1260,6 @@ const CheckoutBillingArea = ({ register, errors }) => {
   };
 
   const setBillingAddress = (data) => {
-    console.log("✌️data --->", data);
     const userInfo = localStorage.getItem("userInfo");
     if (!objIsEmpty(data?.country)) {
       const body = {
@@ -1330,9 +1324,7 @@ const CheckoutBillingArea = ({ register, errors }) => {
   };
 
   const handleStateChange = async (e, country) => {
-    console.log("✌️country --->", country);
     try {
-      console.log("✌️ e.target.value --->", e.target.value);
 
       // let country = !state.diffAddress
       //   ? state.selectedCountry
@@ -1350,7 +1342,6 @@ const CheckoutBillingArea = ({ register, errors }) => {
           // selectedState: e.target.value,
         });
         if (!state.diffAddress) {
-          console.log("✌️if --->");
           setState({
             selectedState: e.target.value,
           });

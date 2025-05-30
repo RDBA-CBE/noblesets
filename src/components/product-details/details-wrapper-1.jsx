@@ -182,7 +182,6 @@ const DetailsWrapper1 = ({
   useEffect(() => {
     const userInfo = localStorage.getItem("userInfo");
     if (userInfo) {
-      console.log("✌️token --->", JSON.parse(userInfo));
       let user = JSON.parse(userInfo);
       setUserInfo(user);
       setFormData({
@@ -640,14 +639,12 @@ const DetailsWrapper1 = ({
       // sub_account_id: subaccid,
     };
 
-    console.log("paymentData", paymentData);
     let encReq = CCAvenue.getEncryptedOrder(paymentData);
     // const encRequest = encrypt(paymentData, WORKING_KEY);
     let accessCode = "AVGO93LF57AY79OGYA";
 
     let URL = `https://secure.ccavenue.com/transaction/transaction.do?command=initiateTransaction&merchant_id=${paymentData.merchant_id}&encRequest=${encReq}&access_code=${accessCode}`;
 
-    console.log("URL", URL);
 
     // window.location.href = URL;
     router.push(URL);
@@ -684,7 +681,6 @@ const DetailsWrapper1 = ({
 
       const userInfo = localStorage.getItem("userInfo");
       if (userInfo) {
-        console.log("✌️token --->", JSON.parse(userInfo));
         let user = JSON.parse(userInfo);
         input = {
           customer: user?.user?.id,
@@ -706,7 +702,6 @@ const DetailsWrapper1 = ({
           baseProduct: productItem?.id,
         };
       }
-      console.log("✌️bodyData --->", input);
 
       const res = await createCustomerProduct({
         input,
@@ -714,7 +709,6 @@ const DetailsWrapper1 = ({
       if (res?.data?.data?.customProductCreate?.errors?.length > 0) {
         notifyError(res?.data?.data?.customProductCreate?.errors?.[0]?.message);
       } else {
-        console.log("✌️res --->", res);
         setSuccess("Form submitted successfully!");
         setError("");
         setIsProductModelOpen(false);

@@ -177,7 +177,6 @@ export const cardApi = apiSlice.injectEndpoints({
 
     checkoutUpdate: builder.mutation({
       query: ({ checkoutid,  deliveryMethodId }) => {
-console.log('✌️deliveryMethodId --->', deliveryMethodId);
         // //COD and GiftWrap are false
         // // let deliveryMethodId;
         // if (checkChannel() == "india-channel") {
@@ -332,12 +331,6 @@ console.log('✌️deliveryMethodId --->', deliveryMethodId);
 
     updateShippingAddress: builder.mutation({
       query: ({ checkoutId, shippingAddress, note }) => {
-        console.log(
-          " checkoutId, shippingAddress, note: ",
-          checkoutId,
-          shippingAddress,
-          note
-        );
         return configuration(
           UPDATE_SHIPPING_ADDRESS({
             checkoutId,

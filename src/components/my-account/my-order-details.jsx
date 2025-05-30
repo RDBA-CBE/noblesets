@@ -161,7 +161,6 @@ const MyOrderDetails = ({ data }) => {
         });
 
         await Promise.all(uploadPromises); // Wait for all uploads to complete
-        console.log("✅ arr after uploads --->", arr);
       }
       // Data?.lines?.map(async (item) => {
       const res = await createReview({

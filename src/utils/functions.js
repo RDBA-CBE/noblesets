@@ -300,7 +300,6 @@ export const resizingImage = (file) => {
       (uri) => {
         // Convert resized image blob to File
         const resizedFile = new File([uri], file.name, { type: uri.type });
-        console.log("resizedFile: ", resizedFile);
         resolve(resizedFile);
       },
       "blob" // Output type
@@ -386,7 +385,6 @@ export const addNewMediaFile = async (file, uniqueFilename) => {
       type: file.type,
       lastModified: file.lastModified,
     });
-    console.log("✌️file --->", file);
 
     let presignedPostData = null;
     if (file?.name?.endsWith(".mp4")) {
@@ -394,7 +392,6 @@ export const addNewMediaFile = async (file, uniqueFilename) => {
     } else {
       presignedPostData = await generatePresignedPost(file);
     }
-    console.log("✌️presignedPostData --->", presignedPostData);
 
     const formData = new FormData();
     Object.keys(presignedPostData.fields).forEach((key) => {
@@ -416,7 +413,6 @@ export const addNewMediaFile = async (file, uniqueFilename) => {
 };
 
 export const generatePresignedPost = async (file) => {
-  console.log("generatePresignedPost --->", file);
   const spacesEndpoint = new AWS.Endpoint(
     "https://prade.blr1.digitaloceanspaces.com"
   );
