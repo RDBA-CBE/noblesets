@@ -112,11 +112,13 @@ export const SINGLE_PRODUCT = ({ productId, channel }) => {
       name
       productId
       id
+      slug
     }
     getCrosssells {
       id
       name
       productId
+      slug
     }
     seoTitle
     seoDescription
