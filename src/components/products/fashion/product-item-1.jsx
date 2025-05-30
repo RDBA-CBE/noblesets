@@ -260,14 +260,14 @@ const ProductItem1 = ({ products, style_2 = false, updateData, index }) => {
                                 objectFit: "cover",
                                 // height: "260px",
                                 borderRadius: "20px",
-                              }}
-                            /> */}
+                              }} */}
+                            {/* /> */}
           <div className="tp-product-thumb-2 p-relative z-index-1 fix">
             <Link href={`/product-details/${product?.slug}`}>
               {isImage(profilePic(img)) ? (
                 <img
                   className="card-img-top"
-                  src={profilePic(img)}
+                  src={profilePic(img)? profilePic(img) : "/assets/img/image-not-included-img.png"}
                   alt="product img"
                   style={{
                     objectFit: "cover",
@@ -276,7 +276,7 @@ const ProductItem1 = ({ products, style_2 = false, updateData, index }) => {
                 />
               ) : (
                 <video
-                  src={img}
+                  src={img ? img : "/assets/img/image-not-included-img.png"}
                   width={284}
                   height={302}
                   alt="product img"
@@ -289,8 +289,8 @@ const ProductItem1 = ({ products, style_2 = false, updateData, index }) => {
                 />
               )}
 
-              {/*<img  className="card-img-top" 
-                            src="/assets/img/blog.webp"
+              {/* <img  className="card-img-top" 
+                            src="/assets/img/image-not-included-img.png"
                              style={{
                               objectFit: "cover",
                               borderRadius: "20px",
@@ -311,38 +311,41 @@ const ProductItem1 = ({ products, style_2 = false, updateData, index }) => {
               )}
             </div>
 
-            <div className="tp-product-badge-2">
-              {product?.defaultVariant?.quantityAvailable == 0 && (
-                <span className="product-hot text-center soldout-badge">
-                  SOLD
-                  <br /> OUT
-                </span>
-              )}
-            </div>
+            <div className="d-flex justify-content-between">
+              <div className="tp-product-badge-2">
+                {product?.defaultVariant?.quantityAvailable == 0 && (
+                  <span className="product-hot text-center soldout-badge">
+                    SOLD
+                    <br /> OUT
+                  </span>
+                )}
+              </div>
 
-            <div
-              className={`${
-                product?.defaultVariant?.quantityAvailable == 0
-                  ? "tp-product-badge"
-                  : "tp-product-badge-2"
-              }`}
-            >
-              {product?.metadata?.filter((item) => item.key === "label")
-                .length > 0 &&
-                product.metadata
-                  .filter((item) => item.key === "label")
-                  .map((item, index) => (
-                    <span
-                      key={index}
-                      className="product-trending text-center"
-                      style={{
-                        padding: "18px 15px",
-                        textTransform: "capitalize",
-                      }}
-                    >
-                      {item.value}
-                    </span>
-                  ))}
+              <div
+                className={`${
+                  product?.defaultVariant?.quantityAvailable == 0
+                    ? "tp-product-badge"
+                    : "tp-product-badge-2"
+                }`}
+              >
+                {product?.metadata?.filter((item) => item.key === "label")
+                  .length > 0 &&
+                  product.metadata
+                    .filter((item) => item.key === "label")
+                    .map((item, index) => (
+                      <span
+                        key={index}
+                        className="product-trending text-center"
+                        style={{
+                          padding:
+                            item?.value === "New" ? "18px 15px" : "18px 13px",
+                          textTransform: "capitalize",
+                        }}
+                      >
+                        {item.value}
+                      </span>
+                    ))}
+              </div>
             </div>
 
             {/* product action */}

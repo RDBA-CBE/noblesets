@@ -36,7 +36,6 @@ const ShopArea = ({
   clearFilter,
   parentSlug,
 }) => {
-
   const { priceFilterValues, selectHandleFilter, currPage, setCurrPage } =
     otherProps;
 
@@ -109,7 +108,7 @@ const ShopArea = ({
           alignItems: "center",
         }}
       >
-        <img src="/assets/img/Prade-Logo-Giff.gif" alt="Loading..." />
+        <img src="/assets/img/logo-loader.png" alt="Loading..." />
       </div>
     );
   }
@@ -168,17 +167,20 @@ const ShopArea = ({
                     </div>
                   ))}
                 </div> */}
-                  <div className=" position-relative ShopByCollections row  d-flex flex-wrap align-items-stretch">
-                    {/* <div
+                <div className=" position-relative ShopByCollections row  d-flex flex-wrap align-items-stretch">
+                  {/* <div
                       className="swiper-wrapper "
                      
                     > */}
-                      {products.map((item, index) => (
-                        <ProductItem1 products={item} updateData={updateData} index={index} />                                             
-                        
-                      ))}
-                    {/* </div> */}
-                  </div>
+                  {products.map((item, index) => (
+                    <ProductItem1
+                      products={item}
+                      updateData={updateData}
+                      index={index}
+                    />
+                  ))}
+                  {/* </div> */}
+                </div>
               </div>
               <div
                 className="tab-pane fade"
@@ -235,7 +237,8 @@ const ShopArea = ({
     <>
       <section className="tp-shop-area  mt-50">
         <div className="container-fluid">
-          <div className="section-wd"
+          <div
+            className="section-wd"
             style={{
               borderBottom: "1px solid #eee",
               paddingBottom: "10px",
@@ -286,13 +289,13 @@ const ShopArea = ({
           <div className="row justify-content-center">
             {/*  */}
             <div className="section-wd">
-            <div className="col-xl-12">
-              <div className="tp-shop-main-wrapper">
-                <div className="tp-shop-top mb-45">
-                  <div className="row">
-                    <div className="col-md-6">
-                      <ShopTopLeft showing={page} total={totalCount} />
-                      {/* <ShopTopLeft
+              <div className="col-xl-12">
+                <div className="tp-shop-main-wrapper">
+                  <div className="tp-shop-top mb-45">
+                    <div className="row">
+                      <div className="col-md-6">
+                        <ShopTopLeft showing={page} total={totalCount} />
+                        {/* <ShopTopLeft
                         showing={
                           products?.length === 0
                             ? 0
@@ -303,103 +306,108 @@ const ShopArea = ({
                         }
                         total={all_products?.length}
                       /> */}
-                    </div>
-                    <div className="col-md-6">
-                      <ShopTopRight selectHandleFilter={selectHandleFilter} />
+                      </div>
+                      <div className="col-md-6">
+                        <ShopTopRight selectHandleFilter={selectHandleFilter} />
+                      </div>
                     </div>
                   </div>
-                </div>
-                {filter && (
-                  <div
-                    className="d-flex cursor"
-                    style={{ gap: 20, cursor: "pointer" }}
-                  >
-                    {(!objIsEmpty(filter?.price) ||
-                      filter?.attributes?.length > 0) && (
-                      <>
-                        <div className="cartmini__close">
-                          <button
-                            type="button"
-                            className="cartmini__close-btn cartmini-close-btn"
-                          >
-                            <i className="fal fa-times"></i>
-                          </button>
-                        </div>
-                        <div onClick={() => clearFilter()}>
-                          <i className="fa-regular fa-xmark " />
-                          <span style={{ paddingLeft: "5px" }}>
-                            Clear filter
-                          </span>
-                        </div>
-                      </>
-                    )}
+                  {filter && (
                     <div
-                      className="pb-20"
-                      style={{ display: "flex", gap: 10, cursor: "pointer" }}
+                      className="d-flex cursor"
+                      style={{ gap: 20, cursor: "pointer" }}
                     >
-                      {/* Price Filter */}
-                      {filter.price && (
+                      {(!objIsEmpty(filter?.price) ||
+                        filter?.attributes?.length > 0) && (
                         <>
-                          {filter.price.min !== undefined && (
-                            <div
-                              style={{
-                                display: "flex",
-                                gap: 5,
-                                cursor: "pointer",
-                                alignItems: "center",
-                              }}
-                              onClick={() => removeFilter("gte", null, "price")}
+                          <div className="cartmini__close">
+                            <button
+                              type="button"
+                              className="cartmini__close-btn cartmini-close-btn"
                             >
-                              <i className="fa-regular fa-xmark " />
-                              <span>Min {filter.price.min}</span>
-                            </div>
-                          )}
-                          {filter.price.max !== undefined && (
-                            <div
-                              style={{
-                                display: "flex",
-                                gap: 5,
-                                cursor: "pointer",
-                                alignItems: "center",
-                              }}
-                              onClick={() => removeFilter("lte", null, "price")}
-                            >
-                              <i className="fa-regular fa-xmark " />
-                              <span>Max {filter.price.max}</span>
-                            </div>
-                          )}
+                              <i className="fal fa-times"></i>
+                            </button>
+                          </div>
+                          <div onClick={() => clearFilter()}>
+                            <i className="fa-regular fa-xmark " />
+                            <span style={{ paddingLeft: "5px" }}>
+                              Clear filter
+                            </span>
+                          </div>
                         </>
                       )}
+                      <div
+                        className="pb-20"
+                        style={{ display: "flex", gap: 10, cursor: "pointer" }}
+                      >
+                        {/* Price Filter */}
+                        {filter.price && (
+                          <>
+                            {filter.price.min !== undefined && (
+                              <div
+                                style={{
+                                  display: "flex",
+                                  gap: 5,
+                                  cursor: "pointer",
+                                  alignItems: "center",
+                                }}
+                                onClick={() =>
+                                  removeFilter("gte", null, "price")
+                                }
+                              >
+                                <i className="fa-regular fa-xmark " />
+                                <span>Min {filter.price.min}</span>
+                              </div>
+                            )}
+                            {filter.price.max !== undefined && (
+                              <div
+                                style={{
+                                  display: "flex",
+                                  gap: 5,
+                                  cursor: "pointer",
+                                  alignItems: "center",
+                                }}
+                                onClick={() =>
+                                  removeFilter("lte", null, "price")
+                                }
+                              >
+                                <i className="fa-regular fa-xmark " />
+                                <span>Max {filter.price.max}</span>
+                              </div>
+                            )}
+                          </>
+                        )}
 
-                      {/* Attribute Filters */}
-                      {filter?.attributes?.map((item) =>
-                        item.values.map((value) => (
-                          <div
-                            key={`${item.slug}-${value}`} // Unique key for each choice
-                            style={{
-                              display: "flex",
-                              gap: 5,
-                              cursor: "pointer",
-                              alignItems: "center",
-                            }}
-                            onClick={() =>
-                              removeFilter(item.slug, value, "attribute")
-                            }
-                          >
-                            <i className="fa-regular fa-xmark " />
-                            <span style={{ paddingLeft: "5px" }}>{value}</span>
-                          </div>
-                        ))
-                      )}
+                        {/* Attribute Filters */}
+                        {filter?.attributes?.map((item) =>
+                          item.values.map((value) => (
+                            <div
+                              key={`${item.slug}-${value}`} // Unique key for each choice
+                              style={{
+                                display: "flex",
+                                gap: 5,
+                                cursor: "pointer",
+                                alignItems: "center",
+                              }}
+                              onClick={() =>
+                                removeFilter(item.slug, value, "attribute")
+                              }
+                            >
+                              <i className="fa-regular fa-xmark " />
+                              <span style={{ paddingLeft: "5px" }}>
+                                {value}
+                              </span>
+                            </div>
+                          ))
+                        )}
+                      </div>
                     </div>
-                  </div>
-                )}
+                  )}
 
-                {content}
+                  {content}
+                </div>
               </div>
             </div>
-            </div>
-          
           </div>
         </div>
       </section>

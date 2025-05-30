@@ -95,7 +95,7 @@ export default function GiftSection() {
   className="position-relative d-lg-flex justify-content-lg-end ps-lg-5 p-3"
 >
               <img
-                src="/assets/img/home/gift_special/gift-img.jpg"
+                src="/assets/img/home/gift_special/gift-img.png"
                 alt="image-1"
                 style={{
                   width: "90%",

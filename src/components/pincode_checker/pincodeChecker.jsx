@@ -28,8 +28,8 @@ export default function PincodeChecker() {
   }, [pincode]);
 
   return (
-    <div className="">
-      <p className=" text-dark  fs-5">Use pincode to check delivery info</p>
+    <div className="pincode-check">
+      <p className=" text-dark ">Use pincode to check delivery info</p>
 
       <div className="input-group rounded shadow-sm">
         <span className="input-group-text bg-light border-0">
@@ -51,9 +51,11 @@ export default function PincodeChecker() {
         <button
           onClick={handleCheck}
           className="btn text-white"
-          style={{ backgroundColor: "#b4633a" }}
+          style={{ background: "linear-gradient( to right, color-mix(in srgb, #fbdccc 40%, #e09a7a),#e09a7a)" ,
+            border:"none"
+          }}
         >
-          {loading ? <ButtonLoader /> : "CHECK"}
+          {loading ? <ButtonLoader /> : "Check"}
         </button>
       </div>
 

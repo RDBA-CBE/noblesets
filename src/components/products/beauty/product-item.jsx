@@ -208,20 +208,28 @@ height={320}
               }}
             />
           ) : (
-            <video
+            <div style={{width:"282px", height:"320px", overflow:"hidden"}}>
+                <video
               src={thumbnail?.url}
               autoPlay
               muted // Ensure it's muted to autoplay without user interaction
               loop // Ensure it loops indefinitely
               playsInline // Ensure it plays inline on iOS devices
+              // width={282}
+              // height={320}
               style={{
                 width: "100%",
                 height: "100%",
                 borderRadius:"20px",
+                overflow:"hidden"
               }}
               alt="instagram video"
               className="actor-video"
             />
+            </div>
+
+
+          
           )}
           {/* <img
 src={profilePic(thumbnail?.url)}

@@ -174,18 +174,20 @@ width={282}
 height={320}
 /> */}
 
-            {/* <img
-              src="/assets/img/blog.webp"
+            <img
+              src="/assets/img/image-not-included-img.png"
               alt="product image"
               width={282}
               height={320}
               style={{
                 borderRadius:"20px",
               }}
-            /> */}
-          {video ? (
+            />
+
+
+          {/* {video ? (
             <video
-              src={video?.url}
+              src={video?.url ? video?.url : "/assets/img/image-not-included-img.png"  }
               autoPlay
               muted // Ensure it's muted to autoplay without user interaction
               loop // Ensure it loops indefinitely
@@ -200,7 +202,7 @@ height={320}
             />
           ) : isImage(profilePic(thumbnail?.url)) ? (
             <img
-              src={profilePic(thumbnail?.url)}
+              src={profilePic(thumbnail?.url) ? profilePic(thumbnail?.url) : "/assets/img/image-not-included-img.png"  }
               alt="product image"
               width={282}
               height={320}
@@ -210,7 +212,7 @@ height={320}
             />
           ) : (
             <video
-              src={thumbnail?.url}
+              src={thumbnail?.url ? thumbnail?.url : "/assets/img/image-not-included-img.png"  }
               autoPlay
               muted // Ensure it's muted to autoplay without user interaction
               loop // Ensure it loops indefinitely
@@ -223,7 +225,7 @@ height={320}
               alt="instagram video"
               className="actor-video"
             />
-          )}
+          )} */}
 
 
           {/* <img
