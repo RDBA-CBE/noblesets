@@ -149,7 +149,7 @@ const CartArea1 = () => {
   return (
     <div className="cart-container container py-4">
       <h3 className="cart-title mb-3 mt-2">
-        Cart <span className="text-muted">(2 Items)</span>
+        Cart <span className="text-muted">({CartList?.length} Items)</span>
       </h3>
 
       {/* Availability Section */}
@@ -180,6 +180,7 @@ const CartArea1 = () => {
             return (
               <>
                 <CartItem1
+                  cartLength={CartList?.length}
                   isQuantity={true}
                   key={i}
                   product={item}
@@ -267,7 +268,7 @@ const CartArea1 = () => {
                                           </Link> */}
               </div>
 
-              <CartCheckout1 cartData={cartData} />
+              <CartCheckout1 cartData={cartData} cartLength={CartList?.length}/>
             </div>
           </div>
         </div>

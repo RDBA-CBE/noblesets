@@ -119,7 +119,7 @@ console.log('DetailsWrapper1 --->', productItem);
   };
 
   const [visibility, setVisibility] = useState({
-    description: false,
+    // description: true,
     additionalInfo: false,
     shipping: false,
     maintenance: false,
@@ -194,6 +194,9 @@ console.log('DetailsWrapper1 --->', productItem);
       });
     }
   }, [productItem]);
+
+  console.log("description",productItem?.description);
+  
 
   const [isAddWishlist, setWishlist] = useState(false);
   const [attributeValue, setAttributeValue] = useState(false);
@@ -1445,6 +1448,7 @@ console.log('DetailsWrapper1 --->', productItem);
                   className="nav-link active"
                   data-bs-toggle="tab"
                   data-bs-target="#pd-details"
+                  onClick={() => toggleVisibility("description")}
                 >
                   Product Details
                 </button>
@@ -1454,6 +1458,7 @@ console.log('DetailsWrapper1 --->', productItem);
                   className="nav-link"
                   data-bs-toggle="tab"
                   data-bs-target="#pd-price"
+                  
                 >
                   Price Breakup
                 </button>
@@ -1471,12 +1476,83 @@ console.log('DetailsWrapper1 --->', productItem);
 
             <div className="tab-content pd-tab-content  rounded-bottom p-3 bg-white">
               {/* Product Details */}
+
               <div className="tab-pane fade show active" id="pd-details">
-                <div
+                {/* {visibility?.description && ( */}
+              <>
+                {JSON.parse(productItem?.description)?.blocks?.map((block) => {
+                  return (
+                    <>
+                      <div style={{ marginTop: "10px" }}>
+                        <div>
+                          {block?.type === "header" && (
+                            <h5 style={{ fontWeight: "400" }}>
+                              {block?.data?.text}
+                            </h5>
+                          )}
+                        </div>
+
+                        <div key={block.id}>
+                          {block.type === "paragraph" && (
+                            <p style={{ color: "gray", marginBottom: "5px" }}>
+                              {block.data.text && (
+                                <span
+                                  dangerouslySetInnerHTML={{
+                                    __html: block.data.text.includes("<b>")
+                                      ? `<b>${block.data.text}</b>`
+                                      : block.data.text,
+                                  }}
+                                />
+                              )}
+                            </p>
+                          )}
+                        </div>
+
+                        <div key={block.id} style={{ paddingLeft: "20px" }}>
+                          {block.type === "list" && (
+                            <ul>
+                              {
+                                block.data.items &&
+                                  block?.data?.items.map((item) => (
+                                    <li
+                                      style={{ color: "gray" }}
+                                      dangerouslySetInnerHTML={{
+                                        __html: item.includes("<b>")
+                                          ? `<b>${item}</b>`
+                                          : item,
+                                      }}
+                                    ></li>
+                                  ))
+                                // <li style={{ color: "gray", fontWeight: "bold" }}
+                                //   dangerouslySetInnerHTML={{
+                                //     __html: block.data.text.includes("<b>")
+                                //       ? block.data.text
+                                //       : `<b>${block.data.text}</b>`,
+                                //   }}
+                                // ></li>
+                              }
+                            </ul>
+                          )}
+                        </div>
+                      </div>
+                    </>
+                  );
+                })}
+                {/* {
+                  <div className="pt-10">
+                    {
+                      productItem?.metadata?.filter(
+                        (item) => item.key === "description"
+                      )?.[0]?.value
+                    }
+                  </div>
+                } */}
+              </>
+            {/* )} */}
+                {/* <div
                   style={{
                     paddingTop: "10px",
-                    // height: "500px",
-                    // overflowY: "scroll",
+                    
                   }}
                 >
                   <p className="pd-description">
@@ -1487,7 +1563,6 @@ console.log('DetailsWrapper1 --->', productItem);
                     want to reignite your sparkle!
                   </p>
 
-                  {/* General Section */}
                   <div className="pd-section mb-3">
                     <h6 className="pd-section-title">
                       <i className="bi bi-info-circle-fill me-2 text-danger"></i>
@@ -1503,7 +1578,7 @@ console.log('DetailsWrapper1 --->', productItem);
                     </div>
                   </div>
 
-                  {/* Gold Details */}
+                  
                   <div className="pd-section mb-3">
                     <h6 className="pd-section-title">
                       <i className="bi bi-circle-fill me-2 text-warning"></i>
@@ -1523,7 +1598,7 @@ console.log('DetailsWrapper1 --->', productItem);
                     </div>
                   </div>
 
-                  {/* Diamond Details */}
+                  
                   <div className="pd-section mb-3">
                     <h6 className="pd-section-title">
                       <i className="bi bi-gem me-2 text-danger"></i>Diamond
@@ -1546,7 +1621,7 @@ console.log('DetailsWrapper1 --->', productItem);
                       <span>Round</span>
                     </div>
                   </div>
-                </div>
+                </div> */}
               </div>
 
               {/* Price Breakup */}

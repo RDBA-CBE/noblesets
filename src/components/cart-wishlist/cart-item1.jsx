@@ -27,6 +27,7 @@ import { profilePic } from "@/utils/constant";
 import { ClipLoader } from "react-spinners";
 
 const CartItem1 = ({
+  cartLength,
   product,
   img,
   price,
@@ -119,7 +120,8 @@ const CartItem1 = ({
   {/* Image or Video */}
   {isImage(profilePic(img)) ? (
     <img
-      src="/assets/img/blog.webp"
+      // src="/assets/img/blog.webp"
+       src={profilePic(img)}
       alt="product img"
       width={70}
       height={100}
@@ -191,7 +193,7 @@ const CartItem1 = ({
                     </div>
                   </td>
                 )}
-      <span className="badge bg-light text-dark">Weight:  200g</span>
+      {/* <span className="badge bg-light text-dark">Weight:  200g</span> */}
     </div>
 
     {/* Total Price */}

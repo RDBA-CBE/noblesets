@@ -174,7 +174,7 @@ width={282}
 height={320}
 /> */}
 
-            <img
+            {/* <img
               src="/assets/img/blog.webp"
               alt="product image"
               width={282}
@@ -182,8 +182,8 @@ height={320}
               style={{
                 borderRadius:"20px",
               }}
-            />
-          {/* {video ? (
+            /> */}
+          {video ? (
             <video
               src={video?.url}
               autoPlay
@@ -218,11 +218,12 @@ height={320}
               style={{
                 width: "100%",
                 height: "100%",
+                 borderRadius:"20px",
               }}
               alt="instagram video"
               className="actor-video"
             />
-          )} */}
+          )}
 
 
           {/* <img

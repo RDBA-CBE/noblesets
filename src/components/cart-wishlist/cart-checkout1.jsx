@@ -7,7 +7,7 @@ import { useGetCartListQuery } from "@/redux/features/card/cardApi";
 import { addCommasToNumber, checkChannel } from "@/utils/functions";
 import { roundOff } from "@/utils/functions";
 
-const CartCheckout1 = ({ cartData }) => {
+const CartCheckout1 = ({ cartData,cartLength }) => {
   const { total } = useCartInfo();
   const [shipCost, setShipCost] = useState(0);
   const [totals, setTotal] = useState(0);
@@ -52,7 +52,7 @@ const CartCheckout1 = ({ cartData }) => {
 
   return (
     <div >
-      <h5 className="mb-3">Payment Details (2 items)</h5>
+      <h5 className="mb-3">Payment Details ({cartLength} items)</h5>
             <ul className="list-unstyled">
               <li className="d-flex justify-content-between mb-2">
                 <span>Sub Total</span>
@@ -69,25 +69,25 @@ const CartCheckout1 = ({ cartData }) => {
                             )}
                 </span>
               </li>
-              <li className="d-flex justify-content-between mb-2">
+              {/* <li className="d-flex justify-content-between mb-2">
                 <span>You Saved</span>
                 <span className="text-success">- ₹ 0</span>
-              </li>
-              <li className="d-flex justify-content-between mb-2">
+              </li> */}
+              {/* <li className="d-flex justify-content-between mb-2">
                 <span>Discount</span>
                 <span className="text-success">- ₹ 0</span>
-              </li>
-               {checkChannel() === "india-channel" ? (
+              </li> */}
+               {/* {checkChannel() === "india-channel" ? (
                 <li className="d-flex justify-content-between mb-2">
                 <span>GST</span>
                 <span className="text-success"> + ₹{addCommasToNumber(list?.data?.checkout?.totalPrice?.tax?.amount)}</span>
               </li>
-               ) : null}
+               ) : null} */}
                
-              <li className="d-flex justify-content-between mb-2">
+              {/* <li className="d-flex justify-content-between mb-2">
                 <span>Delivery Charge</span>
                 <span>FREE</span>
-              </li>
+              </li> */}
             </ul>
             <div className="d-flex justify-content-between mt-3 p-3  rounded" style={{background:"#b4633a30"}}>
               <strong className="text-black">Grand Total</strong>

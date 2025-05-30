@@ -198,11 +198,11 @@ const CartMiniSidebar = () => {
                                 )
                               ) ? (
                                 <img
-                                  // src={profilePic(
-                                  //   item?.variant?.product?.thumbnail?.url ||
-                                  //     item?.node?.thumbnail?.url
-                                  // )}
-                                  src="/assets/img/blog.webp"
+                                  src={profilePic(
+                                    item?.variant?.product?.thumbnail?.url ||
+                                      item?.node?.thumbnail?.url
+                                  )}
+                                  // src="/assets/img/blog.webp"
                                   width={100}
                                   height={100}
                                   alt="product img"
@@ -215,11 +215,11 @@ const CartMiniSidebar = () => {
                                 />
                               ) : (
                                 <video
-                                  // src={
-                                  //   item?.variant?.product?.thumbnail?.url ||
-                                  //   item?.node?.thumbnail?.url
-                                  // }
-                                  src="/assets/img/blog.webp"
+                                  src={
+                                    item?.variant?.product?.thumbnail?.url ||
+                                    item?.node?.thumbnail?.url
+                                  }
+                                  // src="/assets/img/blog.webp"
                                   alt="product img"
                                   width={70}
                                   height={60}

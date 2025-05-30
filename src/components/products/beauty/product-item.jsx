@@ -163,7 +163,7 @@ const ProductItem = ({
       } ${prdCenter ? "text-center" : ""}`}
       style={{borderRadius:"20px"}}
     >
-      <div className="tp-product-thumb-3 mb-15 fix p-relative z-index-1">
+      <div className="tp-product-thumb-3 mb-15 fix p-relative z-index-1" style={{borderRadius:"20px"}}>
         <Link href={`/product-details/${slug}`} style={{borderRadius:"20px"}}>
           {/* <Image
 src={profilePic(thumbnail?.url)}
@@ -172,7 +172,7 @@ width={282}
 height={320}
 /> */}
 
-              <img
+              {/* <img
               src="/assets/img/blog.webp"
               alt="product image"
               width={282}
@@ -180,9 +180,9 @@ height={320}
               style={{
                 borderRadius:"20px",
               }}
-            />
+            /> */}
 
-          {/* {video ? (
+          {video ? (
             <video
               src={video?.url}
               autoPlay
@@ -217,11 +217,12 @@ height={320}
               style={{
                 width: "100%",
                 height: "100%",
+                borderRadius:"20px",
               }}
               alt="instagram video"
               className="actor-video"
             />
-          )} */}
+          )}
           {/* <img
 src={profilePic(thumbnail?.url)}
 alt="product image"
