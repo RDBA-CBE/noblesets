@@ -38,7 +38,7 @@ const dispatch=useDispatch()
 
       <CommonBreadcrumb title="Compare" subtitle="Compare" BgImage={banner}/>
       <CompareArea/>
-      <FooterTwo primary_style={true} />
+      <HomeFooter />
     </Wrapper>
   );
 };

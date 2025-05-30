@@ -5,7 +5,7 @@ import Wrapper from "@/layout/wrapper";
 import ContactBreadcrumb from "@/components/breadcrumb/contact-breadcrumb";
 import ContactArea from "@/components/contact/contact-area";
 import ContactMap from "@/components/contact/contact-map";
-import FooterTwo from "@/layout/footers/footer-2";
+import HomeFooter from "@/components/home/HomeFooter";
 import HeaderSection from "@/components/home/headerSection";
 
 const ContactPage = () => {
@@ -18,7 +18,7 @@ const ContactPage = () => {
       <ContactBreadcrumb />
       <ContactArea/>
       <ContactMap/>
-      <FooterTwo primary_style={true} />
+      <HomeFooter />
     </Wrapper>
   );
 };

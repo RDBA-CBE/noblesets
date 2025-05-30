@@ -2,7 +2,7 @@ import React, { useEffect } from 'react'
 import SEO from "@/components/seo";
 import HeaderTwo from "@/layout/headers/header-2";
 import Wrapper from "@/layout/wrapper";
-import FooterTwo from "@/layout/footers/footer-2";
+import HomeFooter from "@/components/home/HomeFooter";
 import Success from '@/components/payment/success';
 import { useRouter } from 'next/router';
 import { useOrderListQuery } from '@/redux/features/productApi';
@@ -67,7 +67,7 @@ const PaymentSucess = () => {
     <HeaderSection />
 
     <Success data={data} />
-    <FooterTwo primary_style={true} />
+    <HomeFooter />
   </Wrapper>
   )
 }

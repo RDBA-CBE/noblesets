@@ -3,7 +3,7 @@ import SEO from "@/components/seo";
 import Wrapper from "@/layout/wrapper";
 import HeaderTwo from "@/layout/headers/header-2";
 import CommonBreadcrumb from "@/components/breadcrumb/common-breadcrumb";
-import FooterTwo from "@/layout/footers/footer-2";
+import HomeFooter from "@/components/home/HomeFooter";
 import LoginShapes from "../components/login-register/login-shapes";
 import Link from "next/link";
 import ErrorMsg from "../components/common/error-msg";
@@ -177,7 +177,7 @@ const ForgotPage = () => {
           </div>
         </div>
       </section>
-      <FooterTwo primary_style={true} />
+      <HomeFooter />
     </Wrapper>
   );
 };

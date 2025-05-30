@@ -18,7 +18,7 @@ import HeaderSection from '@/components/home/headerSection'
 
       <CommonBreadcrumb title="Order List" subtitle="Order List" BgImage={OrderBanner} />
       <OrderList/>
-      <FooterTwo primary_style={true} />
+      <HomeFooter />
     </Wrapper>
   )
 }

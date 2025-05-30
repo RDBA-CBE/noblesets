@@ -2,7 +2,7 @@ import React, { useEffect, useState } from "react";
 import SEO from "@/components/seo";
 import HeaderTwo from "@/layout/headers/header-2";
 import Wrapper from "@/layout/wrapper";
-import FooterTwo from "@/layout/footers/footer-2";
+import HomeFooter from "@/components/home/HomeFooter";
 import { useGetCategoryNameMutation, useGetProductQuery } from "@/redux/features/productApi";
 import ProductDetailsArea from "../components/product-details/product-details-area";
 import banner from "../../public/assets/img/shop-banner.jpg";
@@ -117,7 +117,7 @@ export default function GiftCart() {
         detailsRefetch={productRefetch}
       /> */}
       {content}
-      <FooterTwo primary_style={true} />
+      <HomeFooter />
     </Wrapper>
   );
 }

@@ -5,7 +5,7 @@ import Link from "next/link";
 import HeaderTwo from "@/layout/headers/header-2";
 import Wrapper from "@/layout/wrapper";
 import error from "@assets/img/error/error.png";
-import FooterTwo from "@/layout/footers/footer-2";
+import HomeFooter from "@/components/home/HomeFooter";
 import HeaderSection from "@/components/home/headerSection";
 
 const ErrorPage = () => {
@@ -40,7 +40,7 @@ const ErrorPage = () => {
         </div>
       </section>
       {/* 404 area end */}
-      <FooterTwo primary_style={true} />
+      <HomeFooter />
     </Wrapper>
   );
 };

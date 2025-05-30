@@ -1620,7 +1620,9 @@ const DetailsWrapper1 = ({
               </div>
 
               {/* Price Breakup */}
-              <div className="tab-pane fade" id="pd-price">
+              <div className="tab-pane fade" id="pd-price" style={{
+                 overflowY: "scroll",
+              }}>
                 {productItem?.priceBreakup?.breakupDetails ? (
                   <PriceBreakup
                     data={productItem.priceBreakup.breakupDetails}
@@ -1860,7 +1862,11 @@ const DetailsWrapper1 = ({
             <button
               onClick={() => setIsProductModelOpen(false)}
               type="button"
-              className="btn btn-sm btn-danger align-self-end"
+             className="btn btn-sm  align-self-end text-white"
+              style={{
+                background:
+                  "linear-gradient( to right, color-mix(in srgb, #fbdccc 40%, #e09a7a), #e09a7a )",
+              }}
             >
               ✕
             </button>

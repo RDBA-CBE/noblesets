@@ -19,7 +19,7 @@ const WishlistPage = () => {
 
       <CommonBreadcrumb title="WISHLIST" subtitle="WISHLIST" BgImage={WishlistBanner} />
       <WishlistArea/>
-      <FooterTwo primary_style={true} />
+      <HomeFooter />
     </Wrapper>
   );
 };

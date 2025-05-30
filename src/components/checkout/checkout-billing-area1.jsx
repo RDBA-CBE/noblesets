@@ -1518,8 +1518,8 @@ const CheckoutBillingArea1 = () => {
         <div className="container ">
           {cartList?.data?.checkout?.lines?.length == 0 && (
             <div className="tp-checkout-empty pb-50">
-              <h3 className="py-2">No items found in cart to checkout</h3>
-              <Link href="/shop" className="tp-checkout-btn">
+              <h4 className="py-2">No items found in cart to checkout</h4>
+              <Link href="/shop" className={`tp-btn tp-btn-border`}>
                 Return to shop
               </Link>
             </div>
@@ -2345,11 +2345,11 @@ const CheckoutBillingArea1 = () => {
                             >
                               <b>Coupon:</b> {checkoutAllData?.voucherCode}
                             </span>
-                            <p onClick={handleRemoveDiscount}>
+                            <p onClick={handleRemoveDiscount} >
                               {" "}
                               {checkoutAllData?.discount &&
                                 checkoutAllData?.discount?.amount !== 0.0 && (
-                                  <span className="text-black">
+                                  <span style={{color:"green"}}>
                                     -&#8377;{checkoutAllData.discount.amount}
                                   </span>
                                 )}

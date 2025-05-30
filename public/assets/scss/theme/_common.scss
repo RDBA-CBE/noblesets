@@ -2174,9 +2174,9 @@ hr.footer-divider {
   height: 50px !important;
 }
 
-// .table-responsive-1 table {
-//     border-collapse: separate !important;
-//     border-spacing: none !important;
-//     border: none !important;
-//     width: auto !important;
-// }
+.table-responsive-1 table {
+    border-collapse: collapse !important;
+    border-spacing: 0 !important;
+    // border: none !important;
+    // width: auto !important;
+}

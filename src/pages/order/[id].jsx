@@ -7,7 +7,7 @@ import ReactToPrint from "react-to-print";
 import SEO from "@/components/seo";
 import Wrapper from "@/layout/wrapper";
 import HeaderTwo from "@/layout/headers/header-2";
-import FooterTwo from "@/layout/footers/footer-2";
+import HomeFooter from "@/components/home/HomeFooter";
 import logo from "@assets/img/logo/logo.svg";
 import ErrorMsg from "@/components/common/error-msg";
 import { useGetUserOrderByIdQuery } from "@/redux/features/order/orderApi";
@@ -202,7 +202,7 @@ const SingleOrder = ({ params }) => {
         {content}
         {/* content */}
         {/* footer start */}
-        <FooterTwo primary_style={true} />
+        <HomeFooter />
         {/* footer end */}
       </Wrapper>
     </>

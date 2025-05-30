@@ -1,7 +1,7 @@
 import CommonBreadcrumb from "@/components/breadcrumb/common-breadcrumb";
 import WishlistArea from "@/components/cart-wishlist/wishlist-area";
 import SEO from "@/components/seo";
-import FooterTwo from "@/layout/footers/footer-2";
+import HomeFooter from "@/components/home/HomeFooter";
 import HeaderTwo from "@/layout/headers/header-2";
 import Wrapper from "@/layout/wrapper";
 import React from "react";
@@ -26,7 +26,7 @@ const CelebrityStyle = () => {
           BgImage={WishlistBanner}
         />
         <CelebrityStyleMain />
-        <FooterTwo primary_style={true} />
+        <HomeFooter />
       </Wrapper>
     </>
   );

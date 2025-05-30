@@ -13,7 +13,6 @@ import {
 import ProductDetailsBreadcrumb from "@/components/breadcrumb/product-details-breadcrumb";
 import ProductDetailsArea from "@/components/product-details/product-details-area";
 import PrdDetailsLoader from "@/components/loader/prd-details-loader";
-import FooterTwo from "@/layout/footers/footer-2";
 import { useCreateCheckoutTokenWithoutEmailMutation } from "@/redux/features/card/cardApi";
 import { useRouter } from "next/router";
 import { getValueByKey } from "@/utils/functions";
