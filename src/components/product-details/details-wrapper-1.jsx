@@ -78,7 +78,6 @@ const DetailsWrapper1 = ({
     tags,
     offerDate,
   } = productItem || {};
-console.log('DetailsWrapper1 --->', productItem);
 
   const [ratingVal, setRatingVal] = useState(0);
   const [textMore, setTextMore] = useState(false);
@@ -183,7 +182,6 @@ console.log('DetailsWrapper1 --->', productItem);
   useEffect(() => {
     const userInfo = localStorage.getItem("userInfo");
     if (userInfo) {
-      console.log("✌️token --->", JSON.parse(userInfo));
       let user = JSON.parse(userInfo);
       setUserInfo(user)
       setFormData({
@@ -195,7 +193,6 @@ console.log('DetailsWrapper1 --->', productItem);
     }
   }, [productItem]);
 
-  console.log("description",productItem?.description);
   
 
   const [isAddWishlist, setWishlist] = useState(false);
@@ -642,14 +639,12 @@ console.log('DetailsWrapper1 --->', productItem);
       // sub_account_id: subaccid,
     };
 
-    console.log("paymentData", paymentData);
     let encReq = CCAvenue.getEncryptedOrder(paymentData);
     // const encRequest = encrypt(paymentData, WORKING_KEY);
     let accessCode = "AVGO93LF57AY79OGYA";
 
     let URL = `https://secure.ccavenue.com/transaction/transaction.do?command=initiateTransaction&merchant_id=${paymentData.merchant_id}&encRequest=${encReq}&access_code=${accessCode}`;
 
-    console.log("URL", URL);
 
     // window.location.href = URL;
     router.push(URL);
@@ -686,7 +681,6 @@ console.log('DetailsWrapper1 --->', productItem);
 
       const userInfo = localStorage.getItem("userInfo");
       if (userInfo) {
-        console.log("✌️token --->", JSON.parse(userInfo));
         let user = JSON.parse(userInfo);
         input = {
           customer: user?.user?.id,
@@ -708,7 +702,6 @@ console.log('DetailsWrapper1 --->', productItem);
           baseProduct: productItem?.id,
         };
       }
-      console.log("✌️bodyData --->", input);
 
       const res = await createCustomerProduct({
         input,
@@ -716,7 +709,6 @@ console.log('DetailsWrapper1 --->', productItem);
       if (res?.data?.data?.customProductCreate?.errors?.length > 0) {
         notifyError(res?.data?.data?.customProductCreate?.errors?.[0]?.message);
       } else {
-        console.log("✌️res --->", res);
         setSuccess("Form submitted successfully!");
         setError("");
         setIsProductModelOpen(false);

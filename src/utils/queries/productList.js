@@ -938,14 +938,6 @@ export const SHOP_PAGINATION = ({
   page,
   filter,
 }) => {
-  console.log(
-    "first, after, channel, filter, page: ",
-    first,
-    after,
-    channel,
-    filter,
-    page
-  );
   return JSON.stringify({
     query: `
     query ProductListPaginated($first: Int!, $after: String, $channel: String!, $sortBy: ProductOrder,$page:Int,$filter: ProductFilterInput!) {

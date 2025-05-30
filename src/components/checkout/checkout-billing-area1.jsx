@@ -405,7 +405,6 @@ const CheckoutBillingArea1 = () => {
           ? state.postalCode1
           : state.postalCode;
         const pincodes = await handleCheck(postalCode);
-        console.log("✌️pincodes --->", pincodes);
         if (pincodes) {
           isShowCOD = true;
         }
@@ -742,7 +741,6 @@ const CheckoutBillingArea1 = () => {
         // sub_account_id: "",
       };
 
-      console.log(paymentData);
 
       let encReq = CCAvenue.getEncryptedOrder(paymentData);
       let accessCode = "AVGO93LF57AY79OGYA";
@@ -757,8 +755,6 @@ const CheckoutBillingArea1 = () => {
     country,
     paymentType
   ) => {
-    console.log("✌️paymentType --->", paymentType);
-
     try {
       const checkoutId = localStorage.getItem("checkoutId");
       if (checkoutId) {
@@ -1089,7 +1085,6 @@ const CheckoutBillingArea1 = () => {
       } else {
         shippingCost = response?.codAmount;
       }
-      console.log("✌️shippingCost --->", shippingCost);
 
       setState({
         shippingCost,
@@ -1232,7 +1227,6 @@ const CheckoutBillingArea1 = () => {
         errors: { ...state.errors, selectedState: "", phone: "" },
       });
       stateRefetch();
-      console.log("state.diffAddress: ", state.diffAddress);
 
       if (!state.diffAddress) {
         const checkoutId = localStorage.getItem("checkoutId");

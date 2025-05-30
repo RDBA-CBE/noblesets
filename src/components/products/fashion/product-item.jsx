@@ -40,7 +40,6 @@ const ProductItem = ({ products, style_2 = false, updateData }) => {
   const [channel, setChannel] = useState("india-channel");
 
   let product = products?.node;
-  console.log('ProductItem --->', product);
 
   const router = useRouter();
 
