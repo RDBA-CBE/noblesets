@@ -43,6 +43,15 @@ const CheckoutLoginForm = ({update}) => {
       if (data?.data?.data?.tokenCreate?.errors?.length > 0) {
         notifyError(data?.data?.data?.tokenCreate?.errors[0]?.message);
       } else {
+        localStorage.setItem("token", data?.data.data.tokenCreate.token);
+        localStorage.setItem(
+          "userInfo",
+          JSON.stringify({
+            accessToken: data?.data.data.tokenCreate.token,
+            user: data?.data.data.tokenCreate.user,
+            refreshToken: data?.data.data.tokenCreate.refreshToken,
+          })
+        );
         notifySuccess("Login successfully");
         getCheckoutToken(data?.data?.data?.tokenCreate?.user?.email);
         window.location.reload();

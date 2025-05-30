@@ -95,7 +95,6 @@ const ProductDetailsPage = ({ query }) => {
     };
   }, [productData]);
 
-
   const createCheckoutTokenINR = async () => {
     try {
       const data = await createCheckoutTokenWithoutEmail({
@@ -133,7 +132,7 @@ const ProductDetailsPage = ({ query }) => {
       if (product?.getUpsells?.length > 0) {
         for (let item of product.getUpsells) {
           try {
-            const res = await getYouMayLike({ productId: item?.productId });
+            const res = await getYouMayLike({ productId: item?.slug });
             productDetails.push(res?.data);
           } catch (error) {
             console.error(
@@ -156,7 +155,6 @@ const ProductDetailsPage = ({ query }) => {
   const [parentCatName, setParentCatName] = useState("");
   const [parentSlug, setParentSlug] = useState("");
 
-
   useEffect(() => {
     if (product?.category?.id) {
       filterByCategoryName();
@@ -176,7 +174,6 @@ const ProductDetailsPage = ({ query }) => {
       if (res?.data?.data?.category?.parent?.name) {
         setParentCatName(res?.data?.data?.category?.parent?.name);
         setParentSlug(res?.data?.data?.category?.parent?.slug);
-
       }
     } catch (err) {
       console.log(err);
@@ -220,7 +217,7 @@ const ProductDetailsPage = ({ query }) => {
       <SEO pageTitle="Product Details" />
       <HeaderSection />
       {content}
-      <HomeFooter/>
+      <HomeFooter />
     </Wrapper>
   );
 };
