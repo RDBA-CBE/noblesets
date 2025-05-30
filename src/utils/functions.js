@@ -16,6 +16,9 @@ export const DELIVERY_ID_OTHER_TN = "U2hpcHBpbmdNZXRob2Q6ODk=";
 
 export const DELIVERY_ID_OTHER_IN = "U2hpcHBpbmdNZXRob2Q6OTI=";
 
+export const FRONTEND_URL = 'https://noblesets.irepute.co.in';
+
+
 export const capitalizeFLetter = (string = "") => {
   if (string.length > 0) {
     return string.charAt(0).toUpperCase() + string.slice(1);

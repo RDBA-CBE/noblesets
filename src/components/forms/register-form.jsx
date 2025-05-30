@@ -9,6 +9,7 @@ import ErrorMsg from "../common/error-msg";
 import { notifyError, notifySuccess } from "@/utils/toast";
 import { useRegisterUserMutation } from "@/redux/features/auth/authApi";
 import ButtonLoader from "../loader/button-loader";
+import { FRONTEND_URL } from "@/utils/functions";
 
 // schema
 const schema = Yup.object().shape({
@@ -42,7 +43,7 @@ const RegisterForm = () => {
       lastName: data.lastName,
       email: data.email,
       password: data.password,
-      redirectUrl:"https://www1.prade.in/email_verify"
+      redirectUrl:`${FRONTEND_URL}/email_verify`
     }).then((result) => {
       if (result?.data?.data?.accountRegister?.errors?.length > 0) {
         notifyError(result?.data?.data?.accountRegister?.errors[0].message);
