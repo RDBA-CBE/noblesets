@@ -68,10 +68,10 @@ const ShopBreadcrumb = ({
       <section
         className="breadcrumb__area include-bg pt-20 pb-20 "
         style={{ 
-          // backgroundImage: `url(${bgImage?.src})`,
-          background:"linear-gradient(to right,color-mix(in srgb, #fbdccc 40%, #e09a7a),#e09a7a)",
+          backgroundImage: `url(${bgImage?.src})`,
+        //   background:"linear-gradient(to right,color-mix(in srgb, #fbdccc 40%, #e09a7a),#e09a7a)",
          borderRadius:"30px", 
-         color:"#fff"
+         color:"#b4633a"
       }}
       >
         <div className="container-fluid">
@@ -91,7 +91,7 @@ const ShopBreadcrumb = ({
                         });
                       }
                     }}
-                    style={{ cursor: "pointer" }}
+                    style={{ cursor: "pointer" , color:"#b4633a"}}
                   >
                     {categories[0]}
                   </span>

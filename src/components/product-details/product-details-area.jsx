@@ -122,7 +122,7 @@ const ProductDetailsArea = ({
   return (
     <section
       className="tp-product-details-area pt-40"
-      style={{ backgroundColor: "#f4f4f4" }}
+     style={{background:"#fff9f4"}}
     >
       <div className="tp-product-details-top">
         <div className="container">
@@ -187,18 +187,18 @@ const ProductDetailsArea = ({
           {/* related products start */}
           {relatedproducts?.length > 0 && (
             <section
-              className="tp-related-product pt-40"
+              className="tp-related-product pt-40 pb-30"
               ref={relatedProductsRef}
             >
               <div className="container">
                 <div className="row">
                   <div className="tp-section-title-wrapper-6 mb-10">
                     {/* <span className="tp-section-title-pre-6">Next day Products</span> */}
-                    <h3 className="tp-section-title-6">Similar Products</h3>
+                    <h3 className="tp-section-title-6" style={{fontSize:"22px"}}>Similar Products</h3>
                   </div>
                 </div>
 
-                <div className="row">
+                <div className="row ">
                   <RelatedProducts
                     products={relatedproducts}
                     relatedProductLoading={isLoading}
@@ -214,9 +214,9 @@ const ProductDetailsArea = ({
             <section className="tp-related-product pt-40">
               <div className="container">
                 <div className="row">
-                  <div className="tp-section-title-wrapper-6 mb-40">
+                  <div className="tp-section-title-wrapper-6 mb-10">
                     {/* <span className="tp-section-title-pre-6">Next day Products</span> */}
-                    <h3 className="tp-section-title-6">You May Like This...</h3>
+                    <h3 className="tp-section-title-6" style={{fontSize:"22px"}}>You May Like This...</h3>
                   </div>
                 </div>
 

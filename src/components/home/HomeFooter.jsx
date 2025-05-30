@@ -6,9 +6,9 @@ const HomeFooter = () => {
     // <div style={{ backgroundColor: "#e09a7b" }}>
       <div style={{ background:"url(/assets/img/footer/bg.jpg)"}}>
       
-      <footer className="container-fluid pt-50 text-white">
+      <footer className="container-fluid pt-50 text-white px-0">
         <div className="row justify-content-center ">
-        <div className="col-11 col-xl-10">
+        <div className="col-11 col-xl-11">
         <div className="row gy-4 ">
           <div className="col-12  col-xl-3">
             <div className="footer-subtitle mb-2">

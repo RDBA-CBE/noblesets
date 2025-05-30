@@ -16,7 +16,7 @@ import {
 } from "@/redux/features/productApi";
 import ShopFilterOffCanvas from "@/components/common/shop-filter-offcanvas";
 import FooterTwo from "@/layout/footers/footer-2";
-import shopBanner from "../../public/assets/img/shop-banner.jpg";
+import shopBanner from "../../public/assets/img/header-bg.png";
 import { useDispatch, useSelector } from "react-redux";
 import {
   useCreateCheckoutTokenWithoutEmailMutation,

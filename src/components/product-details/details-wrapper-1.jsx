@@ -3,7 +3,7 @@ import { Rating } from "react-simple-star-rating";
 import { useDispatch, useSelector } from "react-redux";
 import Link from "next/link";
 // internal
-import { AskQuestion, CompareTwo, WishlistTwo } from "@/svg";
+import { AskQuestion, CompareTwo, Wishlist, WishlistTwo } from "@/svg";
 import DetailsBottomInfo from "./details-bottom-info";
 import ProductDetailsCountdown from "./product-details-countdown";
 import ProductQuantity from "./product-quantity";
@@ -53,6 +53,7 @@ import PriceBreakup from "../price_breakup/priceBreakUp";
 import ReactModal from "react-modal";
 import CCAvenue from "@/utils/CCAvenue";
 import * as Yup from "yup";
+import WishlistFill from "@/svg/WishListFill";
 
 const DetailsWrapper1 = ({
   productItem,
@@ -78,7 +79,7 @@ const DetailsWrapper1 = ({
     tags,
     offerDate,
   } = productItem || {};
-console.log('DetailsWrapper1 --->', productItem);
+  console.log("DetailsWrapper1 --->", productItem);
 
   const [ratingVal, setRatingVal] = useState(0);
   const [textMore, setTextMore] = useState(false);
@@ -102,8 +103,6 @@ console.log('DetailsWrapper1 --->', productItem);
     captcha: "",
   });
   const [userInfo, setUserInfo] = useState(null);
-
-  
 
   const [error, setError] = useState("");
   const [success, setSuccess] = useState("");
@@ -185,7 +184,7 @@ console.log('DetailsWrapper1 --->', productItem);
     if (userInfo) {
       console.log("✌️token --->", JSON.parse(userInfo));
       let user = JSON.parse(userInfo);
-      setUserInfo(user)
+      setUserInfo(user);
       setFormData({
         name: `${user?.user?.firstName} ${user?.user?.lastName}`,
         email: user?.user?.email,
@@ -195,8 +194,7 @@ console.log('DetailsWrapper1 --->', productItem);
     }
   }, [productItem]);
 
-  console.log("description",productItem?.description);
-  
+  console.log("description", productItem?.description);
 
   const [isAddWishlist, setWishlist] = useState(false);
   const [attributeValue, setAttributeValue] = useState(false);
@@ -1093,8 +1091,8 @@ console.log('DetailsWrapper1 --->', productItem);
                         type="button"
                         className="tp-product-details-action-sm-btn"
                       >
-                        <WishlistTwo />
-                        View Wishlist
+                        <WishlistFill />
+                        {/* View Wishlist */}
                       </button>
                     ) : (
                       <button
@@ -1402,7 +1400,7 @@ console.log('DetailsWrapper1 --->', productItem);
               <button
                 onClick={() => setIsModelOpen(true)}
                 className=""
-                style={{ color: "c2882b" }}
+                style={{ color: "#b4633a" }}
               >
                 Size Chart
               </button>
@@ -1417,14 +1415,14 @@ console.log('DetailsWrapper1 --->', productItem);
         </div>
 
         {/* Warranty */}
-        <div className="warranty-box my-3 p-3  rounded bg-white text-center">
+        {/* <div className="warranty-box my-3 p-3  rounded bg-white text-center">
           <p className="mb-0 text-black">
             <strong>1 YEAR</strong> Warranty
           </p>
-        </div>
+        </div> */}
 
         {/* Offers */}
-        <div className="offer-box my-3 p-3 rounded bg-white">
+        {/* <div className="offer-box my-3 p-3 rounded bg-white">
           <h6 className="">Available Offers</h6>
           <div className="bg-gold p-3 rounded d-flex justify-content-between align-items-center">
             <div>
@@ -1438,7 +1436,7 @@ console.log('DetailsWrapper1 --->', productItem);
               <div className="coupon-code">NBS500</div>
             </div>
           </div>
-        </div>
+        </div> */}
 
         <div className="delivery-box my-3 p-3 rounded  bg-white">
           <div className="pd-tabs-container">
@@ -1458,7 +1456,6 @@ console.log('DetailsWrapper1 --->', productItem);
                   className="nav-link"
                   data-bs-toggle="tab"
                   data-bs-target="#pd-price"
-                  
                 >
                   Price Breakup
                 </button>
@@ -1479,66 +1476,70 @@ console.log('DetailsWrapper1 --->', productItem);
 
               <div className="tab-pane fade show active" id="pd-details">
                 {/* {visibility?.description && ( */}
-              <>
-                {JSON.parse(productItem?.description)?.blocks?.map((block) => {
-                  return (
-                    <>
-                      <div style={{ marginTop: "10px" }}>
-                        <div>
-                          {block?.type === "header" && (
-                            <h5 style={{ fontWeight: "400" }}>
-                              {block?.data?.text}
-                            </h5>
-                          )}
-                        </div>
-
-                        <div key={block.id}>
-                          {block.type === "paragraph" && (
-                            <p style={{ color: "gray", marginBottom: "5px" }}>
-                              {block.data.text && (
-                                <span
-                                  dangerouslySetInnerHTML={{
-                                    __html: block.data.text.includes("<b>")
-                                      ? `<b>${block.data.text}</b>`
-                                      : block.data.text,
-                                  }}
-                                />
+                <>
+                  {JSON.parse(productItem?.description)?.blocks?.map(
+                    (block) => {
+                      return (
+                        <>
+                          <div style={{ marginTop: "10px" }}>
+                            <div>
+                              {block?.type === "header" && (
+                                <h5 style={{ fontWeight: "400" }}>
+                                  {block?.data?.text}
+                                </h5>
                               )}
-                            </p>
-                          )}
-                        </div>
+                            </div>
 
-                        <div key={block.id} style={{ paddingLeft: "20px" }}>
-                          {block.type === "list" && (
-                            <ul>
-                              {
-                                block.data.items &&
-                                  block?.data?.items.map((item) => (
-                                    <li
-                                      style={{ color: "gray" }}
+                            <div key={block.id}>
+                              {block.type === "paragraph" && (
+                                <p
+                                  style={{ color: "gray", marginBottom: "5px" }}
+                                >
+                                  {block.data.text && (
+                                    <span
                                       dangerouslySetInnerHTML={{
-                                        __html: item.includes("<b>")
-                                          ? `<b>${item}</b>`
-                                          : item,
+                                        __html: block.data.text.includes("<b>")
+                                          ? `<b>${block.data.text}</b>`
+                                          : block.data.text,
                                       }}
-                                    ></li>
-                                  ))
-                                // <li style={{ color: "gray", fontWeight: "bold" }}
-                                //   dangerouslySetInnerHTML={{
-                                //     __html: block.data.text.includes("<b>")
-                                //       ? block.data.text
-                                //       : `<b>${block.data.text}</b>`,
-                                //   }}
-                                // ></li>
-                              }
-                            </ul>
-                          )}
-                        </div>
-                      </div>
-                    </>
-                  );
-                })}
-                {/* {
+                                    />
+                                  )}
+                                </p>
+                              )}
+                            </div>
+
+                            <div key={block.id} style={{ paddingLeft: "20px" }}>
+                              {block.type === "list" && (
+                                <ul>
+                                  {
+                                    block.data.items &&
+                                      block?.data?.items.map((item) => (
+                                        <li
+                                          style={{ color: "gray" }}
+                                          dangerouslySetInnerHTML={{
+                                            __html: item.includes("<b>")
+                                              ? `<b>${item}</b>`
+                                              : item,
+                                          }}
+                                        ></li>
+                                      ))
+                                    // <li style={{ color: "gray", fontWeight: "bold" }}
+                                    //   dangerouslySetInnerHTML={{
+                                    //     __html: block.data.text.includes("<b>")
+                                    //       ? block.data.text
+                                    //       : `<b>${block.data.text}</b>`,
+                                    //   }}
+                                    // ></li>
+                                  }
+                                </ul>
+                              )}
+                            </div>
+                          </div>
+                        </>
+                      );
+                    }
+                  )}
+                  {/* {
                   <div className="pt-10">
                     {
                       productItem?.metadata?.filter(
@@ -1547,8 +1548,8 @@ console.log('DetailsWrapper1 --->', productItem);
                     }
                   </div>
                 } */}
-              </>
-            {/* )} */}
+                </>
+                {/* )} */}
                 {/* <div
                   style={{
                     paddingTop: "10px",
@@ -1632,7 +1633,7 @@ console.log('DetailsWrapper1 --->', productItem);
                   />
                 ) : (
                   <p className="pd-placeholder">
-                    Price breakup content will go here.
+                    No Price breakup available for this product.
                   </p>
                 )}
               </div>
@@ -1647,7 +1648,7 @@ console.log('DetailsWrapper1 --->', productItem);
                   }}
                 >
                   <h5 style={{ fontWeight: "400" }}>Cancellation Policy:</h5>
-                  <p style={{ color: "#55585b" }}>
+                  <p style={{ color: "#55585b" }} >
                     If you wish to cancel your order, we shall provide you with
                     an option to replace the ordered product with another
                     product. In no manner shall we provide any refund of the
@@ -1662,24 +1663,54 @@ console.log('DetailsWrapper1 --->', productItem);
                   <h5 style={{ fontWeight: "400" }}>
                     Return & Exchange Policy:
                   </h5>
-                  <p style={{ color: "#55585b" }}>
+                  <p style={{ color: "#55585b" }} className="mb-1">
                     {" "}
-                    &#129174;Shipping charges are not refundable.
+                    <svg
+                      xmlns="http://www.w3.org/2000/svg"
+                      width="6"
+                      height="6"
+                      viewBox="0 0 8 8"
+                      fill="currentColor"
+                      style={{ marginRight: "8px" }}
+                    >
+                      <circle cx="4" cy="4" r="3" />
+                    </svg>
+                    Shipping charges are not refundable.
                   </p>
 
-                  <p style={{ color: "#55585b" }}>
+                  <p style={{ color: "#55585b" }} className="mb-1">
                     {" "}
-                    &#129174; The brand has put the utmost effort in showcasing
-                    the products as realistic as possible with the colour,
+                    <svg
+                      xmlns="http://www.w3.org/2000/svg"
+                      width="6"
+                      height="6"
+                      viewBox="0 0 8 8"
+                      fill="currentColor"
+                      style={{ marginRight: "8px" }}
+                    >
+                      <circle cx="4" cy="4" r="3" />
+                    </svg>
+                    The brand has put the utmost effort in showcasing the
+                    products as realistic as possible with the colour,
                     appearance etc. Please note that the colour of the jewellery
                     might slightly vary in person, any return/ exchange on these
                     criteria will not be accepted.
                   </p>
-                  <p style={{ color: "#55585b" }}>
+                  <p style={{ color: "#55585b" }} className="mb-1">
                     {" "}
-                    &#129174; We at PraDe believe in providing fair trade to our
-                    artisans and hence selected products shall not be eligible
-                    for returns.
+                    <svg
+                      xmlns="http://www.w3.org/2000/svg"
+                      width="6"
+                      height="6"
+                      viewBox="0 0 8 8"
+                      fill="currentColor"
+                      style={{ marginRight: "8px" }}
+                    >
+                      <circle cx="4" cy="4" r="3" />
+                    </svg>
+                    We at Nobleset believe in providing fair trade to our artisans
+                    and hence selected products shall not be eligible for
+                    returns.
                   </p>
                 </div>
               </div>
@@ -1749,7 +1780,7 @@ console.log('DetailsWrapper1 --->', productItem);
                 data={{
                   text: productItem.name,
                   url: window.location.href,
-                  title: "PraDe",
+                  title: "Nobleset",
                 }}
                 onClick={() => console.log("shared successfully!")}
               >
@@ -1760,7 +1791,8 @@ console.log('DetailsWrapper1 --->', productItem);
             </div>
 
             <div
-              className="text-uppercase text-decordation color:#b4633a cursor-pointer mt-20"
+              className="text-capitalize text-decordation  cursor-pointer mt-20"
+              style={{color:"#b4633a"}}
               onClick={() => setIsProductModelOpen(true)}
             >
               To Customize Product
@@ -1781,31 +1813,43 @@ console.log('DetailsWrapper1 --->', productItem);
             <button
               onClick={() => setIsModelOpen(false)}
               type="button"
-              className="btn btn-sm btn-danger align-self-end"
+              className="btn btn-sm  align-self-end text-white"
+              style={{
+                background:
+                  "linear-gradient( to right, color-mix(in srgb, #fbdccc 40%, #e09a7a), #e09a7a )",
+              }}
             >
               ✕
             </button>
 
             {/* Product Image */}
-            <div className="text-center">
-              <img
-                src={productItem?.sizeGuide?.sizeimg} // replace with your image path
-                alt="Product"
-                width={400}
-                height={300}
-                className="img-fluid rounded"
+            {productItem?.sizeGuide?.sizeimg ? (
+              <div className="text-center">
+                <img
+                  src={productItem?.sizeGuide?.sizeimg} // replace with your image path
+                  alt="Product"
+                  width={400}
+                  height={300}
+                  className="img-fluid rounded"
+                />
+              </div>
+            ) : (
+              <div
+                className="text-center d-flex align-items-center justify-content-center w-100"
+                style={{ height: "500px", fontSize: "16px" }}
+              >
+                No size chart available
+              </div>
+            )}
+
+            {productItem?.sizeGuide?.sizedetail && (
+              <div
+                className="table-responsive-1 mb-3"
+                dangerouslySetInnerHTML={{
+                  __html: cleanHTML(productItem?.sizeGuide?.sizedetail),
+                }}
               />
-            </div>
-
-         {productItem?.sizeGuide?.sizedetail &&
-            <div
-              className="table-responsive-1 mb-3"
-              dangerouslySetInnerHTML={{
-                __html: cleanHTML(productItem?.sizeGuide?.sizedetail),
-              }}
-            />
-        }
-
+            )}
           </div>
         </div>
       </ReactModal>

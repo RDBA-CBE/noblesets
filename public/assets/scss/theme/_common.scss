@@ -1854,7 +1854,7 @@ hr.footer-divider {
   left: 0;
   height: 100%;
   width: 100%;
- background-image: url("/assets/img/home/shopByBudget/bg.png");
+ background-image: url("/assets/img/home/shopByBudget/shop-by-budget-png.png");
  background-size: cover;
  background-repeat: no-repeat;
  z-index: -1000;
@@ -2160,3 +2160,23 @@ hr.footer-divider {
   .tp-shop-widget-checkbox ul li label::before{
     border-radius: 5px !important;
   }
+
+  .tp-product-badge {
+    position: absolute;
+    top: 16px !important;
+    right: 20px !important;
+    z-index: 1;
+  
+}
+
+
+.pincode-check input[type=text]{
+  height: 50px !important;
+}
+
+// .table-responsive-1 table {
+//     border-collapse: separate !important;
+//     border-spacing: none !important;
+//     border: none !important;
+//     width: auto !important;
+// }

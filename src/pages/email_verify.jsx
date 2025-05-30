@@ -45,7 +45,7 @@ const EmailVerifyPage = () => {
           alignItems: "center",
         }}
       >
-        <img src="/assets/img/Prade-Logo-Giff.gif" alt="Loading..." />
+        <img src="/assets/img/logo-loader.png" alt="Loading..." />
       </div>
     );
   }
