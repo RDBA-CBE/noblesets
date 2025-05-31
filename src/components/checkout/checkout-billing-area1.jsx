@@ -952,7 +952,7 @@ const CheckoutBillingArea1 = () => {
         lastName: state.loginLastName,
         email: state.loginEmail,
         password: state.password,
-        redirectUrl: `${FRONTEND_URL}/password_reset/`,
+        redirectUrl: `${FRONTEND_URL}/email_verify`,
       };
 
       const res = await registerUser(body);
