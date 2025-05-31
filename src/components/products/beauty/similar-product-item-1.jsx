@@ -174,7 +174,7 @@ width={282}
 height={320}
 /> */}
 
-            <img
+            {/* <img
               src="/assets/img/image-not-included-img.png"
               alt="product image"
               width={282}
@@ -182,10 +182,10 @@ height={320}
               style={{
                 borderRadius:"20px",
               }}
-            />
+            /> */}
 
 
-          {/* {video ? (
+          {video ? (
             <video
               src={video?.url ? video?.url : "/assets/img/image-not-included-img.png"  }
               autoPlay
@@ -225,7 +225,7 @@ height={320}
               alt="instagram video"
               className="actor-video"
             />
-          )} */}
+          )}
 
 
           {/* <img

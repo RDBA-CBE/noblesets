@@ -105,7 +105,7 @@ const ShopBreadcrumb = ({
                           });
                         }
                       }}
-                      style={{ cursor: "pointer" }}
+                      style={{ cursor: "pointer",color:"#b4633a", fontSize:"18px" }}
                     >
                       / {categories[1]}
                     </span>
@@ -115,11 +115,11 @@ const ShopBreadcrumb = ({
                   )}
                 </h3>
                 {title !== "Shop" && (
-                  <div style={{ color: "white", textAlign: "center" }}>
-                    <span>
-                      <a href="/">HOME</a>
+                  <div style={{ color: "#b4633a", textAlign: "center" }}>
+                    <span >
+                      <a href="/" style={{color:"#b4633a"}}>HOME</a>
                     </span>{" "}
-                    / <span>{subtitle}</span>
+                    / <span style={{color:"#b4633a"}}>{subtitle}</span>
                   </div>
                 )}
 

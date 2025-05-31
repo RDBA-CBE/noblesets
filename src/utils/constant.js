@@ -1277,5 +1277,5 @@ export const customStyles = {
 };
 
 export const cleanHTML = (html) => {
-  return html.replace(/<td>\s*<\/td>/g, "");
+  return html?.replace(/<td>\s*<\/td>/g, "");
 };

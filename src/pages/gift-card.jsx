@@ -131,7 +131,8 @@ export default function GiftCart() {
         BgImage={banner}
         parentSlug={parentSlug}
       /> */}
-
+      <div style={{background:"#fff9f4"}}>
+      <div className="section-wd">
       <ShopBreadcrumb
         title="Gift Card"
         // parentSlug={parentSlug}
@@ -141,6 +142,8 @@ export default function GiftCart() {
         // catList={categoryList}
         // product={productList}
       />
+      </div>
+      </div>
       {isLoading ? (
         <PrdDetailsLoader loading={isLoading} />
       ) : product ? (
