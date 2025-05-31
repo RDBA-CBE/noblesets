@@ -166,6 +166,7 @@ const CheckoutBillingArea1 = () => {
     isBillingOpen: false,
     isShippingOpen: false,
     shippingMethods: [],
+    showVoucherMessage:false
   });
 
   useEffect(() => {
@@ -185,11 +186,11 @@ const CheckoutBillingArea1 = () => {
 
   const { data: linelist } = useGetCartListQuery();
 
-  const [loginUser, {}] = useLoginUserMutation();
+  const [loginUser, {loading:loginLoading}] = useLoginUserMutation();
 
   const [paymentList, {}] = usePaymentListMutation();
 
-  const [registerUser, {}] = useRegisterUserMutation();
+  const [registerUser, {loading:registerLoading}] = useRegisterUserMutation();
 
   const [createCheckoutId] = useCreateCheckoutIdMutation();
 
@@ -241,6 +242,9 @@ const CheckoutBillingArea1 = () => {
     orderData();
   }, [linelist]);
 
+
+
+
   const orderData = async () => {
     try {
       if (linelist?.data?.checkout) {
@@ -281,6 +285,19 @@ const CheckoutBillingArea1 = () => {
   };
 
   const [checkoutAllData, setCheckoutAllData] = useState({});
+
+  useEffect(() => {
+    if (checkoutAllData?.voucherCode) {
+
+      setState({showVoucherMessage:true})
+
+      const timer = setTimeout(() => {
+        setState({showVoucherMessage:false})
+      }, 1 * 60 * 1000); 
+
+      return () => clearTimeout(timer); 
+    }
+  }, [checkoutAllData?.voucherCode]);
 
   const getDetails = async (id) => {
     try {
@@ -1595,7 +1612,7 @@ const CheckoutBillingArea1 = () => {
                         </button>
                       </div>
                     )}
-                    {checkoutAllData?.voucherCode && (
+                    {state.showVoucherMessage && (
                       <p
                         style={{
                           color: "#b4633a",
@@ -2680,7 +2697,7 @@ const CheckoutBillingArea1 = () => {
                         type="submit"
                         onClick={() => handleSubmit()}
                       >
-                        {state.orderLoading ? <ButtonLoader /> : "Place Order"}
+                        {state.orderLoading || loginLoading || registerLoading ? <ButtonLoader /> : "Place Order"}
                       </button>
                     </div>
                   </div>
