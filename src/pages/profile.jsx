@@ -61,7 +61,6 @@ const ProfilePage = () => {
       <SEO pageTitle="Profile" />
       <HeaderSection />
       <ProfileArea orderData={orderData} reviewList={state.reviewList} />
-      <FooterTwo style_2={true} />
     </Wrapper>
   );
 };

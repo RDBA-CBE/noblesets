@@ -79,7 +79,6 @@ const Index = () => {
       <JewelryCollectionBanner />
       {/* <BestSellerPrd/> */}
       <InstagramAreaFour />
-      <FooterTwo />
     </Wrapper>
   );
 };
