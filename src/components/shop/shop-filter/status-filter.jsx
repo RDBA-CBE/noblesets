@@ -18,7 +18,7 @@ const FinishFilter = ({ attributeList }) => {
     const initialState = {};
     const attributes = filter?.attributes || []; // Ensure attributes is an array
     attributes.forEach((attr) => {
-      initialState[attr.slug.toLowerCase()] = Array.isArray(attr.values)
+      initialState[attr?.slug] = Array.isArray(attr.values)
         ? attr.values
         : []; // Ensure values is an array
     });
@@ -29,8 +29,8 @@ const FinishFilter = ({ attributeList }) => {
 
   const handleCheckboxChange = (attributeSlug, choiceSlug) => {
     // Create a new state object to avoid directly mutating checkedItems
-    const normalizedAttributeSlug = attributeSlug.toLowerCase();
-    const normalizedChoiceSlug = choiceSlug.toLowerCase();
+    const normalizedAttributeSlug = attributeSlug;
+    const normalizedChoiceSlug = choiceSlug;
 
     // Create a copy of the checkedItems state
     const newState = { ...checkedItems };
@@ -83,7 +83,7 @@ const FinishFilter = ({ attributeList }) => {
     <>
       {attributeList?.length > 0 &&
         attributeList.map((attribute) => {
-          const normalizedAttributeSlug = attribute.slug.toLowerCase();
+          const normalizedAttributeSlug = attribute?.slug;
           return (
             <div key={attribute?.id} className="tp-shop-widget mb-50">
               <h3 className="tp-shop-widget-title">
@@ -95,7 +95,7 @@ const FinishFilter = ({ attributeList }) => {
                   <ul className="filter-items filter-checkbox">
                     {attribute?.choices?.edges?.map((choice) => {
                       const normalizedChoiceSlug =
-                        choice?.node?.slug.toLowerCase();
+                        choice?.node?.slug;
                       return (
                         <li
                           key={choice?.node?.slug}

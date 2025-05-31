@@ -10,6 +10,7 @@ import {
 } from "@/redux/features/auth/authApi";
 import { notifyError, notifySuccess } from "@/utils/toast";
 import ButtonLoader from "../loader/button-loader";
+import { FRONTEND_URL } from "@/utils/functions";
 
 // schema
 const schema = Yup.object().shape({
@@ -31,7 +32,7 @@ const ForgotForm = () => {
   const onSubmit = (data) => {
     resetPassword({
       email: data.email,
-      redirectUrl: "https://www1.prade.in/password_reset/",
+      redirectUrl: `${FRONTEND_URL}/password_reset/`,
     }).then((result) => {
       const res = result?.data?.data?.requestPasswordReset;
       if (res?.errors?.length > 0) {

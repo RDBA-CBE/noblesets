@@ -9,6 +9,7 @@ import {
   formatCurrency,
   roundOff,
   useSetState,
+  FRONTEND_URL,
 } from "@/utils/functions";
 import CheckoutOrderArea from "./checkout-order-area";
 import {
@@ -741,7 +742,6 @@ const CheckoutBillingArea1 = () => {
         // sub_account_id: "",
       };
 
-
       let encReq = CCAvenue.getEncryptedOrder(paymentData);
       let accessCode = "AVGO93LF57AY79OGYA";
       let URL = `https://secure.ccavenue.com/transaction/transaction.do?command=initiateTransaction&merchant_id=${paymentData.merchant_id}&encRequest=${encReq}&access_code=${accessCode}`;
@@ -952,11 +952,12 @@ const CheckoutBillingArea1 = () => {
         lastName: state.loginLastName,
         email: state.loginEmail,
         password: state.password,
+        redirectUrl: `${FRONTEND_URL}/password_reset/`,
       };
 
       const res = await registerUser(body);
       if (res?.data?.data?.accountRegister?.errors?.length > 0) {
-        notifyError("User email already registered");
+        notifyError(res?.data?.data?.accountRegister?.errors[0]?.message);
       } else {
         const user = res?.data?.data?.accountRegister?.user;
         login(user.email, state.password);
@@ -975,14 +976,18 @@ const CheckoutBillingArea1 = () => {
       };
 
       const res = await loginUser(body);
-      localStorage.setItem(
-        "userInfo",
-        JSON.stringify(res.data?.data?.tokenCreate?.user)
-      );
-      localStorage.setItem(
-        "token",
-        JSON.stringify(res.data?.data?.tokenCreate?.token)
-      );
+      if (res?.data?.data?.tokenCreate?.errors?.length > 0) {
+        notifySuccess(res?.data?.data?.tokenCreate?.errors[0]?.message);
+      }
+      console.log("✌️res --->", res);
+      // localStorage.setItem(
+      //   "userInfo",
+      //   JSON.stringify(res.data?.data?.tokenCreate?.user)
+      // );
+      // localStorage.setItem(
+      //   "token",
+      //   JSON.stringify(res.data?.data?.tokenCreate?.token)
+      // );
       // location.reload();
       // console.log("body: ", body);
     } catch (error) {
@@ -2578,7 +2583,8 @@ const CheckoutBillingArea1 = () => {
                             <ErrorMsg msg={state.errors.paymentType} />
                           )}
                           <div className=" text-grey">
-                            Cash on Delivery is not applicable on gift cart products
+                            Cash on Delivery is not applicable on gift cart
+                            products
                           </div>
                         </div>
                         {state.isGiftWrap && (
