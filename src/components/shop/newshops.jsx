@@ -24,7 +24,7 @@ export default function Newshops(props) {
           alignItems: "center",
         }}
       >
-        <img src="/assets/img/logo-loader.png" alt="Loading..." />
+        <img src="/assets/img/loading-gif.gif" alt="Loading..." />
       </div>
     );
   }

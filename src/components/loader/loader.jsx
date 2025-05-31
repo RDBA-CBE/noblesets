@@ -5,9 +5,9 @@ const Loader = ({ loading, spinner = "fade",color="rgb(195 142 48)" }) => {
   return (
     <div className="text-center">
       {spinner === "scale" && (
-      <img src="/assets/img/logo-loader.png" alt="Loading..." />
+      <img src="/assets/img/loading-gif.gif" alt="Loading..." />
       )}
-      {spinner === "fade" && <img src="/assets/img/logo-loader.png" alt="Loading..." />}
+      {spinner === "fade" && <img src="/assets/img/loading-gif.gif" alt="Loading..." />}
     </div>
   );
 };

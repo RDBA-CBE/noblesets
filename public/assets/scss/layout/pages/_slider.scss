@@ -693,7 +693,7 @@
   }
   &-thumb-4 {
     position: absolute;
-    bottom: 0;
+    // bottom: 0;
     left: 40%;
     width: 100%;
     @include transform(translateX(-40%));

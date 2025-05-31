@@ -202,7 +202,7 @@ const LoginForm = () => {
               name="email"
               id="email"
               type="email"
-              placeholder="prade@mail.com"
+              placeholder="nobleset@mail.com"
               onInput={(e) => {
                 e.target.value = e.target.value.replace(
                   /[^a-zA-Z0-9@._-]/g,
