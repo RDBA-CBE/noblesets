@@ -507,7 +507,8 @@ console.log('DetailsWrapper --->', productItem);
       {/* price */}
       <div className="tp-product-details-price-wrapper">
         {channel == "india-channel" ? (
-          <div className="tp-product-price-wrapper-2">
+           <div className="d-flex flex-wrap justify-content-between">
+             <div className="tp-product-price-wrapper-2">
             {productItem?.variants?.length <= 1 &&
               RegularPrice(
                 productItem?.defaultVariant?.costPrice,
@@ -558,6 +559,72 @@ console.log('DetailsWrapper --->', productItem);
               </>
             </span>
           </div>
+          <div className="tp-product-details-action-sm">
+                              <button
+                                disabled={status === "out-of-stock"}
+                                onClick={() => {
+                                  if (
+                                    compareList?.some(
+                                      (prd) => prd?.id === productItem?.id
+                                    )
+                                  ) {
+                                    dispatch(handleModalClose());
+                                    router.push("/compare");
+                                  } else {
+                                    handleCompareProduct(productItem);
+                                  }
+                                }}
+                                // onClick={() => handleCompareProduct(productItem)}
+                                type="button"
+                                className="tp-product-details-action-sm-btn"
+                              >
+                                <CompareTwo />
+                                {/* {compareList?.some((prd) => prd?.id === productItem?.id)
+                                        ? " View Compare"
+                                        : " Add  Compare"} */}
+                              </button>
+                              {}
+          
+                              {isAddedToWishlist === true ? (
+                                <button
+                                  disabled={status === "out-of-stock"}
+                                  onClick={() => {
+                                    if (token) {
+                                      router.push("/wishlist");
+                                    } else {
+                                      notifyError(
+                                        "Only logged-in users can add items to their wishlist or view it"
+                                      );
+                                    }
+                                    // router.push("/wishlist");
+                                  }}
+                                  // onClick={() => handleWishlistProduct(productItem)}
+                                  type="button"
+                                  className="tp-product-details-action-sm-btn"
+                                >
+                                  <WishlistFill />
+                                  {/* View Wishlist */}
+                                </button>
+                              ) : (
+                                <button
+                                  disabled={status === "out-of-stock"}
+                                  onClick={() => handleWishlist(productItem)}
+                                  // onClick={() => handleWishlistProduct(productItem)}
+                                  type="button"
+                                  className="tp-product-details-action-sm-btn"
+                                >
+                                  <WishlistTwo />
+                                  {/* {wishlistLoader ? "Loading..." : "Add To Wishlist"} */}
+                                </button>
+                              )}
+          
+                              {/* <button type="button" className="tp-product-details-action-sm-btn">
+                                <AskQuestion />
+                                Ask a question
+                              </button> */}
+                            </div>
+           </div>
+         
         ) : (
           <div className="tp-product-price-wrapper-2">
             {productItem?.variants?.length <= 1 &&
@@ -614,15 +681,7 @@ console.log('DetailsWrapper --->', productItem);
         )}
       </div>
 
-      {productItem?.metadata?.length > 0 && (
-        <p style={{ color: "black" }}>
-          {
-            productItem?.metadata?.find(
-              (item) => item.key == "short_description"
-            )?.value
-          }
-        </p>
-      )}
+     
       {/* variations */}
       {imageURLs?.some((item) => item?.color && item?.color?.name) && (
         <div className="tp-product-details-variation">
@@ -736,15 +795,21 @@ console.log('DetailsWrapper --->', productItem);
           </>
         )}
       </div>
+
+
       {productItem?.pricing?.discount !== null && (
         <div
-          style={{
-            color: "#b4633a",
-            fontSize: "16px",
-            paddingBottom: "10px",
-          }}
+        className="text-danger"
+          // style={{
+          //   color: "#b4633a",
+          //   fontSize: "16px",
+          //   paddingBottom: "10px",
+          // }}
         >{`Save ${saveOff()}% OFF`}</div>
       )}
+
+      
+
       {/* {productItem?.variants?.length > 1 && (
         <div
           style={{
@@ -775,7 +840,20 @@ console.log('DetailsWrapper --->', productItem);
           ))}
         </div>
       )} */}
-      {productItem?.variants?.length > 1 ? (
+
+       <p className="product-desc text-muted">
+            {variantDetails?.quantityAvailable == 0 ||
+            productItem?.defaultVariant?.quantityAvailable == 0 ? (
+              <span style={{ color: "red", fontWeight: "500" }}>
+                Out of Stock
+              </span>
+            ) : (
+              <span>In Stock</span>
+            )}
+          </p>
+
+          
+      {/* {productItem?.variants?.length > 1 ? (
         variantId && variantDetails ? (
           variantDetails?.quantityAvailable == 0 ||
           productItem?.defaultVariant?.quantityAvailable == 0 ? (
@@ -790,6 +868,16 @@ console.log('DetailsWrapper --->', productItem);
         <span style={{ color: "red", fontWeight: "500" }}>Out of Stock</span>
       ) : (
         <span>In Stock</span>
+      )} */}
+
+       {productItem?.metadata?.length > 0 && (
+        <p style={{ color: "black" }}>
+          {
+            productItem?.metadata?.find(
+              (item) => item.key == "short_description"
+            )?.value
+          }
+        </p>
       )}
 
       <div className="tp-product-details-action-item-wrapper d-sm-flex align-items-center">
@@ -818,73 +906,7 @@ console.log('DetailsWrapper --->', productItem);
         </div>
       </div>
 
-      {/* product-details-action-sm start */}
-      <div
-        className="tp-product-details-action-sm"
-        style={{
-          paddingTop: "20px",
-        }}
-      >
-        <button
-          disabled={status === "out-of-stock"}
-          onClick={() => {
-            if (compareList?.some((prd) => prd?.id === productItem?.id)) {
-              dispatch(handleModalClose());
-              router.push("/compare");
-            } else {
-              handleCompareProduct(productItem);
-            }
-          }}
-          // onClick={() => handleCompareProduct(productItem)}
-          type="button"
-          className="tp-product-details-action-sm-btn"
-        >
-          <CompareTwo />
-          {compareList?.some((prd) => prd?.id === productItem?.id)
-            ? " View Compare"
-            : " Add  Compare"}
-        </button>
-        {}
 
-        {isAddedToWishlist === true ? (
-          <button
-            disabled={status === "out-of-stock"}
-            onClick={() => {
-              if (token) {
-                router.push("/wishlist");
-              } else {
-                notifyError(
-                  "Only logged-in users can add items to their wishlist or view it"
-                );
-              }
-              // router.push("/wishlist");
-            }}
-            // onClick={() => handleWishlistProduct(productItem)}
-            type="button"
-            className="tp-product-details-action-sm-btn"
-          >
-            <WishlistTwo />
-            View Wishlist
-          </button>
-        ) : (
-          <button
-            disabled={status === "out-of-stock"}
-            onClick={() => handleWishlist(productItem)}
-            // onClick={() => handleWishlistProduct(productItem)}
-            type="button"
-            className="tp-product-details-action-sm-btn"
-          >
-            <WishlistTwo />
-            {wishlistLoader ? "Loading..." : "Add To Wishlist"}
-          </button>
-        )}
-
-        {/* <button type="button" className="tp-product-details-action-sm-btn">
-          <AskQuestion />
-          Ask a question
-        </button> */}
-      </div>
-      {/* product-details-action-sm end */}
 
       <div>
         <p style={{ color: "#55585b" }}>

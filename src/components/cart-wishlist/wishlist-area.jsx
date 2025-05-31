@@ -59,8 +59,8 @@ const WishlistArea = () => {
                 <br /> You will find a lot of interesting products on our Shop
                 page.
               </p>
-              <Link href="/shop" className="tp-cart-checkout-btn mt-20">
-                RETURN TO SHOP
+              <Link href="/shop" className="gradient-btn">
+               Return to shop
               </Link>
             </div>
           )}

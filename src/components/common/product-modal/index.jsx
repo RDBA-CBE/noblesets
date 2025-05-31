@@ -15,6 +15,7 @@ const customStyles = {
     marginRight: "-50%",
     transform: "translate(-50%, -50%)",
     height: "calc(100% - 50px)",
+    borderRadius: "20px",
   },
 };
 
@@ -56,8 +57,10 @@ const ProductModal = () => {
         onRequestClose={() => dispatch(handleModalClose())}
         style={customStyles}
         contentLabel="Product Modal"
+        
       >
-        <div className="tp-product-modal">
+        <div className="tp-product-modal"
+        >
           <div className="tp-product-modal-content d-lg-flex">
             <button
               onClick={() => dispatch(handleModalClose())}
@@ -66,16 +69,30 @@ const ProductModal = () => {
             >
               <i className="fa-regular fa-xmark"></i>
             </button>
-            {/* product-details-thumb-wrapper start */}
-            <DetailsThumbWrapperQuick product={productItem} status={status} />
-            {/* product-details-thumb-wrapper end */}
+            <div className="container-detail">
+              <div className="row">
+                {/* product-details-thumb-wrapper start */}
+                <div className={`${productItem?.media?.length > 1 ? "col-xl-7 col-lg-7" : "col-xl-6 col-lg-6"} `}>
+                   <DetailsThumbWrapperQuick product={productItem} status={status} />
+                </div>
+                {/* product-details-thumb-wrapper end */}
 
-            {/* product-details-wrapper start */}
-            <DetailsWrapperQuick
+
+                {/* product-details-wrapper start */}
+
+                <div className={`${productItem?.media?.length > 1 ? "col-xl-5 col-lg-5" : "col-xl-6 col-lg-6"} `}>
+
+                   <DetailsWrapperQuick
               productItem={productItem}
               activeImg={activeImg}
               parentSlug={parentSlug}
             />
+
+                </div>
+              </div>
+            </div>
+          
+           
             {/* product-details-wrapper end */}
           </div>
         </div>

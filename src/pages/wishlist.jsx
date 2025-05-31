@@ -20,12 +20,16 @@ const WishlistPage = () => {
       <SEO pageTitle="Wishlist" />
       {/* <HeaderTwo style_2={true} /> */}
       <HeaderSection />
+       <div style={{background:"#fff9f4"}}>
+      <div className="section-wd">
       <ShopBreadcrumb
        title="WISHLIST" subtitle="WISHLIST"
         bgImage={shopBanner}
         // catList={categoryList}
         // product={productList}
       />
+      </div>
+      </div>
       {/* <CommonBreadcrumb title="WISHLIST" subtitle="WISHLIST" BgImage={WishlistBanner} /> */}
       <WishlistArea/>
       <HomeFooter />

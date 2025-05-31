@@ -45,7 +45,8 @@ const DetailsThumbWrapperQuick = ({ videoId = false, status, product }) => {
 
   return (
     <>
-      <div className="tp-product-details-thumb-wrapper tp-tab d-sm-flex quickview-first-section pt-30 pt-lg-0">
+      <div className="tp-product-details-thumb-wrapper tp-tab d-sm-flex quickview-first-section pt-30 pt-lg-0 w-100">
+        {product?.media?.length > 1 && (
         <nav
           className="product-side-nav-img quickview-nav-wrapper "
           style={{
@@ -54,11 +55,11 @@ const DetailsThumbWrapperQuick = ({ videoId = false, status, product }) => {
           }}
         >
           {" "}
-          <div className="nav nav-tabs quickview-nav-tabs-main ">
+          <div className="nav nav-tabs flex-md-column flex-nowrap justify-content-start ">
             {imageUrls?.map((item, i) => (
               <button
                 key={i}
-                className={`nav-link quickview-nav-image  ${
+                className={`nav-link   ${
                   item === activeImg ? "active" : ""
                 }`}
                 onClick={() => handleImageActive(item)}
@@ -72,22 +73,26 @@ const DetailsThumbWrapperQuick = ({ videoId = false, status, product }) => {
                   style={{ width: "100%", height: "100%" }}
                 /> */}
                 {isImage(profilePic(item)) ? (
+                   <figure>
                   <img
                     src={profilePic(item)}
                     alt="thumbnail"
-                    width={78}
-                    height={100}
-                    style={{ width: "100%", height: "100%" }}
+                   width={78}
+                        height={100}
+                        style={{ width: "100%", height: "100%", borderRadius:"20px" }}
                   />
+                  </figure>
                 ) : (
+                   <figure>
                   <video
                     src={profilePic(item)}
                     width={78}
-                    height={100}
-                    style={{ width: "100%", height: "100%" }}
+                        height={100}
+                        style={{ width: "100%", height: "100%" ,borderRadius:"20px" }}
                     muted
                     loop
                   />
+                  </figure>
                 )}
               </button>
             ))}
@@ -106,9 +111,10 @@ const DetailsThumbWrapperQuick = ({ videoId = false, status, product }) => {
             </>
           )}
         </nav>
-        <div className="tab-content m-img quickview-tab-content">
+          )} 
+        <div className="tab-content m-img  full-width-image">
           <div className="tab-pane fade show active">
-            <div className="tp-product-details-nav-main-thumb p-relative">
+            <div className=" p-relative" style={{borderRadius:"20px" }}>
               {loading ? (
                 <Loader />
               ) : (
@@ -120,20 +126,34 @@ const DetailsThumbWrapperQuick = ({ videoId = false, status, product }) => {
                 // />
                 <>
                   {isImage(activeImg) ? (
-                    <img
+                     <figure
+                        className=""
+                        style={{ marginBottom: "0px",borderRadius:"20px" }}
+                      >
+                        <img
                       src={profilePic(activeImg)}
                       alt="product img"
-                      className="quickview-main-image"
+                      className="product-details-image"
+                      style={{borderRadius:"20px" }}
                     />
+                      </figure>
+                    
                   ) : (
-                    <video
+                     <figure
+                        style={{ marginBottom: "0px" }}
+                        className=""
+                      >
+                         <video
                       src={profilePic(activeImg)}
-                      className="quickview-main-image"
+                      className="product-details-image"
                       autoPlay
                       muted // Ensure it's muted to autoplay without user interaction
                       loop // Ensure it loops indefinitely
                       playsInline // Ensure it plays inline on iOS devices
+                      style={{borderRadius:"20px" }}
                     />
+                      </figure>
+                   
                   )}
                   {/* <img
                   src={profilePic(activeImg)}

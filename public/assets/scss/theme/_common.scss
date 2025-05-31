@@ -2180,3 +2180,7 @@ hr.footer-divider {
     // border: none !important;
     // width: auto !important;
 }
+
+.tp-product-details-thumb-wrapper .nav-tabs .nav-link::after{
+  border-radius: 20px;
+}
