@@ -59,7 +59,6 @@ const CategoryContent = ({
   subCategoryLoading,
   SubCatProduct,
 }) => {
-
   const router = useRouter();
 
   return (
@@ -81,7 +80,7 @@ const CategoryContent = ({
                       borderBottom: "1px solid #e8e3e3",
                       marginBottom: "10px",
                     }}
-                    onMouseEnter={()=>SubCatProduct(item)}
+                    onMouseEnter={() => SubCatProduct(item)}
                     key={item?.node?.slug}
                     onClick={() => {
                       router?.push({
@@ -180,7 +179,7 @@ const CategoryComponent = (props) => {
     commonImage,
     subCategoryList,
     subCategoryLoading,
-    SubCatProduct
+    SubCatProduct,
   } = props;
 
   const renderContent = () => {
@@ -263,7 +262,7 @@ const Menus = () => {
   const [subCatList, { isLoading: subCatLoading }] = useSubCatListMutation();
 
   const dispatch = useDispatch();
-  const [lastHoveredCategory, setLastHoveredCategory] = useState("Earrings");
+  const [lastHoveredCategory, setLastHoveredCategory] = useState("necklaces");
 
   useEffect(() => {
     dispatch(filterData({}));
@@ -298,7 +297,6 @@ const Menus = () => {
     const subcategory = await subCatList({
       slug: slug,
     });
-    console.log("✌️subcategory --->", subcategory?.data?.data?.category);
 
     const res = await priceFilter({
       filter: { categorySlugs: slug },
@@ -318,7 +316,6 @@ const Menus = () => {
   };
 
   const SubCatProduct = async (item) => {
-console.log('✌️item --->', item);
 
     const res = await priceFilter({
       filter: { categorySlugs: item?.slug },
@@ -330,8 +327,6 @@ console.log('✌️item --->', item);
     setState({ productList: list });
   };
 
-  ;
-
   return (
     <ul style={{ display: "flex" }}>
       <li>
@@ -339,14 +334,12 @@ console.log('✌️item --->', item);
           All Jewellery
         </Link>
       </li>
-
-      {/* <li>
-        <Link href="/myOrders" style={{ fontWeight: "500", color: "black" }}>
-          Collections
-        </Link>
-      </li> */}
       <li className="has-dropdown has-mega-menu">
-        <Link href="/shop" style={{ fontWeight: "500", color: "black" }}>
+        <Link
+          href="/shop"
+          style={{ fontWeight: "500", color: "black" }}
+          onMouseEnter={() => hoverCategoryProduct("necklaces") }
+        >
           Collections
         </Link>
         <div className="home-menu tp-submenu tp-mega-menu">
@@ -360,46 +353,20 @@ console.log('✌️item --->', item);
               }}
             >
               <ul>
-                {state.categoryList?.map((item) => (
-                  <li
-                    className={`shop-submenu-catageroy-list ${
-                      lastHoveredCategory == item?.slug ? "active" : ""
-                    }`}
-                    onMouseEnter={() => hoverCategoryProduct(item?.slug)}
-                    style={{
-                      display: "flex",
-                      alignItems: "center",
-                      justifyContent: "space-between",
-                      paddingRight: "10px",
-                      borderRadius: "10px",
-                    }}
-                    onClick={() => {
-                      router.push({
-                        pathname: "/shop",
-                        query: {
-                          category: tem?.slug
-                            .toLowerCase()
-                            .replace("&", "")
-                            .split(" ")
-                            .join("-"),
-                        },
-                      });
-                    }}
-                  >
-                    <a
-                      href={`/shop?category=${item?.slug
-                        .toLowerCase()
-                        .replace("&", "")
-                        .split(" ")
-                        .join("-")}`}
-                      style={{
-                        cursor: "pointer",
-                        marginBottom: "0px",
-                        textTransform: "capitalize",
-                      }}
-                      className={`shop-submenu-catageroy-list-a cursor-pointer ${
+                {state.categoryList?.map((item) => {
+                  return (
+                    <li
+                      className={`shop-submenu-catageroy-list ${
                         lastHoveredCategory == item?.slug ? "active" : ""
                       }`}
+                      onMouseEnter={() => hoverCategoryProduct(item?.slug)}
+                      style={{
+                        display: "flex",
+                        alignItems: "center",
+                        justifyContent: "space-between",
+                        paddingRight: "10px",
+                        borderRadius: "10px",
+                      }}
                       onClick={() => {
                         router.push({
                           pathname: "/shop",
@@ -413,30 +380,90 @@ console.log('✌️item --->', item);
                         });
                       }}
                     >
-                      {item?.name?.toLowerCase()}
-                    </a>
+                      <a
+                        href={`/shop?category=${item?.slug
+                          .toLowerCase()
+                          .replace("&", "")
+                          .split(" ")
+                          .join("-")}`}
+                        style={{
+                          cursor: "pointer",
+                          marginBottom: "0px",
+                          textTransform: "capitalize",
+                        }}
+                        className={`shop-submenu-catageroy-list-a cursor-pointer ${
+                          lastHoveredCategory == item?.slug ? "active" : ""
+                        }`}
+                        onClick={() => {
+                          router.push({
+                            pathname: "/shop",
+                            query: {
+                              category: item?.slug
+                                .toLowerCase()
+                                .replace("&", "")
+                                .split(" ")
+                                .join("-"),
+                            },
+                          });
+                        }}
+                      >
+                        {item?.name?.toLowerCase()}
+                      </a>
 
-                    <RightOutlined
-                      style={{ cursor: "pointer", marginBottom: "0px" }}
-                      className={`shop-submenu-catageroy-list-a ${
-                        lastHoveredCategory == item?.slug ? "active" : ""
-                      }`}
-                    />
-                  </li>
-                ))}
+                      <RightOutlined
+                        style={{ cursor: "pointer", marginBottom: "0px" }}
+                        className={`shop-submenu-catageroy-list-a ${
+                          lastHoveredCategory == item?.slug ? "active" : ""
+                        }`}
+                      />
+                    </li>
+                  );
+                })}
               </ul>
             </div>
             <div className="col-lg-10">
               <div className="tp-mega-menu-item">
-                <CategoryComponent
-                  commonImage="/assets/img/earring-menu-pic-1.png" // Add the path to your common image
-                  lastHoveredCategory={lastHoveredCategory}
-                  productList={state.productList}
-                  productLoading={productLoading}
-                  subCategoryList={state.subCategoryList}
-                  subCategoryLoading={subCatLoading}
-                  SubCatProduct={SubCatProduct}
-                />
+                {state.subCategoryList?.length > 0 ? (
+                  <CategoryComponent
+                    commonImage="/assets/img/earring-menu-pic-1.png" // Add the path to your common image
+                    lastHoveredCategory={lastHoveredCategory}
+                    productList={state.productList}
+                    productLoading={productLoading}
+                    subCategoryList={state.subCategoryList}
+                    subCategoryLoading={subCatLoading}
+                    SubCatProduct={SubCatProduct}
+                  />
+                ) : productLoading ? (
+                  <SingleLoader loading={productLoading} />
+                ) : state.productList?.length > 0 ? (
+                  <Swiper
+                    {...slider_setting}
+                    modules={[Pagination]}
+                    className="tp-category-slider-active-4 swiper-container"
+                  >
+                    {state.productList?.map((item) => (
+                      <SwiperSlide key={item?.node?.id}>
+                        <div
+                          className="col-lg-3 menus-product-list"
+                          style={{ padding: "0px 8px 0px 0px", width: "250px" }}
+                        >
+                          <MenusProductSlider product={item} />
+                        </div>
+                      </SwiperSlide>
+                    ))}
+                  </Swiper>
+                ) : (
+                  <div
+                    style={{
+                      fontSize: "20px",
+                      display: "flex",
+                      alignItems: "center",
+                      justifyContent: "center",
+                    }}
+                  >
+                    Product Not Found
+                  </div>
+                )}
               </div>
             </div>
           </div>
@@ -454,35 +481,13 @@ console.log('✌️item --->', item);
           Silver
         </Link>
       </li>
-      {/* {token && ( */}
-      <li>
-        <Link href="/gift-card" style={{ fontWeight: "500", color: "black" }}>
-          Gifting
-        </Link>
-      </li>
+      {/* {state.token && ( */}
+        <li>
+          <Link href="/gift-card" style={{ fontWeight: "500", color: "black" }}>
+            Gifting
+          </Link>
+        </li>
       {/* )} */}
-
-      {/* <li>
-        <Link href="/pre-orders" style={{ fontWeight: "500" }}>
-          PRE-ORDERS
-        </Link>
-      </li>
-
-      <li>
-        <Link href="/sale" style={{ fontWeight: "500" }}>
-          LOOT SALE
-        </Link>
-      </li>
-      <li>
-        <Link href="/about" style={{ fontWeight: "500" }}>
-          ABOUT
-        </Link>
-      </li>
-      <li>
-        <Link href="/contact" style={{ fontWeight: "500" }}>
-          CONTACT US
-        </Link>
-      </li> */}
     </ul>
   );
 };

@@ -362,7 +362,7 @@ export const CATEGORY_LIST = ({ channel, first }) => {
   return JSON.stringify({
     query: `
    query CategoryList($first: Int!, $after: String, $channel: String!) {
-  categories(first: $first, after: $after) {
+  categories(first: $first, after: $after,level: 0) {
     edges {
       node {
         id
