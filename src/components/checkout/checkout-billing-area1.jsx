@@ -293,7 +293,7 @@ const CheckoutBillingArea1 = () => {
 
       const timer = setTimeout(() => {
         setState({showVoucherMessage:false})
-      }, 1 * 60 * 1000); 
+      }, 10 * 1000); 
 
       return () => clearTimeout(timer); 
     }
@@ -1045,8 +1045,10 @@ const CheckoutBillingArea1 = () => {
             total: res.totalPrice?.gross?.amount,
             coupenLoader: false,
             promoCode: "",
+            isOpen:false,
+            showVoucherMessage:true
           });
-          notifySuccess("Coupen code applied");
+
           getDetails(res?.id);
         }
       }
@@ -1615,13 +1617,13 @@ const CheckoutBillingArea1 = () => {
                     {state.showVoucherMessage && (
                       <p
                         style={{
-                          color: "#b4633a",
+                          color: "green",
                           paddingTop: "10px",
                           fontWeight: "500",
                           fontSize: "18px",
                         }}
                       >
-                        coupon code applied successfully
+                        Coupon code applied successfully
                       </p>
                     )}
                   </div>
