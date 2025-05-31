@@ -79,7 +79,6 @@ const DetailsWrapper1 = ({
     tags,
     offerDate,
   } = productItem || {};
-  console.log("DetailsWrapper1 --->", productItem);
 
   const [ratingVal, setRatingVal] = useState(0);
   const [textMore, setTextMore] = useState(false);
@@ -644,7 +643,6 @@ const DetailsWrapper1 = ({
     let accessCode = "AVGO93LF57AY79OGYA";
 
     let URL = `https://secure.ccavenue.com/transaction/transaction.do?command=initiateTransaction&merchant_id=${paymentData.merchant_id}&encRequest=${encReq}&access_code=${accessCode}`;
-
 
     // window.location.href = URL;
     router.push(URL);
@@ -1261,7 +1259,7 @@ const DetailsWrapper1 = ({
                 >
                   <div>
                     {isGiftCard ? (
-                      <span>Select Amount:</span>
+                      <span>Gift Card Amount:</span>
                     ) : (
                       <span>Select Variant:</span>
                     )}
@@ -1389,16 +1387,17 @@ const DetailsWrapper1 = ({
                 </div>
               </div>
             )}
-
-            <div className="pt-2 pb-2">
-              <button
-                onClick={() => setIsModelOpen(true)}
-                className=""
-                style={{ color: "#b4633a" }}
-              >
-                Size Chart
-              </button>
-            </div>
+            {!isGiftCard && (
+              <div className="pt-2 pb-2">
+                <button
+                  onClick={() => setIsModelOpen(true)}
+                  className=""
+                  style={{ color: "#b4633a" }}
+                >
+                  Size Chart
+                </button>
+              </div>
+            )}
           </div>
         </div>
 
@@ -1445,15 +1444,17 @@ const DetailsWrapper1 = ({
                   Product Details
                 </button>
               </li>
-              <li className="nav-item">
-                <button
-                  className="nav-link"
-                  data-bs-toggle="tab"
-                  data-bs-target="#pd-price"
-                >
-                  Price Breakup
-                </button>
-              </li>
+              {!isGiftCard && (
+                <li className="nav-item">
+                  <button
+                    className="nav-link"
+                    data-bs-toggle="tab"
+                    data-bs-target="#pd-price"
+                  >
+                    Price Breakup
+                  </button>
+                </li>
+              )}
               <li className="nav-item">
                 <button
                   className="nav-link"
@@ -1620,20 +1621,25 @@ const DetailsWrapper1 = ({
               </div>
 
               {/* Price Breakup */}
-              <div className="tab-pane fade" id="pd-price" style={{
-                 overflowY: "scroll",
-              }}>
-                {productItem?.priceBreakup?.breakupDetails ? (
-                  <PriceBreakup
-                    data={productItem.priceBreakup.breakupDetails}
-                  />
-                ) : (
-                  <p className="pd-placeholder">
-                    No Price breakup available for this product.
-                  </p>
-                )}
-              </div>
-
+              {!isGiftCard && (
+                <div
+                  className="tab-pane fade"
+                  id="pd-price"
+                  style={{
+                    overflowY: "scroll",
+                  }}
+                >
+                  {productItem?.priceBreakup?.breakupDetails ? (
+                    <PriceBreakup
+                      data={productItem.priceBreakup.breakupDetails}
+                    />
+                  ) : (
+                    <p className="pd-placeholder">
+                      No Price breakup available for this product.
+                    </p>
+                  )}
+                </div>
+              )}
               {/* Reviews */}
               <div className="tab-pane fade" id="pd-shipping">
                 <div
@@ -1644,7 +1650,7 @@ const DetailsWrapper1 = ({
                   }}
                 >
                   <h5 style={{ fontWeight: "400" }}>Cancellation Policy:</h5>
-                  <p style={{ color: "#55585b" }} >
+                  <p style={{ color: "#55585b" }}>
                     If you wish to cancel your order, we shall provide you with
                     an option to replace the ordered product with another
                     product. In no manner shall we provide any refund of the
@@ -1704,9 +1710,9 @@ const DetailsWrapper1 = ({
                     >
                       <circle cx="4" cy="4" r="3" />
                     </svg>
-                    We at Nobleset believe in providing fair trade to our artisans
-                    and hence selected products shall not be eligible for
-                    returns.
+                    We at Nobleset believe in providing fair trade to our
+                    artisans and hence selected products shall not be eligible
+                    for returns.
                   </p>
                 </div>
               </div>
@@ -1785,14 +1791,15 @@ const DetailsWrapper1 = ({
                 </button>
               </RWebShare>
             </div>
-
-            <div
-              className="text-capitalize text-decordation  cursor-pointer mt-20"
-              style={{color:"#b4633a"}}
-              onClick={() => setIsProductModelOpen(true)}
-            >
-              To Customize Product
-            </div>
+            {!isGiftCard && (
+              <div
+                className="text-capitalize text-decordation  cursor-pointer mt-20"
+                style={{ color: "#b4633a" }}
+                onClick={() => setIsProductModelOpen(true)}
+              >
+                To Customize Product
+              </div>
+            )}
           </div>
         </div>
       </div>
@@ -1862,7 +1869,7 @@ const DetailsWrapper1 = ({
             <button
               onClick={() => setIsProductModelOpen(false)}
               type="button"
-             className="btn btn-sm  align-self-end text-white"
+              className="btn btn-sm  align-self-end text-white"
               style={{
                 background:
                   "linear-gradient( to right, color-mix(in srgb, #fbdccc 40%, #e09a7a), #e09a7a )",
