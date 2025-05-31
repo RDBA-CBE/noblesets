@@ -6,6 +6,7 @@ import LoginArea from '@/components/login-register/login-area';
 import FooterTwo from '@/layout/footers/footer-2';
 import { useSelector } from 'react-redux';
 import HeaderSection from '@/components/home/headerSection';
+import HomeFooter from '@/components/home/HomeFooter';
 
 const LoginPage = () => {
   const cartData = useSelector((state) => state);

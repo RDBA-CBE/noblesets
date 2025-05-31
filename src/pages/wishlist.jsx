@@ -8,6 +8,7 @@ import FooterTwo from '@/layout/footers/footer-2';
 import WishlistBanner from "../../public/assets/img/shop-banner.jpg";
 import PrivateRouter from '@/layout/private-router';
 import HeaderSection from '@/components/home/headerSection';
+import HomeFooter from '@/components/home/HomeFooter';
 
 
 const WishlistPage = () => {

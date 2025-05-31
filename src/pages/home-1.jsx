@@ -14,6 +14,7 @@ import {
   useGetCartListQuery,
 } from "@/redux/features/card/cardApi";
 import HeaderSection from "@/components/home/headerSection";
+import FooterTwo from "@/layout/footers/footer-2";
 
 const Index = () => {
   // const dispatch = useDispatch();

@@ -12,6 +12,7 @@ import {
 import { useDispatch } from 'react-redux';
 import { get_wishlist_products } from "@/redux/features/wishlist-slice";
 import HeaderSection from '@/components/home/headerSection';
+import HomeFooter from '@/components/home/HomeFooter';
 
 
 const ComparePage = () => {

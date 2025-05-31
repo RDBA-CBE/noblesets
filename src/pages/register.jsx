@@ -5,6 +5,7 @@ import Wrapper from '@/layout/wrapper';
 import RegisterArea from '@/components/login-register/register-area';
 import FooterTwo from '@/layout/footers/footer-2';
 import HeaderSection from '@/components/home/headerSection';
+import HomeFooter from '@/components/home/HomeFooter';
 
 const RegisterPage = () => {
   return (

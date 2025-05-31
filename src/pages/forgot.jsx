@@ -6,6 +6,7 @@ import CommonBreadcrumb from '@/components/breadcrumb/common-breadcrumb';
 import ForgotArea from '@/components/login-register/forgot-area';
 import FooterTwo from '@/layout/footers/footer-2';
 import HeaderSection from '@/components/home/headerSection';
+import HomeFooter from '@/components/home/HomeFooter';
 
 const ForgotPage = () => {
   return (

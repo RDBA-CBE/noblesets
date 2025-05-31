@@ -7,6 +7,7 @@ import Wrapper from '@/layout/wrapper'
 import React from 'react';
 import OrderBanner from "@assets/img/shop-banner.jpg";
 import HeaderSection from '@/components/home/headerSection'
+import HomeFooter from '@/components/home/HomeFooter'
 
  const MyOrders = () => {
   return (
