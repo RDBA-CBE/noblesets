@@ -61,6 +61,7 @@ const ProfilePage = () => {
       <SEO pageTitle="Profile" />
       <HeaderSection />
       <ProfileArea orderData={orderData} reviewList={state.reviewList} />
+      <HomeFooter/>
     </Wrapper>
   );
 };

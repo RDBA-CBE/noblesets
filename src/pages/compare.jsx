@@ -35,6 +35,8 @@ const ComparePage = () => {
       <SEO pageTitle="Shop" />
       {/* <HeaderTwo style_2={true} /> */}
       <HeaderSection />
+       <div style={{background:"#fff9f4"}}>
+      <div className="section-wd">
       <ShopBreadcrumb
         title="Compare"
         subtitle="Compare"
@@ -42,6 +44,8 @@ const ComparePage = () => {
         // catList={categoryList}
         // product={productList}
       />
+      </div>
+      </div>
       {/* <CommonBreadcrumb title="Compare" subtitle="Compare" BgImage={banner}/> */}
       <CompareArea />
       <HomeFooter />

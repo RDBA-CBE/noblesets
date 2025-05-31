@@ -8,6 +8,12 @@ import slider_img_1 from "@assets/img/home/Banner/banner-img-1.png";
 import slider_mbl_img_1 from "@assets/img/home/Banner/mbl-banner.png";
 import slider_img_2 from "@assets/img/home/Banner/banner-img-2.png";
 import slider_img_3 from "@assets/img/home/Banner/banner-img-3.png";
+import mobile_size_ban_1 from "@assets/img/home/Banner/mobile-size-ban-1.png";
+import mobile_size_ban_2 from "@assets/img/home/Banner/mobile-size-ban-2.png";
+import mobile_size_ban_3 from "@assets/img/home/Banner/mobile-size-ban-3.png";
+import mobile_size_ban_4 from "@assets/img/home/Banner/mobile-size-ban-4.png";
+
+
 import slider_img_4 from "@assets/img/home/Banner/banner-img-4.png";
 
 import banner_Content from "@assets/img/home/Banner/banner-content-img.png";
@@ -22,24 +28,28 @@ const slider_data = [
   {
     id: 1,
     img: slider_img_1,
+    mblImg: mobile_size_ban_1,
     link: "/shop",
     // url: "/shop?category=earrings",
   },
   {
       id: 2,
       img: slider_img_2,
+      mblImg: mobile_size_ban_2,
       link: "/shop"
       // url: "/shop?category=finger_rings",
   },
   {
       id: 3,
       img: slider_img_3,
+      mblImg: mobile_size_ban_3,
       link: "/shop"
       // url: "/shop?category=gold_plated_silver",
   },
   {
       id: 4,
       img: slider_img_4,
+      mblImg: mobile_size_ban_4,
       link: "/shop"
       // url: "/shop?category=earrings",
   },
@@ -140,7 +150,7 @@ const HomeBanner = () => {
                   <span>of exquisite diamond jewellery</span>
                 </p>
               </div>
-              <img src={banner_Content} alt="" />
+              <img src={item?.mblImg} alt="" />
             </div>
           </div>
         ))}
