@@ -7,7 +7,7 @@ import ShopArea from "@/components/shop/shop-area";
 import HeaderTwo from "@/layout/headers/header-2";
 import Wrapper from "@/layout/wrapper";
 import React, { useState } from "react";
-import OrderBanner from "@assets/img/header-bg.jpg";
+import OrderBanner from "@assets/img/header-bg.png";
 import { useRouter } from "next/router";
 import { useOrderListQuery } from "@/redux/features/productApi";
 import MyOrderDetails from "../../components/my-account/my-order-details";
