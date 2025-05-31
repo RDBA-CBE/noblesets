@@ -1499,7 +1499,7 @@ const DetailsWrapper1 = ({
                 </div>
               </div>
             )}
-            {/* {!isGiftCard && ( */}
+            {!isGiftCard && (
               <div className="pt-2 pb-2">
                 <button
                   onClick={() => setIsModelOpen(true)}
@@ -1509,7 +1509,7 @@ const DetailsWrapper1 = ({
                   Size Chart
                 </button>
               </div>
-            {/* )} */}
+           )} 
           </div>
 
 

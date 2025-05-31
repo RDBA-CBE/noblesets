@@ -26,11 +26,17 @@ const Success = ({ data }) => {
   const giftWrapAmount = data?.data?.order?.giftWrapAmount;
 
   return (
-    <section className="tp-login-area pb-80 pt-80 p-relative z-index-1 fix">
+    <section className="tp-login-area pb-80 pt-80 p-relative z-index-1 fix" style={{background:"#fff9f4"}}>
       <div className="container">
         <div className="row" style={{ justifyContent: "space-between" }}>
-          <div className="col-lg-5">
-            {/* {paymentMethod != "Cash On delivery" && */}
+          <div className="col-lg-6">
+            <div style={{
+                padding: "20px 30px",
+                borderRadius:"30px 20px",
+                background: "#ffff",
+                boxShadow: "3px 3px 5px #f1f1f1",
+              }}>
+                 {/* {paymentMethod != "Cash On delivery" && */}
             <p style={{ color: "gray" }}>
               Pay with{" "}
               {paymentMethod == "Cash On delivery"
@@ -38,7 +44,7 @@ const Success = ({ data }) => {
                 : paymentMethod}{" "}
             </p>
             {/* } */}
-            <h3>Order Details</h3>
+            <h3 style={{fontWeight:"500"}}>Order Details</h3>
             <div>
               <table className="table width-100">
                 <thead>
@@ -176,12 +182,15 @@ const Success = ({ data }) => {
                 </tbody>
               </table>
             </div>
+              </div>
+           
           </div>
           <div className="col-lg-6 ">
             <div
               style={{
                 padding: "20px 30px",
-                background: "rgb(255 248 236)",
+                borderRadius:"30px 20px",
+                background: "#ffff",
                 boxShadow: "3px 3px 5px #f1f1f1",
               }}
             >
@@ -189,8 +198,8 @@ const Success = ({ data }) => {
                 style={{
                   color: "gray",
                   fontSize: "26px",
-                  fontWeight: "600",
-                  color: "green",
+                  fontWeight: "500",
+                  color: "#b8795b",
                 }}
               >
                 Thank You!
@@ -228,8 +237,8 @@ const Success = ({ data }) => {
             <div className="mt-20">
               <button
                 onClick={() => router.push("/shop")}
-                className="tp-cart-update-btn "
-                style={{ background: "rgb(194, 136, 43)", color: "white" }}
+                className="gradient-btn "
+                // style={{ background: "rgb(194, 136, 43)", color: "white" }}
               >
                 Continue Shopping
               </button>
