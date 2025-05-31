@@ -675,7 +675,6 @@ const DetailsWrapper = ({
         sku: formData.sku,
         message: formData.message,
       };
-  
 
       setSuccess("Form submitted successfully!");
       setError("");
@@ -1341,7 +1340,7 @@ const DetailsWrapper = ({
       {productItem?.priceBreakup && (
         <PriceBreakup data={productItem?.priceBreakup?.breakupDetails} />
       )}
-      
+
       <PincodeChecker />
 
       {/* product-details-action-sm start */}
@@ -2057,7 +2056,9 @@ const DetailsWrapper = ({
             {/* Table */}
             <div
               className="table-responsive-1 mb-3"
-              dangerouslySetInnerHTML={{ __html: cleanHTML(productItem?.sizeGuide?.sizedetail) }}
+              dangerouslySetInnerHTML={{
+                __html: cleanHTML(productItem?.sizeGuide?.sizedetail),
+              }}
             />
           </div>
         </div>

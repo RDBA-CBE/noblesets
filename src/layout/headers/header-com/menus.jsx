@@ -484,7 +484,7 @@ const Menus = () => {
       {/* {state.token && ( */}
         <li>
           <Link href="/gift-card" style={{ fontWeight: "500", color: "black" }}>
-            Gifting
+            Gift Card
           </Link>
         </li>
       {/* )} */}

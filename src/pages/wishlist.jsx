@@ -9,6 +9,9 @@ import WishlistBanner from "../../public/assets/img/shop-banner.jpg";
 import PrivateRouter from '@/layout/private-router';
 import HeaderSection from '@/components/home/headerSection';
 import HomeFooter from '@/components/home/HomeFooter';
+import shopBanner from "../../public/assets/img/header-bg.png";
+import ShopBreadcrumb from '@/components/breadcrumb/shop-breadcrumb';
+
 
 
 const WishlistPage = () => {
@@ -17,8 +20,13 @@ const WishlistPage = () => {
       <SEO pageTitle="Wishlist" />
       {/* <HeaderTwo style_2={true} /> */}
       <HeaderSection />
-
-      <CommonBreadcrumb title="WISHLIST" subtitle="WISHLIST" BgImage={WishlistBanner} />
+      <ShopBreadcrumb
+       title="WISHLIST" subtitle="WISHLIST"
+        bgImage={shopBanner}
+        // catList={categoryList}
+        // product={productList}
+      />
+      {/* <CommonBreadcrumb title="WISHLIST" subtitle="WISHLIST" BgImage={WishlistBanner} /> */}
       <WishlistArea/>
       <HomeFooter />
     </Wrapper>
