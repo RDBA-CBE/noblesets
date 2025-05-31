@@ -14,7 +14,7 @@ import {
 import ErrorMsg from "@/components/common/error-msg";
 import ShopFilterOffCanvas from "@/components/common/shop-filter-offcanvas";
 import ShopLoader from "@/components/loader/shop/shop-loader";
-import FooterTwo from "@/layout/footers/footer-2";
+import HomeFooter from "@/components/home/HomeFooter";
 import shopBanner from "../../public/assets/img/shop-banner.jpg";
 import { shortData } from "@/utils/functions";
 import { useDispatch, useSelector } from "react-redux";
@@ -677,7 +677,7 @@ const PreOrders = () => {
         attributeList={attributeList}
 
       />
-      <FooterTwo primary_style={true} />
+      <HomeFooter />
     </Wrapper>
   );
 };

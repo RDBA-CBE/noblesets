@@ -4,7 +4,7 @@ import { useRouter } from "next/router";
 import SEO from "@/components/seo";
 import Wrapper from "@/layout/wrapper";
 import HeaderTwo from "@/layout/headers/header-2";
-import FooterTwo from "@/layout/footers/footer-2";
+import HomeFooter from "@/components/home/HomeFooter";
 import ProfileArea from "@/components/my-account/profile-area";
 import { useGetUserOrdersQuery } from "@/redux/features/order/orderApi";
 import Loader from "@/components/loader/loader";

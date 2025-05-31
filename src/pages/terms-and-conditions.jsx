@@ -2,7 +2,7 @@ import React from "react";
 import SEO from "@/components/seo";
 import HeaderTwo from "@/layout/headers/header-2";
 import Wrapper from "@/layout/wrapper";
-import FooterTwo from "@/layout/footers/footer-2";
+import HomeFooter from "@/components/home/HomeFooter";
 import TermsAndConditionsMain from "@/components/terms/terms-main";
 import HeaderSection from "@/components/home/headerSection";
 
@@ -15,7 +15,7 @@ const TermsAndConditions = () => {
 
 
       <TermsAndConditionsMain />
-      <FooterTwo primary_style={true} />
+      <HomeFooter />
     </Wrapper>
   );
 };

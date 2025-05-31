@@ -16,7 +16,7 @@ const ForgotPage = () => {
 
       <CommonBreadcrumb title="Forgot Password" subtitle="Reset Password" center={true} />
       <ForgotArea />
-      <FooterTwo primary_style={true} />
+      <HomeFooter />
     </Wrapper>
   );
 };

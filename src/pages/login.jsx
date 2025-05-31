@@ -18,7 +18,7 @@ const LoginPage = () => {
 
       {/* <CommonBreadcrumb title="Login" subtitle="Login" center={true} /> */}
       <LoginArea/>
-      <FooterTwo primary_style={true} />
+      <HomeFooter />
     </Wrapper>
   );
 };

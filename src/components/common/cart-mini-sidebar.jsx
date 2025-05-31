@@ -365,11 +365,14 @@ const CartMiniSidebar = () => {
                 <Image src={empty_cart_img} alt="empty-cart-img" />
                 <p>Your Cart is empty</p>
                 <button
+                
                   onClick={() => {
                     router.push("/shop");
                     handleCloseCartMini();
                   }}
-                  className="tp-btn"
+                  className={`tp-btn tp-btn-border text-white `}
+            
+                  style={{padding:"8px 28px"}}
                 >
                   Go to Shop
                 </button>

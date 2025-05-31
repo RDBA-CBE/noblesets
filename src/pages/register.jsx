@@ -15,7 +15,7 @@ const RegisterPage = () => {
 
       {/* <CommonBreadcrumb title="Register" subtitle="Register" center={true} /> */}
       <RegisterArea />
-      <FooterTwo primary_style={true} />
+      <HomeFooter />
     </Wrapper>
   );
 };

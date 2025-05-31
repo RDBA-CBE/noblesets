@@ -198,6 +198,7 @@ const DetailsThumbWrapper = ({ product, relatedClick }) => {
                   ) : (
                     <figure>
                       <video
+                      // src="/assets/img/blog.webp"
                         src={item?.url}
                         aria-label={item?.alt}
                         width={78}
@@ -290,7 +291,8 @@ const DetailsThumbWrapper = ({ product, relatedClick }) => {
                       >
                         <video
                           className="product-details-image"
-                          src={activeImg?.url}
+                          src="/assets/img/blog.webp"
+                          // src={activeImg?.url}
                           autoPlay
                           muted // Ensure it's muted to autoplay without user interaction
                           loop // Ensure it loops indefinitely

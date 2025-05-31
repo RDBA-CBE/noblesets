@@ -3,7 +3,7 @@ import SEO from "@/components/seo";
 import HeaderTwo from "@/layout/headers/header-2";
 import Wrapper from "@/layout/wrapper";
 import CommonBreadcrumb from "@/components/breadcrumb/common-breadcrumb";
-import FooterTwo from "@/layout/footers/footer-2";
+import HomeFooter from "@/components/home/HomeFooter";
 import banner from "../../public/assets/img/shop-banner.jpg";
 import { useGetProductQuery } from "@/redux/features/productApi";
 import ProductDetailsArea from "@/components/product-details/product-details-area";
@@ -48,7 +48,7 @@ const CouponPage = () => {
         BgImage={banner}
       />
       <ProductDetailsArea productItem={product} />
-      <FooterTwo primary_style={true} />
+      <HomeFooter />
     </Wrapper>
   );
 };

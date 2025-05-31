@@ -32,13 +32,13 @@ const CommonBreadcrumb = ({
               <h3
                 className="breadcrumb__title"
                 style={{
-                  color: "white",
+                  color: "#b4633a",
                   paddingBottom: "15px",
                 }}
               >
                 {title}
               </h3>
-              <div style={{ color: "white" }}>
+              <div style={{ color: "#b4633a" }}>
                 <span>
                   <a href="/">HOME</a>
                 </span>{" "}

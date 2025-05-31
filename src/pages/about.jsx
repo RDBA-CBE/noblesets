@@ -4,7 +4,7 @@ import HeaderTwo from "@/layout/headers/header-2";
 import Wrapper from "@/layout/wrapper";
 import CartArea from "@/components/cart-wishlist/cart-area";
 import CommonBreadcrumb from "@/components/breadcrumb/common-breadcrumb";
-import FooterTwo from "@/layout/footers/footer-2";
+import HomeFooter from "@/components/home/HomeFooter";
 import AboutArea from "@/components/about/about-area";
 import JewelryAbout from "@/components/about/jewelry-about";
 import aboutBanner from "../../public/assets/img/shop-banner.jpg";
@@ -24,7 +24,7 @@ const about = () => {
         BgImage={aboutBanner}
       />
       <JewelryAbout />
-      <FooterTwo primary_style={true} />
+      <HomeFooter />
     </Wrapper>
   );
 };

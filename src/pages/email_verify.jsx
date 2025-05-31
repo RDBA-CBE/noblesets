@@ -2,7 +2,7 @@ import React, { useEffect, useState } from "react";
 import SEO from "@/components/seo";
 import HeaderTwo from "@/layout/headers/header-2";
 import Wrapper from "@/layout/wrapper";
-import FooterTwo from "@/layout/footers/footer-2";
+import HomeFooter from "@/components/home/HomeFooter";
 import { useRouter } from "next/router";
 import { useVerifyEmailMutation } from "../redux/features/auth/authApi";
 import HeaderSection from "@/components/home/headerSection";
@@ -88,7 +88,7 @@ const EmailVerifyPage = () => {
           </section>
         </div>
       </div>
-      <FooterTwo primary_style={true} />
+      <HomeFooter />
     </Wrapper>
   );
 };

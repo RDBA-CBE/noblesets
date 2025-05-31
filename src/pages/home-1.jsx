@@ -7,7 +7,7 @@ import PopularProducts from "@/components/products/jewelry/popular-products";
 import JewelryCollectionBanner from "@/components/shop-banner/jewelry-collection-banner";
 import InstagramAreaFour from "@/components/instagram/instagram-area-4";
 import FeatureAreaThree from "@/components/features/feature-area-3";
-import FooterTwo from "@/layout/footers/footer-2";
+import HomeFooter from "@/components/home/HomeFooter";
 import HeaderTwo from "@/layout/headers/header-2";
 import {
   useCreateCheckoutTokenWithoutEmailMutation,
