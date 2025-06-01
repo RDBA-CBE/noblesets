@@ -147,13 +147,13 @@ const RegisterForm = () => {
             type="checkbox"
           />
           <label htmlFor="remember">
-            I accept the terms of the Service & <a href="#">Privacy Policy</a>.
+            I accept the <a href="terms-and-conditions">terms & conditions</a>.
           </label>
           <ErrorMsg msg={errors.remember?.message} />
         </div>
       </div>
       <div className="tp-login-bottom">
-        <button type="submit" className="tp-login-btn w-100">
+        <button type="submit" className="gradient-btn w-100">
           {loading ? <ButtonLoader /> : "Sign Up"}
         </button>
       </div>

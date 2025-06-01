@@ -44,6 +44,7 @@ import { checkChannel, removeduplicate } from "@/utils/functions";
 import { profilePic } from "@/utils/constant";
 import ButtonLoader from "../../components/loader/button-loader";
 import { useLogoutMutation } from "../../redux/features/productApi";
+import Menus1 from "@/layout/headers/header-com/menu1";
 
 const HeaderSection = ({ style_2 = false, data }) => {
   const router = useRouter();
@@ -279,7 +280,8 @@ const HeaderSection = ({ style_2 = false, data }) => {
                   <div className="col-xl-5 d-none d-xl-block">
                     <div className="main-menu">
                       <nav className="tp-main-menu-content">
-                        <Menus />
+                        {/* <Menus /> */}
+                        <Menus1/>
                       </nav>
                     </div>
                   </div>
