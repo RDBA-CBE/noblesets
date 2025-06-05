@@ -66,7 +66,7 @@ const ForgotPage = () => {
         notifyError(res?.errors[0]?.message);
       } else {
         router.push("/login")
-        notifySuccess(result.data?.message);
+        notifySuccess("Password reset successfully");
       }
     });
     reset();
