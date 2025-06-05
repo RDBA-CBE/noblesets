@@ -16,12 +16,15 @@ import { useResetPasswordMutation } from "@/redux/features/auth/authApi";
 import { notifyError, notifySuccess } from "@/utils/toast";
 import ButtonLoader from "../components/loader/button-loader";
 import HeaderSection from "@/components/home/headerSection";
+import { useRouter } from "next/router";
 
 const ForgotPage = () => {
   const [showNewPassword, setShowNewPassword] = useState(false);
   const [showConfirmPassword, setShowConfirmPassword] = useState(false);
   const [email, setEmail] = useState(null);
   const [token, setToken] = useState(null);
+
+  const router = useRouter();
 
   const [resetPassword, { loading: loading }] = useResetPasswordMutation();
 
@@ -62,6 +65,7 @@ const ForgotPage = () => {
       if (res?.errors?.length > 0) {
         notifyError(res?.errors[0]?.message);
       } else {
+        router.push("/login")
         notifySuccess(result.data?.message);
       }
     });
