@@ -26,7 +26,7 @@ const ForgotPage = () => {
 
   const router = useRouter();
 
-  const [resetPassword, { loading: loading }] = useResetPasswordMutation();
+  const [resetPassword, { isLoading: loading }] = useResetPasswordMutation();
 
   // schema
   const schema = Yup.object().shape({
