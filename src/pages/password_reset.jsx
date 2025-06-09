@@ -30,11 +30,13 @@ const ForgotPage = () => {
 
   // schema
   const schema = Yup.object().shape({
-    newPassword: Yup.string().required().min(1).label("New Password"),
-    confirmPassword: Yup.string().oneOf(
-      [Yup.ref("newPassword"), null],
-      "Passwords must match"
-    ),
+    newPassword: Yup.string()
+      .required("New Password is required")
+      .min(8, "New Password must be at least 8 character"),
+    
+    confirmPassword: Yup.string()
+      .required("Confirm Password is required")
+      .oneOf([Yup.ref("newPassword"), null], "Passwords must match"),
   });
 
   useEffect(() => {
@@ -66,7 +68,9 @@ const ForgotPage = () => {
         notifyError(res?.errors[0]?.message);
       } else {
         notifySuccess("Password reset successfully");
-        router.push("/login")
+        setTimeout(() => {
+          router.push("/login");
+        }, 3000);
       }
     });
     reset();
