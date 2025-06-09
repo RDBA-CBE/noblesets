@@ -14,17 +14,17 @@ const ProfileArea = ({ orderData, reviewList }) => {
 
   return (
     <>
-      <section className="profile__area pt-120 pb-120">
+      <section className="profile__area pt-120 pb-120" style={{background:"#fff9f4"}}>
         <div className="container">
           <div className="profile__inner p-relative">
-            <ProfileShape />
+            {/* <ProfileShape /> */}
             <div className="row">
-              <div className="col-xxl-3 col-lg-3">
-                <div className="profile__tab mr-40">
+              <div className="col-xxl-3 col-lg-4">
+                <div className="profile__tab mr-20">
                   <ProfileNavTab />
                 </div>
               </div>
-              <div className="col-xxl-9 col-lg-9">
+              <div className="col-xxl-9 col-lg-8">
                 <div className="profile__tab-content">
                   <div className="tab-content" id="profile-tabContent">
                     <div
@@ -46,7 +46,7 @@ const ProfileArea = ({ orderData, reviewList }) => {
                     </div>
 
                     <div
-                      className="tab-pane fade"
+                      className="tab-pane fade address-nav-tab"
                       id="nav-address"
                       role="tabpanel"
                       aria-labelledby="nav-address-tab"

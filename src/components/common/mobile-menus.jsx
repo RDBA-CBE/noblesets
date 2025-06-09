@@ -76,7 +76,7 @@ const MobileMenus = () => {
       <ul>
         <li>
           <Link href="/shop" style={{ fontWeight: "500" }}>
-            ALL JEWELLERY
+            All Jewellery 
           </Link>
         </li>
 
@@ -94,7 +94,7 @@ const MobileMenus = () => {
               color: "black",
             }}
           >
-            COLLECTIONS
+            Collections
           </button>
           {isActiveMenu && (
             <div
@@ -114,8 +114,9 @@ const MobileMenus = () => {
                           .replace("&", "")
                           .split(" ")
                           .join("-")}`}
+                          style={{textTransform:"capitalize"}}
                       >
-                        {item?.name}
+                        {item?.name.toLowerCase()}
                       </Link>
                     </li>
                   </ul>
@@ -129,34 +130,34 @@ const MobileMenus = () => {
 
         <li>
           <Link href="/shop?category=silver" style={{ fontWeight: "500" }}>
-            SILVER
+            Silver
           </Link>
         </li>
 
         <li>
           <Link href="/gift-card" style={{ fontWeight: "500" }}>
-            GIFT CARD
+            Gift Card
           </Link>
         </li>
 
         {token && (
           <li>
             <Link href="/wishlist" style={{ fontWeight: "500" }}>
-              WISHLIST
+              Wishlist
             </Link>
           </li>
         )}
 
         <li>
           <Link href="/compare" style={{ fontWeight: "500" }}>
-            COMPARE
+            Compare
           </Link>
         </li>
 
         <li>
           <Link href="/login" style={{ fontWeight: "500" }}>
             <button style={{ fontWeight: "500" }} onClick={closeCart}>
-              {token ? "LOGOUT" : "LOGIN / REGISTER"}
+              {token ? "Logout" : "Login / Register"}
             </button>
           </Link>
         </li>

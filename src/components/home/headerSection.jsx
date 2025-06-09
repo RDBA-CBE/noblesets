@@ -487,6 +487,7 @@ const HeaderSection = ({ style_2 = false, data }) => {
                                 zIndex: "2",
                                 width: "250px",
                                 boxShadow: "0px 8px 16px 0px rgba(0,0,0,0.2)",
+                                borderRadius:"10px"
                               }}
                             >
                               {/* Content of the dropdown menu goes here */}

@@ -354,18 +354,19 @@ const AddressInfo = () => {
         <CommonLoader />
       ) : (
         <>
-          <div
+          <div className="mb-4"
             style={{
               display: "flex",
               justifyContent: "space-between",
+              
             }}
           >
             <h4 className="mb-4" style={{ fontWeight: "500" }}>
               Address Info
             </h4>
             <button
-              className="mb-4 btn "
-              style={{ backgroundColor: "#c38c36", color: "white" }}
+              className="gradient-btn"
+              // style={{ backgroundColor: "#c38c36", color: "white" }}
               onClick={() => {
                 clearForm();
                 setSelectedAddress(null);
@@ -380,11 +381,13 @@ const AddressInfo = () => {
               AddressData?.map((address, index) => (
                 <div
                   key={index}
-                  className={`col-md-${AddressData.length === 1 ? 12 : 6}`}
+                  className={`address-box col-md-${AddressData.length === 1 ? 12 : 6}`}
                   style={{ marginBottom: "50px" }}
                   onClick={() => handleAddressClick(address)} // Add onClick event handler
                 >
                   <div
+                   className={`${ address?.isDefaultBillingAddress ||
+                        address?.isDefaultShippingAddress ? "address-box-active" : ""}`}
                     style={{
                       display: "flex",
                       justifyContent: "space-between",
@@ -401,8 +404,13 @@ const AddressInfo = () => {
                       background:
                         address?.isDefaultBillingAddress ||
                         address?.isDefaultShippingAddress
-                          ? "#ffe3be"
+                          ? "linear-gradient(to right, color-mix(in srgb, #fbdccc 40%, #e09a7a), #e09a7a)"
                           : "white",
+                      color:
+                        address?.isDefaultBillingAddress ||
+                        address?.isDefaultShippingAddress
+                          ? "#fff"
+                          : "gray",    
                     }}
                   >
                     <div>
@@ -416,38 +424,39 @@ const AddressInfo = () => {
                           Default Shipping Address
                         </h5>
                       )}
-                      <p style={{ color: "gray", marginBottom: "0px" }}>
+                      <p style={{  marginBottom: "0px" }}>
                         {address?.firstName} {address?.lastName}
                       </p>
-                      <p style={{ color: "gray", marginBottom: "0px" }}>
+                      <p style={{  marginBottom: "0px" }}>
                         {address?.phone}
                       </p>
-                      <p style={{ color: "gray", marginBottom: "0px" }}>
+                      <p style={{  marginBottom: "0px" }}>
                         {address?.companyName}
                       </p>
                       {/* <p style={{ color: "gray", marginBottom: "0px" }}>
                     {address?.email}
                   </p> */}
-                      <p style={{ color: "gray", marginBottom: "0px" }}>
+                      <p style={{ marginBottom: "0px" }}>
                         {address?.streetAddress1} {address?.streetAddress2}
                       </p>
-                      <p style={{ color: "gray", marginBottom: "0px" }}>
+                      <p style={{  marginBottom: "0px" }}>
                         {address?.city}
                       </p>
-                      <p style={{ color: "gray", marginBottom: "0px" }}>
+                      <p style={{ marginBottom: "0px" }}>
                         {address?.countryArea}
                       </p>
-                      <p style={{ color: "gray", marginBottom: "0px" }}>
+                      <p style={{ marginBottom: "0px" }}>
                         {address?.country?.country}
                       </p>
-                      <p style={{ color: "gray", marginBottom: "0px" }}>
+                      <p style={{  marginBottom: "0px" }}>
                         {address?.postalCode}
                       </p>
                     </div>
                     <div style={{ paddingRight: "30px", textAlign: "right" }}>
                       <SettingOutlined
                         style={{
-                          color: "#b4633a",
+                          color: `${address?.isDefaultBillingAddress ||
+                        address?.isDefaultShippingAddress ? "#fff" : "#b4633a"}`,
                           padding: "5px",
                           cursor: "pointer",
                         }}

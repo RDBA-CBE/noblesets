@@ -194,11 +194,14 @@ const MyOrderDetails = ({ data }) => {
 
   const FormatDate = moment(Data?.created).format("MMMM D, YYYY");
   return (
-    <section className="tp-checkout-area pb-50 pt-50">
+    <section
+      className="tp-checkout-area pb-50 pt-50"
+      style={{ background: "#fff9f4" }}
+    >
       <div className="container">
         <p
           style={{
-            color: "gray",
+            color:  "black",
             borderBottom: "1px solid #e6e6e6",
             paddingBottom: "10px",
           }}
@@ -218,194 +221,214 @@ const MyOrderDetails = ({ data }) => {
           </span>
           .
         </p>
+        <div
+          style={{
+            background: "#fff",
+            borderRadius:"20px"
+          }}
+        >
+          <div className="row m-0 px-4 py-3 " >
+            <div className="col-md-6 p-0 px-2">
+              <h4 style={{ fontWeight: "400", fontSize: "18px" }}>
+                BILLING ADDRESS
+              </h4>
+              <p style={{ color:  "black", marginBottom: "0px" }}>
+                <b>Name:</b> {Data?.billingAddress?.firstName}{" "}
+                {Data?.billingAddress?.lastName}
+              </p>
+              <p style={{ color:  "black", marginBottom: "0px" }}>
+                <b>Address:</b> {Data?.billingAddress?.streetAddress1},<br />
+                {Data?.billingAddress?.city}, <br />
+                {Data?.billingAddress?.country?.country} -{" "}
+                {Data?.billingAddress?.postalCode}
+              </p>
+              {/* <p style={{ color:  "black", marginBottom: "0px" }}></p>
+            <p style={{ color:  "black", marginBottom: "0px" }}></p>
+            <p style={{ color:  "black", marginBottom: "0px" }}></p> */}
+              <p style={{ color:  "black", marginBottom: "0px" }}>
+                <b>Phone:</b> {Data?.billingAddress?.phone}
+              </p>
 
-        <div className="row pt-20 pb-20">
-          <div className="col-lg-6 col-md-6 order-updates-section">
-            <h3 style={{ fontWeight: "400", fontSize: "18px" }}>
-              ORDER UPDATES
-            </h3>
+              <p></p>
+            </div>
+            <div className="col-md-6 p-0 px-4">
+              <h4 style={{ fontWeight: "400", fontSize: "18px" }}>
+                SHIPPING ADDRESS
+              </h4>
+              <p style={{ color:  "black", marginBottom: "0px" }}>
+                <b>Name:</b> {Data?.shippingAddress?.firstName}{" "}
+                {Data?.shippingAddress?.lastName}
+              </p>
+              <p style={{ color:  "black", marginBottom: "0px" }}>
+                <b>Address:</b> {Data?.shippingAddress?.streetAddress1},<br />
+                {Data?.shippingAddress?.city}, <br />
+                {Data?.shippingAddress?.country?.country} -{" "}
+                {Data?.shippingAddress?.postalCode}
+              </p>
 
-            <div className="timeline-container">
-              <ul className="timeline">
-                {Data?.events?.map((item, i) => (
-                  <li key={i} className="timeline-item">
-                    <div className="timeline-content">
-                      <b>{item.type}</b> -{" "}
-                      {moment(item.createdAt).format("MMMM D, YYYY")}
-                    </div>
-                  </li>
-                ))}
-              </ul>
+              <p style={{ color:  "black", marginBottom: "0px" }}>
+                <b>Phone:</b> {Data?.shippingAddress?.phone}
+              </p>
+            </div>
+          </div>
+        </div>
+
+        <div className="row pt-20 pb-20 order-details-sec">
+          <div className="col-lg-6 col-md-6 ">
+            <div className="order-updates-section py-4 px-2">
+              <h3
+                className="ps-3"
+                style={{ fontWeight: "400", fontSize: "18px" }}
+              >
+                ORDER UPDATES
+              </h3>
+
+              <div className="timeline-container px-3 ">
+                <ul className="timeline">
+                  {Data?.events?.map((item, i) => (
+                    <li key={i} className="timeline-item">
+                      <div className="timeline-content">
+                        <b>{item.type}</b> -{" "}
+                        {moment(item.createdAt).format("MMMM D, YYYY")}
+                      </div>
+                    </li>
+                  ))}
+                </ul>
+              </div>
             </div>
           </div>
 
           <div className="col-lg-6 col-md-6">
-            <h3 style={{ fontWeight: "400", fontSize: "18px" }}>
-              ORDER DETAILS
-            </h3>
-            <div className="responsive-table">
-              <table className="table">
-                <thead>
-                  <tr>
-                    <th scope="col">PRODUCT</th>
-                    <th scope="col">TOTAL</th>
-                  </tr>
-                </thead>
-                <tbody>
-                  {Data?.lines.map((item, i) => (
-                    <tr key={i}>
-                      <td scope="row">
-                        {item.productName} ({item?.quantity})
-                      </td>
+            <div className="order-updates-section py-4 px-2">
+              <h3
+                className="ps-3"
+                style={{ fontWeight: "400", fontSize: "18px" }}
+              >
+                ORDER DETAILS
+              </h3>
+              <div className="responsive-table px-3">
+                <table className="table">
+                  <thead>
+                    <tr>
+                      <th scope="col">PRODUCT</th>
+                      <th scope="col">TOTAL</th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    {Data?.lines.map((item, i) => (
+                      <tr key={i}>
+                        <td scope="row">
+                          {item.productName} ({item?.quantity})
+                        </td>
 
-                      <td className="d-flex ">
-                        <div>
-                          {item?.totalPrice?.gross?.currency === "USD"
-                            ? "$"
-                            : "₹"}
-                          {addCommasToNumber(item?.totalPrice?.gross?.amount)}
-                        </div>
-                        <div
-                          style={{
-                            paddingLeft: "5px",
-                            textDecoration: "underline",
-                            color: "#b4633a",
-                            cursor: "pointer",
-                          }}
-                          onClick={() =>
-                            setState({
-                              isOpen: true,
-                              productId: item?.variant?.product?.id,
-                            })
-                          }
-                        >
-                          Reviews
-                        </div>
+                        <td className="d-flex ">
+                          <div>
+                            {item?.totalPrice?.gross?.currency === "USD"
+                              ? "$"
+                              : "₹"}
+                            {addCommasToNumber(item?.totalPrice?.gross?.amount)}
+                          </div>
+                          <div
+                            style={{
+                              paddingLeft: "5px",
+                              textDecoration: "underline",
+                              color: "#b4633a",
+                              cursor: "pointer",
+                            }}
+                            onClick={() =>
+                              setState({
+                                isOpen: true,
+                                productId: item?.variant?.product?.id,
+                              })
+                            }
+                          >
+                            Reviews
+                          </div>
+                        </td>
+                      </tr>
+                    ))}
+
+                    <tr>
+                      <td>Subtotal</td>
+
+                      <td>
+                        {SubTotal?.currency == "USD" ? "$" : "₹"}
+                        {addCommasToNumber(SubTotal?.amount)}
                       </td>
                     </tr>
-                  ))}
 
-                  <tr>
-                    <td>Subtotal</td>
-
-                    <td>
-                      {SubTotal?.currency == "USD" ? "$" : "₹"}
-                      {addCommasToNumber(SubTotal?.amount)}
-                    </td>
-                  </tr>
-
-                  <tr>
-                    <td>
-                      {paymentMethod == "Cash On delivery"
-                        ? "COD Fee"
-                        : "Shipping"}
-                    </td>
-
-                    <td>
-                      {formatCurrency(ShippingAmount?.currency)}
-                      {addCommasToNumber(
-                        codAmount !== 0 ? codAmount : ShippingAmount?.amount
-                      )}
-                    </td>
-                  </tr>
-
-                  <tr>
-                    <td>Payment Status</td>
-
-                    <td>{Data?.paymentStatus}</td>
-                  </tr>
-
-                  <tr>
-                    <td>Payment Method</td>
-
-                    <td>{Data?.paymentMethod?.name}</td>
-                  </tr>
-
-                  {giftWrap && (
                     <tr>
-                      <td>Gift Wrap</td>
+                      <td>
+                        {paymentMethod == "Cash On delivery"
+                          ? "COD Fee"
+                          : "Shipping"}
+                      </td>
 
                       <td>
                         {formatCurrency(ShippingAmount?.currency)}
-                        {giftWrapAmount}
+                        {addCommasToNumber(
+                          codAmount !== 0 ? codAmount : ShippingAmount?.amount
+                        )}
                       </td>
                     </tr>
-                  )}
 
-                  {GiftCard && GiftCard.length > 0 && (
                     <tr>
-                      <td>Coupon</td>
-                      <td>
-                        {GiftCard[0]?.initialBalance?.currency == "USD"
-                          ? "$"
-                          : "₹"}
-                        {GiftCard[0]?.initialBalance?.amount}
+                      <td>Payment Status</td>
+
+                      <td>{Data?.paymentStatus}</td>
+                    </tr>
+
+                    <tr>
+                      <td>Payment Method</td>
+
+                      <td>{Data?.paymentMethod?.name}</td>
+                    </tr>
+
+                    {giftWrap && (
+                      <tr>
+                        <td>Gift Wrap</td>
+
+                        <td>
+                          {formatCurrency(ShippingAmount?.currency)}
+                          {giftWrapAmount}
+                        </td>
+                      </tr>
+                    )}
+
+                    {GiftCard && GiftCard.length > 0 && (
+                      <tr>
+                        <td>Coupon</td>
+                        <td>
+                          {GiftCard[0]?.initialBalance?.currency == "USD"
+                            ? "$"
+                            : "₹"}
+                          {GiftCard[0]?.initialBalance?.amount}
+                        </td>
+                      </tr>
+                    )}
+
+                    <tr>
+                      <td style={{ fontSize: "20px", fontWeight: "700" }}>
+                        TOTAL:
+                      </td>
+
+                      <td style={{ fontSize: "20px", fontWeight: "700" }}>
+                        {Total?.currency == "USD" ? "$" : "₹"}
+
+                        {addCommasToNumber(Total?.amount)}
+                        <div style={{ fontSize: "15px", fontWeight: "400" }}>
+                          (includes {Total?.currency == "USD" ? "$" : "₹"}
+                          {addCommasToNumber(Tax?.amount)} GST)
+                        </div>
                       </td>
                     </tr>
-                  )}
-
-                  <tr>
-                    <td style={{ fontSize: "20px" }}>TOTAL:</td>
-
-                    <td style={{ fontSize: "20px" }}>
-                      {Total?.currency == "USD" ? "$" : "₹"}
-
-                      {addCommasToNumber(Total?.amount)}
-                      <div style={{ fontSize: "15px" }}>
-                        (includes {Total?.currency == "USD" ? "$" : "₹"}
-                        {addCommasToNumber(Tax?.amount)} GST)
-                      </div>
-                    </td>
-                  </tr>
-                </tbody>
-              </table>
+                  </tbody>
+                </table>
+              </div>
             </div>
           </div>
         </div>
-        <div className="row pt-50">
-          <div className="col-md-6">
-            <h4 style={{ fontWeight: "400", fontSize: "18px" }}>
-              BILLING ADDRESS
-            </h4>
-            <p style={{ color: "gray", marginBottom: "0px" }}>
-              <b>Name:</b> {Data?.billingAddress?.firstName}{" "}
-              {Data?.billingAddress?.lastName}
-            </p>
-            <p style={{ color: "gray", marginBottom: "0px" }}>
-              <b>Address:</b> {Data?.billingAddress?.streetAddress1},<br />
-              {Data?.billingAddress?.city}, <br />
-              {Data?.billingAddress?.country?.country} -{" "}
-              {Data?.billingAddress?.postalCode}
-            </p>
-            {/* <p style={{ color: "gray", marginBottom: "0px" }}></p>
-            <p style={{ color: "gray", marginBottom: "0px" }}></p>
-            <p style={{ color: "gray", marginBottom: "0px" }}></p> */}
-            <p style={{ color: "gray", marginBottom: "0px" }}>
-              <b>Phone:</b> {Data?.billingAddress?.phone}
-            </p>
 
-            <p></p>
-          </div>
-          <div className="col-md-6">
-            <h4 style={{ fontWeight: "400", fontSize: "18px" }}>
-              SHIPPING ADDRESS
-            </h4>
-            <p style={{ color: "gray", marginBottom: "0px" }}>
-              <b>Name:</b> {Data?.shippingAddress?.firstName}{" "}
-              {Data?.shippingAddress?.lastName}
-            </p>
-            <p style={{ color: "gray", marginBottom: "0px" }}>
-              <b>Address:</b> {Data?.shippingAddress?.streetAddress1},<br />
-              {Data?.shippingAddress?.city}, <br />
-              {Data?.shippingAddress?.country?.country} -{" "}
-              {Data?.shippingAddress?.postalCode}
-            </p>
-
-            <p style={{ color: "gray", marginBottom: "0px" }}>
-              <b>Phone:</b> {Data?.shippingAddress?.phone}
-            </p>
-          </div>
-        </div>
         {/* {state?.reviewList?.length > 0 ? (
           <>
             <h5 className="pt-4 pb-4">REVIEW</h5>

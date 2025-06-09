@@ -2,9 +2,9 @@ import React from "react";
 
 const TermsAndConditionsMain = () => {
   return (
-    <section className="tp-about-area  pt-0 pb-30">
+    <section className="tp-about-area  pt-50 pb-30" style={{background:"#fff9f4"}}>
       <div className="container">
-      <h3 className="terms-heading" style={{fontWeight:"500"}}>Terms And Conditions</h3>
+      <h3 className="terms-heading mt-0 " style={{fontWeight:"500"}}>Terms And Conditions</h3>
         <div>
           <p className="terms-para">
             This website is owned, maintained and operated by PraDe Jewels

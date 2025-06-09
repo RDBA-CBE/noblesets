@@ -36,14 +36,14 @@ const ProfileInfo = () => {
       <h3 className="profile__info-title">Personal Details</h3>
       <div className="profile__info-content">
         <div style={{ display: "flex", justifyContent: "space-between" }}>
-          <div style={{ width: "50%" }}>
+          <div style={{ width: "30%" }}>
             <img
               src="assets/img/profile-1.webp"
               alt="profile"
               style={{ width: "50%" }}
             />
           </div>
-          <div style={{ width: "50%" }}>
+          <div style={{ width: "70%" }}>
             <p
               className="profile__info-text"
               style={{ color: "gray", fontWeight: "500" }}

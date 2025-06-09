@@ -176,6 +176,7 @@ const WishlistItem = ({ product, refetchWishlist, refetchWishlistDefault }) => {
                     }
                     width={70}
                     height={100}
+                    style={{borderRadius:"10px"}}
                   />
                 ) : (
                   <video
@@ -189,6 +190,7 @@ const WishlistItem = ({ product, refetchWishlist, refetchWishlistDefault }) => {
                     style={{
                       width: "100%",
                       height: "100%",
+                      borderRadius:"10px"
                     }}
                   />
                 )}
@@ -246,7 +248,8 @@ const WishlistItem = ({ product, refetchWishlist, refetchWishlistDefault }) => {
                   }
                 }}
                 type="button"
-                className="tp-btn tp-btn-2 tp-btn-blue"
+                className=" tp-btn tp-btn-border"
+                style={{borderRadius:"20px"}}
               >
                 {isAddToCart ? (
                   "View Cart"
@@ -266,6 +269,7 @@ const WishlistItem = ({ product, refetchWishlist, refetchWishlistDefault }) => {
               <button
                 onClick={() => handleRemovePrd()}
                 className="tp-cart-action-btn"
+                
               >
                 {deleteLoader ? (
                   <ClipLoader color="red" size={13} />
@@ -273,7 +277,7 @@ const WishlistItem = ({ product, refetchWishlist, refetchWishlistDefault }) => {
                   <Close />
                 )}
 
-                <span> Remove</span>
+                {/* <span> Remove</span> */}
               </button>
             </td>
           </tr>
@@ -308,6 +312,7 @@ const WishlistItem = ({ product, refetchWishlist, refetchWishlistDefault }) => {
                     }
                     width={70}
                     height={100}
+                    style={{borderRadius:"10px"}}
                   />
                 ) : (
                   <video
@@ -322,6 +327,7 @@ const WishlistItem = ({ product, refetchWishlist, refetchWishlistDefault }) => {
                     style={{
                       width: "100%",
                       height: "100%",
+                       borderRadius:"10px"
                     }}
                   />
                 )}
@@ -381,7 +387,8 @@ const WishlistItem = ({ product, refetchWishlist, refetchWishlistDefault }) => {
                   }
                 }}
                 type="button"
-                className="tp-btn tp-btn-2 tp-btn-blue"
+                className=" tp-btn tp-btn-border"
+                style={{borderRadius:"20px"}}
               >
                 {isAddToCart ? (
                   "View Cart"
@@ -408,7 +415,7 @@ const WishlistItem = ({ product, refetchWishlist, refetchWishlistDefault }) => {
                   <Close />
                 )}
 
-                <span> Remove</span>
+                {/* <span> Remove</span> */}
               </button>
             </td>
           </tr>

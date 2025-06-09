@@ -11,6 +11,7 @@ import HeaderSection from '@/components/home/headerSection';
 import HomeFooter from '@/components/home/HomeFooter';
 import shopBanner from "../../public/assets/img/header-bg.png";
 import ShopBreadcrumb from '@/components/breadcrumb/shop-breadcrumb';
+import WishlistArea1 from '@/components/cart-wishlist/wishlist-area1';
 
 
 
@@ -23,7 +24,7 @@ const WishlistPage = () => {
        <div style={{background:"#fff9f4"}}>
       <div className="section-wd">
       <ShopBreadcrumb
-       title="WISHLIST" subtitle="WISHLIST"
+       title="Wishlist" subtitle="Wishlist"
         bgImage={shopBanner}
         // catList={categoryList}
         // product={productList}
@@ -32,6 +33,7 @@ const WishlistPage = () => {
       </div>
       {/* <CommonBreadcrumb title="WISHLIST" subtitle="WISHLIST" BgImage={WishlistBanner} /> */}
       <WishlistArea/>
+      {/* <WishlistArea1/> */}
       <HomeFooter />
     </Wrapper>
   );

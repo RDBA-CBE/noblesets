@@ -1311,7 +1311,7 @@ const DetailsWrapper1 = ({
                 Out of Stock
               </span>
             ) : (
-              <span>In Stock</span>
+              <span style={{color:"#b4633a", fontWeight:"700"}}>In Stock</span>
             )}
           </p>
           {productItem?.metadata?.length > 0 && (
