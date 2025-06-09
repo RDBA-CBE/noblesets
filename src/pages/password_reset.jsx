@@ -16,6 +16,7 @@ import { useResetPasswordMutation } from "@/redux/features/auth/authApi";
 import { notifyError, notifySuccess } from "@/utils/toast";
 import ButtonLoader from "../components/loader/button-loader";
 import HeaderSection from "@/components/home/headerSection";
+import { useRouter } from "next/router";
 
 const ForgotPage = () => {
   const [showNewPassword, setShowNewPassword] = useState(false);
@@ -23,15 +24,19 @@ const ForgotPage = () => {
   const [email, setEmail] = useState(null);
   const [token, setToken] = useState(null);
 
-  const [resetPassword, { loading: loading }] = useResetPasswordMutation();
+  const router = useRouter();
+
+  const [resetPassword, { isLoading: loading }] = useResetPasswordMutation();
 
   // schema
   const schema = Yup.object().shape({
-    newPassword: Yup.string().required().min(1).label("New Password"),
-    confirmPassword: Yup.string().oneOf(
-      [Yup.ref("newPassword"), null],
-      "Passwords must match"
-    ),
+    newPassword: Yup.string()
+      .required("New Password is required")
+      .min(8, "New Password must be at least 8 character"),
+    
+    confirmPassword: Yup.string()
+      .required("Confirm Password is required")
+      .oneOf([Yup.ref("newPassword"), null], "Passwords must match"),
   });
 
   useEffect(() => {
@@ -62,7 +67,10 @@ const ForgotPage = () => {
       if (res?.errors?.length > 0) {
         notifyError(res?.errors[0]?.message);
       } else {
-        notifySuccess(result.data?.message);
+        notifySuccess("Password reset successfully");
+        setTimeout(() => {
+          router.push("/login");
+        }, 3000);
       }
     });
     reset();

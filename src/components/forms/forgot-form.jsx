@@ -18,7 +18,7 @@ const schema = Yup.object().shape({
 });
 
 const ForgotForm = () => {
-  const [resetPassword, { loading: loading }] = useForgetPasswordMutation();
+  const [resetPassword, { isLoading: loading }] = useForgetPasswordMutation();
   // react hook form
   const {
     register,

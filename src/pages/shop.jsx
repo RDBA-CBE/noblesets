@@ -58,7 +58,6 @@ const ShopPage = () => {
   const [parentCatName, setParentCatName] = useState("");
   const [parentSlug, setParentSlug] = useState("");
   const [tagName, setTagName] = useState("");
-  const [pageInfo, setPageInfo] = useState(null);
   const [totalCount, setTotalCount] = useState(0);
   const [totalPages, setTotalPages] = useState(0);
   const [prevPage, setPrevPage] = useState(1);
@@ -67,10 +66,7 @@ const ShopPage = () => {
   const [isNext, setIsNext] = useState(false);
   const [isPrev, setIsPrev] = useState(false);
   const [sortBy, setSortBy] = useState(null);
-  const [productDesigns, setProductDesigns] = useState([]);
-  const [productFinishes, setProductFinishes] = useState([]);
-  const [productStoneTypes, setProductStoneTypes] = useState([]);
-  const [productStyles, setProductStyles] = useState([]);
+
   const [attributeList, setAttributeList] = useState([]);
 
   const categoryId = router?.query?.category;
