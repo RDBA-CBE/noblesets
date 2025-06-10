@@ -321,18 +321,20 @@ const HeaderSection = ({ style_2 = false, data }) => {
                                 handleSearch(searchText);
                               }
                             }}
+                            style={{borderRadius:"10px"}}
                           />
                           {isOpen2 == true ? (
                             <div
                               className="dropdown-content  d-flex flex-column"
                               style={{
                                 position: "absolute",
-                                top: "46px",
+                                top: "50px",
                                 background: "white",
                                 padding: "30px 20px",
                                 // right: "-10px",
                                 zIndex: "2",
-                                width: "350px",
+                                width: "100%",
+                                borderRadius:"10px",
                                 boxShadow: "0px 8px 16px 0px rgba(0,0,0,0.2)",
                                 height: searchLoading
                                   ? "60px"

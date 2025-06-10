@@ -1,6 +1,9 @@
+import { useRouter } from "next/router";
 import React from "react";
 
 export default function GiftSection() {
+
+  const router = useRouter()
   return ( 
     <section class="pt-60 giftSection position-relative" 
     // style={{ backgroundColor: "#fff9f4" }}
@@ -28,7 +31,7 @@ export default function GiftSection() {
               <div class="col-12 col-sm-4 text-center" data-aos="zoom-in" data-aos-delay="200" onClick={() => {
                   
                   
-                 router.push("/shop");
+                 router.push("/gift-card");
                   }}>
                 <img
                   src="/assets/img/home/gift_special/img-1.png"
@@ -45,7 +48,7 @@ export default function GiftSection() {
               <div class="col-12 col-sm-4 text-center" data-aos="zoom-in" data-aos-delay="300" onClick={() => {
                   
                   
-                 router.push("/shop");
+                 router.push("/gift-card");
                   }}>
                 <img
                   src="/assets/img/home/gift_special/img-2.png"
@@ -61,7 +64,7 @@ export default function GiftSection() {
               </div>
               <div class="col-12 col-sm-4 text-center" data-aos="zoom-in" data-aos-delay="400" onClick={() => {
                  
-                 router.push("/shop");
+                 router.push("/gift-card");
                   }}>
                 <img
                   src="/assets/img/home/gift_special/img-3.png"

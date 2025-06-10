@@ -1584,7 +1584,19 @@ const CheckoutBillingArea1 = () => {
                         style={{ borderRadius: "20px" }}
                       >
                         <div className="tp-return-customer-input">
-                          <label>Coupon Code :</label>
+                          <div className="d-flex justify-content-between">
+                             <label>Coupon Code :</label> 
+                          <div style={{
+                            marginTop:"-20px",
+                            color:"black",
+                            fontSize:"18px",
+                            fontWeight:"700",
+                            cursor:"pointer"
+                          }}
+                           onClick={() => setState({ isOpen: !state.isOpen })}
+                          >X</div>
+                          </div>
+                         
                           <input
                             value={state.promoCode}
                             onChange={(e) =>
@@ -2695,7 +2707,7 @@ const CheckoutBillingArea1 = () => {
                       </p>
 
                       <button
-                        className="w-100 mt-3 place-order-btn tp-btn tp-btn-border"
+                        className="w-100  mt-3 place-order-btn tp-btn tp-btn-border"
                         type="submit"
                         onClick={() => handleSubmit()}
                       >

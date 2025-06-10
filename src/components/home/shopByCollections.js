@@ -6,6 +6,7 @@ import { Navigation } from "swiper";
 import "swiper/css";
 import "swiper/css/navigation";
 import { ArrowNextSm, ArrowPrevSm } from "@/svg";
+import { useRouter } from "next/router";
 
 const collections = [
   {
@@ -50,6 +51,8 @@ const collections = [
 export default function ShopByCollections() {
   const prevRef = useRef(null);
   const nextRef = useRef(null);
+
+  const router = useRouter()
 
   return (
     <section className="pt-60 ShopByCollections position-relative" 
@@ -130,6 +133,10 @@ export default function ShopByCollections() {
                     objectFit: "cover",
                     // height: "260px",
                     borderRadius: "20px",
+                  }}
+                  onClick={() => {
+                  
+                 router.push("/shop");
                   }}
                 />
                 <div className="card-body text-center pb-0">
