@@ -237,6 +237,8 @@ const ProductItem1 = ({ products, style_2 = false, updateData, index }) => {
       return 0;
     }
   };
+  console.log(profilePic(img));
+  
 
   return (
     // <div
@@ -267,7 +269,7 @@ const ProductItem1 = ({ products, style_2 = false, updateData, index }) => {
               {isImage(profilePic(img)) ? (
                 <img
                   className="card-img-top"
-                  src={profilePic(img)? profilePic(img) : "/assets/img/image-not-included-img.png"}
+                  src={(profilePic(img) !== null) ? profilePic(img) : "/assets/img/image-not-included-img.png"}
                   alt="product img"
                   style={{
                     objectFit: "cover",

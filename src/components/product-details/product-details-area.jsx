@@ -175,7 +175,7 @@ const ProductDetailsArea = ({
       </div>
 
       {/* product details description */}
-      <div className="tp-product-details-bottom pb-40"></div>
+      <div className=" pb-40"></div>
       {/* product details description */}
 
       {router.route == "/gift-card" ? (
@@ -187,12 +187,15 @@ const ProductDetailsArea = ({
             <section
               className="tp-related-product pt-40 pb-30"
               ref={relatedProductsRef}
+              style={{background:"#fff" ,
+                //  borderRadius:"20px"
+                }}
             >
-              <div className="container">
+              <div className="container" >
                 <div className="row">
-                  <div className="tp-section-title-wrapper-6 mb-10">
+                  <div className="tp-section-title-wrapper-6 mb-10" >
                     {/* <span className="tp-section-title-pre-6">Next day Products</span> */}
-                    <h3 className="tp-section-title-6" style={{fontSize:"22px"}}>Similar Products</h3>
+                    <h3 className="tp-section-title-6" style={{fontSize:"28px"}}>Similar Products</h3>
                   </div>
                 </div>
 
@@ -209,12 +212,12 @@ const ProductDetailsArea = ({
           )}
 
           {youMayLikeData?.length > 0 && (
-            <section className="tp-related-product pt-40">
+            <section className="tp-related-product pt-40 pb-40 you-may-like">
               <div className="container">
                 <div className="row">
                   <div className="tp-section-title-wrapper-6 mb-10">
                     {/* <span className="tp-section-title-pre-6">Next day Products</span> */}
-                    <h3 className="tp-section-title-6" style={{fontSize:"22px"}}>You May Like This...</h3>
+                    <h3 className="tp-section-title-6" style={{fontSize:"28px"}}>You May Like This...</h3>
                   </div>
                 </div>
 

@@ -131,7 +131,7 @@ const DetailsThumbWrapperQuick = ({ videoId = false, status, product }) => {
                         style={{ marginBottom: "0px",borderRadius:"20px" }}
                       >
                         <img
-                      src={profilePic(activeImg)}
+                      src={(profilePic(activeImg) !== null) ? profilePic(activeImg) : "/assets/img/image-not-included-img.png"}
                       alt="product img"
                       className="product-details-image"
                       style={{borderRadius:"20px" }}
@@ -144,13 +144,17 @@ const DetailsThumbWrapperQuick = ({ videoId = false, status, product }) => {
                         className=""
                       >
                          <video
-                      src={profilePic(activeImg)}
+                      src={  profilePic(activeImg) ? profilePic(activeImg) : "/assets/img/image-not-included-img.png"}
                       className="product-details-image"
                       autoPlay
                       muted // Ensure it's muted to autoplay without user interaction
                       loop // Ensure it loops indefinitely
                       playsInline // Ensure it plays inline on iOS devices
-                      style={{borderRadius:"20px" }}
+                      style={{borderRadius:"20px",
+                        width:"100%",
+                        height:"100%",
+                        objectFit:"cover"
+                       }}
                     />
                       </figure>
                    

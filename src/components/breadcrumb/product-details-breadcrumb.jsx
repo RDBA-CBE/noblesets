@@ -36,7 +36,7 @@ const ProductDetailsBreadcrumb = ({ category, title, parentSlug }) => {
     <section className="breadcrumb__area breadcrumb__style-2 include-bg ">
       <div className="container-fluid">
         <div className="row">
-          <div className="col-xxl-12">
+          <div className="col-xxl-12 ">
             <div className="breadcrumb__content p-relative z-index-1">
               <div>
                 <span className="breadcrumb-icon"></span>

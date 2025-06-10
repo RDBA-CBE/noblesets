@@ -229,7 +229,7 @@ const MenusProductSlider1 = ({ product, loginPopup, loading }) => {
               // backgroundPosition: "0px -80px",
               borderRadius:"10px",
               width:"100%",
-              height:"250px"
+              height:"300px"
             
             }}
           ></div>

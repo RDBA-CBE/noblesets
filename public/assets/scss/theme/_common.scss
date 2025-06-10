@@ -1900,6 +1900,19 @@ hr.footer-divider {
  z-index: -100;
 }
 
+// .you-may-like:before{
+//    content: "";
+//   position: absolute;
+//   top: 0px;
+//   left: 0;
+//   height: 100%;
+//   width: 100%;
+//  background-image: url("/assets/img/home/collection/shop-by-collections-bg.png");
+//  background-size: cover;
+//  background-repeat: no-repeat;
+//  z-index: -100;
+// }
+
 .NobelsetsPromises::before{
    content: "";
   position: absolute;
@@ -2482,6 +2495,14 @@ color: #fff !important;
   .ourstory-highlight h4 {
     font-size: 1.1rem;
   }
+}
+
+.main-menu > nav > ul > li > .tp-submenu{
+  height: 500px !important;
+}
+.cat-main-dd{
+  overflow-y: scroll;
+  scrollbar-width: thin;
 }
 
 
