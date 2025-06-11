@@ -1499,7 +1499,7 @@ const DetailsWrapper1 = ({
                 </div>
               </div>
             )}
-            {!isGiftCard && (
+            {!(!isGiftCard && productItem?.sizeGuide !== null)  && (
               <div className="pt-2 pb-2">
                 <button
                   onClick={() => setIsModelOpen(true)}
@@ -1942,7 +1942,6 @@ const DetailsWrapper1 = ({
             >
               ✕
             </button>
-
             {/* Product Image */}
             {productItem?.sizeGuide?.sizeimg ? (
               <div className="text-center">
