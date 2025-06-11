@@ -7,7 +7,7 @@ import {
 import { useRouter } from "next/router";
 import useRazorpay from "react-razorpay";
 import moment from "moment";
-import { roundOff, showDeleteAlert } from "@/utils/functions";
+import { addCommasToNumber, roundOff, showDeleteAlert } from "@/utils/functions";
 import { notifySuccess } from "@/utils/toast";
 import ButtonLoader from "../loader/button-loader";
 import Swal from "sweetalert2";
@@ -200,7 +200,7 @@ const OrderList = () => {
                       <td>
                         {`${
                           item?.total?.gross?.currency === "USD" ? "$" : "₹"
-                        }${roundOff(item?.total?.gross?.amount)} for ${
+                        }${addCommasToNumber(item?.total?.gross?.amount)} for ${
                           item?.lines?.length
                         } item`}
                       </td>
