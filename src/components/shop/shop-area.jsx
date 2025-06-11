@@ -235,8 +235,8 @@ const ShopArea = ({
 
   return (
     <>
-      <section className="tp-shop-area  mt-50">
-        <div className="container-fluid">
+      <section className="tp-shop-area  mt-50 shop-page">
+        <div className="container-fluid shop-page-in">
           <div
             className="section-wd"
             style={{

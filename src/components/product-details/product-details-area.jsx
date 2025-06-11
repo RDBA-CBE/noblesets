@@ -121,7 +121,7 @@ const ProductDetailsArea = ({
 
   return (
     <section
-      className="tp-product-details-area pt-40"
+      className="tp-product-details-area pt-40 product-detail-page"
      style={{background:"#fff9f4"}}
     >
       <div className="tp-product-details-top">
@@ -185,11 +185,11 @@ const ProductDetailsArea = ({
           {/* related products start */}
           {relatedproducts?.length > 0 && (
             <section
-              className="tp-related-product pt-40 pb-30"
+              className="tp-related-product pt-40 pb-30 similar-products"
               ref={relatedProductsRef}
-              style={{background:"#fff" ,
-                //  borderRadius:"20px"
-                }}
+              // style={{background:"#fff" ,
+              //   //  borderRadius:"20px"
+              //   }}
             >
               <div className="container" >
                 <div className="row">
