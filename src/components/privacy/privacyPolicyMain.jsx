@@ -2,7 +2,7 @@ import React from "react";
 
 const PrivacyPolicyMain = () => {
   return (
-    <section className="tp-about-area pt-0 pb-30">
+    <section className="tp-about-area py-5" style={{background:"#fff9f4"}}>
       <div className="container">
         <h3 className="terms-heading" style={{ fontWeight: "500" }}>
           Privacy Policy
@@ -13,17 +13,17 @@ const PrivacyPolicyMain = () => {
             This Privacy Policy is intended to inform you about how the personal
             data is collected from you, how your personal data may be used and
             disclosed, how you can control the use of your personal data, and
-            how your personal data is protected when you use the PraDe website
+            how your personal data is protected when you use the Noblesets website
             (“Website”).
           </p>
 
           <p className="terms-para">
-            PraDe Jewels (“PraDe”, “We”, “Us”, “Our”) is committed to the
-            compliance of applicable Privacy Laws in the country where PraDe’s
+            Noblesets Jewels (“Noblesets”, “We”, “Us”, “Our”) is committed to the
+            compliance of applicable Privacy Laws in the country where Noblesets’s
             product is distributed. Protecting the privacy and security of your
-            personal data is of prime importance to PraDe, therefore, we conduct
+            personal data is of prime importance to Noblesets, therefore, we conduct
             our business by abiding by the laws applicable on data privacy and
-            data security in the country where PraDe product is distributed to
+            data security in the country where Noblesets product is distributed to
             you.
           </p>
 
@@ -148,27 +148,27 @@ const PrivacyPolicyMain = () => {
           <p className="terms-heading">Newsletter</p>
 
           <p className="terms-para">
-            You can conveniently manage your registration for the PraDe
+            You can conveniently manage your registration for the Noblesets
             Newsletter in the “My Account” area of the Website. Simply enter
             your e-mail address in the field provided and then click “send”. We
             will send a confirmation e-mail to the e-mail address you give us.
             Please click on the confirmation link contained in the e-mail and
             you will receive regular information about new arrivals and/or
-            discounts from PraDe.
+            discounts from Noblesets.
           </p>
           <p className="terms-para">
             For more information about our privacy practices, if you have
             questions, or if you would like to make a complaint, please contact
             us by e‑mail at{" "}
             <a
-              href="mailto:support@prade.in"
+              href="mailto:support@noblesets.in"
               style={{
                 textDecoration: "underline",
                 color: "#c28430",
                 cursor: "pointer",
               }}
             >
-              support@prade.in
+              support@noblesets.in
             </a>
           </p>
         </div>

@@ -7,8 +7,8 @@ const TermsAndConditionsMain = () => {
       <h3 className="terms-heading mt-0 " style={{fontWeight:"500"}}>Terms And Conditions</h3>
         <div>
           <p className="terms-para">
-            This website is owned, maintained and operated by PraDe Jewels
-            (henceforth referred as “PraDe”, “we”, “us” or “our”add website
+            This website is owned, maintained and operated by Noblesets Jewels
+            (henceforth referred as "Noblesets", “we”, “us” or “our”add website
             having its registered office at Tamil Nadu, India.
           </p>
 
@@ -21,20 +21,20 @@ const TermsAndConditionsMain = () => {
           </p>
 
           <p className="terms-para">
-            PraDe reserves the right to change these terms and conditions from
+            Noblesets reserves the right to change these terms and conditions from
             time to time without any obligation to inform you and it is your
             responsibility to look through them as often as possible. All rights
-            including copyright, in this website, are owned by PraDe. Any use of
+            including copyright, in this website, are owned by Noblesets. Any use of
             this website or its contents, including copying or storing it in
-            whole or part without the permission of PraDe is prohibited.
+            whole or part without the permission of Noblesets is prohibited.
           </p>
 
           <p className="terms-para">
             If you have any queries about these terms and conditions or any
             complaints or suggestions regarding our website, please feel free to
             write to{" "}
-            <a href="mailto:support@prade.in" style={{ cursor: "pointer", color: '#c28430' }}>
-              support@prade.in{" "}
+            <a href="mailto:support@noblesets.in" style={{ cursor: "pointer", color: '#c28430' }}>
+              support@noblesets.in{" "}
             </a>
             (Timings: 11 A.M to 5.30 P.M Indian Standard Time).
           </p>
@@ -47,7 +47,7 @@ const TermsAndConditionsMain = () => {
           </p>
 
           <p className="terms-para">
-            We at PraDe Jewels reserve the right to deny or refuse service to
+            We at noblesets Jewels reserve the right to deny or refuse service to
             anybody. All of those who choose to access this website from outside
             India are responsible for compliance with local laws and if to the
             extent local laws are applicable.
@@ -140,7 +140,7 @@ const TermsAndConditionsMain = () => {
             <li>
               You should maintain and promptly update registration data to keep
               it current and complete. If you provide any information that is
-              false, inaccurate, incomplete or not current or if PraDe has
+              false, inaccurate, incomplete or not current or if Noblesets has
               reasonable grounds to suspect that such information is not in
               accordance with this user agreement, we have the right to
               indefinitely suspend or terminate your membership and refuse to
@@ -149,20 +149,20 @@ const TermsAndConditionsMain = () => {
             <li>
               In the event that a non-delivery occurs on account of a mistake by
               you (i.e., wrong name or address or any other wrong information),
-              any extra cost incurred by PraDe for re-delivery shall be claimed
+              any extra cost incurred by Noblesets for re-delivery shall be claimed
               from you and you shall bear such expenses.
             </li>
             <li>
               You will provide authentic and true information in all instances
-              where such information is requested of you. PraDe reserves the
+              where such information is requested of you. Noblesets reserves the
               right to confirm and validate the information and other details
               provided by you at any point of time. If upon confirmation, your
-              details are found to be false (partially or completely), PraDe has
+              details are found to be false (partially or completely), Noblesets has
               the right in its sole discretion to reject the registration and
-              debar you from using the services of PraDe.
+              debar you from using the services of Noblesets.
             </li>
             <li>
-              Under no circumstances shall PraDe, the directors, managers,
+              Under no circumstances shall Noblesets, the directors, managers,
               employees, agents, contractors, interns, supply provider are
               responsible for any damage, injury, loss, claim, any direct,
               indirect, special or consequential damages of any kind,
@@ -184,19 +184,19 @@ const TermsAndConditionsMain = () => {
             <li>
               If there is any delay in the delivery caused due to any natural
               calamity, public holiday or any other unforeseen circumstance,
-              then you shall not hold PraDe liable for such delay in the
+              then you shall not hold Noblesets liable for such delay in the
               delivery of the product.
             </li>
           </ul>
 
           <p className="terms-heading">Restriction</p>
           <p className="terms-para">
-            PraDe reserves the right, at its sole discretion, to limit the
+            Noblesets reserves the right, at its sole discretion, to limit the
             quantity/value of the items purchased by you and such other
             restrictions as may be applicable to orders placed by the same
             account, the same credit/debit card and also to orders that use the
             same billing and/ or shipping address. We will provide notification
-            to the customer should such limits be applied. PraDe reserves the
+            to the customer should such limits be applied. Noblesets reserves the
             right at its sole discretion to prohibit sales to anyone as it may
             deem fit.
           </p>
@@ -233,7 +233,7 @@ const TermsAndConditionsMain = () => {
           <p className="terms-heading">Prohibition against Assignment</p>
           <p className="terms-para">
             You may assign your rights under this contract to third parties only
-            with the consent of PraDe Jewels.
+            with the consent of Noblesets Jewels.
           </p>
           <p className="terms-heading">Applicable Law</p>
           <p className="terms-para">

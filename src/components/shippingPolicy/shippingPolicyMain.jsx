@@ -2,15 +2,15 @@ import React from "react";
 
 const ShippingPolicyMain = () => {
   return (
-    <section className="tp-about-area pt-0 pb-30">
+    <section className="tp-about-area py-5 mt-0" style={{background:"#fff9f4"}}>
       <div className="container">
-        <h3 className="terms-heading" style={{ fontWeight: "500" }}>
+        <h3 className="terms-heading mt-0" style={{ fontWeight: "500" }}>
           Shipping and Exchange Policy
         </h3>
 
         <div>
           <p className="terms-para">
-            We at PraDe are keen on providing customers with the best hence, we
+            We at Noblesets are keen on providing customers with the best hence, we
             partner only with reputed and trusted delivery partners such as
             DTDC, Professional couriers for customers from India and DHL, FedEx,
             Aramex etc. for International customers depending on their location.
@@ -38,7 +38,7 @@ const ShippingPolicyMain = () => {
           </p>
 
           <p className="terms-para">
-            PraDe shall not be liable for delays by the shipment partners,
+            Noblesets shall not be liable for delays by the shipment partners,
             however, we will help you track the product and make sure that it
             reaches you safely.
           </p>
@@ -47,7 +47,7 @@ const ShippingPolicyMain = () => {
             Once the tracking number is shared, the organisation’s part in
             shipment ends there. The customer and the third-party shipping
             company shall directly communicate incase of any information
-            regarding the shipment, i.e the time, transit information etc. PraDe
+            regarding the shipment, i.e the time, transit information etc. Noblesets
             shall not be held liable for any such concerns.
           </p>
           <p className="terms-heading">Cancellation, Exchanges And Return</p>
@@ -79,7 +79,7 @@ const ShippingPolicyMain = () => {
           </p>
 
           <p className="terms-para">
-            We at PraDe believe in providing fair trade to our artisans and
+            We at Noblesets believe in providing fair trade to our artisans and
             hence selected products shall not be eligible for returns.
           </p>
 
@@ -89,7 +89,7 @@ const ShippingPolicyMain = () => {
             receiving the product. Additionally, customers are requested to do
             an unboxing video once the product has been received, that helps us
             to confirm in case if the product has been damaged in transit. In
-            such an event, please write to us support@prade.in with your order
+            such an event, please write to us support@Noblesets.in with your order
             number, registered email address and attach the images of the
             product received. Our team will get in touch with you for further
             process of exchange/return.
@@ -116,7 +116,7 @@ const ShippingPolicyMain = () => {
 
           <p className="terms-para">
             All exchanges and returns will be processed within a week time, for
-            further enquiries, please get in touch with us on support@prade.in{" "}
+            further enquiries, please get in touch with us on support@noblesets.in{" "}
           </p>
         </div>
       </div>
