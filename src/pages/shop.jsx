@@ -71,7 +71,7 @@ const ShopPage = () => {
 
   const categoryId = router?.query?.category;
 
-  const PAGE_LIMIT = 21;
+  const PAGE_LIMIT = 20;
 
   const commonFilter = () => {
     let filters = {};
