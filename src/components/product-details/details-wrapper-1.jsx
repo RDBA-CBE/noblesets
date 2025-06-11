@@ -1506,7 +1506,7 @@ const DetailsWrapper1 = ({
                 </div>
               </div>
             )}
-            {!isGiftCard && (
+            {(!isGiftCard && productItem?.sizeGuide !== null)  && (
               <div className="pt-2 pb-2">
                 <button
                   onClick={() => setIsModelOpen(true)}
@@ -1942,7 +1942,10 @@ const DetailsWrapper1 = ({
         isOpen={isModalOpen}
         onRequestClose={() => setIsModelOpen(false)}
         style={customStyles}
+        preventScroll={true}
+        shouldCloseOnOverlayClick={true}
         contentLabel="Product Modal"
+        // className={"tp-product-details-wrapper"}
         ariaHideApp={false} // optional: disables appElement warning
       >
         <div className="tp-product-modal">
@@ -1958,9 +1961,8 @@ const DetailsWrapper1 = ({
             >
               ✕
             </button>
-
             {/* Product Image */}
-            {productItem?.sizeGuide?.sizeimg ? (
+            {productItem?.sizeGuide?.sizeimg && (
               <div className="text-center">
                 <img
                   src={productItem?.sizeGuide?.sizeimg} // replace with your image path
@@ -1969,13 +1971,6 @@ const DetailsWrapper1 = ({
                   height={300}
                   className="img-fluid rounded"
                 />
-              </div>
-            ) : (
-              <div
-                className="text-center d-flex align-items-center justify-content-center w-100"
-                style={{ height: "500px", fontSize: "16px" }}
-              >
-                No size chart available
               </div>
             )}
 
