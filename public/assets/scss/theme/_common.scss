@@ -2593,5 +2593,114 @@ background-image: url("/assets/img/home/bg-ele/star-ele-3.png");
   z-index: 400;
 }
 
+.product-detail-page{
+  position: relative;
+   z-index: 400;
+}
+
+.product-detail-page::before{
+   content: "";
+  position: absolute;
+  top: 30px;
+  right: 20px;
+  height: 200px;
+  width: 100px;
+  // background-color:#000;
+//  background-image: url("/assets/img/all-bg-img/flower-elem-1.png");
+background-image: url("/assets/img/home/bg-ele/flower-ele-2.png");
+ background-size: contain;
+ background-repeat: no-repeat;
+ z-index: -100;
+}
+
+
+.product-detail-page::after{
+   content: "";
+  position: absolute;
+  bottom: 60px;
+  left: 20px;
+  height: 200px;
+  width: 100px;
+  // background-color:#000;
+//  background-image: url("/assets/img/all-bg-img/flower-elem-1.png");
+background-image: url("/assets/img/home/bg-ele/star-ele-3.png");
+ background-size: contain;
+ background-repeat: no-repeat;
+ z-index: -100;
+}
+
+.cart-page{
+  position: relative;
+  // z-index: 400;
+}
+
+.cart-page::before{
+   content: "";
+  position: absolute;
+  top: 30px;
+  right: 20px;
+  height: 200px;
+  width: 100px;
+  // background-color:#000;
+//  background-image: url("/assets/img/all-bg-img/flower-elem-1.png");
+background-image: url("/assets/img/home/bg-ele/flower-ele-2.png");
+ background-size: contain;
+ background-repeat: no-repeat;
+//  z-index: 100;
+}
+
+.cart-page::after{
+   content: "";
+  position: absolute;
+  bottom: 60px;
+  left: 20px;
+  height: 200px;
+  width: 100px;
+  // background-color:#000;
+//  background-image: url("/assets/img/all-bg-img/flower-elem-1.png");
+background-image: url("/assets/img/home/bg-ele/star-ele-3.png");
+ background-size: contain;
+ background-repeat: no-repeat;
+//  z-index: 100;
+}
+
+
+
+.checkout-page-main{
+  position: relative;
+  // z-index: 400;
+}
+
+.checkout-page-main::before{
+   content: "";
+  position: absolute;
+  top: 30px;
+  right: 20px;
+  height: 200px;
+  width: 100px;
+  // background-color:#000;
+//  background-image: url("/assets/img/all-bg-img/flower-elem-1.png");
+background-image: url("/assets/img/home/bg-ele/flower-ele-2.png");
+ background-size: contain;
+ background-repeat: no-repeat;
+//  z-index: -100;
+}
+
+.checkout-page-main::after{
+   content: "";
+  position: absolute;
+  bottom: 60px;
+  left: 20px;
+  height: 200px;
+  width: 100px;
+  // background-color:#000;
+//  background-image: url("/assets/img/all-bg-img/flower-elem-1.png");
+background-image: url("/assets/img/home/bg-ele/star-ele-3.png");
+ background-size: contain;
+ background-repeat: no-repeat;
+//  z-index: -100;
+}
+
+
 
 

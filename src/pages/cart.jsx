@@ -23,7 +23,10 @@ const CartPage = () => {
       <CommonBreadcrumb title="Shopping Cart" subtitle="Shopping Cart" BgImage={CartBanner}/>
        </div>
       {/* <CartArea/> */}
-      <CartArea1/>
+      <div className='cart-page'>
+         <CartArea1/>
+      </div>
+     
        </div>
       <HomeFooter />
     </Wrapper>

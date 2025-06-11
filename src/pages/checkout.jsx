@@ -29,7 +29,10 @@ const CheckoutPage = () => {
       <div className="section-wd">
       <CommonBreadcrumb title="Checkout" subtitle="Checkout" bg_clr={true} BgImage={CheckoutBanner} />
       </div>
-      <CheckoutArea/>
+      <div className='checkout-page-main'>
+        <CheckoutArea/>
+      </div>
+      
       </div>
      <HomeFooter />
     </Wrapper>
