@@ -2439,10 +2439,10 @@ color: #fff !important;
 }
 
 .ourstory-banner-img {
-  background-image: url("/images/ourstory-banner.jpg");
+  background-image: url("/assets/img/home/nobletset_promises/img-right.png");
   background-size: cover;
   background-position: center;
-  height: 300px;
+  height: auto;
   border-radius: 20px;
 }
 
@@ -2595,7 +2595,7 @@ background-image: url("/assets/img/home/bg-ele/star-ele-3.png");
 
 .product-detail-page{
   position: relative;
-   z-index: 400;
+  //  z-index: 400;
 }
 
 .product-detail-page::before{
@@ -2610,7 +2610,7 @@ background-image: url("/assets/img/home/bg-ele/star-ele-3.png");
 background-image: url("/assets/img/home/bg-ele/flower-ele-2.png");
  background-size: contain;
  background-repeat: no-repeat;
- z-index: -100;
+//  z-index: -100;
 }
 
 
@@ -2626,7 +2626,7 @@ background-image: url("/assets/img/home/bg-ele/flower-ele-2.png");
 background-image: url("/assets/img/home/bg-ele/star-ele-3.png");
  background-size: contain;
  background-repeat: no-repeat;
- z-index: -100;
+//  z-index: -100;
 }
 
 .cart-page{
@@ -2699,6 +2699,14 @@ background-image: url("/assets/img/home/bg-ele/star-ele-3.png");
  background-size: contain;
  background-repeat: no-repeat;
 //  z-index: -100;
+}
+
+.profile__ticket table thead tr{
+  padding:1rem 1rem !important;
+}
+
+.profile__ticket .table tbody tr td {
+  padding:1rem 0 !important;
 }
 
 

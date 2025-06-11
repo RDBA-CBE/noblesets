@@ -14,6 +14,12 @@ const StorySec = () => {
           </div>
           <div className="col-md-6 text-center">
             <div className="ourstory-banner-img rounded">
+              <img
+              src="/assets/img/home/nobletset_promises/img-right.png"
+              alt="Models"
+              style={{width:"100%"}}
+              // style={{ height: "100%", width: "100%" }}
+            />
                 {/* <img src="" alt="" /> */}
             </div>
           </div>

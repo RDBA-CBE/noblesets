@@ -1582,7 +1582,7 @@ const DetailsWrapper1 = ({
                   data-bs-toggle="tab"
                   data-bs-target="#pd-shipping"
                 >
-                  Shipping & Deliver
+                  Shipping & Delivery
                 </button>
               </li>
             </ul>
@@ -1916,7 +1916,7 @@ const DetailsWrapper1 = ({
 
             {!isGiftCard && (
               <div
-                className="tp-btn tp-btn-border mt-2 mt-sm-0"
+                className="tp-btn tp-btn-border mt-2 mt-sm-0 cursor-pointer"
                 style={{ color: "#fff" }}
                 onClick={() => setIsProductModelOpen(true)}
               >

@@ -127,7 +127,7 @@ const ProductDetailsArea = ({
       <div className="tp-product-details-top">
         <div className="container">
           <div className="row ">
-            <div className={`${productItem?.media?.length > 1 ? "col-xl-7 col-lg-7" : "col-xl-6 col-lg-6"} `}>
+            <div className={`${productItem?.media?.length > 1 ? "col-xl-7 col-lg-7" : "col-xl-6 col-lg-6"} `} >
             
               <div ref={thumbRef} className="manual-sticky-thumb">
                 <DetailsThumbWrapper
@@ -144,7 +144,7 @@ const ProductDetailsArea = ({
 
               {/* product-details-thumb-wrapper end */}
             </div>
-            <div className={`${productItem?.media?.length > 1 ? "col-xl-5 col-lg-5" : "col-xl-6 col-lg-6"} `}>
+            <div className={`${productItem?.media?.length > 1 ? "col-xl-5 col-lg-5" : "col-xl-6 col-lg-6"} `} style={{zIndex:"10"}}>
               {/* product-details-wrapper start */}
 
               <DetailsWrapper1

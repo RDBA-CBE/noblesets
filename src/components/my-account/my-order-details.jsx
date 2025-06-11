@@ -251,7 +251,7 @@ const MyOrderDetails = ({ data }) => {
 
               <p></p>
             </div>
-            <div className="col-md-6 p-0 px-4">
+            <div className="col-md-6 p-0 px-2 px-md-4">
               <h4 style={{ fontWeight: "400", fontSize: "18px" }}>
                 SHIPPING ADDRESS
               </h4>
@@ -321,7 +321,7 @@ const MyOrderDetails = ({ data }) => {
                           {item.productName} ({item?.quantity})
                         </td>
 
-                        <td className="d-flex ">
+                        <td className=" ">
                           <div>
                             {item?.totalPrice?.gross?.currency === "USD"
                               ? "$"

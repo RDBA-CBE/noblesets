@@ -276,11 +276,11 @@ const ShopArea = ({
                     }}
                     style={{ cursor: "pointer" }}
                   >
-                    / {categories[1]}
+                    {""} / {categories[1]}
                   </span>
                 )}
                 {categories[2] && (
-                  <span style={{ cursor: "pointer" }}>/ {categories[2]}</span>
+                  <span style={{ cursor: "pointer" }}> {""} / {categories[2]}</span>
                 )}
               </span>
             </div>
