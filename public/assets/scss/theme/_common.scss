@@ -1929,6 +1929,8 @@ hr.footer-divider {
 
 
 
+
+
 .cart-title {
   font-weight: 500;
 }
@@ -2437,10 +2439,10 @@ color: #fff !important;
 }
 
 .ourstory-banner-img {
-  background-image: url("/images/ourstory-banner.jpg");
+  background-image: url("/assets/img/home/nobletset_promises/img-right.png");
   background-size: cover;
   background-position: center;
-  height: 300px;
+  height: auto;
   border-radius: 20px;
 }
 
@@ -2503,6 +2505,208 @@ color: #fff !important;
 .cat-main-dd{
   overflow-y: scroll;
   scrollbar-width: thin;
+}
+
+
+.shop-page{
+  position: relative;
+  // z-index: 1;
+}
+
+.shop-page::before{
+   content: "";
+  position: absolute;
+  top: -30px;
+  right: 0;
+  height: 200px;
+  width: 100px;
+  // background-color:#000;
+//  background-image: url("/assets/img/all-bg-img/flower-elem-1.png");
+background-image: url("/assets/img/home/bg-ele/flower-ele-2.png");
+ background-size: contain;
+ background-repeat: no-repeat;
+ z-index: 100;
+}
+
+.shop-page .ShopByCollections .card{
+  background-image: none !important;
+  background-color: #fff9f4 !important;
+}
+
+.shop-page::after{
+   content: "";
+  position: absolute;
+  bottom: -100px;
+  left: 0;
+  height: 200px;
+  width: 100px;
+  // background-color:#000;
+//  background-image: url("/assets/img/all-bg-img/flower-elem-1.png");
+background-image: url("/assets/img/home/bg-ele/star-ele-3.png");
+ background-size: contain;
+ background-repeat: no-repeat;
+//  z-index: 100;
+}
+
+.shop-page-in{
+  z-index: 1000;
+}
+
+.similar-products{
+  position: relative;
+}
+
+.similar-products::before{
+   content: "";
+  position: absolute;
+  top: 0px;
+  left: 0;
+  height: 100%;
+  width: 100%;
+  background-image: url("/assets/img/home/nobletset_promises/nobel-promise-bg.png");
+   background-size: cover;
+ background-repeat: no-repeat;
+}
+
+@media (max-width:1440px){
+  .similar-products::before{
+   
+   background-size: contain;
+ background-repeat: no-repeat;
+}
+}
+
+@media (max-width:1320px){
+  .similar-products::before{
+   
+   background-size: cover;
+ background-repeat: no-repeat;
+}
+}
+
+.product-detail-page .ShopByCollections .card{
+  background-image: none !important;
+  background-color: #fff9f4 !important;
+}
+
+.main-menu > nav > ul > li:hover > .tp-mega-menu{
+  z-index: 400;
+}
+
+.product-detail-page{
+  position: relative;
+  //  z-index: 400;
+}
+
+.product-detail-page::before{
+   content: "";
+  position: absolute;
+  top: 30px;
+  right: 20px;
+  height: 200px;
+  width: 100px;
+  // background-color:#000;
+//  background-image: url("/assets/img/all-bg-img/flower-elem-1.png");
+background-image: url("/assets/img/home/bg-ele/flower-ele-2.png");
+ background-size: contain;
+ background-repeat: no-repeat;
+//  z-index: -100;
+}
+
+
+.product-detail-page::after{
+   content: "";
+  position: absolute;
+  bottom: 60px;
+  left: 20px;
+  height: 200px;
+  width: 100px;
+  // background-color:#000;
+//  background-image: url("/assets/img/all-bg-img/flower-elem-1.png");
+background-image: url("/assets/img/home/bg-ele/star-ele-3.png");
+ background-size: contain;
+ background-repeat: no-repeat;
+//  z-index: -100;
+}
+
+.cart-page{
+  position: relative;
+  // z-index: 400;
+}
+
+.cart-page::before{
+   content: "";
+  position: absolute;
+  top: 30px;
+  right: 20px;
+  height: 200px;
+  width: 100px;
+  // background-color:#000;
+//  background-image: url("/assets/img/all-bg-img/flower-elem-1.png");
+background-image: url("/assets/img/home/bg-ele/flower-ele-2.png");
+ background-size: contain;
+ background-repeat: no-repeat;
+//  z-index: 100;
+}
+
+.cart-page::after{
+   content: "";
+  position: absolute;
+  bottom: 60px;
+  left: 20px;
+  height: 200px;
+  width: 100px;
+  // background-color:#000;
+//  background-image: url("/assets/img/all-bg-img/flower-elem-1.png");
+background-image: url("/assets/img/home/bg-ele/star-ele-3.png");
+ background-size: contain;
+ background-repeat: no-repeat;
+//  z-index: 100;
+}
+
+
+
+.checkout-page-main{
+  position: relative;
+  // z-index: 400;
+}
+
+.checkout-page-main::before{
+   content: "";
+  position: absolute;
+  top: 30px;
+  right: 20px;
+  height: 200px;
+  width: 100px;
+  // background-color:#000;
+//  background-image: url("/assets/img/all-bg-img/flower-elem-1.png");
+background-image: url("/assets/img/home/bg-ele/flower-ele-2.png");
+ background-size: contain;
+ background-repeat: no-repeat;
+//  z-index: -100;
+}
+
+.checkout-page-main::after{
+   content: "";
+  position: absolute;
+  bottom: 60px;
+  left: 20px;
+  height: 200px;
+  width: 100px;
+  // background-color:#000;
+//  background-image: url("/assets/img/all-bg-img/flower-elem-1.png");
+background-image: url("/assets/img/home/bg-ele/star-ele-3.png");
+ background-size: contain;
+ background-repeat: no-repeat;
+//  z-index: -100;
+}
+
+.profile__ticket table thead tr{
+  padding:1rem 1rem !important;
+}
+
+.profile__ticket .table tbody tr td {
+  padding:1rem 0 !important;
 }
 
 

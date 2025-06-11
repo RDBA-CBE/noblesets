@@ -121,13 +121,13 @@ const ProductDetailsArea = ({
 
   return (
     <section
-      className="tp-product-details-area pt-40"
+      className="tp-product-details-area pt-40 product-detail-page"
      style={{background:"#fff9f4"}}
     >
       <div className="tp-product-details-top">
         <div className="container">
           <div className="row ">
-            <div className={`${productItem?.media?.length > 1 ? "col-xl-7 col-lg-7" : "col-xl-6 col-lg-6"} `}>
+            <div className={`${productItem?.media?.length > 1 ? "col-xl-7 col-lg-7" : "col-xl-6 col-lg-6"} `} >
             
               <div ref={thumbRef} className="manual-sticky-thumb">
                 <DetailsThumbWrapper
@@ -144,7 +144,7 @@ const ProductDetailsArea = ({
 
               {/* product-details-thumb-wrapper end */}
             </div>
-            <div className={`${productItem?.media?.length > 1 ? "col-xl-5 col-lg-5" : "col-xl-6 col-lg-6"} `}>
+            <div className={`${productItem?.media?.length > 1 ? "col-xl-5 col-lg-5" : "col-xl-6 col-lg-6"} `} style={{zIndex:"10"}}>
               {/* product-details-wrapper start */}
 
               <DetailsWrapper1
@@ -185,11 +185,11 @@ const ProductDetailsArea = ({
           {/* related products start */}
           {relatedproducts?.length > 0 && (
             <section
-              className="tp-related-product pt-40 pb-30"
+              className="tp-related-product pt-40 pb-30 similar-products"
               ref={relatedProductsRef}
-              style={{background:"#fff" ,
-                //  borderRadius:"20px"
-                }}
+              // style={{background:"#fff" ,
+              //   //  borderRadius:"20px"
+              //   }}
             >
               <div className="container" >
                 <div className="row">

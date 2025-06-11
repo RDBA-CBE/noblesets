@@ -1593,7 +1593,7 @@ const DetailsWrapper1 = ({
                   data-bs-toggle="tab"
                   data-bs-target="#pd-shipping"
                 >
-                  Shipping & Deliver
+                  Shipping & Delivery
                 </button>
               </li>
             </ul>

@@ -107,11 +107,11 @@ const ShopBreadcrumb = ({
                       }}
                       style={{ cursor: "pointer",color:"#b4633a", fontSize:"18px" }}
                     >
-                      / {categories[1]}
+                     {""} / {categories[1]}
                     </span>
                   )}
                   {categories[2] && (
-                    <span style={{ cursor: "pointer" }}>/ {categories[2]}</span>
+                    <span style={{ cursor: "pointer",color:"#b4633a", fontSize:"18px" }} > {""} / {categories[2]}</span>
                   )}
                 </h3>
                 {title !== "Shop" && (
