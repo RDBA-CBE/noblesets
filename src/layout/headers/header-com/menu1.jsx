@@ -63,8 +63,8 @@ const CategoryContent = ({
   const router = useRouter();
 
   return (
-    <div className="row" style={{ paddingBottom: "30px" }}>
-      <div className="col-3" style={{ paddingLeft: "30px" }}>
+    <div className="row" style={{ paddingBottom: "30px",height:"100%" }}>
+      <div className="col-3" style={{ paddingLeft: "30px", height:"100%" , overflowY:"scroll", scrollbarWidth:"thin"}}>
         {title &&
           <div style={{ paddingLeft: "25px" }}>
             <h6 style={{ paddingBottom: "15px", fontWeight: "500" }}>{title}</h6>
@@ -75,7 +75,7 @@ const CategoryContent = ({
           <SingleLoader loading={subCategoryLoading} />
         ) : (
           <div>
-            <ul style={{ margin: "0px 25px 10px " }}>
+            <ul style={{ margin: "0px 25px 10px " , height:"100%"}}>
               {lists?.slice(0, 12)?.map((item) => {
                 return (
                   <li className="sub-sub-menu"
@@ -252,6 +252,7 @@ const CategoryComponent = (props) => {
           display: "flex",
           alignItems: "center",
           justifyContent: "center",
+          height:"100%"
         }}
       >
         Product Not Found
@@ -386,16 +387,18 @@ const Menus1 = () => {
           Collections
         </Link>
         <div className="home-menu tp-submenu tp-mega-menu">
-          <div className="row">
+          <div className="row" style={{height:"100%"}}>
             <div
               className="col-lg-2"
               style={{
                 backgroundColor: "#fff",
                 padding: "0px",
                 color: "black",
+                // overflowY:"scroll",
+                height:"100%"
               }}
             >
-              <ul>
+              <ul className="cat-main-dd" style={{height:"100%"}}>
                 {state.categoryList?.map((item) => {
                   return (
                     <li
@@ -462,7 +465,7 @@ const Menus1 = () => {
               </ul>
             </div>
             <div className="col-lg-10">
-              <div className="tp-mega-menu-item">
+              <div className="tp-mega-menu-item h-100">
                 {state.subCategoryList?.length > 0 ? (
                   <CategoryComponent
                     commonImage="/assets/img/earring-menu-pic-1.png"
@@ -472,6 +475,7 @@ const Menus1 = () => {
                     subCategoryList={state.subCategoryList}
                     subCategoryLoading={subCatLoading}
                     SubCatProduct={SubCatProduct}
+                    style={{height:"100%"}}
                   />
                 ) : productLoading ? (
                   <SingleLoader loading={productLoading} />

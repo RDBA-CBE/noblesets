@@ -9,14 +9,14 @@ import GoogleSignUp from "./google-sign-up";
 const RegisterArea = () => {
   return (
     <>
-      <section className="tp-login-area pb-140 pt-120 p-relative z-index-1 fix">
+      <section className="tp-login-area pb-140 pt-120 p-relative z-index-1 fix" style={{background:"#fff9f4"}}>
         {/* <LoginShapes /> */}
         <div className="container">
           <div className="row justify-content-center">
             <div className="col-xl-6 col-lg-8">
               <div className="tp-login-wrapper">
                 <div className="tp-login-top text-center mb-30">
-                  <h3 className="tp-login-title">Sign Up Nobelsets.</h3>
+                  <h3 className="tp-login-title">Sign Up Noblesets.</h3>
                   <p>
                     Already have an account?{" "}
                     <span>

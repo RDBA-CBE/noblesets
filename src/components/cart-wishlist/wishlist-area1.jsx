@@ -10,8 +10,9 @@ import {
 } from "@/redux/features/productApi";
 import { get_wishlist_products } from "@/redux/features/wishlist-slice";
 import { checkChannel } from "@/utils/functions";
+import WishlistItem1 from "./wishlist-item1";
 
-const WishlistArea = () => {
+const WishlistArea1 = () => {
   const [ids, setIds] = useState([]);
   const [wishlist, setWishlist] = useState([]);
 
@@ -34,7 +35,6 @@ const WishlistArea = () => {
       ? wishlistData?.data?.wishlists?.edges?.map((item) => item?.node)
       : wishlistDefaultData?.data?.wishlists?.edges?.map((item) => item?.node);
 
-
   const getWishlistList = async (prd) => {
     try {
       if (wishlistData?.data?.wishlists?.edges?.length > 0) {
@@ -49,7 +49,10 @@ const WishlistArea = () => {
 
   return (
     <>
-      <section className="tp-cart-area pb-20 pt-30 wishlist-page"  style={{background:"#fff9f4"}}>
+      <section
+        className="tp-cart-area pb-20 pt-30"
+        style={{ background: "#fff9f4" }}
+      >
         <div className="container">
           {list?.length === 0 && (
             <div className="text-center pb-20">
@@ -60,7 +63,7 @@ const WishlistArea = () => {
                 page.
               </p>
               <Link href="/shop" className="gradient-btn">
-               Return to shop
+                Return to shop
               </Link>
             </div>
           )}
@@ -68,46 +71,49 @@ const WishlistArea = () => {
             <>
               <div className="row">
                 <div className="col-xl-12">
-                  <div className="tp-cart-list mb-45 mr-30">
-                    <table className="table">
-                      <thead>
-                        <tr className="wishlist-page-tr">
-                          <th colSpan="2" className="tp-cart-header-product py-4" style={{borderTopLeftRadius:"10px", borderBottomLeftRadius:"10px"}}>
-                            PRODUCT
-                          </th>
-                          <th className="tp-cart-header-quantity">
-                            PRODUCT NAME
-                          </th>
-                          <th className="tp-cart-header-price">PRICE</th>
-                          <th>ADD TO CART</th>
-                          <th style={{borderBottomRightRadius:"10px", borderTopRightRadius:"10px"}}></th>
-                        </tr>
-                      </thead>
-                      <tbody>
-                        {list?.map((item, i) => {
-                          return (
-                            <WishlistItem
-                              key={i}
-                              product={item}
-                              refetchWishlist={wishlistRefetch}
-                              refetchWishlistDefault={
-                                wishlistDefaultRefetch
-                              }
+                  <div className="wishlist-card-container row">
+                    <WishlistItem1/>
+                    {/* {list?.map((item, i) => (
+                      <div key={i} className="col-md-6 col-lg-4 mb-4">
+                        <div className="wishlist-card p-3 border rounded h-100 d-flex flex-column justify-content-between">
+                          <div className="wishlist-card-top d-flex align-items-center mb-3">
+                            <img
+                              src={item.image}
+                              alt={item.name}
+                              className="wishlist-card-img me-3 rounded"
+                              style={{
+                                width: "80px",
+                                height: "80px",
+                                objectFit: "cover",
+                              }}
                             />
-                          );
-                        })}
-                      </tbody>
-                    </table>
+                            <div>
+                              <h5 className="wishlist-product-name mb-1">
+                                {item.name}
+                              </h5>
+                              <p className="wishlist-product-price text-muted mb-0">
+                                ₹ {item.price}
+                              </p>
+                            </div>
+                          </div>
+                          <div className="wishlist-card-actions d-flex justify-content-between mt-auto pt-3 border-top">
+                            <button className="btn btn-dark btn-sm">
+                              Add to Cart
+                            </button>
+                            <button className="btn btn-outline-danger btn-sm">
+                              Remove
+                            </button>
+                          </div>
+                        </div>
+                      </div>
+                    ))} */}
                   </div>
-                  <div className="tp-cart-bottom">
+
+                  <div className="wishlist-cart-bottom mt-4">
                     <div className="row align-items-end">
                       <div className="col-xl-6 col-md-4">
-                        <div className=" d-flex tp-cart-new">
-                          <Link
-                            href="/cart"
-                             className=" tp-btn tp-btn-border"
-                style={{borderRadius:"20px"}}
-                          >
+                        <div className="wishlist-cart-link">
+                          <Link href="/cart" className="btn btn-secondary">
                             Go To Cart
                           </Link>
                         </div>
@@ -124,4 +130,4 @@ const WishlistArea = () => {
   );
 };
 
-export default WishlistArea;
+export default WishlistArea1;

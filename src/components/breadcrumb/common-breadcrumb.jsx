@@ -15,12 +15,13 @@ const CommonBreadcrumb = ({
       className={`breadcrumb__area  ${center ? "text-center" : ""} include-bg ${
         pt ? pt : "pt-50"
       } ${pb ? pb : "pb-50"} `}
-      style={{
-        backgroundImage: `url(${BgImage?.src})`,
-        // display: "flex",
-        // alignItems: "center",
-        borderRadius:"30px"
+      style={{ 
+          backgroundImage: `url(${BgImage?.src})`,
+        //   background:"linear-gradient(to right,color-mix(in srgb, #fbdccc 40%, #e09a7a),#e09a7a)",
+         borderRadius:"30px", 
+         color:"#b4633a"
       }}
+     
     >
       <div className="container-fluid">
         <div className="row">

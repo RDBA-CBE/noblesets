@@ -277,7 +277,7 @@ const Failed = ({ data, orderId }) => {
                 boxShadow: "3px 3px 5px #f1f1f1",
               }}
             >
-              <p
+              <h3
                 style={{
                   color: "gray",
                   fontSize: "26px",
@@ -286,7 +286,7 @@ const Failed = ({ data, orderId }) => {
                 }}
               >
                 Your order has been Failed.
-              </p>
+              </h3>
               <ul style={{ paddingLeft: "20px", fontSize: "18px" }}>
                 <li style={{ paddingBottom: "8px" }}>
                   Order number: <span className="bold">{OrderNumber}</span>

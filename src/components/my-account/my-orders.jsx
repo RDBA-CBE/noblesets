@@ -208,7 +208,12 @@ const OrderList = () => {
                         {item?.status === "NOT_CHARGET" && (
                           <button
                             type="button"
-                            className="order-view-btn"
+                            className=" tp-btn tp-btn-border text-white"
+                            style={{
+                              borderRadius: "20px",
+                              padding: "3px 14px",
+                              fontSize: "14px",
+                            }}
                             onClick={() => {
                               handlePayment(
                                 item?.total?.gross?.amount,
@@ -222,7 +227,12 @@ const OrderList = () => {
                         )}
                         <button
                           type="button"
-                          className="order-view-btn"
+                          className=" tp-btn tp-btn-border text-white"
+                          style={{
+                            borderRadius: "20px",
+                            padding: "3px 14px",
+                            fontSize: "14px",
+                          }}
                           onClick={() =>
                             router.push(`/order-details/${item?.id}`)
                           }
@@ -232,7 +242,12 @@ const OrderList = () => {
                         {item?.status === "UNCONFIRMED" && (
                           <button
                             type="button"
-                            className="order-view-btn"
+                            className=" tp-btn tp-btn-border text-white"
+                            style={{
+                              borderRadius: "20px",
+                              padding: "3px 14px",
+                              fontSize: "14px",
+                            }}
                             onClick={() => {
                               setIndex(i);
                               cancelOrder(item);
@@ -248,7 +263,12 @@ const OrderList = () => {
                         {item?.invoices?.length > 0 && (
                           <button
                             type="button"
-                            className="order-view-btn"
+                            className=" tp-btn tp-btn-border text-white"
+                            style={{
+                              borderRadius: "20px",
+                              padding: "3px 14px",
+                              fontSize: "14px",
+                            }}
                             onClick={() =>
                               window.open(item?.invoices[0]?.url, "_blank")
                             }

@@ -73,14 +73,14 @@ const ChangePassword = () => {
   };
 
   return (
-    <div className="profile__password">
+    <div className="profile__password py-5">
       <form onSubmit={handleSubmit(onSubmit)}>
         <div className="row">
           {!user?.googleSignIn && (
             <div className="col-xxl-12">
-              <div className="tp-profile-input-box">
+              <div className="tp-login-input-box">
                 <div className="p-relative">
-                  <div className="tp-contact-input">
+                  <div className="tp-login-input">
                     <input
                       {...register("password", {
                         required: `Password is required!`,
@@ -98,7 +98,7 @@ const ChangePassword = () => {
                       {showPass ? <CloseEye /> : <OpenEye />}
                     </span>
                   </div>
-                  <div className="tp-profile-input-title">
+                  <div className="tp-login-input-title">
                     <label htmlFor="password">Old Password</label>
                   </div>
                 </div>
@@ -106,10 +106,10 @@ const ChangePassword = () => {
               </div>
             </div>
           )}
-          <div className="col-xxl-6 col-md-6">
-            <div className="tp-profile-input-box">
+          <div className="col-xxl-6 col-md-6 mt-40">
+            <div className="tp-login-input-box">
               <div className="p-relative">
-                <div className="tp-profile-input">
+                <div className="tp-login-input">
                   <input
                     {...register("newPassword", {
                       required: `New Password is required!`,
@@ -128,17 +128,17 @@ const ChangePassword = () => {
                   </span>
                 </div>
 
-                <div className="tp-profile-input-title">
+                <div className="tp-login-input-title">
                   <label htmlFor="new_pass">New Password</label>
                 </div>
               </div>
               <ErrorMsg msg={errors.newPassword?.message} />
             </div>
           </div>
-          <div className="col-xxl-6 col-md-6">
-            <div className="tp-profile-input-box">
+          <div className="col-xxl-6 col-md-6 mt-40">
+            <div className="tp-login-input-box">
               <div className="p-relative">
-                <div className="tp-profile-input">
+                <div className="tp-login-input">
                   <input
                     {...register("confirmPassword")}
                     name="confirmPassword"
@@ -154,16 +154,16 @@ const ChangePassword = () => {
                     {showConfirmPassword ? <CloseEye /> : <OpenEye />}
                   </span>
                 </div>
-                <div className="tp-profile-input-title">
+                <div className="tp-login-input-title">
                   <label htmlFor="confirmPassword">Confirm Password</label>
                 </div>
               </div>
               <ErrorMsg msg={errors.confirmPassword?.message} />
             </div>
           </div>
-          <div className="col-xxl-6 col-md-6">
-            <div className="profile__btn">
-              <button type="submit" className="tp-btn">
+          <div className="col-xxl-6 col-md-6 mt-40">
+            <div className="tp-login-bottom">
+              <button type="submit" className="gradient-btn w-100">
                 {submitLoading ? <ButtonLoader /> : "Update"}
               </button>
             </div>

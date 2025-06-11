@@ -80,16 +80,16 @@ const ForgotPage = () => {
       <SEO pageTitle="Reset Password" />
       {/* <HeaderTwo style_2={true} /> */}
       <HeaderSection />
-
+{/* 
       <CommonBreadcrumb
         title="Forgot Password"
         subtitle="Reset Password"
         center={true}
         pt={"0px"}
         pb={"0px"}
-      />
-      <section className="tp-login-area pb-140 p-relative z-index-1 fix">
-        <LoginShapes />
+      /> */}
+      <section className="tp-login-area pb-140 pt-120 p-relative z-index-1 fix" style={{background:"#fff9f4"}}>
+        {/* <LoginShapes /> */}
         <div className="container">
           <div className="row justify-content-center">
             <div className="col-xl-6 col-lg-8">
@@ -99,10 +99,10 @@ const ForgotPage = () => {
                 </div>
                 <div className="tp-login-option">
                   <form onSubmit={handleSubmit(onSubmit)}>
-                    <div className="">
-                      <div className="tp-profile-input-box">
+                    <div className="tp-login-input-wrapper">
+                      <div className="tp-login-input-box mb-30">
                         <div className="p-relative">
-                          <div className="tp-profile-input">
+                          <div className="tp-login-input">
                             <input
                               {...register("newPassword", {
                                 required: `New Password is required!`,
@@ -126,17 +126,17 @@ const ForgotPage = () => {
                             </span>
                           </div>
 
-                          <div className="tp-profile-input-title">
+                          <div className="tp-login-input-title">
                             <label htmlFor="new_pass">New Password</label>
                           </div>
                         </div>
                         <ErrorMsg msg={errors.newPassword?.message} />
                       </div>
                     </div>
-                    <div className="">
-                      <div className="tp-profile-input-box">
+                    <div className="tp-login-input-wrapper">
+                      <div className="tp-login-input-box">
                         <div className="p-relative">
-                          <div className="tp-profile-input">
+                          <div className="tp-login-input">
                             <input
                               {...register("confirmPassword")}
                               name="confirmPassword"
@@ -157,7 +157,7 @@ const ForgotPage = () => {
                               {showConfirmPassword ? <CloseEye /> : <OpenEye />}
                             </span>
                           </div>
-                          <div className="tp-profile-input-title">
+                          <div className="tp-login-input-title">
                             <label htmlFor="confirmPassword">
                               Confirm Password
                             </label>
@@ -166,8 +166,8 @@ const ForgotPage = () => {
                         <ErrorMsg msg={errors.confirmPassword?.message} />
                       </div>
                     </div>
-                    <div className="tp-login-bottom mb-15">
-                      <button type="submit" className="tp-login-btn w-100">
+                    <div className="tp-login-bottom mb-15 mt-25">
+                      <button type="submit" className="gradient-btn w-100">
                         {loading ? <ButtonLoader /> : "Submit"}
                       </button>
                     </div>

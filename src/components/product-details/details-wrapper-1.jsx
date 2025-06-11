@@ -976,12 +976,9 @@ const DetailsWrapper1 = ({
       </div> */}
 
       <div className="product-info">
-
-        
-
         {/* price */}
         <div className="bg-white my-3 p-3 rounded">
-                    <h3 className="tp-product-details-title product-title">
+          <h3 className="tp-product-details-title product-title">
             {capitalizeFLetter(productItem?.name || productItem?.node?.name)}
           </h3>
           <div
@@ -1113,7 +1110,6 @@ const DetailsWrapper1 = ({
                 )}
               </div>
             ) : (
-              
               <div className="tp-product-price-wrapper-2">
                 {productItem?.variants?.length <= 1 &&
                   RegularPrice(
@@ -1302,8 +1298,6 @@ const DetailsWrapper1 = ({
             <p className="text-danger">{`Save ${saveOff()}% OFF`}</p>
           )}
 
-
-
           <p className="product-desc text-muted">
             {variantDetails?.quantityAvailable == 0 ||
             productItem?.defaultVariant?.quantityAvailable == 0 ? (
@@ -1311,7 +1305,9 @@ const DetailsWrapper1 = ({
                 Out of Stock
               </span>
             ) : (
-              <span>In Stock</span>
+              <span style={{ color: "#b4633a", fontWeight: "700" }}>
+                In Stock
+              </span>
             )}
           </p>
           {productItem?.metadata?.length > 0 && (
@@ -1324,154 +1320,165 @@ const DetailsWrapper1 = ({
             </p>
           )}
 
-                    { router?.route == "/gift-card" && variantDetails ?
-            ( <div className="pt-20 pb-20" style={{ fontSize: "16px" }}>
-                      {
-                        productItem?.metadata?.filter(
-                          (item) => item.key === "description"
-                        )?.[0]?.value
-                      }
-                      {variantDetails && (
-                        <div >
-                          <div style={{ paddingBottom: "5px" }}>
-                            You will get following coupon(s) when you buy this item:{" "}
-                          </div>
-            
-                          <div
-                            className="tp-product-details-price-wrapper"
-                            style={{ paddingBottom: "20px" }}
+          {router?.route == "/gift-card" && variantDetails ? (
+            <div className="pt-20 pb-20" style={{ fontSize: "16px" }}>
+              {
+                productItem?.metadata?.filter(
+                  (item) => item.key === "description"
+                )?.[0]?.value
+              }
+              {variantDetails && (
+                <div>
+                  <div style={{ paddingBottom: "5px" }}>
+                    You will get following coupon(s) when you buy this item:{" "}
+                  </div>
+
+                  <div
+                    className="tp-product-details-price-wrapper"
+                    style={{ paddingBottom: "20px" }}
+                  >
+                    {channel == "india-channel" ? (
+                      <div className="tp-product-price-wrapper-2">
+                        {RegularPrice(
+                          productItem?.defaultVariant?.costPrice,
+                          productItem?.pricing?.priceRange?.start?.gross?.amount
+                        ) && (
+                          <span
+                            className="pr-5"
+                            style={{
+                              textDecoration: "line-through",
+                              color: "gray",
+                            }}
                           >
-                            {channel == "india-channel" ? (
-                              <div className="tp-product-price-wrapper-2">
-                                {RegularPrice(
-                                  productItem?.defaultVariant?.costPrice,
-                                  productItem?.pricing?.priceRange?.start?.gross?.amount
-                                ) && (
-                                  <span
-                                    className="pr-5"
-                                    style={{
-                                      textDecoration: "line-through",
-                                      color: "gray",
-                                    }}
-                                  >
-                                    {variantDetails ? (
-                                      <>
-                                        &#8377;
-                                        {addCommasToNumber(
-                                          variantDetails?.pricing?.price?.gross?.amount
-                                        )}
-                                      </>
-                                    ) : (
-                                      <>
-                                        &#8377;
-                                        {addCommasToNumber(
-                                          productItem?.defaultVariant?.costPrice
-                                        )}
-                                      </>
-                                    )}
-                                  </span>
+                            {variantDetails ? (
+                              <>
+                                &#8377;
+                                {addCommasToNumber(
+                                  variantDetails?.pricing?.price?.gross?.amount
                                 )}
-                                <p style={{ color: "grey", marginBottom: "0px" }}>
-                                  {variantDetails ? (
-                                    <>
-                                      E-Gift Vouchure of{" "}
-                                      <span
-                                        style={{ fontWeight: "bold", paddingLeft: "3px" }}
-                                      >
-                                        &#8377;
-                                        {addCommasToNumber(
-                                          variantDetails?.pricing?.price?.gross?.amount
-                                        )}
-                                      </span>
-                                    </>
-                                  ) : (
-                                    <>
-                                      E-Gift Vouchure of{" "}
-                                      <span
-                                        style={{ fontWeight: "bold", paddingLeft: "3px" }}
-                                      >
-                                        {" "}
-                                        &#8377;
-                                        {addCommasToNumber(
-                                          productItem?.pricing?.priceRange?.start?.gross
-                                            ?.amount ||
-                                            productItem?.node?.pricing?.priceRange?.start
-                                              ?.gross?.amount
-                                        )}
-                                      </span>
-                                    </>
-                                  )}
-                                </p>
-                              </div>
+                              </>
                             ) : (
-                              <div className="tp-product-price-wrapper-2">
-                                {RegularPrice(
-                                  productItem?.defaultVariant?.costPrice,
-                                  productItem?.pricing?.priceRange?.start?.gross?.amount
-                                ) && (
-                                  <span
-                                    className="pr-5"
-                                    style={{
-                                      textDecoration: "line-through",
-                                      color: "gray",
-                                    }}
-                                  >
-                                    {variantDetails ? (
-                                      <>
-                                        E-Gift Vouchure of{" "}
-                                        <span
-                                          style={{ fontWeight: "bold", paddingLeft: "3px" }}
-                                        >
-                                          {"$"}{" "}
-                                          {addCommasToNumber(
-                                            variantDetails?.pricing?.price?.gross?.amount
-                                          )}
-                                        </span>
-                                      </>
-                                    ) : (
-                                      <>
-                                        E-Gift Vouchure of{" "}
-                                        <span
-                                          style={{ fontWeight: "bold", paddingLeft: "3px" }}
-                                        >
-                                          {"$"}
-                                          {addCommasToNumber(
-                                            productItem?.defaultVariant?.costPrice
-                                          )}
-                                        </span>
-                                      </>
-                                    )}
-                                  </span>
+                              <>
+                                &#8377;
+                                {addCommasToNumber(
+                                  productItem?.defaultVariant?.costPrice
                                 )}
-                                <p style={{ color: "grey", marginBottom: "0px" }}>
-                                  {variantDetails ? (
-                                    <>
-                                      {"$"}
-                                      {addCommasToNumber(
-                                        variantDetails?.pricing?.price?.gross?.amount
-                                      )}
-                                    </>
-                                  ) : (
-                                    <>
-                                      {"$"}
-                                      {addCommasToNumber(
-                                        productItem?.pricing?.priceRange?.start?.gross
-                                          ?.amount ||
-                                          productItem?.node?.pricing?.priceRange?.start
-                                            ?.gross?.amount
-                                      )}
-                                    </>
-                                  )}
-                                </p>
-                              </div>
+                              </>
                             )}
-                          </div>
-                         
-                        </div>
-                      )}
-                      
-                    </div>) : null
-          }
+                          </span>
+                        )}
+                        <p style={{ color: "grey", marginBottom: "0px" }}>
+                          {variantDetails ? (
+                            <>
+                              E-Gift Vouchure of{" "}
+                              <span
+                                style={{
+                                  fontWeight: "bold",
+                                  paddingLeft: "3px",
+                                }}
+                              >
+                                &#8377;
+                                {addCommasToNumber(
+                                  variantDetails?.pricing?.price?.gross?.amount
+                                )}
+                              </span>
+                            </>
+                          ) : (
+                            <>
+                              E-Gift Vouchure of{" "}
+                              <span
+                                style={{
+                                  fontWeight: "bold",
+                                  paddingLeft: "3px",
+                                }}
+                              >
+                                {" "}
+                                &#8377;
+                                {addCommasToNumber(
+                                  productItem?.pricing?.priceRange?.start?.gross
+                                    ?.amount ||
+                                    productItem?.node?.pricing?.priceRange
+                                      ?.start?.gross?.amount
+                                )}
+                              </span>
+                            </>
+                          )}
+                        </p>
+                      </div>
+                    ) : (
+                      <div className="tp-product-price-wrapper-2">
+                        {RegularPrice(
+                          productItem?.defaultVariant?.costPrice,
+                          productItem?.pricing?.priceRange?.start?.gross?.amount
+                        ) && (
+                          <span
+                            className="pr-5"
+                            style={{
+                              textDecoration: "line-through",
+                              color: "gray",
+                            }}
+                          >
+                            {variantDetails ? (
+                              <>
+                                E-Gift Vouchure of{" "}
+                                <span
+                                  style={{
+                                    fontWeight: "bold",
+                                    paddingLeft: "3px",
+                                  }}
+                                >
+                                  {"$"}{" "}
+                                  {addCommasToNumber(
+                                    variantDetails?.pricing?.price?.gross
+                                      ?.amount
+                                  )}
+                                </span>
+                              </>
+                            ) : (
+                              <>
+                                E-Gift Vouchure of{" "}
+                                <span
+                                  style={{
+                                    fontWeight: "bold",
+                                    paddingLeft: "3px",
+                                  }}
+                                >
+                                  {"$"}
+                                  {addCommasToNumber(
+                                    productItem?.defaultVariant?.costPrice
+                                  )}
+                                </span>
+                              </>
+                            )}
+                          </span>
+                        )}
+                        <p style={{ color: "grey", marginBottom: "0px" }}>
+                          {variantDetails ? (
+                            <>
+                              {"$"}
+                              {addCommasToNumber(
+                                variantDetails?.pricing?.price?.gross?.amount
+                              )}
+                            </>
+                          ) : (
+                            <>
+                              {"$"}
+                              {addCommasToNumber(
+                                productItem?.pricing?.priceRange?.start?.gross
+                                  ?.amount ||
+                                  productItem?.node?.pricing?.priceRange?.start
+                                    ?.gross?.amount
+                              )}
+                            </>
+                          )}
+                        </p>
+                      </div>
+                    )}
+                  </div>
+                </div>
+              )}
+            </div>
+          ) : null}
 
           <div className="d-flex flex-wrap justify-content-between">
             {productItem?.defaultVariant?.quantityAvailable != 0 && (
@@ -1499,7 +1506,7 @@ const DetailsWrapper1 = ({
                 </div>
               </div>
             )}
-            {!(!isGiftCard && productItem?.sizeGuide !== null)  && (
+            {(!isGiftCard && productItem?.sizeGuide !== null)  && (
               <div className="pt-2 pb-2">
                 <button
                   onClick={() => setIsModelOpen(true)}
@@ -1509,10 +1516,8 @@ const DetailsWrapper1 = ({
                   Size Chart
                 </button>
               </div>
-           )} 
+            )}
           </div>
-
-
         </div>
 
         {/* Delivery */}
@@ -1522,15 +1527,13 @@ const DetailsWrapper1 = ({
         </div>
 
         {/* Warranty */}
-       
-         {/* <div className="warranty-box my-3 p-3  rounded bg-white text-center">
+
+        {/* <div className="warranty-box my-3 p-3  rounded bg-white text-center">
           <p className="mb-0 text-black">
             <strong>1 YEAR</strong> Warranty
             
           </p>
         </div> */}
-        
-       
 
         {/* Offers */}
         {/* <div className="offer-box my-3 p-3 rounded bg-white">
@@ -1653,14 +1656,14 @@ const DetailsWrapper1 = ({
                     }
                   )}
                   {
-                  <div className="pt-10">
-                    {
-                      productItem?.metadata?.filter(
-                        (item) => item.key === "description"
-                      )?.[0]?.value
-                    }
-                  </div>
-                }
+                    <div className="pt-10">
+                      {
+                        productItem?.metadata?.filter(
+                          (item) => item.key === "description"
+                        )?.[0]?.value
+                      }
+                    </div>
+                  }
                 </>
                 {/* )} */}
                 {/* <div
@@ -1895,7 +1898,8 @@ const DetailsWrapper1 = ({
               <ProductDetailsCountdown offerExpiryTime={offerDate?.endDate} />
             )}
 
-            <div>
+            <div className="d-flex justify-content-between flex-wrap">
+               <div>
               <RWebShare
                 data={{
                   text: productItem.name,
@@ -1904,12 +1908,24 @@ const DetailsWrapper1 = ({
                 }}
                 onClick={() => console.log("shared successfully!")}
               >
-                <button className="tp-btn tp-btn-border ">
-                  SHARE THIS PAGE
+                <button className="tp-btn tp-btn-border mt-2 mt-sm-0">
+                  Share This Page
                 </button>
               </RWebShare>
             </div>
+
             {!isGiftCard && (
+              <div
+                className="tp-btn tp-btn-border mt-2 mt-sm-0"
+                style={{ color: "#fff" }}
+                onClick={() => setIsProductModelOpen(true)}
+              >
+                To Customize Product
+              </div>
+            )}
+            </div>
+           
+            {/* {!isGiftCard && (
               <div
                 className="text-capitalize text-decordation  cursor-pointer mt-20"
                 style={{ color: "#b4633a" }}
@@ -1917,7 +1933,7 @@ const DetailsWrapper1 = ({
               >
                 To Customize Product
               </div>
-            )}
+            )} */}
           </div>
         </div>
       </div>

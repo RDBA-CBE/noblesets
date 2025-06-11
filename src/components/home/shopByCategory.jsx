@@ -26,6 +26,10 @@ const InstagramSection = () => {
                 src="/assets/img/home/shop_by_category/img-1.png"
                 alt="Pedants"
                 className="category-img"
+                onClick={() => {
+                  
+                 router.push("/shop");
+                  }}
                 
               />
               <div className="category-button">

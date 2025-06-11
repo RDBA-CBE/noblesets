@@ -17,6 +17,9 @@ const schema = Yup.object().shape({
   password: Yup.string().required().min(6).label("Password"),
 });
 const CheckoutLoginForm = ({update}) => {
+
+  console.log("update",update);
+  
   const [showPass, setShowPass] = useState(false);
 
   const [loginUser, {}] = useLoginUserMutation();
@@ -76,9 +79,20 @@ const CheckoutLoginForm = ({update}) => {
 
   return (
     <form onSubmit={handleSubmit(onSubmit)}>
-      <div className="tp-login-input-wrapper" >
+      <div style={{
+                            marginTop:"-20px",
+                            color:"black",
+                            fontSize:"18px",
+                            fontWeight:"700",
+                            cursor:"pointer",
+                            textAlign:"right"
+                          }}
+                           onClick={() => update()}
+                          >X</div>
+      <div className="tp-login-input-wrapper mt-3" >
         <div className="tp-login-input-box">
           <div className="tp-login-input">
+            
             <input
               {...register("email", { required: `Email is required!` })}
               name="email"

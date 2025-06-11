@@ -15,7 +15,7 @@ const ForgotPage = () => {
       {/* <HeaderTwo style_2={true} /> */}
       <HeaderSection />
 
-      <CommonBreadcrumb title="Forgot Password" subtitle="Reset Password" center={true} />
+      {/* <CommonBreadcrumb title="Forgot Password" subtitle="Reset Password" center={true} /> */}
       <ForgotArea />
       <HomeFooter />
     </Wrapper>
