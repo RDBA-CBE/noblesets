@@ -15,7 +15,7 @@ export default function ShopByBudget() {
         
       >
         <div className="feature-main mb-50" >
-          <h5 className="sub-ti"><b className="pe-2">✦</b> Lorem ipsum dolor</h5>
+          <h5 className="sub-ti"><b className="pe-2">✦</b>Curated jewels to match your style & spend</h5>
           <h4
             className="feature-adipisicing main-ti"
             

@@ -58,7 +58,7 @@ const HomeCategorySection = () => {
           <div className="row">
             <div className="col-12">
               <div className="feature-main mb-50" >
-                <h5 className="sub-ti" > <b className="pe-2">✦</b> Duis Irure dolor</h5>
+                <h5 className="sub-ti" > <b className="pe-2">✦</b> Indulge in the finest expression of bespoke elegance</h5>
                 <h4
                   className="feature-adipisicing main-ti"
                  

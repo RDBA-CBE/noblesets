@@ -2685,7 +2685,7 @@ background-image: url("/assets/img/home/bg-ele/flower-ele-2.png");
 .cart-page::after{
    content: "";
   position: absolute;
-  bottom: 60px;
+  bottom: -60px;
   left: 20px;
   height: 200px;
   width: 100px;
@@ -2722,7 +2722,7 @@ background-image: url("/assets/img/home/bg-ele/flower-ele-2.png");
 .checkout-page-main::after{
    content: "";
   position: absolute;
-  bottom: 60px;
+  bottom: -60px;
   left: 20px;
   height: 200px;
   width: 100px;

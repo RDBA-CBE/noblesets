@@ -12,7 +12,7 @@ export default function GiftSection() {
         <div class="row align-items-center justify-content-between g-5 px-3">
           <div class="col-12 col-lg-6 px-3 px-lg-5" data-aos="fade-right">
             <div className="">
-              <h5 className="sub-ti" > <b className="pe-2">✦</b>  Exceptuer occaecat</h5>
+              <h5 className="sub-ti" > <b className="pe-2">✦</b> Personalised, precious and profoundly meaningful </h5>
               <h4
                 className="feature-adipisicing main-ti"
                 
@@ -22,9 +22,8 @@ export default function GiftSection() {
             </div>
 
             <p class="text-muted sub-ti">
-              Eternalize precious moments by gifting your loved ones everlasting
-              jewels. We have splendid adornments for every occasion with no
-              shortage of choice. Make every occasion memorable.
+             At Noble Sets, we believe gifting is an art; hence, every piece we craft is a story waiting to
+be told. Our curated gifting collection caters to every emotion, relationship and occasion.
             </p>
 
             <div class="row  gap-3  gap-sm-0 pt-4 pt-md-2">
