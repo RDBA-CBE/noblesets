@@ -513,8 +513,8 @@ const Menus1 = () => {
                       clickable: true,
                     }}
                     breakpoints={{
-                      1400: { slidesPerView: 4 },
-                      1200: { slidesPerView: 4 },
+                      1500: { slidesPerView: 5 },
+                      1380: { slidesPerView: 4 },
                       992: { slidesPerView: 3 },
                       768: { slidesPerView: 2 },
                       576: { slidesPerView: 2 },
@@ -546,6 +546,7 @@ const Menus1 = () => {
                       display: "flex",
                       alignItems: "center",
                       justifyContent: "center",
+                      height:"100%"
                     }}
                   >
                     Product Not Found

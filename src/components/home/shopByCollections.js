@@ -11,25 +11,25 @@ import { useRouter } from "next/router";
 const collections = [
   {
     title: "Bracelet",
-    desc: "Excepteur sint occaecat",
+    desc: "Wrap your wrist in elegance",
     price: "₹15000 - ₹20000",
     img: "/assets/img/home/collection/1.png",
   },
   {
     title: "Rings",
-    desc: "Lorem ipsum dolor",
+    desc: "Promise of style in every curve",
     price: "₹25000 - ₹30000",
     img: "/assets/img/home/collection/2.png",
   },
   {
     title: "Chains",
-    desc: "Excepteur sint occaecat",
+    desc: "Grace in every link",
     price: "₹10000 - ₹25000",
     img: "/assets/img/home/collection/3.png",
   },
   {
     title: "Earrings",
-    desc: "Lorem ipsum dolor",
+    desc: "Crafted to catch every eye",
     price: "₹25000 - ₹30000",
     img: "/assets/img/home/collection/4.png",
   },
@@ -60,9 +60,9 @@ export default function ShopByCollections() {
     >
       <div className="">
       <div className="section-wd d-flex flex-column flex-md-row justify-content-between align-items-start align-items-md-center shp-by-col" style={{padding:"0 30px"}}>
-        <div className="mb-3 mb-md-0">
-          <div className="mb-50" >
-            <h5 className="sub-ti"><b className="pe-2">✦ </b> Excepteur occaecat</h5>
+        <div className=" mb-md-0">
+          <div className="mb-0 mb-md-5" >
+            <h5 className="sub-ti"><b className="pe-2">✦ </b>Timeless designs thoughtfully curated</h5>
             <h4
               className="feature-adipisicing main-ti"
               

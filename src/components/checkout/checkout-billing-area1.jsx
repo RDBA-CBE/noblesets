@@ -1558,12 +1558,12 @@ const CheckoutBillingArea1 = () => {
           )}
           {cart?.length > 0 && (
             <div className="row">
-              <div className=" ">
+              <div className=" " style={{zIndex:"10"}}>
                 <div className="tp-checkout-verify">
                   {!state.token && (
                     <div
                       className="col-xl-7 col-lg-12 px-2"
-                      style={{ borderRadius: "10px" }}
+                      style={{ borderRadius: "10px" ,zIndex:"10"}}
                     >
                       <CheckoutLogin />
                     </div>
@@ -1572,7 +1572,7 @@ const CheckoutBillingArea1 = () => {
                     className={`tp-checkout-verify-item px-2 ${
                       !state.token ? "col-xl-5 col-lg-12" : "col-12"
                     }`}
-                    style={{ borderRadius: "10px" }}
+                    style={{ borderRadius: "10px" ,zIndex:"10"}}
                   >
                     <p className="tp-checkout-verify-reveal">
                       Have a coupon?{" "}
@@ -1661,7 +1661,7 @@ const CheckoutBillingArea1 = () => {
           {/* <div className="container-fluid"> */}
           <div className="row ">
             {/* Billing Details */}
-            <div className="col-lg-7  ">
+            <div className="col-lg-7  " style={{zIndex:"10"}}>
               <div className="checkoutform py-5 px-3">
                 <div className="d-flex justify-content-between">
                   <h4 className="mb-4 checkout-title">Billing Details</h4>
@@ -2344,7 +2344,7 @@ const CheckoutBillingArea1 = () => {
             </div>
 
             {/* Order Summary */}
-            <div className="col-lg-5  mt-3 mt-lg-0">
+            <div className="col-lg-5  mt-3 mt-lg-0" style={{zIndex:"10"}}>
               <div ref={thumbRef} className="manual-sticky-thumb">
                 <div className=" checkoutPrice py-5 px-3">
                   <h4 className="mb-4 checkout-title ">Your Order</h4>
