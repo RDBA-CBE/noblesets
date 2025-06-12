@@ -63,22 +63,33 @@ const CategoryContent = ({
   const router = useRouter();
 
   return (
-    <div className="row" style={{ paddingBottom: "30px",height:"100%" }}>
-      <div className="col-3" style={{ paddingLeft: "30px", height:"100%" , overflowY:"scroll", scrollbarWidth:"thin"}}>
-        {title &&
+    <div className="row" style={{ paddingBottom: "30px", height: "100%" }}>
+      <div
+        className="col-3"
+        style={{
+          paddingLeft: "30px",
+          height: "100%",
+          overflowY: "scroll",
+          scrollbarWidth: "thin",
+        }}
+      >
+        {title && (
           <div style={{ paddingLeft: "25px" }}>
-            <h6 style={{ paddingBottom: "15px", fontWeight: "500" }}>{title}</h6>
+            <h6 style={{ paddingBottom: "15px", fontWeight: "500" }}>
+              {title}
+            </h6>
           </div>
-        }
+        )}
 
         {subCategoryLoading ? (
           <SingleLoader loading={subCategoryLoading} />
         ) : (
           <div>
-            <ul style={{ margin: "0px 25px 10px " , height:"100%"}}>
+            <ul style={{ margin: "0px 25px 10px ", height: "100%" }}>
               {lists?.slice(0, 12)?.map((item) => {
                 return (
-                  <li className="sub-sub-menu"
+                  <li
+                    className="sub-sub-menu"
                     style={{
                       cursor: "pointer",
                       // borderBottom: "1px solid #e8e3e3",
@@ -88,7 +99,7 @@ const CategoryContent = ({
                       alignItems: "center",
                       padding: "10px",
                       fontSize: "18px",
-                      borderRadius: "10px"
+                      borderRadius: "10px",
                     }}
                     onMouseEnter={() => SubCatProduct(item)}
                     key={item?.node?.slug}
@@ -108,7 +119,7 @@ const CategoryContent = ({
                         color: "black",
                         cursor: "pointer",
                         fontSize: "18px",
-                        textTransform: "capitalize"
+                        textTransform: "capitalize",
                       }}
                       onClick={() => {
                         router.push({
@@ -214,37 +225,38 @@ const CategoryComponent = (props) => {
       //     </SwiperSlide>
       //   ))}
       // </Swiper>
-       <Swiper
-                    slidesPerView={productList?.length > 0 ? 3 : 4}
-                    spaceBetween={10}
-                    pagination={{
-                      el: ".tp-category-slider-dot-4",
-                      clickable: true,
-                    }}
-                    breakpoints={{
-                      1400: { slidesPerView: 3 },
-                      1200: { slidesPerView: 3 },
-                      992: { slidesPerView: 3 },
-                      768: { slidesPerView: 2 },
-                      576: { slidesPerView: 2 },
-                      0: { slidesPerView: 1 },
-                    }}
-                    modules={[Pagination]}
-                    className="tp-category-slider-active-4 swiper-container"
-                  >
-                    {productList?.map((item) => (
-                      <SwiperSlide key={item?.node?.id}>
-                        <div
-                          className={`${productList?.length > 0 ? "col-lg-4" : "col-lg-3"
-                            } menus-product-list`}
-                          style={{ padding: "0px 8px 0px 0px", width: "250px" }}
-                        >
-                          {/* <MenusProductSlider product={item} /> */}
-                          <MenusProductSlider1 product={item} />
-                        </div>
-                      </SwiperSlide>
-                    ))}
-                  </Swiper>
+      <Swiper
+        slidesPerView={productList?.length > 0 ? 3 : 4}
+        spaceBetween={10}
+        pagination={{
+          el: ".tp-category-slider-dot-4",
+          clickable: true,
+        }}
+        breakpoints={{
+          1400: { slidesPerView: 3 },
+          1200: { slidesPerView: 3 },
+          992: { slidesPerView: 3 },
+          768: { slidesPerView: 2 },
+          576: { slidesPerView: 2 },
+          0: { slidesPerView: 1 },
+        }}
+        modules={[Pagination]}
+        className="tp-category-slider-active-4 swiper-container"
+      >
+        {productList?.map((item) => (
+          <SwiperSlide key={item?.node?.id}>
+            <div
+              className={`${
+                productList?.length > 0 ? "col-lg-4" : "col-lg-3"
+              } menus-product-list`}
+              style={{ padding: "0px 8px 0px 0px", width: "250px" }}
+            >
+              {/* <MenusProductSlider product={item} /> */}
+              <MenusProductSlider1 product={item} />
+            </div>
+          </SwiperSlide>
+        ))}
+      </Swiper>
     ) : (
       <div
         style={{
@@ -252,7 +264,7 @@ const CategoryComponent = (props) => {
           display: "flex",
           alignItems: "center",
           justifyContent: "center",
-          height:"100%"
+          height: "100%",
         }}
       >
         Product Not Found
@@ -360,7 +372,6 @@ const Menus1 = () => {
   };
 
   const SubCatProduct = async (item) => {
-
     const res = await priceFilter({
       filter: { categorySlugs: item?.slug },
       sortBy: { direction: "DESC", field: "CREATED_AT" },
@@ -374,20 +385,31 @@ const Menus1 = () => {
   return (
     <ul style={{ display: "flex" }}>
       <li>
-        <Link href="/shop" style={{ fontWeight: "500", color: "black" }}>
+        <Link
+          href="/shop"
+          style={{
+            fontWeight: "500",
+            color: "black",
+            fontFamily: "Nunito, sans-serif",
+          }}
+        >
           All Jewellery
         </Link>
       </li>
       <li className="has-dropdown has-mega-menu">
         <Link
           href="/shop"
-          style={{ fontWeight: "500", color: "black" }}
+          style={{
+            fontWeight: "500",
+            color: "black",
+            fontFamily: "Nunito, sans-serif",
+          }}
           onMouseEnter={() => hoverCategoryProduct("necklaces")}
         >
           Collections
         </Link>
         <div className="home-menu tp-submenu tp-mega-menu">
-          <div className="row" style={{height:"100%"}}>
+          <div className="row" style={{ height: "100%" }}>
             <div
               className="col-lg-2"
               style={{
@@ -395,15 +417,16 @@ const Menus1 = () => {
                 padding: "0px",
                 color: "black",
                 // overflowY:"scroll",
-                height:"100%"
+                height: "100%",
               }}
             >
-              <ul className="cat-main-dd" style={{height:"100%"}}>
+              <ul className="cat-main-dd" style={{ height: "100%" }}>
                 {state.categoryList?.map((item) => {
                   return (
                     <li
-                      className={`shop-submenu-catageroy-list ${lastHoveredCategory == item?.slug ? "active" : ""
-                        }`}
+                      className={`shop-submenu-catageroy-list ${
+                        lastHoveredCategory == item?.slug ? "active" : ""
+                      }`}
                       onMouseEnter={() => hoverCategoryProduct(item?.slug)}
                       style={{
                         display: "flex",
@@ -436,8 +459,9 @@ const Menus1 = () => {
                           marginBottom: "0px",
                           textTransform: "capitalize",
                         }}
-                        className={`shop-submenu-catageroy-list-a cursor-pointer ${lastHoveredCategory == item?.slug ? "active" : ""
-                          }`}
+                        className={`shop-submenu-catageroy-list-a cursor-pointer ${
+                          lastHoveredCategory == item?.slug ? "active" : ""
+                        }`}
                         onClick={() => {
                           router.push({
                             pathname: "/shop",
@@ -456,8 +480,9 @@ const Menus1 = () => {
 
                       <RightOutlined
                         style={{ cursor: "pointer", marginBottom: "0px" }}
-                        className={`shop-submenu-catageroy-list-a ${lastHoveredCategory == item?.slug ? "active" : ""
-                          }`}
+                        className={`shop-submenu-catageroy-list-a ${
+                          lastHoveredCategory == item?.slug ? "active" : ""
+                        }`}
                       />
                     </li>
                   );
@@ -475,14 +500,13 @@ const Menus1 = () => {
                     subCategoryList={state.subCategoryList}
                     subCategoryLoading={subCatLoading}
                     SubCatProduct={SubCatProduct}
-                    style={{height:"100%"}}
+                    style={{ height: "100%" }}
                   />
                 ) : productLoading ? (
                   <SingleLoader loading={productLoading} />
                 ) : state.productList?.length > 0 ? (
-                  
                   <Swiper
-                    slidesPerView= {4}
+                    slidesPerView={4}
                     spaceBetween={10}
                     pagination={{
                       el: ".tp-category-slider-dot-4",
@@ -502,8 +526,11 @@ const Menus1 = () => {
                     {state.productList?.map((item) => (
                       <SwiperSlide key={item?.node?.id}>
                         <div
-                          className={`${state.subCategoryList?.length > 0 ? "col-lg-4" : "col-lg-3"
-                            } menus-product-list`}
+                          className={`${
+                            state.subCategoryList?.length > 0
+                              ? "col-lg-4"
+                              : "col-lg-3"
+                          } menus-product-list`}
                           style={{ padding: "0px 8px 0px 0px", width: "250px" }}
                         >
                           {/* <MenusProductSlider product={item} /> */}
@@ -525,7 +552,6 @@ const Menus1 = () => {
                   </div>
                 )}
               </div>
-
             </div>
           </div>
         </div>
@@ -537,14 +563,25 @@ const Menus1 = () => {
             pathname: "/shop",
             query: { category: "silver" },
           }}
-          style={{ fontWeight: "500", color: "black" }}
+          style={{
+            fontWeight: "500",
+            color: "black",
+            fontFamily: "Nunito, sans-serif",
+          }}
         >
           Silver
         </Link>
       </li>
       {/* {state.token && ( */}
       <li>
-        <Link href="/gift-card" style={{ fontWeight: "500", color: "black" }}>
+        <Link
+          href="/gift-card"
+          style={{
+            fontWeight: "500",
+            color: "black",
+            fontFamily: "Nunito, sans-serif",
+          }}
+        >
           Gift Card
         </Link>
       </li>
