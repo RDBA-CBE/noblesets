@@ -63,14 +63,15 @@ const CategoryContent = ({
   const router = useRouter();
 
   return (
-    <div className="row" style={{ paddingBottom: "30px", height: "100%" }}>
+    <div className="row m-0" style={{ paddingBottom: "30px", height: "100%" }}>
       <div
         className="col-3"
         style={{
-          paddingLeft: "30px",
+          // paddingLeft: "30px",
           height: "100%",
           overflowY: "scroll",
           scrollbarWidth: "thin",
+          padding:"0"
         }}
       >
         {title && (
@@ -85,21 +86,22 @@ const CategoryContent = ({
           <SingleLoader loading={subCategoryLoading} />
         ) : (
           <div>
-            <ul style={{ margin: "0px 25px 10px ", height: "100%" }}>
+            <ul style={{  height: "100%" }}>
               {lists?.slice(0, 12)?.map((item) => {
                 return (
                   <li
                     className="sub-sub-menu"
                     style={{
                       cursor: "pointer",
+                      background:"#fbdccc",
                       // borderBottom: "1px solid #e8e3e3",
                       // marginBottom: "10px",
                       display: "flex",
                       justifyContent: "center",
                       alignItems: "center",
                       padding: "10px",
-                      fontSize: "18px",
-                      borderRadius: "10px",
+                      fontSize: "16px",
+                      borderRadius: "5px",
                     }}
                     onMouseEnter={() => SubCatProduct(item)}
                     key={item?.node?.slug}
@@ -116,9 +118,9 @@ const CategoryContent = ({
                       style={{
                         fontWeight: "500",
                         marginBottom: "0px",
-                        color: "black",
+                        color: "#643333",
                         cursor: "pointer",
-                        fontSize: "18px",
+                        fontSize: "16px",
                         textTransform: "capitalize",
                       }}
                       onClick={() => {
@@ -130,6 +132,7 @@ const CategoryContent = ({
                     >
                       {item?.node?.name.toLowerCase()}
                     </a>
+                    
                   </li>
                 );
               })}
@@ -185,8 +188,8 @@ const CategoryContent = ({
           // </div>
         )}
       </div>
-      <div className="col-9">
-        <div className="row" style={{ padding: "20px" }}>
+      <div className="col-9" style={{height:"350px"}}>
+        <div className="row h-100" style={{ padding: "20px" }}>
           {children}
         </div>
       </div>
@@ -409,7 +412,7 @@ const Menus1 = () => {
           Collections
         </Link>
         <div className="home-menu tp-submenu tp-mega-menu">
-          <div className="row" style={{ height: "100%" }}>
+          <div className="row m-0" style={{ height: "100%" }}>
             <div
               className="col-lg-2"
               style={{
@@ -489,7 +492,7 @@ const Menus1 = () => {
                 })}
               </ul>
             </div>
-            <div className="col-lg-10">
+            <div className="col-lg-10 h-100">
               <div className="tp-mega-menu-item h-100">
                 {state.subCategoryList?.length > 0 ? (
                   <CategoryComponent

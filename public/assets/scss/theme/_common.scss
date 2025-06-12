@@ -342,7 +342,7 @@
 }
 
 .shop-submenu-catageroy-list {
-  padding: 15px 0px 15px 10px;
+  padding: 10px 0px 10px 10px;
   margin: 0px !important;
 }
 .shop-submenu-catageroy-list-a {
@@ -360,7 +360,7 @@
 }
 
 .shop-submenu-catageroy-list.active:hover .shop-submenu-catageroy-list-a {
-  color: Black !important;
+  color: #643333 !important;
 }
 
 .shop-submenu-catageroy-list-a.active {
@@ -2153,12 +2153,13 @@ footer input[type=email]::placeholder{
 
 
   .shop-submenu-catageroy-list-a{
-    color: #000 !important;
+    color: #643333 !important;
   }
   .shop-submenu-catageroy-list.active:hover{
-    background: linear-gradient(to right, color-mix(in srgb, #fbdccc 40%, #e09a7a), #e09a7a);;
+    // background: linear-gradient(to right, color-mix(in srgb, #fbdccc 40%, #e09a7a), #e09a7a);
+    background: #fff;
     color: #fff !important;
-    border-radius: 10px;
+    border-radius: 5px !important;
   }
 
    .shop-submenu-catageroy-list.active:hover a{ 
@@ -2166,17 +2167,28 @@ footer input[type=email]::placeholder{
    }
 
    .sub-sub-menu:hover{
-    background: linear-gradient(to right, color-mix(in srgb, #fbdccc 40%, #e09a7a), #e09a7a);;
+    background-color: #e09979 !important;
+    // background: linear-gradient(to right, color-mix(in srgb, #fbdccc 40%, #e09a7a), #e09a7a);
+    // border: 1px solid #fbdccc;
     color: #fff !important;
-    border-radius: 10px;
+    border-radius: 5px;
    }
 
    .sub-sub-menu:hover a{ 
-    color: #fff ;
+    color: #fff !important ;
    }
 
   .main-menu > nav > ul > li .tp-mega-menu{
     border-radius: 10px;
+  }
+
+  .tp-main-menu-mobile ul li:hover > a{
+    color: #643333 !important;
+  }
+
+
+  header .tp-product-action-btn-3:hover{
+    border: none !important;
   }
 
   @media (max-width:1200px){
@@ -2533,11 +2545,14 @@ color: #fff !important;
 }
 
 .main-menu > nav > ul > li > .tp-submenu{
-  height: 500px !important;
+  height: 380px !important;
 }
 .cat-main-dd{
   overflow-y: scroll;
   scrollbar-width: thin;
+  background-color: #fbdccc !important;
+  border-radius: 5px;
+  padding: 10px 5px;
 }
 
 
