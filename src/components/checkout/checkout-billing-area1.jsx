@@ -399,9 +399,16 @@ const CheckoutBillingArea1 = () => {
       //   )
       // );
 
+      // const hasGiftCard = state.orderData?.lines?.some(
+      //   (line) => line?.variant?.product?.category.name === "Gift Card"
+      // );
+
       const hasGiftCard = state.orderData?.lines?.some(
-        (line) => line?.variant?.product?.category.name === "Gift Card"
+        (line) =>
+          Array.isArray(line?.variant?.product?.category) &&
+          line.variant.product.category.some((cat) => cat.name === "Gift Card")
       );
+
       // let totalValid;
       // if (checkChannel() === "india-channel") {
       //   totalValid = state.total > 3000 && state.total < 30000;
@@ -415,6 +422,7 @@ const CheckoutBillingArea1 = () => {
       } else {
         totalValid = state.total > 39 && state.total < 390;
       }
+
       if (totalValid && !hasGiftCard) {
         // const country = state.diffAddress
         //   ? state.selectedCountry1

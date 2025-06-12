@@ -405,6 +405,17 @@ const DetailsWrapper1 = ({
     }
   }, []);
 
+  useEffect(() => {
+    if (isModalOpen || isProductModalOpen) {
+      document.body.style.overflow = "hidden";
+    } else {
+      document.body.style.overflow = "";
+    }
+    return () => {
+      document.body.style.overflow = "";
+    };
+  }, [isModalOpen, isProductModalOpen]);
+
   const [previousHovered, setPreviousHovered] = useState(false);
   const [nextHovered, setNextHovered] = useState(false);
   const [nextProduct, setNextProduct] = useState();
@@ -1506,7 +1517,7 @@ const DetailsWrapper1 = ({
                 </div>
               </div>
             )}
-            {(!isGiftCard && productItem?.sizeGuide !== null)  && (
+            {(!isGiftCard && productItem?.sizeGuide !== null ) && (
               <div className="pt-2 pb-2">
                 <button
                   onClick={() => setIsModelOpen(true)}
@@ -1899,32 +1910,32 @@ const DetailsWrapper1 = ({
             )}
 
             <div className="d-flex justify-content-between flex-wrap">
-               <div>
-              <RWebShare
-                data={{
-                  text: productItem.name,
-                  url: window.location.href,
-                  title: "Nobleset",
-                }}
-                onClick={() => console.log("shared successfully!")}
-              >
-                <button className="tp-btn tp-btn-border mt-2 mt-sm-0">
-                  Share This Page
-                </button>
-              </RWebShare>
+              <div>
+                <RWebShare
+                  data={{
+                    text: productItem.name,
+                    url: window.location.href,
+                    title: "Nobleset",
+                  }}
+                  onClick={() => console.log("shared successfully!")}
+                >
+                  <button className="tp-btn tp-btn-border mt-2 mt-sm-0">
+                    Share This Page
+                  </button>
+                </RWebShare>
+              </div>
+
+              {!isGiftCard && (
+                <div
+                  className="tp-btn tp-btn-border mt-2 mt-sm-0 "
+                  style={{ color: "#fff",cursor:"pointer" }}
+                  onClick={() => setIsProductModelOpen(true)}
+                >
+                  To Customize Product
+                </div>
+              )}
             </div>
 
-            {!isGiftCard && (
-              <div
-                className="tp-btn tp-btn-border mt-2 mt-sm-0 cursor-pointer"
-                style={{ color: "#fff" }}
-                onClick={() => setIsProductModelOpen(true)}
-              >
-                To Customize Product
-              </div>
-            )}
-            </div>
-           
             {/* {!isGiftCard && (
               <div
                 className="text-capitalize text-decordation  cursor-pointer mt-20"
