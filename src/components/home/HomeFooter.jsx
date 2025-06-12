@@ -289,7 +289,7 @@ const HomeFooter = () => {
             </div>
 
             <div
-              className="d-flex justify-content-center"
+              className="d-flex justify-content-center mt-4"
               // style={{height:"330px",overflow:"hidden"}}
             >
               {/* <div> */}

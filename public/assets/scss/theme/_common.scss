@@ -515,7 +515,7 @@
   // height: 350px;
 }
      .tp-slider-thumb-4.mbl a{display: flex;width: 100%;height: 100%;}
-     .tp-slider-thumb-4.mbl a img{object-fit: contain !important;height: 100%;object-position: bottom !important;}
+     .tp-slider-thumb-4.mbl a img{object-fit: cover !important;height: 100%;object-position: bottom !important;}
   .tp-slider-thumb-4.desk{display: none;}
     //   .bnr .tp-slider-height-4 {
     //     min-height: 350px !important;
@@ -579,6 +579,15 @@
           right: -30px !important;
          }
 }
+
+@media ( max-width:900px){
+ .tp-brand-slider-button-prev {
+          left: -15px !important;
+         }
+         .tp-brand-slider-button-next{
+          right: -15px !important;
+         }
+        }
 
 @media ( max-width:1400px){
    .mbl-content{
@@ -1580,6 +1589,30 @@ hr.footer-divider {
   }
 }
 
+@media (max-width: 460px) {
+
+
+.footer-link {
+  font-size: 15px;
+}
+.download-text {
+  font-size: 15px;
+}
+.payment-item{
+    font-size: 15px;
+}
+footer .checkbox-label{
+  font-size: 15px;
+}
+.footer-input {
+  padding: 10px 26px !important;
+  height: 50px !important;
+}
+footer input[type=email]::placeholder{
+ font-size: 15px;
+}
+}
+
 
 .col-1-5 {
   width: 20%;
@@ -2525,7 +2558,7 @@ color: #fff !important;
 background-image: url("/assets/img/home/bg-ele/flower-ele-2.png");
  background-size: contain;
  background-repeat: no-repeat;
- z-index: 100;
+//  z-index: 100;
 }
 
 .shop-page .ShopByCollections .card{

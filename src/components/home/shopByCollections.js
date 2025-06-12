@@ -60,8 +60,8 @@ export default function ShopByCollections() {
     >
       <div className="">
       <div className="section-wd d-flex flex-column flex-md-row justify-content-between align-items-start align-items-md-center shp-by-col" style={{padding:"0 30px"}}>
-        <div className="mb-3 mb-md-0">
-          <div className="mb-50" >
+        <div className=" mb-md-0">
+          <div className="mb-0 mb-md-5" >
             <h5 className="sub-ti"><b className="pe-2">✦ </b> Excepteur occaecat</h5>
             <h4
               className="feature-adipisicing main-ti"
