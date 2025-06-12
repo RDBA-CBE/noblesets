@@ -119,9 +119,9 @@
   visibility: hidden;
   @include tp-transition();
 
-  &:hover {
-    cursor: url("../../img/icon/cross-out.png"), pointer;
-  }
+  // &:hover {
+  //   cursor: url("../../img/icon/cross-out.png"), pointer;
+  // }
 }
 
 .body-overlay.opened {
