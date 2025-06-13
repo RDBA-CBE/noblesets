@@ -10,14 +10,10 @@ const PrivacyPolicyMain = () => {
 
         <div>
           <p className="terms-para">
-            This Privacy Policy is intended to inform you about how the personal
-            data is collected from you, how your personal data may be used and
-            disclosed, how you can control the use of your personal data, and
-            how your personal data is protected when you use the Noblesets website
-            (“Website”).
+            We understand that your privacy is of paramount importance to you, so your privacy is very important to us and Sree Thangam Jewellery works to ensure that the users privacy is protected when using our service. SreeThangamJewellery.com has a policy setting out how the personal information of user is processed and protected. Users can visit our website to find the revisions (if any) made to the user policy. Sree Thangam Jewellery will not make any financial benefits by selling or leasing the user information to any third party.
           </p>
 
-          <p className="terms-para">
+          {/* <p className="terms-para">
             Noblesets Jewels (“Noblesets”, “We”, “Us”, “Our”) is committed to the
             compliance of applicable Privacy Laws in the country where Noblesets’s
             product is distributed. Protecting the privacy and security of your
@@ -25,41 +21,31 @@ const PrivacyPolicyMain = () => {
             our business by abiding by the laws applicable on data privacy and
             data security in the country where Noblesets product is distributed to
             you.
-          </p>
+          </p> */}
 
-          <p className="terms-heading">Information That We Collect</p>
-
-          <p className="terms-para">
-            Upon you visiting our Website, we collect the following categories
-            of Information:
-          </p>
-
-          <p className="terms-sub-heading">
-            Information that We receive from you:
-          </p>
+          <p className="terms-heading">Information from User</p>
 
           <p className="terms-para">
-            When you register for certain services or features, we shall request
-            you to provide for your personal data such as full name, contact
-            number, postal address, email address, username, log-in password.
+            Sree Thangam Jewellery follows the standard industry practices to maintain your personal information. We take responsibility in storing the personal data viz, Name, address, email address and phone number that you have willingly provided while registering the account with us or while placing order or during transaction or while subscribing newsletter or participating in any events or other promotions or while providing feedback. Sree Thangam Jewellery.com will not be getting any information regarding the financial transactions. Credit/debit card or banking details will be provided by the user only while using the Payment gateway.
           </p>
 
-          <p className="terms-sub-heading">Information that We collect:</p>
+       <p className="terms-heading">Information from User</p>
 
           <p className="terms-para">
-            When you visit our Website, we shall automatically collect the
-            information such as your browser type, operating system, your
-            computer’s Internal Protocol (IP) address, web pages, links that you
-            visit or advertisements that you view.
+           The information provided by the user will be used to fulfill our commitment to the user and to provide sufficient information from our side benefiting them and for verifying their order and to communicate with them for getting information. This also includes letting the user know the latest offers that we think may interest you (by analyzing your personal information). If the user at any point of time wishes not to receive any such messages they may contact the support team by email and let them know their interest and decision. We keep and use their personal information as long as the user is interested in letting us use it or for as long as required by the law.
+          </p>
+
+          <p className="terms-heading">Information Sharing</p>
+
+          <p className="terms-para">
+            Sree Thangam Jewellery will never share any of its website users personal information to any other company for spam or mass mailing or for marketing purposes. Payments and other financial transactions on the website are processed by a third party, which normally adheres to a strict policy regarding confidentiality agreement which limit their use of such information and are bound to the terms and conditions of the third party’s payment gateway process. However, details about financial transaction will never be stored or tracked by any of the system or software of Sree Thangam Jewellery.com. We have a non-disclosure agreement with this third party, and they are certified by all major card issuers to hold details securely.
           </p>
 
           <p className="terms-heading">
-            Usage Of The Information Collected By Us
+           Duration of Information Stored
           </p>
           <p className="terms-para">
-            Your information is used by us to provide our services and to
-            enhance your customer experience. Further We may use your
-            information for the following:
+           The personal details of the user shall remain with us as long as the user requires it to serve the purpose of the data to exist with us or as long as required under law. Users may officially inform the support team that their data shall not be used by the STJ to communicate with them. We shall remove their personal data from the list for communication; however, it shall remain with us for any kind of legal verification as required by the Government of India.
           </p>
 
           <ul className="terms-lists">

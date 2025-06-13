@@ -87,11 +87,14 @@ const HomeFooter = () => {
               </div>
               <div className="col-6 col-lg-3 col-xl-2">
                 <h3 className="footer-title">Contact Us</h3>
-                <div className="d-flex align-items-center mb-3">
+                <div className="d-flex align-items-center mb-3 cursor-pointer">
                   {/* <i className="fas fa-phone me-2" style="font-size: 10px"></i> */}
                   <PhoneTwo />
 
-                  <span className="footer-link ps-2">(0252)8345 93421</span>
+                  <span className="footer-link ps-2 ">
+                    <a href="tellto:(0252)8345 93421"> (0252)8345 93421</a>
+                   
+                    </span>
                 </div>
                 <div className="d-flex align-items-start mb-3">
                   {/* <i
@@ -104,12 +107,13 @@ const HomeFooter = () => {
                     United sates
                   </span>
                 </div>
-                <div className="d-flex align-items-center">
+                <div className="d-flex align-items-center cursor-pointer">
                   {/* <i className="fas fa-envelope me-2" style="font-size: 10px"/> */}
                   {/* <i class="fa-regular fa-envelope" style={{fontSize:"18px"}}></i> */}
                   <EmailTwo />
                   <span className="footer-link ps-2">
-                    services@nobelset.com
+                    <a href="mailto:services@nobelset.com">services@nobelset.com</a>
+                    
                   </span>
                 </div>
               </div>

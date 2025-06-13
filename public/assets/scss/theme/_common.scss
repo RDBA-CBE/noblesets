@@ -2757,6 +2757,19 @@ background-image: url("/assets/img/home/bg-ele/star-ele-3.png");
   padding:1rem 0 !important;
 }
 
+.offcanvas__close-btn{
+  background: transparent !important;
+  color: #000;
+  border-radius: 5px !important;
+}
+
+.offcanvas__close-btn:hover{
+  background: linear-gradient(to right,
+ color-mix(in srgb, #fbdccc 40%, #e09a7a), #e09a7a) !important;
+ border-radius: 10px;
+ color: #fff !important;
+}
+
 
 
 
