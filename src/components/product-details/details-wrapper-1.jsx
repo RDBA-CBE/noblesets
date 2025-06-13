@@ -1855,6 +1855,9 @@ const DetailsWrapper1 = ({
                     className="tp-btn tp-btn-border"
                     type="button"
                     style={{ padding: "4px 25px" }}
+                    onClick={()=>{
+                      router.push("/brand")
+                    }}
                   >
                     Shop Now
                   </button>
