@@ -94,18 +94,18 @@ const WishlistItem = ({ product, refetchWishlist, refetchWishlistDefault }) => {
       const response = await addToCartMutation({
         checkoutToken: checkoutTokenINR,
         variantId:
-          product?.product?.defaultVariant.id ||
-          product?.defaultChannelProduct?.defaultVariant?.id,
+        product?.product?.defaultVariant.id ||
+        product?.defaultChannelProduct?.defaultVariant?.id,
       });
-
       if (response.data?.data?.checkoutLinesAdd?.errors?.length > 0) {
         const err = response.data?.data?.checkoutLinesAdd?.errors[0]?.message;
-        console.log("err: ", err);
         notifyError(err);
       } else {
-        addToCartProductUSD();
+        notifySuccess(`Product added to cart successfully`);
+        dispatch(openCartMini());
+        cartRefetch();
+        AllListChannelREfresh();
       }
-
       setCartLoader(false);
     } catch (error) {
       console.error("Error:", error);
@@ -120,20 +120,15 @@ const WishlistItem = ({ product, refetchWishlist, refetchWishlistDefault }) => {
       const response = await addToCartMutation({
         checkoutToken: checkoutTokenUSD,
         variantId:
-          product?.product?.defaultVariant.id ||
-          product?.defaultChannelProduct?.defaultVariant?.id,
+        product?.product?.defaultVariant.id ||
+        product?.defaultChannelProduct?.defaultVariant?.id,
       });
-
       if (response.data?.data?.checkoutLinesAdd?.errors?.length > 0) {
         const err = response.data?.data?.checkoutLinesAdd?.errors[0]?.message;
-        notifyError(err);
+        // notifyError(err);
       } else {
-        notifySuccess(`Product added to cart successfully`);
         cartRefetch();
-        dispatch(openCartMini());
-        AllListChannelREfresh();
       }
-
       setCartLoader(false);
     } catch (error) {
       console.error("Error:", error);
@@ -245,6 +240,7 @@ const WishlistItem = ({ product, refetchWishlist, refetchWishlistDefault }) => {
                     router.push("/cart");
                   } else {
                     addToCartProductINR();
+                    addToCartProductUSD()
                   }
                 }}
                 type="button"
@@ -384,6 +380,7 @@ const WishlistItem = ({ product, refetchWishlist, refetchWishlistDefault }) => {
                     router.push("/cart");
                   } else {
                     addToCartProductINR();
+                    addToCartProductUSD()
                   }
                 }}
                 type="button"
