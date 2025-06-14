@@ -2394,7 +2394,7 @@ const CheckoutBillingArea1 = () => {
                               {checkoutAllData?.discount &&
                                 checkoutAllData?.discount?.amount !== 0.0 && (
                                   <span style={{color:"green"}}>
-                                    -&#8377;{checkoutAllData.discount.amount}
+                                    -&#8377;{roundOff(checkoutAllData.discount.amount)}
                                   </span>
                                 )}
                               {""}
