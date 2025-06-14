@@ -2394,7 +2394,7 @@ const CheckoutBillingArea1 = () => {
                               {checkoutAllData?.discount &&
                                 checkoutAllData?.discount?.amount !== 0.0 && (
                                   <span style={{color:"green"}}>
-                                    -&#8377;{checkoutAllData.discount.amount}
+                                    -&#8377;{roundOff(checkoutAllData.discount.amount)}
                                   </span>
                                 )}
                               {""}
@@ -2717,6 +2717,7 @@ const CheckoutBillingArea1 = () => {
                       <button
                         className="w-100  mt-3 place-order-btn tp-btn tp-btn-border"
                         type="submit"
+                        disabled={state.orderLoading || loginLoading || registerLoading}
                         onClick={() => handleSubmit()}
                       >
                         {state.orderLoading || loginLoading || registerLoading ? <ButtonLoader /> : "Place Order"}

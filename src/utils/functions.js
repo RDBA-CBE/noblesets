@@ -16,8 +16,7 @@ export const DELIVERY_ID_OTHER_TN = "U2hpcHBpbmdNZXRob2Q6ODk=";
 
 export const DELIVERY_ID_OTHER_IN = "U2hpcHBpbmdNZXRob2Q6OTI=";
 
-export const FRONTEND_URL = 'https://noblesets.irepute.co.in';
-
+export const FRONTEND_URL = "https://noblesets.irepute.co.in";
 
 export const capitalizeFLetter = (string = "") => {
   if (string.length > 0) {
@@ -101,15 +100,42 @@ export const validLoginAndReg = () => {
   return valid;
 };
 
-export const roundOff = (price) => {
-  let round = "";
-  if (price) {
-    round = Math.ceil(price)?.toFixed(2);
-  } else {
-    round = price;
-  }
-  return round;
+// export const roundOff = (price) => {
+//   let round = "";
+//   if (price) {
+//     round = Math.ceil(price)?.toFixed(2);
+//   } else {
+//     round = price;
+//   }
+//   return round;
+// };
+
+export const roundOff = (value) => {
+  if (value === null || value === undefined) return '';
+
+  // Remove commas and convert to number
+  const num = Number(value.toString().replace(/,/g, ''));
+  if (isNaN(num)) return String(value);
+
+  // Custom rounding logic
+  const integerPart = Math.floor(num);
+  const decimalPart = num - integerPart;
+  const rounded = decimalPart > 0.5 ? Math.ceil(num) : Math.floor(num);
+
+  // Format with Indian number system
+  const roundedStr = rounded.toString();
+  const lastThree = roundedStr.slice(-3);
+  const otherDigits = roundedStr.slice(0, -3);
+  const formatted =
+    otherDigits.replace(/\B(?=(\d{2})+(?!\d))/g, ',') +
+    (otherDigits ? ',' : '') +
+    lastThree;
+
+  return formatted;
 };
+
+
+
 
 export const RegularPrice = (costPrice, sale) => {
   let price = false;
@@ -170,17 +196,29 @@ export const slider_setting = {
 };
 
 export const addCommasToNumber = (value) => {
-  let values = null;
-  if (typeof value === "number") {
-    values = value.toLocaleString(undefined, {
-      minimumFractionDigits: 2,
-      maximumFractionDigits: 2,
-    });
-  } else {
-    values = value;
-  }
-  return values;
+  if (value === null || value === undefined) return '';
+
+  // Remove commas and convert to number
+  const num = Number(value.toString().replace(/,/g, ''));
+  if (isNaN(num)) return String(value);
+
+  // Custom rounding logic
+  const integerPart = Math.floor(num);
+  const decimalPart = num - integerPart;
+  const rounded = decimalPart > 0.5 ? Math.ceil(num) : Math.floor(num);
+
+  // Format with Indian number system
+  const roundedStr = rounded.toString();
+  const lastThree = roundedStr.slice(-3);
+  const otherDigits = roundedStr.slice(0, -3);
+  const formatted =
+    otherDigits.replace(/\B(?=(\d{2})+(?!\d))/g, ',') +
+    (otherDigits ? ',' : '') +
+    lastThree;
+
+  return formatted;
 };
+
 
 export const mergeAndRemoveDuplicates = (arr1, arr2) => {
   // Merge the two arrays

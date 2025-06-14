@@ -390,7 +390,7 @@ const Menus1 = () => {
           style={{
             fontWeight: "500",
             color: "black",
-            fontFamily: "Nunito, sans-serif",
+            fontFamily: "Questrial,sans-serif",
           }}
         >
           All Jewellery
@@ -402,7 +402,7 @@ const Menus1 = () => {
           style={{
             fontWeight: "500",
             color: "black",
-            fontFamily: "Nunito, sans-serif",
+            fontFamily: "Questrial,sans-serif",
           }}
           onMouseEnter={() => hoverCategoryProduct("necklaces")}
         >
@@ -567,7 +567,7 @@ const Menus1 = () => {
           style={{
             fontWeight: "500",
             color: "black",
-            fontFamily: "Nunito, sans-serif",
+            fontFamily: "Questrial,sans-serif",
           }}
         >
           Silver
@@ -580,7 +580,7 @@ const Menus1 = () => {
           style={{
             fontWeight: "500",
             color: "black",
-            fontFamily: "Nunito, sans-serif",
+            fontFamily: "Questrial,sans-serif",
           }}
         >
           Gift Card
