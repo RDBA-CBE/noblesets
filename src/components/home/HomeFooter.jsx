@@ -113,7 +113,7 @@ const HomeFooter = () => {
                   {/* <i class="fa-regular fa-envelope" style={{fontSize:"18px"}}></i> */}
                   <EmailTwo />
                   <span className="footer-link ps-2">
-                    <a href="mailto:services@nobelset.com">services@noblesets.com</a>
+                    <a href="mailto:services@nobleset.com">services@noblesets.com</a>
                     
                   </span>
                 </div>

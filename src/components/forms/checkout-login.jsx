@@ -98,7 +98,7 @@ const CheckoutLoginForm = ({update}) => {
               name="email"
               id="email"
               type="email"
-              placeholder="nobelset@mail.com"
+              placeholder="nobleset@mail.com"
             />
           </div>
           <div className="tp-login-input-title">

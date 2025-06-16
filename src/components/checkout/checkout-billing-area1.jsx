@@ -2593,7 +2593,7 @@ const CheckoutBillingArea1 = () => {
                                 be taken from the recipient over the call.
                               </li>
                               <li>
-                                Nobelsets reserves the right to disable COD
+                                Noblesets reserves the right to disable COD
                                 option for the User, If COD order is rejected.
                                 Only cash/UPI payments will be accepted while
                                 delivering the order under the COD format.
