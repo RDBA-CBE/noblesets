@@ -68,21 +68,21 @@ const HomeFooter = () => {
                   <a className="footer-link mb-3" href="/our-story">
                     Our Story
                   </a>
-                  <a className="footer-link mb-3" href="/privacy-policy">
+                  <a className="footer-link mb-3" href="/legal-policies">
                     Legal Policies
                   </a>
                   <a className="footer-link mb-3" href="/terms-and-conditions">
                     Terms and conditions
                   </a>
-                  <a className="footer-link mb-3" href="/shipping-and-exchange-policy">
+                  <a className="footer-link mb-3" href="/loyalty-programs">
                     Loyalty Programs
                   </a>
-                  <a className="footer-link mb-3" href="#">
+                  <a className="footer-link mb-3" href="/faq">
                     Help &amp; FAQS
                   </a>
-                  <a className="footer-link" href="#">
+                  {/* <a className="footer-link" href="#">
                     Testimonials
-                  </a>
+                  </a> */}
                 </nav>
               </div>
               <div className="col-6 col-lg-3 col-xl-2">
@@ -113,7 +113,7 @@ const HomeFooter = () => {
                   {/* <i class="fa-regular fa-envelope" style={{fontSize:"18px"}}></i> */}
                   <EmailTwo />
                   <span className="footer-link ps-2">
-                    <a href="mailto:services@nobelset.com">services@nobelset.com</a>
+                    <a href="mailto:services@nobelset.com">services@noblesets.com</a>
                     
                   </span>
                 </div>
@@ -174,10 +174,10 @@ const HomeFooter = () => {
                 </div>
               </div>
               <div className="col-6 col-lg-3 col-xl-3">
-                <h3 className="footer-title">Download Nobelist</h3>
+                <h3 className="footer-title">Download Noblesets</h3>
                 <p className="download-text ">
                   Get Exclusive Offers, 24/7 Tech Support &amp; Feet Advatage
-                  with nobelist app
+                  with noblesets app
                 </p>
                 <div className="d-flex gap-3 flex-wrap">
                   <a className="" aria-label="Get it on App Store" href="#">
@@ -206,7 +206,7 @@ const HomeFooter = () => {
               className="d-flex flex-column flex-md-row justify-content-between align-items-center text-white"
               style={{ fontSize: "16px" }}
             >
-              <div>Copyright 2025 © Nobelsets. Concept by repute</div>
+              <div>Copyright 2025 © Noblesets. Concept by repute</div>
               <div className="d-flex gap-3 mt-3 mt-md-0">
                 <button
                   aria-label="Google"
