@@ -3,21 +3,21 @@ import SEO from "@/components/seo";
 import HeaderTwo from "@/layout/headers/header-2";
 import Wrapper from "@/layout/wrapper";
 import HomeFooter from "@/components/home/HomeFooter";
-import PrivacyPolicyMain from "../components/privacy/privacyPolicyMain";
+import ShippingAndExchangePolicyMain from "../components/shippingPolicy/shippingPolicyMain";
 import HeaderSection from "@/components/home/headerSection";
 
-const PrivacyPloicy = () => {
+const ShippingAndExchangePolicy = () => {
   return (
     <Wrapper>
-      <SEO pageTitle="Privacy Policy" />
+      <SEO pageTitle="Loyalty Programs" />
       {/* <HeaderTwo style_2={true} /> */}
       <HeaderSection />
 
 
-      <PrivacyPolicyMain />
+      <ShippingAndExchangePolicyMain />
       <HomeFooter />
     </Wrapper>
   );
 };
 
-export default PrivacyPloicy;
+export default ShippingAndExchangePolicy;

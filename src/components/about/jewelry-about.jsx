@@ -17,7 +17,7 @@ const JewelryAbout = () => {
                 className="tp-about-title mb-25"
                 style={{ fontSize: "18px", lineHeight: "40px", color: "gray" }}
               >
-                Nobelsets strives to encapsulate Indian values and sentiments
+                Noblesets strives to encapsulate Indian values and sentiments
                 through its designs. We look forward to maintain the Indian
                 heritage and bring out the tradition and culture.
               </p>
@@ -50,7 +50,7 @@ const JewelryAbout = () => {
                     marginBottom: "5px",
                   }}
                 >
-                  NOBELSETS 
+                  NOBLESETS 
                 </p>
                 <p
                   style={{
@@ -61,9 +61,9 @@ const JewelryAbout = () => {
                     lineHeight: "30px",
                   }}
                 >
-                  Since its founding in 2017, Nobelsets  & Drapes Private
+                  Since its founding in 2017, Noblesets  & Drapes Private
                   Limited has emerged as a top luxury jewelry brand based in
-                  South India. Nobelset is renowned for its exquisite collection of
+                  South India. Nobleset is renowned for its exquisite collection of
                   pure 925 silver jewelry.
                 </p>
               </div>

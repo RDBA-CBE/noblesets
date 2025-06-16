@@ -174,7 +174,7 @@ const ContactArea = () => {
                     />
                   </div>
                   <p style={{ color: "rgb(85 85 85)", fontSize: "16px" }}>
-                    <Link href="mailto:support@nobelset.in">support@nobelset.in</Link>
+                    <Link href="mailto:support@nobleset.in">support@nobleset.in</Link>
                   </p>
                 </div>
                 <div className="contacr-social-links">
@@ -196,7 +196,7 @@ const ContactArea = () => {
                       href="https://maps.app.goo.gl/qLfBEz7ZVkcsiSxt6"
                       target="_blank"
                     >
-                      Nobelsets jewels and Drapes private Limited
+                      Noblesets jewels and Drapes private Limited
                       <br /> No.28, 1st floor, Vijay building,
                       <br /> Near Andhra club, Vijaya Raghava road,
                       <br />

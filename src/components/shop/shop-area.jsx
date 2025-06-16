@@ -235,7 +235,7 @@ const ShopArea = ({
 
   return (
     <>
-      <section className="tp-shop-area  mt-50 shop-page">
+      <section className="tp-shop-area  mt-50 shop-page" style={{zIndex:"10"}}>
         <div className="container-fluid shop-page-in">
           <div
             className="section-wd"

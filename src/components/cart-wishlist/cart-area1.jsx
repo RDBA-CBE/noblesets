@@ -22,11 +22,12 @@ import { slider_setting } from "@/utils/functions";
 import CartItem1 from "./cart-item1";
 import CartCheckout1 from "./cart-checkout1";
 import { Cart } from "@/svg";
+import Loader from "../loader/loader";
 
 const CartArea1 = () => {
   const router = useRouter();
 
-  const { data: list, refetch } = useGetCartListQuery();
+  const { data: list, refetch, isLoading: loading } = useGetCartListQuery();
   const { data: allList, refetch: cartAllList } = useGetCartAllListQuery();
   const [getYouMayLike] = useGetYouMayLikeMutation();
 
@@ -266,14 +267,57 @@ const CartArea1 = () => {
                                           </Link> */}
               </div>
 
-              <CartCheckout1 cartData={cartData} cartLength={CartList?.length}/>
+              <CartCheckout1
+                cartData={cartData}
+                cartLength={CartList?.length}
+              />
             </div>
           </div>
         </div>
+
+        {(CartList?.length === 1 && youMayLikeData?.length > 0) && (
+          <section className="tp-related-product pt-50">
+            <div className="container-fluid">
+              <div className="row">
+                <div className="tp-section-title-wrapper-6 mb-10">
+                  <h3
+                    className="tp-section-title-6"
+                    style={{ fontSize: "28px", paddingRight: "0px" }}
+                  >
+                    YOU MAY BE INTERESTED IN…
+                  </h3>
+                </div>
+              </div>
+              <div className="row">
+                <Swiper
+                  {...slider_setting}
+                  modules={[Autoplay, Navigation]}
+                  className="tp-product-related-slider-active swiper-container mb-10"
+                >
+                  {youMayLikeData?.map((item) => (
+                    <SwiperSlide key={item?.slug}>
+                      <ProductItem
+                        product={item?.data?.product}
+                        primary_style={true}
+                        data={youMayLikeData}
+                      />
+                    </SwiperSlide>
+                  ))}
+                  <div className="tp-related-slider-button-prev swiper-button-prev">
+                    <LeftOutlined />
+                  </div>
+                  <div className="tp-related-slider-button-next swiper-button-next">
+                    <RightOutlined />
+                  </div>
+                </Swiper>
+              </div>
+            </div>
+          </section>
+        )}
       </div>
 
       <footer className="text-center mt-4 text-muted small">
-        © 2025 Nobelsets. All Rights Reserved.
+        © 2025 Noblesets. All Rights Reserved.
       </footer>
     </div>
   );

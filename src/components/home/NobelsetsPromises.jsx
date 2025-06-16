@@ -14,7 +14,7 @@ export default function NobelsetsPromises() {
               className="feature-adipisicing main-ti"
              
             >
-              Nobelsets Promises
+              Noblesets Promises
             </h4>
           </div>
         </div>
