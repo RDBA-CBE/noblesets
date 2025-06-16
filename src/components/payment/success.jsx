@@ -8,6 +8,7 @@ import {
 } from "../../utils/functions";
 import { useRouter } from "next/router";
 import Link from "next/link";
+import { CASE_ON_DELIVERY } from "@/utils/constant";
 
 const Success = ({ data }) => {
   const router = useRouter();
@@ -39,8 +40,8 @@ const Success = ({ data }) => {
                  {/* {paymentMethod != "Cash On delivery" && */}
             <p style={{ color: "gray" }}>
               Pay with{" "}
-              {paymentMethod == "Cash On delivery"
-                ? "Cash On Delivery"
+              {paymentMethod == CASE_ON_DELIVERY
+                ? CASE_ON_DELIVERY
                 : paymentMethod}{" "}
             </p>
             {/* } */}
@@ -96,7 +97,7 @@ const Success = ({ data }) => {
 
                   <tr>
                     <td>
-                      {paymentMethod == "Cash On delivery"
+                      {paymentMethod == CASE_ON_DELIVERY
                         ? "COD Fee"
                         : "Shipping"}
                     </td>
@@ -146,8 +147,8 @@ const Success = ({ data }) => {
                   <tr>
                     <td>Payment Method</td>
                     <td>
-                      {paymentMethod == "Cash On delivery"
-                        ? "Cash On Delivery"
+                      {paymentMethod == CASE_ON_DELIVERY
+                        ? CASE_ON_DELIVERY
                         : paymentMethod}
                     </td>
                   </tr>
@@ -227,8 +228,8 @@ const Success = ({ data }) => {
                 <li style={{ paddingBottom: "8px" }}>
                   Payment Method:
                   <span>
-                    {paymentMethod == "Cash On delivery"
-                      ? "Cash On Delivery"
+                    {paymentMethod ==CASE_ON_DELIVERY
+                      ?CASE_ON_DELIVERY
                       : paymentMethod}
                   </span>
                 </li>

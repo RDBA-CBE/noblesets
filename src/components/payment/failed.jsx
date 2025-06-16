@@ -12,6 +12,7 @@ import { notifyError, notifySuccess } from "@/utils/toast";
 import useRazorpay from "react-razorpay";
 import { useDispatch } from "react-redux";
 import { cart_list } from "@/redux/features/cartSlice";
+import { CASE_ON_DELIVERY } from "@/utils/constant";
 
 const Failed = ({ data, orderId }) => {
   const OrderDetails = data?.data?.order?.lines;
@@ -116,8 +117,8 @@ const Failed = ({ data, orderId }) => {
             <p style={{ color: "red" }}>Order Failed</p>
             <p style={{ color: "gray" }}>
               Pay with{" "}
-              {paymentMethod == "Cash On delivery"
-                ? "Cash On Delivery"
+              {paymentMethod == CASE_ON_DELIVERY
+                ? CASE_ON_DELIVERY
                 : paymentMethod}{" "}
             </p>
             <h3 style={{fontWeight:"500"}}>Order Details</h3>
@@ -172,7 +173,7 @@ const Failed = ({ data, orderId }) => {
 
                   <tr>
                     <td>
-                      {paymentMethod == "Cash On delivery"
+                      {paymentMethod == CASE_ON_DELIVERY
                         ? "COD Fee"
                         : "Shipping"}
                     </td>
@@ -211,8 +212,8 @@ const Failed = ({ data, orderId }) => {
                     <td>Payment Method</td>
 
                     <td>
-                      {paymentMethod == "Cash On delivery"
-                        ? "Cash On Delivery"
+                      {paymentMethod == CASE_ON_DELIVERY
+                        ? CASE_ON_DELIVERY
                         : paymentMethod}
                     </td>
                   </tr>
@@ -309,8 +310,8 @@ const Failed = ({ data, orderId }) => {
                 <li style={{ paddingBottom: "8px" }}>
                   Payment Method:{" "}
                   <span>
-                    {paymentMethod == "Cash On delivery"
-                      ? "Cash On Delivery"
+                    {paymentMethod == CASE_ON_DELIVERY
+                      ? CASE_ON_DELIVERY
                       : paymentMethod}
                   </span>
                 </li>
