@@ -44,7 +44,7 @@ const ProductDetailsArea = ({
   const productsList = related_product?.data?.category?.products?.edges;
 
   const sameProduct = productsList?.filter((item) => {
-    return item?.node?.id !== router?.query?.id;
+    return item?.node?.id !== productItem?.id;
   });
 
   const removeHiddenCategory = sameProduct?.filter((item) => {
