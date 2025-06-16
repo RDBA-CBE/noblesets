@@ -64,7 +64,10 @@ const MobileMenus = () => {
             slug: item?.node?.slug,
           })
         );
-        setState({ categoryList });
+       const excludeGiftCard = categoryList?.filter(
+          (item) => item.slug !== "gift-card"
+        );
+        setState({ categoryList: excludeGiftCard });
       }
 
       setIsActiveMenu(!isActiveMenu);
