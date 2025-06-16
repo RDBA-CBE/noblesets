@@ -20,7 +20,7 @@ const BrandBanner = ({
         //   background:"linear-gradient(to right,color-mix(in srgb, #fbdccc 40%, #e09a7a),#e09a7a)",
          borderRadius:"30px", 
          color:"#b4633a",
-         height:"60%"
+         height:"60vh"
       }}
      
     >

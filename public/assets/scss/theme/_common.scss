@@ -1839,6 +1839,22 @@ footer input[type=email]::placeholder{
   border: none;
 }
 
+@media (max-width:500px){
+  .pd-nav-tabs .nav-link {
+    padding: 0.7rem;
+    font-weight: 500;
+    color: #555;
+}
+}
+
+@media (max-width:375px){
+  .pd-nav-tabs .nav-link {
+    padding: 0.3rem;
+    font-weight: 500;
+    color: #555;
+}
+}
+
 .thumb-sticky-parent {
   position: relative;
 }
@@ -2584,7 +2600,7 @@ background-image: url("/assets/img/home/bg-ele/flower-ele-2.png");
 .shop-page::after{
    content: "";
   position: absolute;
-  bottom: -100px;
+  bottom: -180px;
   left: 0;
   height: 200px;
   width: 100px;
