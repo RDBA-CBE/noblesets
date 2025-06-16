@@ -379,7 +379,7 @@ const Menus1 = () => {
 
   const SubCatProduct = async (item) => {
     const res = await priceFilter({
-      filter: { categorySlugs: item?.slug },
+      filter: { categorySlugs: item?.node?.slug },
       sortBy: { direction: "DESC", field: "CREATED_AT" },
       first: 12,
       after: null,
