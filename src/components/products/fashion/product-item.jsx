@@ -231,7 +231,7 @@ const ProductItem = ({ products, style_2 = false, updateData }) => {
     const discountPercentage =
       ((originalPrice - discountedPrice) / originalPrice) * 100;
     if (discountPercentage) {
-      return discountPercentage.toFixed(2);
+      return discountPercentage.toFixed(0);
     } else {
       return 0;
     }

@@ -465,7 +465,7 @@ console.log('DetailsWrapper --->', productItem);
     const discountPercentage =
       ((originalPrice - discountedPrice) / originalPrice) * 100;
     if (discountPercentage) {
-      return discountPercentage.toFixed(2);
+      return discountPercentage.toFixed(0);
     } else {
       return 0;
     }
