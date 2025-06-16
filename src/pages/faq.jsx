@@ -9,7 +9,7 @@ import HeaderSection from "@/components/home/headerSection";
 const ShippingAndExchangePolicy = () => {
   return (
     <Wrapper>
-      <SEO pageTitle="Shipping And Exchange Policy" />
+      <SEO pageTitle="Help & FAQs" />
       {/* <HeaderTwo style_2={true} /> */}
       <HeaderSection />
 

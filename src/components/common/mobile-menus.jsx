@@ -10,6 +10,8 @@ import {
 } from "@/redux/features/productApi";
 import { useSetState } from "@/utils/functions";
 import Loader from "../loader/loader";
+import { ArrowNext } from "@/svg";
+import DropdownIcon from "@/svg/DropdownIcon";
 
 const MobileMenus = () => {
   const [isActiveMenu, setIsActiveMenu] = useState("");
@@ -62,7 +64,10 @@ const MobileMenus = () => {
             slug: item?.node?.slug,
           })
         );
-        setState({ categoryList });
+       const excludeGiftCard = categoryList?.filter(
+          (item) => item.slug !== "gift-card"
+        );
+        setState({ categoryList: excludeGiftCard });
       }
 
       setIsActiveMenu(!isActiveMenu);
@@ -81,21 +86,30 @@ const MobileMenus = () => {
         </li>
 
         <li className="has-dropdown has-mega-menu">
-          <button
+          <a href="#">
+            <button
             useNobelsetCategoryListMutation
-            onMouseEnter={() => categoryList()}
+            // onMouseEnter={() => categoryList()}
             // onMouseLeave={() => setIsActiveMenu(false)}
             onClick={() => categoryList()}
             style={{
+              width:"100%",
               fontWeight: "500",
-              paddingTop: "18px",
-              paddingBottom: "10px",
+              // paddingTop: "18px",
+              // paddingBottom: "10px",
               fontSize: "16px",
               color: "black",
+              display:"flex",
+              justifyContent:"space-between",
+              alignItems:"cemter"
+              
             }}
           >
             Collections
+            <DropdownIcon />
           </button>
+          </a>
+          
           {isActiveMenu && (
             <div
               className={`transition-all duration-300 ease-in-out overflow-hidden ${

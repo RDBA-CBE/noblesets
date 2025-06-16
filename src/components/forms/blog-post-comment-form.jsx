@@ -15,7 +15,7 @@ const BlogPostCommentForm = () => {
           </div>
           <div className="tp-postbox-details-input-box">
             <div className="tp-contact-input">
-              <input name="email" id="email" type="email" placeholder="nobelset@mail.com" />
+              <input name="email" id="email" type="email" placeholder="nobleset@mail.com" />
             </div>
             <div className="tp-postbox-details-input-title">
               <label htmlFor="email">Your Email</label>

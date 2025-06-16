@@ -100,16 +100,6 @@ export const validLoginAndReg = () => {
   return valid;
 };
 
-// export const roundOff = (price) => {
-//   let round = "";
-//   if (price) {
-//     round = Math.ceil(price)?.toFixed(2);
-//   } else {
-//     round = price;
-//   }
-//   return round;
-// };
-
 export const roundOff = (value) => {
   if (value === null || value === undefined) return '';
 
@@ -194,6 +184,7 @@ export const slider_setting = {
     },
   },
 };
+
 
 export const addCommasToNumber = (value) => {
   if (value === null || value === undefined) return '';

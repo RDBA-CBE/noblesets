@@ -80,7 +80,8 @@ const HomeBanner = () => {
     arrows: false,
     fade: true,
     centerMode: false,
-    // autoplay:true
+    autoplay:true,
+    loop:true
   };
 
   return (

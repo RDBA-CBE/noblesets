@@ -152,8 +152,8 @@ const WishlistItem = ({ product, refetchWishlist, refetchWishlistDefault }) => {
       const response = await addToCartMutation({
         checkoutToken: checkoutTokenINR,
         variantId:
-          product?.product?.defaultVariant.id ||
-          product?.defaultChannelProduct?.defaultVariant?.id,
+        product?.product?.defaultVariant.id ||
+        product?.defaultChannelProduct?.defaultVariant?.id,
       });
       if (response.data?.data?.checkoutLinesAdd?.errors?.length > 0) {
         const err = response.data?.data?.checkoutLinesAdd?.errors[0]?.message;
@@ -178,8 +178,8 @@ const WishlistItem = ({ product, refetchWishlist, refetchWishlistDefault }) => {
       const response = await addToCartMutation({
         checkoutToken: checkoutTokenUSD,
         variantId:
-          product?.product?.defaultVariant.id ||
-          product?.defaultChannelProduct?.defaultVariant?.id,
+        product?.product?.defaultVariant.id ||
+        product?.defaultChannelProduct?.defaultVariant?.id,
       });
       if (response.data?.data?.checkoutLinesAdd?.errors?.length > 0) {
         const err = response.data?.data?.checkoutLinesAdd?.errors[0]?.message;
@@ -298,7 +298,7 @@ const WishlistItem = ({ product, refetchWishlist, refetchWishlistDefault }) => {
                     router.push("/cart");
                   } else {
                     addToCartProductINR();
-                    addToCartProductUSD();
+                    addToCartProductUSD()
                   }
                 }}
                 type="button"
@@ -440,7 +440,7 @@ const WishlistItem = ({ product, refetchWishlist, refetchWishlistDefault }) => {
                     router.push("/cart");
                   } else {
                     addToCartProductINR();
-                    addToCartProductUSD();
+                    addToCartProductUSD()
                   }
                 }}
                 type="button"

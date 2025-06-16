@@ -68,30 +68,33 @@ const HomeFooter = () => {
                   <a className="footer-link mb-3" href="/our-story">
                     Our Story
                   </a>
-                  <a className="footer-link mb-3" href="/privacy-policy">
+                  <a className="footer-link mb-3" href="/legal-policies">
                     Legal Policies
                   </a>
                   <a className="footer-link mb-3" href="/terms-and-conditions">
                     Terms and conditions
                   </a>
-                  <a className="footer-link mb-3" href="/shipping-and-exchange-policy">
+                  <a className="footer-link mb-3" href="/loyalty-programs">
                     Loyalty Programs
                   </a>
-                  <a className="footer-link mb-3" href="#">
+                  <a className="footer-link mb-3" href="/faq">
                     Help &amp; FAQS
                   </a>
-                  <a className="footer-link" href="#">
+                  {/* <a className="footer-link" href="#">
                     Testimonials
-                  </a>
+                  </a> */}
                 </nav>
               </div>
               <div className="col-6 col-lg-3 col-xl-2">
                 <h3 className="footer-title">Contact Us</h3>
-                <div className="d-flex align-items-center mb-3">
+                <div className="d-flex align-items-center mb-3 cursor-pointer">
                   {/* <i className="fas fa-phone me-2" style="font-size: 10px"></i> */}
                   <PhoneTwo />
 
-                  <span className="footer-link ps-2">(0252)8345 93421</span>
+                  <span className="footer-link ps-2 ">
+                    <a href="tellto:(0252)8345 93421"> 0421-2266885</a>
+                   
+                    </span>
                 </div>
                 <div className="d-flex align-items-start mb-3">
                   {/* <i
@@ -100,16 +103,18 @@ const HomeFooter = () => {
             ></i> */}
                   <Location />
                   <span className="footer-link ps-2">
-                    2525 Michigan Ave, <br /> Sante Monica, <br />
-                    United sates
+                    (A Unit of Shivam Traders) <br />
+                   78, New Market Street, <br /> Tiruppur-641604 <br />
+                   GST No : 33ABVFS9742F1ZL
                   </span>
                 </div>
-                <div className="d-flex align-items-center">
+                <div className="d-flex align-items-center cursor-pointer">
                   {/* <i className="fas fa-envelope me-2" style="font-size: 10px"/> */}
                   {/* <i class="fa-regular fa-envelope" style={{fontSize:"18px"}}></i> */}
                   <EmailTwo />
                   <span className="footer-link ps-2">
-                    services@nobelset.com
+                    <a href="mailto:services@nobleset.com">services@noblesets.com</a>
+                    
                   </span>
                 </div>
               </div>
@@ -169,10 +174,10 @@ const HomeFooter = () => {
                 </div>
               </div>
               <div className="col-6 col-lg-3 col-xl-3">
-                <h3 className="footer-title">Download Nobelist</h3>
+                <h3 className="footer-title">Download Noblesets</h3>
                 <p className="download-text ">
                   Get Exclusive Offers, 24/7 Tech Support &amp; Feet Advatage
-                  with nobelist app
+                  with noblesets app
                 </p>
                 <div className="d-flex gap-3 flex-wrap">
                   <a className="" aria-label="Get it on App Store" href="#">
@@ -201,7 +206,7 @@ const HomeFooter = () => {
               className="d-flex flex-column flex-md-row justify-content-between align-items-center text-white"
               style={{ fontSize: "16px" }}
             >
-              <div>Copyright 2025 © Nobelsets. Concept by repute</div>
+              <div>Copyright 2025 © Noblesets. Concept by repute</div>
               <div className="d-flex gap-3 mt-3 mt-md-0">
                 <button
                   aria-label="Google"
@@ -209,7 +214,7 @@ const HomeFooter = () => {
                   title="Google"
                   type="button"
                   onClick={() =>
-                    router.push("https://www.threads.net/@noble_sets")
+                    window.open("https://www.threads.net/@noble_sets")
                   }
                 >
                   {/* <i className="fab fa-google" style={{fontSize:"16px", color:"#000"}}></i> */}
@@ -237,7 +242,7 @@ const HomeFooter = () => {
                   title="Instagram"
                   type="button"
                   onClick={() =>
-                    router.push("https://www.instagram.com/noble_sets/")
+                    window.open("https://www.instagram.com/noble_sets/")
                   }
                 >
                   <i
@@ -251,7 +256,7 @@ const HomeFooter = () => {
                   title="Facebook"
                   type="button"
                   onClick={() =>
-                    router.push("https://www.facebook.com/noblesets/")
+                    window.open("https://www.facebook.com/noblesets/")
                   }
                 >
                   <i
@@ -265,7 +270,7 @@ const HomeFooter = () => {
                   title="YouTube"
                   type="button"
                   onClick={() =>
-                    router.push("https://www.youtube.com/@noblesets")
+                    window.open("https://www.youtube.com/@noblesets")
                   }
                 >
                   <i
@@ -279,7 +284,7 @@ const HomeFooter = () => {
                   title="Close"
                   type="button"
                   style={{ color: "#000", fontSize: "20px" }}
-                  onClick={() => router.push("https://twitter.com/noble_sets")}
+                  onClick={() => window.open("https://twitter.com/noble_sets")}
                 >
                   {/* <i className="fas fa-times" style={{fontSize:"16px",color:"#000"}}></i> */}
                   {/* <i class="fa-brands fa-x-twitter"></i> */}
