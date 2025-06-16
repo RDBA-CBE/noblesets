@@ -44,7 +44,7 @@ const ProductDetailsArea = ({
   const productsList = related_product?.data?.category?.products?.edges;
 
   const sameProduct = productsList?.filter((item) => {
-    return item?.node?.id !== router?.query?.id;
+    return item?.node?.id !== productItem?.id;
   });
 
   const removeHiddenCategory = sameProduct?.filter((item) => {
@@ -122,13 +122,18 @@ const ProductDetailsArea = ({
   return (
     <section
       className="tp-product-details-area pt-40 product-detail-page"
-     style={{background:"#fff9f4"}}
+      style={{ background: "#fff9f4" }}
     >
       <div className="tp-product-details-top">
         <div className="container">
           <div className="row ">
-            <div className={`${productItem?.media?.length > 1 ? "col-xl-7 col-lg-7" : "col-xl-6 col-lg-6"} `} >
-            
+            <div
+              className={`${
+                productItem?.media?.length > 1
+                  ? "col-xl-7 col-lg-7"
+                  : "col-xl-6 col-lg-6"
+              } `}
+            >
               <div ref={thumbRef} className="manual-sticky-thumb">
                 <DetailsThumbWrapper
                   product={productItem}
@@ -144,7 +149,14 @@ const ProductDetailsArea = ({
 
               {/* product-details-thumb-wrapper end */}
             </div>
-            <div className={`${productItem?.media?.length > 1 ? "col-xl-5 col-lg-5" : "col-xl-6 col-lg-6"} `} style={{zIndex:"10"}}>
+            <div
+              className={`${
+                productItem?.media?.length > 1
+                  ? "col-xl-5 col-lg-5"
+                  : "col-xl-6 col-lg-6"
+              } `}
+              style={{ zIndex: "10" }}
+            >
               {/* product-details-wrapper start */}
 
               <DetailsWrapper1
@@ -191,11 +203,16 @@ const ProductDetailsArea = ({
               //   //  borderRadius:"20px"
               //   }}
             >
-              <div className="container" >
+              <div className="container">
                 <div className="row">
-                  <div className="tp-section-title-wrapper-6 mb-10" >
+                  <div className="tp-section-title-wrapper-6 mb-10">
                     {/* <span className="tp-section-title-pre-6">Next day Products</span> */}
-                    <h3 className="tp-section-title-6" style={{fontSize:"28px"}}>Similar Products</h3>
+                    <h3
+                      className="tp-section-title-6"
+                      style={{ fontSize: "28px" }}
+                    >
+                      Similar Products
+                    </h3>
                   </div>
                 </div>
 
@@ -217,7 +234,12 @@ const ProductDetailsArea = ({
                 <div className="row">
                   <div className="tp-section-title-wrapper-6 mb-10">
                     {/* <span className="tp-section-title-pre-6">Next day Products</span> */}
-                    <h3 className="tp-section-title-6" style={{fontSize:"28px"}}>You May Like This...</h3>
+                    <h3
+                      className="tp-section-title-6"
+                      style={{ fontSize: "28px" }}
+                    >
+                      You May Like This...
+                    </h3>
                   </div>
                 </div>
 

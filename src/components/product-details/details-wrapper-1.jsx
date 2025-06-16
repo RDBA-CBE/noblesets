@@ -192,7 +192,6 @@ const DetailsWrapper1 = ({
     }
   }, [productItem]);
 
-  console.log("description", productItem?.description);
 
   const [isAddWishlist, setWishlist] = useState(false);
   const [attributeValue, setAttributeValue] = useState(false);
