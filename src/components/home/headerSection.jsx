@@ -486,7 +486,7 @@ const HeaderSection = ({ style_2 = false, data }) => {
                                 background: "white",
                                 padding: "30px 20px",
                                 right: "-10px",
-                                zIndex: "2",
+                                zIndex: "2000",
                                 width: "250px",
                                 boxShadow: "0px 8px 16px 0px rgba(0,0,0,0.2)",
                                 borderRadius:"10px"

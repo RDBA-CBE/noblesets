@@ -159,7 +159,7 @@ const Success = ({ data }) => {
                         <td style={{ color: "black", fontWeight: "600" }}>
                           &#8377;{addCommasToNumber(Total)}
                           <div
-                            style={{ fontSize: "15px", fontWeight: "normal" }}
+                            style={{ fontSize: "12px", fontWeight: "normal", marginTop:"-8px" }}
                           >
                             (includes {Tax?.currency == "USD" ? "$" : "₹"}
                             {roundOff(Tax?.amount)} GST)
@@ -206,14 +206,14 @@ const Success = ({ data }) => {
                 Thank You!
                 <br /> Your order has been received.
               </h3>
-              <ul style={{ paddingLeft: "20px", fontSize: "18px" }}>
-                <li style={{ paddingBottom: "8px" }}>
+              <ul style={{ paddingLeft: "0px", fontSize: "18px" }}>
+                <li style={{ paddingBottom: "8px", listStyle:"none" }}>
                   Order number: <span className="bold">{OrderNumber}</span>
                 </li>
-                <li style={{ paddingBottom: "8px" }}>
+                <li style={{ paddingBottom: "8px" ,listStyle:"none" }}>
                   Date: <span>{OrderDate}</span>
                 </li>
-                <li style={{ paddingBottom: "8px" }}>
+                <li style={{ paddingBottom: "8px",listStyle:"none"  }}>
                   Total:{" "}
                   {checkChannel() === "india-channel" ? (
                     <span style={{ fontWeight: "600", color: "black" }}>
@@ -225,8 +225,8 @@ const Success = ({ data }) => {
                     </span>
                   )}
                 </li>
-                <li style={{ paddingBottom: "8px" }}>
-                  Payment Method:
+                <li style={{ paddingBottom: "8px" , listStyle:"none" }}>
+                  Payment Method: {""}
                   <span>
                     {paymentMethod ==CASE_ON_DELIVERY
                       ?CASE_ON_DELIVERY

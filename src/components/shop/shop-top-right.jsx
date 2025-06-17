@@ -11,6 +11,7 @@ const ShopTopRight = ({ selectHandleFilter }) => {
     <div
       className="tp-shop-top-right d-flex align-items-center justify-content-md-end justify-content-between relative"
       // style={{ zIndex: 9999, minHeight: 250 }}
+      style={{zIndex:"10"}}
     >
       <div className="tp-shop-top-select relative z-10">
         <NiceSelect
@@ -27,9 +28,9 @@ const ShopTopRight = ({ selectHandleFilter }) => {
           name="Default Sorting"
         />
       </div>
-      <div className="tp-shop-top-filter">
+      <div className="tp-shop-top-filter" onClick={() => dispatch(handleFilterSidebarOpen())} >
         <button
-          onClick={() => dispatch(handleFilterSidebarOpen())}
+          
           type="button"
           className=" tp-btn tp-btn-border"
         >
