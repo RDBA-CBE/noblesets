@@ -2589,12 +2589,16 @@ color: #fff !important;
 background-image: url("/assets/img/home/bg-ele/flower-ele-2.png");
  background-size: contain;
  background-repeat: no-repeat;
-//  z-index: 100;
+ z-index: -100;
 }
 
 .shop-page .ShopByCollections .card{
   background-image: none !important;
   background-color: #fff9f4 !important;
+}
+
+.shop-page .ShopByCollections::before{
+  background-image: none !important;
 }
 
 .shop-page::after{
@@ -2784,6 +2788,10 @@ background-image: url("/assets/img/home/bg-ele/star-ele-3.png");
  color-mix(in srgb, #fbdccc 40%, #e09a7a), #e09a7a) !important;
  border-radius: 10px;
  color: #fff !important;
+}
+
+.tp-shop-top-select .nice-select .list .remain{
+  color: #000 !important;
 }
 
 

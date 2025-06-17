@@ -242,7 +242,7 @@ const Failed = ({ data, orderId }) => {
                         <td style={{ color: "black", fontWeight: "600" }}>
                           &#8377;{addCommasToNumber(Total)}
                           <div
-                            style={{ fontSize: "15px", fontWeight: "normal" }}
+                            style={{ fontSize: "14px", fontWeight: "normal" }}
                           >
                             (includes {Tax?.currency == "USD" ? "$" : "₹"}
                             {addCommasToNumber(Tax?.amount)} GST)

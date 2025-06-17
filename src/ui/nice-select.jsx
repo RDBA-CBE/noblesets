@@ -37,7 +37,7 @@ const NiceSelect = ({options,defaultCurrent, placeholder,className,onChange,name
                     <li
                         key={item.value}
                         data-value={item.value}
-                        className={ `option text-capitalize ${item.value === current?.value && "selected focus"}`
+                        className={ `option text-capitalize ${item.value === current?.value ? "selected focus" : "remain"}`
                         }
                         role="menuitem"
                         onClick={() => currentHandler(item)}
