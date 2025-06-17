@@ -769,7 +769,7 @@ const CheckoutBillingArea = ({ register, errors }) => {
           // paymentType,
           // deliveryMethodId: state.selectedShippingId,
           deliveryMethodId:
-            paymentType == "Cash On Delivery"
+            paymentType == CASE_ON_DELIVERY
               ? "U2hpcHBpbmdNZXRob2Q6OTA="
               : state.selectedShippingId,
         });
