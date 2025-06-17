@@ -7,7 +7,10 @@ import {
 import { useRouter } from "next/router";
 import useRazorpay from "react-razorpay";
 import moment from "moment";
-import { addCommasToNumber, roundOff, showDeleteAlert } from "@/utils/functions";
+import {
+  addCommasToNumber,
+  showDeleteAlert,
+} from "@/utils/functions";
 import { notifySuccess } from "@/utils/toast";
 import ButtonLoader from "../loader/button-loader";
 import Swal from "sweetalert2";
@@ -45,7 +48,7 @@ const OrderList = () => {
         const options = {
           key: "rzp_test_tEMCtcfElFdYts",
           key_secret: "rRfAuSd9PLwbhIwUlBpTy4Gv",
-          amount: roundOff(total) * 100,
+          amount: total * 100,
           currency,
           name: "Products",
           description: "",
@@ -205,7 +208,7 @@ const OrderList = () => {
                         } item`}
                       </td>
                       <td style={{ display: "flex", gap: 10 }}>
-                        {item?.status === "NOT_CHARGET" && (
+                        {item?.paymentStatus === "NOT_CHARGED" && (
                           <button
                             type="button"
                             className=" tp-btn tp-btn-border text-white"

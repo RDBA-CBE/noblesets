@@ -63,34 +63,34 @@ export const CART_LIST = ({ checkoutToken }) => {
   return JSON.stringify({
     query: `
       query CheckoutFetchByToken($checkoutToken: UUID!) {
-        checkout(token: $checkoutToken) {
+  checkout(token: $checkoutToken) {
+    id
+    email
+    lines {
+      id
+      totalPrice {
+        gross {
+          amount
+          currency
+        }
+      }
+      variant {
+        product {
           id
-          email
-          lines {
+          name
+          slug
+          thumbnail {
+            url
+            alt
+          }
+          collections {
             id
-            totalPrice {
-              gross {
-                amount
-                currency
-              }
-            }
-            variant {
-              product {
-                id
-                name
-                slug
-                thumbnail {
-                  url
-                  alt
-                }
-                collections {
-                  id
-                  name
-                }
-                category {
-                  name
-                }
-                  getUpsells {
+            name
+          }
+          category {
+            name
+          }
+          getUpsells {
             name
             slug
           }
@@ -98,38 +98,43 @@ export const CART_LIST = ({ checkoutToken }) => {
             name
             slug
           }
-              }
-              pricing {
-                price {
-                  gross {
-                    amount
-                    currency
-                  }
-                }
-              }
-              name
-              id
-              quantityAvailable
-              sku
-            }
-            quantity
+          productType {
+            isDigital
+            kind
+            name
           }
-          totalPrice {
+        }
+        pricing {
+          price {
             gross {
-              amount
-              currency
-            }
-            tax {
-              amount
-              currency
-            }
-            net {
               amount
               currency
             }
           }
         }
+        name
+        id
+        quantityAvailable
+        sku
       }
+      quantity
+    }
+    totalPrice {
+      gross {
+        amount
+        currency
+      }
+      tax {
+        amount
+        currency
+      }
+      net {
+        amount
+        currency
+      }
+    }
+  }
+}
       
       `,
     variables: { checkoutToken },
