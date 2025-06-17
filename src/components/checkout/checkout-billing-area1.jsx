@@ -798,7 +798,7 @@ const CheckoutBillingArea1 = () => {
           // paymentType,
           // deliveryMethodId: state.selectedShippingId,
           deliveryMethodId:
-            paymentType == "Cash On Delivery"
+            paymentType == CASE_ON_DELIVERY
               ? "U2hpcHBpbmdNZXRob2Q6OTA="
               : state.selectedShippingId,
         });
@@ -2717,6 +2717,7 @@ const CheckoutBillingArea1 = () => {
                       <button
                         className="w-100  mt-3 place-order-btn tp-btn tp-btn-border"
                         type="submit"
+                        disabled={state.orderLoading || loginLoading || registerLoading}
                         onClick={() => handleSubmit()}
                       >
                         {state.orderLoading || loginLoading || registerLoading ? <ButtonLoader /> : "Place Order"}

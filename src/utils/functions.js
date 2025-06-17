@@ -16,8 +16,7 @@ export const DELIVERY_ID_OTHER_TN = "U2hpcHBpbmdNZXRob2Q6ODk=";
 
 export const DELIVERY_ID_OTHER_IN = "U2hpcHBpbmdNZXRob2Q6OTI=";
 
-export const FRONTEND_URL = 'https://noblesets.irepute.co.in';
-
+export const FRONTEND_URL = "https://noblesets.irepute.co.in";
 
 export const capitalizeFLetter = (string = "") => {
   if (string.length > 0) {
@@ -125,6 +124,9 @@ export const roundOff = (value) => {
   return formatted;
 };
 
+
+
+
 export const RegularPrice = (costPrice, sale) => {
   let price = false;
   if (costPrice) {
@@ -207,6 +209,7 @@ export const addCommasToNumber = (value) => {
 
   return formatted;
 };
+
 
 export const mergeAndRemoveDuplicates = (arr1, arr2) => {
   // Merge the two arrays

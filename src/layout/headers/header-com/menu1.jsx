@@ -379,7 +379,7 @@ const Menus1 = () => {
 
   const SubCatProduct = async (item) => {
     const res = await priceFilter({
-      filter: { categorySlugs: item?.slug },
+      filter: { categorySlugs: item?.node?.slug },
       sortBy: { direction: "DESC", field: "CREATED_AT" },
       first: 12,
       after: null,
@@ -396,7 +396,7 @@ const Menus1 = () => {
           style={{
             fontWeight: "500",
             color: "black",
-            fontFamily: "Nunito, sans-serif",
+            fontFamily: "Questrial,sans-serif",
           }}
         >
           All Jewellery
@@ -408,7 +408,7 @@ const Menus1 = () => {
           style={{
             fontWeight: "500",
             color: "black",
-            fontFamily: "Nunito, sans-serif",
+            fontFamily: "Questrial,sans-serif",
           }}
           onMouseEnter={() => hoverCategoryProduct("necklaces")}
         >
@@ -573,7 +573,7 @@ const Menus1 = () => {
           style={{
             fontWeight: "500",
             color: "black",
-            fontFamily: "Nunito, sans-serif",
+            fontFamily: "Questrial,sans-serif",
           }}
         >
           Silver
@@ -586,7 +586,7 @@ const Menus1 = () => {
           style={{
             fontWeight: "500",
             color: "black",
-            fontFamily: "Nunito, sans-serif",
+            fontFamily: "Questrial,sans-serif",
           }}
         >
           Gift Card

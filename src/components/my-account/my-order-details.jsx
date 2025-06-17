@@ -24,6 +24,7 @@ import { notifyError, notifySuccess } from "@/utils/toast";
 import Resizer from "react-image-file-resizer";
 import ReviewSection from "../product-details/ReviewSection";
 import { Modal, Radio, Button } from "antd";
+import { CASE_ON_DELIVERY } from "@/utils/constant";
 
 const MyOrderDetails = ({ data }) => {
   const Data = data?.data?.order;
@@ -359,7 +360,7 @@ const MyOrderDetails = ({ data }) => {
 
                     <tr>
                       <td>
-                        {paymentMethod == "Cash On delivery"
+                        {paymentMethod ==CASE_ON_DELIVERY
                           ? "COD Fee"
                           : "Shipping"}
                       </td>

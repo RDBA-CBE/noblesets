@@ -24,7 +24,11 @@ import { useRouter } from "next/router";
 import { notifyError, notifySuccess } from "@/utils/toast";
 
 // import { useGetWishlistQuery } from "@/redux/features/productApi";
-import { addCommasToNumber, checkChannel, roundOff } from "../../utils/functions";
+import {
+  addCommasToNumber,
+  checkChannel,
+  roundOff,
+} from "../../utils/functions";
 import { profilePic } from "@/utils/constant";
 import ButtonLoader from "../loader/button-loader";
 import { ClipLoader } from "react-spinners";
@@ -85,6 +89,60 @@ const WishlistItem = ({ product, refetchWishlist, refetchWishlistDefault }) => {
       setDeleteLoader(false);
     } catch (error) {}
   };
+
+  // const addToCartProductINR = async () => {
+  //   setCartLoader(true);
+  //   try {
+  //     setCartLoader(true);
+  //     const checkoutTokenINR = localStorage.getItem("checkoutTokenINR");
+  //     const response = await addToCartMutation({
+  //       checkoutToken: checkoutTokenINR,
+  //       variantId:
+  //         product?.product?.defaultVariant.id ||
+  //         product?.defaultChannelProduct?.defaultVariant?.id,
+  //     });
+
+  //     if (response.data?.data?.checkoutLinesAdd?.errors?.length > 0) {
+  //       const err = response.data?.data?.checkoutLinesAdd?.errors[0]?.message;
+  //       console.log("err: ", err);
+  //       notifyError(err);
+  //     } else {
+  //       addToCartProductUSD();
+  //     }
+
+  //     setCartLoader(false);
+  //   } catch (error) {
+  //     console.error("Error:", error);
+  //   }
+  // };
+
+  // const addToCartProductUSD = async () => {
+  //   setCartLoader(true);
+  //   try {
+  //     setCartLoader(true);
+  //     const checkoutTokenUSD = localStorage.getItem("checkoutTokenUSD");
+  //     const response = await addToCartMutation({
+  //       checkoutToken: checkoutTokenUSD,
+  //       variantId:
+  //         product?.product?.defaultVariant.id ||
+  //         product?.defaultChannelProduct?.defaultVariant?.id,
+  //     });
+
+  //     if (response.data?.data?.checkoutLinesAdd?.errors?.length > 0) {
+  //       const err = response.data?.data?.checkoutLinesAdd?.errors[0]?.message;
+  //       notifyError(err);
+  //     } else {
+  //       notifySuccess(`Product added to cart successfully`);
+  //       cartRefetch();
+  //       dispatch(openCartMini());
+  //       AllListChannelREfresh();
+  //     }
+
+  //     setCartLoader(false);
+  //   } catch (error) {
+  //     console.error("Error:", error);
+  //   }
+  // };
 
   const addToCartProductINR = async () => {
     setCartLoader(true);
@@ -171,7 +229,7 @@ const WishlistItem = ({ product, refetchWishlist, refetchWishlistDefault }) => {
                     }
                     width={70}
                     height={100}
-                    style={{borderRadius:"10px"}}
+                    style={{ borderRadius: "10px" }}
                   />
                 ) : (
                   <video
@@ -185,7 +243,7 @@ const WishlistItem = ({ product, refetchWishlist, refetchWishlistDefault }) => {
                     style={{
                       width: "100%",
                       height: "100%",
-                      borderRadius:"10px"
+                      borderRadius: "10px",
                     }}
                   />
                 )}
@@ -245,7 +303,7 @@ const WishlistItem = ({ product, refetchWishlist, refetchWishlistDefault }) => {
                 }}
                 type="button"
                 className=" tp-btn tp-btn-border"
-                style={{borderRadius:"20px"}}
+                style={{ borderRadius: "20px" }}
               >
                 {isAddToCart ? (
                   "View Cart"
@@ -265,7 +323,6 @@ const WishlistItem = ({ product, refetchWishlist, refetchWishlistDefault }) => {
               <button
                 onClick={() => handleRemovePrd()}
                 className="tp-cart-action-btn"
-                
               >
                 {deleteLoader ? (
                   <ClipLoader color="red" size={13} />
@@ -308,7 +365,7 @@ const WishlistItem = ({ product, refetchWishlist, refetchWishlistDefault }) => {
                     }
                     width={70}
                     height={100}
-                    style={{borderRadius:"10px"}}
+                    style={{ borderRadius: "10px" }}
                   />
                 ) : (
                   <video
@@ -323,7 +380,7 @@ const WishlistItem = ({ product, refetchWishlist, refetchWishlistDefault }) => {
                     style={{
                       width: "100%",
                       height: "100%",
-                       borderRadius:"10px"
+                      borderRadius: "10px",
                     }}
                   />
                 )}
@@ -341,7 +398,10 @@ const WishlistItem = ({ product, refetchWishlist, refetchWishlistDefault }) => {
             </td>
             <td className="tp-cart-price">
               <span>
-                ${addCommasToNumber(data?.pricing?.priceRange?.start?.gross?.amount)}
+                $
+                {addCommasToNumber(
+                  data?.pricing?.priceRange?.start?.gross?.amount
+                )}
               </span>
             </td>
 
@@ -385,7 +445,7 @@ const WishlistItem = ({ product, refetchWishlist, refetchWishlistDefault }) => {
                 }}
                 type="button"
                 className=" tp-btn tp-btn-border"
-                style={{borderRadius:"20px"}}
+                style={{ borderRadius: "20px" }}
               >
                 {isAddToCart ? (
                   "View Cart"
