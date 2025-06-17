@@ -166,7 +166,9 @@ const CheckoutBillingArea1 = () => {
     isBillingOpen: false,
     isShippingOpen: false,
     shippingMethods: [],
-    showVoucherMessage:false
+    showVoucherMessage: false,
+    isGiftCardProduct: false,
+    allLinesGiftCard: false,
   });
 
   useEffect(() => {
@@ -186,11 +188,12 @@ const CheckoutBillingArea1 = () => {
 
   const { data: linelist } = useGetCartListQuery();
 
-  const [loginUser, {loading:loginLoading}] = useLoginUserMutation();
+  const [loginUser, { loading: loginLoading }] = useLoginUserMutation();
 
   const [paymentList, {}] = usePaymentListMutation();
 
-  const [registerUser, {loading:registerLoading}] = useRegisterUserMutation();
+  const [registerUser, { loading: registerLoading }] =
+    useRegisterUserMutation();
 
   const [createCheckoutId] = useCreateCheckoutIdMutation();
 
@@ -242,14 +245,24 @@ const CheckoutBillingArea1 = () => {
     orderData();
   }, [linelist]);
 
-
-
-
   const orderData = async () => {
     try {
       if (linelist?.data?.checkout) {
         const orderData = linelist?.data?.checkout;
-        setState({ orderData });
+
+        const hasDigitalProduct = orderData?.lines?.some(
+          (item) => item.variant?.product?.productType?.isDigital === true
+        );
+
+        const allDigital = orderData?.lines.every(
+          (item) => item.variant?.product?.productType?.isDigital === true
+        );
+
+        setState({
+          orderData,
+          isGiftCardProduct: hasDigitalProduct,
+          allLinesGiftCard: allDigital,
+        });
         createCheckoutIds(orderData?.lines);
       }
     } catch (error) {
@@ -288,14 +301,13 @@ const CheckoutBillingArea1 = () => {
 
   useEffect(() => {
     if (checkoutAllData?.voucherCode) {
-
-      setState({showVoucherMessage:true})
+      setState({ showVoucherMessage: true });
 
       const timer = setTimeout(() => {
-        setState({showVoucherMessage:false})
-      }, 10 * 1000); 
+        setState({ showVoucherMessage: false });
+      }, 10 * 1000);
 
-      return () => clearTimeout(timer); 
+      return () => clearTimeout(timer);
     }
   }, [checkoutAllData?.voucherCode]);
 
@@ -562,26 +574,30 @@ const CheckoutBillingArea1 = () => {
             res?.data?.data?.checkoutBillingAddressUpdate?.errors[0]?.message
           );
         } else {
-          const response = await checkoutShippingAddressUpdate({
-            checkoutId,
-            shippingAddress,
-            note: state.notes,
-          });
-
-          if (
-            response.data?.data?.checkoutShippingAddressUpdate?.errors?.length >
-            0
-          ) {
-            setState({ orderLoading: false });
-            notifyError(
-              response?.data?.data?.checkoutShippingAddressUpdate?.errors[0]
-                ?.message
-            );
-          } else {
-            // ;
+          if (state.allLinesGiftCard) {
             updateEmail(checkoutId);
+          } else {
+            const response = await checkoutShippingAddressUpdate({
+              checkoutId,
+              shippingAddress,
+              note: state.notes,
+            });
 
-            // updateDelivertMethod(shippingAddress?.country);
+            if (
+              response.data?.data?.checkoutShippingAddressUpdate?.errors
+                ?.length > 0
+            ) {
+              setState({ orderLoading: false });
+              notifyError(
+                response?.data?.data?.checkoutShippingAddressUpdate?.errors[0]
+                  ?.message
+              );
+            } else {
+              // ;
+              updateEmail(checkoutId);
+
+              // updateDelivertMethod(shippingAddress?.country);
+            }
           }
         }
       }
@@ -1053,8 +1069,8 @@ const CheckoutBillingArea1 = () => {
             total: res.totalPrice?.gross?.amount,
             coupenLoader: false,
             promoCode: "",
-            isOpen:false,
-            showVoucherMessage:true
+            isOpen: false,
+            showVoucherMessage: true,
           });
 
           getDetails(res?.id);
@@ -1261,34 +1277,40 @@ const CheckoutBillingArea1 = () => {
       stateRefetch();
 
       if (!state.diffAddress) {
-        const checkoutId = localStorage.getItem("checkoutId");
-        const res = await checkoutShippingAddressUpdate({
-          checkoutId,
-          shippingAddress: {
-            country: e.target.value,
-          },
-          note: state.notes,
-        });
-
-        const stateValue = {
-          target: {
-            value: "Tamil Nadu",
-          },
-        };
-        if (e?.target?.value == "IN") {
-          handleStateChange(stateValue, e?.target?.value);
-        } else {
-          const deliveryMethodIds = DELIVERY_ID_OTHER_IN;
-
+        if (state.allLinesGiftCard) {
           setState({
-            selectedShippingId: deliveryMethodIds,
+            selectedState: "Tamil Nadu",
+          });
+        } else {
+          const checkoutId = localStorage.getItem("checkoutId");
+          const res = await checkoutShippingAddressUpdate({
+            checkoutId,
+            shippingAddress: {
+              country: e.target.value,
+            },
+            note: state.notes,
           });
 
-          updateDelivertMethod(
-            e.target.value,
-            state.selectedPaymentType,
-            deliveryMethodIds
-          );
+          const stateValue = {
+            target: {
+              value: "Tamil Nadu",
+            },
+          };
+          if (e?.target?.value == "IN") {
+            handleStateChange(stateValue, e?.target?.value);
+          } else {
+            const deliveryMethodIds = DELIVERY_ID_OTHER_IN;
+
+            setState({
+              selectedShippingId: deliveryMethodIds,
+            });
+
+            updateDelivertMethod(
+              e.target.value,
+              state.selectedPaymentType,
+              deliveryMethodIds
+            );
+          }
         }
       }
     } catch (error) {
@@ -1299,29 +1321,35 @@ const CheckoutBillingArea1 = () => {
   const handleStateChange = async (e, country) => {
     try {
       if (!state.diffAddress) {
-        if (country == "IN") {
-          const deliveryMethodIds =
-            e.target.value == "Tamil Nadu"
-              ? DELIVERY_ID_TN
-              : DELIVERY_ID_OTHER_TN;
-
+        if (state.allLinesGiftCard) {
           setState({
-            selectedShippingId: deliveryMethodIds,
             selectedState: e.target.value,
           });
-          const checkoutId = localStorage.getItem("checkoutId");
-          const res = await checkoutShippingAddressUpdate({
-            checkoutId,
-            shippingAddress: {
-              country: country,
-            },
-            note: state.notes,
-          });
-          updateDelivertMethod(
-            e.target.value,
-            state.selectedPaymentType,
-            deliveryMethodIds
-          );
+        } else {
+          if (country == "IN") {
+            const deliveryMethodIds =
+              e.target.value == "Tamil Nadu"
+                ? DELIVERY_ID_TN
+                : DELIVERY_ID_OTHER_TN;
+
+            setState({
+              selectedShippingId: deliveryMethodIds,
+              selectedState: e.target.value,
+            });
+            const checkoutId = localStorage.getItem("checkoutId");
+            const res = await checkoutShippingAddressUpdate({
+              checkoutId,
+              shippingAddress: {
+                country: country,
+              },
+              note: state.notes,
+            });
+            updateDelivertMethod(
+              e.target.value,
+              state.selectedPaymentType,
+              deliveryMethodIds
+            );
+          }
         }
       } else {
         setState({
@@ -1558,12 +1586,12 @@ const CheckoutBillingArea1 = () => {
           )}
           {cart?.length > 0 && (
             <div className="row">
-              <div className=" " style={{zIndex:"10"}}>
+              <div className=" " style={{ zIndex: "10" }}>
                 <div className="tp-checkout-verify">
                   {!state.token && (
                     <div
                       className="col-xl-7 col-lg-12 px-2"
-                      style={{ borderRadius: "10px" ,zIndex:"10"}}
+                      style={{ borderRadius: "10px", zIndex: "10" }}
                     >
                       <CheckoutLogin />
                     </div>
@@ -1572,7 +1600,7 @@ const CheckoutBillingArea1 = () => {
                     className={`tp-checkout-verify-item px-2 ${
                       !state.token ? "col-xl-5 col-lg-12" : "col-12"
                     }`}
-                    style={{ borderRadius: "10px" ,zIndex:"10"}}
+                    style={{ borderRadius: "10px", zIndex: "10" }}
                   >
                     <p className="tp-checkout-verify-reveal">
                       Have a coupon?{" "}
@@ -1593,18 +1621,23 @@ const CheckoutBillingArea1 = () => {
                       >
                         <div className="tp-return-customer-input">
                           <div className="d-flex justify-content-between">
-                             <label>Coupon Code :</label> 
-                          <div style={{
-                            marginTop:"-20px",
-                            color:"black",
-                            fontSize:"18px",
-                            fontWeight:"700",
-                            cursor:"pointer"
-                          }}
-                           onClick={() => setState({ isOpen: !state.isOpen })}
-                          >X</div>
+                            <label>Coupon Code :</label>
+                            <div
+                              style={{
+                                marginTop: "-20px",
+                                color: "black",
+                                fontSize: "18px",
+                                fontWeight: "700",
+                                cursor: "pointer",
+                              }}
+                              onClick={() =>
+                                setState({ isOpen: !state.isOpen })
+                              }
+                            >
+                              X
+                            </div>
                           </div>
-                         
+
                           <input
                             value={state.promoCode}
                             onChange={(e) =>
@@ -1661,7 +1694,7 @@ const CheckoutBillingArea1 = () => {
           {/* <div className="container-fluid"> */}
           <div className="row ">
             {/* Billing Details */}
-            <div className="col-lg-7  " style={{zIndex:"10"}}>
+            <div className="col-lg-7  " style={{ zIndex: "10" }}>
               <div className="checkoutform py-5 px-3">
                 <div className="d-flex justify-content-between">
                   <h4 className="mb-4 checkout-title">Billing Details</h4>
@@ -2009,55 +2042,58 @@ const CheckoutBillingArea1 = () => {
                         </>
                       </>
                     )}
-                    <div className="col-12 mb-2 d-flex justify-content-between align-items-center ">
-                      <div className="d-flex align-items-center">
-                        <input
-                          id="remeber"
-                          type="checkbox"
-                          checked={state.diffAddress}
-                          onChange={(e) =>
-                            handleCheckDifferentAddress(e.target.checked)
-                          }
-                        />
-                        <label
-                          className="ms-2 "
-                          htmlFor="shipDiffAddress"
-                          style={{
-                            cursor: "pointer",
-                          }}
-                          onClick={() =>
-                            handleCheckDifferentAddress(!state.diffAddress)
-                          }
-                        >
-                          Ship to a Different Address?
-                        </label>
+                    {!state.allLinesGiftCard && (
+                      <div className="col-12 mb-2 d-flex justify-content-between align-items-center ">
+                        <div className="d-flex align-items-center">
+                          <input
+                            id="remeber"
+                            type="checkbox"
+                            checked={state.diffAddress}
+                            onChange={(e) =>
+                              handleCheckDifferentAddress(e.target.checked)
+                            }
+                          />
+                          <label
+                            className="ms-2 "
+                            htmlFor="shipDiffAddress"
+                            style={{
+                              cursor: "pointer",
+                            }}
+                            onClick={() =>
+                              handleCheckDifferentAddress(!state.diffAddress)
+                            }
+                          >
+                            Ship to a Different Address?
+                          </label>
+                        </div>
+                        <div className="mt-8">
+                          {localStorage.getItem("token") &&
+                            addressList &&
+                            addressList?.length > 0 &&
+                            state.diffAddress && (
+                              <button
+                                type="button"
+                                style={{
+                                  padding: "5px 20px 5px 20px",
+                                  backgroundColor: "#e09a7a",
+                                  borderRadius: 20,
+                                  color: "white",
+                                  marginBottom: 30,
+                                  marginLeft: 10,
+                                  marginTop: "10px",
+                                  className: "tp-btn tp-btn-border",
+                                  width: "auto",
+                                }}
+                                onClick={() =>
+                                  setState({ isShippingOpen: true })
+                                }
+                              >
+                                {"Set Address"}
+                              </button>
+                            )}
+                        </div>
                       </div>
-                      <div className="mt-8">
-                        {localStorage.getItem("token") &&
-                          addressList &&
-                          addressList?.length > 0 &&
-                          state.diffAddress && (
-                            <button
-                              type="button"
-                              style={{
-                                padding: "5px 20px 5px 20px",
-                                backgroundColor: "#e09a7a",
-                                borderRadius: 20,
-                                color: "white",
-                                marginBottom: 30,
-                                marginLeft: 10,
-                                marginTop: "10px",
-                                className: "tp-btn tp-btn-border",
-                                width: "auto",
-                              }}
-                              onClick={() => setState({ isShippingOpen: true })}
-                            >
-                              {"Set Address"}
-                            </button>
-                          )}
-                      </div>
-                    </div>
-
+                    )}
                     {state.diffAddress && (
                       <div className="tp-checkout-bill-form">
                         <div className="tp-checkout-bill-inner">
@@ -2344,7 +2380,7 @@ const CheckoutBillingArea1 = () => {
             </div>
 
             {/* Order Summary */}
-            <div className="col-lg-5  mt-3 mt-lg-0" style={{zIndex:"10"}}>
+            <div className="col-lg-5  mt-3 mt-lg-0" style={{ zIndex: "10" }}>
               <div ref={thumbRef} className="manual-sticky-thumb">
                 <div className=" checkoutPrice py-5 px-3">
                   <h4 className="mb-4 checkout-title ">Your Order</h4>
@@ -2389,12 +2425,13 @@ const CheckoutBillingArea1 = () => {
                             >
                               <b>Coupon:</b> {checkoutAllData?.voucherCode}
                             </span>
-                            <p onClick={handleRemoveDiscount} >
+                            <p onClick={handleRemoveDiscount}>
                               {" "}
                               {checkoutAllData?.discount &&
                                 checkoutAllData?.discount?.amount !== 0.0 && (
-                                  <span style={{color:"green"}}>
-                                    -&#8377;{roundOff(checkoutAllData.discount.amount)}
+                                  <span style={{ color: "green" }}>
+                                    -&#8377;
+                                    {roundOff(checkoutAllData.discount.amount)}
                                   </span>
                                 )}
                               {""}
@@ -2717,10 +2754,18 @@ const CheckoutBillingArea1 = () => {
                       <button
                         className="w-100  mt-3 place-order-btn tp-btn tp-btn-border"
                         type="submit"
-                        disabled={state.orderLoading || loginLoading || registerLoading}
+                        disabled={
+                          state.orderLoading || loginLoading || registerLoading
+                        }
                         onClick={() => handleSubmit()}
                       >
-                        {state.orderLoading || loginLoading || registerLoading ? <ButtonLoader /> : "Place Order"}
+                        {state.orderLoading ||
+                        loginLoading ||
+                        registerLoading ? (
+                          <ButtonLoader />
+                        ) : (
+                          "Place Order"
+                        )}
                       </button>
                     </div>
                   </div>

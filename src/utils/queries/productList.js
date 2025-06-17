@@ -190,47 +190,48 @@ export const MY_ORDER_LIST = ({ first }) => {
   return JSON.stringify({
     query: `
     query Myorders($first: Int!) {
-      me {
-        email
-        orders(first: $first) {
-          edges {
-            node {
-              id
-              number
-              status
-              total {
-                gross {
-                  amount
-                  currency
-                }
-              }
-              lines {
-                productName
-                quantity
-                totalPrice {
-                  gross {
-                    amount
-                    currency
-                  }
-                }
-              }
-              created
-              invoices {
-                id
-                url
-              }
-              isGiftWrap
-              shippingPrice {
-                gross {
-                  amount
-                  currency
-                }
+  me {
+    email
+    orders(first: $first) {
+      edges {
+        node {
+          id
+          number
+          status
+          total {
+            gross {
+              amount
+              currency
+            }
+          }
+          lines {
+            productName
+            quantity
+            totalPrice {
+              gross {
+                amount
+                currency
               }
             }
           }
+          created
+          invoices {
+            id
+            url
+          }
+          isGiftWrap
+          shippingPrice {
+            gross {
+              amount
+              currency
+            }
+          }
+          paymentStatus
         }
       }
     }
+  }
+}
     `,
     variables: { first },
   });
