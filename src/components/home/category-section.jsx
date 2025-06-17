@@ -174,7 +174,7 @@ const HomeCategorySection = () => {
                           onClick={() => {
                             router.push({
                               pathname: "/shop",
-                              query: { category: "other_accessories" }, // Your parameters
+                              // query: { category: "other_accessories" }, // Your parameters
                             });
                           }}
                         />

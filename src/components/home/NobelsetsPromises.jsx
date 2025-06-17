@@ -25,7 +25,7 @@ export default function NobelsetsPromises() {
               <div class="col-6  d-none-767">
                 <div class="d-flex align-items-center mb-5" style={{gap:"20px"}}>
                   <div
-                    class=" p-2 rounded"
+                    class=" rounded icon-pad"
                     style={{ backgroundColor: "#f5e7db" }}
                   >
                     <img
@@ -34,11 +34,11 @@ export default function NobelsetsPromises() {
                       width="48"
                     />
                   </div>
-                  <span class="ms-2" style={{fontSize:"20px"}}>Certified Natural Diamonds</span>
+                  <span class="ms-2" style={{fontSize:"18px",color:"#000"}}>Certified Natural Diamonds</span>
                 </div>
                 <div class="d-flex align-items-center mb-5" style={{gap:"20px"}}>
                   <div
-                    class=" p-2 rounded"
+                    class=" rounded icon-pad"
                     style={{ backgroundColor: "#f5e7db" }}
                   >
                     <img
@@ -47,11 +47,11 @@ export default function NobelsetsPromises() {
                      width="48"
                     />
                   </div>
-                  <span class="ms-2" style={{fontSize:"20px"}}>Lifetime Exchange</span>
+                  <span class="ms-2" style={{fontSize:"18px",color:"#000"}}>Lifetime Exchange</span>
                 </div>
                 <div class="d-flex align-items-center mb-5" style={{gap:"20px"}}>
                   <div
-                    class=" p-2 rounded"
+                    class=" rounded icon-pad"
                     style={{ backgroundColor: "#f5e7db" }}
                   >
                     <img
@@ -60,11 +60,11 @@ export default function NobelsetsPromises() {
                       width="48"
                     />
                   </div>
-                  <span class="ms-2" style={{fontSize:"20px"}}>30 Days Return</span>
+                  <span class="ms-2" style={{fontSize:"18px",color:"#000"}}>30 Days Return</span>
                 </div>
                 <div class="d-flex align-items-center" style={{gap:"20px"}}>
                   <div
-                    class=" p-2 rounded"
+                    class=" rounded icon-pad"
                     style={{ backgroundColor: "#f5e7db" }}
                   >
                     <img
@@ -73,14 +73,14 @@ export default function NobelsetsPromises() {
                       width="48"
                     />
                   </div>
-                  <span class="ms-2" style={{fontSize:"20px"}}>Free Shipping</span>
+                  <span class="ms-2" style={{fontSize:"18px" , color:"#000"}}>Free Shipping</span>
                 </div>
               </div>
 
               <div class="col-6  d-none-767">
                 <div class="d-flex align-items-center mb-5" style={{gap:"20px"}}>
                   <div
-                    class=" p-2 rounded"
+                    class=" rounded icon-pad"
                     style={{ backgroundColor: "#f5e7db" }}
                   >
                     <img
@@ -89,11 +89,11 @@ export default function NobelsetsPromises() {
                       width="48"
                     />
                   </div>
-                  <span class="ms-2" style={{fontSize:"20px"}}>1 Year Warranty</span>
+                  <span class="ms-2" style={{fontSize:"18px",color:"#000"}}>1 Year Warranty</span>
                 </div>
                 <div class="d-flex align-items-center mb-5" style={{gap:"20px"}}>
                   <div
-                    class=" p-2 rounded"
+                    class=" rounded icon-pad"
                     style={{ backgroundColor: "#f5e7db" }}
                   >
                     <img
@@ -103,11 +103,11 @@ export default function NobelsetsPromises() {
                       width="48"
                     />
                   </div>
-                  <span class="ms-2" style={{fontSize:"20px"}}>Buyers</span>
+                  <span class="ms-2" style={{fontSize:"18px",color:"#000"}}>Buyers</span>
                 </div>
                 <div class="d-flex align-items-center mb-5" style={{gap:"20px"}}>
                   <div
-                    class=" p-2 rounded"
+                    class=" rounded icon-pad"
                     style={{ backgroundColor: "#f5e7db" }}
                   >
                     <img
@@ -117,11 +117,11 @@ export default function NobelsetsPromises() {
                       width="48"
                     />
                   </div>
-                  <span class="ms-2" style={{fontSize:"20px"}}>BIS Hallmarked</span>
+                  <span class="ms-2" style={{fontSize:"18px",color:"#000"}}>BIS Hallmarked</span>
                 </div>
                 <div class="d-flex align-items-center" style={{gap:"20px"}}>
                   <div
-                    class=" p-2 rounded"
+                    class=" rounded icon-pad"
                     style={{ backgroundColor: "#f5e7db" }}
                   >
                     <img
@@ -130,13 +130,13 @@ export default function NobelsetsPromises() {
                       // width="32"
                     />
                   </div>
-                  <span class="ms-2" style={{fontSize:"20px"}}>Product</span>
+                  <span class="ms-2" style={{fontSize:"18px",color:"#000"}}>Product</span>
                 </div>
               </div>
                <div class="col-12  d-grid-767">
                  <div class="d-flex align-items-center mb-5" style={{gap:"20px"}}>
                   <div
-                    class=" p-2 rounded"
+                    class=" rounded icon-pad"
                     style={{ backgroundColor: "#f5e7db" }}
                   >
                     <img
@@ -145,11 +145,11 @@ export default function NobelsetsPromises() {
                       width="48"
                     />
                   </div>
-                  <span class="ms-2" style={{fontSize:"20px"}}>Certified Natural Diamonds</span>
+                  <span class="ms-2" style={{fontSize:"18px",color:"#000"}}>Certified Natural Diamonds</span>
                 </div>
                 <div class="d-flex align-items-center mb-5" style={{gap:"20px"}}>
                   <div
-                    class=" p-2 rounded"
+                    class=" rounded icon-pad"
                     style={{ backgroundColor: "#f5e7db" }}
                   >
                     <img
@@ -158,11 +158,11 @@ export default function NobelsetsPromises() {
                       width="48"
                     />
                   </div>
-                  <span class="ms-2" style={{fontSize:"20px"}}>1 Year Warranty</span>
+                  <span class="ms-2" style={{fontSize:"18px",color:"#000"}}>1 Year Warranty</span>
                 </div>
                 <div class="d-flex align-items-center mb-5" style={{gap:"20px"}}>
                   <div
-                    class=" p-2 rounded"
+                    class=" rounded icon-pad"
                     style={{ backgroundColor: "#f5e7db" }}
                   >
                     <img
@@ -171,11 +171,11 @@ export default function NobelsetsPromises() {
                      width="48"
                     />
                   </div>
-                  <span class="ms-2" style={{fontSize:"20px"}}>Lifetime Exchange</span>
+                  <span class="ms-2" style={{fontSize:"18px",color:"#000"}}>Lifetime Exchange</span>
                 </div>
                 <div class="d-flex align-items-center mb-5" style={{gap:"20px"}}>
                   <div
-                    class=" p-2 rounded"
+                    class=" rounded icon-pad"
                     style={{ backgroundColor: "#f5e7db" }}
                   >
                     <img
@@ -184,11 +184,11 @@ export default function NobelsetsPromises() {
                       width="48"
                     />
                   </div>
-                  <span class="ms-2" style={{fontSize:"20px"}}>Buyers</span>
+                  <span class="ms-2" style={{fontSize:"18px",color:"#000"}}>Buyers</span>
                 </div>
                  <div class="d-flex align-items-center mb-5" style={{gap:"20px"}}>
                   <div
-                    class=" p-2 rounded"
+                    class=" rounded icon-pad"
                     style={{ backgroundColor: "#f5e7db" }}
                   >
                     <img
@@ -197,11 +197,11 @@ export default function NobelsetsPromises() {
                       width="48"
                     />
                   </div>
-                  <span class="ms-2" style={{fontSize:"20px"}}>30 Days Return</span>
+                  <span class="ms-2" style={{fontSize:"18px",color:"#000"}}>30 Days Return</span>
                 </div>
                  <div class="d-flex align-items-center mb-5" style={{gap:"20px"}}>
                   <div
-                    class=" p-2 rounded"
+                    class=" rounded icon-pad"
                     style={{ backgroundColor: "#f5e7db" }}
                   >
                     <img
@@ -210,11 +210,11 @@ export default function NobelsetsPromises() {
                       width="48"
                     />
                   </div>
-                  <span class="ms-2" style={{fontSize:"20px"}}>BIS Hallmarked</span>
+                  <span class="ms-2" style={{fontSize:"18px",color:"#000"}}>BIS Hallmarked</span>
                 </div>
                  <div class="d-flex align-items-center" style={{gap:"20px"}}>
                   <div
-                    class=" p-2 rounded"
+                    class=" rounded icon-pad"
                     style={{ backgroundColor: "#f5e7db" }}
                   >
                     <img
@@ -223,11 +223,11 @@ export default function NobelsetsPromises() {
                       width="48"
                     />
                   </div>
-                  <span class="ms-2" style={{fontSize:"20px"}}>Free Shipping</span>
+                  <span class="ms-2" style={{fontSize:"18px",color:"#000"}}>Free Shipping</span>
                 </div>
                  <div class="d-flex align-items-center" style={{gap:"20px"}}>
                   <div
-                    class=" p-2 rounded"
+                    class=" rounded icon-pad"
                     style={{ backgroundColor: "#f5e7db" }}
                   >
                     <img
@@ -236,7 +236,7 @@ export default function NobelsetsPromises() {
                       // width="32"
                     />
                   </div>
-                  <span class="ms-2" style={{fontSize:"20px"}}>Product</span>
+                  <span class="ms-2" style={{fontSize:"18px",color:"#000"}}>Product</span>
                 </div>
 
                </div>

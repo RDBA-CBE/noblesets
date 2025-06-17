@@ -297,7 +297,7 @@
   text-align: center;
   color: white;
   font-size: 70px;
-  padding-bottom: 15px;
+  // padding-bottom: 15px;
 }
 
 .shop-banner-categoryList {
@@ -538,23 +538,30 @@
     justify-content: center;
       }
          .mbl-content h1{font-size: 80px;color: #643333;font-weight: 400;}
-         .mbl-content p{font-size: 25px;
+         .mbl-content p{font-size: 28px;
           // line-height:18px;
-          color: #00000096 !important;
+          color: #000000a9 !important;
           line-height: 35px;
-          color:#643333;font-weight: 400;}
+          font-family: "Nunito", sans-serif;
+          color:#643333;font-weight: 300;}
          .exb-btn{
              margin-top: 10px;
-    padding: 30px 50px;
+    padding: 32px 50px;
     border: 2px solid #643333;
     
     width: fit-content;
     margin-inline: auto;
          }
-         .exb-btn p{font-size: 40px;line-height: 24px;margin-bottom: 0px !important;color: #643333 !important}
-         .exb-btn p span{font-size: 20px;line-height: 20px;color: #643333 !important}
+         .exb-btn p{font-size: 45px;line-height: 25px !important;
+          //  margin-bottom: 0px !important;
+           color: #643333 !important;font-family: "Questrial", sans-serif;
+          font-weight: 500;
+          margin-bottom: 3px !important;
+        
+        }
+         .exb-btn p span{font-size: 20px;line-height: 22px;color: #000000a9 !important}
 
-@media ( max-width:1650px){
+@media ( max-width:1440px){
    .mbl-content{
     right: 2%;
   //  width: 750px;
@@ -570,7 +577,7 @@
     border: 2px solid #643333;
    
          }
-         .exb-btn p{font-size: 25px;line-height: 24px;}
+         .exb-btn p{font-size: 38px;line-height: 25px;}
          .exb-btn p span{font-size: 18px;line-height: 20px; }
          .tp-brand-slider-button-prev {
           left: -30px !important;
@@ -1464,15 +1471,17 @@
   font-size: 17px;
   font-weight: 600;
   text-decoration: none;
+  font-family: "Nunito", sans-serif;
 }
 .footer-link:hover {
   color: #fff;
 }
 .footer-title {
-  font-weight: 600;
-  font-size: 18px;
-  margin-bottom: 1rem;
+  font-weight: 400;
+  font-size: 24px;
+  margin-bottom: 2.2rem;
   color: white;
+  font-family: "Nunito", sans-serif;
 }
 .footer-subtitle h3{
   font-weight: 600;
@@ -1494,9 +1503,10 @@
   padding-right: 3rem;
   height: 2.5rem;
   font-size: 0.875rem;
+  font-family: "Nunito", sans-serif;
 }
-.footer-input::placeholder {
-  color: rgba(255 255 255 / 0.7);
+footer input::placeholder {
+  // color: rgba(255 255 255 / 0.7);
 }
 .btn-arrow {
   position: absolute;
@@ -1505,8 +1515,8 @@
   transform: translateY(-50%);
   background: rgba(255 255 255 / 0.2);
   border: none;
-  width: 2.5rem;
-  height: 2.5rem;
+  width: 3rem;
+  height: 3rem;
   border-radius: 50%;
   color: white;
   display: flex;
@@ -1518,9 +1528,16 @@
   background: rgba(255 255 255 / 0.3);
 }
 .checkbox-label {
-  font-size: 18px;
-  color: #ffffff;
+  font-size: 16px;
+  font-weight: 600;
+  color: #fffc;
   user-select: none;
+  font-family: "Nunito", sans-serif;
+}
+.copyright{
+   font-family: "Nunito", sans-serif;
+   font-weight: 600;
+   color: #fffc;
 }
 footer .form-check input[type="checkbox"]{
   background-color: transparent;
@@ -1529,18 +1546,21 @@ footer input[type="email"]{
   background-color: transparent;
   color: #fff;
 }
-footer input[type="email"]::placeholder{
-  color: #fff;
-  font-size: 18px;
+footer input::placeholder{
+  color: #fffc !important; 
+  font-size: 16px;
+  font-weight: 600;
+  font-family: "Nunito", sans-serif;
 }
 
 .payment-item {
   font-weight: 600;
   color: rgba(255 255 255 / 0.9);
-  font-size: 18px;
+  font-size: 17px;
   display: flex;
   align-items: center;
   gap: 0.5rem;
+  font-family: "Nunito", sans-serif;
 }
 .payment-item img {
   width: 40px;
@@ -1554,14 +1574,16 @@ footer .btn-arrow{
 }
 
 .download-text {
-  font-size: 18px;
-  color: #ffffff;
+  font-size: 17px;
+  color: #fffc;
   margin-bottom: 1rem;
-  line-height: 1.2;
+  line-height: 1.5;
+  font-family: "Nunito", sans-serif;
+  font-weight: 600;
 }
 .social-btn {
-  width: 32px;
-  height: 32px;
+  width: 38px;
+  height: 38px;
   border-radius: 50%;
   background: rgba(255 255 255 / 0.9);
   color: #d88f74;
@@ -1580,7 +1602,7 @@ footer .btn-arrow{
 }
 hr.footer-divider {
   border-color: #fff;
-  margin-top: 2rem;
+  margin-top: 3rem;
   margin-bottom: 2rem;
 }
 @media (max-width: 767.98px) {
@@ -1608,8 +1630,8 @@ footer .checkbox-label{
   padding: 10px 26px !important;
   height: 50px !important;
 }
-footer input[type=email]::placeholder{
- font-size: 15px;
+footer form input::placeholder{
+ font-size: 12px;
 }
 }
 
@@ -1737,7 +1759,7 @@ footer input[type=email]::placeholder{
 }
 
 .sub-ti b{
-  color: #b4633a;
+  color: #e09a7a;
 }
 
 .tp-product-title-2{
@@ -1975,7 +1997,9 @@ footer input[type=email]::placeholder{
  z-index: -100;
 }
 
-
+.NobelsetsPromises .icon-pad{
+  padding: 12px;
+}
 
 
 
@@ -2591,6 +2615,11 @@ background-image: url("/assets/img/home/bg-ele/flower-ele-2.png");
  background-repeat: no-repeat;
  z-index: -100;
 }
+
+ .ShopByCollections .card-body p{
+  // font-family: "Questrial", sans-serif;
+  font-size: 16px !important;
+ }
 
 .shop-page .ShopByCollections .card{
   background-image: none !important;

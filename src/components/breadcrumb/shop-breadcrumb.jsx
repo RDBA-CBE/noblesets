@@ -66,7 +66,7 @@ const ShopBreadcrumb = ({
   return (
     <>
       <section
-        className="breadcrumb__area include-bg pt-20 pb-20 "
+        className="breadcrumb__area include-bg pt-40 pb-40 "
         style={{ 
           backgroundImage: `url(${bgImage?.src})`,
         //   background:"linear-gradient(to right,color-mix(in srgb, #fbdccc 40%, #e09a7a),#e09a7a)",
@@ -105,29 +105,29 @@ const ShopBreadcrumb = ({
                           });
                         }
                       }}
-                      style={{ cursor: "pointer",color:"#b4633a", fontSize:"18px" }}
+                      style={{ cursor: "pointer",color:"#b4633a", fontSize:"18px", textTransform:"capitalize" }}
                     >
-                     {""} / {categories[1]}
+                     {""} / {categories[1].toLowerCase()}
                     </span>
                   )}
                   {categories[2] && (
-                    <span style={{ cursor: "pointer",color:"#b4633a", fontSize:"18px" }} > {""} / {categories[2]}</span>
+                    <span style={{ cursor: "pointer",color:"#b4633a", fontSize:"18px",textTransform:"capitalize" }} > {""} / {categories[2].toLowerCase()}</span>
                   )}
                 </h3>
-                {title !== "Shop" && (
+                {/* {title !== "Shop" && (
                   <div style={{ color: "#b4633a", textAlign: "center" }}>
                     <span >
                       <a href="/" style={{color:"#b4633a"}}>HOME</a>
                     </span>{" "}
                     / <span style={{color:"#b4633a"}}>{subtitle}</span>
                   </div>
-                )}
+                )} */}
 
                 {/* <div className="breadcrumb__list">
                   <span><a href="#">Home</a></span>
                   <span>{subtitle}</span>
                 </div> */}
-                {title == "Shop" && (
+                {/* {title == "Shop" && (
                   <>
                     <ul className="container shop-banner-categoryList d-none d-sm-flex">
                       {catList?.length > 0 &&
@@ -201,7 +201,7 @@ const ShopBreadcrumb = ({
                       )}
                     </div>
                   </>
-                )}
+                )} */}
               </div>
             </div>
           </div>

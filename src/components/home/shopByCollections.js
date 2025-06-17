@@ -59,10 +59,10 @@ export default function ShopByCollections() {
     // style={{ backgroundColor: "#fff9f4" }}
     >
       <div className="">
-      <div className="section-wd d-flex flex-column flex-md-row justify-content-between align-items-start align-items-md-center shp-by-col" style={{padding:"0 30px"}}>
+      <div className="section-wd d-flex flex-column flex-md-row justify-content-between align-items-start align-items-md-center shp-by-col" style={{padding:"0 95px"}}>
         <div className=" mb-md-0">
           <div className="mb-0 mb-md-5" >
-            <h5 className="sub-ti"><b className="pe-2">✦ </b>Timeless designs thoughtfully curated</h5>
+            <h5 className="sub-ti ps-2"><b className="pe-1">✦ </b>Timeless designs thoughtfully curated</h5>
             <h4
               className="feature-adipisicing main-ti"
               
@@ -140,7 +140,7 @@ export default function ShopByCollections() {
                   }}
                 />
                 <div className="card-body text-center pb-0">
-                  <p className="text-muted mb-3 mt-40 cursor-pointer" style={{fontSize:"18px"}}>{item.desc}</p>
+                  <p className="text-black mb-3 mt-40 cursor-pointer" style={{fontSize:"18px"}}>{item.desc}</p>
                   <h5
                     className=" mb-3 cursor-pointer"
                     style={{
@@ -154,7 +154,7 @@ export default function ShopByCollections() {
                   >
                     {item.title}
                   </h5>
-                  <p className="text-muted" style={{fontSize:"18px"}}>Starting from {item.price}</p>
+                  <p className="text-black" style={{fontSize:"18px"}}>Starting from {item.price}</p>
                 </div>
               </div>
             </SwiperSlide>

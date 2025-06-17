@@ -289,8 +289,8 @@ const HeaderSection = ({ style_2 = false, data }) => {
                     <div className="logo" style={{height:"auto"}}>
                       <Link href="/">
                         <Image
-                        width={140}
-                        height={80}
+                        width={150}
+                        height={90}
                           src={pradeLogo}
                           alt="logo"
                           priority
@@ -431,8 +431,8 @@ const HeaderSection = ({ style_2 = false, data }) => {
                             style={{
                               // backgroundColor: "#e09a7b",
                               background: "linear-gradient(to right,color-mix(in srgb, #fbdccc 40%, #e09a7a),#e09a7a)",
-                              width: "35px",
-                              height: "35px",
+                              width: "40px",
+                              height: "40px",
                               alignItems: "center",
                               justifyContent: "center",
                               display: "flex",
@@ -467,8 +467,8 @@ const HeaderSection = ({ style_2 = false, data }) => {
                             className="tp-header-action-btn cartmini-open-btn "
                             style={{
                               backgroundColor: "#e09a7b",
-                              width: "35px",
-                              height: "35px",
+                              width: "40px",
+                              height: "40px",
                               alignItems: "center",
                               justifyContent: "center",
                               display: "flex",
@@ -593,8 +593,8 @@ const HeaderSection = ({ style_2 = false, data }) => {
                             className="tp-header-action-btn cartmini-open-btn "
                             style={{
                               backgroundColor: "#e09a7b",
-                              width: "35px",
-                              height: "35px",
+                              width: "40px",
+                              height: "40px",
                               alignItems: "center",
                               justifyContent: "center",
                               display: "flex",

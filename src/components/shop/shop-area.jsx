@@ -131,8 +131,9 @@ const ShopArea = ({
       ParentCategoryId = "finger_rings";
     } else if (categories[1] === "Anklets data") {
       ParentCategoryId = "anklets";
-    } else if (categories[1] === "Other Accessories") {
-      ParentCategoryId = "other_accessories";
+    } 
+    else if (categories[1] === "Other Accessories") {
+      // ParentCategoryId = "other_accessories";
     } else {
       ParentCategoryId = parentSlug;
     }
