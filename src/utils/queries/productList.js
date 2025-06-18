@@ -185,7 +185,6 @@ export const ORDER_LIST = ({ orderId }) => {
     variables: { orderId },
   });
 };
-
 export const MY_ORDER_LIST = ({ first }) => {
   return JSON.stringify({
     query: `
