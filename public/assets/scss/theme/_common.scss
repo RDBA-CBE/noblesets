@@ -1763,11 +1763,13 @@ footer form input::placeholder{
   color: #e09a7a;
 }
 
-.tp-product-title-2{
-  font-size: 22px !important;
+.tp-product-title-2 a{
+  font-size: 18px !important;
+  text-transform: capitalize;
 }
 .tp-product-title-3{
-  font-size: 16px !important;
+  font-size: 15px !important;
+  text-transform: capitalize;
 }
 
 .product-price {

@@ -21,6 +21,8 @@ import { Navigation } from "swiper";
 import "swiper/css";
 import "swiper/css/navigation";
 import ProductItem1 from "../products/fashion/product-item-1";
+import { NextArr } from "@/svg";
+import NextLongArrTwo from "@/svg/prev-long-arr-2";
 
 const ShopArea = ({
   all_products,
@@ -250,7 +252,7 @@ const ShopArea = ({
               <span>
                 <Link href="/">Home</Link>
               </span>{" "}
-              /{" "}
+               <NextArr/>{" "}
               <span style={{ color: "black", fontWeight: "600" }}>
                 {/* <Link href="/shop">{categories[0]}</Link>{" "} */}
                 <span
@@ -275,13 +277,13 @@ const ShopArea = ({
                         });
                       }
                     }}
-                    style={{ cursor: "pointer" }}
+                    style={{ cursor: "pointer" , textTransform:"capitalize"}}
                   >
-                    {""} / {categories[1]}
+                    {""} <NextArr/> {categories[1].toLowerCase()}
                   </span>
                 )}
                 {categories[2] && (
-                  <span style={{ cursor: "pointer" }}> {""} / {categories[2]}</span>
+                  <span style={{ cursor: "pointer",textTransform:"capitalize" }}> {""}  <NextArr/> {categories[2].toLowerCase()}</span>
                 )}
               </span>
             </div>

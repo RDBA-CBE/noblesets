@@ -34,7 +34,7 @@ const SimilarProductItem = ({
   primary_style = false,
   data,
 }) => {
-  const { id, thumbnail, name, discount, pricing, tags, status, video,slug } =
+  const { id, thumbnail, name, discount, pricing, tags, status, video, slug } =
     product || {};
   const cart = useSelector((state) => state.cart?.cart_list);
   const [addToCartMutation, { data: productsData, isError, isLoading }] =
@@ -151,8 +151,21 @@ const SimilarProductItem = ({
     localStorage.setItem("compareList", JSON.stringify(arr));
     dispatch(compare_list(arr));
     notifySuccess("Product to added to compare list");
-
   };
+
+  const saveOff = () => {
+    const discountedPrice = product?.pricing?.priceRange?.start?.gross?.amount;
+    const originalPrice =
+      product?.pricing?.priceRangeUndiscounted?.start?.gross?.amount;
+    const discountPercentage =
+      ((originalPrice - discountedPrice) / originalPrice) * 100;
+    if (discountPercentage) {
+      return discountPercentage.toFixed(0);
+    } else {
+      return 0;
+    }
+  };
+  
   const isImage = (url) => {
     return /\.(jpg|webp|jpeg|png|gif)$/i.test(url);
   };
@@ -161,12 +174,18 @@ const SimilarProductItem = ({
       className={`tp-product-item-3 featured-product-section ${
         primary_style ? "tp-product-style-primary" : ""
       } ${prdCenter ? "text-center" : ""}`}
-      style={{borderRadius:"20px"}}
+      style={{ borderRadius: "20px" }}
     >
-      <div className="tp-product-thumb-3 mb-15 fix p-relative z-index-1" style={{
-                borderRadius:"20px",
-              }}>
-        <Link href={`/product-details/${slug}`} style={{borderRadius:"20px"}}>
+      <div
+        className="tp-product-thumb-3 mb-15 fix p-relative z-index-1"
+        style={{
+          borderRadius: "20px",
+        }}
+      >
+        <Link
+          href={`/product-details/${slug}`}
+          style={{ borderRadius: "20px" }}
+        >
           {/* <Image
 src={profilePic(thumbnail?.url)}
 alt="product image"
@@ -174,7 +193,7 @@ width={282}
 height={320}
 /> */}
 
-            {/* <img
+          {/* <img
               src="/assets/img/image-not-included-img.png"
               alt="product image"
               width={282}
@@ -184,16 +203,19 @@ height={320}
               }}
             /> */}
 
-
           {video ? (
             <video
-              src={video?.url ? video?.url : "/assets/img/image-not-included-img.png"  }
+              src={
+                video?.url
+                  ? video?.url
+                  : "/assets/img/image-not-included-img.png"
+              }
               autoPlay
               muted // Ensure it's muted to autoplay without user interaction
               loop // Ensure it loops indefinitely
               playsInline // Ensure it plays inline on iOS devices
               style={{
-                borderRadius:"20px",
+                borderRadius: "20px",
                 width: "100%",
                 height: "100%",
               }}
@@ -202,17 +224,25 @@ height={320}
             />
           ) : isImage(profilePic(thumbnail?.url)) ? (
             <img
-              src={profilePic(thumbnail?.url) ? profilePic(thumbnail?.url) : "/assets/img/image-not-included-img.png"  }
+              src={
+                profilePic(thumbnail?.url)
+                  ? profilePic(thumbnail?.url)
+                  : "/assets/img/image-not-included-img.png"
+              }
               alt="product image"
               width={282}
               height={320}
               style={{
-                borderRadius:"20px",
+                borderRadius: "20px",
               }}
             />
           ) : (
             <video
-              src={thumbnail?.url ? thumbnail?.url : "/assets/img/image-not-included-img.png"  }
+              src={
+                thumbnail?.url
+                  ? thumbnail?.url
+                  : "/assets/img/image-not-included-img.png"
+              }
               autoPlay
               muted // Ensure it's muted to autoplay without user interaction
               loop // Ensure it loops indefinitely
@@ -220,13 +250,12 @@ height={320}
               style={{
                 width: "100%",
                 height: "100%",
-                 borderRadius:"20px",
+                borderRadius: "20px",
               }}
               alt="instagram video"
               className="actor-video"
             />
           )}
-
 
           {/* <img
 src={profilePic(thumbnail?.url)}
@@ -406,10 +435,20 @@ Add To Cart
       </div>
       <div className="tp-product-content-3" style={{ textAlign: "center" }}>
         {/* <div className="tp-product-tag-3"><span>{tags[1]}</span></div> */}
-        <h3 className="tp-product-title-3" >
-          <Link href={`/product-details/${slug}`} style={{fontSize:"22px"}}>{name}</Link>
+        <h3
+          className="tp-product-title-3"
+          style={{
+            fontSize: "12px",
+            color: "rgb(144 141 141)",
+            // textTransform: "uppercase",
+          }}
+        >
+          {product?.category[0]?.name.toLowerCase()}
         </h3>
-        <p style={{ color: "gray", marginBottom: "0px",ontSize:"16px" }}>
+        <h3 className="tp-product-title-2">
+          <Link href={`/product-details/${slug}`}>{name}</Link>
+        </h3>
+        <p style={{ color: "gray", marginBottom: "0px", ontSize: "16px" }}>
           {product?.category?.name}
         </p>
         <div className="tp-product-price-wrapper-3">
@@ -423,7 +462,11 @@ Add To Cart
               ) && (
                 <span
                   className="pr-5"
-                  style={{ textDecoration: "line-through", color: "gray", fontSize:"22px" , fontWeight:"700"}}
+                  style={{
+                    textDecoration: "line-through",
+                    color: "gray",
+                    fontSize: "14px",
+                  }}
                 >
                   {" "}
                   &#8377;
@@ -432,10 +475,21 @@ Add To Cart
                   )}
                 </span>
               )}
-              <span className="tp-product-price-3" style={{fontSize:"22px" , fontWeight:"700"}}>
+              <span
+                className="tp-product-price-3"
+                style={{ fontSize: "22px", fontWeight: "700" }}
+              >
                 &#8377;
                 {roundOff(product?.pricing?.priceRange?.start?.gross?.amount)}
               </span>
+              {product?.pricing?.discount !== null && (
+                <div
+                  style={{
+                    color: "#b4633a",
+                    fontSize: "16px",
+                  }}
+                >{`Save ${saveOff()}% OFF`}</div>
+              )}
             </>
           ) : (
             <>
@@ -445,15 +499,30 @@ Add To Cart
               ) && (
                 <span
                   className="pr-5"
-                  style={{ textDecoration: "line-through", color: "gray",fontSize:"22px" , fontWeight:"700" }}
+                  style={{
+                    textDecoration: "line-through",
+                    color: "gray",
+                    fontSize: "14px",
+                  }}
                 >
                   {" "}
                   &#8377;{roundOff(product?.defaultVariant?.costPrice)}
                 </span>
               )}
-              <span className="tp-product-price-3" style={{fontSize:"22px" , fontWeight:"700"}}>
+              <span
+                className="tp-product-price-3"
+                style={{ fontSize: "22px", fontWeight: "700" }}
+              >
                 ${roundOff(pricing?.priceRange?.start?.gross?.amount)}
               </span>
+              {product?.pricing?.discount !== null && (
+                <div
+                  style={{
+                    color: "#b4633a",
+                    fontSize: "16px",
+                  }}
+                >{`Save ${saveOff()}% OFF`}</div>
+              )}
             </>
           )}
         </div>

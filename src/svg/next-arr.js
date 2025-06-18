@@ -3,7 +3,7 @@ import React from "react";
 const NextArr = () => {
   return (
     <svg
-      width="8"
+      width="5"
       height="14"
       viewBox="0 0 8 14"
       fill="none"

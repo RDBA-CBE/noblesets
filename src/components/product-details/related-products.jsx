@@ -50,6 +50,8 @@ const RelatedProducts = ({
   relatedProductLoading,
   relatedProductErr,
 }) => {
+  console.log('RelatedProducts: ', products);
+
 
   let content = null;
 

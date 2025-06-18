@@ -243,7 +243,7 @@ const ProductDetailsArea = ({
                   </div>
                 </div>
 
-                <div className="row">
+                <div className="row m-1">
                   <Swiper
                     {...slider_setting}
                     modules={[Autoplay, Navigation]}

@@ -4,6 +4,7 @@ import { useRouter } from "next/router";
 import Link from "next/link";
 import { useGetCategoryNameMutation } from "@/redux/features/productApi";
 import { DownOutlined } from "@ant-design/icons";
+import { NextArr } from "@/svg";
 
 const ShopBreadcrumb = ({
   title,
@@ -95,7 +96,7 @@ const ShopBreadcrumb = ({
                   >
                     {categories[0]}
                   </span>
-                  {categories[1] && (
+                  {/* {categories[1] && (
                     <span
                       onClick={() => {
                         if (parentSlug) {
@@ -107,12 +108,12 @@ const ShopBreadcrumb = ({
                       }}
                       style={{ cursor: "pointer",color:"#b4633a", fontSize:"18px", textTransform:"capitalize" }}
                     >
-                     {""} / {categories[1].toLowerCase()}
+                     {""}  <NextArr/> {categories[1].toLowerCase()}
                     </span>
                   )}
                   {categories[2] && (
-                    <span style={{ cursor: "pointer",color:"#b4633a", fontSize:"18px",textTransform:"capitalize" }} > {""} / {categories[2].toLowerCase()}</span>
-                  )}
+                    <span style={{ cursor: "pointer",color:"#b4633a", fontSize:"18px",textTransform:"capitalize" }} > {""}  <NextArr/> {categories[2].toLowerCase()}</span>
+                  )} */}
                 </h3>
                 {/* {title !== "Shop" && (
                   <div style={{ color: "#b4633a", textAlign: "center" }}>

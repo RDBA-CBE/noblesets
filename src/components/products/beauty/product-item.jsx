@@ -153,9 +153,24 @@ const ProductItem = ({
     notifySuccess("Product to added to compare list");
 
   };
+  
   const isImage = (url) => {
     return /\.(jpg|webp|jpeg|png|gif)$/i.test(url);
   };
+
+    const saveOff = () => {
+    const discountedPrice = product?.pricing?.priceRange?.start?.gross?.amount;
+    const originalPrice =
+      product?.pricing?.priceRangeUndiscounted?.start?.gross?.amount;
+    const discountPercentage =
+      ((originalPrice - discountedPrice) / originalPrice) * 100;
+    if (discountPercentage) {
+      return discountPercentage.toFixed(0);
+    } else {
+      return 0;
+    }
+  };
+
   return (
     <div
       className={`tp-product-item-3 featured-product-section ${
@@ -409,9 +424,19 @@ Add To Cart
       </div>
       <div className="tp-product-content-3" style={{ textAlign: "center" }}>
         {/* <div className="tp-product-tag-3"><span>{tags[1]}</span></div> */}
+        <h3
+                className="tp-product-title-3"
+                style={{
+                  fontSize: "12px",
+                  color: "rgb(144 141 141)",
+                  // textTransform: "uppercase",
+                }}
+              >
+                {product?.category[0]?.name.toLowerCase()}
+              </h3>
         <h3 className="tp-product-title-3">
           {/* <Link href={`/product-details/${slug}`}>{name}</Link> */}
-           <Link href={`/product-details/${slug}`} style={{fontSize:"22px"}}>{name}</Link>
+           <Link href={`/product-details/${slug}`} >{name}</Link>
         </h3>
          <p style={{ color: "gray", marginBottom: "0px",ontSize:"16px" }}>
           {product?.category?.name}
@@ -440,6 +465,15 @@ Add To Cart
                              &#8377;
                              {roundOff(product?.pricing?.priceRange?.start?.gross?.amount)}
                            </span>
+                             {product?.pricing?.discount !== null && (
+                <div
+                  style={{
+                    color: "#b4633a",
+                    fontSize: "16px",
+                  }}
+                >{`Save ${saveOff()}% OFF`}</div>
+              )}
+
             </>
           ) : (
             <>
@@ -458,6 +492,14 @@ Add To Cart
               <span className="tp-product-price-3"  style={{fontSize:"22px" , fontWeight:"700"}}>
                 ${roundOff(pricing?.priceRange?.start?.gross?.amount)}
               </span>
+                {product?.pricing?.discount !== null && (
+                <div
+                  style={{
+                    color: "#b4633a",
+                    fontSize: "16px",
+                  }}
+                >{`Save ${saveOff()}% OFF`}</div>
+              )}
             </>
           )}
         </div>

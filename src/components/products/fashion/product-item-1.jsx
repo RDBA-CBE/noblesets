@@ -507,14 +507,14 @@ const ProductItem1 = ({ products, style_2 = false, updateData, index }) => {
                 style={{
                   fontSize: "12px",
                   color: "rgb(144 141 141)",
-                  textTransform: "uppercase",
+                  // textTransform: "uppercase",
                 }}
               >
-                {capitalizeFLetter(product?.category[0]?.name)}
+                {product?.category[0]?.name.toLowerCase()}
               </h3>
               <h3 className="tp-product-title-2 mt-2">
                 <Link href={`/product-details/${product?.slug}`}>
-                  {capitalizeFLetter(product?.name)}
+                  {product?.name}
                 </Link>
               </h3>
 
@@ -535,6 +535,7 @@ const ProductItem1 = ({ products, style_2 = false, updateData, index }) => {
                           color: "grey",
                           fontWeight: 400,
                           marginRight: "10px",
+                          fontSize:"14px"
                         }}
                       >
                         &#8377;

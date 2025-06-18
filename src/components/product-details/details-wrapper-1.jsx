@@ -2028,7 +2028,7 @@ const DetailsWrapper1 = ({
 
               {!isGiftCard && (
                 <div
-                  className="tp-btn tp-btn-border mt-2 mt-sm-0 "
+                  className="tp-btn tp-btn-border mt-0 mt-md-2 mt-xl-0 "
                   style={{ color: "#fff", cursor: "pointer" }}
                   onClick={() => setIsProductModelOpen(true)}
                 >

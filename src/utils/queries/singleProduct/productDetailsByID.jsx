@@ -24,6 +24,19 @@ export const SINGLE_PRODUCT = ({ productId, channel }) => {
       discount {
         currency
       }
+      priceRangeUndiscounted {
+        start {
+          currency
+          gross {
+            amount
+            currency
+          }
+          net {
+            amount
+            currency
+          }
+        }
+      }
     }
     category {
       id
@@ -213,23 +226,23 @@ export const RELATED_PRODUCT = ({ id, channel }) => {
   return JSON.stringify({
     query: `
     query MyQuery($id: ID!, $channel: String!) {
-      category(id: $id) {
-        id
-        products(channel: $channel, first: 10) {
-          edges {
-            node {
-              id
-              name
-              slug
-              images {
-                url
-                alt
-              }
-              thumbnail(size: 1024, format: WEBP) {
-                url
-                alt
-              }
-              variants {
+  category(id: $id) {
+    id
+    products(channel: $channel, first: 10) {
+      edges {
+        node {
+          id
+          name
+          slug
+          images {
+            url
+            alt
+          }
+          thumbnail(size: 1024, format: WEBP) {
+            url
+            alt
+          }
+          variants {
             id
             pricing {
               price {
@@ -242,48 +255,65 @@ export const RELATED_PRODUCT = ({ id, channel }) => {
             }
             name
           }
-              pricing {
-                priceRange {
-                  start {
-                    gross {
-                      amount
-                      currency
-                    }
-                  }
-                  stop {
-                    gross {
-                      amount
-                      currency
-                    }
-                  }
-                }
-                discount {
+          pricing {
+            priceRange {
+              start {
+                gross {
+                  amount
                   currency
                 }
               }
-              description
-              defaultVariant {
-                id
-                quantityAvailable
-                costPrice
-              }
-              category {
-                id
-                name
-              }
-              metadata {
-                key
-                value
-              }
-                media{
-                alt
-                url
+              stop {
+                gross {
+                  amount
+                  currency
                 }
+              }
             }
+            discount {
+              currency
+            }
+            priceRangeUndiscounted {
+              start {
+                currency
+                gross {
+                  amount
+                  currency
+                }
+                net {
+                  amount
+                  currency
+                }
+                tax {
+                  amount
+                  currency
+                }
+              }
+            }
+          }
+          description
+          defaultVariant {
+            id
+            quantityAvailable
+            costPrice
+          }
+          category {
+            id
+            name
+          }
+          metadata {
+            key
+            value
+          }
+          media {
+            alt
+            url
           }
         }
       }
     }
+  }
+}
     `,
     variables: { id, channel },
   });
