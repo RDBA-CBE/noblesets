@@ -11,38 +11,38 @@ import { useRouter } from "next/router";
 const collections = [
   {
     title: "Bracelet",
-    desc: "Wrap your wrist in elegance",
+    desc: "Simple, chic & wearable",
     price: "₹15000 - ₹20000",
     img: "/assets/img/home/collection/1.png",
   },
   {
     title: "Rings",
-    desc: "Promise of style in every curve",
+    desc: "Unique, bold & beautiful",
     price: "₹25000 - ₹30000",
     img: "/assets/img/home/collection/2.png",
   },
   {
     title: "Chains",
-    desc: "Grace in every link",
+    desc: "Rich, radiant & enduring",
     price: "₹10000 - ₹25000",
     img: "/assets/img/home/collection/3.png",
   },
   {
     title: "Earrings",
-    desc: "Crafted to catch every eye",
+    desc: "Stunning and fashionable",
     price: "₹25000 - ₹30000",
     img: "/assets/img/home/collection/4.png",
   },
 
   {
     title: "Bracelet",
-    desc: "Excepteur sint occaecat",
+    desc: "Simple, chic & wearable",
     price: "₹15000 - ₹20000",
     img: "/assets/img/home/collection/1.png",
   },
   {
     title: "Rings",
-    desc: "Lorem ipsum dolor",
+    desc: "Unique, bold & beautiful",
     price: "₹25000 - ₹30000",
     img: "/assets/img/home/collection/2.png",
   },
@@ -62,7 +62,7 @@ export default function ShopByCollections() {
       <div className="section-wd d-flex flex-column flex-md-row justify-content-between align-items-start align-items-md-center shp-by-col" style={{padding:"0 95px"}}>
         <div className=" mb-md-0">
           <div className="mb-0 mb-md-5" >
-            <h5 className="sub-ti ps-2"><b className="pe-1">✦ </b>Timeless designs thoughtfully curated</h5>
+            <h5 className="sub-ti ps-2"><b className="pe-1">✦ </b>Defined elegance</h5>
             <h4
               className="feature-adipisicing main-ti"
               

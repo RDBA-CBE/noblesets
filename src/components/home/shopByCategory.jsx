@@ -9,7 +9,7 @@ const InstagramSection = () => {
         <div className="row-container">
           <div className="row">
             <div className="feature-main mb-50" >
-              <h5 className="sub-ti" ><b className="pe-2">✦</b>Find your perfect sparkle for every occasion</h5>
+              <h5 className="sub-ti" ><b className="pe-2">✦</b>Curated choices</h5>
               <h4
                 className="feature-adipisicing main-ti"
                

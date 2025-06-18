@@ -12,7 +12,7 @@ export default function GiftSection() {
         <div class="row align-items-center justify-content-center g-5 px-3">
           <div class="col-12 col-lg-6 px-3 px-lg-5" data-aos="fade-right">
             <div className="">
-              <h5 className="sub-ti ps-1" > <b className="pe-2">✦</b> Personalised, precious and profoundly meaningful </h5>
+              <h5 className="sub-ti ps-1" > <b className="pe-2">✦</b> Thoughtful moments</h5>
               <h4
                 className="feature-adipisicing main-ti mb-4 mt-1"
                 
@@ -22,7 +22,7 @@ export default function GiftSection() {
             </div>
 
             <p class="text sub-ti text-black mb-5">
-             At Noble Sets, we believe gifting is an art; hence, every piece we craft is a story waiting to
+            At Noble Sets, we believe gifting is an art; hence, every piece we craft is a story waiting to
 be told. Our curated gifting collection caters to every emotion, relationship and occasion.
             </p>
 

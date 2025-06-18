@@ -9,7 +9,7 @@ export default function NobelsetsPromises() {
       <div class="container-fluid pb-50">
         <div class="text-center mb-4 ">
           <div className="feature-main " >
-            <h5 className="sub-ti" > <b className="pe-2">✦</b> Unmatched Quality. Ethical Craft. Transparent Service. </h5>
+            <h5 className="sub-ti" > <b className="pe-2">✦</b> Trusted craftsmanship </h5>
             <h4
               className="feature-adipisicing main-ti"
              
