@@ -394,8 +394,8 @@ const Menus1 = () => {
         <Link
           href="/shop"
           style={{
-            fontWeight: "500",
-            color: "black",
+            fontWeight: "600",
+            color: "#313030",
             fontFamily: "Questrial,sans-serif",
           }}
         >
@@ -406,8 +406,8 @@ const Menus1 = () => {
         <Link
           href="/shop"
           style={{
-            fontWeight: "500",
-            color: "black",
+            fontWeight: "600",
+            color: "#313030",
             fontFamily: "Questrial,sans-serif",
           }}
           onMouseEnter={() => hoverCategoryProduct("necklaces")}
@@ -571,8 +571,8 @@ const Menus1 = () => {
             query: { category: "silver" },
           }}
           style={{
-            fontWeight: "500",
-            color: "black",
+            fontWeight: "600",
+            color: "#313030",
             fontFamily: "Questrial,sans-serif",
           }}
         >
@@ -584,8 +584,8 @@ const Menus1 = () => {
         <Link
           href="/gift-card"
           style={{
-            fontWeight: "500",
-            color: "black",
+            fontWeight: "600",
+            color: "#313030",
             fontFamily: "Questrial,sans-serif",
           }}
         >
