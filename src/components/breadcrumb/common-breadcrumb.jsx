@@ -13,8 +13,8 @@ const CommonBreadcrumb = ({
   return (
     <section
       className={`breadcrumb__area  ${center ? "text-center" : ""} include-bg ${
-        pt ? pt : "pt-50"
-      } ${pb ? pb : "pb-50"} `}
+        pt ? pt : "pt-30"
+      } ${pb ? pb : "pb-30"} `}
       style={{ 
           backgroundImage: `url(${BgImage?.src})`,
         //   background:"linear-gradient(to right,color-mix(in srgb, #fbdccc 40%, #e09a7a),#e09a7a)",
@@ -31,25 +31,25 @@ const CommonBreadcrumb = ({
               style={{ textAlign: "center" }}
             >
               <h3
-                className="breadcrumb__title"
+                className="breadcrumb__title shop-banner-title"
                 style={{
                   color: "#b4633a",
-                  paddingBottom: "15px",
+                  // paddingBottom: "15px",
                 }}
               >
                 {title}
               </h3>
-              <div style={{ color: "#b4633a" }}>
+              {/* <div style={{ color: "#b4633a" }}>
                 <span>
                   <a href="/">HOME</a>
                 </span>{" "}
                 / <span>{subtitle}</span>
-              </div>
-              {content && (
+              </div> */}
+              {/* {content && (
                 <div className="d-flex justify-content-center mt-30">
                   <p className="common-breadcrumb-content">{content}</p>
                 </div>
-              )}
+              )} */}
             </div>
           </div>
         </div>

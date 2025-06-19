@@ -2748,7 +2748,7 @@ const CheckoutBillingArea1 = () => {
                         Your personal data will be used to process your order,
                         support your experience throughout this website, and for
                         other purposes described in our{" "}
-                        <strong>privacy policy</strong>.
+                        <strong className="cursor-pointer" onClick={()=>router.push("/legal-policies")}>privacy policy</strong>.
                       </p>
 
                       <button

@@ -48,6 +48,7 @@ import {
 import { Tooltip } from "antd";
 import { profilePic } from "@/utils/constant";
 import Image from "next/image";
+import WishlistFill from "@/svg/WishListFill";
 
 const DetailsWrapper = ({
   productItem,

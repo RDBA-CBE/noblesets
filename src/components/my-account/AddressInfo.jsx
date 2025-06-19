@@ -743,9 +743,9 @@ const AddressInfo = () => {
               clearForm();
               setShowSettingsBox(null);
             }}
-            style={{ fontSize: "16px", cursor: "pointer" }}
+            style={{ fontSize: "18px", cursor: "pointer", color:"black" }}
           >
-            ✖
+            x
           </span>
         }
       >
@@ -937,7 +937,7 @@ const AddressInfo = () => {
           <div className="profile__input">
             <button
               type="button"
-              className="tp-btn"
+              className="tp-btn tp-btn-border text-white"
               onClick={() => {
                 selectedAddress == null
                   ? handleAddAddressSubmit()

@@ -19,7 +19,7 @@ const InstagramSection = () => {
             </div>
           </div>
 
-          <div className="d-flex flex-wrap justify-content-between">
+          <div className="d-flex flex-wrap justify-content-between justify-content-md-start">
             {/* Column 1 */}
             <div className="col-1-5">
               <img

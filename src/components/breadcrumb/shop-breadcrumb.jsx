@@ -67,7 +67,7 @@ const ShopBreadcrumb = ({
   return (
     <>
       <section
-        className="breadcrumb__area include-bg pt-40 pb-40 "
+        className="breadcrumb__area include-bg pt-30 pb-30 "
         style={{ 
           backgroundImage: `url(${bgImage?.src})`,
         //   background:"linear-gradient(to right,color-mix(in srgb, #fbdccc 40%, #e09a7a),#e09a7a)",

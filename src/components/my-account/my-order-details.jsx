@@ -541,19 +541,36 @@ const MyOrderDetails = ({ data }) => {
           cancelText="Cancel"
           width={800} // Adjusted modal width for better fit
           closeIcon={
-            <span style={{ fontSize: "16px", cursor: "pointer" }}>✖</span>
+            <span style={{ fontSize: "18px", cursor: "pointer", color:"black" }}>x</span>
           } // Custom close icon
           okButtonProps={{
+            className:" tp-btn tp-btn-border text-white",
             style: {
               backgroundColor: "#b4633a", // Set background color to your preference
               color: "white", // Set text color to white
-              border: "none", // Optional: Remove border
+              borderRadius: "20px",
+                              padding: "3px 14px",
+                              fontSize: "14px",
+                              border:"none"
+            },
+          }}
+          cancelButtonProps={{
+            className:" tp-btn tp-btn-border text-white",
+            style: {
+              backgroundColor: "#b4633a", // Set background color to your preference
+              color: "white", // Set text color to white
+              borderRadius: "20px",
+                              padding: "3px 14px",
+                              fontSize: "14px",
+                              border:"none"
             },
           }}
           bodyStyle={{
             padding: 0, // Remove default padding
+            fontFamily: "Nunito,sans-serif", 
           }}
-        >
+        > 
+                           
           <div className="mb-4">
             {/* <input
             type="text"

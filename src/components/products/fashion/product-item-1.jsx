@@ -512,9 +512,9 @@ const ProductItem1 = ({ products, style_2 = false, updateData, index }) => {
               >
                 {product?.category[0]?.name.toLowerCase()}
               </h3>
-              <h3 className="tp-product-title-2 mt-2">
-                <Link href={`/product-details/${product?.slug}`}>
-                  {product?.name}
+              <h3 className="tp-product-title-2 mt-2" >
+                <Link href={`/product-details/${product?.slug}`} >
+                   {capitalizeFLetter(product?.name)}
                 </Link>
               </h3>
 

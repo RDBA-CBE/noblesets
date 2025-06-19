@@ -40,7 +40,7 @@ const LoginArea = () => {
                   </div> */}
                   <div className="tp-login-mail text-center mb-40">
                     <p className="cursor-pointer">
-                      <a href="#"> or Sign in with Email</a>
+                      <a href="/login"> or Sign in with Email</a>
                     </p>
                   </div>
                   <LoginForm />

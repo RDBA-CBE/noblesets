@@ -290,7 +290,7 @@
   color: white;
   font-size: 70px;
   // padding-bottom: 60px;
-  padding: 30px 0 30px 0;
+  padding: 10px 0 10px 0;
 }
 
 .other-banner-title {
@@ -697,7 +697,8 @@
 
 @media(max-width:580px){
   .main-ti{
-    font-size: 24px !important;line-height: 28px;
+    font-size: 30px !important;
+    line-height: 28px;
   }
   .mbl-content{
     right: 0;
@@ -1663,6 +1664,12 @@ footer form input::placeholder{
     width: 33.33%; /* 3 columns on medium screens */
     margin-bottom: 30px;
   }
+  .col-1-5.coloumn-5 {
+        flex-direction: column;
+        width: 33.33%;
+        padding: 0px 10px 0px 10px;
+        gap: 22px;
+    }
 }
 
 @media (max-width: 768px) {
@@ -1670,12 +1677,25 @@ footer form input::placeholder{
     width: 50%; /* 2 columns on tablets */
     margin-bottom: 30px;
   }
+   .col-1-5.coloumn-5{
+    flex-direction: row;
+        width: 100%;
+        padding:0 20px !important;
+        // gap: 0px !important;
+  }
 }
 
 @media (max-width: 576px) {
   .col-1-5 {
     width: 100%; /* 1 column on small screens */
     margin-bottom: 30px;
+  }
+  .col-1-5.coloumn-5{
+    flex-direction: row;
+        width: 100%;
+        flex-direction: column;
+        padding:0 10px !important;
+        // gap: 0px !important;
   }
 }
 
@@ -1771,7 +1791,7 @@ footer form input::placeholder{
 
 .tp-product-title-2 a{
   font-size: 18px !important;
-  text-transform: capitalize;
+  text-transform: uppercase;
 }
 .tp-product-title-3{
   font-size: 15px !important;
@@ -2832,6 +2852,12 @@ background-image: url("/assets/img/home/bg-ele/star-ele-3.png");
   color: #000 !important;
 }
 
+.custom-modal .ant-modal-content {
+  font-family: 'Nunito', sans-serif !important;
+}
+:where(.ant-modal) {
+  font-family: 'Nunito', sans-serif !important; 
+}
 
 
 

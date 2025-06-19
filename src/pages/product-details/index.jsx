@@ -12,6 +12,7 @@ import ProductDetailsArea from '@/components/product-details/product-details-are
 import PrdDetailsLoader from '@/components/loader/prd-details-loader';
 import HomeFooter from '@/components/home/HomeFooter';
 import HeaderSection from '@/components/home/headerSection';
+import ShopBreadcrumb from '@/components/breadcrumb/shop-breadcrumb';
 
 const ProductDetailsPage = ({ query }) => {
   const { data: product, isLoading, isError } = useGetProductQuery("6431364df5a812bd37e765ac");
@@ -38,6 +39,7 @@ const ProductDetailsPage = ({ query }) => {
     <Wrapper>
       <SEO pageTitle="Product Details" />
       <HeaderSection/>
+
       
       {content}
 

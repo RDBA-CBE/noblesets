@@ -1321,7 +1321,7 @@ const DetailsWrapper1 = ({
           </div>
 
           {productItem?.pricing?.discount !== null && (
-            <p className="text-danger">{`Save ${saveOff()}% OFF`}</p>
+            <p className="text-danger mb-0">{`Save ${saveOff()}% OFF`}</p>
           )}
 
           <p className="product-desc text-muted">
@@ -1881,7 +1881,7 @@ const DetailsWrapper1 = ({
                   return (
                     <span
                       key={category?.id}
-                      style={{ marginRight: "3px", cursor: "pointer" }}
+                      style={{ marginRight: "3px", cursor: "pointer",textTransform:"capitalize" }}
                       onClick={() => {
                         router.push({
                           pathname: "/shop",
@@ -1889,7 +1889,7 @@ const DetailsWrapper1 = ({
                         });
                       }}
                     >
-                      {category?.name}
+                      {category?.name.toLowerCase()}
                       {index < productItem.category.length - 1 ? ", " : ""}
                     </span>
                   );

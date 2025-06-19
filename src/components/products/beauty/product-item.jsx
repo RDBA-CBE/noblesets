@@ -23,6 +23,7 @@ import {
 import {
   RegularPrice,
   addCommasToNumber,
+  capitalizeFLetter,
   checkChannel,
   roundOff,
 } from "@/utils/functions";
@@ -434,13 +435,13 @@ Add To Cart
               >
                 {product?.category[0]?.name.toLowerCase()}
               </h3>
-        <h3 className="tp-product-title-3">
+        <h3 className="tp-product-title-2">
           {/* <Link href={`/product-details/${slug}`}>{name}</Link> */}
-           <Link href={`/product-details/${slug}`} >{name}</Link>
+           <Link href={`/product-details/${slug}`} >{capitalizeFLetter(name)}</Link>
         </h3>
-         <p style={{ color: "gray", marginBottom: "0px",ontSize:"16px" }}>
+         {/* <p style={{ color: "gray", marginBottom: "0px",fontSize:"16px" }}>
           {product?.category?.name}
-        </p>
+        </p> */}
         <div className="tp-product-price-wrapper-3">
           {checkChannel() === "india-channel" ? (
             <>
