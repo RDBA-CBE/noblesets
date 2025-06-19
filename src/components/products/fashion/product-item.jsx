@@ -534,6 +534,7 @@ const ProductItem = ({ products, style_2 = false, updateData }) => {
               </span>
               {product?.pricing?.discount !== null && (
                 <div
+                className="save-off"
                   style={{
                     color: "#b4633a",
                     fontSize: "16px",
@@ -588,6 +589,7 @@ const ProductItem = ({ products, style_2 = false, updateData }) => {
               </span>
               {product?.pricing?.discount !== null && (
                 <div
+                className="save-off"
                   style={{
                     color: "#b4633a",
                     fontSize: "16px",

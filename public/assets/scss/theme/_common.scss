@@ -1809,6 +1809,18 @@ footer form input::placeholder{
 }
 
 @media (max-width:990px){
+  .tp-product-title-3{
+  font-size: 14px !important;
+  }
+  .tp-product-title-2 a{
+  font-size: 16px !important;
+  }
+  .save-off{
+    font-size: 15px !important;
+  }
+}
+
+@media (max-width:990px){
   .main-ti{
     font-size: 30px;
   }

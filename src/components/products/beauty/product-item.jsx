@@ -468,6 +468,7 @@ Add To Cart
                            </span>
                              {product?.pricing?.discount !== null && (
                 <div
+                className="save-off"
                   style={{
                     color: "#b4633a",
                     fontSize: "16px",
@@ -495,6 +496,7 @@ Add To Cart
               </span>
                 {product?.pricing?.discount !== null && (
                 <div
+                className="save-off"
                   style={{
                     color: "#b4633a",
                     fontSize: "16px",
