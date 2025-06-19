@@ -9,47 +9,48 @@ const FAQ = () => {
         </h3>
 
         <div>
+            <p className="terms-sub-heading">Do you customize the engagement rings?</p>
+
           <p className="terms-para">
             We at Noblesets are keen on providing customers with the best hence, we
-            partner only with reputed and trusted delivery partners such as
-            DTDC, Professional couriers for customers from India and DHL, FedEx,
-            Aramex etc. for International customers depending on their location.
+            Yes, we do customize engagement rings as per the client’s requirement.
           </p>
 
+          <p className="terms-sub-heading">Do you do engravings on rings?</p>
+            
           <p className="terms-para">
-            Our standard shipping duration is 2 to 6 working days for domestic
-            orders and 7 to 10 working days for international orders. However,
-            the shipping duration of the product shall vary at times depending
-            on the product demand and availability based on ‘First come, first
-            serve basis. All orders will be processed for shipping within 2
-            working days upon order confirmation.
+           Yes, we do engravings on rings to add a personal touch to the jewellery. It can be a special date, initials, or anything the client asks for.
           </p>
 
+           <p className="terms-sub-heading">What is the best way to clean antique jewellery?</p>
+            
           <p className="terms-para">
-            Upon the purchase of the product, order confirmation email shall be
-            sent to the customer to their registered email address and the
-            tracking number will be shared once the order has been dispatched
-            that will enable the customer to track their orders.
+          Cleaning antique jewellery by hand with an old soft toothbrush and a little fairy liquid is the best method. For extremely dirty jewellery, soak it in a small bowl of warm water for a few minutes before gently applying the brush around the setting to get to the back and sides of the stone.
           </p>
 
+           <p className="terms-sub-heading">Is my personal information secured?</p>
+            
           <p className="terms-para">
-            Changes to the shipping address stated during the time of order
-            shall be accepted on if the product has not been shipped.
+          Yes. Our online shopping site has built-in security measures to protect your information as well as the transaction details. However, when shopping online, always exercise caution and avoid sharing your passwords and financial information on unsecured sites.
           </p>
 
+           <p className="terms-sub-heading">How to choose the right antique jewellery?</p>
+            
           <p className="terms-para">
-            Noblesets shall not be liable for delays by the shipment partners,
-            however, we will help you track the product and make sure that it
-            reaches you safely.
+          You can purchase your antique jewellery from a reputable jeweller. Examine the collection for craftsmanship, materials, jewellery styles, gem cut, hallmarks, and so on. These are a few genuine methods for selecting the right piece of antique jewellery. Check out our website for the best antique jewellery.
+
+
           </p>
 
+           <p className="terms-sub-heading">What type of antique jewellery collections are available?</p>
+            
           <p className="terms-para">
-            Once the tracking number is shared, the organisation’s part in
-            shipment ends there. The customer and the third-party shipping
-            company shall directly communicate incase of any information
-            regarding the shipment, i.e the time, transit information etc. Noblesets
-            shall not be held liable for any such concerns.
+          We have a wide range of antique jewellery collections in our store. These jewellery pieces, with their greater appeal and extravagant appearance, are ideal for any occasion or event. Check out our collections on our website.
+
+
           </p>
+
+          
          
         </div>
       </div>
