@@ -202,6 +202,14 @@ const ProductDetailsPage = ({ query }) => {
     content = (
       <>
         {/* <ProductDetailsBreadcrumb category={product.category.name} title={product.title} /> */}
+         <div style={{background:"#fff9f4"}}>
+      <div className="section-wd">
+       <CommonBreadcrumb 
+       title={product.name} 
+      // title="Product Detail" 
+       subtitle="Product Detail" BgImage={CartBanner}/>
+       </div>
+       </div>
         <ProductDetailsArea
           productItem={product}
           pageTitle={shopTitle}
@@ -214,20 +222,14 @@ const ProductDetailsPage = ({ query }) => {
     );
   }
 
-  console.log("product",product.name);
+  console.log("product",product);
   
 
   return (
     <Wrapper>
       <SEO pageTitle="Product Details" />
       <HeaderSection />
-       <div style={{background:"#fff9f4"}}>
-      <div className="section-wd">
-       <CommonBreadcrumb 
-       title={product.name} 
-       subtitle="Product Detail" BgImage={CartBanner}/>
-       </div>
-       </div>
+      
       
       {content}
       <HomeFooter />
