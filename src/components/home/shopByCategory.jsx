@@ -136,8 +136,9 @@ const InstagramSection = () => {
             </div>
 
             {/* Column 5 */}
-            <div className="col-1-5">
-              <img
+            <div className="col-1-5 coloumn-5">
+              <div>
+                <img
                 src="/assets/img/home/shop_by_category/img-7.png"
                 alt="Nosepin 2"
                 className="category-img"
@@ -153,11 +154,14 @@ const InstagramSection = () => {
                  router.push("/shop");
                   }}>✦ Bracelet ✦</button>
               </div>
-
-              <img
+              </div>
+              
+                
+              <div>
+                <img
                 src="/assets/img/home/shop_by_category/img-8.png"
                 alt="Necklace 2"
-                className="category-img mt-3"
+                className="category-img mt-0 mt-xl-3"
                onClick={() => {
                   
                  router.push("/shop");
@@ -171,6 +175,8 @@ const InstagramSection = () => {
                  router.push("/shop");
                   }}>✦ Earrings ✦</button>
               </div>
+              </div>
+              
             </div>
           </div>
         </div>

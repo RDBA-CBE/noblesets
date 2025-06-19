@@ -1650,6 +1650,12 @@ footer form input::placeholder{
     width: 25%; /* 4 columns on large screens */
     margin-bottom: 30px;
   }
+  .col-1-5.coloumn-5{
+    flex-direction: row;
+        width: 50%;
+        padding: 0;
+        gap: 22px;
+  }
 }
 
 @media (max-width: 992px) {

@@ -20,7 +20,7 @@ export default function NobelsetsPromises() {
         </div>
 
         <div class="row align-items-center justify-content-center nob-div">
-          <div class="col-12 col-md-9 col-xl-5 mb-4 mb-lg-0 order-1 order-xl-0">
+          <div class="col-12 col-md-9 col-xl-5 mb-4 mb-lg-0 order-1 order-xl-0 py-5">
             <div class="row">
               <div class="col-6  d-none-767">
                 <div class="d-flex align-items-center mb-5" style={{gap:"20px"}}>
@@ -243,7 +243,7 @@ export default function NobelsetsPromises() {
             </div>
           </div>
 
-          <div class="col-6 col-xl-5 text-center order-0 order-xl-1">
+          <div class="col-12 col-sm-6 col-xl-5 text-center order-0 order-xl-1">
             <img
               src="/assets/img/home/nobletset_promises/img-right.png"
               alt="Models"
