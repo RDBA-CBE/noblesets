@@ -150,6 +150,9 @@ const ProductDetailsPage = ({ query }) => {
     }
   };
 
+  console.log("youMayLikeData",youMayLikeData);
+  
+
   const product = productData?.data?.product;
   const [getCategoryName] = useGetCategoryNameMutation();
 

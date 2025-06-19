@@ -5,6 +5,7 @@ import Wrapper from "@/layout/wrapper";
 import HomeFooter from "@/components/home/HomeFooter";
 import ShippingAndExchangePolicyMain from "../components/shippingPolicy/shippingPolicyMain";
 import HeaderSection from "@/components/home/headerSection";
+import FAQ from "@/components/shippingPolicy/Faq";
 
 const ShippingAndExchangePolicy = () => {
   return (
@@ -14,7 +15,7 @@ const ShippingAndExchangePolicy = () => {
       <HeaderSection />
 
 
-      <ShippingAndExchangePolicyMain />
+      <FAQ />
       <HomeFooter />
     </Wrapper>
   );

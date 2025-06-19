@@ -1004,9 +1004,15 @@ const DetailsWrapper1 = ({
       <div className="product-info">
         {/* price */}
         <div className="bg-white my-3 p-3 rounded">
-          <h3 className="tp-product-details-title product-title">
+          <div className="d-flex justify-content-between">
+             <h3 className="tp-product-details-title product-title">
             {capitalizeFLetter(productItem?.name || productItem?.node?.name)}
           </h3>
+          <img className="brand-logo cursor-pointer"
+          onClick={()=>{router.push("/brand")}}
+           src="https://sreethangamjewellery.com/stjt/wp-content/uploads/2022/07/shop-brand-samelli.jpg" alt="" />
+          </div>
+         
           <div
             className="tp-product-details-price-wrapper"
             // style={{ paddingBottom: "15px" }}
