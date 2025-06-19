@@ -18,6 +18,9 @@ import { useRouter } from "next/router";
 import { getValueByKey } from "@/utils/functions";
 import HeaderSection from "@/components/home/headerSection";
 import HomeFooter from "@/components/home/HomeFooter";
+import CartBanner from "@assets/img/header-bg.png";
+
+import CommonBreadcrumb from "@/components/breadcrumb/common-breadcrumb";
 
 const ProductDetailsPage = ({ query }) => {
   const router = useRouter();
@@ -211,10 +214,17 @@ const ProductDetailsPage = ({ query }) => {
     );
   }
 
+  console.log("product",product.name);
+  
+
   return (
     <Wrapper>
       <SEO pageTitle="Product Details" />
       <HeaderSection />
+       <CommonBreadcrumb 
+       title={product.name} 
+       subtitle="Product Detail" BgImage={CartBanner}/>
+      
       {content}
       <HomeFooter />
     </Wrapper>

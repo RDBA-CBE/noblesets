@@ -1324,7 +1324,7 @@ const DetailsWrapper1 = ({
             <p className="text-danger mb-0">{`Save ${saveOff()}% OFF`}</p>
           )}
 
-          <p className="product-desc text-muted">
+          <p className="product-desc text-muted mb-0">
             {variantDetails?.quantityAvailable == 0 ||
             productItem?.defaultVariant?.quantityAvailable == 0 ? (
               <span style={{ color: "red", fontWeight: "500" }}>
