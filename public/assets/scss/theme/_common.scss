@@ -2802,6 +2802,12 @@ background-image: url("/assets/img/home/bg-ele/star-ele-3.png");
 //  z-index: 100;
 }
 
+@media(max-width:1024px){
+  .cart-page::after{
+  background-image: none !important;
+  }
+}
+
 
 
 .checkout-page-main{

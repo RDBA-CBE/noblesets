@@ -14,7 +14,7 @@ const ProfileArea = ({ orderData, reviewList }) => {
 
   return (
     <>
-      <section className="profile__area pt-120 pb-120" style={{background:"#fff9f4"}}>
+      <section className="profile__area pt-50 pb-50" style={{background:"#fff9f4"}}>
         <div className="container">
           <div className="profile__inner p-relative">
             {/* <ProfileShape /> */}

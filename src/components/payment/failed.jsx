@@ -104,10 +104,10 @@ const Failed = ({ data, orderId }) => {
   );
 
   return (
-    <section className="tp-login-area pb-80 pt-80 p-relative z-index-1 fix" style={{background:"#fff9f4"}}>
+    <section className="tp-login-area pt-50 pb-50 p-relative z-index-1 fix" style={{background:"#fff9f4"}}>
       <div className="container">
         <div className="row" style={{ justifyContent: "space-between" }}>
-          <div className="col-lg-6">
+          <div className="col-lg-6  ">
              <div style={{
                 padding: "20px 30px",
                 borderRadius:"30px 20px",
@@ -269,7 +269,7 @@ const Failed = ({ data, orderId }) => {
             </div>
             </div>
           </div>
-          <div className="col-lg-6 ">
+          <div className="col-lg-6 mt-4 mt-lg-0">
             <div
               style={{
                 padding: "20px 30px",

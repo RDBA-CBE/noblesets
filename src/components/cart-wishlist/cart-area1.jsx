@@ -284,7 +284,7 @@ const CartArea1 = () => {
                     className="tp-section-title-6"
                     style={{ fontSize: "28px", paddingRight: "0px" }}
                   >
-                    YOU MAY BE INTERESTED IN…
+                    You May Interested In…
                   </h3>
                 </div>
               </div>

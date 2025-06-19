@@ -365,7 +365,12 @@ const AddressInfo = () => {
               Address Info
             </h4>
             <button
-              className="gradient-btn"
+              className=" tp-btn tp-btn-border text-white mb-4"
+              style={{ borderRadius: "20px",
+                              padding: "3px 14px",
+                              fontSize: "14px",
+                              border:"none"
+                            }}
               // style={{ backgroundColor: "#c38c36", color: "white" }}
               onClick={() => {
                 clearForm();
@@ -728,7 +733,8 @@ const AddressInfo = () => {
       </Modal> */}
 
       <Modal
-        title={state.editAddressId == null ? "ADD ADDRESS" : "EDIT ADDRESS"}
+    
+        title={state.editAddressId == null ? "Add Address" : "Edit Address"}
         visible={editAddressModalVisible}
         onCancel={() => {
           clearForm();
@@ -748,8 +754,13 @@ const AddressInfo = () => {
             x
           </span>
         }
+        // style={{
+        //   padding: "0px", 
+         
+        // }}
+        
       >
-        <div className="row">
+        <div className="row mt-30">
           <div className="profile__input-box col-md-6">
             <div className="profile__input">
               <input
@@ -837,7 +848,7 @@ const AddressInfo = () => {
               </div>
             </div>
           ) : (
-            <div className="col-md-6">
+            <div className="col-md-6 mt-4 mt-md-0">
               <div className="tp-checkout-input">
                 <input
                   name="state"
