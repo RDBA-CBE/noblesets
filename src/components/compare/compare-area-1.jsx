@@ -166,7 +166,7 @@ const CompareArea1 = () => {
 
   return (
     <>
-<section className="tp-compare-area pb-50 pt-50 compare-page" className="common-bg">
+<section className="tp-compare-area pb-50 pt-50 compare-page common-bg" >
   <div className="container">
     <div className="row">
       <div className="col-xl-12">

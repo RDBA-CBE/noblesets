@@ -50,8 +50,8 @@ const WishlistArea1 = () => {
   return (
     <>
       <section
-        className="tp-cart-area pb-20 pt-30"
-        className="common-bg"
+        className="tp-cart-area pb-20 pt-30 common-bg"
+        
       >
         <div className="container">
           {list?.length === 0 && (

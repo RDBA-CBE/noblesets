@@ -196,8 +196,8 @@ const MyOrderDetails = ({ data }) => {
   const FormatDate = moment(Data?.created).format("MMMM D, YYYY");
   return (
     <section
-      className="tp-checkout-area pb-50 pt-50"
-      className="common-bg"
+      className="tp-checkout-area pb-50 pt-50 common-bg"
+     
     >
       <div className="container">
         <p
