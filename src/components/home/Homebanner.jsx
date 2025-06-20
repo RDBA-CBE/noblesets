@@ -31,26 +31,42 @@ const slider_data = [
     mblImg: mobile_size_ban_1,
     link: "/shop",
     // url: "/shop?category=earrings",
+    title:"Elevate Your Style <br />  with Every Piece",
+    desc:"Adorn jewels inspired by the royal <br /> jewellery adorned by  empresss in maratha dynasty",
+    btnTi:"Exhibition & Sale",
+    btnDesc:"of exquisite diamond jewellery"
   },
   {
       id: 2,
       img: slider_img_2,
       mblImg: mobile_size_ban_2,
-      link: "/shop"
+      link: "/shop",
       // url: "/shop?category=finger_rings",
+      title:"Elevate Your Style <br />  with Every Piece",
+    desc:"Adorn jewels inspired by the royal <br /> jewellery adorned by  empresss in maratha dynasty",
+    btnTi:"Exhibition & Sale",
+    btnDesc:"of exquisite diamond jewellery"
   },
   {
       id: 3,
       img: slider_img_3,
       mblImg: mobile_size_ban_3,
-      link: "/shop"
+      link: "/shop",
+      title:"Elevate Your Style <br />  with Every Piece",
+    desc:"Adorn jewels inspired by the royal <br /> jewellery adorned by  empresss in maratha dynasty",
+    btnTi:"Exhibition & Sale",
+    btnDesc:"of exquisite diamond jewellery"
       // url: "/shop?category=gold_plated_silver",
   },
   {
       id: 4,
       img: slider_img_4,
       mblImg: mobile_size_ban_4,
-      link: "/shop"
+      link: "/shop",
+      title:"Elevate Your Style <br />  with Every Piece",
+    desc:"Adorn jewels inspired by the royal <br /> jewellery adorned by  empresss in maratha dynasty",
+    btnTi:"Exhibition & Sale",
+    btnDesc:"of exquisite diamond jewellery"
       // url: "/shop?category=earrings",
   },
   // {
@@ -128,6 +144,7 @@ const HomeBanner = () => {
                     cursor: "pointer",
                     // objectPosition: "bottom",
                   }}
+                  // unoptimized
                 />
               </Link>
 
@@ -136,7 +153,7 @@ const HomeBanner = () => {
                 <span className="tp-slider-thumb-4-shape-2"></span>
               </div> */}
             </div>
-            <div className="mbl-content" onClick={()=>router.push("/shop")}>
+            <div className="mbl-content" >
               <h1>
                 Elevate Your Style <br />
                 with Every Piece
@@ -145,7 +162,7 @@ const HomeBanner = () => {
                 Adorn jewels inspired by the royal <br /> jewellery adorned by
                 empresss in maratha dynasty
               </p>
-              <div className="exb-btn">
+              <div className="exb-btn cursor-pointer" onClick={()=>router.push("/shop")}>
                 <p>
                   Exhibition & Sale <br />
                   <span>of exquisite diamond jewellery</span>

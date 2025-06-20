@@ -143,7 +143,6 @@ const DetailsWrapper1 = ({
     });
   };
 
-  console.log("attributeList", attributeList);
 
   const { data: tokens } = useGetCartListQuery();
   const { data: wishlistData, refetch: wishlistRefetch } =
