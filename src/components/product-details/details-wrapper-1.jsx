@@ -1008,74 +1008,11 @@ const DetailsWrapper1 = ({
              <h3 className="tp-product-details-title product-title">
             {capitalizeFLetter(productItem?.name || productItem?.node?.name)}
           </h3>
-          <img className="brand-logo cursor-pointer"
+          {/* <img className="brand-logo cursor-pointer"
           onClick={()=>{router.push("/brand")}}
-           src="https://sreethangamjewellery.com/stjt/wp-content/uploads/2022/07/shop-brand-samelli.jpg" alt="" />
-          </div>
-         
-          <div
-            className="tp-product-details-price-wrapper"
-            // style={{ paddingBottom: "15px" }}
-          >
-            {channel == "india-channel" ? (
-              <div className="d-flex flex-wrap justify-content-between">
-                <div className="tp-product-price-wrapper-2">
-                  {productItem?.variants?.length <= 1 &&
-                    RegularPrice(
-                      productItem?.defaultVariant?.costPrice,
-                      productItem?.pricing?.priceRange?.start?.gross?.amount
-                    ) && (
-                      <span
-                        className="pr-5"
-                        style={{
-                          textDecoration: "line-through",
-                          color: "gray",
-                        }}
-                      >
-                        {variantDetails ? (
-                          <>
-                            &#8377;
-                            {addCommasToNumber(
-                              variantDetails?.pricing?.price?.gross?.amount
-                            ) || 0}
-                          </>
-                        ) : (
-                          <>
-                            &#8377;
-                            {addCommasToNumber(
-                              productItem?.defaultVariant?.costPrice
-                            ) || 0}
-                          </>
-                        )}
-                      </span>
-                    )}
-                  <span
-                    className="tp-product-price-2 new-price"
-                    style={{ fontSize: "25px", fontWeight: "700" }}
-                  >
-                    <>
-                      {/* For normal product */}
-                      {isGiftCard || productItem?.variants?.length > 1 ? (
-                        <>
-                          &#8377;{addCommasToNumber(minAmount)} - &#8377;
-                          {addCommasToNumber(maxAmount)}
-                        </>
-                      ) : (
-                        <>
-                          &#8377;
-                          {addCommasToNumber(
-                            productItem?.pricing?.priceRange?.start?.gross
-                              ?.amount ||
-                              productItem?.node?.pricing?.priceRange?.start
-                                ?.gross?.amount
-                          ) || 0}
-                        </>
-                      )}
-                    </>
-                  </span>
-                </div>
-                {router?.route !== "/gift-card" && (
-                  <div className="tp-product-details-action-sm">
+           src="https://sreethangamjewellery.com/stjt/wp-content/uploads/2022/07/shop-brand-samelli.jpg" alt="" /> */}
+           {router?.route !== "/gift-card" && (
+                  <div className="tp-product-details-action-sm mt-2">
                     <button
                       disabled={status === "out-of-stock"}
                       onClick={() => {
@@ -1140,6 +1077,70 @@ const DetailsWrapper1 = ({
                     </button> */}
                   </div>
                 )}
+          </div>
+         
+          <div
+            className="tp-product-details-price-wrapper"
+            // style={{ paddingBottom: "15px" }}
+          >
+            {channel == "india-channel" ? (
+              <div className="d-flex flex-wrap justify-content-between">
+                <div className="tp-product-price-wrapper-2">
+                  {productItem?.variants?.length <= 1 &&
+                    RegularPrice(
+                      productItem?.defaultVariant?.costPrice,
+                      productItem?.pricing?.priceRange?.start?.gross?.amount
+                    ) && (
+                      <span
+                        className="pr-5"
+                        style={{
+                          textDecoration: "line-through",
+                          color: "gray",
+                        }}
+                      >
+                        {variantDetails ? (
+                          <>
+                            &#8377;
+                            {addCommasToNumber(
+                              variantDetails?.pricing?.price?.gross?.amount
+                            ) || 0}
+                          </>
+                        ) : (
+                          <>
+                            &#8377;
+                            {addCommasToNumber(
+                              productItem?.defaultVariant?.costPrice
+                            ) || 0}
+                          </>
+                        )}
+                      </span>
+                    )}
+                  <span
+                    className="tp-product-price-2 new-price"
+                    style={{ fontSize: "25px", fontWeight: "700" }}
+                  >
+                    <>
+                      {/* For normal product */}
+                      {isGiftCard || productItem?.variants?.length > 1 ? (
+                        <>
+                          &#8377;{addCommasToNumber(minAmount)} - &#8377;
+                          {addCommasToNumber(maxAmount)}
+                        </>
+                      ) : (
+                        <>
+                          &#8377;
+                          {addCommasToNumber(
+                            productItem?.pricing?.priceRange?.start?.gross
+                              ?.amount ||
+                              productItem?.node?.pricing?.priceRange?.start
+                                ?.gross?.amount
+                          ) || 0}
+                        </>
+                      )}
+                    </>
+                  </span>
+                </div>
+
               </div>
             ) : (
               <div className="tp-product-price-wrapper-2">

@@ -253,7 +253,7 @@ const ShopArea = ({
                 <Link href="/">Home</Link>
               </span>{" "}
                <NextArr/>{" "}
-              <span style={{ color: "black", fontWeight: "600" }}>
+              <span style={{ color: "black", fontWeight: "400" }}>
                 {/* <Link href="/shop">{categories[0]}</Link>{" "} */}
                 <span
                   onClick={() => {

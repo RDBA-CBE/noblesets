@@ -1618,9 +1618,9 @@
 // Footer
 
 .footer-link {
-  color: rgba(255 255 255 / 0.8);
-  font-size: 17px;
-  font-weight: 600;
+  color: #fff;
+  font-size: 16px;
+  // font-weight: 600;
   text-decoration: none;
   font-family: "Nunito", sans-serif;
 }
@@ -1635,7 +1635,7 @@
   font-family: "Nunito", sans-serif;
 }
 .footer-subtitle h3 {
-  font-weight: 600;
+  // font-weight: 600;
   font-size: 18px;
 
   display: flex;
@@ -1647,7 +1647,7 @@
 }
 .footer-input {
   border-radius: 50px;
-  border: 1px solid rgba(255 255 255 / 0.5);
+  border: 1px solid #fff;
   background: transparent;
   color: white;
   padding-left: 1.25rem;
@@ -1680,15 +1680,15 @@ footer input::placeholder {
 }
 .checkbox-label {
   font-size: 16px;
-  font-weight: 600;
-  color: #fffc;
+  // font-weight: 600;
+  color: #fff;
   user-select: none;
   font-family: "Nunito", sans-serif;
 }
 .copyright {
   font-family: "Nunito", sans-serif;
-  font-weight: 600;
-  color: #fffc;
+  // font-weight: 600;
+  color: #fff;
 }
 footer .form-check input[type="checkbox"] {
   background-color: transparent;
@@ -1698,16 +1698,16 @@ footer input[type="email"] {
   color: #fff;
 }
 footer input::placeholder {
-  color: #fffc !important;
+  color: #fff !important;
   font-size: 16px;
-  font-weight: 600;
+  // font-weight: 600;
   font-family: "Nunito", sans-serif;
 }
 
 .payment-item {
-  font-weight: 600;
-  color: rgba(255 255 255 / 0.9);
-  font-size: 17px;
+  // font-weight: 600;
+  color: #fff;
+  font-size: 16px;
   display: flex;
   align-items: center;
   gap: 0.5rem;
@@ -1725,12 +1725,12 @@ footer .btn-arrow {
 }
 
 .download-text {
-  font-size: 17px;
-  color: #fffc;
+  font-size: 16px;
+  color: #fff;
   margin-bottom: 1rem;
   line-height: 1.5;
   font-family: "Nunito", sans-serif;
-  font-weight: 600;
+  // font-weight: 600;
 }
 .social-btn {
   width: 38px;
@@ -1755,6 +1755,12 @@ hr.footer-divider {
   border-color: #fff;
   margin-top: 3rem;
   margin-bottom: 2rem;
+
+}
+.footer-about{
+  font-size: 16px;
+  font-weight: 400 !important;
+  color: #fff;
 }
 @media (max-width: 767.98px) {
   .footer-input {
@@ -2804,6 +2810,7 @@ header .tp-product-action-btn-3:hover {
 .ShopByCollections .card-body p {
   // font-family: "Questrial", sans-serif;
   font-size: 16px !important;
+  letter-spacing: 1px;
 }
 
 .shop-page .ShopByCollections .card {

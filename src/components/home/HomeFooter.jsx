@@ -9,17 +9,20 @@ const HomeFooter = () => {
     <div style={{ background: "url(/assets/img/footer/bg.jpg)" }}>
       <footer className="container-fluid pt-50 text-white px-0">
         <div className="row justify-content-center ">
-          <div className="col-11 col-xl-11">
-            <div className="row gy-4 ">
-              <div className="col-12  col-xl-3">
+          <div className="col-11 col-xl-10 ">
+            <div className="row gy-4 justify-content-center">
+              <div className="col-12  col-xl-4 pe-5">
                 <div className="footer-subtitle mb-0">
-                  {/* <i className="fas fa-times"></i> */}
-                  <h3 className=" text-white sub-ti mt-1" style={{fontSize:"16px", marginBottom:"1.3rem"}}><b style={{color:"#fff9"}}>✦</b> Newsletter</h3>
+                  
+                  <h3 className=" text-white sub-ti mt-1" style={{fontSize:"16px", marginBottom:"1.3rem"}}><b style={{color:"#fff9"}}>✦</b> About</h3>
                 </div>
-                <h2 className="h3  text-white mb-5 main-ti">
-                  Subscribe Today
+                <h2 className="h3  text-white mb-4 main-ti">
+                  Noblesets
                 </h2>
-                <form
+                <p className="pt-2 footer-about">
+                 Lorem ipsum dolor sit, amet consectetur adipisicing elit. Quia voluptate aliquid repellat pariatur obcaecati numquam voluptas sit vitae, illum assumenda quam rerum eveniet, blanditiis repellendus similique exercitationem odit harum esse!
+                </p>
+                {/* <form
                   className="position-relative mb-3"
                   onsubmit="event.preventDefault()"
                 >
@@ -37,13 +40,13 @@ const HomeFooter = () => {
                     <svg
                       xmlns="http://www.w3.org/2000/svg"
                       viewBox="0 0 100 100"
-                      // className={className}
+                     
                       style={{ width: "20px", height: "20px" }}
-                      // {...props}
+                     
                     >
                       <path d="M19.9,56.2L2.7,87.3c-0.3,0.5-0.2,1.2,0.2,1.6c0.4,0.5,1,0.6,1.6,0.4l92.2-37c0.5-0.2,0.9-0.7,0.9-1.3 c0-0.6-0.3-1.1-0.9-1.3l-92.2-37c-0.6-0.2-1.2-0.1-1.6,0.4c-0.4,0.5-0.5,1.1-0.2,1.6l17.2,31.1l43.7,4.7c0.3,0,0.6,0.2,0.6,0.5 c0,0.3-0.2,0.5-0.6,0.5L19.9,56.2L19.9,56.2z" />
                     </svg>
-                    {/* <i className="fas fa-arrow-right"></i> */}
+                   
                   </button>
                 </form>
                 <div className="form-check">
@@ -60,24 +63,25 @@ const HomeFooter = () => {
                   >
                     I Agree with the terms &amp; Conditions
                   </label>
-                </div>
+                </div> */}
               </div>
-              <div className="col-6 col-lg-3 col-xl-2 ps-xl-5">
-                <h3 className="footer-title">Useful Links</h3>
+
+               <div className="col-6 col-lg-3 col-xl-2 ps-xl-0">
+                <h3 className="footer-title">Quick Links</h3>
                 <nav className="nav flex-column">
-                  <a className="footer-link mb-4" href="/our-story">
+                  <a className="footer-link mb-3" href="/our-story">
                     Our Story
                   </a>
-                  <a className="footer-link mb-4" href="/legal-policies">
+                  <a className="footer-link mb-3" href="/legal-policies">
                     Legal Policies
                   </a>
-                  <a className="footer-link mb-4" href="/terms-and-conditions">
+                  <a className="footer-link mb-3" href="/terms-and-conditions">
                     Terms and conditions
                   </a>
-                  <a className="footer-link mb-4" href="/loyalty-programs">
+                  <a className="footer-link mb-3" href="/loyalty-programs">
                     Loyalty Programs
                   </a>
-                  <a className="footer-link mb-4" href="/faq">
+                  <a className="footer-link mb-3" href="/faq">
                     Help &amp; FAQS
                   </a>
                   {/* <a className="footer-link" href="#">
@@ -85,10 +89,55 @@ const HomeFooter = () => {
                   </a> */}
                 </nav>
               </div>
-              <div className="col-6 col-lg-3 col-xl-2">
+
+              <div className="col-6 col-lg-3 col-xl-2 ps-xl-0">
+                <h3 className="footer-title">Collections</h3>
+                <nav className="nav flex-column">
+                  <a className="footer-link mb-3" href="/shop">
+                   Haram
+                  </a>
+                  <a className="footer-link mb-3" href="/shop">
+                    Necklace
+                  </a>
+                  <a className="footer-link mb-3" href="/shop">
+                    Bangle
+                  </a>
+                  <a className="footer-link mb-3" href="/shop">
+                   Pendants
+                  </a>
+                  <a className="footer-link mb-3" href="/shop">
+                    Rings
+                  </a>
+                  {/* <a className="footer-link" href="#">
+                    Testimonials
+                  </a> */}
+                </nav>
+              </div>
+              {/* <div className="col-6 col-lg-3 col-xl-2 ps-xl-5">
+                <h3 className="footer-title">Collections</h3>
+                <nav className="nav flex-column">
+                  <a className="footer-link mb-4" href="/shop">
+                   Diamond
+                  </a>
+                  <a className="footer-link mb-4" href="/shop">
+                    Gold
+                  </a>
+                  <a className="footer-link mb-4" href="/shop">
+                    Silver
+                  </a>
+                  <a className="footer-link mb-4" href="/shop">
+                    Antique
+                  </a>
+                  <a className="footer-link mb-4" href="/shop">
+                    Platinum
+                  </a>
+                 
+                </nav>
+              </div> */}
+              {/* <div className="col-6 col-lg-3 col-xl-2">
                 <h3 className="footer-title">Contact Us</h3>
                 <div className="d-flex align-items-center mb-4 cursor-pointer">
-                  {/* <i className="fas fa-phone me-2" style="font-size: 10px"></i> */}
+                 
                   <PhoneTwo />
 
                   <span className="footer-link ps-2 ">
@@ -97,10 +146,7 @@ const HomeFooter = () => {
                     </span>
                 </div>
                 <div className="d-flex align-items-start mb-4">
-                  {/* <i
-              className="fas fa-map-marker-alt me-2 mt-1"
-              style="font-size: 10px"
-            ></i> */}
+                 
                   <Location />
                   <span className="footer-link ps-2">
                   
@@ -109,18 +155,17 @@ const HomeFooter = () => {
                   </span>
                 </div>
                 <div className="d-flex align-items-center cursor-pointer">
-                  {/* <i className="fas fa-envelope me-2" style="font-size: 10px"/> */}
-                  {/* <i class="fa-regular fa-envelope" style={{fontSize:"18px"}}></i> */}
+                
                   <EmailTwo />
                   <span className="footer-link ps-2">
                     <a href="mailto:services@nobleset.com">services@noblesets.com</a>
                     
                   </span>
                 </div>
-              </div>
+              </div> */}
               <div className="col-6  col-lg-3 col-xl-2">
                 <h3 className="footer-title">Payment</h3>
-                <div className="d-flex flex-column gap-4">
+                <div className="d-flex flex-column gap-3">
                   <div className="payment-item">
                     <img
                       alt="Paypal logo with blue text on white background"
@@ -173,7 +218,7 @@ const HomeFooter = () => {
                   </div>
                 </div>
               </div>
-              <div className="col-6 col-lg-3 col-xl-3 ">
+              {/* <div className="col-6 col-lg-3 col-xl-3 ">
                 <h3 className="footer-title">Download Noblesets</h3>
                 <p className="download-text pb-3 pb-xl-4 pe-5">
                   Get Exclusive Offers, 24/7 Tech Support <br /> &amp; Feet Advatage
@@ -199,11 +244,46 @@ const HomeFooter = () => {
                     />
                   </a>
                 </div>
-              </div>
+              </div> */}
+
+               <div className="col-6 col-lg-3 col-xl-2 ">
+                 <h3 className="footer-title">Support</h3>
+                <div className="d-flex align-items-center mb-3 cursor-pointer">
+                  {/* <i className="fas fa-phone me-2" style="font-size: 10px"></i> */}
+                  <PhoneTwo />
+
+                  <span className="footer-link ps-2 ">
+                    <a href="tellto:(0252)8345 93421"> 0421-2266885</a>
+                   
+                    </span>
+                </div>
+                <div className="d-flex align-items-start mb-3">
+                  {/* <i
+              className="fas fa-map-marker-alt me-2 mt-1"
+              style="font-size: 10px"
+            ></i> */}
+                  <Location />
+                  <span className="footer-link ps-2">
+                  
+                   78, New Market Street, <br /> Tiruppur-641604 <br />
+                  
+                  </span>
+                </div>
+                <div className="d-flex align-items-center cursor-pointer">
+                  {/* <i className="fas fa-envelope me-2" style="font-size: 10px"/> */}
+                  {/* <i class="fa-regular fa-envelope" style={{fontSize:"18px"}}></i> */}
+                  <EmailTwo />
+                  <span className="footer-link ps-2">
+                    <a href="mailto:services@nobleset.com">services@noblesets.com</a>
+                    
+                  </span>
+                </div>
+               </div>
+             
             </div>
             <hr className="footer-divider " />
             <div
-              className="d-flex flex-column flex-md-row justify-content-between align-items-center text-white"
+              className="d-flex flex-column flex-md-row justify-content-between align-items-center text-white width-80"
               style={{ fontSize: "16px" }}
             >
               <div className="copyright">Copyright 2025 © Noblesets. Concept by repute</div>

@@ -560,6 +560,7 @@ const HeaderTwo = ({ style_2 = false, data }) => {
                                       border: "1px solid gray",
                                       color: "gray",
                                       fontSize: "14px",
+                                      borderRadius:"5px"
                                     }}
                                     onClick={() => router.push("/login")}
                                   >
@@ -576,6 +577,7 @@ const HeaderTwo = ({ style_2 = false, data }) => {
                                       border: "1px solid gray",
                                       color: "gray",
                                       fontSize: "14px",
+                                       borderRadius:"5px"
                                     }}
                                     onClick={handleLogout}
                                   >

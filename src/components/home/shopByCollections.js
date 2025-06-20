@@ -154,7 +154,7 @@ export default function ShopByCollections() {
                   >
                     {item.title}
                   </h5>
-                  <p className="text-black" style={{fontSize:"18px"}}>Starting from {item.price}</p>
+                  <p className="text-black" style={{fontSize:"18px", letterSpacing:"1px"}}>Starting from {item.price}</p>
                 </div>
               </div>
             </SwiperSlide>
