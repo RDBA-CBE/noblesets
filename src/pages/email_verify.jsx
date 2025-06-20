@@ -56,7 +56,7 @@ const EmailVerifyPage = () => {
       {/* <HeaderTwo style_2={true} /> */}
       <HeaderSection />
 
-      <div className="tp-login-input-wrapper pb-140 pt-120" style={{ background: "#fff9f4" }}>
+      <div className="tp-login-input-wrapper pb-140 pt-120" className="common-bg">
         <div className="tp-login-input-box">
           <section className="tp-login-area pb-140 pt-120 p-relative z-index-1 fix">
             <div className="container">

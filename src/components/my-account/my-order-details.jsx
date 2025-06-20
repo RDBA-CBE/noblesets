@@ -197,7 +197,7 @@ const MyOrderDetails = ({ data }) => {
   return (
     <section
       className="tp-checkout-area pb-50 pt-50"
-      style={{ background: "#fff9f4" }}
+      className="common-bg"
     >
       <div className="container">
         <p

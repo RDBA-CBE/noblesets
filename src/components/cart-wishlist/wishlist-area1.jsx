@@ -51,7 +51,7 @@ const WishlistArea1 = () => {
     <>
       <section
         className="tp-cart-area pb-20 pt-30"
-        style={{ background: "#fff9f4" }}
+        className="common-bg"
       >
         <div className="container">
           {list?.length === 0 && (

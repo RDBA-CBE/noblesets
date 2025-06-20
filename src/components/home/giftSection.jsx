@@ -10,7 +10,7 @@ export default function GiftSection() {
     >
       <div class=" section-wd gift-section">
         <div class="row align-items-center justify-content-center g-5 px-3">
-          <div class="col-12 col-lg-6 px-3 px-lg-5" data-aos="fade-right">
+          <div class="col-12 col-lg-6 px-3 px-lg-5 gift-section-le" data-aos="fade-right">
             <div className="">
               <h5 className="sub-ti ps-1" > <b className="pe-2">✦</b> Thoughtful moments</h5>
               <h4
@@ -35,11 +35,11 @@ be told. Our curated gifting collection caters to every emotion, relationship an
                 <img
                   src="/assets/img/home/gift_special/img-1.png"
                   alt="image-1"
-                  style={{
-                    width: "100%",
-                    borderRadius: "20px",
-                    cursor: "pointer",
-                  }}
+                  // style={{
+                  //   width: "100%",
+                  //   borderRadius: "20px",
+                  //   cursor: "pointer",
+                  // }}
                   
                 />
                 {/* <p class="small mt-2">Birthday</p> */}
@@ -52,11 +52,11 @@ be told. Our curated gifting collection caters to every emotion, relationship an
                 <img
                   src="/assets/img/home/gift_special/img-2.png"
                   alt="image-1"
-                  style={{
-                    width: "100%",
-                    borderRadius: "20px",
-                    cursor: "pointer",
-                  }}
+                  // style={{
+                  //   width: "100%",
+                  //   borderRadius: "20px",
+                  //   cursor: "pointer",
+                  // }}
                  
                 />
                 {/* <p class="small mt-2">Anniversary</p> */}
@@ -68,11 +68,11 @@ be told. Our curated gifting collection caters to every emotion, relationship an
                 <img
                   src="/assets/img/home/gift_special/img-3.png"
                   alt="image-1"
-                  style={{
-                    width: "100%",
-                    borderRadius: "20px",
-                    cursor: "pointer",
-                  }}
+                  // style={{
+                  //   width: "100%",
+                  //   borderRadius: "20px",
+                  //   cursor: "pointer",
+                  // }}
                   
                 />
                 {/* <p class="small mt-2">Valentine’s Day</p> */}
@@ -92,20 +92,20 @@ be told. Our curated gifting collection caters to every emotion, relationship an
             </div>
           </div>
 
-          <div class="col-12 col-lg-5 text-center" data-aos="fade-left">
+          <div class="col-12 col-lg-5 text-center gift-section-ri" data-aos="fade-left">
            <div
   className="position-relative d-lg-flex justify-content-lg-end ps-lg-5 p-3"
 >
               <img
                 src="/assets/img/home/gift_special/gift-img.png"
                 alt="image-1"
-                style={{
-                  width: "90%",
-                  height: "auto",
-                  // borderRadius: "50% / 40%", 
-                  objectFit: "cover",
-                  cursor: "pointer",
-                }}
+                // style={{
+                //   width: "90%",
+                //   height: "auto",
+                //   // borderRadius: "50% / 40%", 
+                //   objectFit: "cover",
+                //   cursor: "pointer",
+                // }}
                 onClick={() => router?.push("/sale")}
               />
             </div>

@@ -122,7 +122,7 @@ const ProductDetailsArea = ({
   return (
     <section
       className="tp-product-details-area pt-40 product-detail-page"
-      style={{ background: "#fff9f4" }}
+      className="common-bg"
     >
       <div className="tp-product-details-top">
         <div className="container">
