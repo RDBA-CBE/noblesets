@@ -702,6 +702,11 @@
   .bnr .tp-slider-height-4 {
     min-height: 350px !important;
   }
+
+  .mobile-view-width-change{
+    display: none;
+  }
+
   .mbl-content {
     display: block;
     position: absolute;
@@ -715,6 +720,9 @@
     height: 300px;
     text-align: center;
     border-radius: 20px;
+  }
+  .mbl-content img{
+    display: block;
   }
   .mbl-content h1 {
     font-size: 26px;
@@ -743,6 +751,19 @@
     font-size: 12px;
     line-height: 20px;
   }
+}
+
+@media (max-width: 500px) {
+  .mbl-content h1 {
+    display: none;
+  }
+  .mbl-content p {
+    display: none;
+  }
+  .mbl-content .exb-btn {
+    display: none;
+  }
+  
 }
 
 @media (max-width: 900px) {
@@ -836,7 +857,7 @@
     width: 100%;
     margin: auto;
     // backdrop-filter: blur(4px);
-    background: #e9e2e24d;
+    // background: #e9e2e24d;
   }
 }
 

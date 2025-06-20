@@ -1842,6 +1842,7 @@ const DetailsWrapper1 = ({
                       width: "100%",
                       objectFit: "cover",
                       borderRadius: "5px",
+                      maxHeight:"477px"
                     }}
                   />
 
