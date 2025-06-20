@@ -46,6 +46,7 @@ import {
   ORDER_REVIEW,
   PRODUCT_REVIEW,
   USER_REVIEWS,
+  BRAND_DATA,
 } from "@/utils/queries/productList";
 import {
   RELATED_PRODUCT,
@@ -871,6 +872,13 @@ export const productApi = apiSlice.injectEndpoints({
       },
       providesTags: ["Products"],
     }),
+
+    brandData: builder.mutation({
+      query: ({ slug }) => {
+        return configuration(BRAND_DATA({ slug }));
+      },
+      providesTags: ["Products"],
+    }),
   }),
 });
 
@@ -939,4 +947,5 @@ export const {
   useOrderReviewMutation,
   useProductReviewMutation,
   useUserReviewsListMutation,
+  useBrandDataMutation
 } = productApi;

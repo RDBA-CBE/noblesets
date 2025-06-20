@@ -150,7 +150,6 @@ const ProductDetailsPage = ({ query }) => {
     }
   };
 
-  console.log("youMayLikeData",youMayLikeData);
   
 
   const product = productData?.data?.product;
@@ -225,7 +224,6 @@ const ProductDetailsPage = ({ query }) => {
     );
   }
 
-  console.log("product",product);
   
 
   return (

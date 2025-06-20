@@ -349,6 +349,13 @@ export const GET_PRODUCTLIST_BY_ID = ({ ids, channel }) => {
               name
               quantityAvailable
             }
+              brand {
+          description
+          id
+          logo
+          name
+          slug
+        }
           }
         }
       }
@@ -2276,5 +2283,24 @@ export const USER_REVIEWS = ({ userId }) => {
 
     `,
     variables: { userId },
+  };
+};
+
+export const BRAND_DATA = ({ slug }) => {
+  return {
+    query: `
+ query GetBrandBySlug($slug: String!) {
+    brand(slug: $slug) {
+      description
+      id
+      isActive
+      logo
+      name
+      slug
+    }
+  }
+
+    `,
+    variables: { slug },
   };
 };

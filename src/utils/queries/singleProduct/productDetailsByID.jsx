@@ -153,6 +153,13 @@ export const SINGLE_PRODUCT = ({ productId, channel }) => {
       slug
       sizedetail
     }
+       brand {
+      description
+      id
+      logo
+      name
+      slug
+    }
   }
 }
     `,

@@ -101,10 +101,10 @@ export const validLoginAndReg = () => {
 };
 
 export const roundOff = (value) => {
-  if (value === null || value === undefined) return '';
+  if (value === null || value === undefined) return "";
 
   // Remove commas and convert to number
-  const num = Number(value.toString().replace(/,/g, ''));
+  const num = Number(value.toString().replace(/,/g, ""));
   if (isNaN(num)) return String(value);
 
   // Custom rounding logic
@@ -117,15 +117,12 @@ export const roundOff = (value) => {
   const lastThree = roundedStr.slice(-3);
   const otherDigits = roundedStr.slice(0, -3);
   const formatted =
-    otherDigits.replace(/\B(?=(\d{2})+(?!\d))/g, ',') +
-    (otherDigits ? ',' : '') +
+    otherDigits.replace(/\B(?=(\d{2})+(?!\d))/g, ",") +
+    (otherDigits ? "," : "") +
     lastThree;
 
   return formatted;
 };
-
-
-
 
 export const RegularPrice = (costPrice, sale) => {
   let price = false;
@@ -185,12 +182,11 @@ export const slider_setting = {
   },
 };
 
-
 export const addCommasToNumber = (value) => {
-  if (value === null || value === undefined) return '';
+  if (value === null || value === undefined) return "";
 
   // Remove commas and convert to number
-  const num = Number(value.toString().replace(/,/g, ''));
+  const num = Number(value.toString().replace(/,/g, ""));
   if (isNaN(num)) return String(value);
 
   // Custom rounding logic
@@ -203,13 +199,12 @@ export const addCommasToNumber = (value) => {
   const lastThree = roundedStr.slice(-3);
   const otherDigits = roundedStr.slice(0, -3);
   const formatted =
-    otherDigits.replace(/\B(?=(\d{2})+(?!\d))/g, ',') +
-    (otherDigits ? ',' : '') +
+    otherDigits.replace(/\B(?=(\d{2})+(?!\d))/g, ",") +
+    (otherDigits ? "," : "") +
     lastThree;
 
   return formatted;
 };
-
 
 export const mergeAndRemoveDuplicates = (arr1, arr2) => {
   // Merge the two arrays
@@ -571,4 +566,19 @@ export const getFileType = async (filename) => {
   } else {
     return "unknown";
   }
+};
+
+export const CommonLoader = () => {
+  return (
+    <div
+      style={{
+        height: "50vh",
+        display: "flex",
+        justifyContent: "center",
+        alignItems: "center",
+      }}
+    >
+      <img src="/assets/img/loading-gif.gif" alt="Loading..." />
+    </div>
+  );
 };

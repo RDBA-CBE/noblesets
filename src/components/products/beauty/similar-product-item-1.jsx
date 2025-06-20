@@ -35,6 +35,8 @@ const SimilarProductItem = ({
   primary_style = false,
   data,
 }) => {
+  console.log("product",product);
+  
   const { id, thumbnail, name, discount, pricing, tags, status, video, slug } =
     product || {};
   const cart = useSelector((state) => state.cart?.cart_list);
@@ -392,9 +394,7 @@ height={320}
             )}
             <button
               type="button"
-              className={`tp-product-action-btn-3 ${
-                isAddedToWishlist ? "active" : ""
-              } tp-product-add-to-wishlist-btn`}
+              className={`tp-product-action-btn-3  tp-product-add-to-wishlist-btn`}
               onClick={() => {
                 if (compareList?.some((prd) => prd?.id === product?.node?.id)) {
                   router.push("/compare");
