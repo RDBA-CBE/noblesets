@@ -1,5 +1,8 @@
 import React from "react";
 
+import sampleImg from "../../../public/assets/img/home/brand-img.png";
+import Image from "next/image";
+
 const BrandBanner = ({
   title,
   subtitle,
@@ -9,22 +12,28 @@ const BrandBanner = ({
   content,
   pt,
   pb,
+  logo,
 }) => {
   return (
     <section
-      className={`brand-banner breadcrumb__area  ${center ? "text-center" : ""} include-bg ${
-        pt ? pt : "pt-50"
-      } ${pb ? pb : "pb-50"} `}
-      // style={{ 
-      //     backgroundImage: `url(/assets/img/home/brand-img.png)`,
-      //   //   background:"linear-gradient(to right,color-mix(in srgb, #fbdccc 40%, #e09a7a),#e09a7a)",
-      //    borderRadius:"30px", 
-      //    color:"#b4633a",
-      //    height:"60vh"
-      // }}
-     
+      className={`brand-banner breadcrumb__area  ${
+        center ? "text-center" : ""
+      } include-bg ${pt ? pt : "pt-50"} ${pb ? pb : "pb-50"} `}
+      style={{
+        // backgroundImage:{logo ? logo : `url(/assets/img/home/brand-img.png)`},
+        //   background:"linear-gradient(to right,color-mix(in srgb, #fbdccc 40%, #e09a7a),#e09a7a)",
+        borderRadius: "30px",
+        color: "#b4633a",
+        height: "60vh",
+      }}
     >
-     
+      <Image
+        src={logo ? logo : sampleImg}
+        // width={800}
+        // height={400}
+        // height={"100%"}
+        // width={"100%"}
+      />
     </section>
   );
 };

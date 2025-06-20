@@ -8,6 +8,7 @@ import HomeFooter from "@/components/home/HomeFooter";
 import BrandBanner from "@/components/banner/brand-banner";
 import { useRouter } from "next/router";
 import {
+  useBrandDataMutation,
   useNewProductListMutation,
   useShopPaginationMutation,
 } from "@/redux/features/productApi";
@@ -32,17 +33,32 @@ const Page = () => {
     totalPages: 0,
     currentPage: 1,
     prevPage: 1,
+    brandData: null,
   });
 
   const [shopPagination, { isLoading: shopPaginationLoading }] =
     useShopPaginationMutation();
+
+  const [brandData, { isLoading: brandLoading }] = useBrandDataMutation();
 
   const [newProductList, { isLoading: productPagiLoading }] =
     useNewProductListMutation();
 
   useEffect(() => {
     getProductList();
+    brandDetails();
   }, [slug]);
+
+  const brandDetails = async () => {
+    try {
+      const res = await brandData({
+        slug,
+      });
+      setState({ brandData: res?.data?.data?.brand });
+    } catch (error) {
+      console.log("✌️error --->", error);
+    }
+  };
 
   const getProductList = async () => {
     try {
@@ -176,21 +192,17 @@ const Page = () => {
       <HeaderSection />
       <div style={{ background: "#fff9f4" }}>
         <div className="section-wd">
-          <BrandBanner />
+          <BrandBanner logo={state.brandData?.logo}/>
         </div>
 
         <div className="container py-5">
           <div className="row">
             <div className="col-12 col-lg-7">
               <div className="d-flex text-center flex-column align-items-center justify-content-center h-100">
-                <h2 className="main-ti">Go with the trend</h2>
+                <h2 className="main-ti">{state.brandData?.name}</h2>
                 <p className="text-black">
-                  Younger girls adore jewels and love to glorify them with
-                  trending collections. Samelli is our one-of-a-kind teenage
-                  collection for young girls to flaunt with a minimalistic yet
-                  classy jewellery collection. Samelli’s ornaments feel airy
-                  with attractive designs making her fall in love with herself
-                  all day.
+                {state.brandData?.description}
+                 
                 </p>
               </div>
             </div>

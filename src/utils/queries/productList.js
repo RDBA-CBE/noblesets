@@ -2285,3 +2285,22 @@ export const USER_REVIEWS = ({ userId }) => {
     variables: { userId },
   };
 };
+
+export const BRAND_DATA = ({ slug }) => {
+  return {
+    query: `
+ query GetBrandBySlug($slug: String!) {
+    brand(slug: $slug) {
+      description
+      id
+      isActive
+      logo
+      name
+      slug
+    }
+  }
+
+    `,
+    variables: { slug },
+  };
+};
