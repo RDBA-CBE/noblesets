@@ -237,7 +237,6 @@ const ProductItem1 = ({ products, style_2 = false, updateData, index }) => {
       return 0;
     }
   };
-  console.log(profilePic(img));
   
 
   return (

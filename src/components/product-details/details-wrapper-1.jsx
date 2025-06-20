@@ -207,7 +207,6 @@ const DetailsWrapper1 = ({
     }
   }, [productItem]);
 
-
   const [isAddWishlist, setWishlist] = useState(false);
   const [attributeValue, setAttributeValue] = useState(false);
   const cart = useSelector((state) => state.cart?.cart_list);
@@ -434,7 +433,7 @@ const DetailsWrapper1 = ({
   const [nextHovered, setNextHovered] = useState(false);
   const [nextProduct, setNextProduct] = useState();
   const [previousProduct, setPreviousProduct] = useState();
-  const [shippingOpen, setShippingOpen] = useState(false)
+  const [shippingOpen, setShippingOpen] = useState(false);
 
   const PreviousMouseEnter = () => {
     setPreviousHovered(true);
@@ -1005,14 +1004,28 @@ const DetailsWrapper1 = ({
         {/* price */}
         <div className="bg-white my-3 p-3 rounded">
           <div className="d-flex justify-content-between">
-             <h3 className="tp-product-details-title product-title">
-            {capitalizeFLetter(productItem?.name || productItem?.node?.name)}
-          </h3>
-          <img className="brand-logo cursor-pointer"
-          onClick={()=>{router.push("/brand")}}
-           src="https://sreethangamjewellery.com/stjt/wp-content/uploads/2022/07/shop-brand-samelli.jpg" alt="" />
+            <h3 className="tp-product-details-title product-title">
+              {capitalizeFLetter(productItem?.name || productItem?.node?.name)}
+            </h3>
+            {(productItem?.brand || productItem?.node?.brand) && (
+              <img
+                className="brand-logo cursor-pointer"
+                onClick={() => {
+                  router.push({
+                    pathname: "/brand",
+                    query: {
+                      slug:
+                        productItem?.brand?.slug ||
+                        productItem?.node?.brand?.slug,
+                    }, // Your parameters
+                  });
+                }}
+                src={productItem?.brand?.logo || productItem?.node?.brand?.logo}
+                alt=""
+              />
+            )}
           </div>
-         
+
           <div
             className="tp-product-details-price-wrapper"
             // style={{ paddingBottom: "15px" }}
@@ -1697,33 +1710,37 @@ const DetailsWrapper1 = ({
                     </div>
                   }
 
-                 { attributeList.length>0 && (
-                  <>
-                  <h5 style={{ fontWeight: "400" }}>Additional Information:</h5>
+                  {attributeList.length > 0 && (
+                    <>
+                      <h5 style={{ fontWeight: "400" }}>
+                        Additional Information:
+                      </h5>
 
-                  <table
-                    className="table "
-                    style={{
-                      width: "100%",
-                      fontSize: "14px",
-                      // borderCollapse: "collapse",
-                      marginBottom: "0",
-                      borderColor: "#b4633a",
-                    }}
-                  >
-                    <tbody>
-                      {attributeList?.map((attribute) => (
-                        <tr>
-                          <td style={{ fontWeight: "bold" }}>{attribute?.title}</td>
-                          <td style={{ textAlign: "right" }}>{attribute?.value}</td>
-                        </tr>
-                      ))}
-
-                     
-                    </tbody>
-                  </table>
-                  </>
-                  ) }
+                      <table
+                        className="table "
+                        style={{
+                          width: "100%",
+                          fontSize: "14px",
+                          // borderCollapse: "collapse",
+                          marginBottom: "0",
+                          borderColor: "#b4633a",
+                        }}
+                      >
+                        <tbody>
+                          {attributeList?.map((attribute) => (
+                            <tr>
+                              <td style={{ fontWeight: "bold" }}>
+                                {attribute?.title}
+                              </td>
+                              <td style={{ textAlign: "right" }}>
+                                {attribute?.value}
+                              </td>
+                            </tr>
+                          ))}
+                        </tbody>
+                      </table>
+                    </>
+                  )}
                 </>
                 {/* )} */}
                 {/* <div
@@ -1822,52 +1839,70 @@ const DetailsWrapper1 = ({
                 </div>
               )}
               {/* Reviews */}
-              <div
-                className="tab-pane fade"
-                id="pd-brand"
-                style={{ width: "100%" }}
-              >
+              {productItem?.brand || productItem?.node?.brand ? (
                 <div
-                  style={{
-                    paddingTop: "10px",
-                    // height: "300px",
-                    // overflowY: "scroll",
-                  }}
+                  className="tab-pane fade"
+                  id="pd-brand"
+                  style={{ width: "100%" }}
                 >
-                  <div style={{ width: "100%" }}></div>
-                  <img
-                    src="/assets/img/home/brand-img.png"
-                    alt=""
+                  <div
                     style={{
-                      width: "100%",
-                      objectFit: "cover",
-                      borderRadius: "5px",
-                    }}
-                  />
-
-                  <h4 className="mt-4 mb-0 " style={{color:"#b4633a ", fontWeight:"400"}}>Sameli</h4>
-
-                  <p className="mt-2" style={{ color: "#55585b" }}>
-                    Younger girls adore jewels and love to glorify them with
-                    trending collections. Samelli is our one-of-a-kind teenage
-                    collection for young girls to flaunt with minimalistic yet
-                    classy collections of jewellery. Samelli collections are
-                    lightweight with attractive designs making her fall in love
-                    with herself all day.
-                  </p>
-
-                  <button
-                    className="tp-btn tp-btn-border"
-                    type="button"
-                    style={{ padding: "4px 25px" }}
-                    onClick={()=>{
-                      router.push("/brand")
+                      paddingTop: "10px",
+                      // height: "300px",
+                      // overflowY: "scroll",
                     }}
                   >
-                    Shop Now
-                  </button>
+                    <div style={{ width: "100%" }}></div>
+                    <img
+                      src={
+                        productItem?.brand?.logo ||
+                        productItem?.node?.brand?.logo
+                      }
+                      alt=""
+                      style={{
+                        width: "100%",
+                        objectFit: "cover",
+                        borderRadius: "5px",
+                      }}
+                    />
+
+                    <h4
+                      className="mt-4 mb-0 "
+                      style={{ color: "#b4633a ", fontWeight: "400" }}
+                    >
+                      {productItem?.brand?.name ||
+                        productItem?.node?.brand?.name}
+                    </h4>
+
+                    <p className="mt-2" style={{ color: "#55585b" }}>
+                      {productItem?.brand?.description ||
+                        productItem?.node?.brand?.description}
+                    </p>
+
+                    <button
+                      className="tp-btn tp-btn-border"
+                      type="button"
+                      style={{ padding: "4px 25px" }}
+                      onClick={() => {
+                        router.push({
+                          pathname: "/brand",
+                          query: {
+                            slug:
+                              productItem?.brand?.slug ||
+                              productItem?.node?.brand?.slug,
+                          }, // Your parameters
+                        });
+                      }}
+                    >
+                      Shop Now
+                    </button>
+                  </div>
                 </div>
-              </div>
+              ) : (
+                <p className="pd-placeholder">
+                  No Brand available for this product.
+                </p>
+              )}
             </div>
           </div>
         </div>
@@ -1887,7 +1922,11 @@ const DetailsWrapper1 = ({
                   return (
                     <span
                       key={category?.id}
-                      style={{ marginRight: "3px", cursor: "pointer",textTransform:"capitalize" }}
+                      style={{
+                        marginRight: "3px",
+                        cursor: "pointer",
+                        textTransform: "capitalize",
+                      }}
                       onClick={() => {
                         router.push({
                           pathname: "/shop",
@@ -1931,83 +1970,83 @@ const DetailsWrapper1 = ({
                 textDecoration: "underline",
                 cursor: "pointer",
               }}
-              onClick={()=>setShippingOpen(!shippingOpen)}
+              onClick={() => setShippingOpen(!shippingOpen)}
             >
               <b>Shipping & Delivery Policy</b>{" "}
             </p>
 
-           {shippingOpen == true &&
-            <div
-              style={{
-                paddingTop: "5px",
-                paddingBottom:"10px"
-                // height: "300px",
-                // overflowY: "scroll",
-              }}
-            >
-              <h5 style={{ fontWeight: "400" }}>Cancellation Policy:</h5>
-              <p style={{ color: "#55585b" }}>
-                If you wish to cancel your order, we shall provide you with an
-                option to replace the ordered product with another product. In
-                no manner shall we provide any refund of the ordered product.
-              </p>
-              <p style={{ color: "#55585b" }}>
-                In the case where your order gets cancelled from our end for
-                some reason, we shall notify you about the same. We will also
-                take all efforts to refund the amount paid by yourself to your
-                original payment method within 2 working days.
-              </p>
-              <h5 style={{ fontWeight: "400" }}>Return & Exchange Policy:</h5>
-              <p style={{ color: "#55585b" }} className="mb-1">
-                {" "}
-                <svg
-                  xmlns="http://www.w3.org/2000/svg"
-                  width="6"
-                  height="6"
-                  viewBox="0 0 8 8"
-                  fill="currentColor"
-                  style={{ marginRight: "8px" }}
-                >
-                  <circle cx="4" cy="4" r="3" />
-                </svg>
-                Shipping charges are not refundable.
-              </p>
+            {shippingOpen == true && (
+              <div
+                style={{
+                  paddingTop: "5px",
+                  paddingBottom: "10px",
+                  // height: "300px",
+                  // overflowY: "scroll",
+                }}
+              >
+                <h5 style={{ fontWeight: "400" }}>Cancellation Policy:</h5>
+                <p style={{ color: "#55585b" }}>
+                  If you wish to cancel your order, we shall provide you with an
+                  option to replace the ordered product with another product. In
+                  no manner shall we provide any refund of the ordered product.
+                </p>
+                <p style={{ color: "#55585b" }}>
+                  In the case where your order gets cancelled from our end for
+                  some reason, we shall notify you about the same. We will also
+                  take all efforts to refund the amount paid by yourself to your
+                  original payment method within 2 working days.
+                </p>
+                <h5 style={{ fontWeight: "400" }}>Return & Exchange Policy:</h5>
+                <p style={{ color: "#55585b" }} className="mb-1">
+                  {" "}
+                  <svg
+                    xmlns="http://www.w3.org/2000/svg"
+                    width="6"
+                    height="6"
+                    viewBox="0 0 8 8"
+                    fill="currentColor"
+                    style={{ marginRight: "8px" }}
+                  >
+                    <circle cx="4" cy="4" r="3" />
+                  </svg>
+                  Shipping charges are not refundable.
+                </p>
 
-              <p style={{ color: "#55585b" }} className="mb-1">
-                {" "}
-                <svg
-                  xmlns="http://www.w3.org/2000/svg"
-                  width="6"
-                  height="6"
-                  viewBox="0 0 8 8"
-                  fill="currentColor"
-                  style={{ marginRight: "8px" }}
-                >
-                  <circle cx="4" cy="4" r="3" />
-                </svg>
-                The brand has put the utmost effort in showcasing the products
-                as realistic as possible with the colour, appearance etc. Please
-                note that the colour of the jewellery might slightly vary in
-                person, any return/ exchange on these criteria will not be
-                accepted.
-              </p>
-              <p style={{ color: "#55585b" }} className="mb-1">
-                {" "}
-                <svg
-                  xmlns="http://www.w3.org/2000/svg"
-                  width="6"
-                  height="6"
-                  viewBox="0 0 8 8"
-                  fill="currentColor"
-                  style={{ marginRight: "8px" }}
-                >
-                  <circle cx="4" cy="4" r="3" />
-                </svg>
-                We at Nobleset believe in providing fair trade to our artisans
-                and hence selected products shall not be eligible for returns.
-              </p>
-            </div>
-            }
+                <p style={{ color: "#55585b" }} className="mb-1">
+                  {" "}
+                  <svg
+                    xmlns="http://www.w3.org/2000/svg"
+                    width="6"
+                    height="6"
+                    viewBox="0 0 8 8"
+                    fill="currentColor"
+                    style={{ marginRight: "8px" }}
+                  >
+                    <circle cx="4" cy="4" r="3" />
+                  </svg>
+                  The brand has put the utmost effort in showcasing the products
+                  as realistic as possible with the colour, appearance etc.
+                  Please note that the colour of the jewellery might slightly
+                  vary in person, any return/ exchange on these criteria will
+                  not be accepted.
+                </p>
+                <p style={{ color: "#55585b" }} className="mb-1">
+                  {" "}
+                  <svg
+                    xmlns="http://www.w3.org/2000/svg"
+                    width="6"
+                    height="6"
+                    viewBox="0 0 8 8"
+                    fill="currentColor"
+                    style={{ marginRight: "8px" }}
+                  >
+                    <circle cx="4" cy="4" r="3" />
+                  </svg>
+                  We at Nobleset believe in providing fair trade to our artisans
+                  and hence selected products shall not be eligible for returns.
+                </p>
+              </div>
+            )}
 
             {offerDate?.endDate && (
               <ProductDetailsCountdown offerExpiryTime={offerDate?.endDate} />
@@ -2023,10 +2062,14 @@ const DetailsWrapper1 = ({
                   }}
                   onClick={() => console.log("shared successfully!")}
                 >
-                  <button className="tp-btn tp-btn-border mt-2 mt-sm-0" style={{background:"transparent",
-                    color:"#b4633a",
-                    border:"1px solid #b4633a"
-                  }}>
+                  <button
+                    className="tp-btn tp-btn-border mt-2 mt-sm-0"
+                    style={{
+                      background: "transparent",
+                      color: "#b4633a",
+                      border: "1px solid #b4633a",
+                    }}
+                  >
                     Share This Page
                   </button>
                 </RWebShare>

@@ -349,6 +349,13 @@ export const GET_PRODUCTLIST_BY_ID = ({ ids, channel }) => {
               name
               quantityAvailable
             }
+              brand {
+          description
+          id
+          logo
+          name
+          slug
+        }
           }
         }
       }
