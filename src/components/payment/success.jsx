@@ -1,6 +1,6 @@
 import { useOrderListQuery } from "@/redux/features/productApi";
 import moment from "moment";
-import React from "react";
+import React, { useEffect, useState } from "react";
 import {
   addCommasToNumber,
   checkChannel,
@@ -12,6 +12,8 @@ import { CASE_ON_DELIVERY } from "@/utils/constant";
 
 const Success = ({ data }) => {
   const router = useRouter();
+
+  const [token, setToken] = useState("");
 
   const OrderDetails = data?.data?.order?.lines;
   const SubTotal = data?.data?.order?.subtotal.gross.amount;
@@ -26,171 +28,203 @@ const Success = ({ data }) => {
   const codAmount = data?.data?.order?.codAmount;
   const giftWrapAmount = data?.data?.order?.giftWrapAmount;
 
+  const discount = data?.data?.order?.discount;
+
+  useEffect(() => {
+    const token = localStorage.getItem("token");
+
+    setToken(token);
+  }, []);
   return (
-    <section className="tp-login-area  pt-50 pb-50   p-relative z-index-1 fix" style={{background:"#fff9f4"}}>
+    <section
+      className="tp-login-area  pt-50 pb-50   p-relative z-index-1 fix"
+      style={{ background: "#fff9f4" }}
+    >
       <div className="container">
         <div className="row" style={{ justifyContent: "space-between" }}>
           <div className="col-lg-6">
-            <div style={{
+            <div
+              style={{
                 padding: "20px 30px",
-                borderRadius:"30px 20px",
+                borderRadius: "30px 20px",
                 background: "#ffff",
                 boxShadow: "3px 3px 5px #f1f1f1",
-              }}>
-                 {/* {paymentMethod != "Cash On delivery" && */}
-            <p style={{ color: "gray" }}>
-              Pay with{" "}
-              {paymentMethod == CASE_ON_DELIVERY
-                ? CASE_ON_DELIVERY
-                : paymentMethod}{" "}
-            </p>
-            {/* } */}
-            <h3 style={{fontWeight:"500"}}>Order Details</h3>
-            <div>
-              <table className="table width-100">
-                <thead>
-                  <tr>
-                    <th className="tp-cart-header-quantity">PRODUCT</th>
-                    <th className="tp-cart-header-quantity">TOTAL</th>
-                  </tr>
-                </thead>
-                <tbody>
-                  {OrderDetails?.map((order) => {
-                    return (
-                      <tr key={order?.id}>
-                        <td>{order?.productName}</td>
+              }}
+            >
+              {/* {paymentMethod != "Cash On delivery" && */}
+              <p style={{ color: "gray" }}>
+                Pay with{" "}
+                {paymentMethod == CASE_ON_DELIVERY
+                  ? CASE_ON_DELIVERY
+                  : paymentMethod}{" "}
+              </p>
+              {/* } */}
+              <h3 style={{ fontWeight: "500" }}>Order Details</h3>
+              <div>
+                <table className="table width-100">
+                  <thead>
+                    <tr>
+                      <th className="tp-cart-header-quantity">PRODUCT</th>
+                      <th className="tp-cart-header-quantity">TOTAL</th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    {OrderDetails?.map((order) => {
+                      return (
+                        <tr key={order?.id}>
+                          <td>{order?.productName}</td>
+                          {checkChannel() === "india-channel" ? (
+                            <>
+                              <td>
+                                &#8377;
+                                {addCommasToNumber(
+                                  order.variant?.pricing?.price?.gross?.amount
+                                )}
+                              </td>
+                            </>
+                          ) : (
+                            <>
+                              <td>
+                                $
+                                {addCommasToNumber(
+                                  order?.variant?.pricing?.price?.gross?.amount
+                                )}
+                              </td>
+                            </>
+                          )}
+                        </tr>
+                      );
+                    })}
+                    {discount?.amount !== 0.0  && (
+                      <tr>
+                        <td>Discount</td>
                         {checkChannel() === "india-channel" ? (
                           <>
-                            <td>
-                              &#8377;
-                              {addCommasToNumber(
-                                order.totalPrice?.gross?.amount
-                              )}
-                            </td>
+                            <td style={{ color: "green" }}>-&#8377;{addCommasToNumber(discount?.amount)}</td>
                           </>
                         ) : (
                           <>
-                            <td>
-                              $
-                              {addCommasToNumber(
-                                order.totalPrice?.gross?.amount
-                              )}
-                            </td>
+                            <td style={{ color: "green" }}>-${addCommasToNumber(discount?.amount)}</td>
                           </>
                         )}
                       </tr>
-                    );
-                  })}
-
-                  <tr>
-                    <td>Subtotal</td>
-                    {checkChannel() === "india-channel" ? (
-                      <>
-                        <td>&#8377;{addCommasToNumber(SubTotal)}</td>
-                      </>
-                    ) : (
-                      <>
-                        <td>${addCommasToNumber(SubTotal)}</td>
-                      </>
                     )}
-                  </tr>
+                   
 
-                  <tr>
-                    <td>
-                      {paymentMethod == CASE_ON_DELIVERY
-                        ? "COD Fee"
-                        : "Shipping"}
-                    </td>
-
-                    {checkChannel() === "india-channel" ? (
-                      <>
-                        <td>
-                          {codAmount === 0
-                            ? `₹${addCommasToNumber(ShippingAmount)}` // Using ₹ for INR
-                            : `₹${addCommasToNumber(codAmount)}`}
-                        </td>
-                      </>
-                    ) : (
-                      <>
-                        <td>
-                          {codAmount === 0
-                            ? `$${addCommasToNumber(ShippingAmount)}`
-                            : `$${addCommasToNumber(codAmount)}`}
-                        </td>
-                      </>
-                    )}
-                  </tr>
-
-                  {giftWrap && (
                     <tr>
-                      <td>Gift Wrap</td>
+                      <td>Subtotal</td>
+                      {checkChannel() === "india-channel" ? (
+                        <>
+                          <td>&#8377;{addCommasToNumber(SubTotal)}</td>
+                        </>
+                      ) : (
+                        <>
+                          <td>${addCommasToNumber(SubTotal)}</td>
+                        </>
+                      )}
+                    </tr>
 
+                    <tr>
                       <td>
-                        {checkChannel() === "india-channel" ? "₹" : "$"}
-                        {giftWrapAmount}
+                        {paymentMethod == CASE_ON_DELIVERY
+                          ? "COD Fee"
+                          : "Shipping"}
+                      </td>
+
+                      {checkChannel() === "india-channel" ? (
+                        <>
+                          <td>
+                            {codAmount === 0
+                              ? `₹${addCommasToNumber(ShippingAmount)}` // Using ₹ for INR
+                              : `₹${addCommasToNumber(codAmount)}`}
+                          </td>
+                        </>
+                      ) : (
+                        <>
+                          <td>
+                            {codAmount === 0
+                              ? `$${addCommasToNumber(ShippingAmount)}`
+                              : `$${addCommasToNumber(codAmount)}`}
+                          </td>
+                        </>
+                      )}
+                    </tr>
+
+                    {giftWrap && (
+                      <tr>
+                        <td>Gift Wrap</td>
+
+                        <td>
+                          {checkChannel() === "india-channel" ? "₹" : "$"}
+                          {giftWrapAmount}
+                        </td>
+                      </tr>
+                    )}
+
+                    {GiftCard && GiftCard.length > 0 && (
+                      <tr>
+                        <td>Coupon</td>
+                        <td>
+                          {GiftCard[0]?.initialBalance?.currency == "USD"
+                            ? "$"
+                            : "₹"}
+                          {GiftCard[0]?.initialBalance?.amount}
+                        </td>
+                      </tr>
+                    )}
+
+                    <tr>
+                      <td>Payment Method</td>
+                      <td>
+                        {paymentMethod == CASE_ON_DELIVERY
+                          ? CASE_ON_DELIVERY
+                          : paymentMethod}
                       </td>
                     </tr>
-                  )}
-
-                  {GiftCard && GiftCard.length > 0 && (
                     <tr>
-                      <td>Coupon</td>
-                      <td>
-                        {GiftCard[0]?.initialBalance?.currency == "USD"
-                          ? "$"
-                          : "₹"}
-                        {GiftCard[0]?.initialBalance?.amount}
+                      <td style={{ color: "black", fontWeight: "600" }}>
+                        Total
                       </td>
+                      {checkChannel() === "india-channel" ? (
+                        <>
+                          <td style={{ color: "black", fontWeight: "600" }}>
+                            &#8377;{addCommasToNumber(Total)}
+                            <div
+                              style={{
+                                fontSize: "12px",
+                                fontWeight: "normal",
+                                marginTop: "-8px",
+                              }}
+                            >
+                              (includes {Tax?.currency == "USD" ? "$" : "₹"}
+                              {roundOff(Tax?.amount)} GST)
+                            </div>
+                          </td>
+                        </>
+                      ) : (
+                        <>
+                          <td style={{ color: "black", fontWeight: "600" }}>
+                            ${addCommasToNumber(Total)}
+                            <div
+                              style={{ fontSize: "15px", fontWeight: "normal" }}
+                            >
+                              (includes {Tax?.currency == "USD" ? "$" : "₹"}
+                              {addCommasToNumber(Tax?.amount)} GST)
+                            </div>
+                          </td>
+                        </>
+                      )}
                     </tr>
-                  )}
-
-                  <tr>
-                    <td>Payment Method</td>
-                    <td>
-                      {paymentMethod == CASE_ON_DELIVERY
-                        ? CASE_ON_DELIVERY
-                        : paymentMethod}
-                    </td>
-                  </tr>
-                  <tr>
-                    <td style={{ color: "black", fontWeight: "600" }}>Total</td>
-                    {checkChannel() === "india-channel" ? (
-                      <>
-                        <td style={{ color: "black", fontWeight: "600" }}>
-                          &#8377;{addCommasToNumber(Total)}
-                          <div
-                            style={{ fontSize: "12px", fontWeight: "normal", marginTop:"-8px" }}
-                          >
-                            (includes {Tax?.currency == "USD" ? "$" : "₹"}
-                            {roundOff(Tax?.amount)} GST)
-                          </div>
-                        </td>
-                      </>
-                    ) : (
-                      <>
-                        <td style={{ color: "black", fontWeight: "600" }}>
-                          ${addCommasToNumber(Total)}
-                          <div
-                            style={{ fontSize: "15px", fontWeight: "normal" }}
-                          >
-                            (includes {Tax?.currency == "USD" ? "$" : "₹"}
-                            {addCommasToNumber(Tax?.amount)} GST)
-                          </div>
-                        </td>
-                      </>
-                    )}
-                  </tr>
-                </tbody>
-              </table>
-            </div>
+                  </tbody>
+                </table>
               </div>
-           
+            </div>
           </div>
           <div className="col-lg-6 mt-4 mt-lg-0">
             <div
               style={{
                 padding: "20px 30px",
-                borderRadius:"30px 20px",
+                borderRadius: "30px 20px",
                 background: "#ffff",
                 boxShadow: "3px 3px 5px #f1f1f1",
               }}
@@ -207,13 +241,13 @@ const Success = ({ data }) => {
                 <br /> Your order has been received.
               </h3>
               <ul style={{ paddingLeft: "0px", fontSize: "18px" }}>
-                <li style={{ paddingBottom: "8px", listStyle:"none" }}>
+                <li style={{ paddingBottom: "8px", listStyle: "none" }}>
                   Order number: <span className="bold">{OrderNumber}</span>
                 </li>
-                <li style={{ paddingBottom: "8px" ,listStyle:"none" }}>
+                <li style={{ paddingBottom: "8px", listStyle: "none" }}>
                   Date: <span>{OrderDate}</span>
                 </li>
-                <li style={{ paddingBottom: "8px",listStyle:"none"  }}>
+                <li style={{ paddingBottom: "8px", listStyle: "none" }}>
                   Total:{" "}
                   {checkChannel() === "india-channel" ? (
                     <span style={{ fontWeight: "600", color: "black" }}>
@@ -225,17 +259,17 @@ const Success = ({ data }) => {
                     </span>
                   )}
                 </li>
-                <li style={{ paddingBottom: "8px" , listStyle:"none" }}>
+                <li style={{ paddingBottom: "8px", listStyle: "none" }}>
                   Payment Method: {""}
                   <span>
-                    {paymentMethod ==CASE_ON_DELIVERY
-                      ?CASE_ON_DELIVERY
+                    {paymentMethod == CASE_ON_DELIVERY
+                      ? CASE_ON_DELIVERY
                       : paymentMethod}
                   </span>
                 </li>
               </ul>
             </div>
-            <div className="mt-20">
+            <div className="mt-20 gap-4 d-flex">
               <button
                 onClick={() => router.push("/shop")}
                 className="gradient-btn "
@@ -243,6 +277,14 @@ const Success = ({ data }) => {
               >
                 Continue Shopping
               </button>
+              {token && (
+                <button
+                  onClick={() => router.push("/profile")}
+                  className="gradient-btn "
+                >
+                  My Orders
+                </button>
+              )}
             </div>
           </div>
         </div>

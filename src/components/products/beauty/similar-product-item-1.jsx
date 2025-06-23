@@ -35,8 +35,6 @@ const SimilarProductItem = ({
   primary_style = false,
   data,
 }) => {
-  console.log("product",product);
-  
   const { id, thumbnail, name, discount, pricing, tags, status, video, slug } =
     product || {};
   const cart = useSelector((state) => state.cart?.cart_list);
@@ -168,7 +166,7 @@ const SimilarProductItem = ({
       return 0;
     }
   };
-  
+
   const isImage = (url) => {
     return /\.(jpg|webp|jpeg|png|gif)$/i.test(url);
   };
@@ -396,7 +394,13 @@ height={320}
               type="button"
               className={`tp-product-action-btn-3  tp-product-add-to-wishlist-btn`}
               onClick={() => {
-                if (compareList?.some((prd) => prd?.id === product?.node?.id)) {
+                if (
+                  compareList?.some(
+                    (prd) =>
+                      (prd?.node?.id || prd?.id) ==
+                      (product?.node?.id || product?.id)
+                  )
+                ) {
                   router.push("/compare");
                 } else {
                   handleCompareProduct(product);
@@ -406,7 +410,11 @@ height={320}
             >
               <CompareThree />
               <span className="tp-product-tooltip tp-product-tooltip-top">
-                {compareList?.some((prd) => prd?.id === product?.node?.id)
+                {compareList?.some(
+                  (prd) =>
+                    (prd?.node?.id || prd?.id) ==
+                    (product?.node?.id || product?.id)
+                )
                   ? "View Compare"
                   : "Add To Compare"}
               </span>
@@ -447,7 +455,9 @@ Add To Cart
           {product?.category[0]?.name.toLowerCase()}
         </h3>
         <h3 className="tp-product-title-2">
-          <Link href={`/product-details/${slug}`}>{capitalizeFLetter(name)}</Link>
+          <Link href={`/product-details/${slug}`}>
+            {capitalizeFLetter(name)}
+          </Link>
         </h3>
         {/* <p style={{ color: "gray", marginBottom: "0px", ontSize: "16px" }}>
           {product?.category?.name}
@@ -485,7 +495,7 @@ Add To Cart
               </span>
               {product?.pricing?.discount !== null && (
                 <div
-                className="save-off"
+                  className="save-off"
                   style={{
                     color: "#b4633a",
                     fontSize: "16px",
@@ -519,7 +529,7 @@ Add To Cart
               </span>
               {product?.pricing?.discount !== null && (
                 <div
-                className="save-off"
+                  className="save-off"
                   style={{
                     color: "#b4633a",
                     fontSize: "16px",

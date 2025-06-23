@@ -9,6 +9,7 @@ import useRazorpay from "react-razorpay";
 import moment from "moment";
 import {
   addCommasToNumber,
+  roundIndianRupee,
   showDeleteAlert,
 } from "@/utils/functions";
 import { notifySuccess } from "@/utils/toast";
@@ -48,7 +49,7 @@ const OrderList = () => {
         const options = {
           key: "rzp_test_tEMCtcfElFdYts",
           key_secret: "rRfAuSd9PLwbhIwUlBpTy4Gv",
-          amount: total * 100,
+          amount: roundIndianRupee(total) * 100,
           currency,
           name: "Products",
           description: "",

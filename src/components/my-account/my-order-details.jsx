@@ -25,8 +25,10 @@ import Resizer from "react-image-file-resizer";
 import ReviewSection from "../product-details/ReviewSection";
 import { Modal, Radio, Button } from "antd";
 import { CASE_ON_DELIVERY } from "@/utils/constant";
+import { useRouter } from "next/router";
 
 const MyOrderDetails = ({ data }) => {
+  const router = useRouter();
   const Data = data?.data?.order;
   const SubTotal = data?.data?.order?.subtotal.gross;
   const Total = data?.data?.order?.total.gross;
@@ -37,6 +39,7 @@ const MyOrderDetails = ({ data }) => {
   const paymentMethod = data?.data?.order?.paymentMethod?.name;
   const codAmount = data?.data?.order?.codAmount;
   const giftWrapAmount = data?.data?.order?.giftWrapAmount;
+  const discount = data?.data?.order?.discount;
 
   const [createReview, { loading: loading }] = useCreateReviewMutation();
   const [createMedia, { loading: mediaLoading }] = useCreateMediaFileMutation();
@@ -202,7 +205,7 @@ const MyOrderDetails = ({ data }) => {
       <div className="container">
         <p
           style={{
-            color:  "black",
+            color: "black",
             borderBottom: "1px solid #e6e6e6",
             paddingBottom: "10px",
           }}
@@ -225,19 +228,19 @@ const MyOrderDetails = ({ data }) => {
         <div
           style={{
             background: "#fff",
-            borderRadius:"20px"
+            borderRadius: "20px",
           }}
         >
-          <div className="row m-0 px-4 py-3 " >
+          <div className="row m-0 px-4 py-3 ">
             <div className="col-md-6 p-0 px-2">
               <h4 style={{ fontWeight: "400", fontSize: "18px" }}>
                 BILLING ADDRESS
               </h4>
-              <p style={{ color:  "black", marginBottom: "0px" }}>
+              <p style={{ color: "black", marginBottom: "0px" }}>
                 <b>Name:</b> {Data?.billingAddress?.firstName}{" "}
                 {Data?.billingAddress?.lastName}
               </p>
-              <p style={{ color:  "black", marginBottom: "0px" }}>
+              <p style={{ color: "black", marginBottom: "0px" }}>
                 <b>Address:</b> {Data?.billingAddress?.streetAddress1},<br />
                 {Data?.billingAddress?.city}, <br />
                 {Data?.billingAddress?.country?.country} -{" "}
@@ -246,7 +249,7 @@ const MyOrderDetails = ({ data }) => {
               {/* <p style={{ color:  "black", marginBottom: "0px" }}></p>
             <p style={{ color:  "black", marginBottom: "0px" }}></p>
             <p style={{ color:  "black", marginBottom: "0px" }}></p> */}
-              <p style={{ color:  "black", marginBottom: "0px" }}>
+              <p style={{ color: "black", marginBottom: "0px" }}>
                 <b>Phone:</b> {Data?.billingAddress?.phone}
               </p>
 
@@ -256,18 +259,18 @@ const MyOrderDetails = ({ data }) => {
               <h4 style={{ fontWeight: "400", fontSize: "18px" }}>
                 SHIPPING ADDRESS
               </h4>
-              <p style={{ color:  "black", marginBottom: "0px" }}>
+              <p style={{ color: "black", marginBottom: "0px" }}>
                 <b>Name:</b> {Data?.shippingAddress?.firstName}{" "}
                 {Data?.shippingAddress?.lastName}
               </p>
-              <p style={{ color:  "black", marginBottom: "0px" }}>
+              <p style={{ color: "black", marginBottom: "0px" }}>
                 <b>Address:</b> {Data?.shippingAddress?.streetAddress1},<br />
                 {Data?.shippingAddress?.city}, <br />
                 {Data?.shippingAddress?.country?.country} -{" "}
                 {Data?.shippingAddress?.postalCode}
               </p>
 
-              <p style={{ color:  "black", marginBottom: "0px" }}>
+              <p style={{ color: "black", marginBottom: "0px" }}>
                 <b>Phone:</b> {Data?.shippingAddress?.phone}
               </p>
             </div>
@@ -318,7 +321,19 @@ const MyOrderDetails = ({ data }) => {
                   <tbody>
                     {Data?.lines.map((item, i) => (
                       <tr key={i}>
-                        <td scope="row">
+                        <td
+                          style={{
+                            // textDecoration: "underline",
+                            // color: "#b4633a",
+                            cursor: "pointer",
+                          }}
+                          scope="row"
+                          onClick={() =>
+                            router.push(
+                              `/product-details/${item?.variant?.product?.slug}`
+                            )
+                          }
+                        >
                           {item.productName} ({item?.quantity})
                         </td>
 
@@ -327,7 +342,9 @@ const MyOrderDetails = ({ data }) => {
                             {item?.totalPrice?.gross?.currency === "USD"
                               ? "$"
                               : "₹"}
-                            {addCommasToNumber(item?.totalPrice?.gross?.amount)}
+                            {addCommasToNumber(
+                              item?.variant?.pricing?.price?.gross?.amount
+                            )}
                           </div>
                           <div
                             style={{
@@ -349,6 +366,25 @@ const MyOrderDetails = ({ data }) => {
                       </tr>
                     ))}
 
+                    {discount?.amount !== 0.0 && (
+                      <tr>
+                        <td>Discount</td>
+                        {checkChannel() === "india-channel" ? (
+                          <>
+                            <td style={{ color: "green" }}>
+                              -&#8377;{addCommasToNumber(discount?.amount)}
+                            </td>
+                          </>
+                        ) : (
+                          <>
+                            <td style={{ color: "green" }}>
+                              -${addCommasToNumber(discount?.amount)}
+                            </td>
+                          </>
+                        )}
+                      </tr>
+                    )}
+
                     <tr>
                       <td>Subtotal</td>
 
@@ -360,7 +396,7 @@ const MyOrderDetails = ({ data }) => {
 
                     <tr>
                       <td>
-                        {paymentMethod ==CASE_ON_DELIVERY
+                        {paymentMethod == CASE_ON_DELIVERY
                           ? "COD Fee"
                           : "Shipping"}
                       </td>
@@ -541,36 +577,39 @@ const MyOrderDetails = ({ data }) => {
           cancelText="Cancel"
           width={800} // Adjusted modal width for better fit
           closeIcon={
-            <span style={{ fontSize: "18px", cursor: "pointer", color:"black" }}>x</span>
+            <span
+              style={{ fontSize: "18px", cursor: "pointer", color: "black" }}
+            >
+              x
+            </span>
           } // Custom close icon
           okButtonProps={{
-            className:" tp-btn tp-btn-border text-white",
+            className: " tp-btn tp-btn-border text-white",
             style: {
               backgroundColor: "#b4633a", // Set background color to your preference
               color: "white", // Set text color to white
               borderRadius: "20px",
-                              padding: "3px 14px",
-                              fontSize: "14px",
-                              border:"none"
+              padding: "3px 14px",
+              fontSize: "14px",
+              border: "none",
             },
           }}
           cancelButtonProps={{
-            className:" tp-btn tp-btn-border text-white",
+            className: " tp-btn tp-btn-border text-white",
             style: {
               backgroundColor: "#b4633a", // Set background color to your preference
               color: "white", // Set text color to white
               borderRadius: "20px",
-                              padding: "3px 14px",
-                              fontSize: "14px",
-                              border:"none"
+              padding: "3px 14px",
+              fontSize: "14px",
+              border: "none",
             },
           }}
           bodyStyle={{
             padding: 0, // Remove default padding
-            fontFamily: "Nunito,sans-serif", 
+            fontFamily: "Nunito,sans-serif",
           }}
-        > 
-                           
+        >
           <div className="mb-4">
             {/* <input
             type="text"

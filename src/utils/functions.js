@@ -582,3 +582,15 @@ export const CommonLoader = () => {
     </div>
   );
 };
+
+export const roundIndianRupee = (amount) => {
+  // Remove commas and convert to number
+  const num =
+    typeof amount === "string" ? parseFloat(amount.replace(/,/g, "")) : amount;
+
+  // Get decimal part
+  const decimal = num - Math.floor(num);
+
+  // Round down if decimal < 0.5, round up if ≥ 0.5
+  return decimal < 0.5 ? Math.floor(num) : Math.ceil(num);
+};

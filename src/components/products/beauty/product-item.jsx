@@ -35,9 +35,8 @@ const ProductItem = ({
   primary_style = false,
   data,
 }) => {
-  console.log("product",product);
-  
-  const { id, thumbnail, name, discount, pricing, tags, status, video,slug } =
+
+  const { id, thumbnail, name, discount, pricing, tags, status, video, slug } =
     product || {};
   const cart = useSelector((state) => state.cart?.cart_list);
   const [addToCartMutation, { data: productsData, isError, isLoading }] =
@@ -154,14 +153,13 @@ const ProductItem = ({
     localStorage.setItem("compareList", JSON.stringify(arr));
     dispatch(compare_list(arr));
     notifySuccess("Product to added to compare list");
-
   };
-  
+
   const isImage = (url) => {
     return /\.(jpg|webp|jpeg|png|gif)$/i.test(url);
   };
 
-    const saveOff = () => {
+  const saveOff = () => {
     const discountedPrice = product?.pricing?.priceRange?.start?.gross?.amount;
     const originalPrice =
       product?.pricing?.priceRangeUndiscounted?.start?.gross?.amount;
@@ -179,10 +177,16 @@ const ProductItem = ({
       className={`tp-product-item-3 featured-product-section ${
         primary_style ? "tp-product-style-primary" : ""
       } ${prdCenter ? "text-center" : ""}`}
-      style={{borderRadius:"20px"}}
+      style={{ borderRadius: "20px" }}
     >
-      <div className="tp-product-thumb-3 mb-15 fix p-relative z-index-1" style={{borderRadius:"20px"}}>
-        <Link href={`/product-details/${slug}`} style={{borderRadius:"20px"}}>
+      <div
+        className="tp-product-thumb-3 mb-15 fix p-relative z-index-1"
+        style={{ borderRadius: "20px" }}
+      >
+        <Link
+          href={`/product-details/${slug}`}
+          style={{ borderRadius: "20px" }}
+        >
           {/* <Image
 src={profilePic(thumbnail?.url)}
 alt="product image"
@@ -190,7 +194,7 @@ width={282}
 height={320}
 /> */}
 
-              {/* <img
+          {/* <img
               src="/assets/img/blog.webp"
               alt="product image"
               width={282}
@@ -208,7 +212,7 @@ height={320}
               loop // Ensure it loops indefinitely
               playsInline // Ensure it plays inline on iOS devices
               style={{
-                borderRadius:"20px",
+                borderRadius: "20px",
                 width: "100%",
                 height: "100%",
               }}
@@ -222,32 +226,31 @@ height={320}
               width={282}
               height={320}
               style={{
-                borderRadius:"20px",
+                borderRadius: "20px",
               }}
             />
           ) : (
-            <div style={{width:"282px", height:"320px", overflow:"hidden"}}>
-                <video
-              src={thumbnail?.url}
-              autoPlay
-              muted // Ensure it's muted to autoplay without user interaction
-              loop // Ensure it loops indefinitely
-              playsInline // Ensure it plays inline on iOS devices
-              // width={282}
-              // height={320}
-              style={{
-                width: "100%",
-                height: "100%",
-                borderRadius:"20px",
-                overflow:"hidden"
-              }}
-              alt="instagram video"
-              className="actor-video"
-            />
+            <div
+              style={{ width: "282px", height: "320px", overflow: "hidden" }}
+            >
+              <video
+                src={thumbnail?.url}
+                autoPlay
+                muted // Ensure it's muted to autoplay without user interaction
+                loop // Ensure it loops indefinitely
+                playsInline // Ensure it plays inline on iOS devices
+                // width={282}
+                // height={320}
+                style={{
+                  width: "100%",
+                  height: "100%",
+                  borderRadius: "20px",
+                  overflow: "hidden",
+                }}
+                alt="instagram video"
+                className="actor-video"
+              />
             </div>
-
-
-          
           )}
           {/* <img
 src={profilePic(thumbnail?.url)}
@@ -385,7 +388,13 @@ height={320}
               type="button"
               className={`tp-product-action-btn-3 tp-product-add-to-wishlist-btn`}
               onClick={() => {
-                if (compareList?.some((prd) => prd?.id === product?.node?.id)) {
+                if (
+                  compareList?.some(
+                    (prd) =>
+                      (prd?.node?.id || prd?.id) ==
+                      (product?.node?.id || product?.id)
+                  )
+                ) {
                   router.push("/compare");
                 } else {
                   handleCompareProduct(product);
@@ -395,7 +404,11 @@ height={320}
             >
               <CompareThree />
               <span className="tp-product-tooltip tp-product-tooltip-top">
-                {compareList?.some((prd) => prd?.id === product?.node?.id)
+                {compareList?.some(
+                  (prd) =>
+                    (prd?.node?.id || prd?.id) ==
+                    (product?.node?.id || product?.id)
+                )
                   ? "View Compare"
                   : "Add To Compare"}
               </span>
@@ -426,20 +439,22 @@ Add To Cart
       <div className="tp-product-content-3" style={{ textAlign: "center" }}>
         {/* <div className="tp-product-tag-3"><span>{tags[1]}</span></div> */}
         <h3
-                className="tp-product-title-3"
-                style={{
-                  fontSize: "12px",
-                  color: "rgb(144 141 141)",
-                  // textTransform: "uppercase",
-                }}
-              >
-                {product?.category[0]?.name.toLowerCase()}
-              </h3>
+          className="tp-product-title-3"
+          style={{
+            fontSize: "12px",
+            color: "rgb(144 141 141)",
+            // textTransform: "uppercase",
+          }}
+        >
+          {product?.category[0]?.name.toLowerCase()}
+        </h3>
         <h3 className="tp-product-title-2">
           {/* <Link href={`/product-details/${slug}`}>{name}</Link> */}
-           <Link href={`/product-details/${slug}`} >{capitalizeFLetter(name)}</Link>
+          <Link href={`/product-details/${slug}`}>
+            {capitalizeFLetter(name)}
+          </Link>
         </h3>
-         {/* <p style={{ color: "gray", marginBottom: "0px",fontSize:"16px" }}>
+        {/* <p style={{ color: "gray", marginBottom: "0px",fontSize:"16px" }}>
           {product?.category?.name}
         </p> */}
         <div className="tp-product-price-wrapper-3">
@@ -462,20 +477,22 @@ Add To Cart
                   )}
                 </span>
               )}
-              <span className="tp-product-price-3" style={{fontSize:"22px" , fontWeight:"700"}}>
-                             &#8377;
-                             {roundOff(product?.pricing?.priceRange?.start?.gross?.amount)}
-                           </span>
-                             {product?.pricing?.discount !== null && (
+              <span
+                className="tp-product-price-3"
+                style={{ fontSize: "22px", fontWeight: "700" }}
+              >
+                &#8377;
+                {roundOff(product?.pricing?.priceRange?.start?.gross?.amount)}
+              </span>
+              {product?.pricing?.discount !== null && (
                 <div
-                className="save-off"
+                  className="save-off"
                   style={{
                     color: "#b4633a",
                     fontSize: "16px",
                   }}
                 >{`Save ${saveOff()}% OFF`}</div>
               )}
-
             </>
           ) : (
             <>
@@ -491,12 +508,15 @@ Add To Cart
                   &#8377;{roundOff(product?.defaultVariant?.costPrice)}
                 </span>
               )}
-              <span className="tp-product-price-3"  style={{fontSize:"22px" , fontWeight:"700"}}>
+              <span
+                className="tp-product-price-3"
+                style={{ fontSize: "22px", fontWeight: "700" }}
+              >
                 ${roundOff(pricing?.priceRange?.start?.gross?.amount)}
               </span>
-                {product?.pricing?.discount !== null && (
+              {product?.pricing?.discount !== null && (
                 <div
-                className="save-off"
+                  className="save-off"
                   style={{
                     color: "#b4633a",
                     fontSize: "16px",

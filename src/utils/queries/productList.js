@@ -59,7 +59,7 @@ query ProductListPaginated($first: Int, $last :Int, $after: String, $before: Str
 export const ORDER_LIST = ({ orderId }) => {
   return JSON.stringify({
     query: `
-  query getOrderDetails($orderId: ID!) {
+query getOrderDetails($orderId: ID!) {
   order(id: $orderId) {
     id
     billingAddress {
@@ -107,6 +107,35 @@ export const ORDER_LIST = ({ orderId }) => {
       variant {
         product {
           id
+          slug
+          pricing {
+            priceRange {
+              start {
+                gross {
+                  amount
+                  currency
+                }
+                net {
+                  amount
+                  currency
+                }
+              }
+            }
+          }
+        }
+        pricing {
+          price {
+            gross {
+              amount
+              currency
+            }
+          }
+        }
+      }
+      undiscountedTotalPrice {
+        gross {
+          amount
+          currency
         }
       }
     }
@@ -178,6 +207,16 @@ export const ORDER_LIST = ({ orderId }) => {
       id
       lastName
       firstName
+    }
+    undiscountedTotal {
+      gross {
+        amount
+        currency
+      }
+    }
+    discount {
+      amount
+      currency
     }
   }
 }
