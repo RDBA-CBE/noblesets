@@ -252,7 +252,7 @@ const ProductItem1 = ({ products, style_2 = false, updateData, index }) => {
       }${product?.defaultVariant?.quantityAvailable == 0 && "bg-opacity-100"}`}
     >
       <div key={index}>
-        <div className="card border-0   h-100 w-100 flex-fill d-flex flex-column justify-content-between">
+        <div className="card border-0   h-100 w-100 flex-fill d-flex flex-column justify-content-start">
           {/* <img
                               src={product.img}
                               className="card-img-top"
