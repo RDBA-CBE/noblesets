@@ -725,8 +725,8 @@
     display: block;
   }
   .mbl-content h1 {
-    font-size: 26px;
-    line-height: 28px;
+    font-size: 38px;
+    line-height: 40px;
     color: #643333;
     font-weight: 400;
   }
@@ -805,7 +805,7 @@
 
 @media (max-width: 767px) {
   .main-ti {
-    font-size: 26px !important;
+    font-size: 32px !important;
     line-height: 30px;
   }
 
@@ -853,8 +853,10 @@
 
 @media (max-width: 580px) {
   .main-ti {
-    font-size: 30px !important;
+    font-size: 35px !important;
     line-height: 28px;
+    letter-spacing: 0.03rem;
+
   }
   .mbl-content {
     right: 0;
@@ -1949,6 +1951,8 @@ hr.footer-divider {
   font-weight: 400;
   font-style: normal;
   color: #b4633a;
+  letter-spacing: 0.05rem;
+
 }
 
 .sub-ti {
@@ -1957,6 +1961,8 @@ hr.footer-divider {
   font-weight: 400;
   font-style: normal;
   font-size: 18px;
+          letter-spacing: 0.05rem;
+
 }
 
 .sub-ti b {
@@ -1996,7 +2002,7 @@ hr.footer-divider {
 
 @media (max-width: 990px) {
   .main-ti {
-    font-size: 30px;
+    font-size: 34px;
   }
 }
 
@@ -3098,5 +3104,11 @@ header .tp-product-action-btn-3:hover {
     height: 40vh;
   }
 }
+
+
+  .support-res{
+    width: 300px !important;
+  }
+
 
 // @media (max-width:500px)

@@ -9,7 +9,7 @@ const HomeFooter = () => {
     <div style={{ background: "url(/assets/img/footer/bg.jpg)" }}>
       <footer className="container-fluid pt-50 text-white px-0">
         <div className="row justify-content-center ">
-          <div className="col-11 col-xl-10 ">
+          <div className="col-11  col-xxl-10 ">
             <div className="row gy-4 justify-content-start">
               {/* <div className="col-12  col-xl-4 pe-5">
                 <div className="footer-subtitle mb-0">
@@ -273,11 +273,11 @@ const HomeFooter = () => {
                     78, New Market Street, <br /> Tiruppur-641604 <br />
                   </span>
                 </div>
-                <div className="d-flex align-items-center cursor-pointer">
+                <div className="d-flex align-items-center cursor-pointer support-res">
                   {/* <i className="fas fa-envelope me-2" style="font-size: 10px"/> */}
                   {/* <i class="fa-regular fa-envelope" style={{fontSize:"18px"}}></i> */}
                   <EmailTwo />
-                  <span className="footer-link ps-2">
+                  <span className="footer-link ps-2 ">
                     <a href="mailto:services@nobleset.com">
                       services@noblesets.com
                     </a>
