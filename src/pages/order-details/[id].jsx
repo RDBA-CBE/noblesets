@@ -28,7 +28,7 @@ const OrderDetails = () => {
       <SEO pageTitle="Cart" />
       {/* <HeaderTwo style_2={true} /> */}
       <HeaderSection />
-      <div style={{ background: "#fff9f4" }}>
+      <div className="common-bg">
         <div className="section-wd">
           <CommonBreadcrumb
             title="Order Details"

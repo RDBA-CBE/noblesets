@@ -703,7 +703,7 @@
     min-height: 350px !important;
   }
 
-  .mobile-view-width-change{
+  .mobile-view-width-change {
     display: none;
   }
 
@@ -721,12 +721,12 @@
     text-align: center;
     border-radius: 20px;
   }
-  .mbl-content img{
+  .mbl-content img {
     display: block;
   }
   .mbl-content h1 {
-    font-size: 26px;
-    line-height: 28px;
+    font-size: 38px;
+    line-height: 40px;
     color: #643333;
     font-weight: 400;
   }
@@ -763,7 +763,6 @@
   .mbl-content .exb-btn {
     display: none;
   }
-  
 }
 
 @media (max-width: 900px) {
@@ -773,6 +772,24 @@
     font-size: 18px !important;
     line-height: 23px;
   }
+}
+
+.common-bg{
+  background: #fff9f4 !important;
+}
+
+.gift-section-le img {
+  width: 100%;
+  border-radius: 20px;
+  cursor: pointer;
+}
+
+.gift-section-ri img {
+  width: 90%;
+  height: auto;
+  // borderRadius: "50% / 40%";
+  object-fit: cover;
+  cursor: pointer;
 }
 
 @media (max-width: 769px) {
@@ -788,7 +805,7 @@
 
 @media (max-width: 767px) {
   .main-ti {
-    font-size: 26px !important;
+    font-size: 32px !important;
     line-height: 30px;
   }
 
@@ -836,8 +853,10 @@
 
 @media (max-width: 580px) {
   .main-ti {
-    font-size: 30px !important;
+    font-size: 35px !important;
     line-height: 28px;
+    letter-spacing: 0.03rem;
+
   }
   .mbl-content {
     right: 0;
@@ -1755,9 +1774,8 @@ hr.footer-divider {
   border-color: #fff;
   margin-top: 3rem;
   margin-bottom: 2rem;
-
 }
-.footer-about{
+.footer-about {
   font-size: 16px;
   font-weight: 400 !important;
   color: #fff;
@@ -1933,6 +1951,8 @@ hr.footer-divider {
   font-weight: 400;
   font-style: normal;
   color: #b4633a;
+  letter-spacing: 0.05rem;
+
 }
 
 .sub-ti {
@@ -1941,6 +1961,8 @@ hr.footer-divider {
   font-weight: 400;
   font-style: normal;
   font-size: 18px;
+          letter-spacing: 0.05rem;
+
 }
 
 .sub-ti b {
@@ -1980,7 +2002,7 @@ hr.footer-divider {
 
 @media (max-width: 990px) {
   .main-ti {
-    font-size: 30px;
+    font-size: 34px;
   }
 }
 
@@ -2424,16 +2446,23 @@ hr.footer-divider {
 
 header .tp-product-action-btn-3:hover {
   border: none !important;
- 
 }
-.tp-product-action-btn-3.active{
-   border: none !important;
-  background:linear-gradient(to right, color-mix(in srgb, #fbdccc 40%, #e09a7a), #e09a7a) !important;
+.tp-product-action-btn-3.active {
+  border: none !important;
+  background: linear-gradient(
+    to right,
+    color-mix(in srgb, #fbdccc 40%, #e09a7a),
+    #e09a7a
+  ) !important;
 }
 
 .tp-product-action-btn-3:hover {
   border: none !important;
-  background:linear-gradient(to right, color-mix(in srgb, #fbdccc 40%, #e09a7a), #e09a7a) !important;
+  background: linear-gradient(
+    to right,
+    color-mix(in srgb, #fbdccc 40%, #e09a7a),
+    #e09a7a
+  ) !important;
 }
 
 @media (max-width: 1200px) {
@@ -3043,13 +3072,13 @@ header .tp-product-action-btn-3:hover {
   height: 60vh;
 }
 
-.brand-banner img{
+.brand-banner img {
   width: 100%;
   height: 100%;
   object-fit: cover;
   border-radius: 30px;
 }
-.brand-logo{
+.brand-logo {
   width: 80px;
   height: 50px;
   margin-bottom: 10px;
@@ -3058,25 +3087,28 @@ header .tp-product-action-btn-3:hover {
   cursor: pointer;
 }
 
-@media (max-width:1440px){
+@media (max-width: 1440px) {
   .brand-banner {
-     height: 50vh;
+    height: 50vh;
   }
- 
 }
 
-@media (max-width:1200px){
+@media (max-width: 1200px) {
   .brand-banner {
-     height: 40vh;
+    height: 40vh;
   }
- 
 }
 
-@media (max-width:990px){
+@media (max-width: 990px) {
   .brand-banner {
-     height: 40vh;
+    height: 40vh;
   }
- 
 }
+
+
+  .support-res{
+    width: 300px !important;
+  }
+
 
 // @media (max-width:500px)

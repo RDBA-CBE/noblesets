@@ -4,17 +4,17 @@ import Slider from "react-slick";
 import { useRouter } from "next/router";
 
 // Internal images
-import slider_img_1 from "@assets/img/home/Banner/banner-img-1.png";
+import slider_img_1 from "@assets/img/home/Banner/banner-img-1.webp";
 import slider_mbl_img_1 from "@assets/img/home/Banner/mbl-banner.png";
-import slider_img_2 from "@assets/img/home/Banner/banner-img-2.png";
-import slider_img_3 from "@assets/img/home/Banner/banner-img-3.png";
+import slider_img_2 from "@assets/img/home/Banner/banner-img-2.webp";
+import slider_img_3 from "@assets/img/home/Banner/banner-img-3.webp";
 import mobile_size_ban_1 from "@assets/img/home/Banner/mobile-size-ban-1.png";
 import mobile_size_ban_2 from "@assets/img/home/Banner/mobile-size-ban-2.png";
 import mobile_size_ban_3 from "@assets/img/home/Banner/mobile-size-ban-3.png";
 import mobile_size_ban_4 from "@assets/img/home/Banner/mobile-size-ban-4.png";
 
 
-import slider_img_4 from "@assets/img/home/Banner/banner-img-4.png";
+import slider_img_4 from "@assets/img/home/Banner/banner-img-4.webp";
 
 import banner_Content from "@assets/img/home/Banner/banner-content-img.png";
 
@@ -144,7 +144,7 @@ const HomeBanner = () => {
                     cursor: "pointer",
                     // objectPosition: "bottom",
                   }}
-                  // unoptimized
+                  unoptimized
                 />
               </Link>
 
