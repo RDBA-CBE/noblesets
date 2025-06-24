@@ -48,8 +48,8 @@ const ComparePage = () => {
       </div>
       </div>
       {/* <CommonBreadcrumb title="Compare" subtitle="Compare" BgImage={banner}/> */}
-      {/* <CompareArea /> */}
-      <CompareArea1/>
+      <CompareArea />
+      {/* <CompareArea1/> */}
       <HomeFooter />
     </Wrapper>
   );
