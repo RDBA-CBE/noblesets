@@ -228,7 +228,7 @@ const CompareArea2 = () => {
                                   style={
                                     compareData?.length === 1 ||
                                     compareData?.length === 2
-                                      ? { width: "300px" }
+                                      ? { width: "auto" }
                                       : {
                                         //   width: "100%",
                                           height: "100%",
