@@ -31,7 +31,7 @@ export default function PriceBreakup(props) {
       {breakupData?.map((item, idx) => (
         <div
           key={idx}
-          className={` rounded p-3 mb-2  ${
+          className={` rounded px-3 py-2 mb-2  ${
             idx === breakupData.length - 1
               ? " text-black fw-bold text-center"
               : ""

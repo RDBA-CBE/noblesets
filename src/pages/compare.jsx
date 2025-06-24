@@ -14,6 +14,7 @@ import HomeFooter from "@/components/home/HomeFooter";
 import ShopBreadcrumb from "@/components/breadcrumb/shop-breadcrumb";
 import shopBanner from "../../public/assets/img/header-bg.png";
 import CompareArea1 from "@/components/compare/compare-area-1";
+import CompareArea2 from "@/components/compare/compare-area.2";
 
 const ComparePage = () => {
   const { data: wishlistData, isError, isLoading } = useGetWishlistQuery();
@@ -48,8 +49,9 @@ const ComparePage = () => {
       </div>
       </div>
       {/* <CommonBreadcrumb title="Compare" subtitle="Compare" BgImage={banner}/> */}
-      <CompareArea />
+      {/* <CompareArea /> */}
       {/* <CompareArea1/> */}
+      <CompareArea2/>
       <HomeFooter />
     </Wrapper>
   );

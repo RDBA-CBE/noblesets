@@ -3179,4 +3179,154 @@ header .tp-product-action-btn-3:hover {
 
 
 
-// @media (max-width:500px)
+// --------------new compare start-------------
+
+
+/* Style for compare table rows */
+.new-compare .tp-compare-table table {
+  width: 100%;
+  border-collapse: collapse;
+  background-color: transparent !important;
+   border-spacing: 0;
+  width: 100%;
+  border-radius: 12px;
+  overflow: hidden;
+  border-color: #000;
+}
+
+.new-compare th,
+.new-compare td {
+   background-color: transparent !important;
+  padding: 20px 15px;
+  vertical-align: middle;
+  border-bottom: 1px solid #eee4dc;
+  text-align: center;
+}
+
+.new-compare th {
+  // background-color: #fff !important;
+  color: #000;
+  font-weight: 700 !important;
+  text-transform: uppercase;
+  font-size: 14px;
+  padding: 15px 8px !important;
+}
+
+.new-compare .cart-link {
+  color: #b4633a;
+  text-decoration: underline;
+}
+
+/* Image styling */
+.new-compare .tp-compare-thumb img,
+.new-compare .tp-compare-thumb video {
+  width: 75px;
+  // height: 75px;
+  object-fit: cover;
+  border-radius: 8px;
+  margin-bottom: 5px !important;
+}
+
+/* Product title */
+.new-compare .tp-compare-product-title {
+  font-size: 14px;
+  margin-top: 8px;
+  color: #000;
+  font-weight: 500;
+}
+
+/* Price */
+.new-compare .tp-compare-add-to-cart {
+  font-size: 14px;
+  // margin-top: 6px;
+}
+
+.new-compare .tp-compare-add-to-cart .line-through {
+  text-decoration: line-through;
+  color: #888;
+  // margin-right: 5px;
+}
+
+/* Button style */
+.new-compare .tp-btn {
+  background-color: #e9a88b;
+  color: #fff;
+  padding: 8px 18px;
+  border: none;
+  border-radius: 24px;
+  font-size: 14px;
+  font-weight: 500;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+.new-compare .tp-btn:hover {
+  background-color: #d18264;
+}
+
+/* Remove icon */
+.new-compare .tp-compare-remove button {
+  background: none;
+  border: none;
+  color: #000;
+  font-size: 16px;
+  cursor: pointer;
+}
+
+.new-compare .tp-compare-remove button i {
+  pointer-events: none;
+}
+
+.new-compare .com-rem-icon{
+  position: absolute;
+  // content: "";
+  top: 3px;
+  right: 5px;
+  width: 100%;
+  height: 100%;
+  text-align: right;
+}
+.new-compare .com-rem-icon button{
+  text-align: right;
+}
+
+/* Responsive */
+// @media (max-width: 768px) {
+//   .new-compare .tp-compare-table table,
+//   .new-compare .tp-compare-table thead,
+//   .new-compare .tp-compare-table tbody,
+//   .new-compare .tp-compare-table th,
+//   .new-compare .tp-compare-table td,
+//   .new-compare .tp-compare-table tr {
+//     display: block;
+//   }
+
+//   .new-compare .tp-compare-table tr {
+//     margin-bottom: 25px;
+//     background: #fffefc;
+//     border-radius: 8px;
+//     overflow: hidden;
+//     box-shadow: 0 2px 5px rgba(0, 0, 0, 0.04);
+//   }
+
+//   .new-compare .tp-compare-table td,
+//   .new-compare .tp-compare-table th {
+//     text-align: left;
+//     padding: 12px 20px;
+//     border-bottom: 1px solid #f3ebe5;
+//   }
+
+//   .new-compare .tp-compare-product-title {
+//     margin-top: 4px;
+//     font-size: 13px;
+//   }
+
+//   .new-compare .tp-btn {
+//     padding: 6px 14px;
+//     font-size: 13px;
+//   }
+// }
+
+
+
+// --------------new compare end-------------

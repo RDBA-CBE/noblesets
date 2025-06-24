@@ -80,9 +80,7 @@ const ShopBreadcrumb = ({
             <div className="col-xxl-12">
               <div className="breadcrumb__content p-relative z-index-1">
                 <h3
-                  className={`breadcrumb__title ${
-                    title == "Shop" ? "shop-banner-title" : "other-banner-title"
-                  }`}
+                  className={`breadcrumb__title  shop-banner-title`}
                 >
                   <span
                     onClick={() => {
