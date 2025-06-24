@@ -9,11 +9,13 @@ import useRazorpay from "react-razorpay";
 import moment from "moment";
 import {
   addCommasToNumber,
+  roundIndianRupee,
   showDeleteAlert,
 } from "@/utils/functions";
 import { notifySuccess } from "@/utils/toast";
 import ButtonLoader from "../loader/button-loader";
 import Swal from "sweetalert2";
+import { CASE_ON_DELIVERY } from "@/utils/constant";
 
 const OrderList = () => {
   const {
@@ -48,7 +50,7 @@ const OrderList = () => {
         const options = {
           key: "rzp_test_tEMCtcfElFdYts",
           key_secret: "rRfAuSd9PLwbhIwUlBpTy4Gv",
-          amount: total * 100,
+          amount: roundIndianRupee(total) * 100,
           currency,
           name: "Products",
           description: "",
@@ -208,26 +210,27 @@ const OrderList = () => {
                         } item`}
                       </td>
                       <td style={{ display: "flex", gap: 10 }}>
-                        {item?.paymentStatus === "NOT_CHARGED" && (
-                          <button
-                            type="button"
-                            className=" tp-btn tp-btn-border text-white"
-                            style={{
-                              borderRadius: "20px",
-                              padding: "3px 14px",
-                              fontSize: "14px",
-                            }}
-                            onClick={() => {
-                              handlePayment(
-                                item?.total?.gross?.amount,
-                                item?.total?.gross?.currency,
-                                item?.id
-                              );
-                            }}
-                          >
-                            Pay
-                          </button>
-                        )}
+                        {(item?.paymentStatus === "NOT_CHARGED" &&
+                          item?.paymentMethod?.name != CASE_ON_DELIVERY )&& (
+                            <button
+                              type="button"
+                              className=" tp-btn tp-btn-border text-white"
+                              style={{
+                                borderRadius: "20px",
+                                padding: "3px 14px",
+                                fontSize: "14px",
+                              }}
+                              onClick={() => {
+                                handlePayment(
+                                  item?.total?.gross?.amount,
+                                  item?.total?.gross?.currency,
+                                  item?.id
+                                );
+                              }}
+                            >
+                              Pay
+                            </button>
+                          )}
                         <button
                           type="button"
                           className=" tp-btn tp-btn-border text-white"

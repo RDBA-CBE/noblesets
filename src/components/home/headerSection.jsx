@@ -552,13 +552,13 @@ const HeaderSection = ({ style_2 = false, data }) => {
                                       href="/profile"
                                       style={{ paddingBottom: "5px" }}
                                     >
-                                      Profile
+                                      My Profile
                                     </Link>
                                     <Link
                                       href="/profile"
                                       style={{ paddingBottom: "5px" }}
                                     >
-                                      Order
+                                      My Orders
                                     </Link>
                                   </>
                                 )}

@@ -49,7 +49,7 @@ const ProfileNavTab = () => {
         /> */}
         <SingleNav
           id="address"
-          title="Address"
+          title="My Address"
           icon="fa-solid fa-location-dot"
         />
         <SingleNav id="wishlist" title="Wishlist" icon="fa-regular fa-heart" />

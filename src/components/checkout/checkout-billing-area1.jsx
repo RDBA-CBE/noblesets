@@ -10,6 +10,7 @@ import {
   roundOff,
   useSetState,
   FRONTEND_URL,
+  roundIndianRupee,
 } from "@/utils/functions";
 import CheckoutOrderArea from "./checkout-order-area";
 import {
@@ -73,6 +74,9 @@ import AddressModal from "./addressComponent";
 import { useGetAddressListQuery } from "../../redux/features/productApi";
 import CCAvenue from "../../components/ccAvenue/ccAvenue";
 import useDebounce from "../useDebounce/useDebounce";
+import Razorpay_logo from "../../../public/assets/img/razorpay.png";
+import cod from "../../../public/assets/img/cash-on-delivery.png";
+import Image from "next/image";
 
 const CheckoutBillingArea1 = () => {
   const { user } = useSelector((state) => state.auth);
@@ -219,6 +223,76 @@ const CheckoutBillingArea1 = () => {
 
   const handleInputChange = (e, fieldName) => {
     setState({ [fieldName]: e.target.value });
+    if (fieldName == "postalCode") {
+      const timer = setTimeout(() => {
+        if (e?.target?.value?.trim().length >= 3) {
+          picodeCheck({ code: [e?.target?.value.trim()] })
+            .then((res) => {
+              if (res?.data?.data?.pincodes?.edges.length > 0) {
+                setState({ errors: { postalCode: "" } });
+              } else {
+                setState({
+                  errors: {
+                    postalCode: "Delivery is not available to this area",
+                  },
+                });
+              }
+              // Handle success
+            })
+            .catch((error) => {
+              setState({
+                errors: {
+                  postalCode: "Delivery is not available to this area",
+                },
+              });
+
+              // Handle error
+            });
+        } else {
+          setState({
+            errors: {
+              postalCode: "Postal code is required",
+            },
+          });
+        }
+      }, 1000);
+
+      return () => clearTimeout(timer);
+    }
+
+    if (fieldName == "postalCode1") {
+      const timer = setTimeout(() => {
+        if (e?.target?.value?.trim().length >= 3) {
+          picodeCheck({ code: [e?.target?.value.trim()] })
+            .then((res) => {
+              if (res?.data?.data?.pincodes?.edges.length > 0) {
+                setState({ errors: { postalCode1: "" } });
+              } else {
+                setState({
+                  errors: {
+                    postalCode1: "Delivery is not available to this area",
+                  },
+                });
+              }
+            })
+            .catch((error) => {
+              setState({
+                errors: {
+                  postalCode1: "Delivery is not available to this area",
+                },
+              });
+            });
+        } else {
+          setState({
+            errors: {
+              postalCode1: "Postal code is required",
+            },
+          });
+        }
+      }, 1000);
+
+      return () => clearTimeout(timer);
+    }
   };
 
   useEffect(() => {
@@ -244,6 +318,35 @@ const CheckoutBillingArea1 = () => {
   useEffect(() => {
     orderData();
   }, [linelist]);
+
+  useEffect(() => {
+    const timer = setTimeout(() => {
+      if (state.postalCode1?.trim().length >= 3) {
+        picodeCheck({ code: [state.postalCode1.trim()] })
+          .then((res) => {
+            if (res?.data?.data?.pincodes?.edges.length > 0) {
+              setState({ errors: { postalCode1: "" } });
+            } else {
+              setState({
+                errors: {
+                  postalCode1: "Delivery is not available to this area",
+                },
+              });
+            }
+            // Handle success
+          })
+          .catch((error) => {
+            setState({
+              errors: { postalCode1: "Delivery is not available to this area" },
+            });
+
+            // Handle error
+          });
+      }
+    }, 500);
+
+    return () => clearTimeout(timer);
+  }, [state.postalCode1]);
 
   const orderData = async () => {
     try {
@@ -675,7 +778,7 @@ const CheckoutBillingArea1 = () => {
         const options = {
           key: "rzp_test_tEMCtcfElFdYts",
           key_secret: "rRfAuSd9PLwbhIwUlBpTy4Gv",
-          amount: total * 100,
+          amount: roundIndianRupee(total) * 100,
           // order_id:orderId,
           currency: checkChannel() == "india-channel" ? "INR" : "USD",
           name: state.firstName + " " + state.lastName,
@@ -932,9 +1035,9 @@ const CheckoutBillingArea1 = () => {
     }
 
     const regValidate = [
-      { name: "loginFirstName", label: "First name" },
-      { name: "loginLastName", label: "Last name" },
-      { name: "loginEmail", label: "Email" },
+      // { name: "loginFirstName", label: "First name" },
+      // { name: "loginLastName", label: "Last name" },
+      // { name: "loginEmail", label: "Email" },
       { name: "password", label: "Password" },
     ];
     if (state.createAccount) {
@@ -944,9 +1047,11 @@ const CheckoutBillingArea1 = () => {
         }
       });
     }
-    const isValidPostalCode = await handleCheck(state.postalCode);
-    if (!isValidPostalCode) {
-      errors.postalCode = "Delivery is not available to this area";
+    if (state.postalCode) {
+      const isValidPostalCode = await handleCheck(state.postalCode);
+      if (!isValidPostalCode) {
+        errors.postalCode = "Delivery is not available to this area";
+      }
     }
 
     if (state.diffAddress) {
@@ -975,9 +1080,11 @@ const CheckoutBillingArea1 = () => {
           errors[name] = `${label} is required`;
         }
       });
-      const isValidPostalCode = await handleCheck(state.postalCode1);
-      if (!isValidPostalCode) {
-        errors.postalCode1 = "Delivery is not available to this area";
+      if (state.postalCode1) {
+        const isValidPostalCode = await handleCheck(state.postalCode1);
+        if (!isValidPostalCode) {
+          errors.postalCode1 = "Delivery is not available to this area";
+        }
       }
     }
     console.log("✌️errors --->", errors);
@@ -989,9 +1096,11 @@ const CheckoutBillingArea1 = () => {
   const createAccount = async () => {
     try {
       const body = {
-        firstName: state.loginFirstName,
-        lastName: state.loginLastName,
-        email: state.loginEmail,
+        // firstName: state.loginFirstName,
+        // lastName: state.loginLastName,
+        firstName: state.firstName,
+        lastName: state.lastName,
+        email: state.email,
         password: state.password,
         redirectUrl: `${FRONTEND_URL}/email_verify`,
       };
@@ -1564,15 +1673,28 @@ const CheckoutBillingArea1 = () => {
 
   return (
     <>
+      {state.showVoucherMessage && (
+        <p
+          className="d-flex justify-content-center"
+          style={{
+            color: "rgb(207 150 38)",
+            paddingTop: "10px",
+            fontWeight: "500",
+            fontSize: "18px",
+          }}
+        >
+          Coupon code applied successfully
+        </p>
+      )}
       <section
-        className="tp-checkout-area pt-10"
+        className="tp-checkout-area"
         style={{
           //   backgroundColor: "#EFF1F5",
           alignItems: "center",
           justifyContent: "center",
           display: "flex",
           flexDirection: "row",
-          paddingTop: 40,
+          paddingTop: state.showVoucherMessage ? 0 : 40,
         }}
       >
         <div className="container ">
@@ -1667,7 +1789,7 @@ const CheckoutBillingArea1 = () => {
                         </button>
                       </div>
                     )}
-                    {state.showVoucherMessage && (
+                    {/* {state.showVoucherMessage && (
                       <p
                         style={{
                           color: "green",
@@ -1678,7 +1800,7 @@ const CheckoutBillingArea1 = () => {
                       >
                         Coupon code applied successfully
                       </p>
-                    )}
+                    )} */}
                   </div>
                 </div>{" "}
               </div>
@@ -1934,7 +2056,7 @@ const CheckoutBillingArea1 = () => {
                             <div className="tp-checkout-bill-form">
                               <div className="tp-checkout-bill-inner">
                                 <div className="row pt-2">
-                                  <div className="col-md-6">
+                                  {/* <div className="col-md-6">
                                     <div className="tp-checkout-input">
                                       <label>
                                         First Name <span>*</span>
@@ -1956,8 +2078,8 @@ const CheckoutBillingArea1 = () => {
                                         />
                                       )}
                                     </div>
-                                  </div>
-                                  <div className="col-md-6">
+                                  </div> */}
+                                  {/* <div className="col-md-6">
                                     <div className="tp-checkout-input">
                                       <label>
                                         Last Name <span>*</span>
@@ -1979,8 +2101,8 @@ const CheckoutBillingArea1 = () => {
                                         />
                                       )}
                                     </div>
-                                  </div>
-                                  <div className="col-md-6">
+                                  </div> */}
+                                  {/* <div className="col-md-6">
                                     <div className="tp-checkout-input">
                                       <label>
                                         Email Address <span>*</span>
@@ -2004,7 +2126,7 @@ const CheckoutBillingArea1 = () => {
                                         />
                                       )}
                                     </div>
-                                  </div>
+                                  </div> */}
                                   <div className="col-md-6">
                                     <div className="tp-checkout-input">
                                       <label>
@@ -2595,27 +2717,59 @@ const CheckoutBillingArea1 = () => {
                             <h5>Payment Method</h5>
                           </div>
                           {state.paymentType?.length > 0 ? (
-                            state.paymentType?.map((item) => (
-                              <div className="tp-login-remeber" key={item.id}>
-                                <input
-                                  id={`payment-${item.id}`}
-                                  type="checkbox"
-                                  checked={item.checked}
-                                  onChange={() => {
-                                    handleCheckboxChange(item.id);
+                            <div className="">
+                              {state.paymentType?.map((item) => (
+                                <div
+                                  key={item.id}
+                                  className="d-flex align-items-center gap-2  rounded"
+                                  style={{
+                                    cursor: "pointer",
+                                    // backgroundColor: item.checked
+                                    //   ? "#f0f8ff"
+                                    //   : "transparent",
                                   }}
-                                />
-                                <label
-                                  htmlFor={`payment-${item.id}`}
-                                  style={{ color: "black" }}
+                                  onClick={() => handleCheckboxChange(item.id)} // Makes entire area clickable
                                 >
-                                  {item.name}
-                                </label>
-                              </div>
-                            ))
+                                  <input
+                                    id={`payment-${item.id}`}
+                                    type="checkbox"
+                                    className="form-check-input m-0"
+                                    checked={item.checked}
+                                    onChange={() =>
+                                      handleCheckboxChange(item.id)
+                                    }
+                                    style={{
+                                      width: "18px",
+                                      height: "18px",
+                                      cursor: "pointer",
+                                      marginRight: "8px", // Space between checkbox and logo
+                                    }}
+                                    onClick={(e) => e.stopPropagation()} // Prevent double trigger
+                                  />
+                                  <Image
+                                    src={
+                                      item.name === "Razorpay"
+                                        ? Razorpay_logo
+                                        : cod
+                                    }
+                                    alt={item.name}
+                                    width={90}
+                                    height={40}
+                                    style={{ objectFit: "contain" }}
+                                  />
+                                  <label
+                                    htmlFor={`payment-${item.id}`}
+                                    className="mb-0"
+                                    style={{ cursor: "pointer" }}
+                                  >
+                                    {item.name}
+                                  </label>
+                                </div>
+                              ))}
+                            </div>
                           ) : (
-                            <div className=" text-danger">
-                              Currenly Not available payment Methods
+                            <div className="text-danger">
+                              Currently no payment methods available
                             </div>
                           )}
                           {state.selectedPaymentType == CASE_ON_DELIVERY && (
@@ -2692,7 +2846,7 @@ const CheckoutBillingArea1 = () => {
                         )}
                       </div>
 
-                      <li>
+                      {/* <li>
                         <div className="tp-login-remeber">
                           <input
                             id="agree"
@@ -2713,7 +2867,7 @@ const CheckoutBillingArea1 = () => {
                       </li>
                       {state.errors.isAgree && (
                         <ErrorMsg msg={state.errors.isAgree} />
-                      )}
+                      )} */}
                     </ul>
 
                     <div className="payment-section mt-4">
@@ -2748,8 +2902,34 @@ const CheckoutBillingArea1 = () => {
                         Your personal data will be used to process your order,
                         support your experience throughout this website, and for
                         other purposes described in our{" "}
-                        <strong className="cursor-pointer" onClick={()=>router.push("/legal-policies")}>privacy policy</strong>.
+                        <strong
+                          className="cursor-pointer"
+                          onClick={() => router.push("/legal-policies")}
+                        >
+                          privacy policy
+                        </strong>
+                        .
                       </p>
+                      <div className="tp-login-remeber">
+                        <input
+                          id="agree"
+                          type="checkbox"
+                          checked={state.isAgree}
+                          onChange={(e) =>
+                            setState({
+                              isAgree: e.target.checked,
+                              pType: true,
+                            })
+                          }
+                        />
+                        <label htmlFor="agree">
+                          I have read and agree to the website terms and
+                          conditions <span> * </span>
+                        </label>
+                      </div>
+                      {state.errors.isAgree && (
+                        <ErrorMsg msg={state.errors.isAgree} />
+                      )}
 
                       <button
                         className="w-100  mt-3 place-order-btn tp-btn tp-btn-border"

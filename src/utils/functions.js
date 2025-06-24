@@ -582,3 +582,14 @@ export const CommonLoader = () => {
     </div>
   );
 };
+
+export const roundIndianRupee = (value) => {
+  const num = Number(value.toString().replace(/,/g, ""));
+  if (isNaN(num)) return String(value);
+
+  const integerPart = Math.floor(num);
+  const decimalPart = num - integerPart;
+  const rounded = decimalPart > 0.5 ? Math.ceil(num) : Math.floor(num);
+
+  return rounded;
+};

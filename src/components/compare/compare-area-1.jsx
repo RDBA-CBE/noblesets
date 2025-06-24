@@ -188,8 +188,8 @@ const CompareArea1 = () => {
                     PRODUCT
                   </th>
                   <th className="tp-cart-header-quantity">DESCRIPTION</th>
-                  <th className="tp-cart-header-price">SKU</th>
-                  <th>AVAILABILITY</th>
+                  {/* <th className="tp-cart-header-price">SKU</th>
+                  <th>AVAILABILITY</th> */}
                   <th style={{ borderBottomRightRadius: "10px", borderTopRightRadius: "10px" }}></th>
                 </tr>
               </thead>
@@ -310,14 +310,14 @@ const CompareArea1 = () => {
                       </td>
 
                       {/* SKU */}
-                      <td>
+                      {/* <td>
                         <span style={{ color: "black" }}>{node?.variants?.[0]?.sku}</span>
-                      </td>
+                      </td> */}
 
                       {/* AVAILABILITY */}
-                      <td>
+                      {/* <td>
                         <span style={{ color: "black" , textAlign:"center"}}>{node?.defaultVariant?.quantityAvailable}</span>
-                      </td>
+                      </td> */}
 
                       {/* REMOVE */}
                       <td>

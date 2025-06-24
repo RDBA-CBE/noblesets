@@ -25,8 +25,10 @@ import Resizer from "react-image-file-resizer";
 import ReviewSection from "../product-details/ReviewSection";
 import { Modal, Radio, Button } from "antd";
 import { CASE_ON_DELIVERY } from "@/utils/constant";
+import { useRouter } from "next/router";
 
 const MyOrderDetails = ({ data }) => {
+  const router = useRouter();
   const Data = data?.data?.order;
   const SubTotal = data?.data?.order?.subtotal.gross;
   const Total = data?.data?.order?.total.gross;
@@ -37,6 +39,7 @@ const MyOrderDetails = ({ data }) => {
   const paymentMethod = data?.data?.order?.paymentMethod?.name;
   const codAmount = data?.data?.order?.codAmount;
   const giftWrapAmount = data?.data?.order?.giftWrapAmount;
+  const discount = data?.data?.order?.discount;
 
   const [createReview, { loading: loading }] = useCreateReviewMutation();
   const [createMedia, { loading: mediaLoading }] = useCreateMediaFileMutation();
@@ -195,14 +198,11 @@ const MyOrderDetails = ({ data }) => {
 
   const FormatDate = moment(Data?.created).format("MMMM D, YYYY");
   return (
-    <section
-      className="tp-checkout-area pb-50 pt-50 common-bg"
-     
-    >
+    <section className="tp-checkout-area pb-50 pt-50 common-bg">
       <div className="container">
         <p
           style={{
-            color:  "black",
+            color: "black",
             borderBottom: "1px solid #e6e6e6",
             paddingBottom: "10px",
           }}
@@ -225,19 +225,19 @@ const MyOrderDetails = ({ data }) => {
         <div
           style={{
             background: "#fff",
-            borderRadius:"20px"
+            borderRadius: "20px",
           }}
         >
-          <div className="row m-0 px-4 py-3 " >
+          <div className="row m-0 px-4 py-3 ">
             <div className="col-md-6 p-0 px-2">
               <h4 style={{ fontWeight: "400", fontSize: "18px" }}>
                 BILLING ADDRESS
               </h4>
-              <p style={{ color:  "black", marginBottom: "0px" }}>
+              <p style={{ color: "black", marginBottom: "0px" }}>
                 <b>Name:</b> {Data?.billingAddress?.firstName}{" "}
                 {Data?.billingAddress?.lastName}
               </p>
-              <p style={{ color:  "black", marginBottom: "0px" }}>
+              <p style={{ color: "black", marginBottom: "0px" }}>
                 <b>Address:</b> {Data?.billingAddress?.streetAddress1},<br />
                 {Data?.billingAddress?.city}, <br />
                 {Data?.billingAddress?.country?.country} -{" "}
@@ -246,7 +246,7 @@ const MyOrderDetails = ({ data }) => {
               {/* <p style={{ color:  "black", marginBottom: "0px" }}></p>
             <p style={{ color:  "black", marginBottom: "0px" }}></p>
             <p style={{ color:  "black", marginBottom: "0px" }}></p> */}
-              <p style={{ color:  "black", marginBottom: "0px" }}>
+              <p style={{ color: "black", marginBottom: "0px" }}>
                 <b>Phone:</b> {Data?.billingAddress?.phone}
               </p>
 
@@ -256,18 +256,18 @@ const MyOrderDetails = ({ data }) => {
               <h4 style={{ fontWeight: "400", fontSize: "18px" }}>
                 SHIPPING ADDRESS
               </h4>
-              <p style={{ color:  "black", marginBottom: "0px" }}>
+              <p style={{ color: "black", marginBottom: "0px" }}>
                 <b>Name:</b> {Data?.shippingAddress?.firstName}{" "}
                 {Data?.shippingAddress?.lastName}
               </p>
-              <p style={{ color:  "black", marginBottom: "0px" }}>
+              <p style={{ color: "black", marginBottom: "0px" }}>
                 <b>Address:</b> {Data?.shippingAddress?.streetAddress1},<br />
                 {Data?.shippingAddress?.city}, <br />
                 {Data?.shippingAddress?.country?.country} -{" "}
                 {Data?.shippingAddress?.postalCode}
               </p>
 
-              <p style={{ color:  "black", marginBottom: "0px" }}>
+              <p style={{ color: "black", marginBottom: "0px" }}>
                 <b>Phone:</b> {Data?.shippingAddress?.phone}
               </p>
             </div>
@@ -312,42 +312,81 @@ const MyOrderDetails = ({ data }) => {
                   <thead>
                     <tr>
                       <th scope="col">PRODUCT</th>
-                      <th scope="col">TOTAL</th>
+                      <th scope="col">PRICE</th>
                     </tr>
                   </thead>
                   <tbody>
                     {Data?.lines.map((item, i) => (
                       <tr key={i}>
-                        <td scope="row">
+                        <td
+                          style={{
+                            // textDecoration: "underline",
+                            // color: "#b4633a",
+                            cursor: "pointer",
+                          }}
+                          scope="row"
+                          onClick={() =>
+                            router.push(
+                              `/product-details/${item?.variant?.product?.slug}`
+                            )
+                          }
+                        >
                           {item.productName} ({item?.quantity})
                         </td>
 
-                        <td className=" ">
-                          <div>
-                            {item?.totalPrice?.gross?.currency === "USD"
-                              ? "$"
-                              : "₹"}
-                            {addCommasToNumber(item?.totalPrice?.gross?.amount)}
-                          </div>
+                        <td>
                           <div
                             style={{
-                              paddingLeft: "5px",
-                              textDecoration: "underline",
-                              color: "#b4633a",
-                              cursor: "pointer",
+                              display: "flex",
+                              justifyContent: "space-between",
                             }}
-                            onClick={() =>
-                              setState({
-                                isOpen: true,
-                                productId: item?.variant?.product?.id,
-                              })
-                            }
                           >
-                            Reviews
+                            <div>
+                              {item?.totalPrice?.gross?.currency === "USD"
+                                ? "$"
+                                : "₹"}
+                              {addCommasToNumber(
+                                item?.variant?.pricing?.price?.gross?.amount
+                              )}
+                            </div>
+                            <div
+                              style={{
+                                textDecoration: "underline",
+                                color: "#b4633a",
+                                cursor: "pointer",
+                              }}
+                              onClick={() =>
+                                setState({
+                                  isOpen: true,
+                                  productId: item?.variant?.product?.id,
+                                })
+                              }
+                            >
+                              Add Review
+                            </div>
                           </div>
                         </td>
                       </tr>
                     ))}
+
+                    {discount?.amount !== 0.0 && (
+                      <tr>
+                        <td>Discount</td>
+                        {checkChannel() === "india-channel" ? (
+                          <>
+                            <td style={{ color: "green" }}>
+                              -&#8377;{addCommasToNumber(discount?.amount)}
+                            </td>
+                          </>
+                        ) : (
+                          <>
+                            <td style={{ color: "green" }}>
+                              -${addCommasToNumber(discount?.amount)}
+                            </td>
+                          </>
+                        )}
+                      </tr>
+                    )}
 
                     <tr>
                       <td>Subtotal</td>
@@ -359,20 +398,53 @@ const MyOrderDetails = ({ data }) => {
                     </tr>
 
                     <tr>
-                      <td>
-                        {paymentMethod ==CASE_ON_DELIVERY
-                          ? "COD Fee"
-                          : "Shipping"}
-                      </td>
+                      {paymentMethod == CASE_ON_DELIVERY ? (
+                        <td>COD Fee</td>
+                      ) : ShippingAmount?.amount !== 0 ? (
+                        <td>Shipping</td>
+                      ) : null}
 
-                      <td>
-                        {formatCurrency(ShippingAmount?.currency)}
-                        {addCommasToNumber(
-                          codAmount !== 0 ? codAmount : ShippingAmount?.amount
-                        )}
-                      </td>
+                      {/* <td>
+                                          {paymentMethod == CASE_ON_DELIVERY
+                                            ? "COD Fee"
+                                            : "Shipping"}
+                                        </td> */}
+
+                      {paymentMethod == CASE_ON_DELIVERY && codAmount !== 0 ? (
+                        <td>{`₹${addCommasToNumber(codAmount)}`}</td>
+                      ) : ShippingAmount?.amount !== 0 ? (
+                        <td>{`₹${addCommasToNumber(
+                          ShippingAmount?.amount
+                        )}`}</td>
+                      ) : null}
+                      {/* {checkChannel() === "india-channel" ? (
+                                          <>
+                                            <td>
+                                              {codAmount === 0
+                                                ? `₹${addCommasToNumber(ShippingAmount)}` // Using ₹ for INR
+                                                : `₹${addCommasToNumber(codAmount)}`}
+                                            </td>
+                                          </>
+                                        ) : (
+                                          <>
+                                            <td>
+                                              {codAmount === 0
+                                                ? `$${addCommasToNumber(ShippingAmount)}`
+                                                : `$${addCommasToNumber(codAmount)}`}
+                                            </td>
+                                          </>
+                                        )} */}
                     </tr>
+                    {giftWrap && (
+                      <tr>
+                        <td>Gift Wrap</td>
 
+                        <td>
+                          {formatCurrency(ShippingAmount?.currency)}
+                          {giftWrapAmount}
+                        </td>
+                      </tr>
+                    )}
                     <tr>
                       <td>Payment Status</td>
 
@@ -384,17 +456,6 @@ const MyOrderDetails = ({ data }) => {
 
                       <td>{Data?.paymentMethod?.name}</td>
                     </tr>
-
-                    {giftWrap && (
-                      <tr>
-                        <td>Gift Wrap</td>
-
-                        <td>
-                          {formatCurrency(ShippingAmount?.currency)}
-                          {giftWrapAmount}
-                        </td>
-                      </tr>
-                    )}
 
                     {GiftCard && GiftCard.length > 0 && (
                       <tr>
@@ -410,7 +471,7 @@ const MyOrderDetails = ({ data }) => {
 
                     <tr>
                       <td style={{ fontSize: "20px", fontWeight: "700" }}>
-                        TOTAL:
+                        GRAND TOTAL:
                       </td>
 
                       <td style={{ fontSize: "20px", fontWeight: "700" }}>
@@ -541,36 +602,39 @@ const MyOrderDetails = ({ data }) => {
           cancelText="Cancel"
           width={800} // Adjusted modal width for better fit
           closeIcon={
-            <span style={{ fontSize: "18px", cursor: "pointer", color:"black" }}>x</span>
+            <span
+              style={{ fontSize: "18px", cursor: "pointer", color: "black" }}
+            >
+              x
+            </span>
           } // Custom close icon
           okButtonProps={{
-            className:" tp-btn tp-btn-border text-white",
+            className: " tp-btn tp-btn-border text-white",
             style: {
               backgroundColor: "#b4633a", // Set background color to your preference
               color: "white", // Set text color to white
               borderRadius: "20px",
-                              padding: "3px 14px",
-                              fontSize: "14px",
-                              border:"none"
+              padding: "3px 14px",
+              fontSize: "14px",
+              border: "none",
             },
           }}
           cancelButtonProps={{
-            className:" tp-btn tp-btn-border text-white",
+            className: " tp-btn tp-btn-border text-white",
             style: {
               backgroundColor: "#b4633a", // Set background color to your preference
               color: "white", // Set text color to white
               borderRadius: "20px",
-                              padding: "3px 14px",
-                              fontSize: "14px",
-                              border:"none"
+              padding: "3px 14px",
+              fontSize: "14px",
+              border: "none",
             },
           }}
           bodyStyle={{
             padding: 0, // Remove default padding
-            fontFamily: "Nunito,sans-serif", 
+            fontFamily: "Nunito,sans-serif",
           }}
-        > 
-                           
+        >
           <div className="mb-4">
             {/* <input
             type="text"
