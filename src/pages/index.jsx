@@ -19,6 +19,7 @@ import ShopByCollections from "@/components/home/shopByCollections";
 import GiftSection from "@/components/home/giftSection";
 import NobelsetsPromises from "@/components/home/NobelsetsPromises";
 import { useMaxPriceMutation } from "@/redux/features/productApi";
+import InstagramSection2 from "@/components/home/shopByCategory2";
 
 const Index = () => {
   const [maximumPrice] = useMaxPriceMutation();
@@ -104,7 +105,8 @@ const Index = () => {
 
       <HomeCategorySection />
       <ShopByBudget />
-      <ShopByCategory />
+      {/* <ShopByCategory /> */}
+      <InstagramSection2/>
 
       <GiftSection />
       <ShopByCollections />
