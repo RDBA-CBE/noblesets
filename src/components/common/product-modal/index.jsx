@@ -14,7 +14,7 @@ const customStyles = {
     bottom: "auto",
     marginRight: "-50%",
     transform: "translate(-50%, -50%)",
-    // height: "calc(100% - 50px)",
+    // height: "800px",
     borderRadius: "20px",
   },
 };
@@ -61,6 +61,7 @@ const ProductModal = () => {
         
       >
         <div className="tp-product-modal"
+        style={{overflowY:"scroll"}}
         >
           <div className="tp-product-modal-content d-lg-flex">
             <button
