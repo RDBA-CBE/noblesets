@@ -349,6 +349,7 @@ const CompareArea2 = () => {
                                           style={{
                                             color: "#b4633a",
                                             fontWeight: "500",
+                                            fontSize:"16px"
                                           }}
                                         >
                                           $
