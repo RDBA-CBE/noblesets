@@ -139,6 +139,8 @@ const CompareArea2 = () => {
   });
 
   const addToCartProductINR = async (product) => {
+    console.log("hello");
+    
     try {
       const checkoutTokenINR = localStorage.getItem("checkoutTokenINR");
       const response = await addToCartMutation({
@@ -369,11 +371,11 @@ const CompareArea2 = () => {
                                           prd?.variant?.product?.id ===
                                           item?.node?.id
                                       ) ? (
-                                        <button
+                                        <div
                                           onClick={() => router.push("/cart")}
                                           
-                                          type="button"
-                                         className="cart-link"
+                                          // type="button"
+                                         className="cart-link "
                                         //   style={{
                                         //     padding: "2px 18px",
                                         //     color: "white",
@@ -381,14 +383,14 @@ const CompareArea2 = () => {
                                         //   }}
                                         >
                                           View Cart
-                                        </button>
+                                        </div>
                                       ) : (
-                                        <button
+                                        <div
                                           onClick={() => {
                                             addToCartProductINR(item);
                                             addToCartProductUSD(item);
                                           }}
-                                          type="button"
+                                          // type="button"
                                           className="cart-link"
                                         //   style={{
                                         //     padding: "2px 18px",
@@ -397,7 +399,7 @@ const CompareArea2 = () => {
                                         //   }}
                                         >
                                           Add to Cart
-                                        </button>
+                                        </div>
                                       )}
                                     </div>
                                   )}

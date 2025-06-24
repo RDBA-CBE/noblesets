@@ -41,13 +41,13 @@ const BillingAddressModal = (props) => {
         cancelText="Cancel"
         width={800} // Adjusted modal width for better fit
         closeIcon={
-          <span style={{ fontSize: "16px", cursor: "pointer" }}>✖</span>
+          <span style={{ fontSize: "20px", cursor: "pointer", color:"#000" }}>x</span>
         } // Custom close icon
         cancelButtonProps={{
           style:{
             padding:"20px 29px",
             borderRadius:"20px",
-            border:"1px solid #b4633a", // Set background color to your preference
+            border:"1px solid #e09a7a", // Set background color to your preference
             color:"#b4633a",
           }
         }}
@@ -55,7 +55,7 @@ const BillingAddressModal = (props) => {
           style: {
             padding:"20px 29px",
             borderRadius:"20px",
-            backgroundColor: "#b4633a", // Set background color to your preference
+             background: "linear-gradient(to right,color-mix(in srgb, #fbdccc 40%, #e09a7a),#e09a7a)",
             color: "white", // Set text color to white
             border: "none", // Optional: Remove border
           },
