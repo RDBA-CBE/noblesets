@@ -21,7 +21,7 @@
     }
 
     & table {
-      @media #{$lg, $md, $sm, $xs} {
+      @media #{$md, $sm, $xs} {
         width: 840px;
       }
     }
