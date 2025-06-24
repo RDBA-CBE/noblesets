@@ -281,7 +281,6 @@ const CheckoutBillingArea1 = () => {
                   postalCode1: "Delivery is not available to this area",
                 },
               });
-
             });
         } else {
           setState({
@@ -2747,17 +2746,17 @@ const CheckoutBillingArea1 = () => {
                                     }}
                                     onClick={(e) => e.stopPropagation()} // Prevent double trigger
                                   />
-                                  {/* <Image
+                                  <Image
                                     src={
                                       item.name === "Razorpay"
                                         ? Razorpay_logo
                                         : cod
                                     }
                                     alt={item.name}
-                                    width={80}
+                                    width={90}
                                     height={40}
                                     style={{ objectFit: "contain" }}
-                                  /> */}
+                                  />
                                   <label
                                     htmlFor={`payment-${item.id}`}
                                     className="mb-0"

@@ -11,6 +11,7 @@ import { notifyError, notifySuccess } from "@/utils/toast";
 import ProfileImage from "@assets/img/profile-1.webp";
 import Image from "next/image";
 import { useGetAddressListQuery } from "@/redux/features/productApi";
+import Map from "../../../public/assets/img/map-1.png";
 
 const ProfileInfo = () => {
   const [userFirstName, setUserFirstName] = useState("");
@@ -63,14 +64,14 @@ const ProfileInfo = () => {
       <h3 className="profile__info-title">Personal Details</h3>
       <div className="profile__info-content">
         <div style={{ display: "flex", justifyContent: "space-between" }}>
-          <div style={{ width: "30%" }}>
+          <div style={{ width: "22%" }}>
             <img
               src="assets/img/profile-1.webp"
               alt="profile"
-              style={{ width: "50%" }}
+              style={{ width: "68%" }}
             />
           </div>
-          <div style={{ width: "70%" }}>
+          <div style={{ width: "88%" }}>
             <p
               className="profile__info-text"
               style={{ color: "gray", fontWeight: "500" }}
@@ -97,8 +98,7 @@ const ProfileInfo = () => {
         {billingAddress && (
           <div
             className={`address-box col-md-${6}`}
-            style={{ marginBottom: "50px" }}
-            onClick={() => handleAddressClick(address)} // Add onClick event handler
+            style={{ marginBottom: "20px" }}
           >
             <div
               className={`${
@@ -134,9 +134,12 @@ const ProfileInfo = () => {
             >
               <div>
                 {billingAddress?.isDefaultBillingAddress && (
-                  <h5 style={{ color: "black", fontWeight: "500" }}>
+                  <div className="d-flex gap-2">
+                  <Image src={Map} alt="location"  width={25} height={25} />
+                  <h5 style={{ color: "black", fontWeight: "500",fontSize:"20px" }}>
                     Current Billing Address
                   </h5>
+                  </div>
                 )}
 
                 <p style={{ marginBottom: "0px" }}>
@@ -171,7 +174,6 @@ const ProfileInfo = () => {
           <div
             className={`address-box col-md-${6}`}
             style={{ marginBottom: "50px" }}
-            onClick={() => handleAddressClick(address)} // Add onClick event handler
           >
             <div
               className={`${
@@ -207,9 +209,14 @@ const ProfileInfo = () => {
             >
               <div>
                 {shippingAddress?.isDefaultShippingAddress && (
-                  <h5 style={{ color: "black", fontWeight: "500" }}>
-                    Current Shipping Address
-                  </h5>
+                 
+                   <div className="d-flex gap-2">
+                   <Image src={Map} alt="location" width={25} height={25} />
+                   <h5 style={{ color: "black", fontWeight: "500",fontSize:"20px" }}>
+                   Current Shipping Address
+
+                   </h5>
+                   </div>
                 )}
                 <p style={{ marginBottom: "0px" }}>
                   {shippingAddress?.firstName} {billingAddress?.lastName}

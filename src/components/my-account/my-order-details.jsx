@@ -198,10 +198,7 @@ const MyOrderDetails = ({ data }) => {
 
   const FormatDate = moment(Data?.created).format("MMMM D, YYYY");
   return (
-    <section
-      className="tp-checkout-area pb-50 pt-50 common-bg"
-     
-    >
+    <section className="tp-checkout-area pb-50 pt-50 common-bg">
       <div className="container">
         <p
           style={{
@@ -315,7 +312,7 @@ const MyOrderDetails = ({ data }) => {
                   <thead>
                     <tr>
                       <th scope="col">PRODUCT</th>
-                      <th scope="col">TOTAL</th>
+                      <th scope="col">PRICE</th>
                     </tr>
                   </thead>
                   <tbody>
@@ -337,30 +334,36 @@ const MyOrderDetails = ({ data }) => {
                           {item.productName} ({item?.quantity})
                         </td>
 
-                        <td className=" ">
-                          <div>
-                            {item?.totalPrice?.gross?.currency === "USD"
-                              ? "$"
-                              : "₹"}
-                            {addCommasToNumber(
-                              item?.variant?.pricing?.price?.gross?.amount
-                            )}
-                          </div>
+                        <td>
                           <div
                             style={{
-                              paddingLeft: "5px",
-                              textDecoration: "underline",
-                              color: "#b4633a",
-                              cursor: "pointer",
+                              display: "flex",
+                              justifyContent: "space-between",
                             }}
-                            onClick={() =>
-                              setState({
-                                isOpen: true,
-                                productId: item?.variant?.product?.id,
-                              })
-                            }
                           >
-                            Reviews
+                            <div>
+                              {item?.totalPrice?.gross?.currency === "USD"
+                                ? "$"
+                                : "₹"}
+                              {addCommasToNumber(
+                                item?.variant?.pricing?.price?.gross?.amount
+                              )}
+                            </div>
+                            <div
+                              style={{
+                                textDecoration: "underline",
+                                color: "#b4633a",
+                                cursor: "pointer",
+                              }}
+                              onClick={() =>
+                                setState({
+                                  isOpen: true,
+                                  productId: item?.variant?.product?.id,
+                                })
+                              }
+                            >
+                              Add Review
+                            </div>
                           </div>
                         </td>
                       </tr>
@@ -395,20 +398,53 @@ const MyOrderDetails = ({ data }) => {
                     </tr>
 
                     <tr>
-                      <td>
-                        {paymentMethod == CASE_ON_DELIVERY
-                          ? "COD Fee"
-                          : "Shipping"}
-                      </td>
+                      {paymentMethod == CASE_ON_DELIVERY ? (
+                        <td>COD Fee</td>
+                      ) : ShippingAmount?.amount !== 0 ? (
+                        <td>Shipping</td>
+                      ) : null}
 
-                      <td>
-                        {formatCurrency(ShippingAmount?.currency)}
-                        {addCommasToNumber(
-                          codAmount !== 0 ? codAmount : ShippingAmount?.amount
-                        )}
-                      </td>
+                      {/* <td>
+                                          {paymentMethod == CASE_ON_DELIVERY
+                                            ? "COD Fee"
+                                            : "Shipping"}
+                                        </td> */}
+
+                      {paymentMethod == CASE_ON_DELIVERY && codAmount !== 0 ? (
+                        <td>{`₹${addCommasToNumber(codAmount)}`}</td>
+                      ) : ShippingAmount?.amount !== 0 ? (
+                        <td>{`₹${addCommasToNumber(
+                          ShippingAmount?.amount
+                        )}`}</td>
+                      ) : null}
+                      {/* {checkChannel() === "india-channel" ? (
+                                          <>
+                                            <td>
+                                              {codAmount === 0
+                                                ? `₹${addCommasToNumber(ShippingAmount)}` // Using ₹ for INR
+                                                : `₹${addCommasToNumber(codAmount)}`}
+                                            </td>
+                                          </>
+                                        ) : (
+                                          <>
+                                            <td>
+                                              {codAmount === 0
+                                                ? `$${addCommasToNumber(ShippingAmount)}`
+                                                : `$${addCommasToNumber(codAmount)}`}
+                                            </td>
+                                          </>
+                                        )} */}
                     </tr>
+                    {giftWrap && (
+                      <tr>
+                        <td>Gift Wrap</td>
 
+                        <td>
+                          {formatCurrency(ShippingAmount?.currency)}
+                          {giftWrapAmount}
+                        </td>
+                      </tr>
+                    )}
                     <tr>
                       <td>Payment Status</td>
 
@@ -420,17 +456,6 @@ const MyOrderDetails = ({ data }) => {
 
                       <td>{Data?.paymentMethod?.name}</td>
                     </tr>
-
-                    {giftWrap && (
-                      <tr>
-                        <td>Gift Wrap</td>
-
-                        <td>
-                          {formatCurrency(ShippingAmount?.currency)}
-                          {giftWrapAmount}
-                        </td>
-                      </tr>
-                    )}
 
                     {GiftCard && GiftCard.length > 0 && (
                       <tr>
@@ -446,7 +471,7 @@ const MyOrderDetails = ({ data }) => {
 
                     <tr>
                       <td style={{ fontSize: "20px", fontWeight: "700" }}>
-                        TOTAL:
+                        GRAND TOTAL:
                       </td>
 
                       <td style={{ fontSize: "20px", fontWeight: "700" }}>

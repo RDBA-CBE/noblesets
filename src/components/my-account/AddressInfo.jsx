@@ -21,6 +21,8 @@ import {
 } from "@/utils/functions";
 import Swal from "sweetalert2";
 import ButtonLoader from "../loader/button-loader";
+import Image from "next/image";
+import Map from "../../../public/assets/img/map-1.png";
 
 const { Option } = Select;
 
@@ -354,11 +356,11 @@ const AddressInfo = () => {
         <CommonLoader />
       ) : (
         <>
-          <div className="mb-4"
+          <div
+            className="mb-4"
             style={{
               display: "flex",
               justifyContent: "space-between",
-              
             }}
           >
             <h4 className="mb-4" style={{ fontWeight: "500" }}>
@@ -366,11 +368,12 @@ const AddressInfo = () => {
             </h4>
             <button
               className=" tp-btn tp-btn-border text-white mb-4"
-              style={{ borderRadius: "20px",
-                              padding: "3px 14px",
-                              fontSize: "14px",
-                              border:"none"
-                            }}
+              style={{
+                borderRadius: "20px",
+                padding: "3px 14px",
+                fontSize: "14px",
+                border: "none",
+              }}
               // style={{ backgroundColor: "#c38c36", color: "white" }}
               onClick={() => {
                 clearForm();
@@ -386,13 +389,19 @@ const AddressInfo = () => {
               AddressData?.map((address, index) => (
                 <div
                   key={index}
-                  className={`address-box col-md-${AddressData.length === 1 ? 12 : 6}`}
+                  className={`address-box col-md-${
+                    AddressData.length === 1 ? 12 : 6
+                  }`}
                   style={{ marginBottom: "50px" }}
                   onClick={() => handleAddressClick(address)} // Add onClick event handler
                 >
                   <div
-                   className={`${ address?.isDefaultBillingAddress ||
-                        address?.isDefaultShippingAddress ? "address-box-active" : ""}`}
+                    className={`${
+                      address?.isDefaultBillingAddress ||
+                      address?.isDefaultShippingAddress
+                        ? "address-box-active"
+                        : ""
+                    }`}
                     style={{
                       display: "flex",
                       justifyContent: "space-between",
@@ -415,27 +424,53 @@ const AddressInfo = () => {
                         address?.isDefaultBillingAddress ||
                         address?.isDefaultShippingAddress
                           ? "#fff"
-                          : "gray",    
+                          : "gray",
                     }}
                   >
                     <div>
                       {address?.isDefaultBillingAddress && (
-                        <h5 style={{ color: "black", fontWeight: "500" }}>
-                          Default Billing Address
-                        </h5>
+                        <div className="d-flex gap-2">
+                          <Image
+                            src={Map}
+                            alt="location"
+                            width={25}
+                            height={25}
+                          />
+                          <h5
+                            style={{
+                              color: "black",
+                              fontWeight: "500",
+                              fontSize: "20px",
+                            }}
+                          >
+                            Current Billing Address
+                          </h5>
+                        </div>
                       )}
                       {address?.isDefaultShippingAddress && (
-                        <h5 style={{ color: "black", fontWeight: "500" }}>
-                          Default Shipping Address
-                        </h5>
+                        <div className="d-flex gap-2">
+                          <Image
+                            src={Map}
+                            alt="location"
+                            width={25}
+                            height={25}
+                          />
+                          <h5
+                            style={{
+                              color: "black",
+                              fontWeight: "500",
+                              fontSize: "20px",
+                            }}
+                          >
+                            Default Shipping Address
+                          </h5>
+                        </div>
                       )}
-                      <p style={{  marginBottom: "0px" }}>
+                      <p style={{ marginBottom: "0px" }}>
                         {address?.firstName} {address?.lastName}
                       </p>
-                      <p style={{  marginBottom: "0px" }}>
-                        {address?.phone}
-                      </p>
-                      <p style={{  marginBottom: "0px" }}>
+                      <p style={{ marginBottom: "0px" }}>{address?.phone}</p>
+                      <p style={{ marginBottom: "0px" }}>
                         {address?.companyName}
                       </p>
                       {/* <p style={{ color: "gray", marginBottom: "0px" }}>
@@ -444,24 +479,26 @@ const AddressInfo = () => {
                       <p style={{ marginBottom: "0px" }}>
                         {address?.streetAddress1} {address?.streetAddress2}
                       </p>
-                      <p style={{  marginBottom: "0px" }}>
-                        {address?.city}
-                      </p>
+                      <p style={{ marginBottom: "0px" }}>{address?.city}</p>
                       <p style={{ marginBottom: "0px" }}>
                         {address?.countryArea}
                       </p>
                       <p style={{ marginBottom: "0px" }}>
                         {address?.country?.country}
                       </p>
-                      <p style={{  marginBottom: "0px" }}>
+                      <p style={{ marginBottom: "0px" }}>
                         {address?.postalCode}
                       </p>
                     </div>
                     <div style={{ paddingRight: "30px", textAlign: "right" }}>
                       <SettingOutlined
                         style={{
-                          color: `${address?.isDefaultBillingAddress ||
-                        address?.isDefaultShippingAddress ? "#fff" : "#b4633a"}`,
+                          color: `${
+                            address?.isDefaultBillingAddress ||
+                            address?.isDefaultShippingAddress
+                              ? "#fff"
+                              : "#b4633a"
+                          }`,
                           padding: "5px",
                           cursor: "pointer",
                         }}
@@ -733,7 +770,6 @@ const AddressInfo = () => {
       </Modal> */}
 
       <Modal
-    
         title={state.editAddressId == null ? "Add Address" : "Edit Address"}
         visible={editAddressModalVisible}
         onCancel={() => {
@@ -749,16 +785,15 @@ const AddressInfo = () => {
               clearForm();
               setShowSettingsBox(null);
             }}
-            style={{ fontSize: "18px", cursor: "pointer", color:"black" }}
+            style={{ fontSize: "18px", cursor: "pointer", color: "black" }}
           >
             x
           </span>
         }
         // style={{
-        //   padding: "0px", 
-         
+        //   padding: "0px",
+
         // }}
-        
       >
         <div className="row mt-30">
           <div className="profile__input-box col-md-6">

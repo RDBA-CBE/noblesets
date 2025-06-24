@@ -265,6 +265,11 @@ export const MY_ORDER_LIST = ({ first }) => {
             }
           }
           paymentStatus
+          paymentMethod {
+            name
+            isActive
+            id
+          }
         }
       }
     }

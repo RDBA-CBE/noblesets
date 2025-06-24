@@ -21,7 +21,7 @@ const Success = ({ data }) => {
   const Tax = data?.data?.order?.total?.tax;
   const OrderNumber = data?.data?.order?.number;
   const OrderDate = moment(data?.data?.order?.updatedAt).format("MMMM D, YYYY");
-  const ShippingAmount = data?.data?.order?.shippingPrice?.gross.amount;
+  const ShippingAmount = data?.data?.order?.shippingPrice?.gross?.amount;
   const giftWrap = data?.data?.order?.isGiftWrap;
   const paymentMethod = data?.data?.order?.paymentMethod?.name;
   const GiftCard = data?.data?.order?.giftCards;
@@ -65,7 +65,7 @@ const Success = ({ data }) => {
                   <thead>
                     <tr>
                       <th className="tp-cart-header-quantity">PRODUCT</th>
-                      <th className="tp-cart-header-quantity">TOTAL</th>
+                      <th className="tp-cart-header-quantity">PRICE</th>
                     </tr>
                   </thead>
                   <tbody>
@@ -95,21 +95,24 @@ const Success = ({ data }) => {
                         </tr>
                       );
                     })}
-                    {discount?.amount !== 0.0  && (
+                    {discount?.amount !== 0.0 && (
                       <tr>
                         <td>Discount</td>
                         {checkChannel() === "india-channel" ? (
                           <>
-                            <td style={{ color: "green" }}>-&#8377;{addCommasToNumber(discount?.amount)}</td>
+                            <td style={{ color: "green" }}>
+                              -&#8377;{addCommasToNumber(discount?.amount)}
+                            </td>
                           </>
                         ) : (
                           <>
-                            <td style={{ color: "green" }}>-${addCommasToNumber(discount?.amount)}</td>
+                            <td style={{ color: "green" }}>
+                              -${addCommasToNumber(discount?.amount)}
+                            </td>
                           </>
                         )}
                       </tr>
                     )}
-                   
 
                     <tr>
                       <td>Subtotal</td>
@@ -125,13 +128,24 @@ const Success = ({ data }) => {
                     </tr>
 
                     <tr>
-                      <td>
+                      {paymentMethod == CASE_ON_DELIVERY ? (
+                        <td>COD Fee</td>
+                      ) : ShippingAmount !== 0 ? (
+                        <td>Shipping</td>
+                      ) : null}
+
+                      {/* <td>
                         {paymentMethod == CASE_ON_DELIVERY
                           ? "COD Fee"
                           : "Shipping"}
-                      </td>
+                      </td> */}
 
-                      {checkChannel() === "india-channel" ? (
+                      {paymentMethod == CASE_ON_DELIVERY && codAmount !== 0 ? (
+                        <td>{`₹${addCommasToNumber(codAmount)}`}</td>
+                      ) : ShippingAmount !== 0 ? (
+                        <td>{`₹${addCommasToNumber(ShippingAmount)}`}</td>
+                      ) : null}
+                      {/* {checkChannel() === "india-channel" ? (
                         <>
                           <td>
                             {codAmount === 0
@@ -147,7 +161,7 @@ const Success = ({ data }) => {
                               : `$${addCommasToNumber(codAmount)}`}
                           </td>
                         </>
-                      )}
+                      )} */}
                     </tr>
 
                     {giftWrap && (
@@ -183,7 +197,7 @@ const Success = ({ data }) => {
                     </tr>
                     <tr>
                       <td style={{ color: "black", fontWeight: "600" }}>
-                        Total
+                        Grand Total
                       </td>
                       {checkChannel() === "india-channel" ? (
                         <>

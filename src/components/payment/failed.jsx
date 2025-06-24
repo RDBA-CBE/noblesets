@@ -196,29 +196,40 @@ const Failed = ({ data, orderId }) => {
                     </tr>
 
                     <tr>
-                      <td>
-                        {paymentMethod == CASE_ON_DELIVERY
-                          ? "COD Fee"
-                          : "Shipping"}
-                      </td>
+                      {paymentMethod == CASE_ON_DELIVERY ? (
+                        <td>COD Fee</td>
+                      ) : ShippingAmount !== 0 ? (
+                        <td>Shipping</td>
+                      ) : null}
 
-                      {checkChannel() === "india-channel" ? (
-                        <>
-                          <td>
-                            {codAmount === 0
-                              ? `₹${addCommasToNumber(ShippingAmount)}` // Using ₹ for INR
-                              : `₹${addCommasToNumber(codAmount)}`}
-                          </td>
-                        </>
-                      ) : (
-                        <>
-                          <td>
-                            {codAmount === 0
-                              ? `$${addCommasToNumber(ShippingAmount)}`
-                              : `$${addCommasToNumber(codAmount)}`}
-                          </td>
-                        </>
-                      )}
+                      {/* <td>
+                                            {paymentMethod == CASE_ON_DELIVERY
+                                              ? "COD Fee"
+                                              : "Shipping"}
+                                          </td> */}
+
+                      {paymentMethod == CASE_ON_DELIVERY && codAmount !== 0 ? (
+                        <td>{`₹${addCommasToNumber(codAmount)}`}</td>
+                      ) : ShippingAmount !== 0 ? (
+                        <td>{`₹${addCommasToNumber(ShippingAmount)}`}</td>
+                      ) : null}
+                      {/* {checkChannel() === "india-channel" ? (
+                                            <>
+                                              <td>
+                                                {codAmount === 0
+                                                  ? `₹${addCommasToNumber(ShippingAmount)}` // Using ₹ for INR
+                                                  : `₹${addCommasToNumber(codAmount)}`}
+                                              </td>
+                                            </>
+                                          ) : (
+                                            <>
+                                              <td>
+                                                {codAmount === 0
+                                                  ? `$${addCommasToNumber(ShippingAmount)}`
+                                                  : `$${addCommasToNumber(codAmount)}`}
+                                              </td>
+                                            </>
+                                          )} */}
                     </tr>
 
                     {giftWrap && (

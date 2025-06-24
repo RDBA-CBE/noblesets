@@ -583,14 +583,13 @@ export const CommonLoader = () => {
   );
 };
 
-export const roundIndianRupee = (amount) => {
-  // Remove commas and convert to number
-  const num =
-    typeof amount === "string" ? parseFloat(amount.replace(/,/g, "")) : amount;
+export const roundIndianRupee = (value) => {
+  const num = Number(value.toString().replace(/,/g, ""));
+  if (isNaN(num)) return String(value);
 
-  // Get decimal part
-  const decimal = num - Math.floor(num);
+  const integerPart = Math.floor(num);
+  const decimalPart = num - integerPart;
+  const rounded = decimalPart > 0.5 ? Math.ceil(num) : Math.floor(num);
 
-  // Round down if decimal < 0.5, round up if ≥ 0.5
-  return decimal < 0.5 ? Math.floor(num) : Math.ceil(num);
+  return rounded;
 };

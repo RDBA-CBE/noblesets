@@ -2218,7 +2218,7 @@ const DetailsWrapper1 = ({
                 </div>
 
                 <div className="mb-3">
-                  <label className="form-label">Your Message </label>
+                  <label className="form-label">Your Message <span>*</span> </label>
                   <textarea
                     name="message"
                     className="form-control"
