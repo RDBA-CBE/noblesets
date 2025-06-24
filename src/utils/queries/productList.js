@@ -341,22 +341,22 @@ export const WISHLIST_LIST = ({ userEmail }) => {
 export const GET_PRODUCTLIST_BY_ID = ({ ids, channel }) => {
   return JSON.stringify({
     query: `
-    query MyQuery($ids: [ID!]!, $channel: String!) {
-      products(filter: {ids: $ids}, channel: $channel, first: 10) {
-        edges {
-          node {
-            id
-            media {
-              url
-              alt
-            }
-            name
-            description
-           variants {
+   query MyQuery($ids: [ID!]!, $channel: String!) {
+  products(filter: {ids: $ids}, channel: $channel, first: 10) {
+    edges {
+      node {
+        id
+        media {
+          url
+          alt
+        }
+        name
+        description
+        variants {
           id
           name
           sku
-           pricing {
+          pricing {
             price {
               gross {
                 amount
@@ -364,46 +364,62 @@ export const GET_PRODUCTLIST_BY_ID = ({ ids, channel }) => {
             }
           }
         }
-          slug
-            thumbnail {
-              url
-              alt
-            }
-            category {
-              id
-              name
-            }
-            pricing {
-              priceRange {
-                start {
-                  gross {
-                    amount
-                  }
-                }
-                stop {
-                  gross {
-                    amount
-                  }
-                }
+        slug
+        thumbnail {
+          url
+          alt
+        }
+        category {
+          id
+          name
+        }
+        pricing {
+          priceRange {
+            start {
+              gross {
+                amount
               }
             }
-            defaultVariant {
-              id
-              costPrice
-              name
-              quantityAvailable
+            stop {
+              gross {
+                amount
+              }
             }
-              brand {
+          }
+        }
+        defaultVariant {
+          id
+          costPrice
+          name
+          quantityAvailable
+          product {
+            attributes {
+              attribute {
+                name
+                id
+              }
+              values {
+                id
+                name
+                slug
+              }
+            }
+          }
+        }
+        brand {
           description
           id
           logo
           name
           slug
         }
-          }
+        priceBreakup {
+          breakupDetails
         }
       }
     }
+  }
+}
     `,
     variables: { ids, channel },
   });

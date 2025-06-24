@@ -26,6 +26,7 @@ import {
 } from "@/redux/features/productApi";
 import { profilePic } from "@/utils/constant";
 import { RegularPrice, checkChannel, roundOff } from "@/utils/functions";
+import PriceBreakup from "../price_breakup/priceBreakUp";
 
 const CompareArea = () => {
   const cart = useSelector((state) => state.cart.cart_list);
@@ -40,6 +41,8 @@ const CompareArea = () => {
 
   const [getProducts] = useGetProductByIdMutation();
   const [compareData, setCompareData] = useState([]);
+  const [attributes, setAttributes] = useState([]);
+  console.log("✌️compareData --->", compareData);
 
   const dispatch = useDispatch();
 
@@ -71,8 +74,23 @@ const CompareArea = () => {
         const response = await getProducts({
           ids: productIds,
         });
+        const productList = response?.data?.data?.products?.edges;
+        const selectedAttributes = productList?.map(({ node: product }) => {
+          return product?.defaultVariant?.product?.attributes?.reduce(
+            (acc, attr) => {
+              if (attr.values && attr.values.length > 0) {
+                acc[attr?.attribute.name] = attr?.values
+                  .map((val) => val?.name)
+                  .join(", ");
+              }
+              return acc;
+            },
+            {}
+          );
+        });
 
         setCompareData(response?.data?.data?.products?.edges);
+        setAttributes(selectedAttributes);
       } else {
         setCompareData([]);
       }
@@ -119,7 +137,6 @@ const CompareArea = () => {
       : false;
   });
 
-
   const addToCartProductINR = async (product) => {
     try {
       const checkoutTokenINR = localStorage.getItem("checkoutTokenINR");
@@ -162,7 +179,6 @@ const CompareArea = () => {
   const isImage = (url) => {
     return /\.(jpg|webp|jpeg|png|gif)$/i.test(url);
   };
-
 
   return (
     <>
@@ -418,17 +434,19 @@ const CompareArea = () => {
                                   {/* Handle list type */}
                                   {block.type === "list" && (
                                     <ul style={{ paddingLeft: "20px" }}>
-                                      {block?.data?.items?.map((item, index) => (
-                                        <li
-                                          key={index}
-                                          style={{ color: "gray" }}
-                                          dangerouslySetInnerHTML={{
-                                            __html: item?.includes("<b>")
-                                              ? `<b>${item}</b>`
-                                              : item,
-                                          }}
-                                        />
-                                      ))}
+                                      {block?.data?.items?.map(
+                                        (item, index) => (
+                                          <li
+                                            key={index}
+                                            style={{ color: "gray" }}
+                                            dangerouslySetInnerHTML={{
+                                              __html: item?.includes("<b>")
+                                                ? `<b>${item}</b>`
+                                                : item,
+                                            }}
+                                          />
+                                        )
+                                      )}
                                     </ul>
                                   )}
                                 </div>
@@ -439,34 +457,73 @@ const CompareArea = () => {
                       </tr>
 
                       {/* SKU */}
-                      <tr>
-                        <th style={{ fontWeight: "400" }}>SKU</th>
+                      {/* <tr>
+                        <th style={{ fontWeight: "400" }}>PRICE BREAKUP</th>
                         {compareData.map((item) => (
                           <td key={item?.node?.id}>
                             <div className="tp-compare-add-to-cart">
-                              <span style={{ color: "gray" }}>
-                                {item?.node?.variants[0]?.sku}
-                              </span>
+                             
+                              <PriceBreakup
+                                data={item?.node?.priceBreakup?.breakupDetails}
+                              />
                             </div>
                           </td>
                         ))}
+                      </tr> */}
+
+                     
+
+                      <tr>
+                        <th style={{ fontWeight: "400", verticalAlign: "top" }}>
+                          PRICE BREAKUP
+                        </th>
+                        {compareData?.map((item) => {
+                          const breakupDetails =
+                            item?.node?.priceBreakup?.breakupDetails;
+
+                          return (
+                            <td
+                              key={item?.node?.id}
+                              style={{ verticalAlign: "top" }}
+                            >
+                              <div className="tp-compare-add-to-cart">
+                                {breakupDetails ? (
+                                  <div
+                                    dangerouslySetInnerHTML={{
+                                      __html: breakupDetails.replace(
+                                        /<td><\/td>/g,
+                                        ""
+                                      ),
+                                    }}
+                                    style={{ width: "100%" }}
+                                  />
+                                ) : (
+                                  <div>No price details available</div>
+                                )}
+                              </div>
+                            </td>
+                          );
+                        })}
                       </tr>
 
                       {/* availability */}
                       <tr>
-                        <th style={{ fontWeight: "400" }}>AVAILABILITY</th>
-                        {compareData.map((item) => (
-                          <td key={item?.node?.id}>
-                            {/* <div className="tp-compare-add-to-cart">
-                              &#8377;
-                              {item?.pricing?.priceRange?.start?.gross?.amount?.toFixed(
-                                2
-                              )}
-                            </div> */}
+                        <th style={{ fontWeight: "400" }}>ATTRIBUTES</th>
+                        {attributes?.map((productAttrs, index) => (
+                          <td key={index}>
                             <div className="tp-compare-add-to-cart">
-                              <span style={{ color: "gray" }}>
-                                {item?.node?.defaultVariant?.quantityAvailable}
-                              </span>
+                              {productAttrs &&
+                                Object.entries(productAttrs)?.map(
+                                  ([attrName, attrValue]) => (
+                                    <div key={attrName}>
+                                      <strong>{attrName}:</strong> {attrValue}
+                                    </div>
+                                  )
+                                )}
+                              {/* You can keep your quantity display if needed */}
+                              {/* <span style={{ color: "gray" }}>
+          {attributes?.[index]?.node?.defaultVariant?.quantityAvailable}
+        </span> */}
                             </div>
                           </td>
                         ))}
