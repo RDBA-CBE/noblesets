@@ -73,22 +73,22 @@ const DetailsThumbWrapperQuick = ({ videoId = false, status, product }) => {
                   style={{ width: "100%", height: "100%" }}
                 /> */}
                 {isImage(profilePic(item)) ? (
-                   <figure>
+                   <figure style={{height:"100%"}}>
                   <img
                     src={profilePic(item)}
                     alt="thumbnail"
                    width={78}
                         height={100}
-                        style={{ width: "100%", height: "100%", borderRadius:"20px" }}
+                        style={{ width: "100%", height: "100%", borderRadius:"20px", objectFit:"cover" }}
                   />
                   </figure>
                 ) : (
-                   <figure>
+                   <figure style={{height:"100%"}}>
                   <video
                     src={profilePic(item)}
                     width={78}
                         height={100}
-                        style={{ width: "100%", height: "100%" ,borderRadius:"20px" }}
+                        style={{ width: "100%", height: "100%" ,borderRadius:"20px",objectFit:"cover" }}
                     muted
                     loop
                   />

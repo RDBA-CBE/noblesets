@@ -72,8 +72,7 @@ const DetailsWrapper = ({
     offerDate,
   } = productItem || {};
 
-console.log('DetailsWrapper --->', productItem);
-
+  console.log("DetailsWrapper --->", productItem);
 
   const [ratingVal, setRatingVal] = useState(0);
   const [textMore, setTextMore] = useState(false);
@@ -347,7 +346,6 @@ console.log('DetailsWrapper --->', productItem);
     localStorage.setItem("compareList", JSON.stringify(arr));
     dispatch(compare_list(arr));
     notifySuccess("Product to added to compare list");
-
   };
 
   useEffect(() => {
@@ -485,8 +483,8 @@ console.log('DetailsWrapper --->', productItem);
   }, [productItem]);
 
   return (
-    <div className="tp-product-details-wrapper">
-      <div style={{ display: "flex", justifyContent: "space-between" }}>
+    <div className="tp-product-details-wrapper quickview-sec-section">
+      {/* <div style={{ display: "flex", justifyContent: "space-between" }}>
         <div>
           <ProductDetailsBreadcrumb
             category={productItem?.category[0]?.name}
@@ -494,7 +492,7 @@ console.log('DetailsWrapper --->', productItem);
             parentSlug={parentSlug}
           />
         </div>
-      </div>
+      </div> */}
       {/* <div className="tp-product-details-category">
         <span>
           {capitalizeFLetter(
@@ -502,130 +500,129 @@ console.log('DetailsWrapper --->', productItem);
           )}
         </span>
       </div> */}
-      <h3 className="tp-product-details-title">
-        {capitalizeFLetter(productItem?.name || productItem?.node?.name)}
-      </h3>
+      <div className="d-flex justify-content-between mt-50">
+        <h3 className="tp-product-details-title w-auto">
+          {capitalizeFLetter(productItem?.name || productItem?.node?.name)}
+        </h3>
+        <div className="tp-product-details-action-sm">
+          <button
+            disabled={status === "out-of-stock"}
+            onClick={() => {
+              if (compareList?.some((prd) => prd?.id === productItem?.id)) {
+                dispatch(handleModalClose());
+                router.push("/compare");
+              } else {
+                handleCompareProduct(productItem);
+              }
+            }}
+            // onClick={() => handleCompareProduct(productItem)}
+            type="button"
+            className="tp-product-details-action-sm-btn"
+          >
+            <CompareTwo />
+            {/* {compareList?.some((prd) => prd?.id === productItem?.id)
+                                        ? " View Compare"
+                                        : " Add  Compare"} */}
+          </button>
+          {}
+
+          {isAddedToWishlist === true ? (
+            <button
+              disabled={status === "out-of-stock"}
+              onClick={() => {
+                if (token) {
+                  router.push("/wishlist");
+                } else {
+                  notifyError(
+                    "Only logged-in users can add items to their wishlist or view it"
+                  );
+                }
+                // router.push("/wishlist");
+              }}
+              // onClick={() => handleWishlistProduct(productItem)}
+              type="button"
+              className="tp-product-details-action-sm-btn"
+            >
+              <WishlistFill />
+              {/* View Wishlist */}
+            </button>
+          ) : (
+            <button
+              disabled={status === "out-of-stock"}
+              onClick={() => handleWishlist(productItem)}
+              // onClick={() => handleWishlistProduct(productItem)}
+              type="button"
+              className="tp-product-details-action-sm-btn"
+            >
+              <WishlistTwo />
+              {/* {wishlistLoader ? "Loading..." : "Add To Wishlist"} */}
+            </button>
+          )}
+
+          {/* <button type="button" className="tp-product-details-action-sm-btn">
+                                <AskQuestion />
+                                Ask a question
+                              </button> */}
+        </div>
+      </div>
+
       {/* price */}
       <div className="tp-product-details-price-wrapper">
         {channel == "india-channel" ? (
-           <div className="d-flex flex-wrap justify-content-between">
-             <div className="tp-product-price-wrapper-2">
-            {productItem?.variants?.length <= 1 &&
-              RegularPrice(
-                productItem?.defaultVariant?.costPrice,
-                productItem?.pricing?.priceRange?.start?.gross?.amount
-              ) && (
-                <span
-                  className="pr-5"
-                  style={{ textDecoration: "line-through", color: "gray" }}
-                >
-                  {variantDetails ? (
+          <div className="d-flex flex-wrap justify-content-between">
+            <div className="tp-product-price-wrapper-2">
+              {productItem?.variants?.length <= 1 &&
+                RegularPrice(
+                  productItem?.defaultVariant?.costPrice,
+                  productItem?.pricing?.priceRange?.start?.gross?.amount
+                ) && (
+                  <span
+                    className="pr-5"
+                    style={{ textDecoration: "line-through", color: "gray" }}
+                  >
+                    {variantDetails ? (
+                      <>
+                        &#8377;
+                        {addCommasToNumber(
+                          variantDetails?.pricing?.price?.gross?.amount
+                        ) || 0}
+                      </>
+                    ) : (
+                      <>
+                        &#8377;
+                        {addCommasToNumber(
+                          productItem?.defaultVariant?.costPrice
+                        ) || 0}
+                      </>
+                    )}
+                  </span>
+                )}
+              <span
+                className="tp-product-price-2 new-price"
+                style={{ fontSize: "22px", fontWeight: "500" }}
+              >
+                <>
+                  {/* For normal product */}
+                  {productItem?.variants?.length > 1 ? (
                     <>
-                      &#8377;
-                      {addCommasToNumber(
-                        variantDetails?.pricing?.price?.gross?.amount
-                      ) || 0}
+                      &#8377;{addCommasToNumber(minAmount)} - &#8377;
+                      {addCommasToNumber(maxAmount)}
                     </>
                   ) : (
                     <>
                       &#8377;
                       {addCommasToNumber(
-                        productItem?.defaultVariant?.costPrice
+                        productItem?.pricing?.priceRange?.start?.gross
+                          ?.amount ||
+                          productItem?.node?.pricing?.priceRange?.start?.gross
+                            ?.amount
                       ) || 0}
                     </>
                   )}
-                </span>
-              )}
-            <span
-              className="tp-product-price-2 new-price"
-              style={{ fontSize: "22px", fontWeight: "500" }}
-            >
-              <>
-                {/* For normal product */}
-                {productItem?.variants?.length > 1 ? (
-                  <>
-                    &#8377;{addCommasToNumber(minAmount)} - &#8377;
-                    {addCommasToNumber(maxAmount)}
-                  </>
-                ) : (
-                  <>
-                    &#8377;
-                    {addCommasToNumber(
-                      productItem?.pricing?.priceRange?.start?.gross?.amount ||
-                        productItem?.node?.pricing?.priceRange?.start?.gross
-                          ?.amount
-                    ) || 0}
-                  </>
-                )}
-              </>
-            </span>
+                </>
+              </span>
+            </div>
           </div>
-          <div className="tp-product-details-action-sm">
-                              <button
-                                disabled={status === "out-of-stock"}
-                                onClick={() => {
-                                  if (
-                                    compareList?.some(
-                                      (prd) => prd?.id === productItem?.id
-                                    )
-                                  ) {
-                                    dispatch(handleModalClose());
-                                    router.push("/compare");
-                                  } else {
-                                    handleCompareProduct(productItem);
-                                  }
-                                }}
-                                // onClick={() => handleCompareProduct(productItem)}
-                                type="button"
-                                className="tp-product-details-action-sm-btn"
-                              >
-                                <CompareTwo />
-                                {/* {compareList?.some((prd) => prd?.id === productItem?.id)
-                                        ? " View Compare"
-                                        : " Add  Compare"} */}
-                              </button>
-                              {}
-          
-                              {isAddedToWishlist === true ? (
-                                <button
-                                  disabled={status === "out-of-stock"}
-                                  onClick={() => {
-                                    if (token) {
-                                      router.push("/wishlist");
-                                    } else {
-                                      notifyError(
-                                        "Only logged-in users can add items to their wishlist or view it"
-                                      );
-                                    }
-                                    // router.push("/wishlist");
-                                  }}
-                                  // onClick={() => handleWishlistProduct(productItem)}
-                                  type="button"
-                                  className="tp-product-details-action-sm-btn"
-                                >
-                                  <WishlistFill />
-                                  {/* View Wishlist */}
-                                </button>
-                              ) : (
-                                <button
-                                  disabled={status === "out-of-stock"}
-                                  onClick={() => handleWishlist(productItem)}
-                                  // onClick={() => handleWishlistProduct(productItem)}
-                                  type="button"
-                                  className="tp-product-details-action-sm-btn"
-                                >
-                                  <WishlistTwo />
-                                  {/* {wishlistLoader ? "Loading..." : "Add To Wishlist"} */}
-                                </button>
-                              )}
-          
-                              {/* <button type="button" className="tp-product-details-action-sm-btn">
-                                <AskQuestion />
-                                Ask a question
-                              </button> */}
-                            </div>
-           </div>
-         
         ) : (
           <div className="tp-product-price-wrapper-2">
             {productItem?.variants?.length <= 1 &&
@@ -682,7 +679,6 @@ console.log('DetailsWrapper --->', productItem);
         )}
       </div>
 
-     
       {/* variations */}
       {imageURLs?.some((item) => item?.color && item?.color?.name) && (
         <div className="tp-product-details-variation">
@@ -797,10 +793,9 @@ console.log('DetailsWrapper --->', productItem);
         )}
       </div>
 
-
       {productItem?.pricing?.discount !== null && (
         <div
-        className="text-danger"
+          className="text-danger"
           // style={{
           //   color: "#b4633a",
           //   fontSize: "16px",
@@ -808,8 +803,6 @@ console.log('DetailsWrapper --->', productItem);
           // }}
         >{`Save ${saveOff()}% OFF`}</div>
       )}
-
-      
 
       {/* {productItem?.variants?.length > 1 && (
         <div
@@ -842,18 +835,15 @@ console.log('DetailsWrapper --->', productItem);
         </div>
       )} */}
 
-       <p className="product-desc text-muted">
-            {variantDetails?.quantityAvailable == 0 ||
-            productItem?.defaultVariant?.quantityAvailable == 0 ? (
-              <span style={{ color: "red", fontWeight: "500" }}>
-                Out of Stock
-              </span>
-            ) : (
-              <span>In Stock</span>
-            )}
-          </p>
+      <p className="product-desc text-muted">
+        {variantDetails?.quantityAvailable == 0 ||
+        productItem?.defaultVariant?.quantityAvailable == 0 ? (
+          <span style={{ color: "red", fontWeight: "500" }}>Out of Stock</span>
+        ) : (
+          <span>In Stock</span>
+        )}
+      </p>
 
-          
       {/* {productItem?.variants?.length > 1 ? (
         variantId && variantDetails ? (
           variantDetails?.quantityAvailable == 0 ||
@@ -871,7 +861,7 @@ console.log('DetailsWrapper --->', productItem);
         <span>In Stock</span>
       )} */}
 
-       {productItem?.metadata?.length > 0 && (
+      {productItem?.metadata?.length > 0 && (
         <p style={{ color: "black" }}>
           {
             productItem?.metadata?.find(
@@ -895,7 +885,17 @@ console.log('DetailsWrapper --->', productItem);
                 // }
               }}
               disabled={status === "out-of-stock"}
-              className={`tp-btn tp-btn-border`}
+             
+                        style={{
+                          padding: "5px 17px 5px 17px",
+                          fontSize:"14px",
+                          borderRadius: "20px",
+                          color: "white",
+                          // marginBottom:,
+                          
+                          marginTop:"0px",
+                        }}
+                        className="tp-btn tp-btn-border "
             >
               {cartLoader ? (
                 <ButtonLoader loader={cartLoader} />
@@ -907,10 +907,8 @@ console.log('DetailsWrapper --->', productItem);
         </div>
       </div>
 
-
-
       <div>
-        <p style={{ color: "#55585b" }}>
+        <p className="mb-0" style={{ color: "#55585b" }}>
           <b>SKU:</b>{" "}
           {variantDetails
             ? variantDetails?.sku

@@ -140,7 +140,13 @@
 }
 
 @media(max-width: 500px){
+    .breadcrumb__area{
+        padding-top: 10px;
+        padding-bottom: 10px;
+        border-radius: 20px !important;
+    }
     .breadcrumb__title {
-        font-size: 28px;
+        font-size: 22px;
+        margin-bottom: 0px;
     }
 }

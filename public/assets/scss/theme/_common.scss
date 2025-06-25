@@ -869,12 +869,15 @@
     padding: 0px 20px 0px 40px !important;
   
   }
+  
+  
 }
 
 @media (max-width: 768px) {
   .giftSection {
     padding-top: 0px !important;
   }
+  
 }
 
 @media (max-width: 480px) {
@@ -895,6 +898,10 @@
     width: 120px;
     height: 70px;
   }
+  .budget-section {
+    
+    padding-bottom: 0 !important;
+}
 }
 
 @media (max-width: 768px) {
@@ -2315,7 +2322,7 @@ hr.footer-divider {
 
 .item-img {
   width: 100px;
-  height: 100px;
+  height: 140px;
   object-fit: cover;
 }
 
@@ -2343,14 +2350,15 @@ hr.footer-divider {
 /* Responsive */
 @media (max-width: 768px) {
   .cart-item {
-    flex-direction: column;
+    flex-direction: row;
+    column-gap: 20px;
     // align-items: center;
     // text-align: center;
   }
 
   .item-details {
     margin-left: 0 !important;
-    margin-top: 1rem;
+    // margin-top: 1rem;
   }
 
   .cart-summary {
@@ -3125,6 +3133,16 @@ header .tp-product-action-btn-3:hover {
   font-family: "Nunito", sans-serif !important;
 }
 
+.custom-modal .ant-modal-content button {
+  font-family: "Nunito", sans-serif !important;
+}
+
+:where(.css-dev-only-do-not-override-vrrzze).ant-btn {
+    font-family: "Nunito", sans-serif !important;
+}
+:where(.css-dev-only-do-not-override-vrrzze).ant-radio-wrapper{
+  font-family: "Nunito", sans-serif !important;
+}
 .brand-banner {
   // background-image: url(/assets/img/home/brand-img.png);
   border-radius: 30px;
@@ -3172,4 +3190,132 @@ header .tp-product-action-btn-3:hover {
 
 
 
-// @media (max-width:500px)
+// --------------new compare start-------------
+
+
+/* Style for compare table rows */
+.new-compare .tp-compare-table table {
+  width: 100%;
+  border-collapse: collapse;
+  background-color: transparent !important;
+   border-spacing: 0;
+  width: 100%;
+  border-radius: 12px;
+  overflow: hidden;
+  border-color: #000;
+}
+
+.new-compare th,
+.new-compare td {
+   background-color: transparent !important;
+  padding: 20px 15px;
+  vertical-align: middle;
+  border-bottom: 1px solid #eee4dc;
+  text-align: center;
+}
+
+.new-compare th {
+  // background-color: #fff !important;
+  color: #000;
+  font-weight: 700 !important;
+  text-transform: uppercase;
+  font-size: 14px;
+  padding: 15px 10px !important;
+}
+
+.new-compare .cart-link {
+  color: #b4633a;
+  text-decoration: underline;
+  cursor: pointer;
+}
+
+/* Image styling */
+.new-compare .tp-compare-thumb img,
+.new-compare .tp-compare-thumb video {
+  width: 75px;
+  // height: 75px;
+  object-fit: cover;
+  border-radius: 8px;
+  margin-bottom: 5px !important;
+}
+
+/* Product title */
+.new-compare .tp-compare-product-title {
+  font-size: 14px;
+  margin-top: 8px;
+  color: #000;
+  font-weight: 500;
+}
+
+/* Price */
+.new-compare .tp-compare-add-to-cart {
+  font-size: 14px;
+  // margin-top: 6px;
+}
+
+.new-compare .tp-compare-add-to-cart .line-through {
+  text-decoration: line-through;
+  color: #888;
+  // margin-right: 5px;
+}
+
+/* Button style */
+.new-compare .tp-btn {
+  background-color: #e9a88b;
+  color: #fff;
+  padding: 8px 18px;
+  border: none;
+  border-radius: 24px;
+  font-size: 14px;
+  font-weight: 500;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+.new-compare .tp-btn:hover {
+  background-color: #d18264;
+}
+
+/* Remove icon */
+.new-compare .tp-compare-remove button {
+  background: none;
+  border: none;
+  color: #000;
+  font-size: 14px;
+  cursor: pointer;
+}
+
+.new-compare .tp-compare-remove button i {
+  pointer-events: none;
+}
+
+.new-compare .com-rem-icon{
+  position: absolute;
+  // content: "";
+  top: 3px;
+  right: 5px;
+  width: auto;
+  height: auto;
+  text-align: right;
+}
+.new-compare .com-rem-icon button{
+  text-align: right;
+}
+
+// --------------new compare end-------------
+
+
+.quickview-first-section .product-details-image{
+  height: 580px;
+}
+
+.quickview-first-section.tp-product-details-thumb-wrapper .nav-tabs .nav-link{
+  height: 140px;
+}
+
+.quickview-first-section .breadcrumb__content{
+  // margin-top: 10px;
+}
+.tp-product-details-action-sm{
+  width: 50px;
+}
