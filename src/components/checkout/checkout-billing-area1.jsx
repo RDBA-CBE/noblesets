@@ -173,6 +173,7 @@ const CheckoutBillingArea1 = () => {
     showVoucherMessage: false,
     isGiftCardProduct: false,
     allLinesGiftCard: false,
+    passwordChecked: false,
   });
 
   useEffect(() => {
@@ -2136,13 +2137,50 @@ const CheckoutBillingArea1 = () => {
                                         className="form-control"
                                         name="password"
                                         id="password"
-                                        type="text"
+                                        type={
+                                          state.passwordChecked
+                                            ? "text"
+                                            : "password"
+                                        }
                                         value={state.password}
                                         placeholder="Password"
                                         onChange={(e) =>
                                           handleInputChange(e, "password")
                                         }
                                       />
+                                      <div
+                                        className="d-flex align-items-center gap-2 rounded pt-2"
+                                        style={{
+                                          cursor: "pointer",
+                                        }}
+                                      >
+                                        <input
+                                          id="passwords"
+                                          type="checkbox"
+                                          // className="form-check-input m-0"
+                                          checked={state.passwordChecked}
+                                          onChange={() =>
+                                            setState({
+                                              passwordChecked:
+                                                !state.passwordChecked,
+                                            })
+                                          }
+                                          style={{
+                                            width: "18px",
+                                            height: "18px",
+                                            cursor: "pointer",
+                                            // marginRight: "8px",
+                                          }}
+                                          onClick={(e) => e.stopPropagation()}
+                                        />
+                                        <label
+                                          htmlFor="passwords"
+                                          className="mb-0"
+                                          style={{ cursor: "pointer" }}
+                                        >
+                                          Show Password
+                                        </label>
+                                      </div>
                                       {state.errors.password && (
                                         <ErrorMsg msg={state.errors.password} />
                                       )}
