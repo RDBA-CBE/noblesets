@@ -174,6 +174,7 @@ const CheckoutBillingArea1 = () => {
     isGiftCardProduct: false,
     allLinesGiftCard: false,
     passwordChecked: false,
+    isGiftProduct: false,
   });
 
   useEffect(() => {
@@ -567,16 +568,25 @@ const CheckoutBillingArea1 = () => {
 
   const enableGiftWrap = async () => {
     try {
+      const hasGiftCard = state.orderData?.lines?.some(
+        (line) =>
+          Array.isArray(line?.variant?.product?.category) &&
+          line.variant.product.category.some((cat) => cat.name === "Gift Card")
+      );
+      setState({ isGiftProduct: hasGiftCard });
       let isGiftWrap = false;
-      if (state.diffAddress) {
-        if (state.selectedCountry1 == "IN") {
-          isGiftWrap = true;
-        }
-      } else {
-        if (state.selectedCountry == "IN") {
-          isGiftWrap = true;
+      if (!hasGiftCard) {
+        if (state.diffAddress) {
+          if (state.selectedCountry1 == "IN") {
+            isGiftWrap = true;
+          }
+        } else {
+          if (state.selectedCountry == "IN") {
+            isGiftWrap = true;
+          }
         }
       }
+
       setState({
         isGiftWrap,
       });
@@ -1173,17 +1183,25 @@ const CheckoutBillingArea1 = () => {
           // setIsVerified(false);
         } else {
           const res = data?.data?.data?.checkoutAddPromoCode?.checkout;
-          // setIsVerified(true);
+          const exceptNullAmount = res?.giftCards?.filter(
+            (item) => item?.currentBalance?.amount !== 0
+          );
+
           setState({
-            giftCard: res?.giftCards,
+            giftCard: exceptNullAmount,
             total: res.totalPrice?.gross?.amount,
             coupenLoader: false,
             promoCode: "",
             isOpen: false,
             showVoucherMessage: true,
           });
-
           getDetails(res?.id);
+
+          const timer = setTimeout(() => {
+            setState({ showVoucherMessage: false });
+          }, 10 * 1000);
+
+          return () => clearTimeout(timer);
         }
       }
     } catch (error) {
@@ -2653,7 +2671,7 @@ const CheckoutBillingArea1 = () => {
                             className="d-flex justify-content-between border-bottom py-2"
                             key={i}
                           >
-                            <span className="para">Coupen code</span>
+                            <span className="para">Gift voucher code</span>
                             <strong>
                               {checkChannel() == "india-channel" ? (
                                 <span>
@@ -2883,7 +2901,9 @@ const CheckoutBillingArea1 = () => {
                           </div>
                         )}
                       </div>
-
+                      {state.isGiftProduct && (
+                        <div>Gift wrap is not applicable on gift cart products</div>
+                      )}
                       {/* <li>
                         <div className="tp-login-remeber">
                           <input

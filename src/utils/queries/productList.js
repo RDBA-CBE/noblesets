@@ -200,6 +200,15 @@ query getOrderDetails($orderId: ID!) {
         firstName
         email
       }
+      events {
+        type
+        balance {
+          oldCurrentBalance {
+            amount
+            currency
+          }
+        }
+      }
     }
     codAmount
     giftWrapAmount

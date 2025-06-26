@@ -1,6 +1,6 @@
 import { useOrderListQuery } from "@/redux/features/productApi";
 import moment from "moment";
-import React, { useCallback } from "react";
+import React, { useCallback, useEffect, useState } from "react";
 import {
   addCommasToNumber,
   checkChannel,
@@ -16,6 +16,8 @@ import { cart_list } from "@/redux/features/cartSlice";
 import { CASE_ON_DELIVERY } from "@/utils/constant";
 
 const Failed = ({ data, orderId }) => {
+  const [giftCard, setGiftCard] = useState(0);
+
   const OrderDetails = data?.data?.order?.lines;
   const SubTotal = data?.data?.order?.subtotal.gross.amount;
   const Total = data?.data?.order?.total.gross.amount;
@@ -38,6 +40,30 @@ const Failed = ({ data, orderId }) => {
   const router = useRouter();
 
   const [successPayment] = usePaymentMutation();
+
+  useEffect(() => {
+    if (data) {
+      total();
+    }
+  }, [data]);
+
+  const total = () => {
+    let total = 0;
+    if (paymentMethod == CASE_ON_DELIVERY && codAmount !== 0) {
+      total = SubTotal + codAmount;
+    } else {
+      total = SubTotal + ShippingAmount;
+    }
+    if (giftWrap && giftWrapAmount > 0) {
+      total += giftWrapAmount;
+    }
+    if (roundIndianRupee(total) > roundIndianRupee(Total)) {
+      const final = roundIndianRupee(total) - roundIndianRupee(Total);
+      if (final !== 0) {
+        setGiftCard(final);
+      }
+    }
+  };
 
   const handlePayment = useCallback(
     async (total, orderId) => {
@@ -140,13 +166,17 @@ const Failed = ({ data, orderId }) => {
                     {OrderDetails?.map((order) => {
                       return (
                         <tr key={order?.id}>
-                          <td>{order?.productName}</td>
+                          <td>
+                            {order?.productName}
+                            <span> x {order?.quantity}</span>
+                          </td>
                           {checkChannel() === "india-channel" ? (
                             <>
                               <td>
                                 &#8377;
                                 {addCommasToNumber(
-                                  order.variant?.pricing?.price?.gross?.amount
+                                  order?.quantity *
+                                    order.variant?.pricing?.price?.gross?.amount
                                 )}
                               </td>
                             </>
@@ -155,7 +185,8 @@ const Failed = ({ data, orderId }) => {
                               <td>
                                 $
                                 {addCommasToNumber(
-                                  order.variant?.pricing?.price?.gross?.amount
+                                  order?.quantity *
+                                    order.variant?.pricing?.price?.gross?.amount
                                 )}
                               </td>
                             </>
@@ -243,6 +274,16 @@ const Failed = ({ data, orderId }) => {
                       </tr>
                     )}
 
+                    {giftCard != 0 && (
+                      <tr>
+                        <td>Gift voucher code</td>
+                        <td style={{ color: "green" }}>
+                          -₹
+                          {addCommasToNumber(giftCard)}
+                        </td>
+                      </tr>
+                    )}
+
                     <tr>
                       <td>Payment Method</td>
 
@@ -258,18 +299,6 @@ const Failed = ({ data, orderId }) => {
 
                       <td>{status}</td>
                     </tr>
-
-                    {GiftCard && GiftCard.length > 0 && (
-                      <tr>
-                        <td>Coupon</td>
-                        <td>
-                          {GiftCard[0]?.initialBalance?.currency == "USD"
-                            ? "$"
-                            : "₹"}
-                          {GiftCard[0]?.initialBalance?.amount}
-                        </td>
-                      </tr>
-                    )}
 
                     <tr>
                       <td style={{ color: "black", fontWeight: "600" }}>
