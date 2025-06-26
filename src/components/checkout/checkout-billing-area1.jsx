@@ -2870,7 +2870,7 @@ const CheckoutBillingArea1 = () => {
                           )}
                           <div className=" text-grey">
                             Cash on Delivery is not applicable on gift cart
-                            products
+                            
                           </div>
                         </div>
                         {state.isGiftWrap && (
@@ -2902,7 +2902,7 @@ const CheckoutBillingArea1 = () => {
                         )}
                       </div>
                       {state.isGiftProduct && (
-                        <div>Gift wrap is not applicable on gift cart products</div>
+                        <div>Gift wrap is not applicable on gift cart</div>
                       )}
                       {/* <li>
                         <div className="tp-login-remeber">
