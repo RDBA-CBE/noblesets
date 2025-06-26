@@ -1249,10 +1249,10 @@ const DetailsWrapper1 = ({
             {productItem?.variants?.length > 1 && (
               <>
                 <div
-                  className="text-bold text-lg gap-3"
+                  className="text-bold text-lg gap-3 my-2"
                   style={{
-                    alignItems: variantId ? "end" : "center",
-                    fontSize: "16px",
+                    alignItems:  "center",
+                    fontSize: "14px",
                     color: "black",
                     display: "flex",
                     // paddingBottom: "10px",
@@ -1269,6 +1269,7 @@ const DetailsWrapper1 = ({
                   </div>
                   <div style={{ textAlign: "end" }}>
                     <select
+                    style={{height:"30px"}}
                       name="country"
                       id="country"
                       value={variantId}
@@ -1308,7 +1309,7 @@ const DetailsWrapper1 = ({
                     className="tp-product-price-2 new-price "
                     style={{
                       fontSize: "22px",
-                      fontWeight: "500",
+                      fontWeight: "700",
                       paddingBottom: "10px",
                     }}
                   >
@@ -1363,7 +1364,7 @@ const DetailsWrapper1 = ({
           )}
 
           {router?.route == "/gift-card" && variantDetails ? (
-            <div className="pt-20 pb-20" style={{ fontSize: "16px" }}>
+            <div className="pb-20" style={{ fontSize: "16px" }}>
               {
                 productItem?.metadata?.filter(
                   (item) => item.key === "description"
