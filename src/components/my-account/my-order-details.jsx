@@ -13,6 +13,7 @@ import {
   getImageDimensions,
   resizeImage,
   resizingImage,
+  roundIndianRupee,
   roundOff,
   useSetState,
 } from "@/utils/functions";
@@ -29,6 +30,8 @@ import { useRouter } from "next/router";
 
 const MyOrderDetails = ({ data }) => {
   const router = useRouter();
+  const [giftCard, setGiftCard] = useState(0);
+
   const Data = data?.data?.order;
   const SubTotal = data?.data?.order?.subtotal.gross;
   const Total = data?.data?.order?.total.gross;
@@ -66,7 +69,29 @@ const MyOrderDetails = ({ data }) => {
     if (Data?.user?.id) {
       reviews();
     }
+    if (Data) {
+      total();
+    }
   }, [Data]);
+
+  const total = () => {
+
+    let total = 0;
+    if (paymentMethod == CASE_ON_DELIVERY && codAmount !== 0) {
+      total = SubTotal?.amount + codAmount;
+    } else {
+      total = SubTotal?.amount + ShippingAmount?.amount;
+    }
+    if (giftWrap && giftWrapAmount > 0) {
+      total += giftWrapAmount;
+    }
+    if (roundIndianRupee(total) > roundIndianRupee(Total?.amount)) {
+      const final = roundIndianRupee(total) - roundIndianRupee(Total?.amount);
+      if (final !== 0) {
+        setGiftCard(final);
+      }
+    }
+  };
 
   const reviews = async () => {
     try {
@@ -371,7 +396,7 @@ const MyOrderDetails = ({ data }) => {
 
                     {discount?.amount !== 0.0 && (
                       <tr>
-                        <td>Discount</td>
+                        <td>Coupon code</td>
                         {checkChannel() === "india-channel" ? (
                           <>
                             <td style={{ color: "green" }}>
@@ -442,6 +467,16 @@ const MyOrderDetails = ({ data }) => {
                         <td>
                           {formatCurrency(ShippingAmount?.currency)}
                           {giftWrapAmount}
+                        </td>
+                      </tr>
+                    )}
+
+                    {giftCard != 0 && (
+                      <tr>
+                        <td>Gift voucher code</td>
+                        <td style={{ color: "green" }}>
+                          -₹
+                          {addCommasToNumber(giftCard)}
                         </td>
                       </tr>
                     )}

@@ -4,6 +4,7 @@ import React, { useEffect, useState } from "react";
 import {
   addCommasToNumber,
   checkChannel,
+  roundIndianRupee,
   roundOff,
 } from "../../utils/functions";
 import { useRouter } from "next/router";
@@ -14,6 +15,7 @@ const Success = ({ data }) => {
   const router = useRouter();
 
   const [token, setToken] = useState("");
+  const [giftCard, setGiftCard] = useState(0);
 
   const OrderDetails = data?.data?.order?.lines;
   const SubTotal = data?.data?.order?.subtotal.gross.amount;
@@ -29,12 +31,33 @@ const Success = ({ data }) => {
   const giftWrapAmount = data?.data?.order?.giftWrapAmount;
 
   const discount = data?.data?.order?.discount;
-
   useEffect(() => {
     const token = localStorage.getItem("token");
 
     setToken(token);
-  }, []);
+    if (data) {
+      total();
+    }
+  }, [data]);
+
+  const total = () => {
+    let total = 0;
+    if (paymentMethod == CASE_ON_DELIVERY && codAmount !== 0) {
+      total = SubTotal + codAmount;
+    } else {
+      total = SubTotal + ShippingAmount;
+    }
+    if (giftWrap && giftWrapAmount > 0) {
+      total += giftWrapAmount;
+    }
+    if (roundIndianRupee(total) > roundIndianRupee(Total)) {
+      const final = roundIndianRupee(total) - roundIndianRupee(Total);
+      if (final !== 0) {
+        setGiftCard(final);
+      }
+    }
+  };
+
   return (
     <section
       className="tp-login-area  pt-50 pb-50   p-relative z-index-1 fix"
@@ -72,13 +95,17 @@ const Success = ({ data }) => {
                     {OrderDetails?.map((order) => {
                       return (
                         <tr key={order?.id}>
-                          <td>{order?.productName}</td>
+                          <td>
+                            {order?.productName}
+                            <span> x {order?.quantity}</span>
+                          </td>
                           {checkChannel() === "india-channel" ? (
                             <>
                               <td>
                                 &#8377;
                                 {addCommasToNumber(
-                                  order.variant?.pricing?.price?.gross?.amount
+                                  order?.quantity *
+                                    order.variant?.pricing?.price?.gross?.amount
                                 )}
                               </td>
                             </>
@@ -97,7 +124,7 @@ const Success = ({ data }) => {
                     })}
                     {discount?.amount !== 0.0 && (
                       <tr>
-                        <td>Discount</td>
+                        <td>Coupon code</td>
                         {checkChannel() === "india-channel" ? (
                           <>
                             <td style={{ color: "green" }}>
@@ -175,14 +202,12 @@ const Success = ({ data }) => {
                       </tr>
                     )}
 
-                    {GiftCard && GiftCard.length > 0 && (
+                    {giftCard != 0 && (
                       <tr>
-                        <td>Coupon</td>
-                        <td>
-                          {GiftCard[0]?.initialBalance?.currency == "USD"
-                            ? "$"
-                            : "₹"}
-                          {GiftCard[0]?.initialBalance?.amount}
+                        <td>Gift voucher code</td>
+                        <td style={{ color: "green" }}>
+                          -₹
+                          {addCommasToNumber(giftCard)}
                         </td>
                       </tr>
                     )}

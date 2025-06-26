@@ -16,6 +16,7 @@ const customStyles = {
     transform: "translate(-50%, -50%)",
     // height: "800px",
     borderRadius: "20px",
+    width: "75%",
   },
 };
 
@@ -63,7 +64,7 @@ const ProductModal = () => {
         <div className="tp-product-modal"
         style={{overflowY:"scroll"}}
         >
-          <div className="tp-product-modal-content d-lg-flex">
+          <div className="tp-product-modal-content ">
             <button
               onClick={() => dispatch(handleModalClose())}
               type="button"
@@ -74,7 +75,7 @@ const ProductModal = () => {
             <div className="container-detail">
               <div className="row">
                 {/* product-details-thumb-wrapper start */}
-                <div className={`${productItem?.media?.length > 1 ? "col-xl-7 col-lg-7" : "col-xl-6 col-lg-6"} `}>
+                <div className={`${productItem?.media?.length > 1 ? "col-xl-7 col-lg-7" : "col-xl-5 col-lg-5"} `}>
                    <DetailsThumbWrapperQuick product={productItem} status={status} />
                 </div>
                 {/* product-details-thumb-wrapper end */}
@@ -82,7 +83,7 @@ const ProductModal = () => {
 
                 {/* product-details-wrapper start */}
 
-                <div className={`${productItem?.media?.length > 1 ? "col-xl-5 col-lg-5" : "col-xl-6 col-lg-6"} `}>
+                <div className={`${productItem?.media?.length > 1 ? "col-xl-5 col-lg-5" : "col-xl-7 col-lg-7"} `}>
 
                    <DetailsWrapperQuick
               productItem={productItem}
