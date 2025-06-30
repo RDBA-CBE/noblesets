@@ -4,8 +4,8 @@ const ShippingPolicyMain = () => {
   return (
     <section className="tp-about-area py-5 mt-0" style={{background:"#fff9f4"}}>
       <div className="container">
-        <h3 className="terms-heading mt-0" style={{ fontWeight: "500" }}>
-          Help & FAQs
+        <h3 className="terms-heading-ti mt-0" style={{ fontWeight: "400" }}>
+          Loyalty Programs
         </h3>
 
         <div>
