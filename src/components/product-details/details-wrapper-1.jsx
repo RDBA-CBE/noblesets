@@ -802,6 +802,7 @@ const DetailsWrapper1 = ({
                       background: "white",
                       padding: "0 5px 0 0",
                       width: "250px",
+                      zIndex:"1000"
                     }}
                   >
                     <div style={{ display: "flex" }}>
