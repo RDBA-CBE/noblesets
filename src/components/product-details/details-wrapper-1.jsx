@@ -20,6 +20,7 @@ import {
   RegularPrice,
   capitalizeFLetter,
   checkChannel,
+  generateCaptcha,
 } from "@/utils/functions";
 import {
   useAddToCartMutation,
@@ -92,6 +93,7 @@ const DetailsWrapper1 = ({
   const [variantDetails, setVariantDetails] = useState("");
   const [isModalOpen, setIsModelOpen] = useState(false);
   const [isProductModalOpen, setIsProductModelOpen] = useState(false);
+  const [captcha, setCaptcha] = useState(generateCaptcha());
 
   const [formData, setFormData] = useState({
     name: "",
@@ -692,9 +694,12 @@ const DetailsWrapper1 = ({
     try {
       await validationSchema.validate(formData, { abortEarly: false });
 
-      if (parseInt(formData.captcha) !== correctCaptchaAnswer) {
+      const isCorrect = parseInt(formData.captcha) === captcha.answer;
+
+      if (!isCorrect) {
         setError("Captcha is incorrect. Please try again.");
         setSuccess("");
+        setCaptcha(generateCaptcha());
         return;
       }
 
@@ -2077,7 +2082,12 @@ const DetailsWrapper1 = ({
                 <div
                   className="tp-btn tp-btn-border mt-2 mt-md-0 mt-xl-0 "
                   style={{ color: "#fff", cursor: "pointer" }}
-                  onClick={() => setIsProductModelOpen(true)}
+                  onClick={() => {
+                    setSuccess("");
+                    setError("");
+                    setCaptcha(generateCaptcha());
+                    setIsProductModelOpen(true);
+                  }}
                 >
                   To Customize Product
                 </div>
@@ -2147,7 +2157,17 @@ const DetailsWrapper1 = ({
 
       <ReactModal
         isOpen={isProductModalOpen}
-        onRequestClose={() => setIsProductModelOpen(false)}
+        onRequestClose={() => {
+          setFormData({
+            name: "",
+            email: "",
+            productName: productItem?.name || "",
+            sku: productItem?.defaultVariant?.sku || "",
+            message: "",
+            captcha: "",
+          });
+          setIsProductModelOpen(false);
+        }}
         style={customStyles}
         contentLabel="Product Modal"
         ariaHideApp={false} // optional: disables appElement warning
@@ -2155,7 +2175,17 @@ const DetailsWrapper1 = ({
         <div className="tp-product-modal">
           <div className="tp-product-modal-content d-lg-flex flex-column gap-4">
             <button
-              onClick={() => setIsProductModelOpen(false)}
+              onClick={() => {
+                setFormData({
+                  name: "",
+                  email: "",
+                  productName: productItem?.name || "",
+                  sku: productItem?.defaultVariant?.sku || "",
+                  message: "",
+                  captcha: "",
+                });
+                setIsProductModelOpen(false);
+              }}
               type="button"
               className="btn btn-sm  align-self-end text-white"
               style={{
@@ -2218,7 +2248,9 @@ const DetailsWrapper1 = ({
                 </div>
 
                 <div className="mb-3">
-                  <label className="form-label">Your Message <span>*</span> </label>
+                  <label className="form-label">
+                    Your Message <span>*</span>{" "}
+                  </label>
                   <textarea
                     name="message"
                     className="form-control"
@@ -2233,7 +2265,7 @@ const DetailsWrapper1 = ({
                   <label className="form-label">Captcha (Enter Sum)</label>
                   <div className="d-flex align-items-center">
                     <span className="me-2" style={{ flex: 1 }}>
-                      5 - 2?
+                      {captcha?.question}
                     </span>
                     <input
                       type="number"
