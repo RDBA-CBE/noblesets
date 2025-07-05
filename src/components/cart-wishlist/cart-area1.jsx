@@ -316,9 +316,9 @@ const CartArea1 = () => {
         )}
       </div>
 
-      <footer className="text-center mt-4 text-muted small">
+      {/* <footer className="text-center mt-4 text-muted small">
         © 2025 Noblesets. All Rights Reserved.
-      </footer>
+      </footer> */}
     </div>
   );
 };

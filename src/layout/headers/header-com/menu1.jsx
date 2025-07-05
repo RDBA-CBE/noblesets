@@ -236,8 +236,11 @@ const CategoryComponent = (props) => {
           clickable: true,
         }}
         breakpoints={{
+          1840: { slidesPerView: 4 },
+          1600: { slidesPerView: 3.3 },
           1400: { slidesPerView: 3 },
-          1200: { slidesPerView: 3 },
+          1300: { slidesPerView: 2.7 },
+          1200: { slidesPerView: 2.3 },
           992: { slidesPerView: 3 },
           768: { slidesPerView: 2 },
           576: { slidesPerView: 2 },
@@ -519,8 +522,11 @@ const Menus1 = () => {
                       clickable: true,
                     }}
                     breakpoints={{
-                      1500: { slidesPerView: 5 },
+                      1740: { slidesPerView: 5.2},
+                      1590: { slidesPerView: 4.7 },
+                      1500: { slidesPerView: 4.5 },
                       1380: { slidesPerView: 4 },
+                      1200: { slidesPerView: 3.5},
                       992: { slidesPerView: 3 },
                       768: { slidesPerView: 2 },
                       576: { slidesPerView: 2 },

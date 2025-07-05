@@ -981,15 +981,20 @@
 }
 
 .terms-para {
-  color: #777777;
+  color: #000;
   font-size: 16px;
   line-height: 30px;
   margin-top: 25px;
 }
 
+.terms-heading-ti {
+  font-size: 28px;
+  color: #b4633a;
+}
+
 .terms-heading {
-  color: #555555;
-  font-size: 22px;
+  color: #b4633a;
+  font-size: 20px;
   margin-top: 25px;
   line-height: 36px;
 }
@@ -1000,13 +1005,13 @@
 }
 
 .terms-sub-heading {
-  color: #555555;
-  font-size: 20px;
+  color: #b4633a;
+  font-size: 18px;
   margin-top: 25px;
   font-style: italic;
 }
 .terms-lists li {
-  color: #777777;
+  color: #000;
   font-size: 16px;
   line-height: 30px;
   margin-top: 25px;
@@ -2810,16 +2815,17 @@ header .tp-product-action-btn-3:hover {
 }
 
 .ourstory-heading {
-  font-size: 2.5rem;
-  font-weight: 700;
-  color: #5a1d00;
+  font-size: 50px;
+  font-weight: 400;
+  // color: #5a1d00;
+  color: #b4633a;
 }
 
 .ourstory-lead {
-  font-size: 1.1rem;
+  font-size: 18px;
   line-height: 1.8;
   margin-top: 1rem;
-  color: #5e3e2e;
+  color: #000;
 }
 
 .ourstory-banner-img {
@@ -2839,6 +2845,16 @@ header .tp-product-action-btn-3:hover {
   transform: translateY(-5px);
 }
 
+.ourstory-card .card-title{
+  font-size: 20px;
+  color: #b4633a;
+  font-weight: 400;
+}
+
+.ourstory-card .card-text{
+  font-size: 16px;
+}
+
 .ourstory-highlight {
   background: #f8f1ea;
   border-left: 4px solid #a66b3f;
@@ -2851,9 +2867,9 @@ header .tp-product-action-btn-3:hover {
 }
 
 .ourstory-block h5 {
-  font-weight: 600;
-  font-size: 1.3rem;
-  color: #5a1d00;
+  font-weight: 400;
+  font-size: 20px;
+  color: #b4633a;
   margin-bottom: 1rem;
 }
 .ourstory-block ul {
@@ -2862,6 +2878,7 @@ header .tp-product-action-btn-3:hover {
 .ourstory-block ul li {
   margin-bottom: 10px;
   line-height: 1.6;
+  font-size: 16px;
 }
 
 @media (max-width: 768px) {

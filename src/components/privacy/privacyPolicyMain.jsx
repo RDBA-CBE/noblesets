@@ -2,15 +2,15 @@ import React from "react";
 
 const PrivacyPolicyMain = () => {
   return (
-    <section className="tp-about-area py-5" style={{background:"#fff9f4"}}>
+    <section className="tp-about-area pt-30 pb-30" style={{background:"#fff9f4"}}>
       <div className="container">
-        <h3 className="terms-heading" style={{ fontWeight: "500" }}>
+        {/* <h3 className="terms-heading-ti" style={{ fontWeight: "500" }}>
           Privacy Policy
-        </h3>
+        </h3> */}
 
         <div>
           <p className="terms-para">
-            We understand that your privacy is of paramount importance to you, so your privacy is very important to us and Sree Thangam Jewellery works to ensure that the users privacy is protected when using our service. SreeThangamJewellery.com has a policy setting out how the personal information of user is processed and protected. Users can visit our website to find the revisions (if any) made to the user policy. Sree Thangam Jewellery will not make any financial benefits by selling or leasing the user information to any third party.
+            We understand that your privacy is of paramount importance to you, so your privacy is very important to us and Noblesets Bespoke Jewels works to ensure that the users privacy is protected when using our service. SreeThangamJewellery.com has a policy setting out how the personal information of user is processed and protected. Users can visit our website to find the revisions (if any) made to the user policy. Noblesets Bespoke Jewels will not make any financial benefits by selling or leasing the user information to any third party.
           </p>
 
           {/* <p className="terms-para">
@@ -26,10 +26,10 @@ const PrivacyPolicyMain = () => {
           <p className="terms-heading">Information from User</p>
 
           <p className="terms-para">
-            Sree Thangam Jewellery follows the standard industry practices to maintain your personal information. We take responsibility in storing the personal data viz, Name, address, email address and phone number that you have willingly provided while registering the account with us or while placing order or during transaction or while subscribing newsletter or participating in any events or other promotions or while providing feedback. Sree Thangam Jewellery.com will not be getting any information regarding the financial transactions. Credit/debit card or banking details will be provided by the user only while using the Payment gateway.
+            Noblesets Bespoke Jewels follows the standard industry practices to maintain your personal information. We take responsibility in storing the personal data viz, Name, address, email address and phone number that you have willingly provided while registering the account with us or while placing order or during transaction or while subscribing newsletter or participating in any events or other promotions or while providing feedback. Noblesets Bespoke Jewels.com will not be getting any information regarding the financial transactions. Credit/debit card or banking details will be provided by the user only while using the Payment gateway.
           </p>
 
-       <p className="terms-heading">Information from User</p>
+       <p className="terms-heading">Information to be Utilized</p>
 
           <p className="terms-para">
            The information provided by the user will be used to fulfill our commitment to the user and to provide sufficient information from our side benefiting them and for verifying their order and to communicate with them for getting information. This also includes letting the user know the latest offers that we think may interest you (by analyzing your personal information). If the user at any point of time wishes not to receive any such messages they may contact the support team by email and let them know their interest and decision. We keep and use their personal information as long as the user is interested in letting us use it or for as long as required by the law.
@@ -38,7 +38,7 @@ const PrivacyPolicyMain = () => {
           <p className="terms-heading">Information Sharing</p>
 
           <p className="terms-para">
-            Sree Thangam Jewellery will never share any of its website users personal information to any other company for spam or mass mailing or for marketing purposes. Payments and other financial transactions on the website are processed by a third party, which normally adheres to a strict policy regarding confidentiality agreement which limit their use of such information and are bound to the terms and conditions of the third party’s payment gateway process. However, details about financial transaction will never be stored or tracked by any of the system or software of Sree Thangam Jewellery.com. We have a non-disclosure agreement with this third party, and they are certified by all major card issuers to hold details securely.
+            Noblesets Bespoke Jewels will never share any of its website users personal information to any other company for spam or mass mailing or for marketing purposes. Payments and other financial transactions on the website are processed by a third party, which normally adheres to a strict policy regarding confidentiality agreement which limit their use of such information and are bound to the terms and conditions of the third party’s payment gateway process. However, details about financial transaction will never be stored or tracked by any of the system or software of Noblesets Bespoke Jewels.com. We have a non-disclosure agreement with this third party, and they are certified by all major card issuers to hold details securely.
           </p>
 
           <p className="terms-heading">
@@ -48,7 +48,7 @@ const PrivacyPolicyMain = () => {
            The personal details of the user shall remain with us as long as the user requires it to serve the purpose of the data to exist with us or as long as required under law. Users may officially inform the support team that their data shall not be used by the STJ to communicate with them. We shall remove their personal data from the list for communication; however, it shall remain with us for any kind of legal verification as required by the Government of India.
           </p>
 
-          <ul className="terms-lists">
+          {/* <ul className="terms-lists">
             <li>
               to further manage the purchases, orders, payments, and
               returns/exchanges in connection with the services offered on our
@@ -79,13 +79,13 @@ const PrivacyPolicyMain = () => {
               to assist law enforcement and respond to regulatory, investigate
               security breaches, or other legal inquiries.
             </li>
-          </ul>
+          </ul> */}
 
-          <p className="terms-para">
+          {/* <p className="terms-para">
             In any and all circumstances, we will always ask for your consent
             before we share your personal information outside of our corporate
             family of companies.
-          </p>
+          </p> */}
 
           <p className="terms-heading">
             Disclosure Of Your Personal Information

@@ -6,6 +6,8 @@ import HomeFooter from "@/components/home/HomeFooter";
 import ShippingAndExchangePolicyMain from "../components/shippingPolicy/shippingPolicyMain";
 import HeaderSection from "@/components/home/headerSection";
 import FAQ from "@/components/shippingPolicy/Faq";
+import ShopBreadcrumb from "@/components/breadcrumb/shop-breadcrumb";
+import shopBanner from "@assets/img/header-bg.png";
 
 const ShippingAndExchangePolicy = () => {
   return (
@@ -14,6 +16,17 @@ const ShippingAndExchangePolicy = () => {
       {/* <HeaderTwo style_2={true} /> */}
       <HeaderSection />
 
+      <div style={{ background: "#fff9f4" }}>
+        <div className="section-wd">
+          <ShopBreadcrumb
+            title="Help & FAQs"
+            subtitle="Help & FAQs"
+            bgImage={shopBanner}
+            // catList={categoryList}
+            // product={productList}
+          />
+        </div>
+      </div>
 
       <FAQ />
       <HomeFooter />

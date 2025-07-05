@@ -2,10 +2,10 @@ import React from "react";
 
 const TermsAndConditionsMain = () => {
   return (
-    <section className="tp-about-area  pt-50 pb-30" style={{background:"#fff9f4"}}>
+    <section className="tp-about-area  pt-30 pb-30" style={{background:"#fff9f4"}}>
       <div className="container">
-      <h3 className="terms-heading mt-0 " style={{fontWeight:"500"}}>Terms And Conditions</h3>
-        <div>
+      {/* <h3 className="terms-heading-ti mt-0 " style={{fontWeight:"500"}}>Terms And Conditions</h3> */}
+        <div className=" mt-0">
           <p className="terms-para">
             This website is owned, maintained and operated by Noblesets Jewels
             (henceforth referred as "Noblesets", “we”, “us” or “our”add website

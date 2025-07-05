@@ -7,7 +7,7 @@ const StorySec = () => {
         {/* Banner Intro */}
         <div className="row align-items-center mb-5">
           <div className="col-md-6">
-            <h2 className="ourstory-heading">The Legacy of Elegance</h2>
+            <h2 className="main-ti">The Legacy of Elegance</h2>
             <p className="ourstory-lead">
               At Noble Sets, every ornament tells a story — of tradition, innovation, and timeless grace. We don’t just design jewellery; we craft heirlooms that reflect confidence and individuality.
             </p>
