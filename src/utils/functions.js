@@ -593,3 +593,33 @@ export const roundIndianRupee = (value) => {
 
   return rounded;
 };
+
+
+export const generateCaptcha = ({
+  difficulty = 10,
+  operations = ["+", "-", "*"],
+} = {}) => {
+  const num1 = Math.floor(Math.random() * difficulty);
+  const num2 = Math.floor(Math.random() * difficulty);
+  const operation = operations[Math.floor(Math.random() * operations.length)];
+
+  let answer;
+  switch (operation) {
+    case "+":
+      answer = num1 + num2;
+      break;
+    case "-":
+      answer = num1 - num2;
+      break;
+    case "*":
+      answer = num1 * num2;
+      break;
+    default:
+      throw new Error(`Unsupported operation: ${operation}`);
+  }
+
+  return {
+    question: `${num1} ${operation} ${num2}?`,
+    answer,
+  };
+};
