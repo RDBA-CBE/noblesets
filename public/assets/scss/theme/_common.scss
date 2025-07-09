@@ -387,6 +387,7 @@
   transition: transform 0.25s;
   height: 680px;
   width: 580px;
+  object-fit: cover;
 }
 
 .tp-product-details-nav-main-thumb:hover img {
@@ -752,6 +753,9 @@
     line-height: 20px;
   }
 }
+.des-img{
+  display: block;
+}
 
 @media (max-width: 500px) {
   .mbl-content h1 {
@@ -763,6 +767,9 @@
   .mbl-content .exb-btn {
     display: none;
   }
+  .des-img{
+  display: none !important;
+}
 }
 
 @media (max-width: 900px) {
