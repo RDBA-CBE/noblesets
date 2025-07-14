@@ -47,6 +47,7 @@ import {
   PRODUCT_REVIEW,
   USER_REVIEWS,
   BRAND_DATA,
+  DELETE_GIFT_VOUCHER,
 } from "@/utils/queries/productList";
 import {
   RELATED_PRODUCT,
@@ -670,12 +671,22 @@ export const productApi = apiSlice.injectEndpoints({
     }),
 
     removeCoupon: builder.mutation({
-      query: ({ checkoutId, promoCode }) => {
+      query: ({ checkoutId, promoCode,promoCodeId }) => {
         return configuration(
-          DELETE_COUPON({ checkoutId, languageCode: "EN_US", promoCode })
+          DELETE_COUPON({ checkoutId, languageCode: "EN_US", promoCode,promoCodeId })
         );
       },
     }),
+
+    removeGiftVoucher: builder.mutation({
+      query: ({ checkoutId, promoCodeId }) => {
+        return configuration(
+          DELETE_GIFT_VOUCHER({ checkoutId, languageCode: "EN_US", promoCodeId })
+        );
+      },
+    }),
+
+    
 
     newProductList: builder.mutation({
       query: ({
@@ -947,5 +958,6 @@ export const {
   useOrderReviewMutation,
   useProductReviewMutation,
   useUserReviewsListMutation,
-  useBrandDataMutation
+  useBrandDataMutation,
+  useRemoveGiftVoucherMutation,
 } = productApi;
