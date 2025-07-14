@@ -822,7 +822,7 @@ const DetailsWrapper1 = ({
                           profilePic(previousProduct?.thumbnail?.url)
                         ) ? (
                           <img
-                            style={{ width: "100%" }}
+                            style={{ width: "100%" ,objectFit:"contain"}}
                             height={100}
                             width={100}
                             src={profilePic(previousProduct?.thumbnail?.url)}
@@ -918,6 +918,7 @@ const DetailsWrapper1 = ({
                       background: "white",
                       padding: "0 10px 0 0",
                       width: "250px",
+                      zIndex:"1000"
                     }}
                     onMouseEnter={NextMouseEnter}
                     onMouseLeave={NextMouseLeave}
@@ -932,7 +933,7 @@ const DetailsWrapper1 = ({
                     /> */}
                         {isImage(profilePic(nextProduct?.thumbnail?.url)) ? (
                           <img
-                            style={{ width: "100%" }}
+                            style={{ width: "100%", objectFit:"contain" }}
                             width={100}
                             height={100}
                             src={profilePic(nextProduct?.thumbnail?.url)}
