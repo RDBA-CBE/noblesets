@@ -48,6 +48,7 @@ import {
   USER_REVIEWS,
   BRAND_DATA,
   DELETE_GIFT_VOUCHER,
+  PRICE_RANGE,
 } from "@/utils/queries/productList";
 import {
   RELATED_PRODUCT,
@@ -890,6 +891,15 @@ export const productApi = apiSlice.injectEndpoints({
       },
       providesTags: ["Products"],
     }),
+
+    priceRange: builder.mutation({
+      query: ({ slug }) => {
+        return configuration(PRICE_RANGE({  }));
+      },
+      providesTags: ["Products"],
+    }),
+
+    
   }),
 });
 
@@ -960,4 +970,5 @@ export const {
   useUserReviewsListMutation,
   useBrandDataMutation,
   useRemoveGiftVoucherMutation,
+  usePriceRangeMutation
 } = productApi;

@@ -763,6 +763,53 @@ export const FINISH_LIST = () => {
   });
 };
 
+export const PRICE_RANGE = () => {
+  return JSON.stringify({
+    query: `
+    query PriceRange {
+  products(
+    first: 1
+    sortBy: {field: PRICE, direction: ASC}
+    channel: "india-channel"
+  ) {
+    edges {
+      node {
+        pricing {
+          priceRange {
+            start {
+              gross {
+                amount
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+  productsReverse: products(
+    first: 1
+    sortBy: {field: PRICE, direction: DESC}
+    channel: "india-channel"
+  ) {
+    edges {
+      node {
+        pricing {
+          priceRange {
+            stop {
+              gross {
+                amount
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+}
+    `,
+  });
+};
+
 export const ORDER_CANCEL = ({ id }) => {
   return JSON.stringify({
     query: `mutation customerCancelOrder($id: ID!) {
