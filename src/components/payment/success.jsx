@@ -122,7 +122,7 @@ const Success = ({ data }) => {
                         </tr>
                       );
                     })}
-                    {discount?.amount !== 0.0 && (
+                    {discount?.amount > 0 && (
                       <tr>
                         <td>Coupon code</td>
                         {checkChannel() === "india-channel" ? (
@@ -202,7 +202,7 @@ const Success = ({ data }) => {
                       </tr>
                     )}
 
-                    {giftCard != 0 && (
+                    {giftCard > 0 && (
                       <tr>
                         <td>Gift voucher code</td>
                         <td style={{ color: "green" }}>

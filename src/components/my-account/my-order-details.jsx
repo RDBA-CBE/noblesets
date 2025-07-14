@@ -75,7 +75,6 @@ const MyOrderDetails = ({ data }) => {
   }, [Data]);
 
   const total = () => {
-
     let total = 0;
     if (paymentMethod == CASE_ON_DELIVERY && codAmount !== 0) {
       total = SubTotal?.amount + codAmount;
@@ -394,7 +393,7 @@ const MyOrderDetails = ({ data }) => {
                       </tr>
                     ))}
 
-                    {discount?.amount !== 0.0 && (
+                    {discount?.amount > 0 && (
                       <tr>
                         <td>Coupon code</td>
                         {checkChannel() === "india-channel" ? (
@@ -471,7 +470,7 @@ const MyOrderDetails = ({ data }) => {
                       </tr>
                     )}
 
-                    {giftCard != 0 && (
+                    {giftCard > 0 && (
                       <tr>
                         <td>Gift voucher code</td>
                         <td style={{ color: "green" }}>

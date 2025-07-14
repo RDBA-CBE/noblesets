@@ -194,9 +194,10 @@ const Failed = ({ data, orderId }) => {
                         </tr>
                       );
                     })}
-                    {discount?.amount !== 0.0 && (
+                    {discount?.amount > 0 && (
                       <tr>
-                        <td>Discount</td>
+                        <td>Coupon code</td>
+
                         {checkChannel() === "india-channel" ? (
                           <>
                             <td style={{ color: "green" }}>
@@ -274,7 +275,7 @@ const Failed = ({ data, orderId }) => {
                       </tr>
                     )}
 
-                    {giftCard != 0 && (
+                    {giftCard > 0 && (
                       <tr>
                         <td>Gift voucher code</td>
                         <td style={{ color: "green" }}>
