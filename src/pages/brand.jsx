@@ -188,7 +188,6 @@ const Page = () => {
   };
 
   console.log("productList", state.productList);
-  
 
   return (
     <Wrapper>
@@ -197,18 +196,17 @@ const Page = () => {
       <HeaderSection />
       <div className="common-bg">
         <div className="section-wd">
-          <BrandBanner logo={state.brandData?.logo}/>
+          <BrandBanner logo={state.brandData?.logo} />
         </div>
 
         <div className="container py-5 ">
           <div className="row">
             <div className="col-12 col-lg-7">
               <div className="d-flex text-center flex-column align-items-center justify-content-center h-100">
-                <h2 className="main-ti" style={{textTransform:"capitalize"}}>{state.brandData?.name.toLowerCase()}</h2>
-                <p className="text-black">
-                {state.brandData?.description}
-                 
-                </p>
+                <h2 className="main-ti" style={{ textTransform: "capitalize" }}>
+                  {state.brandData?.name.toLowerCase()}
+                </h2>
+                <p className="text-black">{state.brandData?.description}</p>
               </div>
             </div>
             <div className="col-10 col-lg-5 m-auto d-flex justify-content-center">
@@ -254,15 +252,15 @@ const Page = () => {
                       //   index={index}
                       // />
                       <div
-                    key={item._id}
-                    className="col-xl-3 col-md-6 col-sm-6 col-6 mb-20 mb-lg-50"
-                  >
-                      <ProductItem
-                                  product={item?.node}
-                                  primary_style={true}
-                                  index={index}
-                                />
-                                </div>
+                        key={item._id}
+                        className="col-xl-3 col-md-6 col-sm-6 col-6 mb-20 mb-lg-50"
+                      >
+                        <ProductItem
+                          product={item?.node}
+                          primary_style={true}
+                          index={index}
+                        />
+                      </div>
                     ))}
                     {/* </div> */}
                   </div>

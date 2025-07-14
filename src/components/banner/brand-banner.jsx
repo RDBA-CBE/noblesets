@@ -20,16 +20,16 @@ const BrandBanner = ({
         center ? "text-center" : ""
       } `}
       // style={{
-        // backgroundImage:{logo ? logo : `url(/assets/img/home/brand-img.png)`},
-        //   background:"linear-gradient(to right,color-mix(in srgb, #fbdccc 40%, #e09a7a),#e09a7a)",
-        // borderRadius: "30px",
-        // color: "#b4633a",
-        // height: "60vh",
+      // backgroundImage:{logo ? logo : `url(/assets/img/home/brand-img.png)`},
+      //   background:"linear-gradient(to right,color-mix(in srgb, #fbdccc 40%, #e09a7a),#e09a7a)",
+      // borderRadius: "30px",
+      // color: "#b4633a",
+      // height: "60vh",
       // }}
     >
       <Image
-        // src={logo ? logo : sampleImg}
-         src="/assets/img/home/brand-img.png"
+        src={logo ? logo : sampleImg}
+        //  src="/assets/img/home/brand-img.png"
 
         width={800}
         height={400}
