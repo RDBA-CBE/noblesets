@@ -10,7 +10,7 @@ const PrivacyPolicyMain = () => {
 
         <div>
           <p className="terms-para">
-            We understand that your privacy is of paramount importance to you, so your privacy is very important to us and Noblesets Bespoke Jewels works to ensure that the users privacy is protected when using our service. SreeThangamJewellery.com has a policy setting out how the personal information of user is processed and protected. Users can visit our website to find the revisions (if any) made to the user policy. Noblesets Bespoke Jewels will not make any financial benefits by selling or leasing the user information to any third party.
+            We understand that your privacy is of paramount importance to you, so your privacy is very important to us and Noblesets Bespoke Jewels works to ensure that the users privacy is protected when using our service. noblesets.com has a policy setting out how the personal information of user is processed and protected. Users can visit our website to find the revisions (if any) made to the user policy. Noblesets Bespoke Jewels will not make any financial benefits by selling or leasing the user information to any third party.
           </p>
 
           {/* <p className="terms-para">
@@ -45,7 +45,7 @@ const PrivacyPolicyMain = () => {
            Duration of Information Stored
           </p>
           <p className="terms-para">
-           The personal details of the user shall remain with us as long as the user requires it to serve the purpose of the data to exist with us or as long as required under law. Users may officially inform the support team that their data shall not be used by the STJ to communicate with them. We shall remove their personal data from the list for communication; however, it shall remain with us for any kind of legal verification as required by the Government of India.
+           The personal details of the user shall remain with us as long as the user requires it to serve the purpose of the data to exist with us or as long as required under law. Users may officially inform the support team that their data shall not be used by the noblesets to communicate with them. We shall remove their personal data from the list for communication; however, it shall remain with us for any kind of legal verification as required by the Government of India.
           </p>
 
           {/* <ul className="terms-lists">

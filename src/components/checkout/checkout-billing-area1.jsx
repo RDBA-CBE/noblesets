@@ -2981,8 +2981,8 @@ const CheckoutBillingArea1 = () => {
                           }
                         />
                         <label htmlFor="agree">
-                          I have read and agree to the website terms and
-                          conditions <span> * </span>
+                          I have read and agree to the website <a className="text-black cursor-pointer" href="/terms-and-conditions">terms and
+                          conditions</a>  <span> * </span>
                         </label>
                       </div>
                       {state.errors.isAgree && (
