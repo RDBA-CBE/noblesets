@@ -57,7 +57,7 @@ const ReviewSection = (props) => {
     <div className="container py-5 review-sec">
       <div className="row g-4">
         <div className="col-lg-12">
-          <div className="review-box p-4 bg-white shadow-sm rounded">
+          <div className="review-box p-4 bg-white shadow-sm ">
             <h4 className="review-title mb-3 ">Reviews</h4>
 
             {/* Rating Summary */}
@@ -170,6 +170,7 @@ const ReviewSection = (props) => {
                       src={src?.fileUrl}
                       className="rounded"
                       alt="review"
+                      style={{objectFit:"cover"}}
                       width={50}
                       height={50}
                     />

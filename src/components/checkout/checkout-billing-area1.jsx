@@ -2869,7 +2869,7 @@ const CheckoutBillingArea1 = () => {
                             <ErrorMsg msg={state.errors.paymentType} />
                           )}
                           <div className=" text-grey">
-                            Cash on Delivery is not applicable on gift cart
+                            Cash on Delivery is not available
                             
                           </div>
                         </div>

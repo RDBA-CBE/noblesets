@@ -1977,7 +1977,10 @@ hr.footer-divider {
 
 .review-box {
   background-color: #fff;
+    border-radius: 20px;
+    z-index: 1000;
 }
+
 
 .text-gold {
   color: #b4633a !important;
@@ -1996,6 +1999,8 @@ hr.footer-divider {
 .review-sec h5 {
   font-weight: 400;
 }
+
+
 
 .section-wd {
   width: 96%;
@@ -3079,6 +3084,12 @@ header .tp-product-action-btn-3:hover {
   background-size: contain;
   background-repeat: no-repeat;
   //  z-index: 100;
+}
+
+@media (max-width: 1300px) {
+  .product-detail-page::after {
+    background-image: none !important;
+  }
 }
 
 @media (max-width: 1024px) {

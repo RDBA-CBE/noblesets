@@ -9,6 +9,7 @@ import { Wishlist } from "@/svg";
 import AddressInfo from "./AddressInfo";
 import ReviewSection from "../product-details/ReviewSection";
 import Rating from "react-rating-stars-component";
+import moment from "moment";
 
 const ProfileArea = ({ orderData, reviewList }) => {
 
@@ -82,16 +83,17 @@ const ProfileArea = ({ orderData, reviewList }) => {
                                       : "/assets/img/user.png"
                                   }
                                   alt="avatar"
-                                  className="rounded-circle me-2"
-                                  width={50}
-                                  height={50}
+                                  className="rounded me-2 "
+                                  style={{objectFit:"cover"}}
+                                  width={60}
+                                  height={80}
                                 />
 
                                 <div>
                                   <strong>{`${review?.product?.name}`}</strong>
 
                                   <p className="text-muted small m-0">
-                                    {review.created_at}
+                                     {moment(review.createdAt).format("MMMM D, YYYY")}
                                   </p>
                                 </div>
                               </div>
@@ -109,9 +111,10 @@ const ProfileArea = ({ orderData, reviewList }) => {
                                     key={idx}
                                     src={src?.fileUrl}
                                     className="rounded"
+                                    style={{objectFit:"cover"}}
                                     alt="review"
-                                    width={50}
-                                    height={50}
+                                    width={30}
+                                    height={30}
                                   />
                                 ))}
                               </div>
