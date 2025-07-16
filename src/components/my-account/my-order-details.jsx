@@ -370,8 +370,15 @@ const MyOrderDetails = ({ data }) => {
                                 ? "$"
                                 : "₹"}
                               {addCommasToNumber(
-                                item?.variant?.pricing?.price?.gross?.amount
+                                Number(item?.quantity) *
+                                  Number(
+                                    item?.variant?.pricing?.price?.gross?.amount
+                                  )
                               )}
+
+                              {/* {addCommasToNumber(item?.totalPrice?.gross?.amount
+                                
+                              )} */}
                             </div>
                             <div
                               style={{
