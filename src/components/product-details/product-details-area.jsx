@@ -155,7 +155,7 @@ const ProductDetailsArea = ({
                   ? "col-xl-5 col-lg-5"
                   : "col-xl-6 col-lg-6"
               } `}
-              style={{ zIndex: "10" }}
+              style={{ zIndex: "1" }}
             >
               {/* product-details-wrapper start */}
 

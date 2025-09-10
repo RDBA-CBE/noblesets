@@ -80,25 +80,23 @@ const DetailsThumbWrapper = ({ product, relatedClick }) => {
     return /\.(jpg|webp|jpeg|png|gif)$/i.test(url);
   };
 
-  const productImages=[
-   {
-    url:"/assets/img/blog.webp",
-   } ,
-   {
-    url:"/assets/img/blog.webp",
-   } ,
-   {
-    url:"/assets/img/blog.webp",
-   } ,
-   {
-    url:"/assets/img/blog.webp",
-   } ,
-   {
-    url:"/assets/img/blog.webp",
-   } 
-
-    
-  ]
+  const productImages = [
+    {
+      url: "/assets/img/blog.webp",
+    },
+    {
+      url: "/assets/img/blog.webp",
+    },
+    {
+      url: "/assets/img/blog.webp",
+    },
+    {
+      url: "/assets/img/blog.webp",
+    },
+    {
+      url: "/assets/img/blog.webp",
+    },
+  ];
 
   return (
     <>
@@ -167,87 +165,96 @@ const DetailsThumbWrapper = ({ product, relatedClick }) => {
             </>
           )}
         </nav> */}
-{product?.media?.length > 1 && (
-<nav className="product-side-nav-img p-relative">
-          <div className="nav nav-tabs flex-md-column flex-nowrap justify-content-start">
-            {product?.media
-              ?.slice(startIndex, startIndex + 4)
-              .map((item, i) => (
-                <button
-                  key={i + startIndex}
-                  className={`nav-link ${
-                    item?.url === activeImg?.url ? "active" : ""
-                  }`}
-                  onClick={() => handleImageActive(item)}
-                  id={`image-${i}`}
-                >
-                  {isImage(profilePic(item?.url)) ? (
-                    <figure>
-                      <img
-                        src={item?.url}
-                        // alt={item?.alt}
-                        // description={item?.description}
-                        // caption={item?.caption}
-                        // title={item?.title}
-                        width={78}
-                        height={100}
-                        style={{ width: "100%", height: "100%", borderRadius:"20px" }}
-                      />
-                     
-                    </figure>
-                  ) : (
-                    <figure>
-                      <video
-                      // src="/assets/img/blog.webp"
-                        src={item?.url}
-                        aria-label={item?.alt}
-                        width={78}
-                        height={100}
-                        style={{ width: "100%", height: "100%" ,borderRadius:"20px" }}
-                        muted
-                        loop
-                        description={item?.description}
-                        caption={item?.caption}
-                        title={item?.title}
-                      />
-                      
-                    </figure>
-                  )}
-                </button>
-              ))}
-          </div>
-          {product?.media?.length > 3 && (
-            <>
-              <UpOutlined
-                className="prev-btn"
-                onClick={() => handleNavigationClicking("prev")}
-              />
-              <DownOutlined
-                className="next-btn"
-                onClick={() => handleNavigationClicking("next")}
-              />
-            </>
-          )}
-        </nav>
-         )} 
+        {product?.media?.length > 1 && (
+          <nav className="product-side-nav-img p-relative">
+            <div className="nav nav-tabs flex-md-column flex-nowrap justify-content-start">
+              {product?.media
+                ?.slice(startIndex, startIndex + 4)
+                .map((item, i) => (
+                  <button
+                    key={i + startIndex}
+                    className={`nav-link ${
+                      item?.url === activeImg?.url ? "active" : ""
+                    }`}
+                    onClick={() => handleImageActive(item)}
+                    id={`image-${i}`}
+                  >
+                    {isImage(profilePic(item?.url)) ? (
+                      <figure>
+                        <img
+                          src={item?.url}
+                          // alt={item?.alt}
+                          // description={item?.description}
+                          // caption={item?.caption}
+                          // title={item?.title}
+                          width={78}
+                          height={100}
+                          style={{
+                            width: "100%",
+                            height: "100%",
+                            borderRadius: "20px",
+                          }}
+                        />
+                      </figure>
+                    ) : (
+                      <figure>
+                        <video
+                          // src="/assets/img/blog.webp"
+                          src={item?.url}
+                          aria-label={item?.alt}
+                          width={78}
+                          height={100}
+                          style={{
+                            width: "100%",
+                            height: "100%",
+                            borderRadius: "20px",
+                          }}
+                          muted
+                          loop
+                          description={item?.description}
+                          caption={item?.caption}
+                          title={item?.title}
+                        />
+                      </figure>
+                    )}
+                  </button>
+                ))}
+            </div>
+            {product?.media?.length > 3 && (
+              <>
+                <UpOutlined
+                  className="prev-btn"
+                  onClick={() => handleNavigationClicking("prev")}
+                />
+                <DownOutlined
+                  className="next-btn"
+                  onClick={() => handleNavigationClicking("next")}
+                />
+              </>
+            )}
+          </nav>
+        )}
 
         <div className={`tab-content m-img full-width-image`}>
           <div className="tab-pane fade show active">
-            <div className="tp-product-details-nav-main-thumb p-relative" style={{borderRadius:"20px" }}>
+            <div
+              className="tp-product-details-nav-main-thumb p-relative"
+              style={{ borderRadius: "20px" }}
+            >
               {loading ? (
                 <Loader />
               ) : (
                 <>
                   <div
-                    style={{ cursor: "zoom-in" ,borderRadius:"20px"}}
+                    style={{ cursor: "zoom-in", borderRadius: "20px" }}
                     onClick={() => setIsOpen(true)}
                   >
                     {isImage(profilePic(activeImg?.url)) ? (
                       <figure
                         className="detail-single-image"
-                        style={{ marginBottom: "0px",borderRadius:"20px" }}
+                        style={{ marginBottom: "0px", borderRadius: "20px" }}
                       >
-                          <img
+                        <img
                           className="product-details-image"
                           // src="/assets/img/blog.webp"
                           description={activeImg?.description}
@@ -257,7 +264,7 @@ const DetailsThumbWrapper = ({ product, relatedClick }) => {
                           alt={activeImg.alt}
                           onLoad={() => setLoading(false)}
                           onError={() => setLoading(false)}
-                          style={{borderRadius:"20px" }}
+                          style={{ borderRadius: "20px" }}
                         />
                         {/* <img
                           className="product-details-image"
@@ -270,9 +277,6 @@ const DetailsThumbWrapper = ({ product, relatedClick }) => {
                           onError={() => setLoading(false)}
                           
                         /> */}
-
-
-
 
                         {/* already commented */}
 
@@ -419,11 +423,13 @@ const DetailsThumbWrapper = ({ product, relatedClick }) => {
               position: "fixed",
               top: "20px",
               right: "20px",
-              background: "none",
+              background: "black",
               border: "none",
               fontSize: "18px",
               color: "white",
               cursor: "pointer",
+              padding: "2px 10px",
+              borderRadius: "10px",
             }}
           >
             <i className="fal fa-times"></i>
