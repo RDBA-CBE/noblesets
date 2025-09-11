@@ -442,7 +442,7 @@ Add To Cart
           className="tp-product-title-3"
           style={{
             fontSize: "12px",
-            color: "rgb(144 141 141)",
+            color: "rgb(131 69 29)",fontWeight:"600",
             // textTransform: "uppercase",
           }}
         >

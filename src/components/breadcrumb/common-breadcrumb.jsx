@@ -33,7 +33,7 @@ const CommonBreadcrumb = ({
               <h3
                 className="breadcrumb__title shop-banner-title"
                 style={{
-                  color: "#a44100",
+                  color: "#fff",
                   // paddingBottom: "15px",
                 }}
               >

@@ -15,7 +15,7 @@ import ErrorMsg from "@/components/common/error-msg";
 import HeaderSection from "@/components/home/headerSection";
 import Link from "next/link";
 import ShopBreadcrumb from "@/components/breadcrumb/shop-breadcrumb";
-import shopBanner from "../../public/assets/img/header-bg.png";
+import shopBanner from "../../public/assets/img/header-bg.webp";
 
 export default function GiftCart() {
   const {

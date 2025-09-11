@@ -12,7 +12,7 @@ import { get_wishlist_products } from "@/redux/features/wishlist-slice";
 import HeaderSection from "@/components/home/headerSection";
 import HomeFooter from "@/components/home/HomeFooter";
 import ShopBreadcrumb from "@/components/breadcrumb/shop-breadcrumb";
-import shopBanner from "../../public/assets/img/header-bg.png";
+import shopBanner from "../../public/assets/img/header-bg.webp";
 import CompareArea1 from "@/components/compare/compare-area-1";
 import CompareArea2 from "@/components/compare/compare-area.2";
 

@@ -7,7 +7,7 @@ import ShippingAndExchangePolicyMain from "../components/shippingPolicy/shipping
 import HeaderSection from "@/components/home/headerSection";
 import FAQ from "@/components/shippingPolicy/Faq";
 import ShopBreadcrumb from "@/components/breadcrumb/shop-breadcrumb";
-import shopBanner from "@assets/img/header-bg.png";
+import shopBanner from "@assets/img/header-bg.webp";
 
 const ShippingAndExchangePolicy = () => {
   return (

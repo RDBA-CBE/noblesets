@@ -15,7 +15,7 @@ import {
   useAttributeListMutation,
 } from "@/redux/features/productApi";
 import ShopFilterOffCanvas from "@/components/common/shop-filter-offcanvas";
-import shopBanner from "../../public/assets/img/header-bg.png";
+import shopBanner from "../../public/assets/img/header-bg.webp";
 import { useDispatch, useSelector } from "react-redux";
 import {
   useCreateCheckoutTokenWithoutEmailMutation,
