@@ -41,18 +41,22 @@ const HomeCategorySection = () => {
   };
 
   const video_data = [
+    "/assets/img/home/best_of_nobletset/img1.webp",
+    "/assets/img/home/best_of_nobletset/img3.webp",
+    "/assets/img/home/best_of_nobletset/img2.webp",
+    "/assets/img/home/best_of_nobletset/img4.webp",
+    "/assets/img/home/best_of_nobletset/img3.webp",
     "/assets/img/home/best_of_nobletset/img-1.png",
-    "/assets/img/home/best_of_nobletset/img-3.png",
     "/assets/img/home/best_of_nobletset/img-2.png",
-    "/assets/img/home/best_of_nobletset/img-4.png",
     "/assets/img/home/best_of_nobletset/img-3.png",
+     "/assets/img/home/best_of_nobletset/img-4.png",
   ];
 
   return (
     <>
       <section
         className="pt-60 bestofnoblesets position-relative h4size"
-        // style={{ backgroundColor: "#fff9f4" }}
+        // style={{ backgroundColor: "#f6e9d9" }}
       >
         <div className="container-fluid" style={{ padding: "0px" }}>
           <div className="row">

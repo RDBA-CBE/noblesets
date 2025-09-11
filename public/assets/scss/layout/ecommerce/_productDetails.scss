@@ -30,7 +30,7 @@
 
       & span {
         font-weight: 500;
-        color: #b4633a;
+        color: #a44100;
       }
     }
   }
@@ -92,7 +92,7 @@
           &.active,
           &:hover {
             &::after {
-              // border-color: #b4633a;
+              // border-color: #a44100;
             }
           }
 
@@ -248,7 +248,7 @@
     & span {
       display: inline-block;
       font-size: 15px;
-      color: #b4633a;
+      color: #a44100;
       background-color: rgb(229 225 221);
       line-height: 1;
       padding: 4px 12px;
@@ -274,10 +274,10 @@
     font-weight: 500;
     font-size: 24px;
     letter-spacing: -0.02em;
-    color: #b4633a;
+    color: #a44100;
 
     &.new-price {
-      color: #b4633a;
+      color: #a44100;
     }
 
     &.old-price {
@@ -423,7 +423,7 @@
 
         &:hover {
           background-color: var(--tp-common-white);
-          color: #b4633a;
+          color: #a44100;
         }
       }
 
@@ -453,7 +453,7 @@
 
     &:hover {
       background: linear-gradient(to right, color-mix(in srgb, #fbdccc 40%, #e09a7a), #e09a7a);;
-      border-color: #b4633a;
+      border-color: #a44100;
       color: var(--tp-common-white);
     }
   }
@@ -463,8 +463,8 @@
     font-size: 16px;
     font-weight: 500;
     padding: 10px 30px;
-    border: 1px solid #b4633a;
-    color: #b4633a;
+    border: 1px solid #a44100;
+    color: #a44100;
 
     &:hover {
       background: linear-gradient(to right, color-mix(in srgb, #fbdccc 40%, #e09a7a), #e09a7a);;
@@ -500,7 +500,7 @@
         }
 
         &:hover {
-          color: #b4633a;
+          color: #a44100;
         }
       }
     }
@@ -544,14 +544,14 @@
       height: 38px;
       line-height: 36px;
       text-align: center;
-      border: 1px solid #b4633a;
-      color: #b4633a;
+      border: 1px solid #a44100;
+      color: #a44100;
       border-radius: 50%;
       margin-right: 5px;
 
       &:hover {
         background: linear-gradient(to right, color-mix(in srgb, #fbdccc 40%, #e09a7a), #e09a7a);;
-        border-color: #b4633a;
+        border-color: #a44100;
         color: var(--tp-common-white);
       }
     }

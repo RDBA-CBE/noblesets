@@ -23,7 +23,7 @@ const BrandBanner = ({
       // backgroundImage:{logo ? logo : `url(/assets/img/home/brand-img.png)`},
       //   background:"linear-gradient(to right,color-mix(in srgb, #fbdccc 40%, #e09a7a),#e09a7a)",
       // borderRadius: "30px",
-      // color: "#b4633a",
+      // color: "#a44100",
       // height: "60vh",
       // }}
     >

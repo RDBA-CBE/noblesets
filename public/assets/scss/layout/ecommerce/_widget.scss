@@ -57,7 +57,7 @@
                 font-weight: 400;
                 font-size: 14px;             
                 color: white;
-                border: 1px solid #b4633a;
+                border: 1px solid #a44100;
                 background: linear-gradient(to right, color-mix(in srgb, #fbdccc 40%, #e09a7a), #e09a7a);;
                 padding: 2px 21px;
                 &:hover{
@@ -85,8 +85,8 @@
                     &:checked{
                         & ~ label{
                             &::after{
-                                background-color:#b4633a;
-                                border-color: #b4633a;
+                                background-color:#a44100;
+                                border-color: #a44100;
                             }
                             &::before{
                                 visibility: visible;
@@ -184,13 +184,13 @@
                         }
                     }
                     &:hover{
-                        color:#b4633a;
+                        color:#a44100;
                         &::after{
-                            background-color:#b4633a;
+                            background-color:#a44100;
                         }
                         & span{
                             background: linear-gradient(to right, color-mix(in srgb, #fbdccc 40%, #e09a7a), #e09a7a);;
-                            border-color: #b4633a;
+                            border-color: #a44100;
                             color: var(--tp-common-white);
                         }
                     }
@@ -224,8 +224,8 @@
 
                     &:hover{
                         & .tp-shop-widget-checkbox-circle-number{
-                            background-color:#b4633a;
-                            border-color: #b4633a;
+                            background-color:#a44100;
+                            border-color: #a44100;
                             color: var(--tp-common-white);
                         }
                     }

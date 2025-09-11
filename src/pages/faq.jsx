@@ -16,7 +16,7 @@ const ShippingAndExchangePolicy = () => {
       {/* <HeaderTwo style_2={true} /> */}
       <HeaderSection />
 
-      <div style={{ background: "#fff9f4" }}>
+      <div style={{ background: "#f6e9d9" }}>
         <div className="section-wd">
           <ShopBreadcrumb
             title="Help & FAQs"

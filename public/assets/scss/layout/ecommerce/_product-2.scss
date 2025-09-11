@@ -143,9 +143,9 @@
         &-2{
             font-weight: 700;
             font-size: 22px;
-            color:#b4633a;
+            color:#a44100;
             &.new-price{
-                color: #b4633a;
+                color: #a44100;
             }
             &.old-price{
             font-weight: 400;
@@ -227,7 +227,7 @@
             line-height: 42px;
             text-align: center;
             font-size: 18px;
-            color:#b4633a;
+            color:#a44100;
             background-color: var(--tp-common-white);
             border-bottom: 0;
             box-shadow: 0px 1px 2px #bb9d7b;
@@ -245,7 +245,7 @@
             }
             &.active{
                 color: var(--tp-common-white);
-                background-color:#b4633a; 
+                background-color:#a44100; 
             }
             &:hover{
                 color: var(--tp-common-white);

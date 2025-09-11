@@ -555,7 +555,7 @@ const ProductItem1 = ({ products, style_2 = false, updateData, index }) => {
                     <div
                     className="save-off"
                       style={{
-                        color: "#b4633a",
+                        color: "#a44100",
                         fontSize: "16px",
                       }}
                     >{`Save ${saveOff()}% OFF`}</div>
@@ -610,7 +610,7 @@ const ProductItem1 = ({ products, style_2 = false, updateData, index }) => {
                     <div
                     className="save-off"
                       style={{
-                        color: "#b4633a",
+                        color: "#a44100",
                         fontSize: "16px",
                       }}
                     >{`Save ${saveOff()}% OFF`}</div>

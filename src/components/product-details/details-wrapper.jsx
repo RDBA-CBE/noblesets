@@ -1253,7 +1253,7 @@ const DetailsWrapper = ({
       {productItem?.pricing?.discount !== null && (
         <div
           style={{
-            color: "#b4633a",
+            color: "#a44100",
             fontSize: "16px",
             paddingBottom: "10px",
           }}
@@ -2015,7 +2015,7 @@ const DetailsWrapper = ({
       </div>
 
       <div
-        className="text-uppercase text-decordation color:#b4633a cursor-pointer"
+        className="text-uppercase text-decordation color:#a44100 cursor-pointer"
         onClick={() => setIsProductModelOpen(true)}
       >
         To Customize Product

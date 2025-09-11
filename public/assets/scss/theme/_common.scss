@@ -108,7 +108,7 @@
 -----------------------------------------*/
 
 .body-overlay {
-  background-color: "#fff9f4";
+  background-color: "#f6e9d9";
   height: 100%;
   width: 100%;
   position: fixed;
@@ -552,7 +552,7 @@
 .mbl-content {
   position: absolute;
   right: 5%;
-  color: #643333;
+  color: #fff;
   z-index: 999;
   /* top: 10%; */
   width: 800px;
@@ -566,40 +566,45 @@
   justify-content: center;
 }
 .mbl-content h1 {
-  font-size: 80px;
-  color: #643333;
+  font-size: 45px;
+  color: #fff;
   font-weight: 400;
 }
 .mbl-content p {
-  font-size: 28px;
+  font-size: 18px;
   // line-height:18px;
-  color: #000000a9 !important;
-  line-height: 35px;
+  color: #fff !important;
+  line-height: 22px;
   font-family: "Nunito", sans-serif;
-  color: #643333;
+  color: #fff;
   font-weight: 300;
 }
 .exb-btn {
   margin-top: 10px;
-  padding: 32px 50px;
-  border: 2px solid #643333;
+  padding: 12px 20px;
+  border: 2px solid #fff;
 
   width: fit-content;
   margin-inline: auto;
 }
 .exb-btn p {
-  font-size: 45px;
+  font-size: 30px;
   line-height: 25px !important;
   //  margin-bottom: 0px !important;
-  color: #643333 !important;
-  font-family: "Questrial", sans-serif;
+  color: #fff !important;
+  font-family: "Playfair Display", sans-serif;
   font-weight: 500;
-  margin-bottom: 3px !important;
+  margin-bottom: 8px !important;
 }
 .exb-btn p span {
   font-size: 20px;
   line-height: 22px;
-  color: #000000a9 !important;
+  color: #fff !important; font-family: "Nunito", sans-serif;
+}
+.exb-btn-s {
+  font-size: 16px;
+  line-height: 22px;
+  color: #fff !important; font-family: "Nunito", sans-serif;
 }
 
 @media (max-width: 1440px) {
@@ -609,7 +614,7 @@
   }
 
   .mbl-content h1 {
-    font-size: 60px;
+    font-size: 20px;
   }
   .mbl-content p {
     font-size: 20px;
@@ -617,7 +622,7 @@
   }
   .exb-btn {
     padding: 20px 40px;
-    border: 2px solid #643333;
+    border: 2px solid #fff;
   }
   .exb-btn p {
     font-size: 38px;
@@ -661,7 +666,7 @@
     line-height: 25px;
   }
   .mbl-content h1 {
-    font-size: 45px;
+    font-size: 25px;
   }
   .mbl-content p {
     font-size: 16px;
@@ -670,7 +675,7 @@
   }
   .exb-btn {
     padding: 15px 30px;
-    border: 2px solid #643333;
+    border: 2px solid #fff;
   }
   .exb-btn p {
     font-size: 30px;
@@ -712,7 +717,7 @@
     display: block;
     position: absolute;
     right: 2%;
-    color: #643333;
+    color: #fff;
     z-index: 999;
     top: 10%;
 
@@ -726,20 +731,20 @@
     display: block;
   }
   .mbl-content h1 {
-    font-size: 38px;
+    font-size: 28px;
     line-height: 40px;
-    color: #643333;
+    color: #fff;
     font-weight: 400;
   }
   .mbl-content p {
     font-size: 14px;
     line-height: 18px;
-    color: #643333;
+    color: #fff;
     font-weight: 400;
   }
   .exb-btn {
     padding: 10px 20px;
-    border: 1px solid #643333;
+    border: 1px solid #fff;
     width: fit-content;
     margin: auto;
   }
@@ -782,7 +787,7 @@
 }
 
 .common-bg{
-  background: #fff9f4 !important;
+  background: #f6e9d9 !important;
 }
 
 .gift-section-le img {
@@ -996,11 +1001,11 @@
 
 .terms-heading-ti {
   font-size: 28px;
-  color: #b4633a;
+  color: #a44100;
 }
 
 .terms-heading {
-  color: #b4633a;
+  color: #a44100;
   font-size: 20px;
   margin-top: 25px;
   line-height: 36px;
@@ -1012,7 +1017,7 @@
 }
 
 .terms-sub-heading {
-  color: #b4633a;
+  color: #a44100;
   font-size: 18px;
   margin-top: 25px;
   font-style: italic;
@@ -1639,11 +1644,13 @@
 .gradient-btn {
   // background: linear-gradient(90deg, #dea17d 0%, #e4af8d 100%);
   // background-color: #e09a7b;
-  background: linear-gradient(
-    to right,
-    color-mix(in srgb, #fbdccc 40%, #e09a7a),
-    #e09a7a
-  );
+  // background: linear-gradient(
+  //   to right,
+  //   color-mix(in srgb, #3d040a 40%, #3d040a),
+  //   #a44100
+    
+  // );
+    background: linear-gradient(90deg, #d35400, #6b2e1f);
   color: white;
   // font-weight: 500;
   padding: 0.5rem 1.5rem;
@@ -1963,13 +1970,13 @@ hr.footer-divider {
 .table-responsive-1 table {
   border-collapse: separate !important; /* to allow spacing between cells */
   border-spacing: 8px !important; /* spacing between cells */
-  border: 1px solid #b4633a; /* border around the whole table */
+  border: 1px solid #a44100; /* border around the whole table */
   width: 100%; /* full width */
 }
 
 .table-responsive-1 th,
 .table-responsive-1 td {
-  border: 1px solid #b4633a; /* border for each cell */
+  border: 1px solid #a44100; /* border for each cell */
   padding: 12px; /* spacing inside cells */
   text-align: center;
   vertical-align: middle;
@@ -1983,7 +1990,7 @@ hr.footer-divider {
 
 
 .text-gold {
-  color: #b4633a !important;
+  color: #a44100 !important;
 }
 
 .bg-gold {
@@ -2010,7 +2017,7 @@ hr.footer-divider {
 .ShopByCollections .card {
   padding: 50px;
   background-color: transparent !important;
-  border: 1px solid #80808024 !important;
+  border: 1px solid #f4c86224 !important;
   border-radius: 0;
 }
 
@@ -2031,10 +2038,10 @@ hr.footer-divider {
 
 .main-ti {
   font-size: 50px;
-  font-family: "Questrial", sans-serif;
+  font-family: "Playfair Display", sans-serif;
   font-weight: 400;
   font-style: normal;
-  color: #b4633a;
+  color: #a44100;
   letter-spacing: 0.05rem;
 
 }
@@ -2050,7 +2057,7 @@ hr.footer-divider {
 }
 
 .sub-ti b {
-  color: #e09a7a;
+  color: #8e5934;
 }
 
 .tp-product-title-2 a {
@@ -2126,9 +2133,9 @@ hr.footer-divider {
 }
 
 .pd-nav-tabs .nav-link.active {
-  color: #b4633a;
+  color: #a44100;
   font-weight: 600;
-  border-color: transparent transparent #b4633a transparent;
+  border-color: transparent transparent #a44100 transparent;
 }
 
 .pd-tab-content {
@@ -2159,7 +2166,7 @@ hr.footer-divider {
 
 .pd-buy-btn {
   background-color: #fce6eb;
-  color: #b4633a;
+  color: #a44100;
   font-weight: 600;
   border-radius: 20px;
   padding: 8px 30px;
@@ -2191,7 +2198,7 @@ hr.footer-divider {
 }
 
 // .tp-header-area .main-menu > nav > ul > li > a {
-// font-family: "Questrial, sans-serif";
+// font-family: "Playfair Display, sans-serif";
 // }
 
 @media (max-width: 1024px) {
@@ -2207,8 +2214,8 @@ hr.footer-divider {
   left: 0;
   height: 100%;
   width: 100%;
-  background-image: url("/assets/img/home/best_of_nobletset/best-of-nobelset-bg-png-withut-bg.png");
-  background-color: #fff9f4;
+  background-image: url("/assets/img/home/best_of_nobletset/best-of-nobelset-bg-png-withut-bg.webp");
+  background-color: #f6e9d9;
   background-size: cover;
   background-repeat: no-repeat;
   z-index: -1000;
@@ -2229,7 +2236,7 @@ hr.footer-divider {
   left: 0;
   height: 100%;
   width: 100%;
-  background-image: url("/assets/img/home/shopByBudget/shop-by-budget-png.png");
+  background-image: url("/assets/img/home/shopByBudget/shop-by-budget-new.webp");
   background-size: cover;
   background-repeat: no-repeat;
   z-index: -1000;
@@ -2242,7 +2249,7 @@ hr.footer-divider {
   left: 0;
   height: 100%;
   width: 100%;
-  background-image: url("/assets/img/home/shop_by_category/shop-by-cat-bg.png");
+  background-image: url("/assets/img/home/shop_by_category/shop-by-cat-bg.webp");
   background-size: cover;
   background-repeat: no-repeat;
   z-index: -100;
@@ -2255,7 +2262,7 @@ hr.footer-divider {
   left: 0;
   height: 100%;
   width: 100%;
-  background-image: url("/assets/img/home/gift_special/gift-bg.jpg");
+  background-image: url("/assets/img/home/gift_special/gift-bg.webp");
   background-size: cover;
   background-repeat: no-repeat;
   z-index: -100;
@@ -2268,12 +2275,21 @@ hr.footer-divider {
   left: 0;
   height: 100%;
   width: 100%;
-  background-image: url("/assets/img/home/collection/shop-by-collections-bg.png");
+  background-image: url("/assets/img/home/collection/shop-by-collections-bg.webp");
   background-size: cover;
   background-repeat: no-repeat;
   z-index: -100;
 }
 
+.collect-subbg {
+
+  height: 100%;
+  width: 100%;
+  background-image: url("/assets/img/home/collection/subbg.webp");
+  background-size: cover;
+  background-repeat: no-repeat; color:#fff;
+}
+.text-white{color: #fff;}
 // .you-may-like:before{
 //    content: "";
 //   position: absolute;
@@ -2294,14 +2310,14 @@ hr.footer-divider {
   left: 0;
   height: 100%;
   width: 100%;
-  background-image: url("/assets/img/home/nobletset_promises/nobel-promise-bg.png");
+  background-image: url("/assets/img/home/nobletset_promises/nobel-promise-bg.webp");
   background-size: cover;
   background-repeat: no-repeat;
   z-index: -100;
 }
 
 .NobelsetsPromises .icon-pad {
-  padding: 12px;
+  padding: 12px; background: linear-gradient(180deg, #1e1a1a, #5a2b23);
 }
 
 .cart-title {
@@ -2314,7 +2330,7 @@ hr.footer-divider {
     color-mix(in srgb, #fbdccc 40%, #e09a7a),
     #e09a7a
   );
-  // border: 1px solid #b4633a;
+  // border: 1px solid #a44100;
   color: #000;
 }
 
@@ -2490,7 +2506,7 @@ hr.footer-divider {
 
 .tp-shop-top-select .nice-select {
   background-color: transparent !important;
-  color: #b4633a !important;
+  color: #a44100 !important;
   border: 1px solid #e09a7a !important;
   border-radius: 20px !important;
 }
@@ -2579,7 +2595,7 @@ header .tp-product-action-btn-3:hover {
   // border: 1px solid #e09a7a;
   padding: 10px 20px !important;
   font-size: 15px !important;
-  color: #b4633a !important;
+  color: #a44100 !important;
   position: absolute;
   top: 0;
   left: 0 !important;
@@ -2614,7 +2630,7 @@ header .tp-product-action-btn-3:hover {
 }
 
 .back-to-top-btn {
-  background: #b4633a !important ;
+  background: #a44100 !important ;
 }
 .submenu-pro .product-hover-info {
   position: absolute;
@@ -2669,7 +2685,7 @@ header .tp-product-action-btn-3:hover {
 }
 
 .profile__info-text b {
-  color: #b4633a !important ;
+  color: #a44100 !important ;
 }
 
 .profile__info-text {
@@ -2751,7 +2767,7 @@ header .tp-product-action-btn-3:hover {
 }
 
 .wishlist-page .tp-cart-price span {
-  color: #b4633a;
+  color: #a44100;
 }
 
 .profile__ticket table thead tr th {
@@ -2776,7 +2792,7 @@ header .tp-product-action-btn-3:hover {
 }
 
 .pagination-controls .active {
-  background: #b4633a !important;
+  background: #a44100 !important;
   border: none !important;
 }
 
@@ -2822,7 +2838,7 @@ header .tp-product-action-btn-3:hover {
 }
 
 .ourstory-wrapper {
-  background: #fff9f4;
+  background: #f6e9d9;
   color: #4a2d13;
 }
 
@@ -2830,7 +2846,7 @@ header .tp-product-action-btn-3:hover {
   font-size: 50px;
   font-weight: 400;
   // color: #5a1d00;
-  color: #b4633a;
+  color: #a44100;
 }
 
 .ourstory-lead {
@@ -2859,7 +2875,7 @@ header .tp-product-action-btn-3:hover {
 
 .ourstory-card .card-title{
   font-size: 20px;
-  color: #b4633a;
+  color: #a44100;
   font-weight: 400;
 }
 
@@ -2881,7 +2897,7 @@ header .tp-product-action-btn-3:hover {
 .ourstory-block h5 {
   font-weight: 400;
   font-size: 20px;
-  color: #b4633a;
+  color: #a44100;
   margin-bottom: 1rem;
 }
 .ourstory-block ul {
@@ -2944,14 +2960,14 @@ header .tp-product-action-btn-3:hover {
 }
 
 .ShopByCollections .card-body p {
-  // font-family: "Questrial", sans-serif;
+  // font-family: "Playfair Display", sans-serif;
   font-size: 16px !important;
   letter-spacing: 1px;
 }
 
 .shop-page .ShopByCollections .card {
   background-image: none !important;
-  background-color: #fff9f4 !important;
+  background-color: #f6e9d9 !important;
 }
 
 .shop-page .ShopByCollections::before {
@@ -3009,7 +3025,7 @@ header .tp-product-action-btn-3:hover {
 
 .product-detail-page .ShopByCollections .card {
   background-image: none !important;
-  background-color: #fff9f4 !important;
+  background-color: #f6e9d9 !important;
 }
 
 .main-menu > nav > ul > li:hover > .tp-mega-menu {
@@ -3181,7 +3197,7 @@ header .tp-product-action-btn-3:hover {
 .brand-banner {
   // background-image: url(/assets/img/home/brand-img.png);
   border-radius: 30px;
-  color: #b4633a;
+  color: #a44100;
   height: 60vh;
 }
 
@@ -3259,7 +3275,7 @@ header .tp-product-action-btn-3:hover {
 }
 
 .new-compare .cart-link {
-  color: #b4633a;
+  color: #a44100;
   text-decoration: underline;
   cursor: pointer;
 }

@@ -7,8 +7,8 @@ url("../fonts/flaticon_shofy.eot?dee88fc45715450dd1106c3509e3ddac#iefix") format
 } */
 
 /* @import url('https://fonts.googleapis.com/css2?family=Nunito:ital,wght@0,200..1000;1,200..1000&family=Questrial&display=swap'); */
-@import url('https://fonts.googleapis.com/css2?family=Questrial&display=swap');
 @import url('https://fonts.googleapis.com/css2?family=Nunito:ital,wght@0,200..1000;1,200..1000&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400..900;1,400..900&display=swap');
 
 i[class^="flaticon-"]:before, i[class*=" flaticon-"]:before {
     font-family: "Nunito", sans-serif !important;

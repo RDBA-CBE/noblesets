@@ -23,7 +23,7 @@ const InstagramSection = () => {
             {/* Column 1 */}
             <div className="col-1-5">
               <img
-                src="/assets/img/home/shop_by_category/img-1.png"
+                src="/assets/img/home/shop_by_category/1.wwbp"
                 alt="Pedants"
                 className="category-img"
                 onClick={() => {
@@ -41,7 +41,7 @@ const InstagramSection = () => {
               </div>
 
               <img
-                src="/assets/img/home/shop_by_category/img-2.png"
+                src="/assets/img/home/shop_by_category/2.webp"
                 alt="Rings"
                 className="category-img mt-3"
                 onClick={() => {
@@ -61,7 +61,7 @@ const InstagramSection = () => {
             {/* Column 2 */}
             <div className="col-1-5">
               <img
-                src="/assets/img/home/shop_by_category/img-3.png"
+                src="/assets/img/home/shop_by_category/3.webp"
                 alt="Bangles"
                 className="category-img"
                 onClick={() => {

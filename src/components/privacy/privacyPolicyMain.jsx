@@ -2,7 +2,7 @@ import React from "react";
 
 const PrivacyPolicyMain = () => {
   return (
-    <section className="tp-about-area pt-30 pb-30" style={{background:"#fff9f4"}}>
+    <section className="tp-about-area pt-30 pb-30" style={{background:"#f6e9d9"}}>
       <div className="container">
         {/* <h3 className="terms-heading-ti" style={{ fontWeight: "500" }}>
           Privacy Policy

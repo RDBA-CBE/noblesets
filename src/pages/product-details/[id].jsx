@@ -204,7 +204,7 @@ const ProductDetailsPage = ({ query }) => {
     content = (
       <>
         {/* <ProductDetailsBreadcrumb category={product.category.name} title={product.title} /> */}
-         <div style={{background:"#fff9f4"}}>
+         <div style={{background:"#f6e9d9"}}>
       <div className="section-wd">
        <CommonBreadcrumb 
        title={product.name} 
