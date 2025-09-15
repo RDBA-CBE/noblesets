@@ -9,6 +9,7 @@ import {
   RightOutlined,
 } from "@ant-design/icons";
 import { useRouter } from "next/router";
+import { ArrowNextTwo, ArrowPrevTwo } from "@/svg";
 
 const DetailsThumbWrapper = ({ product, relatedClick }) => {
   const Router = useRouter();
@@ -21,6 +22,21 @@ const DetailsThumbWrapper = ({ product, relatedClick }) => {
   const timeoutId = useRef(null);
   const [startIndex, setStartIndex] = useState(0);
   const [hover, setHover] = useState(false);
+
+  useEffect(() => {
+    if (isOpen) {
+      // prevent background scroll
+      document.body.style.overflow = "hidden";
+    } else {
+      // restore scroll
+      document.body.style.overflow = "auto";
+    }
+
+    // cleanup when component unmounts
+    return () => {
+      document.body.style.overflow = "auto";
+    };
+  }, [isOpen]);
 
   const handleImageActive = (item) => {
     setActiveImg(item);
@@ -355,99 +371,143 @@ const DetailsThumbWrapper = ({ product, relatedClick }) => {
             width: "100%",
             height: "100%",
             backgroundColor: "rgba(0, 0, 0, 0.8)",
-            // display: "flex",
-            // justifyContent: "center",
-            // alignItems: "center",
+            display: "flex",
+            justifyContent: "center",
+            alignItems: "center",
             zIndex: 999,
-            overflow: "auto", // Enable scrolling
-            // Hide scrollbar for IE, Edge and Firefox
-            msOverflowStyle: "none", // IE and Edge
-            scrollbarWidth: "none", // Firefox
+            overflow: "hidden",
           }}
-          onClick={handleLightboxClose}
         >
-          <button
-            onClick={handleLightboxPrev}
-            name="prev"
-            style={{
-              fontSize: "18px",
-              background: "rgb(0 0 0 / 40%)",
-              padding: "5px 10px",
-              color: "white",
-              position: "fixed",
-              left: "20px",
-              top: "50vh",
-            }}
-          >
-            <LeftOutlined />
-          </button>
-
-          {isImage(
-            profilePic(activeImg?.url) || product?.media[photoIndex]?.url
-          ) ? (
-            <img
-              src={
-                profilePic(activeImg?.url) || product?.media[photoIndex]?.url
-              }
-              alt="Lightbox"
-              style={{
-                width: "100%",
-                height: "auto",
-                maxWidth: "none",
-                maxHeight: "none",
-                objectFit: "contain",
-              }}
-              onLoad={() => setLoading(false)}
-              onError={() => setLoading(false)}
-            />
-          ) : (
-            <video
-              src={
-                profilePic(activeImg?.url) || product?.media[photoIndex]?.url
-              }
-              style={{
-                width: "100%",
-                height: "auto",
-                maxWidth: "none",
-                maxHeight: "none",
-                objectFit: "contain",
-              }}
-              controls
-              onLoadedData={() => setLoading(false)}
-              onError={() => setLoading(false)}
-            />
-          )}
+          {/* Close Button */}
           <button
             onClick={handleLightboxClose}
             style={{
-              position: "fixed",
+              position: "absolute",
               top: "20px",
               right: "20px",
-              background: "black",
+              background: "#a4420094",
+
+              color: "#dad4d4ff",
               border: "none",
-              fontSize: "18px",
-              color: "white",
+              fontSize: "15px",
+
               cursor: "pointer",
-              padding: "2px 10px",
-              borderRadius: "10px",
+              padding: "5px 14px",
+              borderRadius: "50%",
             }}
           >
             <i className="fal fa-times"></i>
           </button>
-          <button
-            onClick={handleLightboxNext}
-            name="next"
+
+          {/* Thumbnails Left Side */}
+          <div
+            className="d-none d-lg-flex"
             style={{
-              fontSize: "18px",
-              background: "rgb(0 0 0 / 40%)",
-              padding: "5px 10px",
-              color: "white",
-              position: "fixed",
-              right: "20px",
-              top: "50vh",
+              position: "absolute",
+              left: "40px",
+              top: "100px",
+              transform: "translateY(-50%)",
+              display: "flex",
+              flexDirection: "column",
+              gap: "10px",
             }}
           >
-            <RightOutlined />
+            {product?.media?.map((item, idx) => (
+              <img
+                key={idx}
+                src={profilePic(item?.url) || item?.url}
+                alt="thumb"
+                onClick={() => setPhotoIndex(idx)}
+                style={{
+                  width: "50px",
+                  height: "50px",
+                  objectFit: "cover",
+                  borderRadius: "8px",
+                  border:
+                    idx === photoIndex
+                      ? "2px solid white"
+                      : "2px solid transparent",
+                  cursor: "pointer",
+                }}
+              />
+            ))}
+          </div>
+
+          {/* Prev Button */}
+          <button
+          className="action-btn-le"
+            onClick={handleLightboxPrev}
+            style={{
+              fontSize: "15px",
+              background: "#a4420094",
+              padding: "10px 15px",
+              color: "#dad4d4ff",
+              borderRadius: "50%",
+              border: "none",
+              position: "absolute",
+              left: "40px",
+              top: "50%",
+              transform: "translateY(-50%)",
+              cursor: "pointer",
+            }}
+          >
+            <ArrowPrevTwo />
+          </button>
+
+          {/* Main Image / Video */}
+          <div
+          // style={{ maxWidth: "70%", maxHeight: "80%" }}
+          >
+            {isImage(product?.media[photoIndex]?.url) ? (
+              <img
+                src={
+                  profilePic(product?.media[photoIndex]?.url) ||
+                  product?.media[photoIndex]?.url
+                }
+                alt="Lightbox"
+                style={{
+                  width: "100%",
+                  height: "100%",
+                  objectFit: "contain",
+                  borderRadius: "10px",
+                }}
+              />
+            ) : (
+              <video
+                src={
+                  profilePic(product?.media[photoIndex]?.url) ||
+                  product?.media[photoIndex]?.url
+                }
+                style={{
+                  width: "100%",
+                  height: "100%",
+                  objectFit: "contain",
+                  borderRadius: "10px",
+                }}
+                controls
+              />
+            )}
+          </div>
+
+          {/* Next Button */}
+          <button
+          className="action-btn-ri"
+            onClick={handleLightboxNext}
+            style={{
+              fontSize: "15px",
+              background: "#a4420094",
+              padding: "10px 15px",
+              color: "#dad4d4ff",
+              borderRadius: "50%",
+              border: "none",
+              position: "absolute",
+              right: "40px",
+              top: "50%",
+              transform: "translateY(-50%)",
+              cursor: "pointer",
+            }}
+          >
+            <ArrowNextTwo />
           </button>
         </div>
       )}
