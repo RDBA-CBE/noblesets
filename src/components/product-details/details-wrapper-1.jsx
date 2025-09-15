@@ -775,6 +775,7 @@ const DetailsWrapper1 = ({
             category={pageTitle}
             title={productItem?.name}
             parentSlug={parentSlug}
+            parentCat={productItem.category}
           />
         </div>
 
@@ -807,7 +808,7 @@ const DetailsWrapper1 = ({
                       background: "white",
                       padding: "0 5px 0 0",
                       width: "250px",
-                      zIndex:"1000"
+                      zIndex: "1000",
                     }}
                   >
                     <div style={{ display: "flex" }}>
@@ -822,7 +823,7 @@ const DetailsWrapper1 = ({
                           profilePic(previousProduct?.thumbnail?.url)
                         ) ? (
                           <img
-                            style={{ width: "100%" ,objectFit:"contain"}}
+                            style={{ width: "100%", objectFit: "contain" }}
                             height={100}
                             width={100}
                             src={profilePic(previousProduct?.thumbnail?.url)}
@@ -918,7 +919,7 @@ const DetailsWrapper1 = ({
                       background: "white",
                       padding: "0 10px 0 0",
                       width: "250px",
-                      zIndex:"1000"
+                      zIndex: "1000",
                     }}
                     onMouseEnter={NextMouseEnter}
                     onMouseLeave={NextMouseLeave}
@@ -933,7 +934,7 @@ const DetailsWrapper1 = ({
                     /> */}
                         {isImage(profilePic(nextProduct?.thumbnail?.url)) ? (
                           <img
-                            style={{ width: "100%", objectFit:"contain" }}
+                            style={{ width: "100%", objectFit: "contain" }}
                             width={100}
                             height={100}
                             src={profilePic(nextProduct?.thumbnail?.url)}
@@ -1258,7 +1259,7 @@ const DetailsWrapper1 = ({
                 <div
                   className="text-bold text-lg gap-3 my-2"
                   style={{
-                    alignItems:  "center",
+                    alignItems: "center",
                     fontSize: "14px",
                     color: "black",
                     display: "flex",
@@ -1276,7 +1277,7 @@ const DetailsWrapper1 = ({
                   </div>
                   <div style={{ textAlign: "end" }}>
                     <select
-                    style={{height:"30px"}}
+                      style={{ height: "30px" }}
                       name="country"
                       id="country"
                       value={variantId}

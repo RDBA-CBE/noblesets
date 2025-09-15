@@ -3,11 +3,17 @@ import { SmDot } from "@/svg";
 import Link from "next/link";
 import { useRouter } from "next/router";
 
-const ProductDetailsBreadcrumb = ({ category, title, parentSlug }) => {
+const ProductDetailsBreadcrumb = ({
+  category,
+  title,
+  parentSlug,
+  parentCat,
+}) => {
   const router = useRouter();
 
   const categories = category?.split(" / ");
   const [categoryId, setCategoryId] = useState("earrings");
+
 
   // Initialize ParentCategoryId
   useEffect(() => {
@@ -55,9 +61,9 @@ const ProductDetailsBreadcrumb = ({ category, title, parentSlug }) => {
                     style={{ cursor: "pointer" }}
                   >
                     / {categories[0]}
-                  </span>
+                  </span>{" "}
                   {/* <Link href="/shop"> {categories[0]}</Link>{" "} */}
-                  {categories[1] && (
+                  {parentCat[0].name && (
                     <span
                     // onClick={() => {
                     //   if (categories[1] === "Gift Card") {
@@ -71,7 +77,7 @@ const ProductDetailsBreadcrumb = ({ category, title, parentSlug }) => {
                     // }}
                     // style={{ cursor: "pointer" }}
                     >
-                      / {categories[1]}
+                      / {parentCat[0].name}
                     </span>
                   )}
                   {categories[2] && <span style={{}}>/ {categories[2]}</span>}

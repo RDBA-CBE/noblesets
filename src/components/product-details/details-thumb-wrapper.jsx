@@ -13,6 +13,7 @@ import { ArrowNextTwo, ArrowPrevTwo } from "@/svg";
 
 const DetailsThumbWrapper = ({ product, relatedClick }) => {
   const Router = useRouter();
+  const imgRef = useRef(null);
 
   const [activeImg, setActiveImg] = useState(product?.media[0] || "");
   const [loading, setLoading] = useState(false);
@@ -38,8 +39,37 @@ const DetailsThumbWrapper = ({ product, relatedClick }) => {
     };
   }, [isOpen]);
 
+  const handleOpenLightbox = (index) => {
+    // Scroll to top smoothly
+    window.scrollTo({ top: 0, behavior: "smooth" });
+
+    // Small delay to let scrolling start (optional, improves UX)
+    setTimeout(() => {
+      setPhotoIndex(index);
+      setIsOpen(true);
+    }, 100); // 100ms delay
+  };
+
   const handleImageActive = (item) => {
     setActiveImg(item);
+  };
+
+  const handleMouseMove = (e) => {
+    const img = imgRef.current;
+    const rect = e.currentTarget.getBoundingClientRect();
+    const x = ((e.clientX - rect.left) / rect.width) * 100; // x %
+    const y = ((e.clientY - rect.top) / rect.height) * 100; // y %
+
+    img.style.transformOrigin = `${x}% ${y}%`;
+    img.style.transform = "scale(1.6)"; // zoom level
+    img.style.transition = "transform 0.5s ease";
+  };
+
+  const handleMouseLeave = () => {
+    const img = imgRef.current;
+    img.style.transition = "transform 0.5s ease"; // slow zoom out
+    img.style.transform = "scale(1) translate(0, 0)";
+    img.style.transformOrigin = "center center";
   };
 
   const handleNavigationClicking = (direction) => {
@@ -262,26 +292,32 @@ const DetailsThumbWrapper = ({ product, relatedClick }) => {
               ) : (
                 <>
                   <div
-                    style={{ cursor: "zoom-in", borderRadius: "20px" }}
+                    style={{ borderRadius: "20px" }}
                     onClick={() => setIsOpen(true)}
                   >
                     {isImage(profilePic(activeImg?.url)) ? (
                       <figure
                         className="detail-single-image"
                         style={{ marginBottom: "0px", borderRadius: "20px" }}
+                        onMouseMove={handleMouseMove}
+                        onMouseLeave={handleMouseLeave}
                       >
+                        
+
                         <img
+                          ref={imgRef}
                           className="product-details-image"
-                          // src="/assets/img/blog.webp"
+                          src={activeImg?.url}
+                          alt={activeImg?.alt || "product image"}
                           description={activeImg?.description}
                           caption={activeImg?.caption}
                           title={activeImg?.title}
-                          src={profilePic(activeImg?.url)}
-                          alt={activeImg.alt}
                           onLoad={() => setLoading(false)}
                           onError={() => setLoading(false)}
+                          onClick={() => handleOpenLightbox(0)}
                           style={{ borderRadius: "20px" }}
                         />
+
                         {/* <img
                           className="product-details-image"
                           description={activeImg?.description}
@@ -405,11 +441,12 @@ const DetailsThumbWrapper = ({ product, relatedClick }) => {
             style={{
               position: "absolute",
               left: "40px",
-              top: "100px",
+              top: "15%",
               transform: "translateY(-50%)",
               display: "flex",
               flexDirection: "column",
               gap: "10px",
+              marginTop:"20px"
             }}
           >
             {product?.media?.map((item, idx) => (
@@ -435,7 +472,7 @@ const DetailsThumbWrapper = ({ product, relatedClick }) => {
 
           {/* Prev Button */}
           <button
-          className="action-btn-le"
+            className="action-btn-le"
             onClick={handleLightboxPrev}
             style={{
               fontSize: "15px",
@@ -491,7 +528,7 @@ const DetailsThumbWrapper = ({ product, relatedClick }) => {
 
           {/* Next Button */}
           <button
-          className="action-btn-ri"
+            className="action-btn-ri"
             onClick={handleLightboxNext}
             style={{
               fontSize: "15px",
