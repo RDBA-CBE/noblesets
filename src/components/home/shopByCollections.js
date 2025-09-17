@@ -1,12 +1,13 @@
 "use client";
 
-import React, { useRef } from "react";
+import React, { useEffect, useRef } from "react";
 import { Swiper, SwiperSlide } from "swiper/react";
 import { Navigation } from "swiper";
 import "swiper/css";
 import "swiper/css/navigation";
 import { ArrowNextSm, ArrowPrevSm } from "@/svg";
 import { useRouter } from "next/router";
+import { useMaxPriceMutation } from "@/redux/features/productApi";
 
 const collections = [
   {
@@ -52,120 +53,147 @@ export default function ShopByCollections() {
   const prevRef = useRef(null);
   const nextRef = useRef(null);
 
-  const router = useRouter()
+    const [maximumPrice] = useMaxPriceMutation();
+  
+
+  const router = useRouter();
+
+  useEffect(() => {
+    getProductMaxPrice();
+  }, []);
+
+  const getProductMaxPrice = () => {
+    maximumPrice({
+      filter: {
+        categorySlugs: "rings",
+      },
+      first: 1,
+      sortBy: { direction: "DESC", field: "PRICE" },
+    }).then((res) => {
+      console.log("✌️res --->", res);
+      const list = res.data?.data?.productsSearch?.edges;
+    });
+  };
 
   return (
     <section className="pt-60 ShopByCollections position-relative" 
     // style={{ backgroundColor: "#f6e9d9" }}
     >
       <div className="">
-      <div className="section-wd d-flex flex-column flex-md-row justify-content-between align-items-start align-items-md-center shp-by-col" style={{padding:"0 95px"}}>
-        <div className=" mb-md-0">
-          <div className="mb-0 mb-md-5" >
-            <h5 className="sub-ti ps-2"><b className="pe-1">✦ </b>Defined elegance</h5>
-            <h4
-              className="feature-adipisicing main-ti"
-              
+        <div
+          className="section-wd d-flex flex-column flex-md-row justify-content-between align-items-start align-items-md-center shp-by-col"
+          style={{ padding: "0 95px" }}
+        >
+          <div className=" mb-md-0">
+            <div className="mb-0 mb-md-5">
+              <h5 className="sub-ti ps-2">
+                <b className="pe-1">✦ </b>Defined elegance
+              </h5>
+              <h4 className="feature-adipisicing main-ti">
+                Shop by Collections
+              </h4>
+            </div>
+          </div>
+          <div className="d-flex mt-2 mt-md-0 shp-nav">
+            <button
+              ref={prevRef}
+              className="btn btn-sm rounded-3  me-2"
+              style={{
+                backgroundColor: "#e6a285",
+                color: "white",
+                fontSize: "15px",
+                // fontWeight: "bold",
+                padding: "5px 10px",
+              }}
             >
-              Shop by Collections
-            </h4>
+              <ArrowPrevSm />
+            </button>
+            <button
+              ref={nextRef}
+              className="btn btn-sm rounded-3 "
+              style={{
+                backgroundColor: "#e6a285",
+                color: "white",
+                fontSize: "15px",
+                // fontWeight: "bold",
+                padding: "5px 10px",
+              }}
+            >
+              <ArrowNextSm />
+            </button>
           </div>
         </div>
-        <div className="d-flex mt-2 mt-md-0 shp-nav">
-          <button
-            ref={prevRef}
-            className="btn btn-sm rounded-3  me-2"
-            style={{
-             background: "linear-gradient(180deg, #9b5d34, #7a4525)",
-              color: "white",
-              fontSize: "15px",
-              // fontWeight: "bold",
-              padding:"5px 10px"
-            }}
-          >
-             <ArrowPrevSm />
-          </button>
-          <button
-            ref={nextRef}
-            className="btn btn-sm rounded-3 "
-            style={{
-             
-             background: "linear-gradient(180deg, #9b5d34, #7a4525)",
-              color: "white",
-              fontSize: "15px",
-              // fontWeight: "bold",
-              padding:"5px 10px"
-            }}
-          >
-            <ArrowNextSm />
-          </button>
-        </div>
-      </div>
 
-      {/* Swiper Carousel */}
-      <div className="position-relative d-flex flex-wrap align-items-stretch collect-subbg">
-        <Swiper
-          modules={[Navigation]}
-          // spaceBetween={30}
-          slidesPerView={1.1}
-          slidesOffsetAfter={16}
-          slidesOffsetBefore={0}
-          onInit={(swiper) => {
-            swiper.params.navigation.prevEl = prevRef.current;
-            swiper.params.navigation.nextEl = nextRef.current;
-            swiper.navigation.init();
-            swiper.navigation.update();
-          }}
-          breakpoints={{
-            0: { slidesPerView: 1.1 },
-            576: { slidesPerView: 2 },
-            768: { slidesPerView: 3 },
-            992: { slidesPerView: 4 },
-          }}
-        >
-          {collections.map((item, index) => (
-            <SwiperSlide key={index}>
-              <div className="card border-0 h-100 shadow-sm ">
-                <img
-                  src={item.img}
-                  className="card-img-top cursor-pointer"
-                  alt={item.title}
-                  style={{
-                    objectFit: "cover",
-                    // height: "260px",
-                    borderRadius: "20px",
-                  }}
-                  onClick={() => {
-                  
-                 router.push("/shop");
-                  }}
-                />
-                <div className="card-body text-center pb-0">
-                  <p className="text-white mb-3 mt-40 cursor-pointer" style={{fontSize:"18px"}}>{item.desc}</p>
-                  <h5
-                    className=" mb-3 cursor-pointer"
+        {/* Swiper Carousel */}
+        <div className="position-relative d-flex flex-wrap align-items-stretch">
+          <Swiper
+            modules={[Navigation]}
+            // spaceBetween={30}
+            slidesPerView={1.1}
+            slidesOffsetAfter={16}
+            slidesOffsetBefore={0}
+            onInit={(swiper) => {
+              swiper.params.navigation.prevEl = prevRef.current;
+              swiper.params.navigation.nextEl = nextRef.current;
+              swiper.navigation.init();
+              swiper.navigation.update();
+            }}
+            breakpoints={{
+              0: { slidesPerView: 1.1 },
+              576: { slidesPerView: 2 },
+              768: { slidesPerView: 3 },
+              992: { slidesPerView: 4 },
+            }}
+          >
+            {collections.map((item, index) => (
+              <SwiperSlide key={index}>
+                <div className="card border-0 h-100 shadow-sm ">
+                  <img
+                    src={item.img}
+                    className="card-img-top cursor-pointer"
+                    alt={item.title}
                     style={{
-                      fontSize: "35px",
-                      fontWeight: "400",
-                      color:"#fff",
+                      objectFit: "cover",
+                      // height: "260px",
+                      borderRadius: "20px",
                     }}
                     onClick={() => {
-                  
-                 router.push("/shop");
-                  }}
-                  >
-                    {item.title}
-                  </h5>
-                  <p className="text-white" style={{fontSize:"18px", letterSpacing:"1px"}}> {item.price}</p>
+                      router.push("/shop");
+                    }}
+                  />
+                  <div className="card-body text-center pb-0">
+                    <p
+                      className="text-black mb-3 mt-40 cursor-pointer"
+                      style={{ fontSize: "18px" }}
+                    >
+                      {item.desc}
+                    </p>
+                    <h5
+                      className=" mb-3 cursor-pointer"
+                      style={{
+                        fontSize: "35px",
+                        fontWeight: "400",
+                      }}
+                      onClick={() => {
+                        router.push("/shop");
+                      }}
+                    >
+                      {item.title}
+                    </h5>
+                    <p
+                      className="text-black"
+                      style={{ fontSize: "18px", letterSpacing: "1px" }}
+                    >
+                      {" "}
+                      {item.price}
+                    </p>
+                  </div>
                 </div>
-              </div>
-            </SwiperSlide>
-          ))}
-        </Swiper>
+              </SwiperSlide>
+            ))}
+          </Swiper>
+        </div>
       </div>
-      </div>
-      
-      
     </section>
   );
 }
