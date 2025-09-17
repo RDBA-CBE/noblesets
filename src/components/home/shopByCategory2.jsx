@@ -3,19 +3,25 @@ import React, { useEffect, useState } from "react";
 
 const InstagramSection2 = () => {
   const router = useRouter();
+
+  const handleClick = (category) => {
+    router.push({
+      pathname: "/shop",
+      query: {
+        category: category.toLowerCase().replace("&", "").split(" ").join("-"),
+      },
+    });
+  };
   return (
     <>
-      <section className="pt-60 shopbycategory position-relative" >
+      <section className="pt-60 shopbycategory position-relative">
         <div className="row-container">
           <div className="row">
-            <div className="feature-main mb-50" >
-              <h5 className="sub-ti" ><b className="pe-2">✦</b>Curated choices</h5>
-              <h4
-                className="feature-adipisicing main-ti"
-               
-              >
-                Shop By Category
-              </h4>
+            <div className="feature-main mb-50">
+              <h5 className="sub-ti">
+                <b className="pe-2">✦</b>Curated choices
+              </h5>
+              <h4 className="feature-adipisicing main-ti">Shop By Category</h4>
             </div>
           </div>
 
@@ -27,17 +33,18 @@ const InstagramSection2 = () => {
                 alt="Pedants"
                 className="category-img"
                 onClick={() => {
-                  
-                 router.push("/shop");
-                  }}
-                
+                  router.push("/shop");
+                }}
               />
               <div className="category-button">
-                <button className="gradient-btn" onClick={() => {
-                  
-                  
-                 router.push("/shop");
-                  }}>✦ Pedants ✦</button>
+                <button
+                  className="gradient-btn"
+                  onClick={() => {
+                    router.push("/shop");
+                  }}
+                >
+                  ✦ Pedants ✦
+                </button>
               </div>
 
               <img
@@ -45,16 +52,18 @@ const InstagramSection2 = () => {
                 alt="Rings"
                 className="category-img mt-3 img-2"
                 onClick={() => {
-                  
-                 router.push("/shop");
-                  }}
+                  handleClick("Rings");
+                }}
               />
               <div className="category-button">
-                <button className="gradient-btn" onClick={() => {
-                  
-                  
-                 router.push("/shop");
-                  }}>✦ Rings ✦</button>
+                <button
+                  className="gradient-btn"
+                  onClick={() => {
+                    handleClick("Rings");
+                  }}
+                >
+                  ✦ Rings ✦
+                </button>
               </div>
             </div>
 
@@ -65,16 +74,18 @@ const InstagramSection2 = () => {
                 alt="Bangles"
                 className="category-img"
                 onClick={() => {
-                  
-                 router.push("/shop");
-                  }}
+                  handleClick("Bangle");
+                }}
               />
               <div className="category-button">
-                <button className="gradient-btn" onClick={() => {
-                  
-                  
-                 router.push("/shop");
-                  }}>✦ Bangles ✦</button>
+                <button
+                  className="gradient-btn"
+                  onClick={() => {
+                    handleClick("Bangle");
+                  }}
+                >
+                  ✦ Bangles ✦
+                </button>
               </div>
             </div>
 
@@ -85,16 +96,18 @@ const InstagramSection2 = () => {
                 alt="Nosepin"
                 className="category-img"
                 onClick={() => {
-                  
-                 router.push("/shop");
-                  }}
+                  router.push("/shop");
+                }}
               />
               <div className="category-button">
-                <button className="gradient-btn" onClick={() => {
-                  
-                  
-                 router.push("/shop");
-                  }}>✦ Nosepin ✦</button>
+                <button
+                  className="gradient-btn"
+                  onClick={() => {
+                    router.push("/shop");
+                  }}
+                >
+                  ✦ Nosepin ✦
+                </button>
               </div>
 
               <img
@@ -102,16 +115,18 @@ const InstagramSection2 = () => {
                 alt="Necklace"
                 className="category-img mt-3 img-2"
                 onClick={() => {
-                  
-                 router.push("/shop");
-                  }}
+                  handleClick("Necklace");
+                }}
               />
               <div className="category-button">
-                <button className="gradient-btn" onClick={() => {
-                  
-                  
-                 router.push("/shop");
-                  }}>✦ Necklace ✦</button>
+                <button
+                  className="gradient-btn"
+                  onClick={() => {
+                    handleClick("Necklace");
+                  }}
+                >
+                  ✦ Necklace ✦
+                </button>
               </div>
             </div>
 
@@ -121,17 +136,19 @@ const InstagramSection2 = () => {
                 src="/assets/img/home/shop_by_category/img-6.png"
                 alt="Chains"
                 className="category-img"
-               onClick={() => {
-                  
-                 router.push("/shop");
-                  }}
+                onClick={() => {
+                  handleClick("Chain");
+                }}
               />
               <div className="category-button">
-                <button className="gradient-btn" onClick={() => {
-                  
-                  
-                 router.push("/shop");
-                  }}>✦ Chains ✦</button>
+                <button
+                  className="gradient-btn"
+                  onClick={() => {
+                    handleClick("Chain");
+                  }}
+                >
+                  ✦ Chains ✦
+                </button>
               </div>
             </div>
 
@@ -142,16 +159,18 @@ const InstagramSection2 = () => {
                 alt="Nosepin"
                 className="category-img"
                 onClick={() => {
-                  
-                 router.push("/shop");
-                  }}
+                  handleClick("Bangle");
+                }}
               />
               <div className="category-button">
-                <button className="gradient-btn" onClick={() => {
-                  
-                  
-                 router.push("/shop");
-                  }}>✦ Bangles ✦</button>
+                <button
+                  className="gradient-btn"
+                  onClick={() => {
+                    handleClick("Bangle");
+                  }}
+                >
+                  ✦ Bangles ✦
+                </button>
               </div>
 
               <img
@@ -159,16 +178,18 @@ const InstagramSection2 = () => {
                 alt="Necklace"
                 className="category-img mt-3 img-2"
                 onClick={() => {
-                  
-                 router.push("/shop");
-                  }}
+                  handleClick("Chain");
+                }}
               />
               <div className="category-button">
-                <button className="gradient-btn" onClick={() => {
-                  
-                  
-                 router.push("/shop");
-                  }}>✦ Chains ✦</button>
+                <button
+                  className="gradient-btn"
+                  onClick={() => {
+                    handleClick("Chain");
+                  }}
+                >
+                  ✦ Chains ✦
+                </button>
               </div>
             </div>
 
@@ -176,47 +197,46 @@ const InstagramSection2 = () => {
             <div className="col-1-5 coloumn-5 coloumn-5-new">
               <div>
                 <img
-                src="/assets/img/home/shop_by_category/img-7.png"
-                alt="Nosepin 2"
-                className="category-img"
-                onClick={() => {
-                  
-                 router.push("/shop");
+                  src="/assets/img/home/shop_by_category/img-7.png"
+                  alt="Nosepin 2"
+                  className="category-img"
+                  onClick={() => {
+                    handleClick("earring");
                   }}
-              />
-              <div className="category-button">
-                <button className="gradient-btn" onClick={() => {
-                  
-                  
-                 router.push("/shop");
-                  }}>✦ Bracelet ✦</button>
+                />
+                <div className="category-button">
+                  <button
+                    className="gradient-btn"
+                    onClick={() => {
+                      handleClick("earring");
+                    }}
+                  >
+                    ✦ Bracelet ✦
+                  </button>
+                </div>
               </div>
-              </div>
-              
-                
+
               <div>
                 <img
-                src="/assets/img/home/shop_by_category/img-8.png"
-                alt="Necklace 2"
-                className="category-img mt-0 mt-xl-3 img-2"
-               onClick={() => {
-                  
-                 router.push("/shop");
+                  src="/assets/img/home/shop_by_category/img-8.png"
+                  alt="Necklace 2"
+                  className="category-img mt-0 mt-xl-3 img-2"
+                  onClick={() => {
+                    handleClick("Earring");
                   }}
-              />
-              <div className="category-button">
-                <button className="gradient-btn" 
-                onClick={() => {
-                  
-                  
-                 router.push("/shop");
-                  }}>✦ Earrings ✦</button>
+                />
+                <div className="category-button">
+                  <button
+                    className="gradient-btn"
+                    onClick={() => {
+                      handleClick("Earring");
+                    }}
+                  >
+                    ✦ Earrings ✦
+                  </button>
+                </div>
               </div>
-              </div>
-              
             </div>
-
-            
           </div>
         </div>
       </section>

@@ -17,7 +17,7 @@ import MenusProductSlider from "./menus-product-slider";
 import { HomeTwoPopularPrdLoader } from "@/components/loader";
 import CommonImage from "../../../../public/assets/img/earring-menu-pic-1.png";
 import Loader from "../../../components/loader/loader";
-import { useDispatch } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import { filterData } from "@/redux/features/shop-filter-slice";
 import { useSetState } from "@/utils/functions";
 
@@ -264,8 +264,16 @@ const Menus = () => {
   const dispatch = useDispatch();
   const [lastHoveredCategory, setLastHoveredCategory] = useState("necklaces");
 
+  const filterByHomePage = useSelector(
+    (state) => state.shopFilter.filterByHomePage
+  );
+
   useEffect(() => {
-    dispatch(filterData({}));
+    if (filterByHomePage) {
+      dispatch(filterData(filterByHomePage));
+    } else {
+      dispatch(filterData({}));
+    }
   }, [router]);
 
   useEffect(() => {
@@ -316,7 +324,6 @@ const Menus = () => {
   };
 
   const SubCatProduct = async (item) => {
-
     const res = await priceFilter({
       filter: { categorySlugs: item?.slug },
       sortBy: { direction: "DESC", field: "CREATED_AT" },
@@ -338,7 +345,7 @@ const Menus = () => {
         <Link
           href="/shop"
           style={{ fontWeight: "500", color: "black" }}
-          onMouseEnter={() => hoverCategoryProduct("necklaces") }
+          onMouseEnter={() => hoverCategoryProduct("necklaces")}
         >
           Collections
         </Link>
@@ -482,11 +489,11 @@ const Menus = () => {
         </Link>
       </li>
       {/* {state.token && ( */}
-        <li>
-          <Link href="/gift-card" style={{ fontWeight: "500", color: "black" }}>
-            Gift Card
-          </Link>
-        </li>
+      <li>
+        <Link href="/gift-card" style={{ fontWeight: "500", color: "black" }}>
+          Gift Card
+        </Link>
+      </li>
       {/* )} */}
     </ul>
   );

@@ -17,7 +17,7 @@ import MenusProductSlider from "./menus-product-slider";
 import { HomeTwoPopularPrdLoader } from "@/components/loader";
 import CommonImage from "../../../../public/assets/img/earring-menu-pic-1.png";
 import Loader from "../../../components/loader/loader";
-import { useDispatch } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import { filterData } from "@/redux/features/shop-filter-slice";
 import { useSetState } from "@/utils/functions";
 import MenusProductSlider1 from "./menus-product-slider1";
@@ -326,9 +326,18 @@ const Menus1 = () => {
   const dispatch = useDispatch();
   const [lastHoveredCategory, setLastHoveredCategory] = useState("necklaces");
 
-  useEffect(() => {
-    dispatch(filterData({}));
-  }, [router]);
+  const filterByHomePage = useSelector(
+     (state) => state.shopFilter.filterByHomePage
+   );
+ 
+   useEffect(() => {
+     if (filterByHomePage) {
+       dispatch(filterData(filterByHomePage));
+     } else {
+       dispatch(filterData({}));
+     }
+   }, [router]);
+ 
 
   useEffect(() => {
     categoryList();

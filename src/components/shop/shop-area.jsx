@@ -12,7 +12,7 @@ import ShopTopLeft from "./shop-top-left";
 import ShopTopRight from "./shop-top-right";
 import ResetButton from "./shop-filter/reset-button";
 import { useDispatch, useSelector } from "react-redux";
-import { filterData } from "@/redux/features/shop-filter-slice";
+import { filterByHomePage, filterData } from "@/redux/features/shop-filter-slice";
 import Link from "next/link";
 import { useRouter } from "next/router";
 import { objIsEmpty } from "../../utils/functions";
@@ -69,6 +69,8 @@ const ShopArea = ({
       // Update the filter state
       const updatedFilter = { ...filter, price: updatedPriceFilter };
       dispatch(filterData(updatedFilter));
+      dispatch(filterByHomePage(updatedFilter));
+
     }
     // Remove attribute filter
     else if (filterType === "attribute") {
@@ -88,6 +90,7 @@ const ShopArea = ({
       // Update the filter state
       const updatedFilter = { ...filter, attributes: updatedAttributes };
       dispatch(filterData(updatedFilter));
+
     }
   };
 

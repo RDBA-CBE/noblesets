@@ -1,9 +1,13 @@
 import { usePriceRangeMutation } from "@/redux/features/productApi";
+import { filterByHomePage } from "@/redux/features/shop-filter-slice";
 import { addCommasToNumber } from "@/utils/functions";
 import { useRouter } from "next/router";
 import React, { useEffect, useState } from "react";
+import { useDispatch } from "react-redux";
 
 export default function ShopByBudget() {
+  const dispatch = useDispatch();
+
   // const budgetItems = [
   //   { label: "₹5000", img: "/assets/img/home/shopByBudget/nimg-1.png" },
   //   { label: "₹15000", img: "/assets/img/home/shopByBudget/nimg-2.png" },
@@ -18,6 +22,7 @@ export default function ShopByBudget() {
   }, [router]);
 
   const [budgetItems, setBudgetItems] = useState([]);
+  const [maxPrice, setMaxPrice] = useState(0);
 
   useEffect(() => {
     getProductMaxPrice();
@@ -33,7 +38,7 @@ export default function ShopByBudget() {
           const maxPrice =
             res.data.data.productsReverse.edges[0]?.node.pricing.priceRange.stop
               .gross.amount;
-
+          setMaxPrice(maxPrice);
           const midPrice = Math.round((minPrice + maxPrice) / 2);
 
           const budgetItems = [
@@ -77,6 +82,15 @@ export default function ShopByBudget() {
               }  new-budget-card-${idx + 1}`}
               key={idx}
               onClick={() => {
+                dispatch(
+                  filterByHomePage({
+                    price: {
+                      min: item.label.replace(/[^0-9]/g, ""),
+                      max: maxPrice,
+                    },
+                  })
+                );
+
                 router.push("/shop");
               }}
             >

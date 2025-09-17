@@ -17,10 +17,9 @@ import {
 import ShopFilterOffCanvas from "@/components/common/shop-filter-offcanvas";
 import shopBanner from "../../public/assets/img/header-bg.png";
 import { useDispatch, useSelector } from "react-redux";
+import { useCreateCheckoutTokenWithoutEmailMutation } from "@/redux/features/card/cardApi";
 import {
-  useCreateCheckoutTokenWithoutEmailMutation,
-} from "@/redux/features/card/cardApi";
-import {
+  filterByHomePage,
   filterData,
   handleFilterSidebarClose,
 } from "@/redux/features/shop-filter-slice";
@@ -41,6 +40,10 @@ const ShopPage = () => {
   const router = useRouter();
 
   const filter = useSelector((state) => state.shopFilter.filterData);
+
+  const filterByHomePages = useSelector(
+    (state) => state.shopFilter.filterByHomePage
+  );
 
   const [after, setAfter] = useState(null);
   const [before, setBefore] = useState(null);
@@ -72,6 +75,20 @@ const ShopPage = () => {
   const categoryId = router?.query?.category;
 
   const PAGE_LIMIT = 20;
+
+  useEffect(() => {
+    if (filterByHomePages) {
+      dispatch(
+        filterData({
+          price: filterByHomePages?.price,
+        })
+      ); // Dispatching the current checked state
+    }
+  }, [filterByHomePages, router]);
+
+  //  useEffect(() => {
+  //   dispatch(filterData({}));
+  // }, [router]);
 
   const commonFilter = () => {
     let filters = {};
@@ -278,10 +295,6 @@ const ShopPage = () => {
   }, [filter]);
 
   useEffect(() => {
-    dispatch(filterData({}));
-  }, [router]);
-
-  useEffect(() => {
     if (categoryId) {
       filterByCategory();
     }
@@ -342,6 +355,7 @@ const ShopPage = () => {
 
   const getProductMaxPrice = () => {
     const filter = commonFilter();
+    console.log("getProductMaxPrice --->", filter);
     maximumPrice({
       filter,
       first: 1,
@@ -351,7 +365,11 @@ const ShopPage = () => {
       if (list?.length > 0) {
         const maxPrice =
           list[0]?.node?.pricing?.priceRange?.start?.gross?.amount;
-        setPriceValue([0, maxPrice]);
+        if (filterByHomePages?.price?.min) {
+          setPriceValue([filterByHomePages?.price?.min, maxPrice]);
+        } else {
+          setPriceValue([0, maxPrice]);
+        }
         setInitialMaxPrice(maxPrice);
         setMaxPrice(maxPrice);
       } else {
@@ -538,6 +556,8 @@ const ShopPage = () => {
 
       // const listd = [...filteredList, body];
       dispatch(filterData(filteredList));
+      dispatch(filterByHomePage(null));
+
       setPriceValue([priceValue[0], priceValue[1]]);
       setFilterList([...filterList, price]);
       dispatch(handleFilterSidebarClose());
@@ -827,116 +847,116 @@ const ShopPage = () => {
   return (
     <Wrapper>
       <SEO pageTitle="Shop" />
-      <HeaderSection/>
-      <div style={{background:"#fff9f4"}}>
-      <div className="section-wd">
-      <ShopBreadcrumb
-        title={shopTitle}
-        parentSlug={parentSlug}
-        // title="Shop"
-        subtitle="Shop"
-        bgImage={shopBanner}
-        catList={categoryList}
-        product={productList}
-      />
-      </div>
-      {/* {isLoading || categoryLoading || filterLoading ? (
+      <HeaderSection />
+      <div style={{ background: "#fff9f4" }}>
+        <div className="section-wd">
+          <ShopBreadcrumb
+            title={shopTitle}
+            parentSlug={parentSlug}
+            // title="Shop"
+            subtitle="Shop"
+            bgImage={shopBanner}
+            catList={categoryList}
+            product={productList}
+          />
+        </div>
+        {/* {isLoading || categoryLoading || filterLoading ? (
         <ShopLoader loading={isLoading} />
       ) : (
         <> */}
-      <ShopArea
-        all_products={productList}
-        products={productList}
-        otherProps={otherProps}
-        parentSlug={parentSlug}
-        productLoading={
-          productLoadings ||
-          productPagiLoading ||
-          filterLoading ||
-          shopPaginationLoading
-        }
-        updateData={() => {}}
-        subtitle={shopTitle}
-        updateRange={(range) => handleChanges(range)}
-        maxPrice={maxPrice}
-        totalCount={totalCount}
-        page={currentPage}
-        // clearFilter={() => {
-        //   if (categoryId || router?.query?.tag) {
-        //     refreshFilterData(sortBy);
-        //   } else {
-        //     refresh();
-        //   }
-        //   dispatch(filterData({}));
-        //   setPriceValue([0, initialMaxPrice]);
-        //   setInitialMaxPrice(initialMaxPrice);
-        //   dispatch(handleFilterSidebarClose());
-        //   filterOption();
-        // }}
-
-        clearFilter={() => {
-          if (categoryId || router?.query?.tag) {
-            refreshFilterData(sortBy);
-          } else {
-            refresh();
+        <ShopArea
+          all_products={productList}
+          products={productList}
+          otherProps={otherProps}
+          parentSlug={parentSlug}
+          productLoading={
+            productLoadings ||
+            productPagiLoading ||
+            filterLoading ||
+            shopPaginationLoading
           }
-          dispatch(filterData({}));
-          setPriceValue([0, initialMaxPrice]);
-          setInitialMaxPrice(initialMaxPrice);
-          dispatch(handleFilterSidebarClose());
-          filterOption();
-        }}
-      />
-      {productList?.length > 0 &&
-        !productLoadings &&
-        !productPagiLoading &&
-        !filterLoading &&
-        !shopPaginationLoading && (
-          <div>
-            <div
-              className="mb-0 "
-              style={{
-                display: "flex",
-                justifyContent: "center",
-                alignItems: "center",
-              }}
-            >
-              <Pagination
-                activeNumber={handlePageChange}
-                totalPages={totalPages}
-                currentPages={currentPage}
-              />
+          updateData={() => {}}
+          subtitle={shopTitle}
+          updateRange={(range) => handleChanges(range)}
+          maxPrice={maxPrice}
+          totalCount={totalCount}
+          page={currentPage}
+          // clearFilter={() => {
+          //   if (categoryId || router?.query?.tag) {
+          //     refreshFilterData(sortBy);
+          //   } else {
+          //     refresh();
+          //   }
+          //   dispatch(filterData({}));
+          //   setPriceValue([0, initialMaxPrice]);
+          //   setInitialMaxPrice(initialMaxPrice);
+          //   dispatch(handleFilterSidebarClose());
+          //   filterOption();
+          // }}
+
+          clearFilter={() => {
+            if (categoryId || router?.query?.tag) {
+              refreshFilterData(sortBy);
+            } else {
+              refresh();
+            }
+            dispatch(filterData({}));
+            setPriceValue([0, initialMaxPrice]);
+            setInitialMaxPrice(initialMaxPrice);
+            dispatch(handleFilterSidebarClose());
+            filterOption();
+          }}
+        />
+        {productList?.length > 0 &&
+          !productLoadings &&
+          !productPagiLoading &&
+          !filterLoading &&
+          !shopPaginationLoading && (
+            <div>
+              <div
+                className="mb-0 "
+                style={{
+                  display: "flex",
+                  justifyContent: "center",
+                  alignItems: "center",
+                }}
+              >
+                <Pagination
+                  activeNumber={handlePageChange}
+                  totalPages={totalPages}
+                  currentPages={currentPage}
+                />
+              </div>
             </div>
-          </div>
-        )}
+          )}
 
-      <ShopFilterOffCanvas
-        all_products={products}
-        otherProps={otherProps}
-        filterByPrice={(val) => filterByPrice("priceRange")}
-        maxPrice={maxPrice}
-        resetFilter={() => {
-          if (categoryId || router?.query?.tag) {
-            refreshFilterData(sortBy);
-          } else {
-            refresh();
-          }
-          dispatch(filterData({}));
-          setPriceValue([0, initialMaxPrice]);
-          setInitialMaxPrice(initialMaxPrice);
-          dispatch(handleFilterSidebarClose());
-          filterOption();
-        }}
-        // design={productDesigns}
-        // finish={productFinishes}
-        // stoneType={productStoneTypes}
-        // style={productStyles}
-        attributeList={attributeList}
-      />
-
+        <ShopFilterOffCanvas
+          all_products={products}
+          otherProps={otherProps}
+          filterByPrice={(val) => filterByPrice("priceRange")}
+          maxPrice={maxPrice}
+          resetFilter={() => {
+            if (categoryId || router?.query?.tag) {
+              refreshFilterData(sortBy);
+            } else {
+              refresh();
+            }
+            dispatch(filterData({}));
+            dispatch(filterByHomePage(null));
+            setPriceValue([0, initialMaxPrice]);
+            setInitialMaxPrice(initialMaxPrice);
+            dispatch(handleFilterSidebarClose());
+            filterOption();
+          }}
+          // design={productDesigns}
+          // finish={productFinishes}
+          // stoneType={productStoneTypes}
+          // style={productStyles}
+          attributeList={attributeList}
+        />
       </div>
-      
-       <HomeFooter />
+
+      <HomeFooter />
       {/* </>
       )} */}
     </Wrapper>
