@@ -15,7 +15,7 @@ import ErrorMsg from "@/components/common/error-msg";
 import HeaderSection from "@/components/home/headerSection";
 import Link from "next/link";
 import ShopBreadcrumb from "@/components/breadcrumb/shop-breadcrumb";
-import shopBanner from "../../public/assets/img/header-bg.png";
+import shopBanner from "../../public/assets/img/header-bg.webp";
 
 export default function GiftCart() {
   const {
@@ -102,7 +102,7 @@ export default function GiftCart() {
             parentSlug={parentSlug}
           />
         ) : ( */}
-      <div className="container-fluid tp-compare-area pb-50 pt-50" style={{background:"#fff9f4"}}>
+      <div className="container-fluid tp-compare-area pb-50 pt-50" style={{background:"#f6e9d9"}}>
         <div className="row">
           <div className="col-xl-12">
             <div className="text-center pt-0 pb-0 pt-md-50 pb-md-50 ">
@@ -131,7 +131,7 @@ export default function GiftCart() {
         BgImage={banner}
         parentSlug={parentSlug}
       /> */}
-      <div style={{background:"#fff9f4"}}>
+      <div style={{background:"#f6e9d9"}}>
       <div className="section-wd">
       <ShopBreadcrumb
         title="Gift Card"
@@ -155,7 +155,7 @@ export default function GiftCart() {
           parentSlug={parentSlug}
         />
       ) : (
-        <div className="container-fluid tp-compare-area pb-50 pt-50" style={{background:"#fff9f4"}}>
+        <div className="container-fluid tp-compare-area pb-50 pt-50" style={{background:"#f6e9d9"}}>
           <div className="row">
             <div className="col-xl-12">
               <div className="text-center pt-0 pb-0 pt-md-50 pb-md-50 ">

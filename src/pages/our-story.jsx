@@ -5,7 +5,7 @@ import StorySec from "@/components/our-story/StorySec";
 import ShopBreadcrumb from "@/components/breadcrumb/shop-breadcrumb";
 import HomeFooter from "@/components/home/HomeFooter";
 import HeaderSection from "@/components/home/headerSection";
-import shopBanner from "@assets/img/header-bg.png";
+import shopBanner from "@assets/img/header-bg.webp";
 
 
 
@@ -15,7 +15,7 @@ const OurStory = () => {
           <SEO pageTitle="Our Story" />
           {/* <HeaderTwo style_2={true} /> */}
           <HeaderSection />
-           <div style={{background:"#fff9f4"}}>
+           <div style={{background:"#f6e9d9"}}>
           <div className="section-wd">
           <ShopBreadcrumb
             title="Our Story"

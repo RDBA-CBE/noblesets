@@ -27,7 +27,7 @@
             color: #49535B;
             
             & a{
-                color: #b4633a;
+                color: #a44100;
                 position: relative;
                 display: inline-block;
 
@@ -185,7 +185,7 @@
                 & ~ label{
                     &::after{
                         background: linear-gradient(to right, color-mix(in srgb, #fbdccc 40%, #e09a7a), #e09a7a);;
-                        border-color: #b4633a;
+                        border-color: #a44100;
                     }
                     &::before{
                         visibility: visible;
@@ -231,7 +231,7 @@
 
             & a{
                 &:hover{
-                    color: #b4633a;
+                    color: #a44100;
                 }
             }
 
@@ -244,7 +244,7 @@
         & a{
             font-weight: 400;
             font-size: 15px;
-            color: #b4633a;
+            color: #a44100;
             position: relative;
             display: inline-block;
 
@@ -274,7 +274,7 @@
         font-size: 16px;
         color: white;
         background: linear-gradient(to right, color-mix(in srgb, #fbdccc 40%, #e09a7a), #e09a7a);;
-        border: 1px solid #b4633a;
+        border: 1px solid #a44100;
         padding: 14px 30px;
         text-align: center;
         display: inline-block;

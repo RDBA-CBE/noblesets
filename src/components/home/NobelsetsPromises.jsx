@@ -3,7 +3,7 @@ import React from "react";
 export default function NobelsetsPromises() {
   return (
     <div className="pt-60 NobelsetsPromises position-relative"  
-    // style={{ backgroundColor: "#fff9f4" }}
+    // style={{ backgroundColor: "#f6e9d9" }}
     >
       <div className="section-wd">
       <div class="container-fluid pb-50">
@@ -29,7 +29,7 @@ export default function NobelsetsPromises() {
                     style={{ backgroundColor: "#f5e7db" }}
                   >
                     <img
-                      src="/assets/img/home/nobletset_promises/ic-1.png"
+                      src="/assets/img/home/nobletset_promises/ic-1.webp"
                       alt="Diamond"
                       width="48"
                     />
@@ -42,7 +42,7 @@ export default function NobelsetsPromises() {
                     style={{ backgroundColor: "#f5e7db" }}
                   >
                     <img
-                      src="/assets/img/home/nobletset_promises/ic-7.png"
+                      src="/assets/img/home/nobletset_promises/ic-7.webp"
                       alt="Exchange"
                      width="48"
                     />
@@ -55,7 +55,7 @@ export default function NobelsetsPromises() {
                     style={{ backgroundColor: "#f5e7db" }}
                   >
                     <img
-                      src="/assets/img/home/nobletset_promises/ic-6.png"
+                      src="/assets/img/home/nobletset_promises/ic-6.webp"
                       alt="Return"
                       width="48"
                     />
@@ -68,7 +68,7 @@ export default function NobelsetsPromises() {
                     style={{ backgroundColor: "#f5e7db" }}
                   >
                     <img
-                      src="/assets/img/home/nobletset_promises/ic-5.png"
+                      src="/assets/img/home/nobletset_promises/ic-5.webp"
                       alt="Shipping"
                       width="48"
                     />
@@ -84,7 +84,7 @@ export default function NobelsetsPromises() {
                     style={{ backgroundColor: "#f5e7db" }}
                   >
                     <img
-                      src="/assets/img/home/nobletset_promises/ic-4.png"
+                      src="/assets/img/home/nobletset_promises/ic-4.webp"
                       alt="Warranty"
                       width="48"
                     />
@@ -97,7 +97,7 @@ export default function NobelsetsPromises() {
                     style={{ backgroundColor: "#f5e7db" }}
                   >
                     <img
-                    src="/assets/img/home/nobletset_promises/ic-3.png"
+                    src="/assets/img/home/nobletset_promises/ic-3.webp"
                       
                       alt="Buyers"
                       width="48"
@@ -111,7 +111,7 @@ export default function NobelsetsPromises() {
                     style={{ backgroundColor: "#f5e7db" }}
                   >
                     <img
-                    src="/assets/img/home/nobletset_promises/ic-2.png"
+                    src="/assets/img/home/nobletset_promises/ic-2.webp"
                       
                       alt="Hallmarked"
                       width="48"
@@ -125,7 +125,7 @@ export default function NobelsetsPromises() {
                     style={{ backgroundColor: "#f5e7db" }}
                   >
                     <img
-                      src="/assets/img/home/nobletset_promises/ic-8.png"
+                      src="/assets/img/home/nobletset_promises/ic-8.webp"
                       alt="Product"
                       // width="32"
                     />
@@ -140,7 +140,7 @@ export default function NobelsetsPromises() {
                     style={{ backgroundColor: "#f5e7db" }}
                   >
                     <img
-                      src="/assets/img/home/nobletset_promises/ic-1.png"
+                      src="/assets/img/home/nobletset_promises/ic-1.webp"
                       alt="Diamond"
                       width="48"
                     />
@@ -153,7 +153,7 @@ export default function NobelsetsPromises() {
                     style={{ backgroundColor: "#f5e7db" }}
                   >
                     <img
-                      src="/assets/img/home/nobletset_promises/ic-5.png"
+                      src="/assets/img/home/nobletset_promises/ic-5.webp"
                       alt="Warranty"
                       width="48"
                     />
@@ -166,7 +166,7 @@ export default function NobelsetsPromises() {
                     style={{ backgroundColor: "#f5e7db" }}
                   >
                     <img
-                      src="/assets/img/home/nobletset_promises/ic-2.png"
+                      src="/assets/img/home/nobletset_promises/ic-2.webp"
                       alt="Exchange"
                      width="48"
                     />
@@ -179,7 +179,7 @@ export default function NobelsetsPromises() {
                     style={{ backgroundColor: "#f5e7db" }}
                   >
                     <img
-                      src="/assets/img/home/nobletset_promises/ic-6.png"
+                      src="/assets/img/home/nobletset_promises/ic-6.webp"
                       alt="Buyers"
                       width="48"
                     />
@@ -192,7 +192,7 @@ export default function NobelsetsPromises() {
                     style={{ backgroundColor: "#f5e7db" }}
                   >
                     <img
-                      src="/assets/img/home/nobletset_promises/ic-3.png"
+                      src="/assets/img/home/nobletset_promises/ic-3.webp"
                       alt="Return"
                       width="48"
                     />
@@ -205,7 +205,7 @@ export default function NobelsetsPromises() {
                     style={{ backgroundColor: "#f5e7db" }}
                   >
                     <img
-                      src="/assets/img/home/nobletset_promises/ic-7.png"
+                      src="/assets/img/home/nobletset_promises/ic-7.webp"
                       alt="Hallmarked"
                       width="48"
                     />
@@ -218,7 +218,7 @@ export default function NobelsetsPromises() {
                     style={{ backgroundColor: "#f5e7db" }}
                   >
                     <img
-                      src="/assets/img/home/nobletset_promises/ic-4.png"
+                      src="/assets/img/home/nobletset_promises/ic-4.webp"
                       alt="Shipping"
                       width="48"
                     />
@@ -231,7 +231,7 @@ export default function NobelsetsPromises() {
                     style={{ backgroundColor: "#f5e7db" }}
                   >
                     <img
-                      src="/assets/img/home/nobletset_promises/ic-8.png"
+                      src="/assets/img/home/nobletset_promises/ic-8.webp"
                       alt="Product"
                       // width="32"
                     />

@@ -9,9 +9,11 @@ import {
   RightOutlined,
 } from "@ant-design/icons";
 import { useRouter } from "next/router";
+import { ArrowNextTwo, ArrowPrevTwo } from "@/svg";
 
 const DetailsThumbWrapper = ({ product, relatedClick }) => {
   const Router = useRouter();
+  const imgRef = useRef(null);
 
   const [activeImg, setActiveImg] = useState(product?.media[0] || "");
   const [loading, setLoading] = useState(false);
@@ -22,8 +24,52 @@ const DetailsThumbWrapper = ({ product, relatedClick }) => {
   const [startIndex, setStartIndex] = useState(0);
   const [hover, setHover] = useState(false);
 
+  useEffect(() => {
+    if (isOpen) {
+      // prevent background scroll
+      document.body.style.overflow = "hidden";
+    } else {
+      // restore scroll
+      document.body.style.overflow = "auto";
+    }
+
+    // cleanup when component unmounts
+    return () => {
+      document.body.style.overflow = "auto";
+    };
+  }, [isOpen]);
+
+  const handleOpenLightbox = (index) => {
+    // Scroll to top smoothly
+    window.scrollTo({ top: 0, behavior: "smooth" });
+
+    // Small delay to let scrolling start (optional, improves UX)
+    setTimeout(() => {
+      setPhotoIndex(index);
+      setIsOpen(true);
+    }, 100); // 100ms delay
+  };
+
   const handleImageActive = (item) => {
     setActiveImg(item);
+  };
+
+  const handleMouseMove = (e) => {
+    const img = imgRef.current;
+    const rect = e.currentTarget.getBoundingClientRect();
+    const x = ((e.clientX - rect.left) / rect.width) * 100; // x %
+    const y = ((e.clientY - rect.top) / rect.height) * 100; // y %
+
+    img.style.transformOrigin = `${x}% ${y}%`;
+    img.style.transform = "scale(1.6)"; // zoom level
+    img.style.transition = "transform 0.5s ease";
+  };
+
+  const handleMouseLeave = () => {
+    const img = imgRef.current;
+    img.style.transition = "transform 0.5s ease"; // slow zoom out
+    img.style.transform = "scale(1) translate(0, 0)";
+    img.style.transformOrigin = "center center";
   };
 
   const handleNavigationClicking = (direction) => {
@@ -80,25 +126,23 @@ const DetailsThumbWrapper = ({ product, relatedClick }) => {
     return /\.(jpg|webp|jpeg|png|gif)$/i.test(url);
   };
 
-  const productImages=[
-   {
-    url:"/assets/img/blog.webp",
-   } ,
-   {
-    url:"/assets/img/blog.webp",
-   } ,
-   {
-    url:"/assets/img/blog.webp",
-   } ,
-   {
-    url:"/assets/img/blog.webp",
-   } ,
-   {
-    url:"/assets/img/blog.webp",
-   } 
-
-    
-  ]
+  const productImages = [
+    {
+      url: "/assets/img/blog.webp",
+    },
+    {
+      url: "/assets/img/blog.webp",
+    },
+    {
+      url: "/assets/img/blog.webp",
+    },
+    {
+      url: "/assets/img/blog.webp",
+    },
+    {
+      url: "/assets/img/blog.webp",
+    },
+  ];
 
   return (
     <>
@@ -167,98 +211,113 @@ const DetailsThumbWrapper = ({ product, relatedClick }) => {
             </>
           )}
         </nav> */}
-{product?.media?.length > 1 && (
-<nav className="product-side-nav-img p-relative">
-          <div className="nav nav-tabs flex-md-column flex-nowrap justify-content-start">
-            {product?.media
-              ?.slice(startIndex, startIndex + 4)
-              .map((item, i) => (
-                <button
-                  key={i + startIndex}
-                  className={`nav-link ${
-                    item?.url === activeImg?.url ? "active" : ""
-                  }`}
-                  onClick={() => handleImageActive(item)}
-                  id={`image-${i}`}
-                >
-                  {isImage(profilePic(item?.url)) ? (
-                    <figure>
-                      <img
-                        src={item?.url}
-                        // alt={item?.alt}
-                        // description={item?.description}
-                        // caption={item?.caption}
-                        // title={item?.title}
-                        width={78}
-                        height={100}
-                        style={{ width: "100%", height: "100%", borderRadius:"20px" }}
-                      />
-                     
-                    </figure>
-                  ) : (
-                    <figure>
-                      <video
-                      // src="/assets/img/blog.webp"
-                        src={item?.url}
-                        aria-label={item?.alt}
-                        width={78}
-                        height={100}
-                        style={{ width: "100%", height: "100%" ,borderRadius:"20px" }}
-                        muted
-                        loop
-                        description={item?.description}
-                        caption={item?.caption}
-                        title={item?.title}
-                      />
-                      
-                    </figure>
-                  )}
-                </button>
-              ))}
-          </div>
-          {product?.media?.length > 3 && (
-            <>
-              <UpOutlined
-                className="prev-btn"
-                onClick={() => handleNavigationClicking("prev")}
-              />
-              <DownOutlined
-                className="next-btn"
-                onClick={() => handleNavigationClicking("next")}
-              />
-            </>
-          )}
-        </nav>
-         )} 
+        {product?.media?.length > 1 && (
+          <nav className="product-side-nav-img p-relative">
+            <div className="nav nav-tabs flex-md-column flex-nowrap justify-content-start">
+              {product?.media
+                ?.slice(startIndex, startIndex + 4)
+                .map((item, i) => (
+                  <button
+                    key={i + startIndex}
+                    className={`nav-link ${
+                      item?.url === activeImg?.url ? "active" : ""
+                    }`}
+                    onClick={() => handleImageActive(item)}
+                    id={`image-${i}`}
+                  >
+                    {isImage(profilePic(item?.url)) ? (
+                      <figure>
+                        <img
+                          src={item?.url}
+                          // alt={item?.alt}
+                          // description={item?.description}
+                          // caption={item?.caption}
+                          // title={item?.title}
+                          width={78}
+                          height={100}
+                          style={{
+                            width: "100%",
+                            height: "100%",
+                            borderRadius: "20px",
+                          }}
+                        />
+                      </figure>
+                    ) : (
+                      <figure>
+                        <video
+                          // src="/assets/img/blog.webp"
+                          src={item?.url}
+                          aria-label={item?.alt}
+                          width={78}
+                          height={100}
+                          style={{
+                            width: "100%",
+                            height: "100%",
+                            borderRadius: "20px",
+                          }}
+                          muted
+                          loop
+                          description={item?.description}
+                          caption={item?.caption}
+                          title={item?.title}
+                        />
+                      </figure>
+                    )}
+                  </button>
+                ))}
+            </div>
+            {product?.media?.length > 3 && (
+              <>
+                <UpOutlined
+                  className="prev-btn"
+                  onClick={() => handleNavigationClicking("prev")}
+                />
+                <DownOutlined
+                  className="next-btn"
+                  onClick={() => handleNavigationClicking("next")}
+                />
+              </>
+            )}
+          </nav>
+        )}
 
         <div className={`tab-content m-img full-width-image`}>
           <div className="tab-pane fade show active">
-            <div className="tp-product-details-nav-main-thumb p-relative" style={{borderRadius:"20px" }}>
+            <div
+              className="tp-product-details-nav-main-thumb p-relative"
+              style={{ borderRadius: "20px" }}
+            >
               {loading ? (
                 <Loader />
               ) : (
                 <>
                   <div
-                    style={{ cursor: "zoom-in" ,borderRadius:"20px"}}
+                    style={{ borderRadius: "20px" }}
                     onClick={() => setIsOpen(true)}
                   >
                     {isImage(profilePic(activeImg?.url)) ? (
                       <figure
                         className="detail-single-image"
-                        style={{ marginBottom: "0px",borderRadius:"20px" }}
+                        style={{ marginBottom: "0px", borderRadius: "20px" }}
+                        onMouseMove={handleMouseMove}
+                        onMouseLeave={handleMouseLeave}
                       >
-                          <img
+                        
+
+                        <img
+                          ref={imgRef}
                           className="product-details-image"
-                          // src="/assets/img/blog.webp"
+                          src={activeImg?.url}
+                          alt={activeImg?.alt || "product image"}
                           description={activeImg?.description}
                           caption={activeImg?.caption}
                           title={activeImg?.title}
-                          src={profilePic(activeImg?.url)}
-                          alt={activeImg.alt}
                           onLoad={() => setLoading(false)}
                           onError={() => setLoading(false)}
-                          style={{borderRadius:"20px" }}
+                          onClick={() => handleOpenLightbox(0)}
+                          style={{ borderRadius: "20px" }}
                         />
+
                         {/* <img
                           className="product-details-image"
                           description={activeImg?.description}
@@ -270,9 +329,6 @@ const DetailsThumbWrapper = ({ product, relatedClick }) => {
                           onError={() => setLoading(false)}
                           
                         /> */}
-
-
-
 
                         {/* already commented */}
 
@@ -351,97 +407,144 @@ const DetailsThumbWrapper = ({ product, relatedClick }) => {
             width: "100%",
             height: "100%",
             backgroundColor: "rgba(0, 0, 0, 0.8)",
-            // display: "flex",
-            // justifyContent: "center",
-            // alignItems: "center",
+            display: "flex",
+            justifyContent: "center",
+            alignItems: "center",
             zIndex: 999,
-            overflow: "auto", // Enable scrolling
-            // Hide scrollbar for IE, Edge and Firefox
-            msOverflowStyle: "none", // IE and Edge
-            scrollbarWidth: "none", // Firefox
+            overflow: "hidden",
           }}
-          onClick={handleLightboxClose}
         >
-          <button
-            onClick={handleLightboxPrev}
-            name="prev"
-            style={{
-              fontSize: "18px",
-              background: "rgb(0 0 0 / 40%)",
-              padding: "5px 10px",
-              color: "white",
-              position: "fixed",
-              left: "20px",
-              top: "50vh",
-            }}
-          >
-            <LeftOutlined />
-          </button>
-
-          {isImage(
-            profilePic(activeImg?.url) || product?.media[photoIndex]?.url
-          ) ? (
-            <img
-              src={
-                profilePic(activeImg?.url) || product?.media[photoIndex]?.url
-              }
-              alt="Lightbox"
-              style={{
-                width: "100%",
-                height: "auto",
-                maxWidth: "none",
-                maxHeight: "none",
-                objectFit: "contain",
-              }}
-              onLoad={() => setLoading(false)}
-              onError={() => setLoading(false)}
-            />
-          ) : (
-            <video
-              src={
-                profilePic(activeImg?.url) || product?.media[photoIndex]?.url
-              }
-              style={{
-                width: "100%",
-                height: "auto",
-                maxWidth: "none",
-                maxHeight: "none",
-                objectFit: "contain",
-              }}
-              controls
-              onLoadedData={() => setLoading(false)}
-              onError={() => setLoading(false)}
-            />
-          )}
+          {/* Close Button */}
           <button
             onClick={handleLightboxClose}
             style={{
-              position: "fixed",
+              position: "absolute",
               top: "20px",
               right: "20px",
-              background: "none",
+              background: "#a4420094",
+
+              color: "#dad4d4ff",
               border: "none",
-              fontSize: "18px",
-              color: "white",
+              fontSize: "15px",
+
               cursor: "pointer",
+              padding: "5px 14px",
+              borderRadius: "50%",
             }}
           >
             <i className="fal fa-times"></i>
           </button>
-          <button
-            onClick={handleLightboxNext}
-            name="next"
+
+          {/* Thumbnails Left Side */}
+          <div
+            className="d-none d-lg-flex"
             style={{
-              fontSize: "18px",
-              background: "rgb(0 0 0 / 40%)",
-              padding: "5px 10px",
-              color: "white",
-              position: "fixed",
-              right: "20px",
-              top: "50vh",
+              position: "absolute",
+              left: "40px",
+              top: "15%",
+              transform: "translateY(-50%)",
+              display: "flex",
+              flexDirection: "column",
+              gap: "10px",
+              marginTop:"20px"
             }}
           >
-            <RightOutlined />
+            {product?.media?.map((item, idx) => (
+              <img
+                key={idx}
+                src={profilePic(item?.url) || item?.url}
+                alt="thumb"
+                onClick={() => setPhotoIndex(idx)}
+                style={{
+                  width: "50px",
+                  height: "50px",
+                  objectFit: "cover",
+                  borderRadius: "8px",
+                  border:
+                    idx === photoIndex
+                      ? "2px solid white"
+                      : "2px solid transparent",
+                  cursor: "pointer",
+                }}
+              />
+            ))}
+          </div>
+
+          {/* Prev Button */}
+          <button
+            className="action-btn-le"
+            onClick={handleLightboxPrev}
+            style={{
+              fontSize: "15px",
+              background: "#a4420094",
+              padding: "10px 15px",
+              color: "#dad4d4ff",
+              borderRadius: "50%",
+              border: "none",
+              position: "absolute",
+              left: "40px",
+              top: "50%",
+              transform: "translateY(-50%)",
+              cursor: "pointer",
+            }}
+          >
+            <ArrowPrevTwo />
+          </button>
+
+          {/* Main Image / Video */}
+          <div
+          // style={{ maxWidth: "70%", maxHeight: "80%" }}
+          >
+            {isImage(product?.media[photoIndex]?.url) ? (
+              <img
+                src={
+                  profilePic(product?.media[photoIndex]?.url) ||
+                  product?.media[photoIndex]?.url
+                }
+                alt="Lightbox"
+                style={{
+                  width: "100%",
+                  height: "100%",
+                  objectFit: "contain",
+                  borderRadius: "10px",
+                }}
+              />
+            ) : (
+              <video
+                src={
+                  profilePic(product?.media[photoIndex]?.url) ||
+                  product?.media[photoIndex]?.url
+                }
+                style={{
+                  width: "100%",
+                  height: "100%",
+                  objectFit: "contain",
+                  borderRadius: "10px",
+                }}
+                controls
+              />
+            )}
+          </div>
+
+          {/* Next Button */}
+          <button
+            className="action-btn-ri"
+            onClick={handleLightboxNext}
+            style={{
+              fontSize: "15px",
+              background: "#a4420094",
+              padding: "10px 15px",
+              color: "#dad4d4ff",
+              borderRadius: "50%",
+              border: "none",
+              position: "absolute",
+              right: "40px",
+              top: "50%",
+              transform: "translateY(-50%)",
+              cursor: "pointer",
+            }}
+          >
+            <ArrowNextTwo />
           </button>
         </div>
       )}

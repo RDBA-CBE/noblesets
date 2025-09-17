@@ -497,7 +497,7 @@ const AddressInfo = () => {
                             address?.isDefaultBillingAddress ||
                             address?.isDefaultShippingAddress
                               ? "#fff"
-                              : "#b4633a"
+                              : "#a44100"
                           }`,
                           padding: "5px",
                           cursor: "pointer",
@@ -507,7 +507,7 @@ const AddressInfo = () => {
                       {showSettingsBox === index && (
                         <div
                           style={{
-                            backgroundColor: "#b4633a",
+                            backgroundColor: "#a44100",
                             padding: "10px",
                             borderRadius: "5px",
                             color: "white",
@@ -991,7 +991,7 @@ const AddressInfo = () => {
               }}
             >
               {addAddressLoading || updateAddressLoading ? (
-                <ButtonLoader color="#b4633a" />
+                <ButtonLoader color="#a44100" />
               ) : state.editAddressId == null ? (
                 "Add Address"
               ) : (

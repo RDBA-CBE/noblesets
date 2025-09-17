@@ -1439,7 +1439,7 @@ const CheckoutBillingArea = ({ register, errors }) => {
                     {checkoutAllData?.voucherCode && (
                       <p
                         style={{
-                          color: "#b4633a",
+                          color: "#a44100",
                           paddingTop: "10px",
                           fontWeight: "500",
                           fontSize: "18px",

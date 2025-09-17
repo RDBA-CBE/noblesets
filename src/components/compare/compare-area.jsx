@@ -300,7 +300,7 @@ const CompareArea = () => {
 
                                         <span
                                           style={{
-                                            color: "#b4633a",
+                                            color: "#a44100",
                                             fontWeight: "500",
                                           }}
                                         >
@@ -335,7 +335,7 @@ const CompareArea = () => {
                                         )}
                                         <span
                                           style={{
-                                            color: "#b4633a",
+                                            color: "#a44100",
                                             fontWeight: "500",
                                           }}
                                         >
@@ -361,7 +361,7 @@ const CompareArea = () => {
                                           className="tp-btn"
                                           type="button"
                                           style={{
-                                            backgroundColor: "#b4633a",
+                                            backgroundColor: "#a44100",
                                             color: "white",
                                           }}
                                         >
@@ -376,7 +376,7 @@ const CompareArea = () => {
                                           type="button"
                                           className="tp-btn "
                                           style={{
-                                            backgroundColor: "#b4633a",
+                                            backgroundColor: "#a44100",
                                             color: "white",
                                           }}
                                         >

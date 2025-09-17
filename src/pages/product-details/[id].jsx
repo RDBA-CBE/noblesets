@@ -18,7 +18,7 @@ import { useRouter } from "next/router";
 import { getValueByKey } from "@/utils/functions";
 import HeaderSection from "@/components/home/headerSection";
 import HomeFooter from "@/components/home/HomeFooter";
-import CartBanner from "@assets/img/header-bg.png";
+import CartBanner from "@assets/img/header-bg.webp";
 
 import CommonBreadcrumb from "@/components/breadcrumb/common-breadcrumb";
 
@@ -204,12 +204,12 @@ const ProductDetailsPage = ({ query }) => {
     content = (
       <>
         {/* <ProductDetailsBreadcrumb category={product.category.name} title={product.title} /> */}
-         <div style={{background:"#fff9f4"}}>
+         <div style={{background:"#f6e9d9"}}>
       <div className="section-wd">
-       <CommonBreadcrumb 
+       {/* <CommonBreadcrumb 
        title={product.name} 
       // title="Product Detail" 
-       subtitle="Product Detail" BgImage={CartBanner}/>
+       subtitle="Product Detail" BgImage={CartBanner}/> */}
        </div>
        </div>
         <ProductDetailsArea

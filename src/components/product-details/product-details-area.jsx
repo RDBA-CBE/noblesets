@@ -120,10 +120,7 @@ const ProductDetailsArea = ({
   };
 
   return (
-    <section
-      className="tp-product-details-area pt-40 product-detail-page common-bg"
-      
-    >
+    <section className="tp-product-details-area pt-40 product-detail-page common-bg">
       <div className="tp-product-details-top">
         <div className="container">
           <div className="row ">
@@ -155,7 +152,7 @@ const ProductDetailsArea = ({
                   ? "col-xl-5 col-lg-5"
                   : "col-xl-6 col-lg-6"
               } `}
-              style={{ zIndex: "10" }}
+              style={{ zIndex: "1" }}
             >
               {/* product-details-wrapper start */}
 

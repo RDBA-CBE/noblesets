@@ -15,7 +15,7 @@ import {
   useAttributeListMutation,
 } from "@/redux/features/productApi";
 import ShopFilterOffCanvas from "@/components/common/shop-filter-offcanvas";
-import shopBanner from "../../public/assets/img/header-bg.png";
+import shopBanner from "../../public/assets/img/header-bg.webp";
 import { useDispatch, useSelector } from "react-redux";
 import { useCreateCheckoutTokenWithoutEmailMutation } from "@/redux/features/card/cardApi";
 import {
@@ -847,20 +847,20 @@ const ShopPage = () => {
   return (
     <Wrapper>
       <SEO pageTitle="Shop" />
-      <HeaderSection />
-      <div style={{ background: "#fff9f4" }}>
-        <div className="section-wd">
-          <ShopBreadcrumb
-            title={shopTitle}
-            parentSlug={parentSlug}
-            // title="Shop"
-            subtitle="Shop"
-            bgImage={shopBanner}
-            catList={categoryList}
-            product={productList}
-          />
-        </div>
-        {/* {isLoading || categoryLoading || filterLoading ? (
+      <HeaderSection/>
+      <div style={{background:"#f6e9d9"}}>
+      <div className="section-wd">
+      <ShopBreadcrumb
+        title={shopTitle}
+        parentSlug={parentSlug}
+        // title="Shop"
+        subtitle="Shop"
+        bgImage={shopBanner}
+        catList={categoryList}
+        product={productList}
+      />
+      </div>
+      {/* {isLoading || categoryLoading || filterLoading ? (
         <ShopLoader loading={isLoading} />
       ) : (
         <> */}

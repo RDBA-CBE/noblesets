@@ -7,7 +7,7 @@ import ShippingAndExchangePolicyMain from "../components/shippingPolicy/shipping
 import HeaderSection from "@/components/home/headerSection";
 import FAQ from "@/components/shippingPolicy/Faq";
 import ShopBreadcrumb from "@/components/breadcrumb/shop-breadcrumb";
-import shopBanner from "@assets/img/header-bg.png";
+import shopBanner from "@assets/img/header-bg.webp";
 
 const ShippingAndExchangePolicy = () => {
   return (
@@ -16,7 +16,7 @@ const ShippingAndExchangePolicy = () => {
       {/* <HeaderTwo style_2={true} /> */}
       <HeaderSection />
 
-      <div style={{ background: "#fff9f4" }}>
+      <div style={{ background: "#f6e9d9" }}>
         <div className="section-wd">
           <ShopBreadcrumb
             title="Help & FAQs"

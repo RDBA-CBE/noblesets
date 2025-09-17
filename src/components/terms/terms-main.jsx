@@ -2,7 +2,7 @@ import React from "react";
 
 const TermsAndConditionsMain = () => {
   return (
-    <section className="tp-about-area  pt-30 pb-30" style={{background:"#fff9f4"}}>
+    <section className="tp-about-area  pt-30 pb-30" style={{background:"#f6e9d9"}}>
       <div className="container">
       {/* <h3 className="terms-heading-ti mt-0 " style={{fontWeight:"500"}}>Terms And Conditions</h3> */}
         <div className=" mt-0">

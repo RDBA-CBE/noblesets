@@ -6,7 +6,7 @@ import CartArea from '@/components/cart-wishlist/cart-area';
 import CommonBreadcrumb from '@/components/breadcrumb/common-breadcrumb';
 import FooterTwo from '@/layout/footers/footer-2';
 import { useGetCartListQuery } from '@/redux/features/card/cardApi';
-import CartBanner from "../../public/assets/img/header-bg.png";
+import CartBanner from "../../public/assets/img/header-bg.webp";
 import HeaderSection from '@/components/home/headerSection';
 import CartArea1 from '@/components/cart-wishlist/cart-area1';
 import HomeFooter from "@/components/home/HomeFooter";
@@ -18,7 +18,7 @@ const CartPage = () => {
       <SEO pageTitle="Cart" />
       {/* <HeaderTwo style_2={true} /> */}
        <HeaderSection/>
-       <div style={{background:"#fff9f4"}}>
+       <div style={{background:"#f6e9d9"}}>
       <div className="section-wd">
       <CommonBreadcrumb title="Shopping Cart" subtitle="Shopping Cart" BgImage={CartBanner}/>
        </div>

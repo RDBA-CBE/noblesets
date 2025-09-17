@@ -9,12 +9,13 @@ import { Wishlist } from "@/svg";
 import AddressInfo from "./AddressInfo";
 import ReviewSection from "../product-details/ReviewSection";
 import Rating from "react-rating-stars-component";
+import moment from "moment";
 
 const ProfileArea = ({ orderData, reviewList }) => {
 
   return (
     <>
-      <section className="profile__area pt-50 pb-50" style={{background:"#fff9f4"}}>
+      <section className="profile__area pt-50 pb-50" style={{background:"#f6e9d9"}}>
         <div className="container">
           <div className="profile__inner p-relative">
             {/* <ProfileShape /> */}
@@ -82,16 +83,17 @@ const ProfileArea = ({ orderData, reviewList }) => {
                                       : "/assets/img/user.png"
                                   }
                                   alt="avatar"
-                                  className="rounded-circle me-2"
-                                  width={50}
-                                  height={50}
+                                  className="rounded me-2 "
+                                  style={{objectFit:"cover"}}
+                                  width={60}
+                                  height={80}
                                 />
 
                                 <div>
                                   <strong>{`${review?.product?.name}`}</strong>
 
                                   <p className="text-muted small m-0">
-                                    {review.created_at}
+                                     {moment(review.createdAt).format("MMMM D, YYYY")}
                                   </p>
                                 </div>
                               </div>
@@ -101,7 +103,7 @@ const ProfileArea = ({ orderData, reviewList }) => {
                                 value={review.rating}
                                 edit={false}
                                 size={18}
-                                activeColor="#b4633a"
+                                activeColor="#a44100"
                               />
                               <div className="d-flex gap-2 mt-2">
                                 {review?.images.map((src, idx) => (
@@ -109,9 +111,10 @@ const ProfileArea = ({ orderData, reviewList }) => {
                                     key={idx}
                                     src={src?.fileUrl}
                                     className="rounded"
+                                    style={{objectFit:"cover"}}
                                     alt="review"
-                                    width={50}
-                                    height={50}
+                                    width={30}
+                                    height={30}
                                   />
                                 ))}
                               </div>

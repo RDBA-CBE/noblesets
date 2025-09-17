@@ -13,25 +13,25 @@ const collections = [
     title: "Bracelet",
     desc: "Simple, chic & wearable",
     price: "₹15000 - ₹20000",
-    img: "/assets/img/home/collection/1.png",
+    img: "/assets/img/home/collection/img1.webp",
   },
   {
     title: "Rings",
     desc: "Unique, bold & beautiful",
     price: "₹25000 - ₹30000",
-    img: "/assets/img/home/collection/2.png",
+    img: "/assets/img/home/collection/img2.webp",
   },
   {
     title: "Chains",
     desc: "Rich, radiant & enduring",
     price: "₹10000 - ₹25000",
-    img: "/assets/img/home/collection/3.png",
+    img: "/assets/img/home/collection/img3.webp",
   },
   {
     title: "Earrings",
     desc: "Stunning and fashionable",
     price: "₹25000 - ₹30000",
-    img: "/assets/img/home/collection/4.png",
+    img: "/assets/img/home/collection/img4.webp",
   },
 
   {
@@ -56,7 +56,7 @@ export default function ShopByCollections() {
 
   return (
     <section className="pt-60 ShopByCollections position-relative" 
-    // style={{ backgroundColor: "#fff9f4" }}
+    // style={{ backgroundColor: "#f6e9d9" }}
     >
       <div className="">
       <div className="section-wd d-flex flex-column flex-md-row justify-content-between align-items-start align-items-md-center shp-by-col" style={{padding:"0 95px"}}>
@@ -76,7 +76,7 @@ export default function ShopByCollections() {
             ref={prevRef}
             className="btn btn-sm rounded-3  me-2"
             style={{
-              backgroundColor: "#e6a285",
+             background: "linear-gradient(180deg, #9b5d34, #7a4525)",
               color: "white",
               fontSize: "15px",
               // fontWeight: "bold",
@@ -89,7 +89,8 @@ export default function ShopByCollections() {
             ref={nextRef}
             className="btn btn-sm rounded-3 "
             style={{
-              backgroundColor: "#e6a285",
+             
+             background: "linear-gradient(180deg, #9b5d34, #7a4525)",
               color: "white",
               fontSize: "15px",
               // fontWeight: "bold",
@@ -102,7 +103,7 @@ export default function ShopByCollections() {
       </div>
 
       {/* Swiper Carousel */}
-      <div className="position-relative d-flex flex-wrap align-items-stretch">
+      <div className="position-relative d-flex flex-wrap align-items-stretch collect-subbg">
         <Swiper
           modules={[Navigation]}
           // spaceBetween={30}
@@ -140,12 +141,13 @@ export default function ShopByCollections() {
                   }}
                 />
                 <div className="card-body text-center pb-0">
-                  <p className="text-black mb-3 mt-40 cursor-pointer" style={{fontSize:"18px"}}>{item.desc}</p>
+                  <p className="text-white mb-3 mt-40 cursor-pointer" style={{fontSize:"18px"}}>{item.desc}</p>
                   <h5
                     className=" mb-3 cursor-pointer"
                     style={{
                       fontSize: "35px",
                       fontWeight: "400",
+                      color:"#fff",
                     }}
                     onClick={() => {
                   
@@ -154,7 +156,7 @@ export default function ShopByCollections() {
                   >
                     {item.title}
                   </h5>
-                  <p className="text-black" style={{fontSize:"18px", letterSpacing:"1px"}}> {item.price}</p>
+                  <p className="text-white" style={{fontSize:"18px", letterSpacing:"1px"}}> {item.price}</p>
                 </div>
               </div>
             </SwiperSlide>

@@ -28,7 +28,7 @@ const ProductDetailsPage = ({ query }) => {
     content = (
       <>
       
-      <div style={{background:"#fff9f4"}}>
+      <div style={{background:"#f6e9d9"}}>
       <ProductDetailsArea productItem={product} />
       </div>
        

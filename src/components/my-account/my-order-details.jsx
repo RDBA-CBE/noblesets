@@ -345,7 +345,7 @@ const MyOrderDetails = ({ data }) => {
                         <td
                           style={{
                             // textDecoration: "underline",
-                            // color: "#b4633a",
+                            // color: "#a44100",
                             cursor: "pointer",
                           }}
                           scope="row"
@@ -383,7 +383,7 @@ const MyOrderDetails = ({ data }) => {
                             <div
                               style={{
                                 textDecoration: "underline",
-                                color: "#b4633a",
+                                color: "#a44100",
                                 cursor: "pointer",
                               }}
                               onClick={() =>
@@ -558,7 +558,7 @@ const MyOrderDetails = ({ data }) => {
                   value={review?.node?.rating}
                   edit={false}
                   size={18}
-                  activeColor="#b4633a"
+                  activeColor="#a44100"
                 />
                 <div className="d-flex gap-2 mt-2">
                   {review?.node?.images.map((src, idx) => (
@@ -617,7 +617,7 @@ const MyOrderDetails = ({ data }) => {
                     setFormData({ ...formData, rating: newRating })
                   }
                   size={25}
-                  activeColor="#b4633a"
+                  activeColor="#a44100"
                 />
               </div>
             </div>
@@ -652,7 +652,7 @@ const MyOrderDetails = ({ data }) => {
           okButtonProps={{
             className: " tp-btn tp-btn-border text-white",
             style: {
-              backgroundColor: "#b4633a", // Set background color to your preference
+              backgroundColor: "#a44100", // Set background color to your preference
               color: "white", // Set text color to white
               borderRadius: "20px",
               padding: "3px 14px",
@@ -663,7 +663,7 @@ const MyOrderDetails = ({ data }) => {
           cancelButtonProps={{
             className: " tp-btn tp-btn-border text-white",
             style: {
-              backgroundColor: "#b4633a", // Set background color to your preference
+              backgroundColor: "#a44100", // Set background color to your preference
               color: "white", // Set text color to white
               borderRadius: "20px",
               padding: "3px 14px",
@@ -723,7 +723,7 @@ const MyOrderDetails = ({ data }) => {
                     setFormData({ ...formData, rating: e });
                   }}
                   size={25}
-                  activeColor="#b4633a"
+                  activeColor="#a44100"
                 />
               </div>
             </div>

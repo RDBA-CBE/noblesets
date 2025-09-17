@@ -57,14 +57,14 @@ const ReviewSection = (props) => {
     <div className="container py-5 review-sec">
       <div className="row g-4">
         <div className="col-lg-12">
-          <div className="review-box p-4 bg-white shadow-sm rounded">
+          <div className="review-box p-4 bg-white shadow-sm ">
             <h4 className="review-title mb-3 ">Reviews</h4>
 
             {/* Rating Summary */}
             {/* <div className="d-flex align-items-center mb-3">
               <div className="review-score-display me-3">
                 <h1 className=" m-0 text-dark">4.0</h1>
-                <Rating count={5} value={4} edit={false} size={20} activeColor="#b4633a" />
+                <Rating count={5} value={4} edit={false} size={20} activeColor="#a44100" />
                 <p className="text-muted small">{reviews.length} ratings</p>
               </div>
               <div className="flex-grow-1">
@@ -124,7 +124,7 @@ const ReviewSection = (props) => {
                     value={formData.rating}
                     onChange={(newRating) => setFormData({ ...formData, rating: newRating })}
                     size={25}
-                    activeColor="#b4633a"
+                    activeColor="#a44100"
                   />
                 </div>
               </div>
@@ -161,7 +161,7 @@ const ReviewSection = (props) => {
                   value={review.rating}
                   edit={false}
                   size={18}
-                  activeColor="#b4633a"
+                  activeColor="#a44100"
                 />
                 <div className="d-flex gap-2 mt-2">
                   {review.images.map((src, idx) => (
@@ -170,6 +170,7 @@ const ReviewSection = (props) => {
                       src={src?.fileUrl}
                       className="rounded"
                       alt="review"
+                      style={{objectFit:"cover"}}
                       width={50}
                       height={50}
                     />

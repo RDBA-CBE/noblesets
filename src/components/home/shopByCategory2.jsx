@@ -29,7 +29,7 @@ const InstagramSection2 = () => {
             {/* Column 1 */}
             <div className="col-1-5">
               <img
-                src="/assets/img/home/shop_by_category/img-1.png"
+                src="/assets/img/home/shop_by_category/1.webp"
                 alt="Pedants"
                 className="category-img"
                 onClick={() => {
@@ -48,7 +48,7 @@ const InstagramSection2 = () => {
               </div>
 
               <img
-                src="/assets/img/home/shop_by_category/img-2.png"
+                src="/assets/img/home/shop_by_category/2.webp"
                 alt="Rings"
                 className="category-img mt-3 img-2"
                 onClick={() => {
@@ -70,7 +70,7 @@ const InstagramSection2 = () => {
             {/* Column 2 */}
             <div className="col-1-5 lr-col">
               <img
-                src="/assets/img/home/shop_by_category/img-3.png"
+                src="/assets/img/home/shop_by_category/3.webp"
                 alt="Bangles"
                 className="category-img"
                 onClick={() => {
@@ -92,7 +92,7 @@ const InstagramSection2 = () => {
             {/* Column 3 */}
             <div className="col-1-5">
               <img
-                src="/assets/img/home/shop_by_category/img-4.png"
+                src="/assets/img/home/shop_by_category/4.webp"
                 alt="Nosepin"
                 className="category-img"
                 onClick={() => {
@@ -111,7 +111,7 @@ const InstagramSection2 = () => {
               </div>
 
               <img
-                src="/assets/img/home/shop_by_category/img-5.png"
+                src="/assets/img/home/shop_by_category/5.webp"
                 alt="Necklace"
                 className="category-img mt-3 img-2"
                 onClick={() => {
@@ -133,7 +133,7 @@ const InstagramSection2 = () => {
             {/* Column 4 */}
             <div className="col-1-5 lr-col">
               <img
-                src="/assets/img/home/shop_by_category/img-6.png"
+                src="/assets/img/home/shop_by_category/6.webp"
                 alt="Chains"
                 className="category-img"
                 onClick={() => {

@@ -95,7 +95,7 @@
       color: rgb(47, 46, 46);
 
       &:hover {
-        color: #b4633a;
+        color: #a44100;
       }
     }
   }
@@ -203,7 +203,7 @@
           &:checked {
             & + label {
               &::after {
-                border-color: #b4633a;
+                border-color: #a44100;
               }
               &::before {
                 opacity: 1;
@@ -223,7 +223,7 @@
             cursor: pointer;
           }
           & span {
-            color: #b4633a;
+            color: #a44100;
           }
 
           &::after {

@@ -442,7 +442,7 @@ Add To Cart
           className="tp-product-title-3"
           style={{
             fontSize: "12px",
-            color: "rgb(144 141 141)",
+            color: "rgb(131 69 29)",fontWeight:"600",
             // textTransform: "uppercase",
           }}
         >
@@ -488,7 +488,7 @@ Add To Cart
                 <div
                   className="save-off"
                   style={{
-                    color: "#b4633a",
+                    color: "#a44100",
                     fontSize: "16px",
                   }}
                 >{`Save ${saveOff()}% OFF`}</div>
@@ -518,7 +518,7 @@ Add To Cart
                 <div
                   className="save-off"
                   style={{
-                    color: "#b4633a",
+                    color: "#a44100",
                     fontSize: "16px",
                   }}
                 >{`Save ${saveOff()}% OFF`}</div>

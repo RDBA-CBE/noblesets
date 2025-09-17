@@ -44,15 +44,15 @@ export default function ShopByBudget() {
           const budgetItems = [
             {
               label: `₹${addCommasToNumber(minPrice || 0)}`,
-              img: "/assets/img/home/shopByBudget/nimg-1.png",
+              img: "/assets/img/home/shopByBudget/img-1.webp",
             },
             {
               label: `₹${addCommasToNumber(midPrice || 0)}`,
-              img: "/assets/img/home/shopByBudget/nimg-2.png",
+              img: "/assets/img/home/shopByBudget/img-2.webp",
             },
             {
               label: `₹${addCommasToNumber(maxPrice || 0)}`,
-              img: "/assets/img/home/shopByBudget/nimg-3.png",
+              img: "/assets/img/home/shopByBudget/img-3.webp",
             },
           ];
           setBudgetItems(budgetItems);

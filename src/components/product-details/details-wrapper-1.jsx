@@ -775,6 +775,7 @@ const DetailsWrapper1 = ({
             category={pageTitle}
             title={productItem?.name}
             parentSlug={parentSlug}
+            parentCat={productItem.category}
           />
         </div>
 
@@ -807,7 +808,7 @@ const DetailsWrapper1 = ({
                       background: "white",
                       padding: "0 5px 0 0",
                       width: "250px",
-                      zIndex:"1000"
+                      zIndex: "1000",
                     }}
                   >
                     <div style={{ display: "flex" }}>
@@ -822,7 +823,7 @@ const DetailsWrapper1 = ({
                           profilePic(previousProduct?.thumbnail?.url)
                         ) ? (
                           <img
-                            style={{ width: "100%" ,objectFit:"contain"}}
+                            style={{ width: "100%", objectFit: "contain" }}
                             height={100}
                             width={100}
                             src={profilePic(previousProduct?.thumbnail?.url)}
@@ -918,7 +919,7 @@ const DetailsWrapper1 = ({
                       background: "white",
                       padding: "0 10px 0 0",
                       width: "250px",
-                      zIndex:"1000"
+                      zIndex: "1000",
                     }}
                     onMouseEnter={NextMouseEnter}
                     onMouseLeave={NextMouseLeave}
@@ -933,7 +934,7 @@ const DetailsWrapper1 = ({
                     /> */}
                         {isImage(profilePic(nextProduct?.thumbnail?.url)) ? (
                           <img
-                            style={{ width: "100%", objectFit:"contain" }}
+                            style={{ width: "100%", objectFit: "contain" }}
                             width={100}
                             height={100}
                             src={profilePic(nextProduct?.thumbnail?.url)}
@@ -1258,7 +1259,7 @@ const DetailsWrapper1 = ({
                 <div
                   className="text-bold text-lg gap-3 my-2"
                   style={{
-                    alignItems:  "center",
+                    alignItems: "center",
                     fontSize: "14px",
                     color: "black",
                     display: "flex",
@@ -1276,7 +1277,7 @@ const DetailsWrapper1 = ({
                   </div>
                   <div style={{ textAlign: "end" }}>
                     <select
-                    style={{height:"30px"}}
+                      style={{ height: "30px" }}
                       name="country"
                       id="country"
                       value={variantId}
@@ -1355,7 +1356,7 @@ const DetailsWrapper1 = ({
                 Out of Stock
               </span>
             ) : (
-              <span style={{ color: "#b4633a", fontWeight: "700" }}>
+              <span style={{ color: "#a44100", fontWeight: "700" }}>
                 In Stock
               </span>
             )}
@@ -1561,7 +1562,7 @@ const DetailsWrapper1 = ({
                 <button
                   onClick={() => setIsModelOpen(true)}
                   className=""
-                  style={{ color: "#b4633a" }}
+                  style={{ color: "#a44100" }}
                 >
                   Size Chart
                 </button>
@@ -1728,7 +1729,7 @@ const DetailsWrapper1 = ({
                           fontSize: "14px",
                           // borderCollapse: "collapse",
                           marginBottom: "0",
-                          borderColor: "#b4633a",
+                          borderColor: "#a44100",
                         }}
                       >
                         <tbody>
@@ -1874,7 +1875,7 @@ const DetailsWrapper1 = ({
 
                     <h4
                       className="mt-4 mb-0 "
-                      style={{ color: "#b4633a ", fontWeight: "400" }}
+                      style={{ color: "#a44100 ", fontWeight: "400" }}
                     >
                       {productItem?.brand?.name ||
                         productItem?.node?.brand?.name}
@@ -1972,7 +1973,7 @@ const DetailsWrapper1 = ({
 
             <p
               style={{
-                color: "#b4633a",
+                color: "#a44100",
                 textDecoration: "underline",
                 cursor: "pointer",
               }}
@@ -2072,8 +2073,8 @@ const DetailsWrapper1 = ({
                     className="tp-btn tp-btn-border mt-2 mt-sm-0"
                     style={{
                       background: "transparent",
-                      color: "#b4633a",
-                      border: "1px solid #b4633a",
+                      color: "#a44100",
+                      border: "1px solid #a44100",
                     }}
                   >
                     Share This Page
@@ -2100,7 +2101,7 @@ const DetailsWrapper1 = ({
             {/* {!isGiftCard && (
               <div
                 className="text-capitalize text-decordation  cursor-pointer mt-20"
-                style={{ color: "#b4633a" }}
+                style={{ color: "#a44100" }}
                 onClick={() => setIsProductModelOpen(true)}
               >
                 To Customize Product

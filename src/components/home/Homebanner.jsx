@@ -155,18 +155,18 @@ const HomeBanner = () => {
             </div>
             <div className="mbl-content" >
               <h1>
-                Elevate Your Style <br />
-                with Every Piece
+                Elevate Your Style 
+                with <br/>Every Piece
               </h1>
               <p>
-                Adorn jewels inspired by the royal <br /> jewellery adorned by
+                Adorn jewels inspired by the royal jewellery adorned<br/> by
                 empresss in maratha dynasty
               </p>
               <div className="exb-btn cursor-pointer" onClick={()=>router.push("/shop")}>
                 <p>
-                  Exhibition & Sale <br />
-                  <span>of exquisite diamond jewellery</span>
-                </p>
+                  Exhibition & Sale</p>
+                  <span className="exb-btn-s">of exquisite diamond jewellery</span>
+                
               </div>
               <img src={item?.mblImg} alt="" />
             </div>

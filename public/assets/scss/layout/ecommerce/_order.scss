@@ -143,7 +143,7 @@
                         &-subtotal{
                             & span{
                                 &:last-child{
-                                    color: #b4633a;
+                                    color: #a44100;
                                 }
                             }
                         }
@@ -155,7 +155,7 @@
                                     &:checked{
                                         & ~ label{
                                             &::after{
-                                                border-color:#b4633a;
+                                                border-color:#a44100;
                                             }
                                             &::before{
                                                 opacity: 1;
@@ -170,7 +170,7 @@
                                     padding-right: 27px;
 
                                     & span{
-                                        color:#b4633a;
+                                        color:#a44100;
                                     }
 
                                     &:hover{

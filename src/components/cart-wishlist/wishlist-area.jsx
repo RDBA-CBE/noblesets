@@ -49,7 +49,7 @@ const WishlistArea = () => {
 
   return (
     <>
-      <section className="tp-cart-area pb-50 pt-30 wishlist-page"  style={{background:"#fff9f4"}}>
+      <section className="tp-cart-area pb-50 pt-30 wishlist-page"  style={{background:"#f6e9d9"}}>
         <div className="container">
           {list?.length === 0 && (
             <div className="text-center pb-20">

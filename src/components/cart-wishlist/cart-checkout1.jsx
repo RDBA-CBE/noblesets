@@ -89,7 +89,7 @@ const CartCheckout1 = ({ cartData,cartLength }) => {
                 <span>FREE</span>
               </li> */}
             </ul>
-            <div className="d-flex justify-content-between mt-3 p-3  rounded" style={{background:"#b4633a30"}}>
+            <div className="d-flex justify-content-between mt-3 p-3  rounded" style={{background:"#a4410030"}}>
               <strong className="text-black">Grand Total</strong>
               <strong className="text-black">
                   ₹{addCommasToNumber(list?.data?.checkout?.totalPrice?.gross?.amount)}

@@ -9,7 +9,7 @@ import CommonBreadcrumb from '@/components/breadcrumb/common-breadcrumb';
 import CheckoutArea from '@/components/checkout/checkout-area';
 import FooterTwo from '@/layout/footers/footer-2';
 import { useGetCartListQuery } from '@/redux/features/card/cardApi';
-import CheckoutBanner from "@assets/img/header-bg.png";
+import CheckoutBanner from "@assets/img/header-bg.webp";
 import { useCountryListQuery } from '../redux/features/productApi';
 import HeaderSection from '@/components/home/headerSection';
 import HomeFooter from '@/components/home/HomeFooter';
@@ -25,7 +25,7 @@ const CheckoutPage = () => {
     <Wrapper>
       <SEO pageTitle="Checkout" />
       <HeaderSection />
-       <div style={{background:"#fff9f4"}}>
+       <div style={{background:"#f6e9d9"}}>
       <div className="section-wd">
       <CommonBreadcrumb title="Checkout" subtitle="Checkout" bg_clr={true} BgImage={CheckoutBanner} />
       </div>

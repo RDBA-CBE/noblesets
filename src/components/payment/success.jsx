@@ -61,7 +61,7 @@ const Success = ({ data }) => {
   return (
     <section
       className="tp-login-area  pt-50 pb-50   p-relative z-index-1 fix"
-      style={{ background: "#fff9f4" }}
+      style={{ background: "#f6e9d9" }}
     >
       <div className="container">
         <div className="row" style={{ justifyContent: "space-between" }}>
