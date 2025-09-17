@@ -222,14 +222,14 @@ const InstagramSection2 = () => {
                   alt="Necklace 2"
                   className="category-img mt-0 mt-xl-3 img-2"
                   onClick={() => {
-                    handleClick("Earring");
+                    handleClick("earring");
                   }}
                 />
                 <div className="category-button">
                   <button
                     className="gradient-btn"
                     onClick={() => {
-                      handleClick("Earring");
+                      handleClick("earring");
                     }}
                   >
                     ✦ Earrings ✦
