@@ -849,7 +849,7 @@ const ShopPage = () => {
       <SEO pageTitle="Shop" />
       <HeaderSection/>
       <div style={{background:"#f6e9d9"}}>
-      <div className="section-wd">
+      <div >
       <ShopBreadcrumb
         title={shopTitle}
         parentSlug={parentSlug}

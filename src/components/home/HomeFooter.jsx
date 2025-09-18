@@ -291,7 +291,7 @@ const HomeFooter = () => {
               style={{ fontSize: "16px" }}
             >
               <div className="copyright">
-                Copyright 2025 © Noblesets. Concept by repute
+                Copyright 2025 © Noblesets. Concept by <a href="https://irepute.in/" target="blank">repute</a>
               </div>
               <div className="d-flex gap-3 mt-3 mt-md-0">
                 <button

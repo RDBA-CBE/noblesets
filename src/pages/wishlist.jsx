@@ -22,7 +22,7 @@ const WishlistPage = () => {
       {/* <HeaderTwo style_2={true} /> */}
       <HeaderSection />
        <div style={{background:"#f6e9d9"}}>
-      <div className="section-wd">
+      <div >
       <ShopBreadcrumb
        title="Wishlist" subtitle="Wishlist"
         bgImage={shopBanner}

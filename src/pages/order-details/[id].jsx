@@ -29,7 +29,7 @@ const OrderDetails = () => {
       {/* <HeaderTwo style_2={true} /> */}
       <HeaderSection />
       <div className="common-bg">
-        <div className="section-wd">
+        <div >
           <CommonBreadcrumb
             title="Order Details"
             subtitle="Order / Order Details"

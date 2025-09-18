@@ -26,7 +26,7 @@ const CheckoutPage = () => {
       <SEO pageTitle="Checkout" />
       <HeaderSection />
        <div style={{background:"#f6e9d9"}}>
-      <div className="section-wd">
+      <div >
       <CommonBreadcrumb title="Checkout" subtitle="Checkout" bg_clr={true} BgImage={CheckoutBanner} />
       </div>
       <div className='checkout-page-main'>

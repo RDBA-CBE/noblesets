@@ -205,11 +205,11 @@ const ProductDetailsPage = ({ query }) => {
       <>
         {/* <ProductDetailsBreadcrumb category={product.category.name} title={product.title} /> */}
          <div style={{background:"#f6e9d9"}}>
-      <div className="section-wd">
-       {/* <CommonBreadcrumb 
+      <div >
+       <CommonBreadcrumb 
        title={product.name} 
       // title="Product Detail" 
-       subtitle="Product Detail" BgImage={CartBanner}/> */}
+       subtitle="Product Detail" BgImage={CartBanner}/>
        </div>
        </div>
         <ProductDetailsArea

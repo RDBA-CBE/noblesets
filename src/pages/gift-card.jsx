@@ -132,7 +132,7 @@ export default function GiftCart() {
         parentSlug={parentSlug}
       /> */}
       <div style={{background:"#f6e9d9"}}>
-      <div className="section-wd">
+      <div>
       <ShopBreadcrumb
         title="Gift Card"
         // parentSlug={parentSlug}

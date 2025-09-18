@@ -241,14 +241,14 @@ const ShopArea = ({
 
   return (
     <>
-      <section className="tp-shop-area  mt-50 shop-page" style={{zIndex:"10"}}>
+      <section className="tp-shop-area  mt-30 shop-page" style={{zIndex:"10"}}>
         <div className="container-fluid shop-page-in">
           <div
             className="section-wd"
             style={{
-              borderBottom: "1px solid #eee",
+              // borderBottom: "1px solid #eee",
               paddingBottom: "10px",
-              marginBottom: "20px",
+              // marginBottom: "20px",
             }}
           >
             <div>
@@ -297,7 +297,7 @@ const ShopArea = ({
             <div className="section-wd">
               <div className="col-xl-12">
                 <div className="tp-shop-main-wrapper">
-                  <div className="tp-shop-top mb-45">
+                  <div className="tp-shop-top mb-10">
                     <div className="row">
                       <div className="col-md-6">
                         <ShopTopLeft showing={page} total={totalCount} />
@@ -326,25 +326,25 @@ const ShopArea = ({
                       {(!objIsEmpty(filter?.price) ||
                         filter?.attributes?.length > 0) && (
                         <>
-                          <div className="cartmini__close">
+                          {/* <div className="cartmini__close">
                             <button
                               type="button"
                               className="cartmini__close-btn cartmini-close-btn"
                             >
                               <i className="fal fa-times"></i>
                             </button>
-                          </div>
+                          </div> */}
                           <div onClick={() => clearFilter()}>
                             <i className="fa-regular fa-xmark " />
-                            <span style={{ paddingLeft: "5px" }}>
+                            <span style={{ paddingLeft: "5px",  }}>
                               Clear filter
                             </span>
                           </div>
                         </>
                       )}
                       <div
-                        className="pb-20"
-                        style={{ display: "flex", gap: 10, cursor: "pointer" }}
+                        className=""
+                        style={{ display: "flex", gap: 10, cursor: "pointer", color:"black"}}
                       >
                         {/* Price Filter */}
                         {filter.price && (

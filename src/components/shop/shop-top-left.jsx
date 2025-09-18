@@ -42,9 +42,9 @@ const ShopTopLeft = ({total,showing=1}) => {
             </li>
           </ul>
         </div> */}
-        <div className="tp-shop-top-result">
+        <div className="tp-shop-top-result ">
           {/* <p>Showing {showing}–{showing * 21} of {total} results</p> */}
-          <p>
+          <p className="text-black">
         Showing {startItem}–{endItem} of {total} results
       </p>
         </div>

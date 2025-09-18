@@ -16,7 +16,7 @@ const TermsAndConditions = () => {
       <HeaderSection />
 
       <div style={{ background: "#f6e9d9" }}>
-        <div className="section-wd">
+        <div >
           <ShopBreadcrumb
             title="Terms And Conditions"
             subtitle="Terms And Conditions"
