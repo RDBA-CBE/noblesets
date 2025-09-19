@@ -49,6 +49,7 @@ import {
   BRAND_DATA,
   DELETE_GIFT_VOUCHER,
   PRICE_RANGE,
+  CHILD_CATEGORY,
 } from "@/utils/queries/productList";
 import {
   RELATED_PRODUCT,
@@ -899,6 +900,13 @@ export const productApi = apiSlice.injectEndpoints({
       providesTags: ["Products"],
     }),
 
+    childCategoryList: builder.mutation({
+      query: () => {
+        return configuration(CHILD_CATEGORY({  }));
+      },
+      providesTags: ["Products"],
+    }),
+
     
   }),
 });
@@ -970,5 +978,6 @@ export const {
   useUserReviewsListMutation,
   useBrandDataMutation,
   useRemoveGiftVoucherMutation,
-  usePriceRangeMutation
+  usePriceRangeMutation,
+  useChildCategoryListMutation
 } = productApi;

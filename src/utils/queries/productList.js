@@ -810,6 +810,29 @@ export const PRICE_RANGE = () => {
   });
 };
 
+export const CHILD_CATEGORY = () => {
+  return JSON.stringify({
+    query: `
+    query ChildCategories {
+  categories(level: 1, first: 100) { 
+    edges {
+      node {
+        id
+        name
+        slug
+        level
+        parent {
+          id
+          name 
+        }
+      }
+    }
+  }
+}
+    `,
+  });
+};
+
 export const ORDER_CANCEL = ({ id }) => {
   return JSON.stringify({
     query: `mutation customerCancelOrder($id: ID!) {

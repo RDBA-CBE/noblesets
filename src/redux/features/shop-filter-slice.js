@@ -4,6 +4,7 @@ const initialState = {
   filterSidebar: false,
   filterData: {},
   filterByHomePage: null,
+  childCategory:[]
 };
 
 export const shopFilterSlice = createSlice({
@@ -22,6 +23,11 @@ export const shopFilterSlice = createSlice({
     filterByHomePage: (state, { payload }) => {
       state.filterByHomePage = payload;
     },
+
+    childCategory: (state, { payload }) => {
+      state.childCategory = payload;
+    },
+    
   },
 });
 
@@ -30,5 +36,6 @@ export const {
   handleFilterSidebarClose,
   filterData,
   filterByHomePage,
+  childCategory
 } = shopFilterSlice.actions;
 export default shopFilterSlice.reducer;
