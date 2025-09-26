@@ -15,7 +15,7 @@ import mobile_size_ban_4 from "@assets/img/home/home-banner/mobile-banner-img-4.
 
 
 import slider_img_1 from "@assets/img/home/home-banner/Baanner-2.jpg";
-import slider_img_2 from "@assets/img/home/home-banner/Baanner-4.jpg";
+import slider_img_2 from "@assets/img/home/home-banner/Baanner.jpg";
 import slider_img_3 from "@assets/img/home/home-banner/Baanner-5.jpg";
 import slider_img_4 from "@assets/img/home/home-banner/Baanner-3.jpg";
 import slider_img_5 from "@assets/img/home/home-banner/Baanner-6.jpg";
@@ -33,7 +33,7 @@ import { Autoplay } from "swiper";
 const slider_data = [
   {
     id: 1,
-    img: slider_img_1,
+    img: slider_img_5,
     mblImg: mobile_size_ban_1,
     link: "/shop",
     // url: "/shop?category=earrings",
@@ -60,7 +60,7 @@ const slider_data = [
       mblImg: mobile_size_ban_3,
       link: "/shop",
       title:"The Glow-Up You’ll <br/> Never Feel Tired Wearing.",
-    desc:"Discover lightweight, stylish jewelry designed <br/> to add effortless elegance to your everyday and special moments.",
+    desc:"Discover lightweight, stylish jewelry designed  to add effortless <br/> elegance to your everyday and special moments.",
     btnTi:"Exhibition & Sale",
     btnDesc:"of exquisite diamond jewellery"
       // url: "/shop?category=gold_plated_silver",
@@ -177,9 +177,8 @@ const HomeBanner = () => {
               <h1 dangerouslySetInnerHTML={{__html: item.title}}>
               
               </h1>
-              <p>
-                Adorn jewels inspired by the royal jewellery adorned<br/> by
-                empresss in maratha dynasty
+              <p dangerouslySetInnerHTML={{__html:item.desc}}>
+               
               </p>
               <div className="exb-btn cursor-pointer" onClick={()=>router.push("/shop")}>
                 <p>
