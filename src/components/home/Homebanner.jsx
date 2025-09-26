@@ -18,6 +18,7 @@ import slider_img_1 from "@assets/img/home/home-banner/Baanner-2.jpg";
 import slider_img_2 from "@assets/img/home/home-banner/Baanner-4.jpg";
 import slider_img_3 from "@assets/img/home/home-banner/Baanner-5.jpg";
 import slider_img_4 from "@assets/img/home/home-banner/Baanner-3.jpg";
+import slider_img_5 from "@assets/img/home/home-banner/Baanner-6.jpg";
 
 
 
@@ -36,8 +37,9 @@ const slider_data = [
     mblImg: mobile_size_ban_1,
     link: "/shop",
     // url: "/shop?category=earrings",
-    title:"Elevate Your Style <br />  with Every Piece",
-    desc:"Adorn jewels inspired by the royal <br /> jewellery adorned by  empresss in maratha dynasty",
+    
+    title:"Elevate Every Look <br/> with a Touch of Sparkle.",
+    desc:"Discover lightweight, stylish jewelry <br/> designed to add effortless elegance to your everyday and special moments.",
     btnTi:"Exhibition & Sale",
     btnDesc:"of exquisite diamond jewellery"
   },
@@ -47,8 +49,8 @@ const slider_data = [
       mblImg: mobile_size_ban_2,
       link: "/shop",
       // url: "/shop?category=finger_rings",
-      title:"Elevate Your Style <br />  with Every Piece",
-    desc:"Adorn jewels inspired by the royal <br /> jewellery adorned by  empresss in maratha dynasty",
+      title:"Where Timeless Beauty <br/> Meets Modern Design.",
+    desc:"Exquisite craftsmanship meets timeless design. <br/> Jewelry that defines elegance in every detail.",
     btnTi:"Exhibition & Sale",
     btnDesc:"of exquisite diamond jewellery"
   },
@@ -57,8 +59,8 @@ const slider_data = [
       img: slider_img_3,
       mblImg: mobile_size_ban_3,
       link: "/shop",
-      title:"Elevate Your Style <br />  with Every Piece",
-    desc:"Adorn jewels inspired by the royal <br /> jewellery adorned by  empresss in maratha dynasty",
+      title:"The Glow-Up You’ll <br/> Never Feel Tired Wearing.",
+    desc:"Discover lightweight, stylish jewelry designed <br/> to add effortless elegance to your everyday and special moments.",
     btnTi:"Exhibition & Sale",
     btnDesc:"of exquisite diamond jewellery"
       // url: "/shop?category=gold_plated_silver",
@@ -68,12 +70,25 @@ const slider_data = [
       img: slider_img_4,
       mblImg: mobile_size_ban_4,
       link: "/shop",
-      title:"Elevate Your Style <br />  with Every Piece",
-    desc:"Adorn jewels inspired by the royal <br /> jewellery adorned by  empresss in maratha dynasty",
+      title:"Luxury That’s Always <br /> Within Reach.",
+    desc:"Simple, sleek, and effortlessly beautiful. <br/> Jewelry that feels as good as it looks." ,
     btnTi:"Exhibition & Sale",
     btnDesc:"of exquisite diamond jewellery"
       // url: "/shop?category=earrings",
   },
+
+   {
+      id: 4,
+      img: slider_img_5,
+      mblImg: mobile_size_ban_4,
+      link: "/shop",
+      title:"Luxury That’s Always <br /> Within Reach.",
+    desc:"Simple, sleek, and effortlessly beautiful. <br/> Jewelry that feels as good as it looks." ,
+    btnTi:"Exhibition & Sale",
+    btnDesc:"of exquisite diamond jewellery"
+      // url: "/shop?category=earrings",
+  },
+
   // {
   //     id: 5,
   //     img: slider_img_5,
