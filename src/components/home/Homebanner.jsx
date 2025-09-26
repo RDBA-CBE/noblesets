@@ -39,7 +39,7 @@ const slider_data = [
     // url: "/shop?category=earrings",
     
     title:"Elevate Every Look <br/> with a Touch of Sparkle.",
-    desc:"Discover lightweight, stylish jewelry <br/> designed to add effortless elegance to your everyday and special moments.",
+    desc:"Discover lightweight, stylish jewelry  designed to add effortless <br/> elegance to your everyday and special moments.",
     btnTi:"Exhibition & Sale",
     btnDesc:"of exquisite diamond jewellery"
   },
@@ -77,17 +77,17 @@ const slider_data = [
       // url: "/shop?category=earrings",
   },
 
-   {
-      id: 4,
-      img: slider_img_5,
-      mblImg: mobile_size_ban_4,
-      link: "/shop",
-      title:"Luxury That’s Always <br /> Within Reach.",
-    desc:"Simple, sleek, and effortlessly beautiful. <br/> Jewelry that feels as good as it looks." ,
-    btnTi:"Exhibition & Sale",
-    btnDesc:"of exquisite diamond jewellery"
-      // url: "/shop?category=earrings",
-  },
+  //  {
+  //     id: 4,
+  //     img: slider_img_5,
+  //     mblImg: mobile_size_ban_4,
+  //     link: "/shop",
+  //     title:"Luxury That’s Always <br /> Within Reach.",
+  //   desc:"Simple, sleek, and effortlessly beautiful. <br/> Jewelry that feels as good as it looks." ,
+  //   btnTi:"Exhibition & Sale",
+  //   btnDesc:"of exquisite diamond jewellery"
+  //     // url: "/shop?category=earrings",
+  // },
 
   // {
   //     id: 5,

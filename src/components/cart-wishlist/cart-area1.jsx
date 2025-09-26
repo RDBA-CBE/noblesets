@@ -145,7 +145,20 @@ const CartArea1 = () => {
     return () => window.removeEventListener("scroll", handleScroll);
   }, []);
 
-  return (
+  return CartList?.length == 0 ? (
+    <>
+      <div className="text-center pb-20" style={{padding:"100px 0"}}>
+        <h3 style={{ paddingBottom: "15px" }}>Your Cart is empty.</h3>
+        <p style={{ color: "gray" }}>
+          You dont have any products in the cart yet.
+          <br /> You will find a lot of interesting products on our Shop page.
+        </p>
+        <Link href="/shop" className="gradient-btn">
+          Return to shop
+        </Link>
+      </div>
+    </>
+  ) : (
     <div className="cart-container container py-4">
       <h3 className="cart-title mb-3 mt-2">
         Cart <span className="text-muted">({CartList?.length} Items)</span>
@@ -172,8 +185,6 @@ const CartArea1 = () => {
           </p> */}
 
           {/* Item 1 */}
-
-          {/* {CartList?.length > 0 && ( */}
 
           {CartList?.map((item, i) => {
             return (
@@ -275,7 +286,7 @@ const CartArea1 = () => {
           </div>
         </div>
 
-        {(CartList?.length === 1 && youMayLikeData?.length > 0) && (
+        {CartList?.length === 1 && youMayLikeData?.length > 0 && (
           <section className="tp-related-product pt-50">
             <div className="container-fluid">
               <div className="row">
