@@ -537,6 +537,18 @@ export const PRODUCT_FILTER = ({
               id
               sku
               quantityAvailable
+              pricing {
+            price {
+              gross {
+                amount
+                currency
+              }
+                net {
+                amount
+                currency
+              }
+            }
+          }
             }
         category {
           id
@@ -564,6 +576,10 @@ export const PRODUCT_FILTER = ({
           pricing {
             price {
               gross {
+                amount
+                currency
+              }
+                net {
                 amount
                 currency
               }
