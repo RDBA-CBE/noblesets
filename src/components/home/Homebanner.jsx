@@ -4,17 +4,22 @@ import Slider from "react-slick";
 import { useRouter } from "next/router";
 
 // Internal images
-import slider_img_1 from "@assets/img/home/home-banner/banner-img-4.webp";
-import slider_mbl_img_1 from "@assets/img/home/Banner/mbl-banner.png";
-import slider_img_2 from "@assets/img/home/home-banner/banner-img-1.webp";
-import slider_img_3 from "@assets/img/home/home-banner/banner-img-2.webp";
+// import slider_img_1 from "@assets/img/home/home-banner/banner-img-4.webp";
+// import slider_img_4 from "@assets/img/home/home-banner/banner-img-3.webp";
+// import slider_img_2 from "@assets/img/home/home-banner/banner-img-1.webp";
+// import slider_img_3 from "@assets/img/home/home-banner/banner-img-2.webp";
 import mobile_size_ban_1 from "@assets/img/home/home-banner/mobile-banner-img-1.webp";
 import mobile_size_ban_2 from "@assets/img/home/home-banner/mobile-banner-img-2.webp";
 import mobile_size_ban_3 from "@assets/img/home/home-banner/mobile-banner-img-3.webp";
 import mobile_size_ban_4 from "@assets/img/home/home-banner/mobile-banner-img-4.webp";
 
 
-import slider_img_4 from "@assets/img/home/home-banner/banner-img-3.webp";
+import slider_img_1 from "@assets/img/home/home-banner/Baanner-2.jpg";
+import slider_img_2 from "@assets/img/home/home-banner/Baanner-4.jpg";
+import slider_img_3 from "@assets/img/home/home-banner/Baanner-5.jpg";
+import slider_img_4 from "@assets/img/home/home-banner/Baanner-3.jpg";
+
+
 
 import banner_Content from "@assets/img/home/Banner/banner-content-img.png";
 
@@ -154,9 +159,8 @@ const HomeBanner = () => {
               </div> */}
             </div>
             <div className="mbl-content" >
-              <h1>
-                Elevate Your Style 
-                with <br/>Every Piece
+              <h1 dangerouslySetInnerHTML={{__html: item.title}}>
+              
               </h1>
               <p>
                 Adorn jewels inspired by the royal jewellery adorned<br/> by
