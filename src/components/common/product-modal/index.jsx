@@ -83,7 +83,7 @@ const ProductModal = () => {
 
                 {/* product-details-wrapper start */}
 
-                <div className={`${productItem?.media?.length > 1 ? "col-xl-5 col-lg-5" : "col-xl-7 col-lg-7"} `}>
+                <div className={`${productItem?.media?.length > 1 ? "col-xl-5 col-lg-5 common-bg " : "col-xl-7 col-lg-7 common-bg"} `} style={{borderRadius:"10px"}}>
 
                    <DetailsWrapperQuick
               productItem={productItem}

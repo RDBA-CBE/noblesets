@@ -25,7 +25,7 @@ const HomeFooter = () => {
                 
               </div> */}
 
-              <div className="col-6 col-lg-3 col-xl-2 ps-xl-3">
+              <div className="col-6 col-md-4 col-lg-3 col-xl-2 ps-xl-3">
                 <h3 className="footer-title">Quick Links</h3>
                 <nav className="nav flex-column">
                   <a className="footer-link mb-3" href="/our-story">
@@ -49,44 +49,20 @@ const HomeFooter = () => {
                 </nav>
               </div>
 
-              <div className="col-6 col-lg-3 col-xl-2 ps-xl-3">
+              <div className="col-6 col-md-4 col-lg-3 col-xl-2 ps-xl-3">
                 <h3 className="footer-title">Jewellery</h3>
                 <nav className="nav flex-column">
+                  <a className="footer-link mb-3" href="/shop">
+                    Bracelets
+                  </a>
                   <a className="footer-link mb-3" href="/shop">
                     Chains
                   </a>
                   <a className="footer-link mb-3" href="/shop">
-                    Mangalsutra
-                  </a>
-                  <a className="footer-link mb-3" href="/shop">
-                    Nose Pin
-                  </a>
-                  <a className="footer-link mb-3" href="/shop">
-                    Coins
-                  </a>
-                  <a className="footer-link mb-3" href="/shop">
-                    Bracelets
-                  </a>
-                  {/* <a className="footer-link" href="#">
-                    Testimonials
-                  </a> */}
-                </nav>
-              </div>
-
-               <div className="col-6 col-lg-3 col-xl-2 ps-xl-3">
-                <h3 className="footer-title">Collections</h3>
-                <nav className="nav flex-column">
-                  <a className="footer-link mb-3" href="/shop">
-                   Haram
+                    Bangles
                   </a>
                   <a className="footer-link mb-3" href="/shop">
                     Necklace
-                  </a>
-                  <a className="footer-link mb-3" href="/shop">
-                    Bangle
-                  </a>
-                  <a className="footer-link mb-3" href="/shop">
-                   Pendants
                   </a>
                   <a className="footer-link mb-3" href="/shop">
                     Rings
@@ -97,23 +73,46 @@ const HomeFooter = () => {
                 </nav>
               </div>
 
-              <div className="col-6 col-lg-3 col-xl-2 ps-xl-3">
+              <div className="col-6 col-md-4 col-lg-3 col-xl-2 ps-xl-3">
+                <h3 className="footer-title">Collections</h3>
+                <nav className="nav flex-column">
+                  <a className="footer-link mb-3" href="/shop">
+                    Diamond
+                  </a>
+                  <a className="footer-link mb-3" href="/shop">
+                    Gold
+                  </a>
+                  <a className="footer-link mb-3" href="/shop">
+                    Silver
+                  </a>
+                  <a className="footer-link mb-3" href="/giftcard">
+                    Gift Crad
+                  </a>
+                 
+                  {/* <a className="footer-link" href="#">
+                    Testimonials
+                  </a> */}
+                </nav>
+              </div>
+
+              <div className="col-6 col-md-4 col-lg-3 col-xl-2 ps-xl-3">
                 <h3 className="footer-title">Trending</h3>
                 <nav className="nav flex-column">
                   <a className="footer-link mb-3" href="/gift-card">
-                    Gift Cards
+                    18KT Rose Gold Bracelet-2
                   </a>
                   <a className="footer-link mb-3" href="/gift-card">
-                    Gifting Range
+                   18KT Rose Gold Bracelet-1
                   </a>
                   <a className="footer-link mb-3" href="/shop">
-                     Ipsum dolor
+                   18KT Rose Gold Necklace -1
+
                   </a>
                   <a className="footer-link mb-3" href="/shop">
-                    Ipsum dolor
+                   Fancy Necklace 22
                   </a>
                   <a className="footer-link mb-3" href="/shop">
-                    Ipsum dolor
+                    Baby Fancy Chain 2
                   </a>
                   {/* <a className="footer-link" href="#">
                     Testimonials
@@ -170,7 +169,7 @@ const HomeFooter = () => {
                   </span>
                 </div>
               </div> */}
-              <div className="col-6  col-lg-3 col-xl-2">
+              <div className="col-6 col-md-4  col-lg-3 col-xl-2">
                 <h3 className="footer-title">Payment</h3>
                 <div className="d-flex flex-column gap-3">
                   <div className="payment-item">
@@ -181,7 +180,7 @@ const HomeFooter = () => {
                       width="30"
                       className="me-2"
                     />
-                    Paypal
+                    RuPay
                   </div>
                   <div className="payment-item">
                     <img
@@ -201,7 +200,7 @@ const HomeFooter = () => {
                       width="20"
                       className="me-2"
                     />
-                    Amazon Pay
+                    Master Card
                   </div>
                   <div className="payment-item">
                     <img
@@ -211,7 +210,7 @@ const HomeFooter = () => {
                       width="20"
                       className="me-2"
                     />
-                    Gpay
+                    UPI
                   </div>
                   <div className="payment-item">
                     <img
@@ -221,7 +220,7 @@ const HomeFooter = () => {
                       width="20"
                       className="me-2"
                     />
-                    Apple Pay
+                    Net Banking
                   </div>
                 </div>
               </div>
@@ -253,7 +252,7 @@ const HomeFooter = () => {
                 </div>
               </div> */}
 
-              <div className="col-6 col-lg-3 col-xl-2 ">
+              <div className="col-6 col-md-4 col-lg-3 col-xl-2 ">
                 <h3 className="footer-title">Support</h3>
                 <div className="d-flex align-items-center mb-3 cursor-pointer">
                   {/* <i className="fas fa-phone me-2" style="font-size: 10px"></i> */}
@@ -273,16 +272,31 @@ const HomeFooter = () => {
                     78, New Market Street, <br /> Tiruppur-641604 <br />
                   </span>
                 </div>
-                <div className="d-flex align-items-center cursor-pointer support-res">
+                <div className="d-flex align-items-start align-items-md-center cursor-pointer support-res">
                   {/* <i className="fas fa-envelope me-2" style="font-size: 10px"/> */}
                   {/* <i class="fa-regular fa-envelope" style={{fontSize:"18px"}}></i> */}
                   <EmailTwo />
+
                   <span className="footer-link ps-2 ">
-                    <a href="mailto:services@nobleset.com">
+                    <span
+                      className="d-block d-md-none"
+                      style={{ marginTop: "-5px" }}
+                    >
+                      Email:
+                    </span>
+                    <a
+                      href="mailto:services@nobleset.com"
+                      className="d-none d-md-block ps-0"
+                    >
                       services@noblesets.com
                     </a>
                   </span>
                 </div>
+                <span className="d-block d-md-none ps-0 footer-link">
+                  <a href="mailto:services@nobleset.com">
+                    services@noblesets.com
+                  </a>
+                </span>
               </div>
             </div>
             <hr className="footer-divider " />
@@ -291,7 +305,10 @@ const HomeFooter = () => {
               style={{ fontSize: "16px" }}
             >
               <div className="copyright">
-                Copyright 2025 © Noblesets. Concept by <a href="https://irepute.in/" target="blank">repute</a>
+                Copyright 2025 © Noblesets. Concept by{" "}
+                <a href="https://irepute.in/" target="blank">
+                  repute
+                </a>
               </div>
               <div className="d-flex gap-3 mt-3 mt-md-0">
                 <button

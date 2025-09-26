@@ -483,7 +483,7 @@ const DetailsWrapper = ({
   }, [productItem]);
 
   return (
-    <div className="tp-product-details-wrapper quickview-sec-section">
+    <div className="tp-product-details-wrapper quickview-sec-section ">
       {/* <div style={{ display: "flex", justifyContent: "space-between" }}>
         <div>
           <ProductDetailsBreadcrumb
