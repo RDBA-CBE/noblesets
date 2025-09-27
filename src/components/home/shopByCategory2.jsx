@@ -201,14 +201,14 @@ const InstagramSection2 = () => {
                   alt="Nosepin 2"
                   className="category-img"
                   onClick={() => {
-                    handleClick("earring");
+                    handleClick("bracelets");
                   }}
                 />
                 <div className="category-button">
                   <button
                     className="gradient-btn"
                     onClick={() => {
-                      handleClick("earring");
+                      handleClick("bracelets");
                     }}
                   >
                     ✦ Bracelet ✦

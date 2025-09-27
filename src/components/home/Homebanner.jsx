@@ -77,30 +77,7 @@ const slider_data = [
       // url: "/shop?category=earrings",
   },
 
-  //  {
-  //     id: 4,
-  //     img: slider_img_5,
-  //     mblImg: mobile_size_ban_4,
-  //     link: "/shop",
-  //     title:"Luxury That’s Always <br /> Within Reach.",
-  //   desc:"Simple, sleek, and effortlessly beautiful. <br/> Jewelry that feels as good as it looks." ,
-  //   btnTi:"Exhibition & Sale",
-  //   btnDesc:"of exquisite diamond jewellery"
-  //     // url: "/shop?category=earrings",
-  // },
-
-  // {
-  //     id: 5,
-  //     img: slider_img_5,
-  //     link: "/shop"
-  //     // url: "/shop?category=finger_rings",
-  // },
-  // {
-  //     id: 6,
-  //     img: slider_img_6,
-  //     link: "/shop"
-  //     // url: "/shop?category=gold_plated_silver",
-  // },
+ 
 ];
 
 const HomeBanner = () => {
@@ -117,7 +94,9 @@ const HomeBanner = () => {
     fade: true,
     centerMode: false,
     autoplay:true,
-    loop:true
+    loop:true,
+    speed: 1000,              // slightly slower looks smoother
+  cssEase: 'ease-in-out',
   };
 
   return (
@@ -158,7 +137,7 @@ const HomeBanner = () => {
                   alt="slider img"
                   className="mobile-view-width-change"
                   style={{
-                    backgroundColor: "#fbdccc",
+                    // backgroundColor: "#fbdccc",
                     borderRadius: "20px",
                     // objectFit: "contain",
                     cursor: "pointer",

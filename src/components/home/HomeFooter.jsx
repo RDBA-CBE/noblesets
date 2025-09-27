@@ -4,6 +4,16 @@ import React from "react";
 
 const HomeFooter = () => {
   const router = useRouter();
+
+  const handleClick = (category) => {
+    router.push({
+      pathname: "/shop",
+      query: {
+        category: category.toLowerCase().replace("&", "").split(" ").join("-"),
+      },
+    });
+  };
+
   return (
     // <div style={{ backgroundColor: "#e09a7b" }}>
     <div style={{ background: "url(/assets/img/footer/bg.webp)" }}>
@@ -24,6 +34,8 @@ const HomeFooter = () => {
                 </p>
                 
               </div> */}
+
+              
 
               <div className="col-6 col-md-4 col-lg-3 col-xl-2 ps-xl-3">
                 <h3 className="footer-title">Quick Links</h3>
@@ -52,19 +64,45 @@ const HomeFooter = () => {
               <div className="col-6 col-md-4 col-lg-3 col-xl-2 ps-xl-3">
                 <h3 className="footer-title">Jewellery</h3>
                 <nav className="nav flex-column">
-                  <a className="footer-link mb-3" href="/shop">
+                  <a
+                    className="footer-link mb-3"
+                    href="#"
+                    onClick={() => {
+                      handleClick("bracelets");
+                    }}
+                  >
                     Bracelets
                   </a>
-                  <a className="footer-link mb-3" href="/shop">
+                  <a
+                    className="footer-link mb-3"
+                    href="#"
+                    onClick={() => {
+                      handleClick("Chain");
+                    }}
+                  >
                     Chains
                   </a>
-                  <a className="footer-link mb-3" href="/shop">
+                  <a
+                    className="footer-link mb-3"
+                    href="#"
+                    onClick={() => {
+                      handleClick("Bangle");
+                    }}
+                  >
                     Bangles
                   </a>
-                  <a className="footer-link mb-3" href="/shop">
+                  <a
+                    className="footer-link mb-3"
+                    href="#"
+                    onClick={() => {
+                      handleClick("necklace");
+                    }}
+                  >
                     Necklace
                   </a>
-                  <a className="footer-link mb-3" href="/shop">
+                  <a className="footer-link mb-3" href="#" onClick={() => {
+                      handleClick("rings");
+                    }}>
                     Rings
                   </a>
                   {/* <a className="footer-link" href="#">
@@ -76,49 +114,56 @@ const HomeFooter = () => {
               <div className="col-6 col-md-4 col-lg-3 col-xl-2 ps-xl-3">
                 <h3 className="footer-title">Collections</h3>
                 <nav className="nav flex-column">
-                  <a className="footer-link mb-3" href="/shop">
+                  <a className="footer-link mb-3" href="#" onClick={() => {
+                      handleClick("diamond");
+                    }}>
                     Diamond
                   </a>
-                  <a className="footer-link mb-3" href="/shop">
+                  <a className="footer-link mb-3" href="#" onClick={() => {
+                      handleClick("gold");
+                    }}>
                     Gold
                   </a>
-                  <a className="footer-link mb-3" href="/shop">
+                  <a className="footer-link mb-3" href="#" onClick={() => {
+                      handleClick("silver");
+                    }}>
                     Silver
                   </a>
-                  <a className="footer-link mb-3" href="/giftcard">
+                  <a className="footer-link mb-3" href="/gift-card">
                     Gift Crad
                   </a>
-                 
+
                   {/* <a className="footer-link" href="#">
                     Testimonials
                   </a> */}
                 </nav>
               </div>
 
-              <div className="col-6 col-md-4 col-lg-3 col-xl-2 ps-xl-3">
-                <h3 className="footer-title">Trending</h3>
+               <div className="col-6 col-md-4 col-lg-3 col-xl-2 ps-xl-3">
+                <h3 className="footer-title">My Accounts</h3>
                 <nav className="nav flex-column">
-                  <a className="footer-link mb-3" href="/gift-card">
-                    18KT Rose Gold Bracelet-2
+                  <a className="footer-link mb-3" href="/profile">
+                    My Profile
                   </a>
-                  <a className="footer-link mb-3" href="/gift-card">
-                   18KT Rose Gold Bracelet-1
+                  <a className="footer-link mb-3" href="/profile">
+                    My Orders 
                   </a>
-                  <a className="footer-link mb-3" href="/shop">
-                   18KT Rose Gold Necklace -1
-
+                  <a className="footer-link mb-3" href="/wishlist">
+                    Wishlist 
                   </a>
-                  <a className="footer-link mb-3" href="/shop">
-                   Fancy Necklace 22
+                  <a className="footer-link mb-3" href="/compare">
+                   Compare 
                   </a>
-                  <a className="footer-link mb-3" href="/shop">
-                    Baby Fancy Chain 2
+                  <a className="footer-link mb-3" href="/cart">
+                    Cart
                   </a>
                   {/* <a className="footer-link" href="#">
                     Testimonials
                   </a> */}
                 </nav>
               </div>
+
+             
               {/* <div className="col-6 col-lg-3 col-xl-2 ps-xl-5">
                 <h3 className="footer-title">Collections</h3>
                 <nav className="nav flex-column">
@@ -176,7 +221,7 @@ const HomeFooter = () => {
                     <img
                       alt="Paypal logo with blue text on white background"
                       height="14"
-                      src="/assets/img/footer/payment-2.png"
+                      src="/assets/img/footer/RuPay.webp"
                       width="30"
                       className="me-2"
                     />
@@ -186,7 +231,7 @@ const HomeFooter = () => {
                     <img
                       alt="Visa logo white text on dark blue background"
                       height="14"
-                      src="/assets/img/footer/payment-3.png"
+                      src="/assets/img/footer/Visa.webp"
                       width="20"
                       className="me-2"
                     />
@@ -196,7 +241,7 @@ const HomeFooter = () => {
                     <img
                       alt="Amazon Pay logo white text on dark background"
                       height="14"
-                      src="/assets/img/footer/payment-4.png"
+                      src="/assets/img/footer/master-card.webp"
                       width="20"
                       className="me-2"
                     />
@@ -206,7 +251,7 @@ const HomeFooter = () => {
                     <img
                       alt="Gpay logo black text on white background"
                       height="14"
-                      src="/assets/img/footer/payment-5.png"
+                      src="/assets/img/footer/upi.webp"
                       width="20"
                       className="me-2"
                     />
@@ -216,7 +261,7 @@ const HomeFooter = () => {
                     <img
                       alt="Apple Pay logo white text on black background"
                       height="14"
-                      src="/assets/img/footer/payment-1.png"
+                      src="/assets/img/footer/net-banking.webp"
                       width="20"
                       className="me-2"
                     />
