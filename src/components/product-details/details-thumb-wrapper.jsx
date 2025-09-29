@@ -16,6 +16,7 @@ const DetailsThumbWrapper = ({ product, relatedClick }) => {
   const imgRef = useRef(null);
 
   const [activeImg, setActiveImg] = useState(product?.media[0] || "");
+  const [imageIndex, setImageIndex] = useState(0)
   const [loading, setLoading] = useState(false);
   const [isOpen, setIsOpen] = useState(false);
   const [photoIndex, setPhotoIndex] = useState(0);
@@ -50,8 +51,12 @@ const DetailsThumbWrapper = ({ product, relatedClick }) => {
     }, 100); // 100ms delay
   };
 
-  const handleImageActive = (item) => {
-    setActiveImg(item);
+  const handleImageActive = (item, i) => {
+    console.log("i", i);
+    
+    
+    setActiveImg(item );
+    setImageIndex(i)
   };
 
   const handleMouseMove = (e) => {
@@ -144,6 +149,10 @@ const DetailsThumbWrapper = ({ product, relatedClick }) => {
     },
   ];
 
+  console.log("activeImg",activeImg);
+  
+
+
   return (
     <>
       <div
@@ -222,7 +231,7 @@ const DetailsThumbWrapper = ({ product, relatedClick }) => {
                     className={`nav-link ${
                       item?.url === activeImg?.url ? "active" : ""
                     }`}
-                    onClick={() => handleImageActive(item)}
+                    onClick={() => handleImageActive(item, i)}
                     id={`image-${i}`}
                   >
                     {isImage(profilePic(item?.url)) ? (
@@ -314,7 +323,7 @@ const DetailsThumbWrapper = ({ product, relatedClick }) => {
                           title={activeImg?.title}
                           onLoad={() => setLoading(false)}
                           onError={() => setLoading(false)}
-                          onClick={() => handleOpenLightbox(0)}
+                          onClick={() => handleOpenLightbox(imageIndex)}
                           style={{ borderRadius: "20px" }}
                         />
 
@@ -449,19 +458,20 @@ const DetailsThumbWrapper = ({ product, relatedClick }) => {
               marginTop:"20px"
             }}
           >
-            {product?.media?.map((item, idx) => (
+            {product?.media?.slice(startIndex, startIndex + 4)
+                .map((item, i) => (
               <img
-                key={idx}
+                key={i}
                 src={profilePic(item?.url) || item?.url}
                 alt="thumb"
-                onClick={() => setPhotoIndex(idx)}
+                onClick={() => handleImageActive(item, i)}
                 style={{
                   width: "50px",
                   height: "50px",
                   objectFit: "cover",
                   borderRadius: "8px",
                   border:
-                    idx === photoIndex
+                    i === imageIndex
                       ? "2px solid white"
                       : "2px solid transparent",
                   cursor: "pointer",
@@ -495,13 +505,14 @@ const DetailsThumbWrapper = ({ product, relatedClick }) => {
           <div
           // style={{ maxWidth: "70%", maxHeight: "80%" }}
           >
-            {isImage(product?.media[photoIndex]?.url) ? (
-              <img
+            {isImage(profilePic(activeImg?.url)) ? (
+              
+               <img
                 src={
-                  profilePic(product?.media[photoIndex]?.url) ||
+                  activeImg?.url ||
                   product?.media[photoIndex]?.url
                 }
-                alt="Lightbox"
+                alt={activeImg?.alt || "product image"}
                 style={{
                   width: "100%",
                   height: "100%",
@@ -511,10 +522,7 @@ const DetailsThumbWrapper = ({ product, relatedClick }) => {
               />
             ) : (
               <video
-                src={
-                  profilePic(product?.media[photoIndex]?.url) ||
-                  product?.media[photoIndex]?.url
-                }
+                src="/assets/img/blog.webp"
                 style={{
                   width: "100%",
                   height: "100%",
