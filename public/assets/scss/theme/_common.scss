@@ -996,8 +996,8 @@
 .terms-para {
   color: #000;
   font-size: 16px;
-  line-height: 30px;
-  margin-top: 25px;
+  /*line-height: 30px;*/
+  margin-top: 5px;
 }
 
 .terms-heading-ti {
@@ -1021,7 +1021,7 @@
   color: #a44100;
   font-size: 18px;
   margin-top: 25px;
-  font-style: italic;
+  font-style: italic; font-weight: 500;
 }
 .terms-lists li {
   color: #000;

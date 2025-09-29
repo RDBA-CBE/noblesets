@@ -39,7 +39,7 @@ const slider_data = [
     // url: "/shop?category=earrings",
     
     title:"Elevate Every Look <br/> with a Touch of Sparkle.",
-    desc:"Discover lightweight, stylish jewelry  designed to add effortless <br/> elegance to your everyday and special moments.",
+    desc:"Lightweight, stylish jewelry for effortless everyday elegance",
     btnTi:"Exhibition & Sale",
     btnDesc:"of exquisite diamond jewellery"
   },
@@ -60,7 +60,7 @@ const slider_data = [
       mblImg: mobile_size_ban_3,
       link: "/shop",
       title:"The Glow-Up You’ll <br/> Never Feel Tired Wearing.",
-    desc:"Discover lightweight, stylish jewelry designed  to add effortless <br/> elegance to your everyday and special moments.",
+    desc:"Chic, comfy, and made to shine. Jewelry that keeps up with your glow.",
     btnTi:"Exhibition & Sale",
     btnDesc:"of exquisite diamond jewellery"
       // url: "/shop?category=gold_plated_silver",
