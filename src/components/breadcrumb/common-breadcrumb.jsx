@@ -28,17 +28,12 @@ const CommonBreadcrumb = ({
           <div className="col-xxl-12">
             <div
               className="breadcrumb__content p-relative z-index-1"
-              style={{ textAlign: "center" }}
+              style={{ textAlign: "center",  color: "#fff", paddingBottom: "15px", paddingTop: "15px", fontSize:"25px", fontWeight:"normal"}}
             >
-              <h3
-                className="breadcrumb__title shop-banner-title"
-                style={{
-                  color: "#fff",
-                  // paddingBottom: "15px",
-                }}
-              >
+              
+                       
                 {title}
-              </h3>
+              
               {/* <div style={{ color: "#a44100" }}>
                 <span>
                   <a href="/">HOME</a>
