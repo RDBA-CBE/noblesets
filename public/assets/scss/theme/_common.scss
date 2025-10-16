@@ -1016,7 +1016,22 @@
   list-style-type: circle;
   padding-left: 20px;
 }
-
+ol.terms-lists1 {
+  list-style-type:none;
+  padding-left: 20px;
+}
+ol li{color: #000 !important;
+  font-size: 16px !important;
+  line-height: 30px !important;
+  margin-top: 8px !important;}
+ol.terms-lists1 li {
+  color: #000;
+  font-size: 16px;
+  line-height: 30px;
+  margin-top: 8px;
+}
+ol.alphalist li{ list-style-type:lower-alpha !important;}
+ol.alphalist li ol li{list-style-type: lower-roman !important;}
 .terms-sub-heading {
   color: #a44100;
   font-size: 18px;
@@ -1029,6 +1044,7 @@
   line-height: 30px;
   margin-top: 8px;
 }
+.terms-lists li ul{margin:5px 10px !important;}
 
 .footer-spacing {
   padding: 0px 50px;
