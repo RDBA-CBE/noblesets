@@ -439,7 +439,7 @@ Silver Jewellery
 We recommend carefully reviewing your order before completing the purchase of items in these categories.
 </li>
 </ul>
-<p className="terms-heading"><b>21. International Orders:</b></p>
+<p className="terms-heading"><b>21. INTERNATIONAL ORDERS:</b></p>
    <p className="terms-para">NOTE: In case of international orders, we do not currently accept any returns exchanges of our products. In case a defective product has been received, you are required to report the defect within 7 days of receipt of the product by writing to us on online@shivamtraders.com international customers can also reach out to us on WhatsApp +91 75388 94111. In case the order is not accepted by the customer and is returned to origin, freight charges and import duty will be levied to the customer.</p>
 <p className="terms-para"><br/>
 <b>Return Charges: </b>
@@ -490,7 +490,7 @@ If the customer doesn't provide that will be sent by courier. It may take up to 
 </ul>
 <p className="terms-para">Noblesets Exchange Program (Exchange of Company’s Jewellery Product)</p>
 
-<p className="terms-heading"><b>25. General Exchange Program ( exchange of other jewellery) </b></p>
+<p className="terms-heading"><b>25. GENERAL EXCHANGE PROGRAM ( EXCHANGE OF OTHER JEWELLERY) </b></p>
 
 <p className="terms-para">24kt, 22kt, 18kt Gold Jewellery products not purchased from Noblesets, will be accepted for exchange only at our stores, as per the terms and conditions laid down by the Company.</p>
 <ul className="terms-lists">
