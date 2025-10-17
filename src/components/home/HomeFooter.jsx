@@ -209,7 +209,7 @@ const HomeFooter = () => {
                 
                   <EmailTwo />
                   <span className="footer-link ps-2">
-                    <a href="mailto:services@nobleset.com">services@noblesets.com</a>
+                    <a href="mailto:online@noblesets.com">online@noblesets.com</a>
                     
                   </span>
                 </div>
@@ -330,16 +330,16 @@ const HomeFooter = () => {
                       Email:
                     </span>
                     <a
-                      href="mailto:services@nobleset.com"
+                      href="mailto:online@noblesets.com"
                       className="d-none d-md-block ps-0"
                     >
-                      services@noblesets.com
+                     online@noblesets.com
                     </a>
                   </span>
                 </div>
                 <span className="d-block d-md-none ps-0 footer-link">
-                  <a href="mailto:services@nobleset.com">
-                    services@noblesets.com
+                  <a href="mailto:online@noblesets.com">
+                   online@noblesets.com
                   </a>
                 </span>
               </div>
