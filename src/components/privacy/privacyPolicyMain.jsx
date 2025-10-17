@@ -313,6 +313,10 @@ const PrivacyPolicyMain = () => {
   <li>Performance of a Contract: Where we have entered into a contract with you, we may process your personal information to fulfill the terms of our contract.</li>
   <li>Legal Obligations: We may disclose your information where we are legally required to do so in order to comply with applicable law, governmental requests, a judicial proceeding, court order, or legal process, such as in response to a court order or a subpoena (including in response to public authorities to meet national security or law enforcement requirements).</li>
   <li>Vital Interests: We may disclose your information where we believe it is necessary to investigate, prevent, or take action regarding potential violations of our policies, suspected fraud, situations involving potential threats to the safety of any person and illegal activities, or as evidence in litigation in which we are involved.</li>
+  </ul>
+    <p className="terms-para"><b>More specifically, we may need to process your data or share your personal information
+        in the following situations:</b></p>
+        <ul>
   <li>Vendors, Consultants and Other Third-Party Service Providers: We may share your data with third party vendors, service providers, contractors or agents who perform services for us or on our behalf and require access to such information to do that work including payment processing, data analysis, email delivery, delivery partners, hosting services and marketing efforts. We may allow selected third parties to use tracking technology on the Services or Apps, which will enable them to collect data about how you interact with the Services or Apps over time. This information may be used to, among other things, analyse and track data, determine the popularity of certain content and better understand online activity. Unless described in this Policy, we do not share, sell, rent or trade any of your information with third parties for their promotional purposes. We have contracts in place with our data processors, which are designed to help safeguard your personal information. This means that they cannot do anything with your personal information unless we have instructed them to do it. They will also not share your personal information with any organization apart from us. They also commit to protect the data they hold on our behalf and to retain it for the period we instruct.</li>
   <li>Other Users: When you share personal information (for example, by posting comments, contributions or other content to the Services) or otherwise interact with public areas of the Services, such personal information may be viewed by all users and may be publicly made available outside the Services in perpetuity. If you interact with other users of the Website/Mobile Application, those users may see your name, profile photo, and descriptions of your activity, including sending invitations to other users, chatting with other users, liking posts, posting comments, posting reviews.</li>
   <li>Online Postings: When you post comments, contributions or other content to the Website/Mobile Application, your posts may be viewed by all users and may be publicly distributed outside the Website/Mobile Application in perpetuity.</li>
@@ -327,39 +331,90 @@ const PrivacyPolicyMain = () => {
     <p className="terms-para">We only share information with the following third parties.</p>
 <p className="terms-para">We only share and disclose your information with the following third parties. We have categorized each party so that you may easily understand the purpose of our data collection and processing practices. If we have processed your data based on your consent and you wish to revoke your consent, please contact us using the contact details provided in the section below titled <b>"HOW CAN YOU CONTACT US ABOUT THIS NOTICE?".</b></p>
 
-<ul>
-  <li>Cloud Computing Services
+  <ul>
+  <li>
+    Cloud Computing Services
     <ul>
-      <li><a href="https://aws.amazon.com/privacy/" target="_blank" rel="noopener noreferrer">Amazon Web Services (AWS) (Privacy Policy)</a> (GDPR Compliance)</li>
+      <li>
+        Amazon Web Services (AWS) 
+        <a href="https://aws.amazon.com/privacy/" target="_blank" rel="noopener noreferrer">
+          (Privacy Policy)
+        </a> 
+        <a href="https://aws.amazon.com/compliance/gdpr-center/" target="_blank" rel="noopener noreferrer">
+          (GDPR Compliance)
+        </a>
+      </li>
     </ul>
   </li>
-  <li>Communicate and Chat with Users
+
+  <li>
+    Communicate and Chat with Users
     <ul>
-      <li><a href="https://www.whatsapp.com/legal/privacy-policy" target="_blank" rel="noopener noreferrer">WhatsApp (Privacy Policy)</a></li>
-      <li><a href="https://www.google.com/forms/about/" target="_blank" rel="noopener noreferrer">Google Forms (Privacy Policy)</a></li>
+      <li>
+        <a href="https://www.whatsapp.com/legal/privacy-policy" target="_blank" rel="noopener noreferrer">
+          WhatsApp (Privacy Policy)
+        </a>
+      </li>
+      <li>
+        <a href="https://www.google.com/forms/about/" target="_blank" rel="noopener noreferrer">
+          Google Forms (Privacy Policy)
+        </a>
+      </li>
     </ul>
   </li>
-  <li>Invoice and Billing
+
+  <li>
+    Invoice and Billing
     <ul>
-      <li><a href="https://www.paypal.com/webapps/mpp/ua/privacy-full" target="_blank" rel="noopener noreferrer">PayPal (Privacy Policy)</a> (GDPR Compliance)</li>
-      <li><a href="https://razorpay.com/privacy-policy/" target="_blank" rel="noopener noreferrer">RazorPay (Privacy Policy)</a></li>
-      <li><a href="https://www.upi.org/privacy-policy" target="_blank" rel="noopener noreferrer">UPI (Privacy Policy)</a></li>
+      <li>
+        PayPal 
+        <a href="https://www.paypal.com/webapps/mpp/ua/privacy-full" target="_blank" rel="noopener noreferrer">
+          (Privacy Policy)
+        </a> 
+        <a href="https://www.paypal.com/us/privacy-center/home" target="_blank" rel="noopener noreferrer">
+          (GDPR Compliance)
+        </a>
+      </li>
+      <li>
+        <a href="https://razorpay.com/privacy-policy/" target="_blank" rel="noopener noreferrer">
+          RazorPay (Privacy Policy)
+        </a>
+      </li>
+      <li>
+        <a href="https://www.upi.org/privacy-policy" target="_blank" rel="noopener noreferrer">
+          UPI (Privacy Policy)
+        </a>
+      </li>
     </ul>
   </li>
-  <li>User Account Registration and Authentication
+
+  <li>
+    User Account Registration and Authentication
     <ul>
       <li>Facebook Login</li>
       <li>Google Sign-In</li>
-      <li><a href="https://www.apple.com/legal/privacy/" target="_blank" rel="noopener noreferrer">Sign in with Apple (Privacy Policy)</a></li>
+      <li>
+        <a href="https://www.apple.com/legal/privacy/" target="_blank" rel="noopener noreferrer">
+          Sign in with Apple (Privacy Policy)
+        </a>
+      </li>
     </ul>
   </li>
-  <li>Web and Mobile Analytics
+
+  <li>
+    Web and Mobile Analytics
     <ul>
       <li>Web and Mobile Analytics</li>
-      <li><a href="https://policies.google.com/privacy" target="_blank" rel="noopener noreferrer">Google Analytics (Privacy Policy)</a> (GDPR Compliance)</li>
+      <li>
+        <a href="https://policies.google.com/privacy" target="_blank" rel="noopener noreferrer">
+          Google Analytics (Privacy Policy)
+        </a> 
+        (GDPR Compliance)
+      </li>
     </ul>
   </li>
 </ul>
+
 
 
   </li>
@@ -400,7 +455,22 @@ By using our Maps API Implementation, you agree to be bound by Google’s Terms 
   </li>
 <li>WHAT ARE YOUR PRIVACY RIGHTS?
   <p className="terms-para"> In some regions, such as the European Economic Area, you have rights that allow you greater access to and control over your personal information. You may review, change, or terminate your account at any time.</p>
-<p className="terms-para">UAE Personal Data Protection Law (PDPL, 2021) <a href="https://www.protiviti.com/sites/default/files/202210/uae_personal_data_protection_law.pdf" target="_blank">https://www.protiviti.com/sites/default/files/202210/uae_personal_data_protection_law.pdf</a> , California Consumer Privacy Act (CCPA), Information Technology Act, 2000, Digital Personal Data Protection Act (DPDP Act, 2023), Sensitive Personal Data or Information Rules, 2011, UAE Federal Decree-Law No. 45 of 2021 on the Protection of Personal Data (PDPL) and The General Data Protection Regulation (GDPR) Information Technology (Reasonable security practices and procedures and sensitive personal data or information) Rules, 2011 permits our users who are Indian residents and The General Data Protection Regulation(EU) <a href="https://pure.uva.nl/ws/files/34085945/European_Union_General_Data_Protection_Regulation.pdf" target="_blank">https://pure.uva.nl/ws/files/34085945/European_Union_General_Data_Protection_Regulation.pdf</a> permits our users who are EU residents the right to review or amend the Sensitive Personal Data or Information (SPDI) and give the information provider an option to retract consent at any point of time, in relation to the information that has been so provided.</p>
+<p className="terms-para">UAE Personal Data Protection Law (PDPL, 2021)<u><a
+          href="https://www.protiviti.com/sites/default/files/202210/uae_personal_data_protection_law.pdf"
+          target="_blank">https://www.protiviti.com/sites/default/files/202210/uae_personal_data_protection_law.pdf</a></u> 
+        , California Consumer Privacy Act (CCPA), Information Technology Act, 2000, Digital Personal Data Protection Act
+        (DPDP Act, 2023), Sensitive Personal Data or Information Rules, 2011, UAE Federal Decree-Law No. 45 of 2021 on
+        the Protection of Personal Data (PDPL) and <u><a
+          href="https://eur-lex.europa.eu/legal-content/EN/TXT/?uri=CELEX%3A32016R0679" target="_blank"
+          rel="noopener noreferrer">The General Data Protection
+          Regulation (GDPR)</a></u> Information Technology
+        (Reasonable security practices and procedures and sensitive personal data or information) Rules, 2011 permits
+        our users who are Indian residents and The General Data Protection Regulation(EU) <u><a
+          href="https://pure.uva.nl/ws/files/34085945/European_Union_General_Data_Protection_Regulation.pdf"
+          target="_blank">https://pure.uva.nl/ws/files/34085945/European_Union_General_Data_Protection_Regulation.pdf</a></u>
+        permits our users who are EU residents the right to review or amend the Sensitive Personal Data or Information
+        (SPDI) and give the information provider an option to retract consent at any point of time, in relation to the
+        information that has been so provided.</p>
 
 <p className="terms-para">In some regions (like the European Economic Area), you have certain rights under applicable data protection laws. These may include the right (i) to request access and obtain a copy of your personal information, (ii) to request rectification or erasure; (iii) to restrict the processing of your personal information; and (iv) if applicable, to data portability. In certain circumstances, you may also have the right to object to the processing of your personal information. To make such a request, please use the contact details provided below. We will consider and act upon any request in accordance with applicable data protection laws.</p>
 

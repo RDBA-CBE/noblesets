@@ -11,7 +11,7 @@ const TermsAndConditionsMain = () => {
         <div className=" mt-0">
          <p className="terms-para"><b>Last Updated: 15-Oct-2025</b></p>
 <p className="terms-para">
-  This website, <a href="https://www.instagram.com/" target="_blank" rel="noopener noreferrer">https://www.instagram.com/</a> (“Website”), is owned and operated by Noblesets (A Unit of M/s. Shivam Traders trading as Sree Thangam Jewellery / Noblesets), (hereinafter referred as "Noblesets" or “Company” or "we" or "us" or "our") having its registered office at (No. 78, New Market Street, Tiruppur – 641604), India, and its branch offices at (No. 96, New Market Street, Tiruppur-641604, Tamil Nadu, India, No. 33, Opp. Railway Station, Thangam Theatre Complex, Madurai - 625001, Tamil Nadu, India and No. 65, Mengles Road, Dindigul – 624202, Tamil Nadu, India).
+  This website, <a href="https://noblesets.com" target="_blank" rel="noopener noreferrer">https://noblesets.com</a>, is owned and operated by Noblesets (A Unit of M/s. Shivam Traders trading as Sree Thangam Jewellery / Noblesets), (hereinafter referred as "Noblesets" or “Company” or "we" or "us" or "our") having its registered office at (No. 78, New Market Street, Tiruppur – 641604), India, and its branch offices at (No. 96, New Market Street, Tiruppur-641604, Tamil Nadu, India, No. 33, Opp. Railway Station, Thangam Theatre Complex, Madurai - 625001, Tamil Nadu, India and No. 65, Mengles Road, Dindigul – 624202, Tamil Nadu, India).
 </p>
 <p className="terms-para">
   Please read these Terms and Conditions carefully before using the Website. In accessing and using the services provided by our Website you signify your consent and agreement to be bound by the Terms and Conditions specified herein.
