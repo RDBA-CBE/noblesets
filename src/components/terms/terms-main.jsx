@@ -132,7 +132,7 @@ const TermsAndConditionsMain = () => {
     Noblesets reserves the authority to implement enhancements or modifications to its platform periodically, without
     providing advance notice to users. Users are encouraged to report any platform content deemed illegal, objectionable,
     defamatory, libelous, obscene, harassing, privacy-infringing, abusive, fraudulent, religiously offensive, spam, or in
-    violation of any applicable laws to <a href="mailto:report@__________">report@__________</a>. Upon receipt of such a
+    violation of any applicable laws to <a href="mailto:online@noblesets.com">online@noblesets.com</a>. Upon receipt of such a
     report, Noblesets reserves the right to conduct an investigation and/or undertake any actions the company deems
     appropriate. User(s) shall not host, display, upload, publish, transmit or share any information on Noblesets’s
     Website/Application or app which:
@@ -174,7 +174,7 @@ const TermsAndConditionsMain = () => {
     </li>
     <li>
       If a user believes that any content or listings on Noblesets infringe upon their rights or are objectionable, they
-      can submit a formal grievance via email to <a href="mailto:report@__________">report@__________</a>. Noblesets
+      can submit a formal grievance via email to <a href="mailto:online@noblesets.com">online@noblesets.com</a>. Noblesets
       commits to reviewing all complete and valid complaints within the legal timeframe.
     </li>
     <li>
@@ -473,7 +473,7 @@ In case the order is not accepted by the customer and is returned to origin, fre
 <p className="terms-para"><b>Logistics Service Provider: </b>Our domestic logistic partner is Blue Dart, Sequel Logistics &amp; Ecom Express. Our international logistic partner is UPS.</p>
 <p className="terms-para"><b>NOTE:</b> In case of International order, the customer has to pay the shipping charges at the time of placing the order. Also, custom duty and taxes levied by the destination country have to be borne by the customer and need to be paid to the logistic partner at the time of delivery. Please note that all consignments are on a Delivery Duty Unpaid (DDU) basis.</p>
 <b>Track Order:
-</b>All registered customers have the option to track their orders by clicking on <u> </u><u><a href="https://www/">https://www</a>.</u>
+</b>All registered customers have the option to track their orders by clicking on <u> </u><u><a href="https://noblesets.com/">https://noblesets.com/</a>.</u>
 <p className="terms-para"><b>Refund:</b></p>
 <p className="terms-para">We shall process the refund once we receive the product. The product must be in unused condition, in its original packaging along with its original tags and invoice, failing which refund will not be processed.</p>
 <p className="terms-para">Once the refund process has been initiated, the amount will be directly refunded to your account via the same mode through which the transaction was made or through cheque (only in cases where the debit/credit card used by the customer while placing the order is not in use).</p>
@@ -595,8 +595,8 @@ Noblestes may terminate this user agreement at any time and may do so immediatel
   In accordance with the applicable laws &amp; related rules, as well as the Consumer Protection Laws &amp; Rules, the grievance officer's contact information is as follows:
 </p>
 
-<p className="terms-para">Name: Mr. ______________</p>
-<p className="terms-para">Email ID: grievanceofficer@_______________</p>
+<p className="terms-para">Name: Senior Manager – CC – Operation</p>
+<p className="terms-para">Email ID: online@noblesets.com</p>
 <p className="terms-para">Contact Number: +91 75388 94111</p>
 
 <p className="terms-para">Address: Shivam Traders</p>
