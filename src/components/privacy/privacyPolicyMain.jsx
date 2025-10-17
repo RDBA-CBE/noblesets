@@ -19,8 +19,8 @@ const PrivacyPolicyMain = () => {
               “our”). We are committed to protecting your personal information
               and your right to privacy. If you have any questions or concerns
               about our policy, or our practices with regards to your personal
-              information, please contact us at @____________, or reach out to
-              our Data Protection Officer at ____________, whose contact details
+              information, please contact us at online@noblesets.com, or reach out to
+              our Data Protection Officer at online@noblesets.com, whose contact details
               are listed at the end of this policy.  
           </p> 
             <p className="terms-para"> The use of our Platform which includes Noblesets Mobile Application (hereinafter referred to as “Mobile Application/App”) and Internet pages of Noblesets Website – [www.noblesets.com] (hereinafter referred to as "Website") and our related Websites, platforms, Applications, Services, Products and content (together with the Mobile Application and Website, collectively referred to as “Services”) is possible without any indication of personal data; however, if a data subject wants to use our services via our website or mobile application, processing of personal data could become necessary. If the processing of personal data is necessary and there is no statutory basis for such processing, we generally obtain consent from the data subject.</p> 
@@ -65,7 +65,7 @@ const PrivacyPolicyMain = () => {
 <p className="terms-heading">HOW CAN YOU REVIEW, UPDATE, OR DELETE THE DATA WE COLLECT FROM YOU?</p>
 
 <p className="terms-heading">COOKIES POLICY</p>
-<p className="terms-para">This Cookie Policy explains how NobleSets (“we”, “us”, or “our”) uses cookies and similar technologies to recognize you when you visit our website [___________] or mobile application (“Services”). It explains what these technologies are, why we use them, and your rights to control our use of them.</p>
+<p className="terms-para">This Cookie Policy explains how NobleSets (“we”, “us”, or “our”) uses cookies and similar technologies to recognize you when you visit our website https://noblesets.com/ or mobile application (“Services”). It explains what these technologies are, why we use them, and your rights to control our use of them.</p>
 
 <ol>
   <li>
@@ -289,7 +289,7 @@ const PrivacyPolicyMain = () => {
   <li>To facilitate account creation and logon process: If you choose to link your account with us to a third-party account (such as your Google or Facebook account), we use the information you allowed us to collect from those third parties to facilitate account creation and logon process for the performance of the contract. See the section below headed "HOW DO WE HANDLE YOUR SOCIAL LOGINS " for further information.</li>
   <li>To send you marketing and promotional communications: We and/or our third-party marketing partners, after taking explicit consent from you, may use the personal information you send to us such as name and email for our marketing purposes, if this is in accordance with your marketing preferences. You can opt-out of our marketing emails at any time (see the " WHAT ARE YOUR PRIVACY RIGHTS " below).</li>
   <li>To send administrative information to you: We may use your personal information to send you product, service and new feature information and/or information about changes to our terms, conditions, and policies.</li>
-  <li>To post testimonials: We post testimonials on our Services or Apps that may contain personal information. Prior to posting a testimonial, we will obtain your consent to use your name and testimonial. If you wish to update, or delete your testimonial, please contact us at support@__________ and be sure to include your name, testimonial location, and contact information.</li>
+  <li>To post testimonials: We post testimonials on our Services or Apps that may contain personal information. Prior to posting a testimonial, we will obtain your consent to use your name and testimonial. If you wish to update, or delete your testimonial, please contact us at online@noblesets.com and be sure to include your name, testimonial location, and contact information.</li>
   <li>Request Feedback: We may use your information to request feedback via calls/emails/survey tools and to contact you about your use of our Services or Apps.</li>
   <li>To protect our Services: We may use your information as part of our efforts to keep our Services or Apps safe and secure (for example, for fraud monitoring and prevention).</li>
   <li>To enable user-to-user communications: We may use your information in order to enable user-to-user communications with each user's consent.</li>
@@ -322,7 +322,7 @@ const PrivacyPolicyMain = () => {
   <li>Online Postings: When you post comments, contributions or other content to the Website/Mobile Application, your posts may be viewed by all users and may be publicly distributed outside the Website/Mobile Application in perpetuity.</li>
   <li>Business Transfers: We may share or transfer your information in connection with, or during negotiations of, any merger, sale of company assets, financing, or acquisition of all or a portion of our business to another company.</li>
   <li>Third-Party Advertisers: We may use third-party advertising companies to serve ads when you visit the Services or Apps. These companies may use information about your visits to our Website(s) and other websites that are contained in web cookies and other tracking technologies in order to provide advertisements about services of interest to you.</li>
-  <li>Third-party Websites: The Website/Mobile Application may contain links to third-party websites and applications of interest, including advertisements and external services, that are not affiliated with us. Once you have used these links to leave the Website/Mobile Application, any information you provide to these third parties is not covered by this Privacy Policy, and we cannot guarantee the safety and privacy of your information. Before visiting and providing any information to any third-party websites, you should inform yourself of the privacy policies and practices (if any) of the third party responsible for that website, and should take those steps necessary to, in your discretion, protect the privacy of your information. We are not responsible for the content or privacy and security practices and policies of any third parties, including other sites, services or applications that may be linked to or from the Website/Mobile Application.</li>
+  <li>Third-party Websites: https://noblesets.com/ and Mobile Application may contain links to third-party websites and applications of interest, including advertisements and external services, that are not affiliated with us. Once you have used these links to leave the Website/Mobile Application, any information you provide to these third parties is not covered by this Privacy Policy, and we cannot guarantee the safety and privacy of your information. Before visiting and providing any information to any third-party websites, you should inform yourself of the privacy policies and practices (if any) of the third party responsible for that website, and should take those steps necessary to, in your discretion, protect the privacy of your information. We are not responsible for the content or privacy and security practices and policies of any third parties, including other sites, services or applications that may be linked to or from the Website/Mobile Application.</li>
 </ul>
 
   </li>
@@ -451,7 +451,7 @@ By using our Maps API Implementation, you agree to be bound by Google’s Terms 
   </li>
   <li>DO WE COLLECT INFORMATION FROM MINORS?
     <p className="terms-para">We do not knowingly collect data from or market to children under 18 years of age.</p>
-    <p className="terms-para">We do not knowingly solicit data from or market to children under 18 years of age. By using the Services or Apps, you represent that you are at least 18 or that you are the parent or guardian of such a minor and consent to such minor dependent’s use of the Services or Apps. If we learn that personal information from users less than 18 years of age has been collected, we will deactivate the account and take reasonable measures to promptly and securely delete such data from our records. If you become aware of any data we have collected from children under age 18, please contact us at support@_____________.</p>
+    <p className="terms-para">We do not knowingly solicit data from or market to children under 18 years of age. By using the Services or Apps, you represent that you are at least 18 or that you are the parent or guardian of such a minor and consent to such minor dependent’s use of the Services or Apps. If we learn that personal information from users less than 18 years of age has been collected, we will deactivate the account and take reasonable measures to promptly and securely delete such data from our records. If you become aware of any data we have collected from children under age 18, please contact us at online@noblesets.com.</p>
   </li>
 <li>WHAT ARE YOUR PRIVACY RIGHTS?
   <p className="terms-para"> In some regions, such as the European Economic Area, you have rights that allow you greater access to and control over your personal information. You may review, change, or terminate your account at any time.</p>
@@ -510,7 +510,7 @@ By using our Maps API Implementation, you agree to be bound by Google’s Terms 
 We may update this privacy policy from time to time. The updated version will be indicated by an updated “Revised” date and the updated version will be effective as soon as it is accessible. If we make material changes to this privacy policy, we may notify you either by prominently posting a policy of such changes or by directly sending you a notification. We encourage you to review this privacy policy frequently to be informed of how we are protecting your information.</p>
 </li>
 <li>HOW CAN YOU CONTACT US ABOUT THIS POLICY?
-  <p className="terms-para"> If you have questions or comments about this policy, you may contact our Data Protection Officer (DPO), by email at ______________, or by post to:
+  <p className="terms-para"> If you have questions or comments about this policy, you may contact our Data Protection Officer (DPO), by email at online@noblesets.com, or by post to:
 M/s. Shivam traders<br/>
 <p className="terms-para">
 <b>Registered Office:</b> <br/>
@@ -528,7 +528,7 @@ No. 78, New Market Street, Tiruppur – 641604, Tamil Nadu, India </p>
 </ol>
 
 <p className="terms-heading">HOW CAN YOU REVIEW, UPDATE, OR DELETE THE DATA WE COLLECT FROM YOU?</p>
-<p className="terms-para">Based on the applicable laws of your country, you may have the right to request access to the personal information we collect from you, change that information, or delete it in some circumstances. To request to review, update, or delete your personal information, please email to support@_____________. We will respond to your request within 30 days.
+<p className="terms-para">Based on the applicable laws of your country, you may have the right to request access to the personal information we collect from you, change that information, or delete it in some circumstances. To request to review, update, or delete your personal information, please email to online@noblesets.com. We will respond to your request within 30 days.
 </p>
  
         </div>
