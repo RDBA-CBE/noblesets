@@ -218,7 +218,7 @@ const TermsAndConditionsMain = () => {
 <p className="terms-para">Users commit to adhering to all operational procedures and guidelines, subject to periodic revisions, related to their utilization of Noblesets's services. Furthermore, users pledge to comply with all relevant legal statutes, regulations, directives, and orders issued by central, state, or district governmental bodies, or any legally authorized entity, concerning service usage and individual transactions.</p>
 <p className="terms-para"><b>Environmental Responsibility:</b> Encourage eco-friendly practices, such as waste management and minimizing impact on natural habitats.</p>
 <p className="terms-heading"><b>10. FAKE CALLS, SPAMMING, PHISHING AND OTHER SIMILAR, OR FRAUDULENT ACTIVITIES:</b></p>
-<p className="terms-para">Noblesets staff will never ask you for sensitive information like credit/debit card details (number, expiry, CVV), online banking credentials, passwords, or one-time passcodes (OTPs). We will also never request direct fund transfers to personal accounts or ask you to install remote access software. If you receive any such requests, they are fraudulent. Please report them immediately to support@_________.</p>
+<p className="terms-para">Noblesets staff will never ask you for sensitive information like credit/debit card details (number, expiry, CVV), online banking credentials, passwords, or one-time passcodes (OTPs). We will also never request direct fund transfers to personal accounts or ask you to install remote access software. If you receive any such requests, they are fraudulent. Please report them immediately to online@noblesets.com.</p>
 
 <p className="terms-heading"><b>11. ORDERS</b></p>
 
