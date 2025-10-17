@@ -578,7 +578,7 @@ Noblestes may terminate this user agreement at any time and may do so immediatel
 
 <p className="terms-para"><b>Customer Feedback:</b></p>
 <p className="terms-para">
-  Noblesets values user feedback to improve its services. Users authorize Noblesets to contact them for feedback through various channels, including email, phone calls, SMS, WhatsApp or other means. Users who wish to opt-out of feedback requests should contact Noblesets at support@_________.
+  Noblesets values user feedback to improve its services. Users authorize Noblesets to contact them for feedback through various channels, including email, phone calls, SMS, WhatsApp or other means. Users who wish to opt-out of feedback requests should contact Noblesets at online@noblesets.com.
 </p>
 
 <p className="terms-para"><b>Privacy Policy:</b></p>
