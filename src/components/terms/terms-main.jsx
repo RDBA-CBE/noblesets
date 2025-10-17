@@ -440,10 +440,10 @@ We recommend carefully reviewing your order before completing the purchase of it
 </li>
 </ul>
 <p className="terms-heading"><b>21. International Orders:</b></p>
-    NOTE: In case of international orders, we do not currently accept any returns exchanges of our products. In case a defective product has been received, you are required to report the defect within 7 days of receipt of the product by writing to us on online@shivamtraders.com international customers can also reach out to us on WhatsApp +91 75388 94111. In case the order is not accepted by the customer and is returned to origin, freight charges and import duty will be levied to the customer.
-
-<b>Return Charges:</b>
-Domestic Order: Our logistics service provider will collect the order from the provided address (within India). Customers need not pay any shipping charges to return the product.
+   <p className="terms-para">NOTE: In case of international orders, we do not currently accept any returns exchanges of our products. In case a defective product has been received, you are required to report the defect within 7 days of receipt of the product by writing to us on online@shivamtraders.com international customers can also reach out to us on WhatsApp +91 75388 94111. In case the order is not accepted by the customer and is returned to origin, freight charges and import duty will be levied to the customer.</p>
+<p className="terms-para"><br/>
+<b>Return Charges: </b>
+Domestic Order: Our logistics service provider will collect the order from the provided address (within India). Customers need not pay any shipping charges to return the product.</p> 
 <p className="terms-para"><b>How to Initiate the Refund Process?</b></p>
 <p className="terms-para">Customers can contact Noblestes customer support on 0421-2266885 or write to online@shivamtraders.com within 7 days from the receipt of product.</p>
 <p className="terms-para">They can also reach out to us via WhatsApp on +91 75388 94111</p>
@@ -456,9 +456,9 @@ Domestic Order: Our logistics service provider will collect the order from the p
 <p className="terms-heading"><b>23. DISCLAIMER:</b></p>
 <p className="terms-para">This Website, the materials and content contained therein, and the products and services provided or in connection therewith are provided on an " AS IS " basis without warranties of any kind, either express or implied, except as expressly provided to the contrary in a writing by Noblestes, if any. Noblestes disclaims all other warranties, express or implied, including, without limitation, implied warranties of merchantability, fitness for a particular purpose, title, and non-infringement as to the information, content, and materials on our Website. Noblestes specifically does not represent or warrant that the Website materials or any portion of our services are accurate, complete, reliable, current or error-free. Noblestes does not represent or warrant that the Website or its servers are free of viruses or other harmful components. .</p>
 <p className="terms-para">All products and the information displayed on the Website constitute an invitation to offer. Your order for purchase constitutes your offer which shall be subject to these Terms and Conditions. We reserve the right to accept or reject your offer in part or in full. Our acceptance of your order will take place upon the dispatch of the product(s) ordered. Dispatch of product(s) ordered, may or may not happen at the same time. In such a scenario, that portion of the order which has been dispatched will be deemed to have been accepted by us and the balance would continue to be an offer to us, and we reserve the right to either accept or reject the balance offer. No act or omission of Noblestes prior to the actual dispatch of the product(s) ordered will constitute acceptance of your offer. If you have provided us with your email address, we will notify you by email as soon as possible to confirm receipt of your order and confirm dispatch and therefore, acceptance of the order thereafter.</p>
-<p className="terms-para">We have made every effort to display the colours and sizes of our products that appear on our Website as accurately as possible. However, the actual colours you see will depend on your monitor. We cannot guarantee that your monitor's display of any colour will accurately</p>
-reflect the colour of the product on delivery. Packaging of the product may vary from that displayed on the Website
-If any part of this site disclaimer is found to be invalid by law, the rest of them remain valid and enforceable.
+<p className="terms-para">We have made every effort to display the colours and sizes of our products that appear on our Website as accurately as possible. However, the actual colours you see will depend on your monitor. We cannot guarantee that your monitor's display of any colour will accurately reflect the colour of the product on delivery. Packaging of the product may vary from that displayed on the Website
+If any part of this site disclaimer is found to be invalid by law, the rest of them remain valid and enforceable.</p>
+
 <p className="terms-para"><b>Changes to the site Disclaimer:</b></p>
 <p className="terms-para">We reserve the right to change the Website disclaimer from time to time. If this happens, we will notify you by posting the updated site disclaimer on the Website. If you do not wish to be governed by the revised Website disclaimer, we request you to refrain from using the Website.</p>
 <p className="terms-heading"><b>24. SHIPPING DESTINATIONS:</b></p>
