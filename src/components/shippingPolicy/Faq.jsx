@@ -9,47 +9,28 @@ const FAQ = () => {
         </h3>
 
         <div>
-            <p className="terms-sub-heading">Do you customize the engagement rings?</p>
-
+     
+          <p className="terms-sub-heading"></p>
           <p className="terms-para">
-            We at Noblesets are keen on providing customers with the best hence, we
-            Yes, we do customize engagement rings as per the client’s requirement.
           </p>
 
-          <p className="terms-sub-heading">Do you do engravings on rings?</p>
-            
+          <p className="terms-sub-heading">How can I know the status of my order?</p>
           <p className="terms-para">
-           Yes, we do engravings on rings to add a personal touch to the jewellery. It can be a special date, initials, or anything the client asks for.
+          All users have the option to track their orders by clicking on Track Order. You need to enter the email address used while placing the order and the order number to track the order. Registered users can sign in and track their orders from the order history section on the account page.
+All users have the option to track their orders by clicking on Track Order. You need to enter the email address used while placing the order and the order number to track the order. Registered users can sign in and track their orders from the order history section on the account page.
           </p>
-
-           <p className="terms-sub-heading">What is the best way to clean antique jewellery?</p>
-            
-          <p className="terms-para">
-          Cleaning antique jewellery by hand with an old soft toothbrush and a little fairy liquid is the best method. For extremely dirty jewellery, soak it in a small bowl of warm water for a few minutes before gently applying the brush around the setting to get to the back and sides of the stone.
+             <p className="terms-sub-heading">What happens if my order is lost in transit?</p>
+          <p className="terms-para">In the unlikely event that an order gets lost during transit, we wait for 15 days to track your lost order and if we are still unsuccessful, then we process your refund through the payment mode that you had opted for at the time of placing the order.
           </p>
-
-           <p className="terms-sub-heading">Is my personal information secured?</p>
-            
-          <p className="terms-para">
-          Yes. Our online shopping site has built-in security measures to protect your information as well as the transaction details. However, when shopping online, always exercise caution and avoid sharing your passwords and financial information on unsecured sites.
+          <p className="terms-sub-heading">Where do you deliver within India?</p>
+          <p className="terms-para">Currently, we deliver to selected cities within India. Please check if we deliver to your PIN code/city by entering it on the product page/shopping/cart checkout page. If there is no courier service available in your area/city, we apologize for the inconvenience caused.
           </p>
-
-           <p className="terms-sub-heading">How to choose the right antique jewellery?</p>
-            
-          <p className="terms-para">
-          You can purchase your antique jewellery from a reputable jeweller. Examine the collection for craftsmanship, materials, jewellery styles, gem cut, hallmarks, and so on. These are a few genuine methods for selecting the right piece of antique jewellery. Check out our website for the best antique jewellery.
-
-
+           <p className="terms-sub-heading">I live outside India. Can I order something to be delivered in India?</p>
+          <p className="terms-para">Yes, you can order something to be delivered in India as long as you provide a valid shipping address within India. Also, kindly note that we deliver only to selected cities within India. To check whether we deliver to your desired area/city kindly enter your pin code on the product page/shopping cart page/checkout page.
           </p>
-
-           <p className="terms-sub-heading">What type of antique jewellery collections are available?</p>
-            
-          <p className="terms-para">
-          We have a wide range of antique jewellery collections in our store. These jewellery pieces, with their greater appeal and extravagant appearance, are ideal for any occasion or event. Check out our collections on our website.
-
-
+           <p className="terms-sub-heading">Do I need to pay shipping/delivery charges?</p>
+          <p className="terms-para">There are no shipping/delivery charges within India. For information on shipping charges for international orders please click here.
           </p>
-
           
          
         </div>

@@ -1718,7 +1718,7 @@ const DetailsWrapper1 = ({
 
                   {attributeList.length > 0 && (
                     <>
-                      <h5 style={{ fontWeight: "400" }}>
+                      <h5 style={{ fontWeight: "600", letterSpacing:"0.2px" }}>
                         Additional Information:
                       </h5>
 

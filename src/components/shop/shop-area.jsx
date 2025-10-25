@@ -113,13 +113,16 @@ const ShopArea = ({
           alignItems: "center",
         }}
       >
-        <img src="/assets/img/loading-gif.gif" alt="Loading..." />
+        <img src="/assets/img/nobelset-gif-3.gif" alt="Loading..." />
       </div>
     );
   }
 
   const categories = subtitle.split(" / ");
   const [categoryId, setCategoryId] = useState("earrings");
+
+  console.log("categoryId", categoryId);
+  
 
   // Initialize ParentCategoryId
   useEffect(() => {

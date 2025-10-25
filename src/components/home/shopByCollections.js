@@ -182,7 +182,7 @@ export default function ShopByCollections() {
               ref={prevRef}
               className="btn btn-sm rounded-3  me-2"
               style={{
-                backgroundColor: "#e6a285",
+                background: "linear-gradient(90deg, #9b5d34, #7a4525)",
                 color: "white",
                 fontSize: "15px",
                 // fontWeight: "bold",
@@ -195,7 +195,7 @@ export default function ShopByCollections() {
               ref={nextRef}
               className="btn btn-sm rounded-3 "
               style={{
-                backgroundColor: "#e6a285",
+                background: "linear-gradient(90deg, #9b5d34, #7a4525)",
                 color: "white",
                 fontSize: "15px",
                 // fontWeight: "bold",

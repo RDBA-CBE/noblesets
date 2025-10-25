@@ -566,7 +566,7 @@
   justify-content: center;
 }
 .mbl-content h1 {
-  font-size: 45px;
+  font-size: 45px ;
   color: #fff;
   font-weight: 400;
 }
@@ -614,8 +614,9 @@
   }
 
   .mbl-content h1 {
-    font-size: 20px;
+    font-size: 30px;
   }
+
   .mbl-content p {
     font-size: 20px;
     // line-height:18px;
@@ -995,8 +996,8 @@
 .terms-para {
   color: #000;
   font-size: 16px;
-  line-height: 30px;
-  margin-top: 25px;
+  /*line-height: 30px;*/
+  margin-top: 5px;
 }
 
 .terms-heading-ti {
@@ -1015,19 +1016,35 @@
   list-style-type: circle;
   padding-left: 20px;
 }
-
+ol.terms-lists1 {
+  list-style-type:none;
+  padding-left: 20px;
+}
+ol li{color: #000 !important;
+  font-size: 16px !important;
+  line-height: 30px !important;
+  margin-top: 8px !important;}
+ol.terms-lists1 li {
+  color: #000;
+  font-size: 16px;
+  line-height: 30px;
+  margin-top: 8px;
+}
+ol.alphalist li{ list-style-type:lower-alpha !important;}
+ol.alphalist li ol li{list-style-type: lower-roman !important;}
 .terms-sub-heading {
   color: #a44100;
   font-size: 18px;
   margin-top: 25px;
-  font-style: italic;
+  font-style: italic; font-weight: 500;
 }
 .terms-lists li {
   color: #000;
   font-size: 16px;
   line-height: 30px;
-  margin-top: 25px;
+  margin-top: 8px;
 }
+.terms-lists li ul{margin:5px 10px !important;}
 
 .footer-spacing {
   padding: 0px 50px;
@@ -3387,5 +3404,12 @@ header .tp-product-action-btn-3:hover {
   transform-origin: center center;
   border-radius: 20px;
 }
+
+.tp-product-details-thumb-wrapper .nav-tabs .nav-link{
+  background-color:transparent !important ;
+}
+
+
+
 
 

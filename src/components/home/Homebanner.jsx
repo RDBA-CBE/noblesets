@@ -39,7 +39,7 @@ const slider_data = [
     // url: "/shop?category=earrings",
     
     title:"Elevate Every Look <br/> with a Touch of Sparkle.",
-    desc:"Discover lightweight, stylish jewelry  designed to add effortless <br/> elegance to your everyday and special moments.",
+    desc:"Lightweight, stylish jewelry for effortless everyday elegance",
     btnTi:"Exhibition & Sale",
     btnDesc:"of exquisite diamond jewellery"
   },
@@ -60,7 +60,7 @@ const slider_data = [
       mblImg: mobile_size_ban_3,
       link: "/shop",
       title:"The Glow-Up You’ll <br/> Never Feel Tired Wearing.",
-    desc:"Discover lightweight, stylish jewelry designed  to add effortless <br/> elegance to your everyday and special moments.",
+    desc:"Chic, comfy, and made to shine. Jewelry that keeps up with your glow.",
     btnTi:"Exhibition & Sale",
     btnDesc:"of exquisite diamond jewellery"
       // url: "/shop?category=gold_plated_silver",
@@ -77,30 +77,7 @@ const slider_data = [
       // url: "/shop?category=earrings",
   },
 
-  //  {
-  //     id: 4,
-  //     img: slider_img_5,
-  //     mblImg: mobile_size_ban_4,
-  //     link: "/shop",
-  //     title:"Luxury That’s Always <br /> Within Reach.",
-  //   desc:"Simple, sleek, and effortlessly beautiful. <br/> Jewelry that feels as good as it looks." ,
-  //   btnTi:"Exhibition & Sale",
-  //   btnDesc:"of exquisite diamond jewellery"
-  //     // url: "/shop?category=earrings",
-  // },
-
-  // {
-  //     id: 5,
-  //     img: slider_img_5,
-  //     link: "/shop"
-  //     // url: "/shop?category=finger_rings",
-  // },
-  // {
-  //     id: 6,
-  //     img: slider_img_6,
-  //     link: "/shop"
-  //     // url: "/shop?category=gold_plated_silver",
-  // },
+ 
 ];
 
 const HomeBanner = () => {
@@ -117,7 +94,9 @@ const HomeBanner = () => {
     fade: true,
     centerMode: false,
     autoplay:true,
-    loop:true
+    loop:true,
+    speed: 1000,              // slightly slower looks smoother
+  cssEase: 'ease-in-out',
   };
 
   return (
@@ -158,7 +137,7 @@ const HomeBanner = () => {
                   alt="slider img"
                   className="mobile-view-width-change"
                   style={{
-                    backgroundColor: "#fbdccc",
+                    // backgroundColor: "#fbdccc",
                     borderRadius: "20px",
                     // objectFit: "contain",
                     cursor: "pointer",

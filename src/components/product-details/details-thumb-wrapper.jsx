@@ -16,6 +16,7 @@ const DetailsThumbWrapper = ({ product, relatedClick }) => {
   const imgRef = useRef(null);
 
   const [activeImg, setActiveImg] = useState(product?.media[0] || "");
+  const [imageIndex, setImageIndex] = useState(0);
   const [loading, setLoading] = useState(false);
   const [isOpen, setIsOpen] = useState(false);
   const [photoIndex, setPhotoIndex] = useState(0);
@@ -50,8 +51,11 @@ const DetailsThumbWrapper = ({ product, relatedClick }) => {
     }, 100); // 100ms delay
   };
 
-  const handleImageActive = (item) => {
+  const handleImageActive = (item, i) => {
+    console.log("i", i);
+
     setActiveImg(item);
+    setImageIndex(i);
   };
 
   const handleMouseMove = (e) => {
@@ -144,6 +148,8 @@ const DetailsThumbWrapper = ({ product, relatedClick }) => {
     },
   ];
 
+  console.log("activeImg", activeImg);
+
   return (
     <>
       <div
@@ -222,7 +228,7 @@ const DetailsThumbWrapper = ({ product, relatedClick }) => {
                     className={`nav-link ${
                       item?.url === activeImg?.url ? "active" : ""
                     }`}
-                    onClick={() => handleImageActive(item)}
+                    onClick={() => handleImageActive(item, i)}
                     id={`image-${i}`}
                   >
                     {isImage(profilePic(item?.url)) ? (
@@ -302,8 +308,6 @@ const DetailsThumbWrapper = ({ product, relatedClick }) => {
                         onMouseMove={handleMouseMove}
                         onMouseLeave={handleMouseLeave}
                       >
-                        
-
                         <img
                           ref={imgRef}
                           className="product-details-image"
@@ -314,7 +318,7 @@ const DetailsThumbWrapper = ({ product, relatedClick }) => {
                           title={activeImg?.title}
                           onLoad={() => setLoading(false)}
                           onError={() => setLoading(false)}
-                          onClick={() => handleOpenLightbox(0)}
+                          onClick={() => handleOpenLightbox(imageIndex)}
                           style={{ borderRadius: "20px" }}
                         />
 
@@ -400,6 +404,7 @@ const DetailsThumbWrapper = ({ product, relatedClick }) => {
       {isOpen && (
         <div
           className="lightbox"
+          onClick={handleLightboxClose}
           style={{
             position: "fixed",
             top: 0,
@@ -414,138 +419,138 @@ const DetailsThumbWrapper = ({ product, relatedClick }) => {
             overflow: "hidden",
           }}
         >
-          {/* Close Button */}
-          <button
-            onClick={handleLightboxClose}
-            style={{
-              position: "absolute",
-              top: "20px",
-              right: "20px",
-              background: "#a4420094",
-
-              color: "#dad4d4ff",
-              border: "none",
-              fontSize: "15px",
-
-              cursor: "pointer",
-              padding: "5px 14px",
-              borderRadius: "50%",
-            }}
-          >
-            <i className="fal fa-times"></i>
-          </button>
-
-          {/* Thumbnails Left Side */}
           <div
-            className="d-none d-lg-flex"
-            style={{
-              position: "absolute",
-              left: "40px",
-              top: "15%",
-              transform: "translateY(-50%)",
-              display: "flex",
-              flexDirection: "column",
-              gap: "10px",
-              marginTop:"20px"
-            }}
+            onClick={(e) => e.stopPropagation()} // stops backdrop close
           >
-            {product?.media?.map((item, idx) => (
-              <img
-                key={idx}
-                src={profilePic(item?.url) || item?.url}
-                alt="thumb"
-                onClick={() => setPhotoIndex(idx)}
-                style={{
-                  width: "50px",
-                  height: "50px",
-                  objectFit: "cover",
-                  borderRadius: "8px",
-                  border:
-                    idx === photoIndex
-                      ? "2px solid white"
-                      : "2px solid transparent",
-                  cursor: "pointer",
-                }}
-              />
-            ))}
+            {/* Close Button */}
+            <button
+              onClick={handleLightboxClose}
+              style={{
+                position: "absolute",
+                top: "20px",
+                right: "20px",
+                background: "#a4420094",
+
+                color: "#dad4d4ff",
+                border: "none",
+                fontSize: "15px",
+
+                cursor: "pointer",
+                padding: "5px 14px",
+                borderRadius: "50%",
+              }}
+            >
+              <i className="fal fa-times"></i>
+            </button>
+
+            {/* Thumbnails Left Side */}
+            <div
+              className="d-none d-lg-flex"
+              style={{
+                position: "absolute",
+                left: "40px",
+                top: "15%",
+                transform: "translateY(-50%)",
+                display: "flex",
+                flexDirection: "column",
+                gap: "10px",
+                marginTop: "20px",
+              }}
+            >
+              {product?.media
+                ?.slice(startIndex, startIndex + 4)
+                .map((item, i) => (
+                  <img
+                    key={i}
+                    src={profilePic(item?.url) || item?.url}
+                    alt="thumb"
+                    onClick={() => handleImageActive(item, i)}
+                    style={{
+                      width: "50px",
+                      height: "50px",
+                      objectFit: "cover",
+                      borderRadius: "8px",
+                      border:
+                        i === imageIndex
+                          ? "2px solid white"
+                          : "2px solid transparent",
+                      cursor: "pointer",
+                    }}
+                  />
+                ))}
+            </div>
+
+            {/* Prev Button */}
+            <button
+              className="action-btn-le"
+              onClick={handleLightboxPrev}
+              style={{
+                fontSize: "15px",
+                background: "#a4420094",
+                padding: "10px 15px",
+                color: "#dad4d4ff",
+                borderRadius: "50%",
+                border: "none",
+                position: "absolute",
+                left: "40px",
+                top: "50%",
+                transform: "translateY(-50%)",
+                cursor: "pointer",
+              }}
+            >
+              <ArrowPrevTwo />
+            </button>
+
+            {/* Main Image / Video */}
+            <div
+            // style={{ maxWidth: "70%", maxHeight: "80%" }}
+            >
+              {isImage(profilePic(activeImg?.url)) ? (
+                <img
+                  src={activeImg?.url || product?.media[photoIndex]?.url}
+                  alt={activeImg?.alt || "product image"}
+                  style={{
+                    width: "100%",
+                    height: "100%",
+                    objectFit: "contain",
+                    borderRadius: "10px",
+                  }}
+                />
+              ) : (
+                <video
+                  src="/assets/img/blog.webp"
+                  style={{
+                    width: "100%",
+                    height: "100%",
+                    objectFit: "contain",
+                    borderRadius: "10px",
+                  }}
+                  controls
+                />
+              )}
+            </div>
+
+            {/* Next Button */}
+            <button
+              className="action-btn-ri"
+              onClick={handleLightboxNext}
+              style={{
+                fontSize: "15px",
+                background: "#a4420094",
+                padding: "10px 15px",
+                color: "#dad4d4ff",
+                borderRadius: "50%",
+                border: "none",
+                position: "absolute",
+                right: "40px",
+                top: "50%",
+                transform: "translateY(-50%)",
+                cursor: "pointer",
+              }}
+            >
+              <ArrowNextTwo />
+            </button>
           </div>
-
-          {/* Prev Button */}
-          <button
-            className="action-btn-le"
-            onClick={handleLightboxPrev}
-            style={{
-              fontSize: "15px",
-              background: "#a4420094",
-              padding: "10px 15px",
-              color: "#dad4d4ff",
-              borderRadius: "50%",
-              border: "none",
-              position: "absolute",
-              left: "40px",
-              top: "50%",
-              transform: "translateY(-50%)",
-              cursor: "pointer",
-            }}
-          >
-            <ArrowPrevTwo />
-          </button>
-
-          {/* Main Image / Video */}
-          <div
-          // style={{ maxWidth: "70%", maxHeight: "80%" }}
-          >
-            {isImage(product?.media[photoIndex]?.url) ? (
-              <img
-                src={
-                  profilePic(product?.media[photoIndex]?.url) ||
-                  product?.media[photoIndex]?.url
-                }
-                alt="Lightbox"
-                style={{
-                  width: "100%",
-                  height: "100%",
-                  objectFit: "contain",
-                  borderRadius: "10px",
-                }}
-              />
-            ) : (
-              <video
-                src={
-                  profilePic(product?.media[photoIndex]?.url) ||
-                  product?.media[photoIndex]?.url
-                }
-                style={{
-                  width: "100%",
-                  height: "100%",
-                  objectFit: "contain",
-                  borderRadius: "10px",
-                }}
-                controls
-              />
-            )}
-          </div>
-
-          {/* Next Button */}
-          <button
-            className="action-btn-ri"
-            onClick={handleLightboxNext}
-            style={{
-              fontSize: "15px",
-              background: "#a4420094",
-              padding: "10px 15px",
-              color: "#dad4d4ff",
-              borderRadius: "50%",
-              border: "none",
-              position: "absolute",
-              right: "40px",
-              top: "50%",
-              transform: "translateY(-50%)",
-              cursor: "pointer",
-            }}
-          >
-            <ArrowNextTwo />
-          </button>
         </div>
       )}
     </>

@@ -9,7 +9,8 @@ const StorySec = () => {
           <div className="col-md-6">
             <h2 className="main-ti">The Legacy of Elegance</h2>
             <p className="ourstory-lead">
-              At Noble Sets, every ornament tells a story — of tradition, innovation, and timeless grace. We don’t just design jewellery; we craft heirlooms that reflect confidence and individuality.
+             At Noble Sets, we believe jewelry is more than just an accessory. It is a reflection of your style, your confidence, and your story. Our journey began with a vision to create designs that carry the grace of tradition while embracing the spirit of modern fashion. 
+
             </p>
           </div>
           <div className="col-md-6 text-center">
@@ -31,7 +32,7 @@ const StorySec = () => {
             <div className="ourstory-card shadow-sm p-4 h-100">
               <h5 className="card-title">Authentic Craftsmanship</h5>
               <p className="card-text text-black mt-3">
-                Each piece is meticulously crafted using heritage methods blended with modern design sensibilities.
+               Each piece is carefully handcrafted, blending timeless artistry with precision and care. 
               </p>
             </div>
           </div>
@@ -39,7 +40,7 @@ const StorySec = () => {
             <div className="ourstory-card shadow-sm p-4 h-100">
               <h5 className="card-title">Designed for Her</h5>
               <p className="card-text text-black mt-3">
-                Our collections celebrate womanhood — from empowering minimalism to bridal opulence.
+               Experience exceptional quality in every piece, designed to shine for years and crafted to be seen and felt. 
               </p>
             </div>
           </div>
@@ -47,7 +48,7 @@ const StorySec = () => {
             <div className="ourstory-card shadow-sm p-4 h-100">
               <h5 className="card-title">Unmatched Quality</h5>
               <p className="card-text text-black mt-3">
-                We ensure nano-precision, stringent quality checks, and only the finest gold & stones in every product.
+              Jewelry that reflects her personality, spirit, and shine, celebrating every woman’s style, confidence, and grace. 
               </p>
             </div>
           </div>
@@ -57,7 +58,7 @@ const StorySec = () => {
         <div className="row justify-content-center text-center mb-5">
           <div className="col-lg-10">
             <div className="ourstory-highlight p-4">
-              <h4>Jewellery isn’t an accessory — it's your statement. At Noble Sets, we design it with that power in mind.</h4>
+              <h4>Wear Noble Sets. Wear confidence, charm, and a sparkle that stays with you. </h4>
             </div>
           </div>
         </div>
@@ -68,9 +69,8 @@ const StorySec = () => {
             <div className="ourstory-block p-4 shadow-sm h-100">
               <h5>Our Vision</h5>
               <ul>
-                <li>To redefine jewellery as wearable art for the modern woman.</li>
-                <li>To blend antique charm with futuristic elegance.</li>
-                <li>To be globally recognized for innovation and precision.</li>
+                <li>Our vision is to craft jewelry that blends timeless elegance with modern design, offering lightweight, comfortable, and versatile pieces for everyday wear and special moments. </li>
+               
               </ul>
             </div>
           </div>
@@ -78,9 +78,7 @@ const StorySec = () => {
             <div className="ourstory-block p-4 shadow-sm h-100">
               <h5>Our Mission</h5>
               <ul>
-                <li>To deliver jewellery that inspires confidence and culture.</li>
-                <li>To offer trust, transparency, and timeless value in every design.</li>
-                <li>To stay affordable without compromising on luxury.</li>
+                <li>Our mission is to help every woman shine effortlessly, embracing her individuality with jewelry that reflects her personality, celebrates her grace, and inspires confidence at every step.</li>
               </ul>
             </div>
           </div>

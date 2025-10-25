@@ -45,7 +45,7 @@ const EmailVerifyPage = () => {
           alignItems: "center",
         }}
       >
-        <img src="/assets/img/loading-gif.gif" alt="Loading..." />
+        <img src="/assets/img/nobelset-gif-3.gif" alt="Loading..." />
       </div>
     );
   }

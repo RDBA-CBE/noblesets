@@ -4,6 +4,16 @@ import React from "react";
 
 const HomeFooter = () => {
   const router = useRouter();
+
+  const handleClick = (category) => {
+    router.push({
+      pathname: "/shop",
+      query: {
+        category: category.toLowerCase().replace("&", "").split(" ").join("-"),
+      },
+    });
+  };
+
   return (
     // <div style={{ backgroundColor: "#e09a7b" }}>
     <div style={{ background: "url(/assets/img/footer/bg.webp)" }}>
@@ -25,7 +35,9 @@ const HomeFooter = () => {
                 
               </div> */}
 
-              <div className="col-6 col-lg-3 col-xl-2 ps-xl-3">
+              
+
+              <div className="col-6 col-md-4 col-lg-3 col-xl-2 ps-xl-3">
                 <h3 className="footer-title">Quick Links</h3>
                 <nav className="nav flex-column">
                   <a className="footer-link mb-3" href="/our-story">
@@ -49,46 +61,48 @@ const HomeFooter = () => {
                 </nav>
               </div>
 
-              <div className="col-6 col-lg-3 col-xl-2 ps-xl-3">
+              <div className="col-6 col-md-4 col-lg-3 col-xl-2 ps-xl-3">
                 <h3 className="footer-title">Jewellery</h3>
                 <nav className="nav flex-column">
-                  <a className="footer-link mb-3" href="/shop">
-                    Chains
-                  </a>
-                  <a className="footer-link mb-3" href="/shop">
-                    Mangalsutra
-                  </a>
-                  <a className="footer-link mb-3" href="/shop">
-                    Nose Pin
-                  </a>
-                  <a className="footer-link mb-3" href="/shop">
-                    Coins
-                  </a>
-                  <a className="footer-link mb-3" href="/shop">
+                  <a
+                    className="footer-link mb-3"
+                    href="#"
+                    onClick={() => {
+                      handleClick("bracelets");
+                    }}
+                  >
                     Bracelets
                   </a>
-                  {/* <a className="footer-link" href="#">
-                    Testimonials
-                  </a> */}
-                </nav>
-              </div>
-
-               <div className="col-6 col-lg-3 col-xl-2 ps-xl-3">
-                <h3 className="footer-title">Collections</h3>
-                <nav className="nav flex-column">
-                  <a className="footer-link mb-3" href="/shop">
-                   Haram
+                  <a
+                    className="footer-link mb-3"
+                    href="#"
+                    onClick={() => {
+                      handleClick("Chain");
+                    }}
+                  >
+                    Chains
                   </a>
-                  <a className="footer-link mb-3" href="/shop">
+                  <a
+                    className="footer-link mb-3"
+                    href="#"
+                    onClick={() => {
+                      handleClick("Bangle");
+                    }}
+                  >
+                    Bangles
+                  </a>
+                  <a
+                    className="footer-link mb-3"
+                    href="#"
+                    onClick={() => {
+                      handleClick("necklace");
+                    }}
+                  >
                     Necklace
                   </a>
-                  <a className="footer-link mb-3" href="/shop">
-                    Bangle
-                  </a>
-                  <a className="footer-link mb-3" href="/shop">
-                   Pendants
-                  </a>
-                  <a className="footer-link mb-3" href="/shop">
+                  <a className="footer-link mb-3" href="#" onClick={() => {
+                      handleClick("rings");
+                    }}>
                     Rings
                   </a>
                   {/* <a className="footer-link" href="#">
@@ -97,29 +111,59 @@ const HomeFooter = () => {
                 </nav>
               </div>
 
-              <div className="col-6 col-lg-3 col-xl-2 ps-xl-3">
-                <h3 className="footer-title">Trending</h3>
+              <div className="col-6 col-md-4 col-lg-3 col-xl-2 ps-xl-3">
+                <h3 className="footer-title">Collections</h3>
                 <nav className="nav flex-column">
-                  <a className="footer-link mb-3" href="/gift-card">
-                    Gift Cards
+                  <a className="footer-link mb-3" href="#" onClick={() => {
+                      handleClick("diamond");
+                    }}>
+                    Diamond
+                  </a>
+                  <a className="footer-link mb-3" href="#" onClick={() => {
+                      handleClick("gold");
+                    }}>
+                    Gold
+                  </a>
+                  <a className="footer-link mb-3" href="#" onClick={() => {
+                      handleClick("silver");
+                    }}>
+                    Silver
                   </a>
                   <a className="footer-link mb-3" href="/gift-card">
-                    Gifting Range
+                    Gift Crad
                   </a>
-                  <a className="footer-link mb-3" href="/shop">
-                     Ipsum dolor
+
+                  {/* <a className="footer-link" href="#">
+                    Testimonials
+                  </a> */}
+                </nav>
+              </div>
+
+               <div className="col-6 col-md-4 col-lg-3 col-xl-2 ps-xl-3">
+                <h3 className="footer-title">My Accounts</h3>
+                <nav className="nav flex-column">
+                  <a className="footer-link mb-3" href="/profile">
+                    My Profile
                   </a>
-                  <a className="footer-link mb-3" href="/shop">
-                    Ipsum dolor
+                  <a className="footer-link mb-3" href="/profile">
+                    My Orders 
                   </a>
-                  <a className="footer-link mb-3" href="/shop">
-                    Ipsum dolor
+                  <a className="footer-link mb-3" href="/wishlist">
+                    Wishlist 
+                  </a>
+                  <a className="footer-link mb-3" href="/compare">
+                   Compare 
+                  </a>
+                  <a className="footer-link mb-3" href="/cart">
+                    Cart
                   </a>
                   {/* <a className="footer-link" href="#">
                     Testimonials
                   </a> */}
                 </nav>
               </div>
+
+             
               {/* <div className="col-6 col-lg-3 col-xl-2 ps-xl-5">
                 <h3 className="footer-title">Collections</h3>
                 <nav className="nav flex-column">
@@ -165,29 +209,29 @@ const HomeFooter = () => {
                 
                   <EmailTwo />
                   <span className="footer-link ps-2">
-                    <a href="mailto:services@nobleset.com">services@noblesets.com</a>
+                    <a href="mailto:online@noblesets.com">online@noblesets.com</a>
                     
                   </span>
                 </div>
               </div> */}
-              <div className="col-6  col-lg-3 col-xl-2">
+              <div className="col-6 col-md-4  col-lg-3 col-xl-2">
                 <h3 className="footer-title">Payment</h3>
                 <div className="d-flex flex-column gap-3">
                   <div className="payment-item">
                     <img
                       alt="Paypal logo with blue text on white background"
                       height="14"
-                      src="/assets/img/footer/payment-2.png"
+                      src="/assets/img/footer/RuPay.webp"
                       width="30"
                       className="me-2"
                     />
-                    Paypal
+                    RuPay
                   </div>
                   <div className="payment-item">
                     <img
                       alt="Visa logo white text on dark blue background"
                       height="14"
-                      src="/assets/img/footer/payment-3.png"
+                      src="/assets/img/footer/Visa.webp"
                       width="20"
                       className="me-2"
                     />
@@ -197,31 +241,31 @@ const HomeFooter = () => {
                     <img
                       alt="Amazon Pay logo white text on dark background"
                       height="14"
-                      src="/assets/img/footer/payment-4.png"
+                      src="/assets/img/footer/master-card.webp"
                       width="20"
                       className="me-2"
                     />
-                    Amazon Pay
+                    Master Card
                   </div>
                   <div className="payment-item">
                     <img
                       alt="Gpay logo black text on white background"
                       height="14"
-                      src="/assets/img/footer/payment-5.png"
+                      src="/assets/img/footer/upi.webp"
                       width="20"
                       className="me-2"
                     />
-                    Gpay
+                    UPI
                   </div>
                   <div className="payment-item">
                     <img
                       alt="Apple Pay logo white text on black background"
                       height="14"
-                      src="/assets/img/footer/payment-1.png"
+                      src="/assets/img/footer/net-banking.webp"
                       width="20"
                       className="me-2"
                     />
-                    Apple Pay
+                    Net Banking
                   </div>
                 </div>
               </div>
@@ -253,7 +297,7 @@ const HomeFooter = () => {
                 </div>
               </div> */}
 
-              <div className="col-6 col-lg-3 col-xl-2 ">
+              <div className="col-6 col-md-4 col-lg-3 col-xl-2 ">
                 <h3 className="footer-title">Support</h3>
                 <div className="d-flex align-items-center mb-3 cursor-pointer">
                   {/* <i className="fas fa-phone me-2" style="font-size: 10px"></i> */}
@@ -273,16 +317,31 @@ const HomeFooter = () => {
                     78, New Market Street, <br /> Tiruppur-641604 <br />
                   </span>
                 </div>
-                <div className="d-flex align-items-center cursor-pointer support-res">
+                <div className="d-flex align-items-start align-items-md-center cursor-pointer support-res">
                   {/* <i className="fas fa-envelope me-2" style="font-size: 10px"/> */}
                   {/* <i class="fa-regular fa-envelope" style={{fontSize:"18px"}}></i> */}
                   <EmailTwo />
+
                   <span className="footer-link ps-2 ">
-                    <a href="mailto:services@nobleset.com">
-                      services@noblesets.com
+                    <span
+                      className="d-block d-md-none"
+                      style={{ marginTop: "-5px" }}
+                    >
+                      Email:
+                    </span>
+                    <a
+                      href="mailto:online@noblesets.com"
+                      className="d-none d-md-block ps-0"
+                    >
+                     online@noblesets.com
                     </a>
                   </span>
                 </div>
+                <span className="d-block d-md-none ps-0 footer-link">
+                  <a href="mailto:online@noblesets.com">
+                   online@noblesets.com
+                  </a>
+                </span>
               </div>
             </div>
             <hr className="footer-divider " />
@@ -291,7 +350,10 @@ const HomeFooter = () => {
               style={{ fontSize: "16px" }}
             >
               <div className="copyright">
-                Copyright 2025 © Noblesets. Concept by <a href="https://irepute.in/" target="blank">repute</a>
+                Copyright 2025 © Noblesets. Concept by{" "}
+                <a href="https://irepute.in/" target="blank">
+                  repute
+                </a>
               </div>
               <div className="d-flex gap-3 mt-3 mt-md-0">
                 <button

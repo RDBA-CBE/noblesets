@@ -211,7 +211,7 @@ const Page = () => {
             </div>
             <div className="col-10 col-lg-5 m-auto d-flex justify-content-center">
               <img
-                src="https://sreethangamjewellery.com/stjt/wp-content/uploads/2022/07/Section-Image-sameli-374x300.png"
+                src="/assets/img/home/best_of_nobletset/img-3.png"
                 alt=""
               />
             </div>

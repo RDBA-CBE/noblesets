@@ -89,7 +89,7 @@ const ShippingPolicyMain = () => {
             receiving the product. Additionally, customers are requested to do
             an unboxing video once the product has been received, that helps us
             to confirm in case if the product has been damaged in transit. In
-            such an event, please write to us support@Noblesets.in with your order
+            such an event, please write to us sonline@noblesets.com with your order
             number, registered email address and attach the images of the
             product received. Our team will get in touch with you for further
             process of exchange/return.
@@ -116,7 +116,7 @@ const ShippingPolicyMain = () => {
 
           <p className="terms-para">
             All exchanges and returns will be processed within a week time, for
-            further enquiries, please get in touch with us on support@noblesets.in{" "}
+            further enquiries, please get in touch with us on online@noblesets.com{" "}
           </p>
         </div>
       </div>

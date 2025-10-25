@@ -96,6 +96,7 @@
         background: var(--tp-common-white)  none repeat scroll 0 0;
         @include tp-transition-mul((0.45s ease-in-out, opacity .45s ease-in-out));
         z-index: 99999;
+        box-shadow: -4px 0 20px rgba(0, 0, 0, 0.15);
         @media #{$xs}{
             width: 320px;
         }
