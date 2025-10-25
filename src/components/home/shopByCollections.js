@@ -86,7 +86,6 @@ export default function ShopByCollections() {
   const getChildCatList = async () => {
     try {
       const res = await childCatList({});
-
       const filter = res?.data?.data?.categories?.edges?.map((item) => ({
         slug: item?.node?.slug,
         title: item?.node?.name,
@@ -140,7 +139,9 @@ export default function ShopByCollections() {
         cat.price = "Price not available";
       }
     }
-    dispatch(childCategory(filterWithImages));
+
+    const filteredCollection = filterWithImages.filter(item => item.price !== "₹0 - ₹0");
+    dispatch(childCategory(filteredCollection));
   };
 
   const handleClick = (item) => {
@@ -229,7 +230,7 @@ export default function ShopByCollections() {
                 992: { slidesPerView: 4 },
               }}
             >
-              {filter.map((item, index) => (
+              {filter?.map((item, index) => (
                 <SwiperSlide key={index}>
                   <div
                     className="card border-0 h-100 shadow-sm "
