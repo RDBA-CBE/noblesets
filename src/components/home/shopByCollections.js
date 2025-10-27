@@ -16,6 +16,7 @@ import { max } from "moment";
 import Loader from "../loader/loader";
 import { useDispatch, useSelector } from "react-redux";
 import { childCategory } from "@/redux/features/shop-filter-slice";
+import { formatIndianRupees } from "@/utils/functions";
 
 const collections = [
   {
@@ -134,7 +135,8 @@ export default function ShopByCollections() {
         minPrice = minNode?.pricing?.priceRange?.start?.gross?.amount || 0;
         maxPrice = maxNode?.pricing?.priceRange?.start?.gross?.amount || 0;
 
-        cat.price = `₹${Math.round(minPrice)} - ₹${Math.round(maxPrice)}`;
+        // cat.price = `₹${Math.round(minPrice)} - ₹${Math.round(maxPrice)}`;
+        cat.price = `${formatIndianRupees(minPrice)} - ${formatIndianRupees(maxPrice)}`;
       } catch (err) {
         cat.price = "Price not available";
       }
@@ -210,7 +212,9 @@ export default function ShopByCollections() {
         {loading1 || loading ? (
           <Loader />
         ) : (
-          <div className="position-relative d-flex flex-wrap align-items-stretch">
+        
+         <div className="section-wd">
+           <div className="position-relative row">
             <Swiper
               modules={[Navigation]}
               // spaceBetween={30}
@@ -233,7 +237,7 @@ export default function ShopByCollections() {
               {filter?.map((item, index) => (
                 <SwiperSlide key={index}>
                   <div
-                    className="card border-0 h-100 shadow-sm "
+                    className="card border-0 h-100 shadow-sm w-100 col-3"
                     onClick={() => handleClick(item)}
                   >
                     <img
@@ -284,6 +288,7 @@ export default function ShopByCollections() {
               ))}
             </Swiper>
           </div>
+         </div>
         )}
       </div>
     </section>
