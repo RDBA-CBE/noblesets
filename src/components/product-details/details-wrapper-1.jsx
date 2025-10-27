@@ -17,10 +17,12 @@ import { add_to_wishlist } from "@/redux/features/wishlist-slice";
 import { add_to_compare } from "@/redux/features/compareSlice";
 import { handleModalClose } from "@/redux/features/productModalSlice";
 import {
+  ReadMore,
   RegularPrice,
   capitalizeFLetter,
   checkChannel,
   generateCaptcha,
+  limitChar,
 } from "@/utils/functions";
 import {
   useAddToCartMutation,
@@ -1657,7 +1659,7 @@ const DetailsWrapper1 = ({
                               )}
                             </div>
 
-                            <div key={block.id}>
+                            {/* <div key={block.id}>
                               {block.type === "paragraph" && (
                                 <p
                                   style={{ color: "gray", marginBottom: "5px" }}
@@ -1671,6 +1673,23 @@ const DetailsWrapper1 = ({
                                       }}
                                     />
                                   )}
+                                </p>
+                              )}
+                            </div> */}
+
+                            <div key={block.id}>
+                              {block.type === "paragraph" && (
+                                <p
+                                  style={{ color: "gray", marginBottom: "5px" }}
+                                >
+                                  <ReadMore
+                                    text={
+                                      block.data.text.includes("<b>")
+                                        ? `<b>${block.data.text}</b>`
+                                        : block.data.text
+                                    }
+                                    charLimit={250}
+                                  />
                                 </p>
                               )}
                             </div>
@@ -1718,7 +1737,7 @@ const DetailsWrapper1 = ({
 
                   {attributeList.length > 0 && (
                     <>
-                      <h5 style={{ fontWeight: "600", letterSpacing:"0.2px" }}>
+                      <h5 style={{ fontWeight: "600", letterSpacing: "0.2px" }}>
                         Additional Information:
                       </h5>
 
@@ -1882,8 +1901,50 @@ const DetailsWrapper1 = ({
                     </h4>
 
                     <p className="mt-2" style={{ color: "#55585b" }}>
-                      {productItem?.brand?.description ||
-                        productItem?.node?.brand?.description}
+                      {productItem?.brand?.description ? (
+                        <>
+                          {limitChar(productItem?.brand?.description, 200)}{" "}
+                          <span
+                            style={{ color: "#a44100", cursor:"pointer" }}
+                            onClick={() => {
+                              router.push({
+                                pathname: "/brand",
+                                query: {
+                                  slug:
+                                    productItem?.brand?.slug ||
+                                    productItem?.node?.brand?.slug,
+                                }, // Your parameters
+                              });
+                            }}
+                          >
+                            {" "}
+                            Read more{" "}
+                          </span>
+                        </>
+                      ) : productItem?.node?.brand?.description ? (
+                        <>
+                          {limitChar(
+                            productItem?.node?.brand?.description,
+                            200
+                          )}
+                          <span
+                            style={{ color: "#a44100", cursor:"pointer" }}
+                            onClick={() => {
+                              router.push({
+                                pathname: "/brand",
+                                query: {
+                                  slug:
+                                    productItem?.brand?.slug ||
+                                    productItem?.node?.brand?.slug,
+                                }, // Your parameters
+                              });
+                            }}
+                          >
+                            {" "}
+                            Read more{" "}
+                          </span>{" "}
+                        </>
+                      ) : null}
                     </p>
 
                     <button

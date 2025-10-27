@@ -623,3 +623,128 @@ export const generateCaptcha = ({
     answer,
   };
 };
+
+
+export const limitChar = (text= "", limit = 100) => {
+  if (!text) return "";
+  return text.length > limit ? text.substring(0, limit) + "..." : text;
+};
+
+
+export const ReadMore = ({ text, charLimit = 120 }) => {
+  const [expanded, setExpanded] = useState(false);
+
+  if (!text) return null;
+
+  const isLong = text.length > charLimit;
+  const displayText = !expanded
+    ? text.substring(0, charLimit) + (isLong ? "..." : "")
+    : text;
+
+  return (
+    <>
+      <span dangerouslySetInnerHTML={{ __html: displayText }} />
+      {isLong && (
+        <button
+          type="button"
+          onClick={() => setExpanded((prev) => !prev)}
+          style={{
+            background: "none",
+            border: "none",
+            color: "#a44100",
+            cursor: "pointer",
+            paddingLeft: "5px",
+            fontSize: "14px",
+          }}
+        >
+          {expanded ? "Read less" : "Read more"}
+        </button>
+      )}
+    </>
+  );
+};
+
+// charLimit is required and should be passed from the parent
+export const ReadMoreList = ({ items, charLimit, itemStyle = {} }) => {
+  const [expanded, setExpanded] = useState(false);
+
+  if (!items || items.length === 0 || !charLimit) return null;
+
+  // Helper function to remove HTML for accurate plain text character counting
+  const cleanText = (html) => html.replace(/<[^>]+>/g, "");
+
+  // 1. Check if the total content length exceeds the limit
+  const plainTextCombined = items.map(cleanText).join(" ");
+  const isLong = plainTextCombined.length > charLimit;
+
+  // 2. Determine which items to display (truncated or full)
+  let displayItems = items;
+
+  if (!expanded && isLong) {
+    let count = 0;
+    const limitedItems = [];
+
+    for (let item of items) {
+      // Ensure bold is applied before checking length
+      let processedItem = item.includes("<b>") ? `<b>${item}</b>` : item;
+      const plainItem = cleanText(item);
+      const itemLength = plainItem.length;
+
+      if (count + itemLength <= charLimit) {
+        limitedItems.push(processedItem);
+        count += itemLength;
+      } else {
+        // Truncate the current item to fit
+        const remaining = charLimit - count;
+        let truncatedText = plainItem.substring(0, remaining);
+
+        // Re-apply bold if the original item was bold
+        if (item.includes('<b>')) {
+          truncatedText = `<b>${truncatedText}</b>`;
+        }
+        
+        // Add ellipsis and stop
+        truncatedText += "...";
+
+        limitedItems.push(truncatedText);
+        break;
+      }
+    }
+    displayItems = limitedItems;
+  }
+
+  return (
+    <>
+      <ul>
+        {displayItems.map((item, index) => (
+          <li
+            key={index}
+            // Apply the style passed from the parent component
+            style={itemStyle} 
+            dangerouslySetInnerHTML={{ __html: item }}
+          />
+        ))}
+      </ul>
+      {/* 💥 THIS IS THE SINGLE BUTTON RENDERED OUTSIDE THE MAP 💥 */}
+      {isLong && (
+        <button
+          type="button"
+          onClick={() => setExpanded((prev) => !prev)}
+          style={{
+            background: "none",
+            border: "none",
+            color: "#a44100", 
+            cursor: "pointer",
+            fontSize: "14px",
+            marginTop: "5px",
+            padding: 0,
+          }}
+        >
+          {expanded ? "Read less" : "Read more"}
+        </button>
+      )}
+    </>
+  );
+};
+
+
