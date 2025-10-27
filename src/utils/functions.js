@@ -657,7 +657,7 @@ export const ReadMore = ({ text, charLimit = 120 }) => {
             fontSize: "14px",
           }}
         >
-          {expanded ? "Read less" : "Read more"}
+          {expanded ? "Hide info" : "Read more"}
         </button>
       )}
     </>
