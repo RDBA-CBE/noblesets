@@ -24,14 +24,14 @@ const collections = [
     slug: "bracelets",
     desc: "Simple, chic & wearable",
     price: "₹15000 - ₹20000",
-    img: "/assets/img/home/collection/img1.webp",
+    img: "/assets/img/home/collection/1.png",
   },
   {
     title: "Rings",
     slug: "rings",
     desc: "Unique, bold & beautiful",
     price: "₹25000 - ₹30000",
-    img: "/assets/img/home/collection/img2.webp",
+    img: "/assets/img/home/collection/2.png",
   },
   {
     title: "Chains",
@@ -53,14 +53,14 @@ const collections = [
     slug: "necklace",
     desc: "Simple, chic & wearable",
     price: "₹15000 - ₹20000",
-    img: "/assets/img/home/collection/1.png",
+    img: "/assets/img/home/collection/3.png",
   },
   {
     title: "Bangle",
     slug: "bangle",
     desc: "Unique, bold & beautiful",
     price: "₹25000 - ₹30000",
-    img: "/assets/img/home/collection/2.png",
+    img: "/assets/img/home/collection/img1.webp",
   },
 ];
 
