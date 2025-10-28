@@ -107,7 +107,7 @@ const FooterTwo = () => {
                           </li>
                           <li>
                             <Link href="/terms-and-conditions">
-                              Terms And Conditions
+                              Terms and Conditions
                             </Link>
                           </li>
                           <li>

@@ -11,15 +11,15 @@ import shopBanner from "@assets/img/header-bg.webp";
 const TermsAndConditions = () => {
   return (
     <Wrapper>
-      <SEO pageTitle="Terms And Conditions" />
+      <SEO pageTitle="Terms and Conditions" />
       {/* <HeaderTwo style_2={true} /> */}
       <HeaderSection />
 
       <div style={{ background: "#f6e9d9" }}>
         <div >
           <ShopBreadcrumb
-            title="Terms And Conditions"
-            subtitle="Terms And Conditions"
+            title="Terms and Conditions"
+            subtitle="Terms and Conditions"
             bgImage={shopBanner}
             // catList={categoryList}
             // product={productList}

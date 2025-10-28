@@ -5,7 +5,7 @@ const ShippingPolicyMain = () => {
     <section className="tp-about-area pt-30 pb-30 mt-0" style={{background:"#f6e9d9"}}>
       <div className="container">
         {/* <h3 className="terms-heading-ti mt-0" style={{ fontWeight: "400" }}>
-          Loyalty Programs
+         Return and Exchange Policies
         </h3> */}
 
         <div>
