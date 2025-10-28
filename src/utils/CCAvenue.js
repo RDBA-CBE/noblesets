@@ -1,5 +1,5 @@
 import CryptoJS from "crypto-js";
-import { WORKING_KEY, MERCHANT_ID } from "./constants";
+import { MERCHANT_ID, WORKING_KEY } from "./constant";
 
 class CCAvenueClient {
   constructor() {
