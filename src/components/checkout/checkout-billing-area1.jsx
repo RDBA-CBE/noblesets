@@ -927,7 +927,6 @@ const CheckoutBillingArea1 = () => {
 
   const ccAvenuePayment = async (orderId, amount) => {
     try {
-
       let paymentData = {
         merchant_id: MERCHANT_ID,
         order_id: orderId,
@@ -962,8 +961,8 @@ const CheckoutBillingArea1 = () => {
 
       console.log("✌️Final URL --->", URL);
 
-      // Redirect to CCAvenue
-      window.location.href = URL;
+      // Open in new tab
+      window.open(URL, "_blank");
     } catch (error) {
       console.log("CCAvenue error: ", error);
       alert("Payment initialization failed: " + error.message);
