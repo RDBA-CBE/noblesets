@@ -955,7 +955,10 @@ const CheckoutBillingArea1 = () => {
 
       const encReq = CCAvenue.getEncryptedOrder(paymentData);
 
-      const paymentUrl = `${CCAVENUE_URL}&encRequest=${encodeURIComponent(
+      // const paymentUrl = `${CCAVENUE_URL}&encRequest=${encodeURIComponent(
+      //   encReq
+      // )}&access_code=${ACCESS_CODE}`;
+      const paymentUrl = `https://secure.ccavenue.com/transaction/transaction.do?command=initiateTransaction&encRequest=${encodeURIComponent(
         encReq
       )}&access_code=${ACCESS_CODE}`;
 

@@ -1,39 +1,30 @@
 import CryptoJS from "crypto-js";
-import { MERCHANT_ID, WORKING_KEY } from "./constant";
+import { WORKING_KEY,ACCESS_CODE,MERCHANT_ID } from "./constant";
+
+
 
 class CCAvenueClient {
-  constructor() {
-    this.working_key = WORKING_KEY;
-    this.merchant_id = MERCHANT_ID;
-  }
-
   encrypt(plainText) {
-    if (!this.working_key || !plainText)
-      throw new Error("Missing working key or data");
-
-    const key = CryptoJS.enc.Utf8.parse(this.working_key);
-    const iv = CryptoJS.enc.Utf8.parse(this.working_key.substring(0, 16));
+    const key = CryptoJS.enc.Utf8.parse(WORKING_KEY);
+    const iv = CryptoJS.enc.Utf8.parse(WORKING_KEY.substring(0, 16));
     const encrypted = CryptoJS.AES.encrypt(plainText, key, {
       iv,
       mode: CryptoJS.mode.CBC,
       padding: CryptoJS.pad.Pkcs7,
     });
-    return encrypted.ciphertext.toString(CryptoJS.enc.Base64);
+    return encrypted.ciphertext.toString(CryptoJS.enc.Hex);
   }
 
   decrypt(encText) {
-    if (!this.working_key || !encText)
-      throw new Error("Missing working key or encrypted text");
-
-    const key = CryptoJS.enc.Utf8.parse(this.working_key);
-    const iv = CryptoJS.enc.Utf8.parse(this.working_key.substring(0, 16));
-
-    const decrypted = CryptoJS.AES.decrypt(encText, key, {
+    const key = CryptoJS.enc.Utf8.parse(WORKING_KEY);
+    const iv = CryptoJS.enc.Utf8.parse(WORKING_KEY.substring(0, 16));
+    const encryptedHexStr = CryptoJS.enc.Hex.parse(encText);
+    const base64Str = CryptoJS.enc.Base64.stringify(encryptedHexStr);
+    const decrypted = CryptoJS.AES.decrypt(base64Str, key, {
       iv,
       mode: CryptoJS.mode.CBC,
       padding: CryptoJS.pad.Pkcs7,
     });
-
     return decrypted.toString(CryptoJS.enc.Utf8);
   }
 
@@ -56,5 +47,5 @@ class CCAvenueClient {
   }
 }
 
-const CCAvenue = new CCAvenueClient();
-export default CCAvenue;
+export default new CCAvenueClient();
+export { MERCHANT_ID, ACCESS_CODE };
