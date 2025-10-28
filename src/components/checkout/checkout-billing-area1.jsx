@@ -65,7 +65,17 @@ import CheckoutLogin from "./checkout-login";
 import Link from "next/link";
 import { cart_list } from "@/redux/features/cartSlice";
 import ButtonLoader from "../loader/button-loader";
-import { CASE_ON_DELIVERY, pincode, SHIPPING_ZONE } from "@/utils/constant";
+import {
+  ACCESS_CODE,
+  CASE_ON_DELIVERY,
+  CCAVENUE_ID,
+  COD_ID,
+  MERCHANT_ID,
+  pincode,
+  RAZORPAY_ID,
+  SHIPPING_ZONE,
+  CCAVENUE_URL,
+} from "@/utils/constant";
 import { DeleteOutlined } from "@ant-design/icons";
 import PhoneInput, { isValidPhoneNumber } from "react-phone-number-input";
 import "react-phone-number-input/style.css";
@@ -75,6 +85,8 @@ import { useGetAddressListQuery } from "../../redux/features/productApi";
 import CCAvenue from "../../components/ccAvenue/ccAvenue";
 import useDebounce from "../useDebounce/useDebounce";
 import Razorpay_logo from "../../../public/assets/img/razorpay.png";
+import CcAvenue from "../../../public/assets/img/CCAvenue.webp";
+
 import cod from "../../../public/assets/img/cash-on-delivery.png";
 import Image from "next/image";
 
@@ -486,6 +498,7 @@ const CheckoutBillingArea1 = () => {
   const enableCOD = async () => {
     try {
       const res = await paymentList();
+      console.log("enableCOD --->", res);
       const data = res.data?.data?.paymentGateways?.edges;
       const findCOD = data?.find(
         (item) => item.node?.name === CASE_ON_DELIVERY
@@ -755,6 +768,8 @@ const CheckoutBillingArea1 = () => {
         const checkedOption = state.paymentType.find(
           (item) => item.checked
         )?.name;
+        console.log("✌️checkedOption --->", checkedOption);
+
         if (checkedOption == CASE_ON_DELIVERY) {
           localStorage.removeItem("checkoutTokenUSD");
           localStorage.removeItem("checkoutTokenINR");
@@ -762,6 +777,8 @@ const CheckoutBillingArea1 = () => {
           router.push(`/order-success/${orderId}`);
         } else if (checkedOption == "Razorpay") {
           handlePayment(orderId, state.total);
+        } else if (checkedOption == "CCAvenue") {
+          ccAvenuePayment(orderId, state.total);
         }
         if (localStorage.getItem("token")) {
           addressRefetch();
@@ -871,38 +888,85 @@ const CheckoutBillingArea1 = () => {
     [Razorpay]
   );
 
+  // const ccAvenuePayment = async (orderId, amount) => {
+  //   try {
+  //     let paymentData = {
+  //       merchant_id: MERCHANT_ID, // Merchant ID (Required)
+  //       order_id: orderId, // Order ID - It can be generated from our project
+  //       amount: amount, // Payment Amount (Required)
+  //       currency: "INR", // Payment Currency Type (Required)
+  //       billing_email: "madhanumk@gmail.com", // Billing Email (Optional)
+  //       billing_name: "Madhan", // Billing Name (Optional)
+  //       billing_address: `chennai`,
+  //       billing_city: "Coimbatore", // Billing City (Optional)
+  //       billing_state: "Tamilnadu", // Billing State (Optional)
+  //       billing_zip: "621703", // Billing Zip (Optional)
+  //       billing_country: "India", // Billing COuntry (Optional)
+  //       redirect_url: `${CCAVENUE_URL}/ccavenue-handle1`, // Success URL (Required)
+  //       cancel_url: `${CCAVENUE_URL}/chit/add-chit`,
+  //       merchant_param1: "", // Extra Information (Optional)
+  //       // merchant_param2: merchant_param2, // Extra Information (Optional)
+  //       merchant_param3: "", // Extra Information (Optional)
+  //       merchant_param4: "", // Extra Information (Optional)
+  //       merchant_param5: "", // Extra Information (Optional)
+  //       // language: 'EN', // Language (Optional)
+  //       // billing_tel: state.localCode, // Billing Mobile Number (Optional)
+  //       // sub_account_id: "",
+  //     };
+  //     console.log("✌️paymentData --->", paymentData);
+
+  //     let encReq = CCAvenue.getEncryptedOrder(paymentData);
+  //     let accessCode = ACCESS_CODE;
+  //     let URL = `https://secure.ccavenue.com/transaction/transaction.do?command=initiateTransaction&merchant_id=${paymentData.merchant_id}&encRequest=${encReq}&access_code=${accessCode}`;
+  //     console.log("✌️URL --->", URL);
+  //     router.push(URL);
+  //   } catch (error) {
+  //     console.log("error: ", error);
+  //   }
+  // };
+
   const ccAvenuePayment = async (orderId, amount) => {
     try {
+
       let paymentData = {
-        merchant_id: "315511", // Merchant ID (Required)
-        order_id: orderId, // Order ID - It can be generated from our project
-        amount: amount, // Payment Amount (Required)
-        currency: "INR", // Payment Currency Type (Required)
-        billing_email: "madhanumk@gmail.com", // Billing Email (Optional)
-        billing_name: "Madhan", // Billing Name (Optional)
-        billing_address: `chennai`,
-        billing_city: "Coimbatore", // Billing City (Optional)
-        billing_state: "Tamilnadu", // Billing State (Optional)
-        billing_zip: "621703", // Billing Zip (Optional)
-        billing_country: "India", // Billing COuntry (Optional)
-        redirect_url: `https://www1.prade.in/ccavenue-handle1`, // Success URL (Required)
-        cancel_url: `https://www1.prade.in/chit/add-chit`,
-        merchant_param1: "", // Extra Information (Optional)
-        // merchant_param2: merchant_param2, // Extra Information (Optional)
-        merchant_param3: "", // Extra Information (Optional)
-        merchant_param4: "", // Extra Information (Optional)
-        merchant_param5: "", // Extra Information (Optional)
-        // language: 'EN', // Language (Optional)
-        // billing_tel: state.localCode, // Billing Mobile Number (Optional)
-        // sub_account_id: "",
+        merchant_id: MERCHANT_ID,
+        order_id: orderId,
+        amount: amount.toFixed(2),
+        currency: "INR",
+        billing_name: "Madhan",
+        billing_email: "madhanumk@gmail.com",
+        billing_address: "chennai",
+        billing_city: "Coimbatore",
+        billing_state: "Tamilnadu",
+        billing_zip: "621703",
+        billing_country: "India",
+        billing_tel: "9999999999",
+        redirect_url: `${CCAVENUE_URL}/ccavenue-handle1`,
+        cancel_url: `${CCAVENUE_URL}/payment-cancelled`,
+        merchant_param1: orderId,
+        language: "EN",
       };
 
+      console.log("✌️paymentData --->", paymentData);
+
+      // Verify CCAvenue object exists and has the method
+      if (typeof CCAvenue === "undefined" || !CCAvenue.getEncryptedOrder) {
+        throw new Error("CCAvenue library not loaded properly");
+      }
+
       let encReq = CCAvenue.getEncryptedOrder(paymentData);
-      let accessCode = "AVGO93LF57AY79OGYA";
+      console.log("✌️encReq --->", encReq);
+
+      let accessCode = ACCESS_CODE;
       let URL = `https://secure.ccavenue.com/transaction/transaction.do?command=initiateTransaction&merchant_id=${paymentData.merchant_id}&encRequest=${encReq}&access_code=${accessCode}`;
-      router.push(URL);
+
+      console.log("✌️Final URL --->", URL);
+
+      // Redirect to CCAvenue
+      window.location.href = URL;
     } catch (error) {
-      console.log("error: ", error);
+      console.log("CCAvenue error: ", error);
+      alert("Payment initialization failed: " + error.message);
     }
   };
 
@@ -1241,9 +1305,11 @@ const CheckoutBillingArea1 = () => {
     try {
       let paymentMethod = "";
       if (option == "Razorpay") {
-        paymentMethod = "UGF5bWVudF9HYXRld2F5OjI=";
+        paymentMethod = RAZORPAY_ID;
+      } else if (option == "CCAvenue") {
+        paymentMethod = CCAVENUE_ID;
       } else {
-        paymentMethod = "UGF5bWVudF9HYXRld2F5OjE=";
+        paymentMethod = COD_ID;
       }
       const res = await paymentMethodUpdate({
         paymentMethod,
@@ -1564,6 +1630,8 @@ const CheckoutBillingArea1 = () => {
   };
 
   const thumbRef = useRef(null);
+
+  console.log("✌️state.paymentType --->", state.paymentType);
 
   useEffect(() => {
     const el = thumbRef.current;
@@ -2806,6 +2874,8 @@ const CheckoutBillingArea1 = () => {
                                     src={
                                       item.name === "Razorpay"
                                         ? Razorpay_logo
+                                        : item?.name == "CCAvenue"
+                                        ? CcAvenue
                                         : cod
                                     }
                                     alt={item.name}
@@ -2870,7 +2940,6 @@ const CheckoutBillingArea1 = () => {
                           )}
                           <div className=" text-grey">
                             Cash on Delivery is not available
-                            
                           </div>
                         </div>
                         {state.isGiftWrap && (
@@ -2981,8 +3050,14 @@ const CheckoutBillingArea1 = () => {
                           }
                         />
                         <label htmlFor="agree">
-                          I have read and agree to the website <a className="text-black cursor-pointer" href="/terms-and-conditions">terms and
-                          conditions</a>  <span> * </span>
+                          I have read and agree to the website{" "}
+                          <a
+                            className="text-black cursor-pointer"
+                            href="/terms-and-conditions"
+                          >
+                            terms and conditions
+                          </a>{" "}
+                          <span> * </span>
                         </label>
                       </div>
                       {state.errors.isAgree && (

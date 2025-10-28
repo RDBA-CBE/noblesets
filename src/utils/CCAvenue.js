@@ -94,8 +94,8 @@ return initOptions && initOptions[key]? true : false;
 
 
 const CCAvenue = new Configure({
-    working_key: "D58719F6B1A4057EA02DE130AFCB12D2",
-    merchant_id: "315511" // <- Correct this to match working URL
+  working_key: process.env.WORKING_KEY, // Working Key from CCAvenue
+  merchant_id: process.env.MERCHAN_ID, // Merchant ID from CCAvenue
 });
 
 export default CCAvenue;
