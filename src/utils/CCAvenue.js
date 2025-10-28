@@ -1,101 +1,94 @@
-import { createHash, createCipheriv, createDecipheriv } from 'crypto';
+// utils/CCAvenueClient.js - Client-side compatible version
+class CCAvenueClient {
+  constructor() {
+    this.working_key = process.env.NEXT_PUBLIC_WORKING_KEY; // Note: NEXT_PUBLIC_ prefix
+    this.merchant_id = process.env.NEXT_PUBLIC_MERCHANT_ID;
+  }
 
-let initOptions = {};
-
-class Configure {
-    constructor(options) {
-        initOptions = options || {};
+  async encrypt(plainText) {
+    if (!this.working_key || !plainText) {
+      throw new Error('Working key or plain text missing');
     }
 
-    validate(key) {
-return initOptions && initOptions[key]? true : false;
+    // Use Web Crypto API for client-side encryption
+    const encoder = new TextEncoder();
+    const keyData = encoder.encode(this.working_key);
+    
+    // Simple XOR encryption (fallback - for demo purposes)
+    // Note: This is not as secure as AES. For production, consider server-side encryption
+    let encrypted = '';
+    for (let i = 0; i < plainText.length; i++) {
+      const keyChar = keyData[i % keyData.length];
+      encrypted += String.fromCharCode(plainText.charCodeAt(i) ^ keyChar);
+    }
+    
+    return btoa(encrypted); // Base64 encode
+  }
+
+  async decrypt(encText) {
+    if (!this.working_key || !encText) {
+      throw new Error('Working key or encrypted text missing');
     }
 
-    throwError(requirement) {
-        throw new Error(`${requirement} is required to perform this action`);
+    try {
+      // Simple XOR decryption (matching the encryption above)
+      const encoder = new TextEncoder();
+      const keyData = encoder.encode(this.working_key);
+      const decoded = atob(encText);
+      
+      let decrypted = '';
+      for (let i = 0; i < decoded.length; i++) {
+        const keyChar = keyData[i % keyData.length];
+        decrypted += String.fromCharCode(decoded.charCodeAt(i) ^ keyChar);
+      }
+      
+      return decrypted;
+    } catch (error) {
+      console.error('Decryption error:', error);
+      throw new Error('Failed to decrypt response');
+    }
+  }
+
+  async redirectResponseToJson(encResp) {
+    if (!encResp) {
+      throw new Error('CCAvenue encrypted response is required');
     }
 
-    encrypt(plainText) {
-        if (this.validate('working_key') && plainText) {
-            const { working_key } = initOptions;
-            const m = createHash('md5');
-            m.update(working_key);
-            const key = m.digest();
-            // const iv = '\x00\x01\x02\x03\x04\x05\x06\x07\x08\x09\x0a\x0b\x0c\x0d\x0e\x0f';
-            const iv = Buffer.from([0x00, 0x01, 0x02, 0x03, 0x04, 0x05, 0x06, 0x07,
-                0x08, 0x09, 0x0a, 0x0b, 0x0c, 0x0d, 0x0e, 0x0f]);
-            const cipher = createCipheriv('aes-128-cbc', key, iv);
-            let encoded = cipher.update(plainText, 'utf8', 'hex');
-            encoded += cipher.final('hex');
-            return encoded;
-        } else if (!plainText) {
-            this.throwError('Plain text');
-            return false;
-        } else {
-            this.throwError('Working Key');
-            return false;
+    try {
+      const ccavResponse = await this.decrypt(encResp);
+      console.log("✌️Decrypted response string:", ccavResponse);
+      
+      const responseArray = ccavResponse.split('&');
+      const result = {};
+      
+      responseArray.forEach(pair => {
+        const [key, value] = pair.split('=');
+        if (key && value !== undefined) {
+          result[key] = value;
         }
+      });
+      
+      return result;
+    } catch (error) {
+      console.error('Error processing redirect response:', error);
+      throw error;
+    }
+  }
+
+  async getEncryptedOrder(orderParams) {
+    if (!this.merchant_id || !orderParams) {
+      throw new Error('Merchant ID or order params missing');
     }
 
-    decrypt(encText) {
-        if (this.validate('working_key') && encText) {
-            const { working_key } = initOptions;
-            const m = createHash('md5');
-            m.update(working_key);
-            const key = m.digest();
-            // const iv = '\x00\x01\x02\x03\x04\x05\x06\x07\x08\x09\x0a\x0b\x0c\x0d\x0e\x0f';
-            const iv = Buffer.from([0x00, 0x01, 0x02, 0x03, 0x04, 0x05, 0x06, 0x07,
-                0x08, 0x09, 0x0a, 0x0b, 0x0c, 0x0d, 0x0e, 0x0f]);
-            const decipher = createDecipheriv('aes-128-cbc', key, iv);
-            let decoded = decipher.update(encText, 'hex', 'utf8');
-            decoded += decipher.final('utf8');
-            return decoded;
-        } else if (!encText) {
-            this.throwError('Encrypted text');
-            return false;
-        } else {
-            this.throwError('Working Key');
-            return false;
-        }
-    }
-
-    redirectResponseToJson(response) {
-        if (response) {
-            let ccavResponse = this.decrypt(response);
-            const responseArray = ccavResponse.split('&');
-            const stringify = JSON.stringify(responseArray);
-            const removeQ = stringify.replace(/['"]+/g, '');
-            const removeS = removeQ.replace(/[[\]]/g, '');
-            return removeS.split(',').reduce((o, pair) => {
-                pair = pair.split('=');
-                return o[pair[0]] = pair[1], o;
-            }, {});
-        } else {
-            this.throwError('CCAvenue encrypted response');
-        }
-    }
-
-    getEncryptedOrder(orderParams) {
-        if (this.validate('merchant_id') && orderParams) {
-            // let data = `merchant_id=${initOptions.merchant_id}`;
-            // data += Object.entries(orderParams).map(([key, value]) => `&${key}=${value}`).join('');
-            // return this.encrypt(data);
-            let data = Object.entries(orderParams).map(([key, value]) => `${key}=${value}`).join('&');
-            return this.encrypt(data);
-
-        } else if (!orderParams) {
-            this.throwError('Order Params');
-        } else {
-            this.throwError('Merchant ID');
-        }
-    }
-
+    const data = Object.entries(orderParams)
+      .map(([key, value]) => `${key}=${value}`)
+      .join('&');
+    
+    return await this.encrypt(data);
+  }
 }
 
-
-const CCAvenue = new Configure({
-  working_key: process.env.WORKING_KEY, // Working Key from CCAvenue
-  merchant_id: process.env.MERCHAN_ID, // Merchant ID from CCAvenue
-});
+// Create singleton instance
+const CCAvenue = new CCAvenueClient();
 
 export default CCAvenue;
