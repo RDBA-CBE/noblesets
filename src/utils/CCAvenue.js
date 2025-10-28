@@ -1,61 +1,65 @@
-// utils/CCAvenueClient.js - Client-side compatible version
+// utils/ccavenue.js
+import CryptoJS from 'crypto-js';
+import { MERCHANT_ID, WORKING_KEY } from "./constant";
+
 class CCAvenueClient {
   constructor() {
-    this.working_key = process.env.NEXT_PUBLIC_WORKING_KEY; // Note: NEXT_PUBLIC_ prefix
-    this.merchant_id = process.env.NEXT_PUBLIC_MERCHANT_ID;
+    this.working_key = WORKING_KEY;
+    this.merchant_id = MERCHANT_ID;
   }
 
-  async encrypt(plainText) {
+  // CCAvenue uses AES encryption with ECB mode
+  encrypt(plainText) {
     if (!this.working_key || !plainText) {
       throw new Error('Working key or plain text missing');
     }
 
-    // Use Web Crypto API for client-side encryption
-    const encoder = new TextEncoder();
-    const keyData = encoder.encode(this.working_key);
-    
-    // Simple XOR encryption (fallback - for demo purposes)
-    // Note: This is not as secure as AES. For production, consider server-side encryption
-    let encrypted = '';
-    for (let i = 0; i < plainText.length; i++) {
-      const keyChar = keyData[i % keyData.length];
-      encrypted += String.fromCharCode(plainText.charCodeAt(i) ^ keyChar);
+    try {
+      const key = CryptoJS.enc.Utf8.parse(this.working_key);
+      const iv = CryptoJS.enc.Utf8.parse(this.working_key); // ECB mode uses key as IV
+      
+      const encrypted = CryptoJS.AES.encrypt(plainText, key, {
+        iv: iv,
+        mode: CryptoJS.mode.ECB,
+        padding: CryptoJS.pad.Pkcs7
+      });
+      
+      return encrypted.toString();
+    } catch (error) {
+      console.error('Encryption error:', error);
+      throw new Error('Failed to encrypt data');
     }
-    
-    return btoa(encrypted); // Base64 encode
   }
 
-  async decrypt(encText) {
+  decrypt(encText) {
     if (!this.working_key || !encText) {
       throw new Error('Working key or encrypted text missing');
     }
 
     try {
-      // Simple XOR decryption (matching the encryption above)
-      const encoder = new TextEncoder();
-      const keyData = encoder.encode(this.working_key);
-      const decoded = atob(encText);
+      const key = CryptoJS.enc.Utf8.parse(this.working_key);
+      const iv = CryptoJS.enc.Utf8.parse(this.working_key);
       
-      let decrypted = '';
-      for (let i = 0; i < decoded.length; i++) {
-        const keyChar = keyData[i % keyData.length];
-        decrypted += String.fromCharCode(decoded.charCodeAt(i) ^ keyChar);
-      }
+      const decrypted = CryptoJS.AES.decrypt(encText, key, {
+        iv: iv,
+        mode: CryptoJS.mode.ECB,
+        padding: CryptoJS.pad.Pkcs7
+      });
       
-      return decrypted;
+      return decrypted.toString(CryptoJS.enc.Utf8);
     } catch (error) {
       console.error('Decryption error:', error);
       throw new Error('Failed to decrypt response');
     }
   }
 
-  async redirectResponseToJson(encResp) {
+  redirectResponseToJson(encResp) {
     if (!encResp) {
       throw new Error('CCAvenue encrypted response is required');
     }
 
     try {
-      const ccavResponse = await this.decrypt(encResp);
+      const ccavResponse = this.decrypt(encResp);
       console.log("✌️Decrypted response string:", ccavResponse);
       
       const responseArray = ccavResponse.split('&');
@@ -64,7 +68,7 @@ class CCAvenueClient {
       responseArray.forEach(pair => {
         const [key, value] = pair.split('=');
         if (key && value !== undefined) {
-          result[key] = value;
+          result[key] = decodeURIComponent(value);
         }
       });
       
@@ -75,20 +79,18 @@ class CCAvenueClient {
     }
   }
 
-  async getEncryptedOrder(orderParams) {
+  getEncryptedOrder(orderParams) {
     if (!this.merchant_id || !orderParams) {
       throw new Error('Merchant ID or order params missing');
     }
 
     const data = Object.entries(orderParams)
-      .map(([key, value]) => `${key}=${value}`)
+      .map(([key, value]) => `${key}=${encodeURIComponent(value)}`)
       .join('&');
     
-    return await this.encrypt(data);
+    return this.encrypt(data);
   }
 }
 
-// Create singleton instance
 const CCAvenue = new CCAvenueClient();
-
 export default CCAvenue;
