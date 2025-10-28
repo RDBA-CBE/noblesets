@@ -357,9 +357,9 @@ const HomeFooter = () => {
               </div>
               <div className="d-flex gap-3 mt-3 mt-md-0">
                 <button
-                  aria-label="Google"
+                  aria-label="Threads"
                   className="social-btn"
-                  title="Google"
+                  title="Threads"
                   type="button"
                   onClick={() =>
                     window.open("https://www.threads.net/@noble_sets")
@@ -427,9 +427,9 @@ const HomeFooter = () => {
                   ></i>
                 </button>
                 <button
-                  aria-label="Close"
+                  aria-label="Teitter"
                   className="social-btn close"
-                  title="Close"
+                  title="Teitter"
                   type="button"
                   style={{ color: "#000", fontSize: "20px" }}
                   onClick={() => window.open("https://twitter.com/noble_sets")}
