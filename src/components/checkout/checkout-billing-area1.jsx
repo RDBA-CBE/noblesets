@@ -940,7 +940,7 @@ const CheckoutBillingArea1 = () => {
         billing_zip: "621703",
         billing_country: "India",
         billing_tel: "9999999999",
-        redirect_url: `${CCAVENUE_URL}/ccavenue-handle1`,
+        redirect_url: `${CCAVENUE_URL}/api/ccavenue-handle1`,
         cancel_url: `${CCAVENUE_URL}/payment-cancelled`,
         merchant_param1: orderId,
         language: "EN",
