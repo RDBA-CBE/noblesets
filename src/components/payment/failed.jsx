@@ -174,12 +174,12 @@ const Failed = ({ data, orderId, fullData }) => {
         merchant_param2: fullData?.merchant_param2,
       };
 
-      // let encReq = CCAvenue.getEncryptedOrder(paymentData);
+      let encReq = CCAvenue.getEncryptedOrder(paymentData);
       console.log("✌️paymentData --->", paymentData);
-      // let accessCode = ACCESS_CODE;
-      // let URL = `https://secure.ccavenue.com/transaction/transaction.do?command=initiateTransaction&merchant_id=${paymentData.merchant_id}6&encRequest=${encReq}&access_code=${accessCode}`;
+      let accessCode = ACCESS_CODE;
+      let URL = `https://secure.ccavenue.com/transaction/transaction.do?command=initiateTransaction&merchant_id=${paymentData.merchant_id}6&encRequest=${encReq}&access_code=${accessCode}`;
 
-      // router.push(URL);
+      router.push(URL);
     } catch (error) {
       console.error("Payment init error:", error);
       alert("Payment initialization failed: " + error.message);
