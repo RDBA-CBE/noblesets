@@ -22,7 +22,7 @@ import {
 import { createHash } from "crypto";
 import CCAvenue from "@/utils/CCAvenue";
 
-const Failed = ({ data, orderId, fullData }) => {
+const Failed1 = ({ data, orderId }) => {
   console.log("✌️data --->", data);
   const [giftCard, setGiftCard] = useState(0);
 
@@ -140,9 +140,21 @@ const Failed = ({ data, orderId, fullData }) => {
     [Razorpay]
   );
 
-  const ccAvenuePayment = async (amount,order_id) => {
+  const ccAvenuePayment = async (amount, order_id) => {
     try {
-  
+      const userEmail = localStorage.getItem("userInfo");
+
+      let email = "";
+      if (userEmail) {
+        const user = JSON.parse(userEmail);
+        email = user?.user?.email;
+      } else {
+        const billingEmail = localStorage.getItem("billingEmail", state.email1);
+
+        if (billingEmail) {
+          email = billingEmail;
+        }
+      }
       const orderId = createHash("sha1")
         .update(data?.data?.order?.id)
         .digest("hex")
@@ -153,27 +165,26 @@ const Failed = ({ data, orderId, fullData }) => {
         amount: amount,
         currency: "INR",
         // billing_email: billingAddress.email,
-        billing_email: fullData?.billing_email,
+        billing_email: email,
 
         billing_name: `${billingAddress.firstName} ${billingAddress.lastName}`,
         billing_address: billingAddress.streetAddress1,
         billing_city: billingAddress.city,
         billing_state: billingAddress.selectedState,
         billing_zip: billingAddress.postalCode,
-        billing_tel: billingAddress.phone?.replace('+91', ''),
+        billing_tel: billingAddress.phone?.replace("+91", ""),
         billing_country: billingAddress.country?.country,
         redirect_url: `${CCAVENUE_URL}/api/ccavenue-handle1`,
-               cancel_url: `${CCAVENUE_URL}/failed-order`,
-       
+        cancel_url: `${CCAVENUE_URL}/failed-order`,
 
         delivery_address: shippingAddress.streetAddress1,
         delivery_city: shippingAddress.city,
         delivery_state: shippingAddress.selectedState,
         delivery_zip: shippingAddress.postalCode,
         delivery_country: shippingAddress.country?.country,
-        delivery_tel: shippingAddress.phone?.replace('+91', ''),
+        delivery_tel: shippingAddress.phone?.replace("+91", ""),
         merchant_param1: order_id,
-        merchant_param2: fullData?.merchant_param2,
+        merchant_param2: email,
       };
 
       let encReq = CCAvenue.getEncryptedOrder(paymentData);
@@ -181,6 +192,8 @@ const Failed = ({ data, orderId, fullData }) => {
       let URL = `https://secure.ccavenue.com/transaction/transaction.do?command=initiateTransaction&merchant_id=${paymentData.merchant_id}6&encRequest=${encReq}&access_code=${accessCode}`;
 
       router.push(URL);
+      localStorage.setItem("order_id", order_id);
+
     } catch (error) {
       console.error("Payment init error:", error);
       alert("Payment initialization failed: " + error.message);
@@ -457,4 +470,4 @@ const Failed = ({ data, orderId, fullData }) => {
   );
 };
 
-export default Failed;
+export default Failed1;

@@ -5,6 +5,7 @@ import Wrapper from "@/layout/wrapper";
 import HomeFooter from "@/components/home/HomeFooter";
 import Success from "@/components/payment/success";
 import {
+  useGetOrderDetailMutation,
   useOrderListQuery,
   usePaymentMutation,
 } from "@/redux/features/productApi";
@@ -13,59 +14,34 @@ import HeaderSection from "@/components/home/headerSection";
 import SEO from "@/components/seo";
 import { useSetState } from "@/utils/functions";
 import Failed from "@/components/payment/failed";
+import Failed1 from "@/components/payment/failed1";
 
 export default function payments() {
   const Router = useRouter();
 
-  const { data } = Router.query;
-
   const [state, setState] = useSetState({
     orderData: null,
+    orderId: "",
   });
 
   // const storedData1 = decodeURIComponent(data);
   // console.log("✌️storedData1 --->", storedData1);
 
-  let jsonLike;
-
-  if (data) {
-    jsonLike = JSON.parse(data);
-  }
-  const { refetch: orderData } = useOrderListQuery({
-    orderId: jsonLike?.merchant_param1,
-  });
-
-  const [successPayment] = usePaymentMutation();
+  const [orderDetail, { isLoading: loading1 }] = useGetOrderDetailMutation();
 
   const [createCheckoutTokenWithoutEmail, { data: checkoutTokens }] =
     useCreateCheckoutTokenWithoutEmailMutation();
 
   useEffect(() => {
-    orderDetails();
-  }, [data]);
+    getOrderDetail();
+  }, []);
 
-  const orderDetails = async () => {
+  const getOrderDetail = async () => {
     try {
-      const jsonLike = JSON.parse(data);
-      console.log("✌️jsonLike --->", jsonLike);
-      if (jsonLike?.order_status == "Success") {
-        const datas = await successPayment({
-          amountAuthorized: jsonLike?.mer_amount,
-          amountCharged: jsonLike?.mer_amount,
-          pspReference: jsonLike?.tracking_id,
-        });
-
-        if (datas) {
-          const response = await orderData();
-          console.log("✌️response --->", response);
-          setState({ orderData: response?.data });
-        }
-        localStorage.removeItem("user_id")
-      } else {
-        const response = await orderData();
-        console.log("✌️response --->", response);
-        setState({ orderData: response?.data });
-      }
+      const orderId = localStorage.getItem("order_id");
+      const res = await orderDetail({ orderId });
+      console.log("✌️res --->", res?.data?.data?.order);
+      setState({ orderData: res?.data, orderId });
     } catch (error) {
       console.log("✌️error --->", error);
     }
@@ -116,11 +92,8 @@ export default function payments() {
       <SEO pageTitle="Payment Success" />
       {/* <HeaderTwo style_2={true} /> */}
       <HeaderSection />
-      {jsonLike?.order_status == "Success" ? (
-        <Success data={state.orderData} />
-      ) : (
-        <Failed data={state.orderData} orderId={jsonLike?.merchant_param1} fullData={jsonLike} />
-      )}
+
+      <Failed1 data={state.orderData} orderId={state.orderId} />
 
       <HomeFooter />
     </Wrapper>

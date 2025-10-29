@@ -121,8 +121,8 @@ const OrderList = () => {
   };
 
   const ccAvenuePayment = async (orderData) => {
-console.log('✌️orderData --->', orderData);
     const userEmail = localStorage.getItem("userInfo");
+    localStorage.setItem("order_id",orderData?.id)
     let email = "";
     if (userEmail) {
       const user = JSON.parse(userEmail);
@@ -152,7 +152,7 @@ console.log('✌️orderData --->', orderData);
         billing_tel: billingAddress.phone?.replace('+91', ''),
         billing_country: billingAddress.country?.country,
         redirect_url: `${CCAVENUE_URL}/api/ccavenue-handle1`,
-        cancel_url: `${CCAVENUE_URL}/payments`,
+        cancel_url: `${CCAVENUE_URL}/failed-order`,
 
         delivery_address: shippingAddress.streetAddress1,
         delivery_city: shippingAddress.city,
@@ -173,6 +173,8 @@ console.log('✌️orderData --->', orderData);
       let URL = `https://secure.ccavenue.com/transaction/transaction.do?command=initiateTransaction&merchant_id=${paymentData.merchant_id}6&encRequest=${encReq}&access_code=${accessCode}`;
 
       router.push(URL);
+      localStorage.setItem("order_id", orderData?.id);
+
      
     } catch (error) {
       console.error("Payment init error:", error);
