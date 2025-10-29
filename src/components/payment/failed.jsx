@@ -18,6 +18,7 @@ import { createHash } from "crypto";
 import CCAvenue from "@/utils/CCAvenue";
 
 const Failed = ({ data, orderId,fullData }) => {
+console.log('✌️data --->', data);
   const [giftCard, setGiftCard] = useState(0);
 
   const OrderDetails = data?.data?.order?.lines;
@@ -34,8 +35,8 @@ const Failed = ({ data, orderId,fullData }) => {
   const codAmount = data?.data?.order?.codAmount;
   const giftWrapAmount = data?.data?.order?.giftWrapAmount;
   const discount = data?.data?.order?.discount;
-  const billingAddress = data?.data?.billingAddress;
-  const shippingAddress = data?.data?.shippingAddress;
+  const billingAddress = data?.data?.order?.billingAddress;
+  const shippingAddress = data?.data?.order?.shippingAddress;
 
   const [Razorpay] = useRazorpay();
 
