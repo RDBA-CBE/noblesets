@@ -89,6 +89,7 @@ import CcAvenue from "../../../public/assets/img/CCAvenue.webp";
 
 import cod from "../../../public/assets/img/cash-on-delivery.png";
 import Image from "next/image";
+import { createHash } from "crypto";
 
 const CheckoutBillingArea1 = () => {
   const { user } = useSelector((state) => state.auth);
