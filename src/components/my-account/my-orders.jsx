@@ -122,7 +122,7 @@ const OrderList = () => {
 
   const ccAvenuePayment = async (orderData) => {
     const userEmail = localStorage.getItem("userInfo");
-    localStorage.setItem("order_id",orderData?.id)
+    localStorage.setItem("order_id", orderData?.id);
     let email = "";
     if (userEmail) {
       const user = JSON.parse(userEmail);
@@ -147,24 +147,22 @@ const OrderList = () => {
         billing_name: `${billingAddress.firstName} ${billingAddress.lastName}`,
         billing_address: billingAddress.streetAddress1,
         billing_city: billingAddress.city,
-        billing_state: billingAddress.selectedState,
+        billing_state: billingAddress.countryArea,
         billing_zip: billingAddress.postalCode,
-        billing_tel: billingAddress.phone?.replace('+91', ''),
+        billing_tel: billingAddress.phone?.replace("+91", ""),
         billing_country: billingAddress.country?.country,
         redirect_url: `${CCAVENUE_URL}/api/ccavenue-handle1`,
         cancel_url: `${CCAVENUE_URL}/failed-order`,
 
         delivery_address: shippingAddress.streetAddress1,
         delivery_city: shippingAddress.city,
-        delivery_state: shippingAddress.selectedState,
+        delivery_state: shippingAddress.countryArea,
         delivery_zip: shippingAddress.postalCode,
         delivery_country: shippingAddress.country?.country,
-        delivery_tel: shippingAddress.phone?.replace('+91', ''),
+        delivery_tel: shippingAddress.phone?.replace("+91", ""),
         merchant_param1: orderData?.id,
         merchant_param2: email,
         // merchant_param3: "myOrder",
-
-      
       };
       console.log("✌️paymentData --->", paymentData);
 
@@ -174,8 +172,6 @@ const OrderList = () => {
 
       router.push(URL);
       localStorage.setItem("order_id", orderData?.id);
-
-     
     } catch (error) {
       console.error("Payment init error:", error);
       alert("Payment initialization failed: " + error.message);

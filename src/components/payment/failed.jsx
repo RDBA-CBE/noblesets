@@ -140,9 +140,8 @@ const Failed = ({ data, orderId, fullData }) => {
     [Razorpay]
   );
 
-  const ccAvenuePayment = async (amount,order_id) => {
+  const ccAvenuePayment = async (amount, order_id) => {
     try {
-  
       const orderId = createHash("sha1")
         .update(data?.data?.order?.id)
         .digest("hex")
@@ -158,20 +157,19 @@ const Failed = ({ data, orderId, fullData }) => {
         billing_name: `${billingAddress.firstName} ${billingAddress.lastName}`,
         billing_address: billingAddress.streetAddress1,
         billing_city: billingAddress.city,
-        billing_state: billingAddress.selectedState,
+        billing_state: billingAddress.countryArea,
         billing_zip: billingAddress.postalCode,
-        billing_tel: billingAddress.phone?.replace('+91', ''),
+        billing_tel: billingAddress.phone?.replace("+91", ""),
         billing_country: billingAddress.country?.country,
         redirect_url: `${CCAVENUE_URL}/api/ccavenue-handle1`,
-               cancel_url: `${CCAVENUE_URL}/failed-order`,
-       
+        cancel_url: `${CCAVENUE_URL}/failed-order`,
 
         delivery_address: shippingAddress.streetAddress1,
         delivery_city: shippingAddress.city,
-        delivery_state: shippingAddress.selectedState,
+        delivery_state: shippingAddress.countryArea,
         delivery_zip: shippingAddress.postalCode,
         delivery_country: shippingAddress.country?.country,
-        delivery_tel: shippingAddress.phone?.replace('+91', ''),
+        delivery_tel: shippingAddress.phone?.replace("+91", ""),
         merchant_param1: order_id,
         merchant_param2: fullData?.merchant_param2,
       };
