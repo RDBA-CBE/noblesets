@@ -961,6 +961,7 @@ const CheckoutBillingArea1 = () => {
       //   .getSeconds()
       //   .toString()
       //   .padStart(2, "0")}`;
+      
 
       let paymentData = {
         merchant_id: MERCHANT_ID, // Merchant ID (Required)
