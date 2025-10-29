@@ -159,7 +159,7 @@ const Failed = ({ data, orderId, fullData }) => {
         billing_city: billingAddress.city,
         billing_state: billingAddress.selectedState,
         billing_zip: billingAddress.postalCode,
-        billing_tel: billingAddress.phone,
+        billing_tel: billingAddress.phone?.replace('+91', ''),
         billing_country: billingAddress.country?.country,
         redirect_url: `${CCAVENUE_URL}/api/ccavenue-handle1`,
         cancel_url: `${CCAVENUE_URL}/payments`,
@@ -169,7 +169,7 @@ const Failed = ({ data, orderId, fullData }) => {
         delivery_state: shippingAddress.selectedState,
         delivery_zip: shippingAddress.postalCode,
         delivery_country: shippingAddress.country?.country,
-        delivery_tel: shippingAddress.phone,
+        delivery_tel: shippingAddress.phone?.replace('+91', ''),
         merchant_param1: order_id,
         merchant_param2: fullData?.merchant_param2,
       };

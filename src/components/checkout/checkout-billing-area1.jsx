@@ -955,7 +955,7 @@ const CheckoutBillingArea1 = () => {
         billing_city: state.city,
         billing_state: state.selectedState,
         billing_zip: state.postalCode,
-        billing_tel: state.phone,
+        billing_tel: state.phone?.replace('+91', ''),
         billing_country: state.selectedCountry?.name,
         redirect_url: `${CCAVENUE_URL}/api/ccavenue-handle1`,
         cancel_url: `${CCAVENUE_URL}/payments`,
@@ -965,7 +965,7 @@ const CheckoutBillingArea1 = () => {
         delivery_state: state.selectedState1,
         delivery_zip: state.postalCode1,
         delivery_country: state.selectedCountry?.name,
-        delivery_tel: state.phone1,
+        delivery_tel: state.phone1?.replace('+91', ''),
         merchant_param1: order_id,
         merchant_param2: state.email1,
       };
