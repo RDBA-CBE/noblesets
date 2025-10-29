@@ -935,10 +935,7 @@ const CheckoutBillingArea1 = () => {
 
   const ccAvenuePayment = async (order_id, amount) => {
     try {
-       const orderId = createHash("sha1")
-        .update(order_id)
-        .digest("hex")
-        .slice(0, 20);
+      const orderId = CCAvenue.encrypt(order_id);
       let paymentData = {
         merchant_id: MERCHANT_ID,
         order_id: orderId,
