@@ -938,19 +938,6 @@ const CheckoutBillingArea1 = () => {
   //   }
   // };
 
-   useEffect(() => {
-    const input = "T3JkZXI6YWJhYmJhYTgtNDlmMy00NmEzLTlkODgtNjQzOGViMmNjZDlh";
-
-    const fullEnc = encryptFull(input); // full decryptable
-    const shortEnc = encrypt12(input);  // 12-char short version
-
-    console.log("🔐 Full Encrypted:", fullEnc);
-    console.log("🔐 Short 12-char version:", shortEnc);
-
-    const decrypted = decrypt(shortEnc);
-    console.log("✅ Decrypted:", decrypted);
-  }, []);
-
   const ccAvenuePayment = async (order_id, amount) => {
     try {
       const orderId = createHash("sha1")
@@ -979,7 +966,7 @@ const CheckoutBillingArea1 = () => {
         delivery_zip: state.postalCode1,
         delivery_country: state.selectedCountry1,
         delivery_tel: state.phone1,
-        merchant_param1 : order_id
+        merchant_param1: order_id,
       };
 
       let encReq = CCAvenue.getEncryptedOrder(paymentData);

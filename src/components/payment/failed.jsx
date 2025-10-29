@@ -13,12 +13,16 @@ import { notifyError, notifySuccess } from "@/utils/toast";
 import useRazorpay from "react-razorpay";
 import { useDispatch } from "react-redux";
 import { cart_list } from "@/redux/features/cartSlice";
-import { CASE_ON_DELIVERY } from "@/utils/constant";
+import { ACCESS_CODE, CASE_ON_DELIVERY, CCAVENUE_URL, MERCHANT_ID } from "@/utils/constant";
+import { createHash } from "crypto";
+import CCAvenue from "@/utils/CCAvenue";
 
 const Failed = ({ data, orderId }) => {
+  console.log("✌️data --->", data?.data?.data);
   const [giftCard, setGiftCard] = useState(0);
 
   const OrderDetails = data?.data?.order?.lines;
+  console.log("✌️OrderDetails --->", OrderDetails);
   const SubTotal = data?.data?.order?.subtotal.gross.amount;
   const Total = data?.data?.order?.total.gross.amount;
   const OrderNumber = data?.data?.order?.number;
@@ -32,6 +36,8 @@ const Failed = ({ data, orderId }) => {
   const codAmount = data?.data?.order?.codAmount;
   const giftWrapAmount = data?.data?.order?.giftWrapAmount;
   const discount = data?.data?.order?.discount;
+  const billingAddress = data?.data?.billingAddress;
+  const shippingAddress = data?.data?.shippingAddress;
 
   const [Razorpay] = useRazorpay();
 
@@ -129,6 +135,49 @@ const Failed = ({ data, orderId }) => {
     },
     [Razorpay]
   );
+
+  const ccAvenuePayment = async (order_id, amount) => {
+    try {
+      const orderId = createHash("sha1")
+        .update(data?.data?.order?.id)
+        .digest("hex")
+        .slice(0, 20);
+      let paymentData = {
+        merchant_id: MERCHANT_ID,
+        order_id: orderId,
+        amount: amount,
+        currency: "INR",
+        billing_email: billingAddress.email,
+        billing_name: `${billingAddress.firstName} ${billingAddress.lastName}`,
+        billing_address: billingAddress.streetAddress1,
+        billing_city: billingAddress.city,
+        billing_state: billingAddress.selectedState,
+        billing_zip: billingAddress.postalCode,
+        billing_tel: billingAddress.phone,
+        billing_country: billingAddress.country?.country,
+        redirect_url: `${CCAVENUE_URL}/api/ccavenue-handle1`,
+        cancel_url: `${CCAVENUE_URL}/payments`,
+
+        delivery_address: shippingAddress.streetAddress1,
+        delivery_city: shippingAddress.city,
+        delivery_state: shippingAddress.selectedState,
+        delivery_zip: shippingAddress.postalCode,
+        delivery_country: shippingAddress.country?.country,
+        delivery_tel: shippingAddress.phone,
+        merchant_param1: order_id,
+      };
+
+      let encReq = CCAvenue.getEncryptedOrder(paymentData);
+      let accessCode = ACCESS_CODE;
+      let URL = `https://secure.ccavenue.com/transaction/transaction.do?command=initiateTransaction&merchant_id=${paymentData.merchant_id}6&encRequest=${encReq}&access_code=${accessCode}`;
+
+      router.push(URL);
+    } catch (error) {
+      console.error("Payment init error:", error);
+      alert("Payment initialization failed: " + error.message);
+    } finally {
+    }
+  };
 
   return (
     <section
@@ -386,7 +435,7 @@ const Failed = ({ data, orderId }) => {
             </div>
             <div className="mt-20">
               <button
-                onClick={() => handlePayment(Total, orderId)}
+                onClick={() => ccAvenuePayment(Total, orderId)}
                 className="gradient-btn"
               >
                 Pay Again
