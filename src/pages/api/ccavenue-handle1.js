@@ -1,9 +1,7 @@
 // pages/api/ccavenue-handle.js
 import CCAvenue from "@/utils/CCAvenue";
-import { usePaymentMutation } from "@/redux/features/productApi";
 
 export default async function handler(req, res) {
-  const [successPayment] = usePaymentMutation();
 
   switch (req.method) {
     case "POST":
@@ -16,12 +14,7 @@ export default async function handler(req, res) {
       // Convert JSON data to a string
       const jsonDataString = JSON.stringify(data2);
 
-      const data = await successPayment({
-        amountAuthorized: jsonDataString?.amount,
-        amountCharged: jsonDataString?.amount,
-        pspReference: jsonDataString?.tracking_id,
-      });
-
+     
       // res.setHeader('Content-Type', 'text/html');
       // res.status(200).end(jsonDataString);
 

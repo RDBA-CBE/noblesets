@@ -83,14 +83,18 @@ export default function payments() {
 
   const orderDetails = async () => {
     try {
-      // const data = await successPayment({
-      //   amountAuthorized: datas?.,
-      //   amountCharged: total,
-      //   pspReference: res?.razorpay_payment_id,
-      // });
-      const response = await orderData();
-      console.log("✌️response --->", response);
-      setState({ orderData: response?.data });
+      const data = await successPayment({
+        amountAuthorized: datas?.mer_amount,
+        amountCharged: datas?.mer_amount,
+        pspReference: datas?.tracking_id,
+      });
+console.log('✌️dasuccessPaymentta --->', data);
+
+      if (data) {
+        const response = await orderData();
+        console.log("✌️response --->", response);
+        setState({ orderData: response?.data });
+      }
     } catch (error) {
       console.log("✌️error --->", error);
     }
