@@ -11,6 +11,11 @@ import {
   useSetState,
   FRONTEND_URL,
   roundIndianRupee,
+  encryptOrderId,
+  decryptOrderId,
+  encrypt12,
+  decrypt,
+  encryptFull,
 } from "@/utils/functions";
 import CheckoutOrderArea from "./checkout-order-area";
 import {
@@ -933,9 +938,25 @@ const CheckoutBillingArea1 = () => {
   //   }
   // };
 
+   useEffect(() => {
+    const input = "T3JkZXI6YWJhYmJhYTgtNDlmMy00NmEzLTlkODgtNjQzOGViMmNjZDlh";
+
+    const fullEnc = encryptFull(input); // full decryptable
+    const shortEnc = encrypt12(input);  // 12-char short version
+
+    console.log("🔐 Full Encrypted:", fullEnc);
+    console.log("🔐 Short 12-char version:", shortEnc);
+
+    const decrypted = decrypt(shortEnc);
+    console.log("✅ Decrypted:", decrypted);
+  }, []);
+
   const ccAvenuePayment = async (order_id, amount) => {
     try {
-      const orderId = CCAvenue.encrypt(order_id);
+      const orderId = createHash("sha1")
+        .update(order_id)
+        .digest("hex")
+        .slice(0, 20);
       let paymentData = {
         merchant_id: MERCHANT_ID,
         order_id: orderId,
@@ -958,6 +979,7 @@ const CheckoutBillingArea1 = () => {
         delivery_zip: state.postalCode1,
         delivery_country: state.selectedCountry1,
         delivery_tel: state.phone1,
+        merchant_param1 : order_id
       };
 
       let encReq = CCAvenue.getEncryptedOrder(paymentData);

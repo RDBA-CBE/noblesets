@@ -3,6 +3,9 @@ import Swal from "sweetalert2";
 import Resizer from "react-image-file-resizer";
 import AWS from "aws-sdk";
 import axios from "axios";
+import CryptoJS from "crypto-js";
+
+const SECRET_KEY = "MyStrongKey@123";
 
 export const accessKeyId = "DO00MUC2HWP9YVLPXKXT";
 
@@ -17,6 +20,20 @@ export const DELIVERY_ID_OTHER_TN = "U2hpcHBpbmdNZXRob2Q6ODk=";
 export const DELIVERY_ID_OTHER_IN = "U2hpcHBpbmdNZXRob2Q6OTI=";
 
 export const FRONTEND_URL = "https://noblesets.irepute.co.in";
+
+export const encrypt12 = (text) => {
+  const encrypted = CryptoJS.AES.encrypt(text, SECRET_KEY).toString(); // full base64
+  return encrypted.slice(0, 12); // shorten to 12 chars (display only)
+};
+
+export const encryptFull = (text) => {
+  return CryptoJS.AES.encrypt(text, SECRET_KEY).toString();
+};
+
+export const decrypt = (cipherText) => {
+  const bytes = CryptoJS.AES.decrypt(cipherText, SECRET_KEY);
+  return bytes.toString(CryptoJS.enc.Utf8);
+};
 
 export const capitalizeFLetter = (string = "") => {
   if (string.length > 0) {
@@ -594,7 +611,6 @@ export const roundIndianRupee = (value) => {
   return rounded;
 };
 
-
 export const generateCaptcha = ({
   difficulty = 10,
   operations = ["+", "-", "*"],
@@ -624,12 +640,10 @@ export const generateCaptcha = ({
   };
 };
 
-
-export const limitChar = (text= "", limit = 100) => {
+export const limitChar = (text = "", limit = 100) => {
   if (!text) return "";
   return text.length > limit ? text.substring(0, limit) + "..." : text;
 };
-
 
 export const ReadMore = ({ text, charLimit = 120 }) => {
   const [expanded, setExpanded] = useState(false);
@@ -699,10 +713,10 @@ export const ReadMoreList = ({ items, charLimit, itemStyle = {} }) => {
         let truncatedText = plainItem.substring(0, remaining);
 
         // Re-apply bold if the original item was bold
-        if (item.includes('<b>')) {
+        if (item.includes("<b>")) {
           truncatedText = `<b>${truncatedText}</b>`;
         }
-        
+
         // Add ellipsis and stop
         truncatedText += "...";
 
@@ -720,7 +734,7 @@ export const ReadMoreList = ({ items, charLimit, itemStyle = {} }) => {
           <li
             key={index}
             // Apply the style passed from the parent component
-            style={itemStyle} 
+            style={itemStyle}
             dangerouslySetInnerHTML={{ __html: item }}
           />
         ))}
@@ -733,7 +747,7 @@ export const ReadMoreList = ({ items, charLimit, itemStyle = {} }) => {
           style={{
             background: "none",
             border: "none",
-            color: "#a44100", 
+            color: "#a44100",
             cursor: "pointer",
             fontSize: "14px",
             marginTop: "5px",
@@ -747,16 +761,11 @@ export const ReadMoreList = ({ items, charLimit, itemStyle = {} }) => {
   );
 };
 
-
-export const  formatIndianRupees=(amount)=> {
-    return new Intl.NumberFormat('en-IN', {
-        style: 'currency',
-        currency: 'INR',
-        minimumFractionDigits: 0,
-        maximumFractionDigits: 0
-    }).format(amount);
-}
-
-
-
-
+export const formatIndianRupees = (amount) => {
+  return new Intl.NumberFormat("en-IN", {
+    style: "currency",
+    currency: "INR",
+    minimumFractionDigits: 0,
+    maximumFractionDigits: 0,
+  }).format(amount);
+};
