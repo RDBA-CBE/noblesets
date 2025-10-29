@@ -73,6 +73,7 @@ query getOrderDetails($orderId: ID!) {
       }
       postalCode
       phone
+      email
     }
     shippingAddress {
       firstName
@@ -85,6 +86,7 @@ query getOrderDetails($orderId: ID!) {
       }
       postalCode
       phone
+      email
     }
     courierPartner {
       name

@@ -27,7 +27,7 @@ export default function payments() {
   // console.log("✌️storedData1 --->", storedData1);
 
   let jsonLike;
-  
+
   if (data) {
     jsonLike = JSON.parse(data);
   }
@@ -46,20 +46,25 @@ export default function payments() {
 
   const orderDetails = async () => {
     try {
-      const jsonLike = (JSON.parse(data));
-console.log('✌️jsonLike --->', jsonLike);
-      const datas = await successPayment({
-        amountAuthorized: jsonLike?.mer_amount,
-        amountCharged: jsonLike?.mer_amount,
-        pspReference: jsonLike?.tracking_id,
-      });
-      console.log("✌️dasuccessPaymentta --->", datas);
+      const jsonLike = JSON.parse(data);
+      console.log("✌️jsonLike --->", jsonLike);
+      if (jsonLike?.order_status == "Success") {
+        const datas = await successPayment({
+          amountAuthorized: jsonLike?.mer_amount,
+          amountCharged: jsonLike?.mer_amount,
+          pspReference: jsonLike?.tracking_id,
+        });
+        console.log("✌️dasuccessPaymentta --->", datas);
 
-      if (datas) {
-        const response = await orderData();
-        console.log("✌️response --->", response);
-        setState({ orderData: response?.data });
+        if (datas) {
+          const response = await orderData();
+          console.log("✌️response --->", response);
+          setState({ orderData: response?.data });
+        }
       }
+      const response = await orderData();
+      console.log("✌️response --->", response);
+      setState({ orderData: response?.data });
     } catch (error) {
       console.log("✌️error --->", error);
     }
@@ -110,7 +115,7 @@ console.log('✌️jsonLike --->', jsonLike);
       <SEO pageTitle="Payment Success" />
       {/* <HeaderTwo style_2={true} /> */}
       <HeaderSection />
-      {jsonLike?.merchant_param1 == "Success" ? (
+      {jsonLike?.order_status == "Success" ? (
         <Success data={state.orderData} />
       ) : (
         <Failed data={state.orderData} orderId={jsonLike?.merchant_param1} />

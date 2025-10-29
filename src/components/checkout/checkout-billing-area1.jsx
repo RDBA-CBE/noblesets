@@ -974,6 +974,9 @@ const CheckoutBillingArea1 = () => {
       let URL = `https://secure.ccavenue.com/transaction/transaction.do?command=initiateTransaction&merchant_id=${paymentData.merchant_id}6&encRequest=${encReq}&access_code=${accessCode}`;
 
       router.push(URL);
+      localStorage.removeItem("checkoutTokenUSD");
+      localStorage.removeItem("checkoutTokenINR");
+      dispatch(cart_list([]));
     } catch (error) {
       console.error("Payment init error:", error);
       alert("Payment initialization failed: " + error.message);
