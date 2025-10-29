@@ -4,7 +4,7 @@ export const CASE_ON_DELIVERY = "Cash On Delivery";
 
 export const RAZORPAY_ID = "UGF5bWVudF9HYXRld2F5OjI="
 
-export const CCAVENUE_ID = "UGF5bWVudF9HYXRld2F5OjE="
+export const CCAVENUE_ID = "UGF5bWVudF9HYXRld2F5OjM="
 
 export const COD_ID= "UGF5bWVudF9HYXRld2F5OjE="
 
