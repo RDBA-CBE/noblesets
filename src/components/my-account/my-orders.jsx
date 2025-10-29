@@ -152,7 +152,7 @@ const OrderList = () => {
         billing_tel: billingAddress.phone?.replace("+91", ""),
         billing_country: billingAddress.country?.country,
         redirect_url: `${CCAVENUE_URL}/api/ccavenue-handle1`,
-        cancel_url: `${CCAVENUE_URL}/failed-order`,
+        cancel_url: `${CCAVENUE_URL}/api/ccavenue-handle1`,
 
         delivery_address: shippingAddress.streetAddress1,
         delivery_city: shippingAddress.city,
