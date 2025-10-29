@@ -1,51 +1,95 @@
-import CryptoJS from "crypto-js";
-import { WORKING_KEY,ACCESS_CODE,MERCHANT_ID } from "./constant";
+import { createHash, createCipheriv, createDecipheriv } from 'crypto';
+import { MERCHANT_ID, WORKING_KEY } from './constant';
 
+let initOptions = {};
 
-
-class CCAvenueClient {
-  encrypt(plainText) {
-    const key = CryptoJS.enc.Utf8.parse(WORKING_KEY);
-    const iv = CryptoJS.enc.Utf8.parse(WORKING_KEY.substring(0, 16));
-    const encrypted = CryptoJS.AES.encrypt(plainText, key, {
-      iv,
-      mode: CryptoJS.mode.CBC,
-      padding: CryptoJS.pad.Pkcs7,
-    });
-    return encrypted.ciphertext.toString(CryptoJS.enc.Hex);
-  }
-
-  decrypt(encText) {
-    const key = CryptoJS.enc.Utf8.parse(WORKING_KEY);
-    const iv = CryptoJS.enc.Utf8.parse(WORKING_KEY.substring(0, 16));
-    const encryptedHexStr = CryptoJS.enc.Hex.parse(encText);
-    const base64Str = CryptoJS.enc.Base64.stringify(encryptedHexStr);
-    const decrypted = CryptoJS.AES.decrypt(base64Str, key, {
-      iv,
-      mode: CryptoJS.mode.CBC,
-      padding: CryptoJS.pad.Pkcs7,
-    });
-    return decrypted.toString(CryptoJS.enc.Utf8);
-  }
-
-  getEncryptedOrder(params) {
-    const data = Object.entries(params)
-      .map(([k, v]) => `${k}=${encodeURIComponent(v)}`)
-      .join("&");
-    return this.encrypt(data);
-  }
-
-  redirectResponseToJson(encResp) {
-    const decrypted = this.decrypt(encResp);
-    const pairs = decrypted.split("&");
-    const result = {};
-    for (const pair of pairs) {
-      const [key, value] = pair.split("=");
-      if (key) result[key] = decodeURIComponent(value || "");
+class Configure {
+    constructor(options) {
+        initOptions = options || {};
     }
-    return result;
-  }
+
+    validate(key) {
+        return initOptions && initOptions[key] ? true : false;
+    }
+
+    throwError(requirement) {
+        throw new Error(`${requirement} is required to perform this action`);
+    }
+
+    encrypt(plainText) {
+        if (this.validate('working_key') && plainText) {
+            const { working_key } = initOptions;
+            const m = createHash('md5');
+            m.update(working_key);
+            const key = m.digest();
+            const iv = '\x00\x01\x02\x03\x04\x05\x06\x07\x08\x09\x0a\x0b\x0c\x0d\x0e\x0f';
+            const cipher = createCipheriv('aes-128-cbc', key, iv);
+            let encoded = cipher.update(plainText, 'utf8', 'hex');
+            encoded += cipher.final('hex');
+            return encoded;
+        } else if (!plainText) {
+            this.throwError('Plain text');
+            return false;
+        } else {
+            this.throwError('Working Key');
+            return false;
+        }
+    }
+
+    decrypt(encText) {
+        if (this.validate('working_key') && encText) {
+            const { working_key } = initOptions;
+            const m = createHash('md5');
+            m.update(working_key);
+            const key = m.digest();
+            const iv = '\x00\x01\x02\x03\x04\x05\x06\x07\x08\x09\x0a\x0b\x0c\x0d\x0e\x0f';
+            const decipher = createDecipheriv('aes-128-cbc', key, iv);
+            let decoded = decipher.update(encText, 'hex', 'utf8');
+            decoded += decipher.final('utf8');
+            return decoded;
+        } else if (!encText) {
+            this.throwError('Encrypted text');
+            return false;
+        } else {
+            this.throwError('Working Key');
+            return false;
+        }
+    }
+
+    redirectResponseToJson(response) {
+        if (response) {
+            let ccavResponse = this.decrypt(response);
+            const responseArray = ccavResponse.split('&');
+            const stringify = JSON.stringify(responseArray);
+            const removeQ = stringify.replace(/['"]+/g, '');
+            const removeS = removeQ.replace(/[[\]]/g, '');
+            return removeS.split(',').reduce((o, pair) => {
+                pair = pair.split('=');
+                return o[pair[0]] = pair[1], o;
+            }, {});
+        } else {
+            this.throwError('CCAvenue encrypted response');
+        }
+    }
+
+    getEncryptedOrder(orderParams) {
+        if (this.validate('merchant_id') && orderParams) {
+            let data = `merchant_id=${initOptions.merchant_id}`;
+            data += Object.entries(orderParams).map(([key, value]) => `&${key}=${value}`).join('');
+            return this.encrypt(data);
+
+        } else if (!orderParams) {
+            this.throwError('Order Params');
+        } else {
+            this.throwError('Merchant ID');
+        }
+    }
+
 }
 
-export default new CCAvenueClient();
-export { MERCHANT_ID, ACCESS_CODE };
+const CCAvenue = new Configure({
+    working_key: WORKING_KEY, // Working Key from CCAvenue
+    merchant_id: MERCHANT_ID // Merchant ID from CCAvenue
+});
+
+export default CCAvenue;
