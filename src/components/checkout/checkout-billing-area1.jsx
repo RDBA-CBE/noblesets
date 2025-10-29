@@ -934,36 +934,75 @@ const CheckoutBillingArea1 = () => {
 
   const ccAvenuePayment = async (orderId, amount) => {
     try {
-      const paymentData = {
-        merchant_id: MERCHANT_ID,
+      // const paymentData = {
+      //   merchant_id: MERCHANT_ID,
+      //   order_id: orderId,
+      //   amount: amount,
+      //   currency: "INR",
+      //   billing_name: "Madhan",
+      //   billing_email: "madhanumk@gmail.com",
+      //   billing_address: "Chennai",
+      //   billing_city: "Coimbatore",
+      //   billing_state: "Tamil Nadu",
+      //   billing_zip: "621703",
+      //   billing_country: "India",
+      //   billing_tel: "9999999999",
+      //   redirect_url: `${CCAVENUE_URL}/api/ccavenue-handle1`,
+      //   cancel_url: `${CCAVENUE_URL}/payment-cancelled`,
+      //   merchant_param1: orderId,
+      //   language: "EN",
+      // };
+      const transid = `${now.getFullYear()}${(now.getMonth() + 1)
+        .toString()
+        .padStart(2, "0")}${now.getDate().toString().padStart(2, "0")}${now
+        .getHours()
+        .toString()
+        .padStart(2, "0")}${now.getMinutes().toString().padStart(2, "0")}${now
+        .getSeconds()
+        .toString()
+        .padStart(2, "0")}`;
+
+      let paymentData = {
+        merchant_id: MERCHANT_ID, // Merchant ID (Required)
         order_id: orderId,
-        amount: "100.00",
-        currency: "INR",
-        billing_name: "Madhan",
-        billing_email: "madhanumk@gmail.com",
-        billing_address: "Chennai",
-        billing_city: "Coimbatore",
-        billing_state: "Tamil Nadu",
-        billing_zip: "621703",
-        billing_country: "India",
-        billing_tel: "9999999999",
-        redirect_url: `${CCAVENUE_URL}/api/ccavenue-handle1`,
-        cancel_url: `${CCAVENUE_URL}/payment-cancelled`,
-        merchant_param1: orderId,
-        language: "EN",
+        // order_id: "WEBN" + transid + branch, // Order ID - It can be generated from our project
+        amount: amount, // Payment Amount (Required)
+        currency: "INR", // Payment Currency Type (Required)
+        billing_email: "psmkduraisamy@gmail.com", // Billing Email (Optional)
+        billing_name: "Durai", // Billing Name (Optional)
+        billing_address: `Chennai`,
+        billing_city: "Chennai", // Billing City (Optional)
+        billing_state: "Tamilnadu", // Billing State (Optional)
+        billing_zip: "621704", // Billing Zip (Optional)
+        billing_country: "India", // Billing COuntry (Optional)
+        redirect_url: `${CCAVENUE_URL}/api/ccavenue-handle1`, // Success URL (Required)
+        cancel_url: `${CCAVENUE_URL}/payments`,
+        // merchant_param1: chitgroup, // Extra Information (Optional)
+        // merchant_param2: merchant_param2, // Extra Information (Optional)
+        // merchant_param3: "", // Extra Information (Optional)
+        // merchant_param4: "", // Extra Information (Optional)
+        // merchant_param5: "", // Extra Information (Optional)
+        // language: 'EN', // Language (Optional)
+        // billing_tel: state.localCode, // Billing Mobile Number (Optional)
+        // sub_account_id: subaccid,
       };
 
-      const encReq = CCAvenue.getEncryptedOrder(paymentData);
+      let encReq = CCAvenue.getEncryptedOrder(paymentData);
+      let accessCode = ACCESS_CODE;
+      let URL = `https://secure.ccavenue.com/transaction/transaction.do?command=initiateTransaction&merchant_id=${paymentData.merchant_id}6&encRequest=${encReq}&access_code=${accessCode}`;
+
+      router.push(URL);
+      // const encReq = CCAvenue.getEncryptedOrder(paymentData);
 
       // const paymentUrl = `${CCAVENUE_URL}&encRequest=${encodeURIComponent(
       //   encReq
       // )}&access_code=${ACCESS_CODE}`;
-      const paymentUrl = `https://secure.ccavenue.com/transaction/transaction.do?command=initiateTransaction&encRequest=${encodeURIComponent(
-        encReq
-      )}&access_code=${ACCESS_CODE}`;
+      // const paymentUrl = `https://secure.ccavenue.com/transaction/transaction.do?command=initiateTransaction&encRequest=${encodeURIComponent(
+      //   encReq
+      // )}&access_code=${ACCESS_CODE}`;
 
-      console.log("✅ Redirecting to:", paymentUrl);
-      window.location.href = paymentUrl;
+      // console.log("✅ Redirecting to:", paymentUrl);
+      // window.location.href = paymentUrl;
     } catch (error) {
       console.error("Payment init error:", error);
       alert("Payment initialization failed: " + error.message);
