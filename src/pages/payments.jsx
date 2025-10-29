@@ -53,6 +53,7 @@ export default function payments() {
           amountAuthorized: jsonLike?.mer_amount,
           amountCharged: jsonLike?.mer_amount,
           pspReference: jsonLike?.tracking_id,
+          orderId:jsonLike?.merchant_param1
         });
 
         if (datas) {

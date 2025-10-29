@@ -376,8 +376,18 @@ export const productApi = apiSlice.injectEndpoints({
     }),
 
     payment: builder.mutation({
-      query: ({ amountAuthorized, amountCharged, pspReference }) => {
-        const id = localStorage.getItem("orderId");
+      query: ({
+        amountAuthorized,
+        amountCharged,
+        pspReference,
+        orderId = null,
+      }) => {
+        let id = "";
+        if (orderId) {
+          id = orderId;
+        } else {
+          id = localStorage.getItem("orderId");
+        }
         const body = {
           id,
           currency: checkChannel() == "india-channel" ? "INR" : "USD",
@@ -673,9 +683,14 @@ export const productApi = apiSlice.injectEndpoints({
     }),
 
     removeCoupon: builder.mutation({
-      query: ({ checkoutId, promoCode,promoCodeId }) => {
+      query: ({ checkoutId, promoCode, promoCodeId }) => {
         return configuration(
-          DELETE_COUPON({ checkoutId, languageCode: "EN_US", promoCode,promoCodeId })
+          DELETE_COUPON({
+            checkoutId,
+            languageCode: "EN_US",
+            promoCode,
+            promoCodeId,
+          })
         );
       },
     }),
@@ -683,12 +698,14 @@ export const productApi = apiSlice.injectEndpoints({
     removeGiftVoucher: builder.mutation({
       query: ({ checkoutId, promoCodeId }) => {
         return configuration(
-          DELETE_GIFT_VOUCHER({ checkoutId, languageCode: "EN_US", promoCodeId })
+          DELETE_GIFT_VOUCHER({
+            checkoutId,
+            languageCode: "EN_US",
+            promoCodeId,
+          })
         );
       },
     }),
-
-    
 
     newProductList: builder.mutation({
       query: ({
@@ -895,19 +912,17 @@ export const productApi = apiSlice.injectEndpoints({
 
     priceRange: builder.mutation({
       query: ({ slug }) => {
-        return configuration(PRICE_RANGE({  }));
+        return configuration(PRICE_RANGE({}));
       },
       providesTags: ["Products"],
     }),
 
     childCategoryList: builder.mutation({
       query: () => {
-        return configuration(CHILD_CATEGORY({  }));
+        return configuration(CHILD_CATEGORY({}));
       },
       providesTags: ["Products"],
     }),
-
-
 
     getOrderDetail: builder.mutation({
       query: ({ orderId }) => {
@@ -915,9 +930,6 @@ export const productApi = apiSlice.injectEndpoints({
       },
       providesTags: ["Products"],
     }),
-
-
-    
   }),
 });
 
@@ -990,6 +1002,5 @@ export const {
   useRemoveGiftVoucherMutation,
   usePriceRangeMutation,
   useChildCategoryListMutation,
-  useGetOrderDetailMutation
-
+  useGetOrderDetailMutation,
 } = productApi;
