@@ -956,7 +956,7 @@ const CheckoutBillingArea1 = () => {
         billing_state: state.selectedState,
         billing_zip: state.postalCode,
         billing_tel: state.phone,
-        billing_country: state.selectedCountry,
+        billing_country: state.selectedCountry?.name,
         redirect_url: `${CCAVENUE_URL}/api/ccavenue-handle1`,
         cancel_url: `${CCAVENUE_URL}/payments`,
 
@@ -964,9 +964,10 @@ const CheckoutBillingArea1 = () => {
         delivery_city: state.city1,
         delivery_state: state.selectedState1,
         delivery_zip: state.postalCode1,
-        delivery_country: state.selectedCountry1,
+        delivery_country: state.selectedCountry?.name,
         delivery_tel: state.phone1,
         merchant_param1: order_id,
+        merchant_param2: state.email1,
       };
 
       let encReq = CCAvenue.getEncryptedOrder(paymentData);

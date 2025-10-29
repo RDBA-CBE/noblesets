@@ -61,10 +61,11 @@ export default function payments() {
           console.log("✌️response --->", response);
           setState({ orderData: response?.data });
         }
+      } else {
+        const response = await orderData();
+        console.log("✌️response --->", response);
+        setState({ orderData: response?.data });
       }
-      const response = await orderData();
-      console.log("✌️response --->", response);
-      setState({ orderData: response?.data });
     } catch (error) {
       console.log("✌️error --->", error);
     }
@@ -118,7 +119,7 @@ export default function payments() {
       {jsonLike?.order_status == "Success" ? (
         <Success data={state.orderData} />
       ) : (
-        <Failed data={state.orderData} orderId={jsonLike?.merchant_param1} />
+        <Failed data={state.orderData} orderId={jsonLike?.merchant_param1} fullData={jsonLike} />
       )}
 
       <HomeFooter />

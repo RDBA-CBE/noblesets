@@ -17,12 +17,10 @@ import { ACCESS_CODE, CASE_ON_DELIVERY, CCAVENUE_URL, MERCHANT_ID } from "@/util
 import { createHash } from "crypto";
 import CCAvenue from "@/utils/CCAvenue";
 
-const Failed = ({ data, orderId }) => {
-  console.log("✌️data --->", data?.data?.data);
+const Failed = ({ data, orderId,fullData }) => {
   const [giftCard, setGiftCard] = useState(0);
 
   const OrderDetails = data?.data?.order?.lines;
-  console.log("✌️OrderDetails --->", OrderDetails);
   const SubTotal = data?.data?.order?.subtotal.gross.amount;
   const Total = data?.data?.order?.total.gross.amount;
   const OrderNumber = data?.data?.order?.number;
@@ -147,7 +145,9 @@ const Failed = ({ data, orderId }) => {
         order_id: orderId,
         amount: amount,
         currency: "INR",
-        billing_email: billingAddress.email,
+        // billing_email: billingAddress.email,
+        billing_email: fullData?.billing_email,
+
         billing_name: `${billingAddress.firstName} ${billingAddress.lastName}`,
         billing_address: billingAddress.streetAddress1,
         billing_city: billingAddress.city,
@@ -165,6 +165,8 @@ const Failed = ({ data, orderId }) => {
         delivery_country: shippingAddress.country?.country,
         delivery_tel: shippingAddress.phone,
         merchant_param1: order_id,
+        merchant_param2:fullData?.merchant_param2,
+
       };
 
       let encReq = CCAvenue.getEncryptedOrder(paymentData);
