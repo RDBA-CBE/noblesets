@@ -958,7 +958,7 @@ const CheckoutBillingArea1 = () => {
         billing_tel: state.phone?.replace("+91", ""),
         billing_country: state.selectedCountry?.name,
         redirect_url: `${CCAVENUE_URL}/api/ccavenue-handle1`,
-        cancel_url: `${CCAVENUE_URL}/failed-order`,
+        cancel_url: `${CCAVENUE_URL}/api/ccavenue-cancel`,
 
         delivery_address: state.streetAddress2,
         delivery_city: state.city1,
