@@ -932,8 +932,11 @@ const CheckoutBillingArea1 = () => {
   //   }
   // };
 
-  const ccAvenuePayment = async (orderId, amount) => {
+  const ccAvenuePayment = async (order_id, amount) => {
     try {
+      // const orderId=orderId
+
+      const orderId = createHash("sha1").update(order_id).digest("hex").slice(0, 20);
       // const paymentData = {
       //   merchant_id: MERCHANT_ID,
       //   order_id: orderId,
@@ -961,7 +964,7 @@ const CheckoutBillingArea1 = () => {
       //   .getSeconds()
       //   .toString()
       //   .padStart(2, "0")}`;
-      
+      // const orderId = crypto.randomUUID().split('-')[0]; 
 
       let paymentData = {
         merchant_id: MERCHANT_ID, // Merchant ID (Required)
