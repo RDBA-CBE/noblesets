@@ -952,21 +952,21 @@ const CheckoutBillingArea1 = () => {
       //   merchant_param1: orderId,
       //   language: "EN",
       // };
-      const transid = `${now.getFullYear()}${(now.getMonth() + 1)
-        .toString()
-        .padStart(2, "0")}${now.getDate().toString().padStart(2, "0")}${now
-        .getHours()
-        .toString()
-        .padStart(2, "0")}${now.getMinutes().toString().padStart(2, "0")}${now
-        .getSeconds()
-        .toString()
-        .padStart(2, "0")}`;
+      // const transid = `${now.getFullYear()}${(now.getMonth() + 1)
+      //   .toString()
+      //   .padStart(2, "0")}${now.getDate().toString().padStart(2, "0")}${now
+      //   .getHours()
+      //   .toString()
+      //   .padStart(2, "0")}${now.getMinutes().toString().padStart(2, "0")}${now
+      //   .getSeconds()
+      //   .toString()
+      //   .padStart(2, "0")}`;
 
       let paymentData = {
         merchant_id: MERCHANT_ID, // Merchant ID (Required)
         order_id: orderId,
         // order_id: "WEBN" + transid + branch, // Order ID - It can be generated from our project
-        amount: amount, // Payment Amount (Required)
+        amount:amount, // Payment Amount (Required)
         currency: "INR", // Payment Currency Type (Required)
         billing_email: "psmkduraisamy@gmail.com", // Billing Email (Optional)
         billing_name: "Durai", // Billing Name (Optional)
@@ -986,6 +986,7 @@ const CheckoutBillingArea1 = () => {
         // billing_tel: state.localCode, // Billing Mobile Number (Optional)
         // sub_account_id: subaccid,
       };
+console.log('✌️paymentData --->', paymentData);
 
       let encReq = CCAvenue.getEncryptedOrder(paymentData);
       let accessCode = ACCESS_CODE;
