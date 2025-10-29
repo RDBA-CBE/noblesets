@@ -4,7 +4,7 @@ import { useRouter } from "next/router";
 import Wrapper from "@/layout/wrapper";
 import HomeFooter from "@/components/home/HomeFooter";
 import Success from "@/components/payment/success";
-import { useOrderListQuery } from "@/redux/features/productApi";
+import { useOrderListQuery, usePaymentMutation } from "@/redux/features/productApi";
 import { useCreateCheckoutTokenWithoutEmailMutation } from "@/redux/features/card/cardApi";
 import HeaderSection from "@/components/home/headerSection";
 import SEO from "@/components/seo";
@@ -72,7 +72,7 @@ export default function payments() {
     orderId: datas?.merchant_param1,
   });
 
-  // const [successPayment] = usePaymentMutation();
+  const [successPayment] = usePaymentMutation();
 
   const [createCheckoutTokenWithoutEmail, { data: checkoutTokens }] =
     useCreateCheckoutTokenWithoutEmailMutation();
