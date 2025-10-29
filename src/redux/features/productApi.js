@@ -907,6 +907,16 @@ export const productApi = apiSlice.injectEndpoints({
       providesTags: ["Products"],
     }),
 
+
+
+    getOrderDetail: builder.mutation({
+      query: ({ orderId }) => {
+        return configuration(ORDER_LIST({ orderId }));
+      },
+      providesTags: ["Products"],
+    }),
+
+
     
   }),
 });
@@ -979,5 +989,7 @@ export const {
   useBrandDataMutation,
   useRemoveGiftVoucherMutation,
   usePriceRangeMutation,
-  useChildCategoryListMutation
+  useChildCategoryListMutation,
+  useGetOrderDetailMutation
+
 } = productApi;

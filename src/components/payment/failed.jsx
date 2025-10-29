@@ -175,7 +175,6 @@ const Failed = ({ data, orderId, fullData }) => {
       };
 
       let encReq = CCAvenue.getEncryptedOrder(paymentData);
-      console.log("✌️paymentData --->", paymentData);
       let accessCode = ACCESS_CODE;
       let URL = `https://secure.ccavenue.com/transaction/transaction.do?command=initiateTransaction&merchant_id=${paymentData.merchant_id}6&encRequest=${encReq}&access_code=${accessCode}`;
 

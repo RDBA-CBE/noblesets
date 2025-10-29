@@ -2,7 +2,6 @@
 import CCAvenue from "@/utils/CCAvenue";
 
 export default async function handler(req, res) {
-
   switch (req.method) {
     case "POST":
       let data2 = CCAvenue.redirectResponseToJson(req.body.encResp);
@@ -14,12 +13,10 @@ export default async function handler(req, res) {
       // Convert JSON data to a string
       const jsonDataString = JSON.stringify(data2);
 
-     
       // res.setHeader('Content-Type', 'text/html');
       // res.status(200).end(jsonDataString);
 
       res.redirect(302, `/payments?data=${encodeURIComponent(jsonDataString)}`);
-
       // // Store data in local storage
       // localStorage.setItem('payduepaymentData', jsonDataString);
 
