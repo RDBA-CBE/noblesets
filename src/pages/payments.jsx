@@ -4,7 +4,10 @@ import { useRouter } from "next/router";
 import Wrapper from "@/layout/wrapper";
 import HomeFooter from "@/components/home/HomeFooter";
 import Success from "@/components/payment/success";
-import { useOrderListQuery, usePaymentMutation } from "@/redux/features/productApi";
+import {
+  useOrderListQuery,
+  usePaymentMutation,
+} from "@/redux/features/productApi";
 import { useCreateCheckoutTokenWithoutEmailMutation } from "@/redux/features/card/cardApi";
 import HeaderSection from "@/components/home/headerSection";
 import SEO from "@/components/seo";
@@ -14,62 +17,22 @@ import Failed from "@/components/payment/failed";
 export default function payments() {
   const Router = useRouter();
 
-  // const { data } = Router.query;
+  const { data } = Router.query;
 
   const [state, setState] = useSetState({
     orderData: null,
   });
 
-  const datas = {
-    order_id: "07b893f457064f537cb9",
-    tracking_id: "114059103997",
-    bank_ref_no: "",
-    order_status: "Aborted",
-    failure_message: "",
-    payment_mode: "Net Banking",
-    card_name: "HDFC Bank",
-    status_code: "null",
-    status_message: "null",
-    currency: "INR",
-    amount: "139538.00",
-    billing_name: "Duraisamy p",
-    billing_address: "chennai",
-    billing_city: "chennai",
-    billing_state: "Tamil Nadu",
-    billing_zip: "641704",
-    billing_country: "India",
-    billing_tel: "9876543210",
-    billing_email: "psmkduraisamy@gmail.com",
-    delivery_name: "Duraisamy p",
-    delivery_address: "chennai",
-    delivery_city: "chennai",
-    delivery_state: "Tamil Nadu",
-    delivery_zip: "641704",
-    delivery_country: "India",
-    delivery_tel: "9876543210",
-    merchant_param1: "T3JkZXI6NzUwZGM1MjUtOGE5NS00YzE0LWFmNGYtNGQwMDE2Mzk4YTM1",
-    merchant_param2: "",
-    merchant_param3: "",
-    merchant_param4: "",
-    merchant_param5: "",
-    vault: "N",
-    offer_type: "null",
-    offer_code: "null",
-    discount_value: "0.0",
-    mer_amount: "139538.00",
-    eci_value: "null",
-    retry: "N",
-    response_code: "null",
-    billing_notes: "",
-    trans_date: "29/10/2025 11:54:15",
-    bin_country: "",
-    auth_ref_num: "",
-  };
+  // const storedData1 = decodeURIComponent(data);
+  // console.log("✌️storedData1 --->", storedData1);
 
-  const storedData1 = decodeURIComponent(datas);
-
+  let jsonLike;
+  
+  if (data) {
+    jsonLike = JSON.parse(data);
+  }
   const { refetch: orderData } = useOrderListQuery({
-    orderId: datas?.merchant_param1,
+    orderId: jsonLike?.merchant_param1,
   });
 
   const [successPayment] = usePaymentMutation();
@@ -79,18 +42,20 @@ export default function payments() {
 
   useEffect(() => {
     orderDetails();
-  }, [storedData1]);
+  }, [data]);
 
   const orderDetails = async () => {
     try {
-      const data = await successPayment({
-        amountAuthorized: datas?.mer_amount,
-        amountCharged: datas?.mer_amount,
-        pspReference: datas?.tracking_id,
+      const jsonLike = (JSON.parse(data));
+console.log('✌️jsonLike --->', jsonLike);
+      const datas = await successPayment({
+        amountAuthorized: jsonLike?.mer_amount,
+        amountCharged: jsonLike?.mer_amount,
+        pspReference: jsonLike?.tracking_id,
       });
-console.log('✌️dasuccessPaymentta --->', data);
+      console.log("✌️dasuccessPaymentta --->", datas);
 
-      if (data) {
+      if (datas) {
         const response = await orderData();
         console.log("✌️response --->", response);
         setState({ orderData: response?.data });
@@ -145,10 +110,10 @@ console.log('✌️dasuccessPaymentta --->', data);
       <SEO pageTitle="Payment Success" />
       {/* <HeaderTwo style_2={true} /> */}
       <HeaderSection />
-      {datas?.merchant_param1 == "Success" ? (
+      {jsonLike?.merchant_param1 == "Success" ? (
         <Success data={state.orderData} />
       ) : (
-        <Failed data={state.orderData} orderId={datas?.merchant_param1} />
+        <Failed data={state.orderData} orderId={jsonLike?.merchant_param1} />
       )}
 
       <HomeFooter />
