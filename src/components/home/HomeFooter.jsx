@@ -47,13 +47,13 @@ const HomeFooter = () => {
                     Legal Policies
                   </a>
                   <a className="footer-link mb-3" href="/terms-and-conditions">
-                    Terms and conditions
+                    Terms & Conditions
                   </a>
-                  <a className="footer-link mb-3" href="/loyalty-programs">
-                    Loyalty Programs
+                  <a className="footer-link mb-3" href="/return-and-exchange-policies ">
+                   Return & Exchange Policies
                   </a>
                   <a className="footer-link mb-3" href="/faq">
-                    Help &amp; FAQS
+                    Help &amp; FAQS  
                   </a>
                   {/* <a className="footer-link" href="#">
                     Testimonials
@@ -350,16 +350,16 @@ const HomeFooter = () => {
               style={{ fontSize: "16px" }}
             >
               <div className="copyright">
-                Copyright 2025 © Noblesets. Concept by{" "}
+                Copyright 2025 © Shivam Traders. Concept by{" "}
                 <a href="https://irepute.in/" target="blank">
                   repute
                 </a>
               </div>
               <div className="d-flex gap-3 mt-3 mt-md-0">
                 <button
-                  aria-label="Google"
+                  aria-label="Threads"
                   className="social-btn"
-                  title="Google"
+                  title="Threads"
                   type="button"
                   onClick={() =>
                     window.open("https://www.threads.net/@noble_sets")
@@ -427,9 +427,9 @@ const HomeFooter = () => {
                   ></i>
                 </button>
                 <button
-                  aria-label="Close"
+                  aria-label="Teitter"
                   className="social-btn close"
-                  title="Close"
+                  title="Teitter"
                   type="button"
                   style={{ color: "#000", fontSize: "20px" }}
                   onClick={() => window.open("https://twitter.com/noble_sets")}

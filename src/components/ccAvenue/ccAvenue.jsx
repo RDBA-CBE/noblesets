@@ -1,3 +1,4 @@
+import { MERCHANT_ID, WORKING_KEY } from '@/utils/constant';
 import { createHash, createCipheriv, createDecipheriv } from 'crypto';
 
 let initOptions = {};
@@ -87,8 +88,8 @@ class Configure {
 }
 
 const CCAvenue = new Configure({
-    working_key: "D58719F6B1A4057EA02DE130AFCB12D2", // Working Key from CCAvenue
-    merchant_id: "315511" // Merchant ID from CCAvenue
+  working_key:WORKING_KEY, // Working Key from CCAvenue
+  merchant_id: MERCHANT_ID, // Merchant ID from CCAvenue
 });
 
 export default CCAvenue;

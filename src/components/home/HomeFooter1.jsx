@@ -76,10 +76,10 @@ const HomeFooter1 = () => {
                     Legal Policies
                   </a>
                   <a className="footer-link mb-3" href="/terms-and-conditions">
-                    Terms and conditions
+                    Terms and Conditions
                   </a>
-                  <a className="footer-link mb-3" href="/loyalty-programs">
-                    Loyalty Programs
+                  <a className="footer-link mb-3" href="/return-and-exchange-policies">
+                   Return and Exchange Policies
                   </a>
                   <a className="footer-link mb-3" href="/faq">
                     Help &amp; FAQS
@@ -286,7 +286,7 @@ const HomeFooter1 = () => {
               className="d-flex flex-column flex-md-row justify-content-between align-items-center text-white width-80"
               style={{ fontSize: "16px" }}
             >
-              <div className="copyright">Copyright 2025 © Noblesets. Concept by repute</div>
+              <div className="copyright">Copyright 2025 © Shivam Traders. Concept by repute</div>
               <div className="d-flex gap-3 mt-3 mt-md-0">
                 <button
                   aria-label="Google"

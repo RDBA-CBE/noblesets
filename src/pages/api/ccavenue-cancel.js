@@ -11,7 +11,7 @@ export default async function handler(req, res) {
       const jsonDataString = JSON.stringify(data2);
 
   
-      res.redirect(302, `/payments?data=${encodeURIComponent(jsonDataString)}`);
+      res.redirect(302, `/failed-order?data=${encodeURIComponent(jsonDataString)}`);
    
       try {
         let data2 = req.body;

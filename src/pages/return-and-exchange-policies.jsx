@@ -11,15 +11,15 @@ import shopBanner from "@assets/img/header-bg.webp";
 const ShippingAndExchangePolicy = () => {
   return (
     <Wrapper>
-      <SEO pageTitle="Loyalty Programs" />
+      <SEO pageTitle="Return and Exchange Policies" />
       {/* <HeaderTwo style_2={true} /> */}
       <HeaderSection />
 
        <div style={{ background: "#f6e9d9" }}>
         <div >
           <ShopBreadcrumb
-            title="Loyalty Programs"
-            subtitle="Loyalty Programs"
+            title="Return and Exchange Policies"
+            subtitle="Return and Exchange Policies"
             bgImage={shopBanner}
             // catList={categoryList}
             // product={productList}
