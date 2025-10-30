@@ -48,7 +48,7 @@ export default function payments() {
     try {
       const jsonLike = JSON.parse(data);
       console.log("✌️jsonLike --->", jsonLike);
-      if (jsonLike?.order_status == "Success") {
+      // if (jsonLike?.order_status == "Success") {
         const datas = await successPayment({
           amountAuthorized: jsonLike?.mer_amount,
           amountCharged: jsonLike?.mer_amount,
@@ -62,11 +62,11 @@ export default function payments() {
           setState({ orderData: response?.data });
         }
         localStorage.removeItem("user_id");
-      } else {
-        const response = await orderData();
-        console.log("✌️response --->", response);
-        setState({ orderData: response?.data });
-      }
+      // } else {
+      //   const response = await orderData();
+      //   console.log("✌️response --->", response);
+      //   setState({ orderData: response?.data });
+      // }
     } catch (error) {
       console.log("✌️error --->", error);
     }

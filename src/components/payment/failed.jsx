@@ -145,10 +145,11 @@ const Failed = ({ data, orderId, fullData }) => {
       const orderId = createHash("sha1")
         .update(data?.data?.order?.id)
         .digest("hex")
-        .slice(0, 20);
+        .slice(0, 18);
       let paymentData = {
         merchant_id: MERCHANT_ID,
-        order_id: orderId,
+        // order_id: orderId,
+        order_id: "NOB" + orderId,
         amount: amount,
         currency: "INR",
         // billing_email: billingAddress.email,

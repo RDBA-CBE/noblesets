@@ -951,10 +951,10 @@ const CheckoutBillingArea1 = () => {
       const orderId = createHash("sha1")
         .update(order_id)
         .digest("hex")
-        .slice(0, 20);
+        .slice(0, 18);
       let paymentData = {
         merchant_id: MERCHANT_ID,
-        order_id: orderId,
+        order_id: "NOB"+orderId,
         amount: amount,
         currency: "INR",
         billing_email: state.email,
