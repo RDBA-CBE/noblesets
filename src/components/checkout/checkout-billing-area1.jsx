@@ -836,6 +836,7 @@ const CheckoutBillingArea1 = () => {
                 amountAuthorized: total,
                 amountCharged: total,
                 pspReference: res?.razorpay_payment_id,
+                orderId,
               });
               localStorage.removeItem("checkoutTokenUSD");
               localStorage.removeItem("checkoutTokenINR");
@@ -940,6 +941,13 @@ const CheckoutBillingArea1 = () => {
 
   const ccAvenuePayment = async (order_id, amount) => {
     try {
+      const selectedCountry = CountryList?.find(
+        (item) => item.code === state.selectedCountry
+      )?.country;
+      const selectedCountry1 = CountryList?.find(
+        (item) => item.code === state.selectedCountry1
+      )?.country;
+
       const orderId = createHash("sha1")
         .update(order_id)
         .digest("hex")
@@ -956,7 +964,7 @@ const CheckoutBillingArea1 = () => {
         billing_state: state.selectedState,
         billing_zip: state.postalCode,
         billing_tel: state.phone?.replace("+91", ""),
-        billing_country: state.selectedCountry?.name,
+        billing_country: selectedCountry,
         redirect_url: `${CCAVENUE_URL}/api/ccavenue-handle1`,
         cancel_url: `${CCAVENUE_URL}/api/ccavenue-handle1`,
 
@@ -964,7 +972,7 @@ const CheckoutBillingArea1 = () => {
         delivery_city: state.city1,
         delivery_state: state.selectedState1,
         delivery_zip: state.postalCode1,
-        delivery_country: state.selectedCountry?.name,
+        delivery_country: selectedCountry1,
         delivery_tel: state.phone1?.replace("+91", ""),
         merchant_param1: order_id,
         merchant_param2: state.email1,
@@ -979,11 +987,11 @@ const CheckoutBillingArea1 = () => {
       localStorage.removeItem("checkoutTokenINR");
       dispatch(cart_list([]));
 
-      const token = localStorage.getItem("token");
-      if (!token) {
-        localStorage.setItem("billingEmail", state.email1);
-      }
-      localStorage.setItem("order_id", order_id);
+      // const token = localStorage.getItem("token");
+      // if (!token) {
+      //   localStorage.setItem("billingEmail", state.email1);
+      // }
+      // localStorage.setItem("order_id", order_id);
     } catch (error) {
       console.error("Payment init error:", error);
       alert("Payment initialization failed: " + error.message);

@@ -53,7 +53,7 @@ export default function payments() {
           amountAuthorized: jsonLike?.mer_amount,
           amountCharged: jsonLike?.mer_amount,
           pspReference: jsonLike?.tracking_id,
-          orderId:jsonLike?.merchant_param1
+          orderId: jsonLike?.merchant_param1
         });
 
         if (datas) {
@@ -61,7 +61,7 @@ export default function payments() {
           console.log("✌️response --->", response);
           setState({ orderData: response?.data });
         }
-        localStorage.removeItem("user_id")
+        localStorage.removeItem("user_id");
       } else {
         const response = await orderData();
         console.log("✌️response --->", response);
@@ -120,7 +120,11 @@ export default function payments() {
       {jsonLike?.order_status == "Success" ? (
         <Success data={state.orderData} />
       ) : (
-        <Failed data={state.orderData} orderId={jsonLike?.merchant_param1} fullData={jsonLike} />
+        <Failed
+          data={state.orderData}
+          orderId={jsonLike?.merchant_param1}
+          fullData={jsonLike}
+        />
       )}
 
       <HomeFooter />
