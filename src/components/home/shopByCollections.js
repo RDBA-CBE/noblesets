@@ -70,7 +70,6 @@ export default function ShopByCollections() {
 
   const filter = useSelector((state) => state.shopFilter.childCategory);
 
-
   const [maximumPrice, { isLoading: loading }] = usePriceFilterMutation();
   const [childCatList, { isLoading: loading1 }] =
     useChildCategoryListMutation();
@@ -91,8 +90,8 @@ export default function ShopByCollections() {
         slug: item?.node?.slug,
         title: item?.node?.name,
       }));
-      const filterWithImages = filter.map((filterItem) => {
-        const matchingCollection = collections.find(
+      const filterWithImages = filter?.map((filterItem) => {
+        const matchingCollection = collections?.find(
           (collectionItem) => collectionItem.slug == filterItem.slug
         );
 
@@ -103,7 +102,9 @@ export default function ShopByCollections() {
         };
       });
 
-      getProductMaxPrice(filterWithImages);
+      if (filterWithImages?.length > 0) {
+        getProductMaxPrice(filterWithImages);
+      }
     } catch (error) {
       console.log("✌️error --->", error);
     }
@@ -136,13 +137,17 @@ export default function ShopByCollections() {
         maxPrice = maxNode?.pricing?.priceRange?.start?.gross?.amount || 0;
 
         // cat.price = `₹${Math.round(minPrice)} - ₹${Math.round(maxPrice)}`;
-        cat.price = `${formatIndianRupees(minPrice)} - ${formatIndianRupees(maxPrice)}`;
+        cat.price = `${formatIndianRupees(minPrice)} - ${formatIndianRupees(
+          maxPrice
+        )}`;
       } catch (err) {
         cat.price = "Price not available";
       }
     }
 
-    const filteredCollection = filterWithImages.filter(item => item.price !== "₹0 - ₹0");
+    const filteredCollection = filterWithImages.filter(
+      (item) => item.price !== "₹0 - ₹0"
+    );
     dispatch(childCategory(filteredCollection));
   };
 
@@ -212,83 +217,82 @@ export default function ShopByCollections() {
         {loading1 || loading ? (
           <Loader />
         ) : (
-        
-         <div className="section-wd">
-           <div className="position-relative row">
-            <Swiper
-              modules={[Navigation]}
-              // spaceBetween={30}
-              slidesPerView={1.1}
-              slidesOffsetAfter={16}
-              slidesOffsetBefore={0}
-              onInit={(swiper) => {
-                swiper.params.navigation.prevEl = prevRef.current;
-                swiper.params.navigation.nextEl = nextRef.current;
-                swiper.navigation.init();
-                swiper.navigation.update();
-              }}
-              breakpoints={{
-                0: { slidesPerView: 1.1 },
-                576: { slidesPerView: 2 },
-                768: { slidesPerView: 3 },
-                992: { slidesPerView: 4 },
-              }}
-            >
-              {filter?.map((item, index) => (
-                <SwiperSlide key={index}>
-                  <div
-                    className="card border-0 h-100 shadow-sm w-100 col-3"
-                    onClick={() => handleClick(item)}
-                  >
-                    <img
-                      src={item.image}
-                      className="card-img-top cursor-pointer"
-                      alt={item.title}
-                      style={{
-                        objectFit: "cover",
-                        // height: "260px",
-                        borderRadius: "20px",
-                      }}
-                      onClick={() => {
-                        handleClick(item);
-                      }}
-                    />
-                    <div className="card-body text-center pb-0">
-                      <p
-                        className="text-black mb-3 mt-40 cursor-pointer"
-                        style={{ fontSize: "18px" }}
-                      >
-                        {item.desc}
-                      </p>
-                      <h5
-                        className=" mb-3 cursor-pointer"
+          <div className="section-wd">
+            <div className="position-relative row">
+              <Swiper
+                modules={[Navigation]}
+                // spaceBetween={30}
+                slidesPerView={1.1}
+                slidesOffsetAfter={16}
+                slidesOffsetBefore={0}
+                onInit={(swiper) => {
+                  swiper.params.navigation.prevEl = prevRef.current;
+                  swiper.params.navigation.nextEl = nextRef.current;
+                  swiper.navigation.init();
+                  swiper.navigation.update();
+                }}
+                breakpoints={{
+                  0: { slidesPerView: 1.1 },
+                  576: { slidesPerView: 2 },
+                  768: { slidesPerView: 3 },
+                  992: { slidesPerView: 4 },
+                }}
+              >
+                {filter?.map((item, index) => (
+                  <SwiperSlide key={index}>
+                    <div
+                      className="card border-0 h-100 shadow-sm w-100 col-3"
+                      onClick={() => handleClick(item)}
+                    >
+                      <img
+                        src={item.image}
+                        className="card-img-top cursor-pointer"
+                        alt={item.title}
                         style={{
-                          fontSize: "35px",
-                          fontWeight: "400",
+                          objectFit: "cover",
+                          // height: "260px",
+                          borderRadius: "20px",
                         }}
                         onClick={() => {
                           handleClick(item);
                         }}
-                      >
-                        {item.title}
-                      </h5>
-                      <p
-                        className="text-black"
-                        style={{ fontSize: "18px", letterSpacing: "1px" }}
-                        onClick={() => {
-                          handleClick(item);
-                        }}
-                      >
-                        {" "}
-                        {item.price}
-                      </p>
+                      />
+                      <div className="card-body text-center pb-0">
+                        <p
+                          className="text-black mb-3 mt-40 cursor-pointer"
+                          style={{ fontSize: "18px" }}
+                        >
+                          {item.desc}
+                        </p>
+                        <h5
+                          className=" mb-3 cursor-pointer"
+                          style={{
+                            fontSize: "35px",
+                            fontWeight: "400",
+                          }}
+                          onClick={() => {
+                            handleClick(item);
+                          }}
+                        >
+                          {item.title}
+                        </h5>
+                        <p
+                          className="text-black"
+                          style={{ fontSize: "18px", letterSpacing: "1px" }}
+                          onClick={() => {
+                            handleClick(item);
+                          }}
+                        >
+                          {" "}
+                          {item.price}
+                        </p>
+                      </div>
                     </div>
-                  </div>
-                </SwiperSlide>
-              ))}
-            </Swiper>
+                  </SwiperSlide>
+                ))}
+              </Swiper>
+            </div>
           </div>
-         </div>
         )}
       </div>
     </section>
