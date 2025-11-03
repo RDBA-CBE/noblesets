@@ -827,6 +827,8 @@ const ShopPage = () => {
   };
 
   const finalFilterOptionList = (res) => {
+    console.log("res", res);
+    
     let parsedFilterData;
     if (res?.data?.data?.attributefilter?.filterData) {
       parsedFilterData = JSON?.parse(
@@ -843,6 +845,9 @@ const ShopPage = () => {
     // setProductStoneTypes(data?.productStoneTypes);
     // setProductStyles(data?.productStyles);
   };
+
+  console.log("attributeList", attributeList);
+  
 
   return (
     <Wrapper>
