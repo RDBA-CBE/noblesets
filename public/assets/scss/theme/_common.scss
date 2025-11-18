@@ -575,7 +575,7 @@
   // line-height:18px;
   color: #fff !important;
   line-height: 22px;
-  font-family: "Nunito", sans-serif;
+  font-family: "Fraunces", sans-serif;
   color: #fff;
   font-weight: 300;
 }
@@ -592,19 +592,19 @@
   line-height: 25px !important;
   //  margin-bottom: 0px !important;
   color: #fff !important;
-  font-family: "Playfair Display", sans-serif;
+  font-family: "Fraunces", sans-serif;
   font-weight: 500;
   margin-bottom: 8px !important;
 }
 .exb-btn p span {
   font-size: 20px;
   line-height: 22px;
-  color: #fff !important; font-family: "Nunito", sans-serif;
+  color: #fff !important; font-family: "Fraunces", sans-serif;
 }
 .exb-btn-s {
   font-size: 16px;
   line-height: 22px;
-  color: #fff !important; font-family: "Nunito", sans-serif;
+  color: #fff !important; font-family: "Fraunces", sans-serif;
 }
 
 @media (max-width: 1440px) {
@@ -1682,21 +1682,74 @@ ol.alphalist li ol li{list-style-type: lower-roman !important;}
 // Footer
 
 .footer-link {
-  color: #fff;
+  color: #ffd6ae;
   font-size: 16px;
   // font-weight: 600;
   text-decoration: none;
-  font-family: "Nunito", sans-serif;
+  font-family: "Fraunces", sans-serif;
 }
 .footer-link:hover {
-  color: #fff;
+  color: #ffb371;
 }
+
+/* quicklinks*/
+.footer-link01 {
+  color: #ffd6ae;
+  font-size: 16px;
+  text-decoration: none;
+  font-family: "Fraunces", sans-serif;
+
+  /* icon spacing & animation setup */
+  position: relative;
+  padding-left: 22px;
+  display: inline-block;
+
+  opacity: 0;
+  transform: translateX(-10px);
+  animation: footerListFade 0.6s ease forwards;
+}
+
+/* Hover */
+.footer-link01:hover {
+  color: #ffb371;
+}
+
+/* Add PNG icon before link text */
+.footer-link01::before {
+  content: "";
+  width: 12px;
+  height: 12px;
+
+  position: absolute;
+  left: 0;
+  top: 6px;
+
+  background-image: url("/assets/img/footer/star-icon.png"); /* update path if needed */
+  background-size: contain;
+  background-repeat: no-repeat;
+  opacity: 0.8;
+}
+
+/* Animation (fade + slide) */
+@keyframes footerListFade {
+  0% {
+    opacity: 0;
+    transform: translateX(-10px);
+  }
+  100% {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+/*quick links end*/
+
+
 .footer-title {
   font-weight: 400;
   font-size: 24px;
   margin-bottom: 2.2rem;
-  color: white;
-  font-family: "Nunito", sans-serif;
+  color: #ffd1c5;
+  font-family: "Fraunces", sans-serif;
 }
 .footer-subtitle h3 {
   // font-weight: 600;
@@ -1718,7 +1771,7 @@ ol.alphalist li ol li{list-style-type: lower-roman !important;}
   padding-right: 3rem;
   height: 2.5rem;
   font-size: 0.875rem;
-  font-family: "Nunito", sans-serif;
+  font-family: "Fraunces", sans-serif;
 }
 footer input::placeholder {
   // color: rgba(255 255 255 / 0.7);
@@ -1747,10 +1800,10 @@ footer input::placeholder {
   // font-weight: 600;
   color: #fff;
   user-select: none;
-  font-family: "Nunito", sans-serif;
+  font-family: "Fraunces", sans-serif;
 }
 .copyright {
-  font-family: "Nunito", sans-serif;
+  font-family: "Fraunces", sans-serif;
   // font-weight: 600;
   color: #fff;
 }
@@ -1765,7 +1818,7 @@ footer input::placeholder {
   color: #fff !important;
   font-size: 16px;
   // font-weight: 600;
-  font-family: "Nunito", sans-serif;
+  font-family: "Fraunces", sans-serif;
 }
 
 .payment-item {
@@ -1775,7 +1828,7 @@ footer input::placeholder {
   display: flex;
   align-items: center;
   gap: 0.5rem;
-  font-family: "Nunito", sans-serif;
+  font-family: "Fraunces", sans-serif;
 }
 .payment-item img {
   width: 40px;
@@ -1793,7 +1846,7 @@ footer .btn-arrow {
   color: #fff;
   margin-bottom: 1rem;
   line-height: 1.5;
-  font-family: "Nunito", sans-serif;
+  font-family: "Fraunces", sans-serif;
   // font-weight: 600;
 }
 .social-btn {
@@ -2051,7 +2104,7 @@ hr.footer-divider {
 
 .main-ti {
   font-size: 50px;
-  font-family: "Playfair Display", sans-serif;
+  font-family: "Fraunces", sans-serif;
   font-weight: 400;
   font-style: normal;
   color: #a44100;
@@ -2060,7 +2113,7 @@ hr.footer-divider {
 }
 
 .sub-ti {
-  font-family: "Nunito", sans-serif;
+  font-family: "Fraunces", sans-serif;
   font-optical-sizing: auto;
   font-weight: 400;
   font-style: normal;
@@ -2211,7 +2264,7 @@ hr.footer-divider {
 }
 
 // .tp-header-area .main-menu > nav > ul > li > a {
-// font-family: "Playfair Display, sans-serif";
+// font-family: "Fraunces, sans-serif";
 // }
 
 @media (max-width: 1024px) {
@@ -3187,21 +3240,21 @@ header .tp-product-action-btn-3:hover {
 }
 
 .custom-modal .ant-modal-content {
-  font-family: "Nunito", sans-serif !important;
+  font-family: "Fraunces", sans-serif !important;
 }
 :where(.ant-modal) {
-  font-family: "Nunito", sans-serif !important;
+  font-family: "Fraunces", sans-serif !important;
 }
 
 .custom-modal .ant-modal-content button {
-  font-family: "Nunito", sans-serif !important;
+  font-family: "Fraunces", sans-serif !important;
 }
 
 :where(.css-dev-only-do-not-override-vrrzze).ant-btn {
-    font-family: "Nunito", sans-serif !important;
+    font-family: "Fraunces", sans-serif !important;
 }
 :where(.css-dev-only-do-not-override-vrrzze).ant-radio-wrapper{
-  font-family: "Nunito", sans-serif !important;
+  font-family: "Fraunces", sans-serif !important;
 }
 .brand-banner {
   // background-image: url(/assets/img/home/brand-img.png);
@@ -3411,5 +3464,114 @@ header .tp-product-action-btn-3:hover {
 
 
 
+/* Insta */
+.insta-wrapper {
+  padding: 60px 0;
+  background: #fdeee7; /* same as your screenshot background */
+}
 
+.insta-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 40px;
+  max-width: 1600px;
+  margin: auto;
+}
 
+.insta-img {
+  width: 260px;
+  height: 260px;
+  border-radius: 20px;
+  object-fit: cover;
+}
+
+.insta-center {
+  max-width: 380px;
+  text-align: left;
+}
+
+.insta-title {
+  font-size: 42px;
+  font-weight: 700;
+  color: #713c2f; /* close to your reference */
+  margin-bottom: 15px;
+  font-family: "Fraunces", serif;
+}
+
+.insta-desc {
+  font-size: 15px;
+  line-height: 1.6;
+  color: #4a3b35;
+}
+
+/* Nobleset Promise */
+.nobleset-container {
+  display: flex;
+  background: #fbf0ea;
+  padding: 40px 60px;
+  align-items: center;
+  gap: 40px;
+}
+
+.nobleset-image img {
+  width: 100%;
+  max-width: 450px;
+  border-radius: 6px;
+}
+
+.nobleset-content {
+  flex: 1;
+}
+
+.trusted-tag {
+  color: #7a5a4a;
+  font-weight: 500;
+  margin-bottom: 10px;
+}
+
+.title {
+  font-size: 48px;
+  color: #603a2a;
+  margin-bottom: 20px;
+  font-family: "Georgia", serif;
+}
+
+.description {
+  color: #4e4e4e;
+  line-height: 1.6;
+  margin-bottom: 40px;
+  max-width: 600px;
+}
+
+.icons-row {
+  display: flex;
+  gap: 30px;
+  flex-wrap: wrap;
+}
+
+.icon-box {
+  text-align: center;
+}
+
+.circle {
+  width: 110px;
+  height: 110px;
+  border-radius: 50%;
+  border: 2px solid #cda58b;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-bottom: 12px;
+}
+
+.circle img {
+  width: 48px;
+  height: 48px;
+}
+
+.icon-text {
+  font-size: 14px;
+  font-weight: 500;
+  color: #5a4a43;
+}

@@ -6,7 +6,7 @@ const HomeFooter1 = () => {
   const router = useRouter();
   return (
     // <div style={{ backgroundColor: "#e09a7b" }}>
-    <div style={{ background: "url(/assets/img/footer/bg.jpg)" }}>
+    <div style={{ background: "url(/assets/img/footer/bg.jpg)" }} className="animated">
       <footer className="container-fluid pt-50 text-white px-0">
         <div className="row justify-content-center ">
           <div className="col-11 col-xl-10 ">

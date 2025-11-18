@@ -16,7 +16,7 @@ const HomeFooter = () => {
 
   return (
     // <div style={{ backgroundColor: "#e09a7b" }}>
-    <div style={{ background: "url(/assets/img/footer/bg.webp)" }}>
+    <div style={{ background: "url(/assets/img/footer/footer-bg.webp)" }}>
       <footer className="container-fluid pt-50 text-white px-0">
         <div className="row justify-content-center ">
           <div className="col-11  col-xxl-10 ">
@@ -40,19 +40,19 @@ const HomeFooter = () => {
               <div className="col-6 col-md-4 col-lg-3 col-xl-2 ps-xl-3">
                 <h3 className="footer-title">Quick Links</h3>
                 <nav className="nav flex-column">
-                  <a className="footer-link mb-3" href="/our-story">
+                  <a className="footer-link01 mb-3" href="/our-story">
                     Our Story
                   </a>
-                  <a className="footer-link mb-3" href="/legal-policies">
+                  <a className="footer-link01 mb-3" href="/legal-policies">
                     Legal Policies
                   </a>
-                  <a className="footer-link mb-3" href="/terms-and-conditions">
-                    Terms & Conditions
+                  <a className="footer-link01 mb-3" href="/terms-and-conditions">
+                    Terms & Conditionss
                   </a>
-                  <a className="footer-link mb-3" href="/return-and-exchange-policies ">
+                  <a className="footer-link01 mb-3" href="/return-and-exchange-policies ">
                    Return & Exchange Policies
                   </a>
-                  <a className="footer-link mb-3" href="/faq">
+                  <a className="footer-link01 mb-3" href="/faq">
                     Help &amp; FAQS  
                   </a>
                   {/* <a className="footer-link" href="#">
@@ -427,9 +427,9 @@ const HomeFooter = () => {
                   ></i>
                 </button>
                 <button
-                  aria-label="Teitter"
+                  aria-label="Twitter"
                   className="social-btn close"
-                  title="Teitter"
+                  title="Twitter"
                   type="button"
                   style={{ color: "#000", fontSize: "20px" }}
                   onClick={() => window.open("https://twitter.com/noble_sets")}
@@ -438,6 +438,7 @@ const HomeFooter = () => {
                   {/* <i class="fa-brands fa-x-twitter"></i> */}
                   𝕩
                 </button>
+                
               </div>
             </div>
 
@@ -447,7 +448,7 @@ const HomeFooter = () => {
             >
               {/* <div> */}
               <img
-                src="/assets/img/footer/logo-opt-2.png"
+                src="/assets/img/footer/footer-logo.png"
                 alt=""
                 style={{
                   width: "70%",

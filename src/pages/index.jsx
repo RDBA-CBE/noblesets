@@ -20,6 +20,8 @@ import GiftSection from "@/components/home/giftSection";
 import NobelsetsPromises from "@/components/home/NobelsetsPromises";
 import { useMaxPriceMutation } from "@/redux/features/productApi";
 import InstagramSection2 from "@/components/home/shopByCategory2";
+import InstaSection from "@/components/home/InstaSection";
+import MediaGallery from "@/components/home/MediaGallery";
 
 const Index = () => {
   const [maximumPrice] = useMaxPriceMutation();
@@ -123,6 +125,9 @@ const Index = () => {
       {/* <JewelryCollectionBanner /> */}
       {/* <BestSellerPrd/> */}
       {/* <InstagramAreaFour /> */}
+      
+       <MediaGallery />
+         <InstaSection />
       <HomeFooter />
     </Wrapper>
   );
