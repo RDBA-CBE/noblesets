@@ -3,6 +3,8 @@ import {
   useMyOrderListQuery,
   usePaymentMutation,
   useOrderCancelMutation,
+  useOrderListQuery,
+  useGetOrderDetailMutation,
 } from "@/redux/features/productApi";
 import { useRouter } from "next/router";
 import useRazorpay from "react-razorpay";
@@ -15,7 +17,14 @@ import {
 import { notifySuccess } from "@/utils/toast";
 import ButtonLoader from "../loader/button-loader";
 import Swal from "sweetalert2";
-import { CASE_ON_DELIVERY } from "@/utils/constant";
+import {
+  ACCESS_CODE,
+  CASE_ON_DELIVERY,
+  CCAVENUE_URL,
+  MERCHANT_ID,
+} from "@/utils/constant";
+import CCAvenue from "@/utils/CCAvenue";
+import { createHash } from "crypto";
 
 const OrderList = () => {
   const {
@@ -24,6 +33,8 @@ const OrderList = () => {
     isLoading,
     refetch: orderListRefetch,
   } = useMyOrderListQuery();
+
+  const [orderDetail, { isLoading: loading1 }] = useGetOrderDetailMutation();
 
   const [orderList, setOrderList] = useState([]);
   const [cancelLoading, setCancelLoading] = useState(false);
@@ -96,6 +107,77 @@ const OrderList = () => {
     },
     [Razorpay, successPayment, router]
   );
+
+  const getOrderDetail = async (orderId) => {
+    try {
+      const res = await orderDetail({ orderId });
+      console.log("✌️res --->", res?.data?.data?.order);
+      if (res?.data?.data?.order) {
+        ccAvenuePayment(res?.data?.data?.order);
+      }
+    } catch (error) {
+      console.log("✌️error --->", error);
+    }
+  };
+
+  const ccAvenuePayment = async (orderData) => {
+    const userEmail = localStorage.getItem("userInfo");
+    localStorage.setItem("order_id", orderData?.id);
+    let email = "";
+    if (userEmail) {
+      const user = JSON.parse(userEmail);
+      email = user?.user?.email;
+    }
+
+    const billingAddress = orderData?.billingAddress;
+    const shippingAddress = orderData?.shippingAddress;
+    const Total = orderData?.total?.gross?.amount;
+
+    try {
+      const orderId = createHash("sha1")
+        .update(orderData?.id)
+        .digest("hex")
+        .slice(0, 20);
+      let paymentData = {
+        merchant_id: MERCHANT_ID,
+        order_id: orderId,
+        amount: Total,
+        currency: "INR",
+        billing_email: email,
+        billing_name: `${billingAddress.firstName} ${billingAddress.lastName}`,
+        billing_address: billingAddress.streetAddress1,
+        billing_city: billingAddress.city,
+        billing_state: billingAddress.countryArea,
+        billing_zip: billingAddress.postalCode,
+        billing_tel: billingAddress.phone?.replace("+91", ""),
+        billing_country: billingAddress.country?.country,
+        redirect_url: `${CCAVENUE_URL}/api/ccavenue-handle1`,
+        cancel_url: `${CCAVENUE_URL}/api/ccavenue-handle1`,
+
+        delivery_address: shippingAddress.streetAddress1,
+        delivery_city: shippingAddress.city,
+        delivery_state: shippingAddress.countryArea,
+        delivery_zip: shippingAddress.postalCode,
+        delivery_country: shippingAddress.country?.country,
+        delivery_tel: shippingAddress.phone?.replace("+91", ""),
+        merchant_param1: orderData?.id,
+        merchant_param2: email,
+        // merchant_param3: "myOrder",
+      };
+      console.log("✌️paymentData --->", paymentData);
+
+      let encReq = CCAvenue.getEncryptedOrder(paymentData);
+      let accessCode = ACCESS_CODE;
+      let URL = `https://secure.ccavenue.com/transaction/transaction.do?command=initiateTransaction&merchant_id=${paymentData.merchant_id}6&encRequest=${encReq}&access_code=${accessCode}`;
+
+      router.push(URL);
+      localStorage.setItem("order_id", orderData?.id);
+    } catch (error) {
+      console.error("Payment init error:", error);
+      alert("Payment initialization failed: " + error.message);
+    } finally {
+    }
+  };
 
   const cancelOrder = (item) => {
     showDeleteAlert(
@@ -210,8 +292,8 @@ const OrderList = () => {
                         } item`}
                       </td>
                       <td style={{ display: "flex", gap: 10 }}>
-                        {(item?.paymentStatus === "NOT_CHARGED" &&
-                          item?.paymentMethod?.name != CASE_ON_DELIVERY )&& (
+                        {item?.paymentStatus === "NOT_CHARGED" &&
+                          item?.paymentMethod?.name != CASE_ON_DELIVERY && (
                             <button
                               type="button"
                               className=" tp-btn tp-btn-border text-white"
@@ -221,11 +303,13 @@ const OrderList = () => {
                                 fontSize: "14px",
                               }}
                               onClick={() => {
-                                handlePayment(
-                                  item?.total?.gross?.amount,
-                                  item?.total?.gross?.currency,
-                                  item?.id
-                                );
+                                getOrderDetail(item?.id);
+                                // ccAvenuePayment(
+                                //   item?.id,
+                                //   item?.total?.gross?.amount,
+                                //   item
+                                //   // item?.total?.gross?.currency,
+                                // );
                               }}
                             >
                               Pay

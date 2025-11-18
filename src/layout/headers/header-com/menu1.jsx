@@ -71,7 +71,7 @@ const CategoryContent = ({
           height: "100%",
           overflowY: "scroll",
           scrollbarWidth: "thin",
-          padding:"0"
+          padding: "0",
         }}
       >
         {title && (
@@ -86,14 +86,14 @@ const CategoryContent = ({
           <SingleLoader loading={subCategoryLoading} />
         ) : (
           <div>
-            <ul style={{  height: "100%" }}>
+            <ul style={{ height: "100%" }}>
               {lists?.slice(0, 12)?.map((item) => {
                 return (
                   <li
                     className="sub-sub-menu"
                     style={{
                       cursor: "pointer",
-                      background:"#fbdccc",
+                      background: "#fbdccc",
                       // borderBottom: "1px solid #e8e3e3",
                       // marginBottom: "10px",
                       display: "flex",
@@ -132,7 +132,6 @@ const CategoryContent = ({
                     >
                       {item?.node?.name.toLowerCase()}
                     </a>
-                    
                   </li>
                 );
               })}
@@ -188,7 +187,7 @@ const CategoryContent = ({
           // </div>
         )}
       </div>
-      <div className="col-9" style={{height:"350px"}}>
+      <div className="col-9" style={{ height: "350px" }}>
         <div className="row h-100" style={{ padding: "20px" }}>
           {children}
         </div>
@@ -314,6 +313,7 @@ const Menus1 = () => {
     categoryList: [],
     productList: [],
     subCategoryList: [],
+    initalLoad: "",
   });
 
   const [categoryLists, { loading: loading }] =
@@ -327,17 +327,16 @@ const Menus1 = () => {
   const [lastHoveredCategory, setLastHoveredCategory] = useState("necklaces");
 
   const filterByHomePage = useSelector(
-     (state) => state.shopFilter.filterByHomePage
-   );
- 
-   useEffect(() => {
-     if (filterByHomePage) {
-       dispatch(filterData(filterByHomePage));
-     } else {
-       dispatch(filterData({}));
-     }
-   }, [router]);
- 
+    (state) => state.shopFilter.filterByHomePage
+  );
+
+  useEffect(() => {
+    if (filterByHomePage) {
+      dispatch(filterData(filterByHomePage));
+    } else {
+      dispatch(filterData({}));
+    }
+  }, [router]);
 
   useEffect(() => {
     categoryList();
@@ -353,12 +352,20 @@ const Menus1 = () => {
             name: item?.node?.name,
             id: item?.node?.id,
             slug: item?.node?.slug,
+            productCount: item?.node?.products?.totalCount,
           })
         );
         const excludeGiftCard = categoryList?.filter(
           (item) => item.slug !== "gift-card"
         );
-        setState({ categoryList: excludeGiftCard });
+        const filterWithoutProduct = excludeGiftCard?.filter(
+          (item) => item.productCount > 0
+        );
+        if (filterWithoutProduct?.length > 0) {
+          setState({ initalLoad: filterWithoutProduct[0]?.slug });
+        }
+
+        setState({ categoryList: filterWithoutProduct });
       }
     } catch (error) {
       console.log("✌️error --->", error);
@@ -380,7 +387,10 @@ const Menus1 = () => {
     });
     if (subcategory?.data?.data?.category?.children?.edges?.length > 0) {
       setState({
-        subCategoryList: subcategory?.data?.data?.category?.children?.edges,
+        subCategoryList:
+          subcategory?.data?.data?.category?.children?.edges?.filter(
+            (item) => item?.node?.products?.totalCount > 0
+          ),
       });
     } else {
       setState({ subCategoryList: [] });
@@ -422,7 +432,9 @@ const Menus1 = () => {
             color: "#000",
             fontFamily: "Fraunces,sans-serif",
           }}
-          onMouseEnter={() => hoverCategoryProduct("necklaces")}
+          onMouseEnter={() =>
+            hoverCategoryProduct(state.initalLoad ?? "diamond")
+          }
         >
           Collections
         </Link>
@@ -531,11 +543,11 @@ const Menus1 = () => {
                       clickable: true,
                     }}
                     breakpoints={{
-                      1740: { slidesPerView: 5.2},
+                      1740: { slidesPerView: 5.2 },
                       1590: { slidesPerView: 4.7 },
                       1500: { slidesPerView: 4.5 },
                       1380: { slidesPerView: 4 },
-                      1200: { slidesPerView: 3.5},
+                      1200: { slidesPerView: 3.5 },
                       992: { slidesPerView: 3 },
                       768: { slidesPerView: 2 },
                       576: { slidesPerView: 2 },
@@ -567,7 +579,7 @@ const Menus1 = () => {
                       display: "flex",
                       alignItems: "center",
                       justifyContent: "center",
-                      height:"100%"
+                      height: "100%",
                     }}
                   >
                     Product Not Found

@@ -25,7 +25,7 @@ const Page = () => {
 
   const [state, setState] = useSetState({
     number: 1,
-    pageCount: 10,
+    pageCount: 12,
     productList: [],
     startCursor: null,
     endCursor: null,

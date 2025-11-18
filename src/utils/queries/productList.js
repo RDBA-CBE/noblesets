@@ -73,6 +73,7 @@ query getOrderDetails($orderId: ID!) {
       }
       postalCode
       phone
+      countryArea
     }
     shippingAddress {
       firstName
@@ -85,6 +86,7 @@ query getOrderDetails($orderId: ID!) {
       }
       postalCode
       phone
+      countryArea
     }
     courierPartner {
       name
@@ -1657,8 +1659,11 @@ export const PRODUCT_20_PERCENTAGE = ({ channel, first, after, filter }) => {
 export const SUB_CAT_LIST = ({ slug }) => {
   return {
     query: `
-    query GetSubCategoryList( $slug: String = "") {
-  category( slug: $slug) {
+    query GetSubCategoryList(
+  $slug: String = ""
+  $channel: String = "india-channel" 
+) {
+  category(slug: $slug) {
     id
     name
     children(first: 100) {
@@ -1667,6 +1672,9 @@ export const SUB_CAT_LIST = ({ slug }) => {
           id
           name
           slug
+          products(channel: $channel) {  
+            totalCount
+          }
         }
       }
     }

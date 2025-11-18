@@ -2,6 +2,26 @@ import placeholder from "@assets/img/placeholder.png";
 
 export const CASE_ON_DELIVERY = "Cash On Delivery";
 
+export const RAZORPAY_ID = "UGF5bWVudF9HYXRld2F5OjI="
+
+export const CCAVENUE_ID = "UGF5bWVudF9HYXRld2F5OjM="
+
+export const COD_ID= "UGF5bWVudF9HYXRld2F5OjE="
+
+export const MERCHANT_ID="315511"
+
+export const ACCESS_CODE="AVCO85MJ40CG11OCGC"
+
+export const WORKING_KEY="CEBF1F11B534AE3E0EF367C10FC055D1"
+
+export const CCAVENUE_URL="https://www.noblesets.com"
+
+// export const CCAVENUE_URL="http://localhost:3000"
+
+
+
+
+
 export const configuration = (body) => {
   const token = localStorage.getItem("token");
   const config = {

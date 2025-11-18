@@ -82,7 +82,7 @@ const FinishFilter = ({ attributeList }) => {
   return (
     <>
       {attributeList?.length > 0 &&
-        attributeList.map((attribute) => {
+        attributeList?.filter((attribute) => attribute.slug !== "HSN-Code").map((attribute) => {
           const normalizedAttributeSlug = attribute?.slug;
           return (
             <div key={attribute?.id} className="tp-shop-widget mb-50">
