@@ -65,13 +65,13 @@ const HomeFooter = () => {
                 <h3 className="footer-title">Jewellery</h3>
                 <nav className="nav flex-column">
                   <a
-                    className="footer-link mb-3"
+                    className="footer-link  mb-3"
                     href="#"
                     onClick={() => {
                       handleClick("bracelets");
                     }}
                   >
-                    Bracelets
+                   <img src="/assets/img/newlayout/Footer/bracelet-01.png" alt="" /> Bracelets
                   </a>
                   <a
                     className="footer-link mb-3"
@@ -80,6 +80,7 @@ const HomeFooter = () => {
                       handleClick("Chain");
                     }}
                   >
+                     <img src="/assets/img/newlayout/Footer/necklace-01.png" alt="" />
                     Chains
                   </a>
                   <a
@@ -89,6 +90,7 @@ const HomeFooter = () => {
                       handleClick("Bangle");
                     }}
                   >
+                    <img src="/assets/img/newlayout/Footer/bangles-01.png" alt="" />
                     Bangles
                   </a>
                   <a
@@ -98,11 +100,13 @@ const HomeFooter = () => {
                       handleClick("necklace");
                     }}
                   >
+                    <img src="/assets/img/newlayout/Footer/chains-01.png" alt="" />
                     Necklace
                   </a>
                   <a className="footer-link mb-3" href="#" onClick={() => {
                       handleClick("rings");
                     }}>
+                      <img src="/assets/img/newlayout/Footer/rings-01.png" alt="" />
                     Rings
                   </a>
                   {/* <a className="footer-link" href="#">
@@ -117,19 +121,23 @@ const HomeFooter = () => {
                   <a className="footer-link mb-3" href="#" onClick={() => {
                       handleClick("diamond");
                     }}>
+                      <img src="/assets/img/newlayout/Footer/diamond-01.png" alt="" />
                     Diamond
                   </a>
                   <a className="footer-link mb-3" href="#" onClick={() => {
                       handleClick("gold");
                     }}>
+                      <img src="/assets/img/newlayout/Footer/goldbar-01.png" alt="" />
                     Gold
                   </a>
                   <a className="footer-link mb-3" href="#" onClick={() => {
                       handleClick("silver");
                     }}>
+                      <img src="/assets/img/newlayout/Footer/bars-01.png" alt="" />
                     Silver
                   </a>
                   <a className="footer-link mb-3" href="/gift-card">
+                  <img src="/assets/img/newlayout/Footer/giftcard-01.png" alt="" />
                     Gift Crad
                   </a>
 
@@ -143,18 +151,23 @@ const HomeFooter = () => {
                 <h3 className="footer-title">My Accounts</h3>
                 <nav className="nav flex-column">
                   <a className="footer-link mb-3" href="/profile">
+                  <img src="/assets/img/newlayout/Footer/profile-01.png" alt="" />
                     My Profile
                   </a>
                   <a className="footer-link mb-3" href="/profile">
+                  <img src="/assets/img/newlayout/Footer/bag-01.png" alt="" />
                     My Orders 
                   </a>
                   <a className="footer-link mb-3" href="/wishlist">
+                  <img src="/assets/img/newlayout/Footer/heart-01.png" alt="" />
                     Wishlist 
                   </a>
                   <a className="footer-link mb-3" href="/compare">
+                  <img src="/assets/img/newlayout/Footer/2arrows-01.png" alt="" />
                    Compare 
                   </a>
                   <a className="footer-link mb-3" href="/cart">
+                  <img src="/assets/img/newlayout/Footer/2arrows-01.png" alt="" />
                     Cart
                   </a>
                   {/* <a className="footer-link" href="#">

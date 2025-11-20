@@ -261,7 +261,7 @@ const HeaderSection = ({ style_2 = false, data }) => {
 
   return (
     <>
-      <header style={{background:"#f6e9d9"}}>
+      <header >
         <div
           className={`tp-header-area tp-header-style-${
             style_2 ? "primary" : "darkRed"
@@ -430,7 +430,7 @@ const HeaderSection = ({ style_2 = false, data }) => {
                             className="tp-header-action-btn  "
                             style={{
                               // backgroundColor: "#e09a7b", background: linear-gradient(180deg, #1e1a1a, #5a2b23);
-                               background: "linear-gradient(180deg, #9b5d34, #7a4525)",
+                               background: "#fffae8",
                               width: "40px",
                               height: "40px",
                               alignItems: "center",
@@ -466,7 +466,7 @@ const HeaderSection = ({ style_2 = false, data }) => {
                             onClick={toggleDropdown}
                             className="tp-header-action-btn cartmini-open-btn "
                             style={{
-                              background: "linear-gradient(180deg, #9b5d34, #7a4525)",
+                              background: "#fffae8",
                               width: "40px",
                               height: "40px",
                               alignItems: "center",
@@ -594,7 +594,7 @@ const HeaderSection = ({ style_2 = false, data }) => {
                             }}
                             className="tp-header-action-btn cartmini-open-btn "
                             style={{
-                             background: "linear-gradient(180deg, #9b5d34, #7a4525)",
+                             background: "#fffae8",
                               width: "40px",
                               height: "40px",
                               alignItems: "center",

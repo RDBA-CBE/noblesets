@@ -3,33 +3,43 @@ import React from "react";
 const videos = [
   {
     url: "https://www.youtube.com/watch?v=gKG6G_WAfzg",
-    thumb: "/assets/img/home/media/video1.png", // replace with real thumbnail paths if needed
-    title: "Lorem ipsum dolor sit consectetur adipiscing elit sed eiusmod tempor incididunt ut labore"
+    thumb: "/assets/img/newlayout/Media/small-image-1.jpg", // replace with real thumbnail paths if needed
+    title:
+      "Lorem ipsum dolor sit consectetur adipiscing elit sed eiusmod tempor incididunt ut labore",
   },
   {
     url: "https://www.youtube.com/watch?v=QYLVneoDeMA",
-    thumb: "/assets/img//home/media/video2.png",
-    title: "Excepteur sint occaecat cupidatat non proident sunt in culpa qui officia deserunt mollit anim"
+    thumb: "/assets/img/newlayout/Media/small-image-2.jpg",
+    title:
+      "Excepteur sint occaecat cupidatat non proident sunt in culpa qui officia deserunt mollit anim",
   },
   {
     url: "https://www.youtube.com/watch?v=UQ9N-A_YClQ",
-    thumb: "/assets/img/home/media/video3.png",
-    title: "Duis aute irure dolor in reprehenderit voluptate velit esse cillum dolore eu fugiat nulla pariatur."
+    thumb: "/assets/img/newlayout/Media/small-image-3.jpg",
+    title:
+      "Duis aute irure dolor in reprehenderit voluptate velit esse cillum dolore eu fugiat nulla pariatur.",
   },
   {
     url: "https://www.youtube.com/watch?v=QG4q2q9p9v0",
-    thumb: "/assets/img/home/media/video4.png",
-    title: "Ut enim ad minim veniam, quis nostrud quis exercitation ullamco laboris nisi ut aliquip"
-  }
+    thumb: "/assets/img/newlayout/Media/small-image-4.jpg",
+    title:
+      "Ut enim ad minim veniam, quis nostrud quis exercitation ullamco laboris nisi ut aliquip",
+  },
 ];
 
 export default function MediaSection() {
   return (
-    <div style={{ fontFamily: "serif", paddingBottom: "40px" }}>
+    <div className="pt-60 pb-60">
       {/* Section Heading */}
-      <div style={{ textAlign: "center", marginTop: "40px" }}>
-        <p style={{ fontSize: "14px", color: "#8b6f48" }}>✦ In the Spotlight</p>
-        <h1 style={{ fontSize: "36px", color: "#5c3b26", marginTop: "-4px" }}>Media</h1>
+
+      <div class="text-center mb-4 ">
+        <div className="feature-main ">
+          <h5 className="sub-ti">
+            {" "}
+            <b className="pe-2">✦</b> In the Spotlight
+          </h5>
+          <h4 className="feature-adipisicing main-ti">Media</h4>
+        </div>
       </div>
 
       {/* Hero Video Section */}
@@ -38,13 +48,13 @@ export default function MediaSection() {
           style={{
             width: "90%",
             margin: "0 auto",
-            borderRadius: "12px",
+
             overflow: "hidden",
-            position: "relative"
+            position: "relative",
           }}
         >
           <img
-            src="/assets/img/home/media/video.jpg" // Your provided image
+            src="/assets/img/newlayout/Media/image.jpg" // Your provided image
             alt="Main"
             style={{ width: "100%", display: "block" }}
           />
@@ -66,7 +76,7 @@ export default function MediaSection() {
               display: "flex",
               alignItems: "center",
               justifyContent: "center",
-              boxShadow: "0 4px 10px rgba(0,0,0,0.2)"
+              boxShadow: "0 4px 10px rgba(0,0,0,0.2)",
             }}
           >
             <div
@@ -76,7 +86,7 @@ export default function MediaSection() {
                 borderTop: "18px solid transparent",
                 borderBottom: "18px solid transparent",
                 borderLeft: "28px solid #5c3b26",
-                marginLeft: "5px"
+                marginLeft: "5px",
               }}
             ></div>
           </a>
@@ -90,12 +100,12 @@ export default function MediaSection() {
           margin: "0 auto",
           display: "grid",
           gridTemplateColumns: "repeat(4, 1fr)",
-          gap: "20px"
+          gap: "50px",
         }}
       >
         {videos.map((video, index) => (
           <div key={index} style={{ textAlign: "left" }}>
-            <div style={{ position: "relative", borderRadius: "10px", overflow: "hidden" }}>
+            <div style={{ position: "relative", overflow: "hidden" }}>
               <img
                 src={video.thumb}
                 alt={`Video ${index}`}
@@ -118,7 +128,7 @@ export default function MediaSection() {
                   borderRadius: "50%",
                   display: "flex",
                   alignItems: "center",
-                  justifyContent: "center"
+                  justifyContent: "center",
                 }}
               >
                 <div
@@ -128,13 +138,23 @@ export default function MediaSection() {
                     borderTop: "10px solid transparent",
                     borderBottom: "10px solid transparent",
                     borderLeft: "16px solid #5c3b26",
-                    marginLeft: "4px"
+                    marginLeft: "4px",
                   }}
                 ></div>
               </a>
             </div>
 
-            <p style={{ fontSize: "14px", marginTop: "10px", color: "#444" }}>{video.title}</p>
+            <p
+              className="p-3"
+              style={{
+                fontSize: "15px",
+                marginTop: "5px",
+                color: "#444",
+                lineHeight: "1.4",
+              }}
+            >
+              {video.title}
+            </p>
           </div>
         ))}
       </div>

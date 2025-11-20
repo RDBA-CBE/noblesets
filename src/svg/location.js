@@ -3,6 +3,7 @@ import React from "react";
 const Location = () => {
   return (
     <svg
+    style={{color:"#fff2ec"}}
       width="17"
       height="20"
       viewBox="0 0 17 20"

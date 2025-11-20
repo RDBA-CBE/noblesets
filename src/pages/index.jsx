@@ -22,6 +22,12 @@ import { useMaxPriceMutation } from "@/redux/features/productApi";
 import InstagramSection2 from "@/components/home/shopByCategory2";
 import InstaSection from "@/components/home/InstaSection";
 import MediaGallery from "@/components/home/MediaGallery";
+import HomeBannerNew from "@/components/home/HomeBannerNew";
+import ShopByBudgetNew from "@/components/home/ShopByBudgetNew";
+import BestSellers from "@/components/home/BestSellers";
+import GiftSectionNew from "@/components/home/giftSectionNew";
+import ShopByCollectionsNew from "@/components/home/shopByCollectionsNew";
+import NoblesetPromisesNew from "@/components/home/NoblesetPromisesNew";
 
 const Index = () => {
   const [maximumPrice] = useMaxPriceMutation();
@@ -96,24 +102,41 @@ const Index = () => {
     <Wrapper>
       <SEO pageTitle="Home" />
       <HeaderSection />
-      <div className="common-bg" >
-        <div className="section-wd bnr">
-          <HomeBanner />
+      <div className="common-bg">
+        <div className=" ">
+          <HomeBannerNew />
         </div>
       </div>
+
+      <HomeCategorySection />
+
+      <ShopByBudgetNew />
+
+      <BestSellers />
+
+      <GiftSectionNew />
+
+      <ShopByCollectionsNew />
+      <NoblesetPromisesNew />
+
+      <MediaGallery />
+      <InstaSection />
+
+      <HomeFooter />
+
+      {/* <HomeBanner /> */}
 
       {/* <FeatureAreaThree /> */}
       {/* <JewelryShopBanner /> */}
 
-      <HomeCategorySection />
-      <ShopByBudget />
+      {/* <ShopByBudget /> */}
       {/* <ShopByCategory /> */}
-      <InstagramSection2/>
+      {/* <InstagramSection2/> */}
+      {/* <GiftSection/> */}
 
-      <GiftSection />
-      <ShopByCollections />
+      {/* <ShopByCollections /> */}
 
-      <NobelsetsPromises />
+      {/* <NobelsetsPromises /> */}
 
       {/* <GiftWrapSection /> */}
       {/* <FeaturedProdectsSection />
@@ -125,10 +148,8 @@ const Index = () => {
       {/* <JewelryCollectionBanner /> */}
       {/* <BestSellerPrd/> */}
       {/* <InstagramAreaFour /> */}
+
       
-       <MediaGallery />
-         <InstaSection />
-      <HomeFooter />
     </Wrapper>
   );
 };

@@ -41,15 +41,15 @@ const HomeCategorySection = () => {
   };
 
   const video_data = [
-    "/assets/img/home/best_of_nobletset/img1.webp",
-    "/assets/img/home/best_of_nobletset/img3.webp",
-    "/assets/img/home/best_of_nobletset/img2.webp",
-    "/assets/img/home/best_of_nobletset/img4.webp",
-    "/assets/img/home/best_of_nobletset/img3.webp",
-    "/assets/img/home/best_of_nobletset/img-1.png",
-    "/assets/img/home/best_of_nobletset/img-2.png",
-    "/assets/img/home/best_of_nobletset/img-3.png",
-     "/assets/img/home/best_of_nobletset/img-4.png",
+    "/assets/img/newlayout/Best of Noblesets/img-1.png",
+    "/assets/img/newlayout/Best of Noblesets/img-2.png",
+    "/assets/img/newlayout/Best of Noblesets/img-3.png",
+    "/assets/img/newlayout/Best of Noblesets/img-4.png",
+    "/assets/img/newlayout/Best of Noblesets/img-1.png",
+    "/assets/img/newlayout/Best of Noblesets/img-2.png",
+    "/assets/img/newlayout/Best of Noblesets/img-3.png",
+    "/assets/img/newlayout/Best of Noblesets/img-4.png",
+     "/assets/img/newlayout/Best of Noblesets/img-1.png",
   ];
 
   return (
@@ -72,82 +72,7 @@ const HomeCategorySection = () => {
               </div>
             </div>
           </div>
-          {/* <div className="row "> */}
-            {/* <div className="col-md-6 col-12">
-              <div className="row">
-                <div className="col-xl-6 col-lg-6 category-section-1">
-                  <img
-                    src="/assets/img/home/Catergories/1.jpg"
-                    alt="image-1"
-                    style={{
-                      width: "100%",
-                      borderRadius: "20px",
-                      cursor: "pointer",
-                    }}
-                    onClick={() => {
-                      router.push({
-                        pathname: "/shop",
-                        query: { category: "finger_rings" }, // Your parameters
-                      });
-                    }}
-                  />
-                </div>
-
-                <div className="col-xl-6 col-lg-6 category-section-2">
-                  <img
-                    src="/assets/img/home/Catergories/2.jpg"
-                    alt="image-2"
-                    style={{
-                      width: "100%",
-                      borderRadius: "20px",
-                      cursor: "pointer",
-                    }}
-                    onClick={() => {
-                      router.push({
-                        pathname: "/shop",
-                        query: { category: "necklaces" }, // Your parameters
-                      });
-                    }}
-                  />
-                </div>
-
-                <div className="col-xl-6 col-lg-6 category-section-3">
-                  <img
-                    src="/assets/img/home/Catergories/3.jpg"
-                    alt="image-3"
-                    style={{
-                      width: "100%",
-                      borderRadius: "20px",
-                      cursor: "pointer",
-                    }}
-                    onClick={() => {
-                      router.push({
-                        pathname: "/shop",
-                        query: { category: "earrings" }, // Your parameters
-                      });
-                    }}
-                  />
-                </div>
-
-                <div className="col-xl-6 col-lg-6  category-section-4">
-                  <img
-                    src="/assets/img/home/Catergories/4.jpg"
-                    alt="image-4"
-                    style={{
-                      width: "100%",
-                      borderRadius: "20px",
-                      cursor: "pointer",
-                    }}
-                    onClick={() => {
-                      router.push({
-                        pathname: "/shop",
-                        query: { category: "short_necklaces" }, // Your parameters
-                      });
-                    }}
-                  />
-                </div>
-              </div>
-            </div> */}
+         
 
             <div className="row justify-content-center">
               <div className="col-11">
@@ -199,86 +124,7 @@ const HomeCategorySection = () => {
               </div>
             </div>
 
-            {/* <div className="col-md-6 col-12">
-              <div className="row">
-                <div className="col-xl-6 col-lg-6  category-section-5">
-                  <img
-                    src="/assets/img/home/Catergories/5.jpg"
-                    alt="image-5"
-                    style={{
-                      width: "100%",
-                      borderRadius: "20px",
-                      cursor: "pointer",
-                    }}
-                    onClick={() => {
-                      router.push({
-                        pathname: "/shop",
-                        query: { category: "other_accessories" }, // Your parameters
-                      });
-                    }}
-                  />
-                </div>
-
-                <div className="col-xl-6 col-lg-6">
-                  <img
-                    src="/assets/img/home/Catergories/6.jpg"
-                    alt="image-6"
-                    style={{
-                      width: "100%",
-                      borderRadius: "20px",
-                      cursor: "pointer",
-                    }}
-                    onClick={() => {
-                      router.push({
-                        pathname: "/shop",
-                        query: { category: "bangles__bracelets" }, // Your parameters
-                      });
-                    }}
-                  />
-                </div>
-              </div>
-            </div>
-
-            <div className="col-md-6 col-12">
-              <div className="row">
-                <div className="col-xl-6 col-lg-6  category-section-5">
-                  <img
-                    src="/assets/img/home/Catergories/5.jpg"
-                    alt="image-5"
-                    style={{
-                      width: "100%",
-                      borderRadius: "20px",
-                      cursor: "pointer",
-                    }}
-                    onClick={() => {
-                      router.push({
-                        pathname: "/shop",
-                        query: { category: "other_accessories" }, // Your parameters
-                      });
-                    }}
-                  />
-                </div>
-
-                <div className="col-xl-6 col-lg-6">
-                  <img
-                    src="/assets/img/home/Catergories/6.jpg"
-                    alt="image-6"
-                    style={{
-                      width: "100%",
-                      borderRadius: "20px",
-                      cursor: "pointer",
-                    }}
-                    onClick={() => {
-                      router.push({
-                        pathname: "/shop",
-                        query: { category: "bangles__bracelets" }, // Your parameters
-                      });
-                    }}
-                  />
-                </div>
-              </div>
-            </div> */}
-          {/* </div> */}
+           
         </div>
       </section>
     </>
