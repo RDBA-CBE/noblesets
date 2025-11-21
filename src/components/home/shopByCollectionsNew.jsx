@@ -189,7 +189,7 @@ export default function ShopByCollectionsNew() {
               ref={prevRef}
               className="btn btn-sm rounded-3  me-2"
               style={{
-                background: "#7d4432",
+                background: "#9b604d", 
                 color: "white",
                 fontSize: "15px",
                 // fontWeight: "bold",
@@ -202,7 +202,7 @@ export default function ShopByCollectionsNew() {
               ref={nextRef}
               className="btn btn-sm rounded-3 "
               style={{
-                background: "#7d4432",
+                background: "#9b604d",
                 color: "white",
                 fontSize: "15px",
                 // fontWeight: "bold",
@@ -243,9 +243,9 @@ export default function ShopByCollectionsNew() {
                     <div
                       className="card border-0 h-100 shadow-sm w-100 col-3 "
                       onClick={() => handleClick(item)}
-                      style={{padding:"25px"}}
+                      
                     >
-                      <div className=" " style={{background:"#f2efec", borderRadius: "20px", padding:"30px"}}>
+                      <div className=" card-in" style={{background:"#f2efec", borderRadius: "20px" }}>
                         <img
                           src={item.image}
                           className="card-img-top cursor-pointer"
@@ -259,17 +259,17 @@ export default function ShopByCollectionsNew() {
                             handleClick(item);
                           }}
                         />
-                        <div className="card-body text-center pb-0">
+                        <div className="card-body text-center pb-0 px-0">
                           <p
-                            className="text-black mb-3 mt-40 cursor-pointer"
-                            style={{ fontSize: "18px" }}
+                            className=" mb-2 mt-20 cursor-pointer"
+                            // style={{ fontSize: "18px" }}
                           >
                             {item.desc}
                           </p>
                           <h5
-                            className=" mb-3 cursor-pointer"
+                            className="cursor-pointer"
                             style={{
-                              fontSize: "35px",
+                              
                               fontWeight: "400",
                             }}
                             onClick={() => {
@@ -279,8 +279,8 @@ export default function ShopByCollectionsNew() {
                             {item.title}
                           </h5>
                           <p
-                            className="text-black"
-                            style={{ fontSize: "18px", letterSpacing: "1px" }}
+                            className="mt-3"
+                            style={{letterSpacing: "1px" }}
                             onClick={() => {
                               handleClick(item);
                             }}

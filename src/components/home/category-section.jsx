@@ -29,13 +29,13 @@ const HomeCategorySection = () => {
         slidesPerView: 4,
       },
       768: {
-        slidesPerView: 3,
+        slidesPerView: 4,
       },
       576: {
-        slidesPerView: 2,
+        slidesPerView: 3,
       },
       0: {
-        slidesPerView: 1.2,
+        slidesPerView: 1,
       },
     },
   };

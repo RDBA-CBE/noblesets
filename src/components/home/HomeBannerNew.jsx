@@ -66,12 +66,12 @@ const HomeBannerNew = () => {
           </div>
           <div className="newBan-content">
             <div className="newBan-content-in">
-              <div className=" con">
+              <div className=" con d-none d-sm-flex">
                 <div>
                   <p className="main-title">Bespoke</p>
                   <p className="sub-title">Brilliance for You</p>
                 </div>
-                <Image
+                <Image className="d-none d-md-block"
                   src={bannerProducts1}
                   alt="Jewelry Collection"
                   
@@ -80,7 +80,7 @@ const HomeBannerNew = () => {
                 <button className="ljb-shop-btn ">Shop Now</button>
               </div>
 
-              <div className="newBan-content-img">
+              <div className="newBan-content-img ">
                 <Image src={modelImg1} alt="Model" className="" />
               </div>
             </div>
