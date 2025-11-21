@@ -160,7 +160,7 @@ export default function App({ Component, pageProps }) {
                         className={` p-2 mb-1 text-white`}
                         style={{
                           backgroundColor:
-                            channel == item.name ? "#a44100" : "#000",
+                            channel == item.name ? "#7d4432" : "#000",
                           cursor: "pointer",
                         }}
                         onClick={() => {

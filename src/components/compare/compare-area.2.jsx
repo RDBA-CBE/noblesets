@@ -314,7 +314,7 @@ const CompareArea2 = () => {
 
                                         <span
                                           style={{
-                                            color: "#a44100",
+                                            color: "#7d4432",
                                             fontWeight: "500",
                                           }}
                                         >
@@ -349,7 +349,7 @@ const CompareArea2 = () => {
                                         )}
                                         <span
                                           style={{
-                                            color: "#a44100",
+                                            color: "#7d4432",
                                             fontWeight: "500",
                                             fontSize:"16px"
                                           }}

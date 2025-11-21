@@ -997,11 +997,11 @@
 
 .terms-heading-ti {
   font-size: 28px;
-  color: #a44100;
+  color: #7d4432;
 }
 
 .terms-heading {
-  color: #a44100;
+  color: #7d4432;
   font-size: 20px;
   margin-top: 25px;
   line-height: 36px;
@@ -1034,7 +1034,7 @@ ol.alphalist li ol li {
   list-style-type: lower-roman !important;
 }
 .terms-sub-heading {
-  color: #a44100;
+  color: #7d4432;
   font-size: 18px;
   margin-top: 25px;
   font-style: italic;
@@ -1664,10 +1664,10 @@ ol.alphalist li ol li {
   // background: linear-gradient(
   //   to right,
   //   color-mix(in srgb, #3d040a 40%, #3d040a),
-  //   #a44100
+  //   #7d4432
 
   // );
-  background: linear-gradient(90deg, #d35400, #6b2e1f);
+  background: #7d4432;
   color: white;
   // font-weight: 500;
   padding: 0.5rem 1.5rem;
@@ -2036,13 +2036,13 @@ hr.footer-divider {
 .table-responsive-1 table {
   border-collapse: separate !important; /* to allow spacing between cells */
   border-spacing: 8px !important; /* spacing between cells */
-  border: 1px solid #a44100; /* border around the whole table */
+  border: 1px solid #7d4432; /* border around the whole table */
   width: 100%; /* full width */
 }
 
 .table-responsive-1 th,
 .table-responsive-1 td {
-  border: 1px solid #a44100; /* border for each cell */
+  border: 1px solid #7d4432; /* border for each cell */
   padding: 12px; /* spacing inside cells */
   text-align: center;
   vertical-align: middle;
@@ -2055,7 +2055,7 @@ hr.footer-divider {
 }
 
 .text-gold {
-  color: #a44100 !important;
+  color: #7d4432 !important;
 }
 
 .bg-gold {
@@ -2104,7 +2104,7 @@ hr.footer-divider {
   font-family: "Fraunces", sans-serif;
   font-weight: 400;
   font-style: normal;
-  color: #a44100;
+  color: #7d4432;
   letter-spacing: 0.05rem;
 }
 
@@ -2194,9 +2194,9 @@ hr.footer-divider {
 }
 
 .pd-nav-tabs .nav-link.active {
-  color: #a44100;
+  color: #7d4432;
   font-weight: 600;
-  border-color: transparent transparent #a44100 transparent;
+  border-color: transparent transparent #7d4432 transparent;
 }
 
 .pd-tab-content {
@@ -2227,7 +2227,7 @@ hr.footer-divider {
 
 .pd-buy-btn {
   background-color: #fce6eb;
-  color: #a44100;
+  color: #7d4432;
   font-weight: 600;
   border-radius: 20px;
   padding: 8px 30px;
@@ -2394,7 +2394,7 @@ hr.footer-divider {
     color-mix(in srgb, #fbdccc 40%, #e09a7a),
     #e09a7a
   );
-  // border: 1px solid #a44100;
+  // border: 1px solid #7d4432;
   color: #000;
 }
 
@@ -2566,7 +2566,7 @@ hr.footer-divider {
 
 .tp-shop-top-select .nice-select {
   background-color: transparent !important;
-  color: #a44100 !important;
+  color: #7d4432 !important;
   border: 1px solid #e09a7a !important;
   border-radius: 20px !important;
 }
@@ -2655,7 +2655,7 @@ header .tp-product-action-btn-3:hover {
   // border: 1px solid #e09a7a;
   padding: 10px 20px !important;
   font-size: 15px !important;
-  color: #a44100 !important;
+  color: #7d4432 !important;
   position: absolute;
   top: 0;
   left: 0 !important;
@@ -2690,7 +2690,7 @@ header .tp-product-action-btn-3:hover {
 }
 
 .back-to-top-btn {
-  background: #a44100 !important ;
+  background: #7d4432 !important ;
 }
 .submenu-pro .product-hover-info {
   position: absolute;
@@ -2745,7 +2745,7 @@ header .tp-product-action-btn-3:hover {
 }
 
 .profile__info-text b {
-  color: #a44100 !important ;
+  color: #7d4432 !important ;
 }
 
 .profile__info-text {
@@ -2827,7 +2827,7 @@ header .tp-product-action-btn-3:hover {
 }
 
 .wishlist-page .tp-cart-price span {
-  color: #a44100;
+  color: #7d4432;
 }
 
 .profile__ticket table thead tr th {
@@ -2852,7 +2852,7 @@ header .tp-product-action-btn-3:hover {
 }
 
 .pagination-controls .active {
-  background: #a44100 !important;
+  background: #7d4432 !important;
   border: none !important;
 }
 
@@ -2906,7 +2906,7 @@ header .tp-product-action-btn-3:hover {
   font-size: 50px;
   font-weight: 400;
   // color: #5a1d00;
-  color: #a44100;
+  color: #7d4432;
 }
 
 .ourstory-lead {
@@ -2935,7 +2935,7 @@ header .tp-product-action-btn-3:hover {
 
 .ourstory-card .card-title {
   font-size: 20px;
-  color: #a44100;
+  color: #7d4432;
   font-weight: 400;
 }
 
@@ -2957,7 +2957,7 @@ header .tp-product-action-btn-3:hover {
 .ourstory-block h5 {
   font-weight: 400;
   font-size: 20px;
-  color: #a44100;
+  color: #7d4432;
   margin-bottom: 1rem;
 }
 .ourstory-block ul {
@@ -3257,7 +3257,7 @@ header .tp-product-action-btn-3:hover {
 .brand-banner {
   // background-image: url(/assets/img/home/brand-img.png);
   border-radius: 30px;
-  color: #a44100;
+  color: #7d4432;
   height: 60vh;
 }
 
@@ -3331,7 +3331,7 @@ header .tp-product-action-btn-3:hover {
 }
 
 .new-compare .cart-link {
-  color: #a44100;
+  color: #7d4432;
   text-decoration: underline;
   cursor: pointer;
 }

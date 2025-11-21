@@ -1279,7 +1279,7 @@ export const filterByStock = [
 ];
 
 export const COLORS = {
-  primary: "#a44100",
+  primary: "#7d4432",
 };
 
 export const customStyles = {

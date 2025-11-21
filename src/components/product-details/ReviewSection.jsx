@@ -64,7 +64,7 @@ const ReviewSection = (props) => {
             {/* <div className="d-flex align-items-center mb-3">
               <div className="review-score-display me-3">
                 <h1 className=" m-0 text-dark">4.0</h1>
-                <Rating count={5} value={4} edit={false} size={20} activeColor="#a44100" />
+                <Rating count={5} value={4} edit={false} size={20} activeColor="#7d4432" />
                 <p className="text-muted small">{reviews.length} ratings</p>
               </div>
               <div className="flex-grow-1">
@@ -124,7 +124,7 @@ const ReviewSection = (props) => {
                     value={formData.rating}
                     onChange={(newRating) => setFormData({ ...formData, rating: newRating })}
                     size={25}
-                    activeColor="#a44100"
+                    activeColor="#7d4432"
                   />
                 </div>
               </div>
@@ -161,7 +161,7 @@ const ReviewSection = (props) => {
                   value={review.rating}
                   edit={false}
                   size={18}
-                  activeColor="#a44100"
+                  activeColor="#7d4432"
                 />
                 <div className="d-flex gap-2 mt-2">
                   {review.images.map((src, idx) => (

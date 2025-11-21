@@ -1358,7 +1358,7 @@ const DetailsWrapper1 = ({
                 Out of Stock
               </span>
             ) : (
-              <span style={{ color: "#a44100", fontWeight: "700" }}>
+              <span style={{ color: "#7d4432", fontWeight: "700" }}>
                 In Stock
               </span>
             )}
@@ -1564,7 +1564,7 @@ const DetailsWrapper1 = ({
                 <button
                   onClick={() => setIsModelOpen(true)}
                   className=""
-                  style={{ color: "#a44100" }}
+                  style={{ color: "#7d4432" }}
                 >
                   Size Chart
                 </button>
@@ -1748,7 +1748,7 @@ const DetailsWrapper1 = ({
                           fontSize: "14px",
                           // borderCollapse: "collapse",
                           marginBottom: "0",
-                          borderColor: "#a44100",
+                          borderColor: "#7d4432",
                         }}
                       >
                         <tbody>
@@ -1894,7 +1894,7 @@ const DetailsWrapper1 = ({
 
                     <h4
                       className="mt-4 mb-0 "
-                      style={{ color: "#a44100 ", fontWeight: "400" }}
+                      style={{ color: "#7d4432 ", fontWeight: "400" }}
                     >
                       {productItem?.brand?.name ||
                         productItem?.node?.brand?.name}
@@ -1905,7 +1905,7 @@ const DetailsWrapper1 = ({
                         <>
                           {limitChar(productItem?.brand?.description, 200)}{" "}
                           <span
-                            style={{ color: "#a44100", cursor:"pointer" }}
+                            style={{ color: "#7d4432", cursor:"pointer" }}
                             onClick={() => {
                               router.push({
                                 pathname: "/brand",
@@ -1928,7 +1928,7 @@ const DetailsWrapper1 = ({
                             200
                           )}
                           <span
-                            style={{ color: "#a44100", cursor:"pointer" }}
+                            style={{ color: "#7d4432", cursor:"pointer" }}
                             onClick={() => {
                               router.push({
                                 pathname: "/brand",
@@ -2034,7 +2034,7 @@ const DetailsWrapper1 = ({
 
             <p
               style={{
-                color: "#a44100",
+                color: "#7d4432",
                 textDecoration: "underline",
                 cursor: "pointer",
               }}
@@ -2134,8 +2134,8 @@ const DetailsWrapper1 = ({
                     className="tp-btn tp-btn-border mt-2 mt-sm-0"
                     style={{
                       background: "transparent",
-                      color: "#a44100",
-                      border: "1px solid #a44100",
+                      color: "#7d4432",
+                      border: "1px solid #7d4432",
                     }}
                   >
                     Share This Page
@@ -2162,7 +2162,7 @@ const DetailsWrapper1 = ({
             {/* {!isGiftCard && (
               <div
                 className="text-capitalize text-decordation  cursor-pointer mt-20"
-                style={{ color: "#a44100" }}
+                style={{ color: "#7d4432" }}
                 onClick={() => setIsProductModelOpen(true)}
               >
                 To Customize Product

@@ -52,7 +52,7 @@
                 &-title-3{
                     & a{
                         &:hover{
-                            color: #a44100;
+                            color: #7d4432;
                         }
                     }
                 }
@@ -72,8 +72,8 @@
                     #{$self}{
                         &-add-cart-btn-large{
                             &:hover{
-                                border:1px solid #a44100;
-                                color: #a44100;
+                                border:1px solid #7d4432;
+                                color: #7d4432;
                                 background-color: white
                             }
                         }
@@ -123,10 +123,10 @@
         &-3{
             font-weight: 500;
             font-size: 16px;
-            color:#a44100;
+            color:#7d4432;
 
             &.new-price{
-                color: #a44100;
+                color: #7d4432;
             }
             &.old-price{
                 font-weight: 400;
@@ -183,13 +183,13 @@
             }
             &.active{
                 color: var(--tp-common-white);
-                border-color:#a44100;
-                background:#a44100;   
+                border-color:#7d4432;
+                background:#7d4432;   
             }
             &:hover{
                 color: var(--tp-common-white);
-                border-color: #a44100;
-                background:#a44100;
+                border-color: #7d4432;
+                background:#7d4432;
                 box-shadow: 0px 1px 1px rgba(1, 15, 28, 0.1);
 
                 #{$self}{

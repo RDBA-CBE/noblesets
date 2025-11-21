@@ -497,7 +497,7 @@ Add To Cart
                 <div
                   className="save-off"
                   style={{
-                    color: "#a44100",
+                    color: "#7d4432",
                     fontSize: "16px",
                   }}
                 >{`Save ${saveOff()}% OFF`}</div>
@@ -531,7 +531,7 @@ Add To Cart
                 <div
                   className="save-off"
                   style={{
-                    color: "#a44100",
+                    color: "#7d4432",
                     fontSize: "16px",
                   }}
                 >{`Save ${saveOff()}% OFF`}</div>

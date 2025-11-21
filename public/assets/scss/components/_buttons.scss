@@ -53,15 +53,15 @@
 	}
 
 	&-blue{ /* for home electronic */
-		background-color:#a44100;
+		background-color:#7d4432;
 		color: white;
 	}
 
 	&-border{
 		border-radius: 20px;
 		background-color: transparent;
-		// border: 1.5px solid #a44100;
-		// background-color: #a44100;
+		// border: 1.5px solid #7d4432;
+		// background-color: #7d4432;
 		 background: linear-gradient(180deg, #9b5d34, #7a4525);
 		color: white;
 		padding: 8px 29px;
@@ -69,8 +69,8 @@
 			@include transform(translateY(-2px) !important);
 		}
 		&:hover{
-			background-color: #a44100;
-			// border-color: #a44100;
+			background-color: #7d4432;
+			// border-color: #7d4432;
 			color: var(--tp-common-white);
 		}
 
@@ -400,17 +400,17 @@
 	font-size: 14px;
 	line-height: 1;
 	color: var(--tp-common-white);
-	background-color: #a44100;
+	background-color: #7d4432;
 	display: inline-block;
 	padding: 13px 35px 9px;
-	border: 1px solid #a44100;
+	border: 1px solid #7d4432;
 	& svg{
 		@extend %tp-svg-y-2;
 	}
 
 	&:hover{
 		color: white;
-		background-color: #a44100;
+		background-color: #7d4432;
 	}
 
 	@media #{$md}{
@@ -426,14 +426,14 @@
 .#{$theme-prifix}-product-list-add-to-cart-btn{
 	font-weight: 500;
 	font-size: 14px;
-	color:#a44100;
-	border: 1px solid #a44100;
+	color:#7d4432;
+	border: 1px solid #7d4432;
 	background-color: white;
 	display: inline-block;
 	padding: 5px 20px;
 
 	&:hover{
-		background-color: #a44100;
+		background-color: #7d4432;
 		color: var(--tp-common-white);
 	}
 

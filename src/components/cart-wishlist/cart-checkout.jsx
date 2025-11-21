@@ -116,7 +116,7 @@ const CartCheckout = ({ cartData }) => {
         <span>TOTAL</span>
         {checkChannel() === "india-channel" ? (
           <>
-            <span style={{ color: "#a44100", fontSize: "16px", textAlign:"end" }}>
+            <span style={{ color: "#7d4432", fontSize: "16px", textAlign:"end" }}>
               &#8377;{addCommasToNumber(list?.data?.checkout?.totalPrice?.gross?.amount)}
               <br />
               <span style={{ fontSize: "14px" }}>

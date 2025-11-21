@@ -797,7 +797,7 @@ const DetailsWrapper = ({
         <div
           className="text-danger"
           // style={{
-          //   color: "#a44100",
+          //   color: "#7d4432",
           //   fontSize: "16px",
           //   paddingBottom: "10px",
           // }}

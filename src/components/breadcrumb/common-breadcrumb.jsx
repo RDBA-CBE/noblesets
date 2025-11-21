@@ -19,7 +19,7 @@ const CommonBreadcrumb = ({
           backgroundImage: `url(${BgImage?.src})`,
         //   background:"linear-gradient(to right,color-mix(in srgb, #fbdccc 40%, #e09a7a),#e09a7a)",
         //  borderRadius:"30px", 
-         color:"#a44100"
+         color:"#7d4432"
       }}
      
     >
@@ -34,7 +34,7 @@ const CommonBreadcrumb = ({
                        
                 {title}
               
-              {/* <div style={{ color: "#a44100" }}>
+              {/* <div style={{ color: "#7d4432" }}>
                 <span>
                   <a href="/">HOME</a>
                 </span>{" "}

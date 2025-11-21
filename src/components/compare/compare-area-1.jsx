@@ -239,7 +239,7 @@ const CompareArea1 = () => {
                                       ₹ {node?.defaultVariant?.costPrice}
                                     </span>
                                   )}
-                                  <span style={{ color: "#a44100", fontWeight: "500" }}>
+                                  <span style={{ color: "#7d4432", fontWeight: "500" }}>
                                     ₹{roundOff(node?.pricing?.priceRange?.start?.gross?.amount)}
                                   </span>
                                 </>
@@ -250,7 +250,7 @@ const CompareArea1 = () => {
                                       $ {node?.defaultVariant?.costPrice}
                                     </span>
                                   )}
-                                  <span style={{ color: "#a44100", fontWeight: "500" }}>
+                                  <span style={{ color: "#7d4432", fontWeight: "500" }}>
                                     ${roundOff(node?.pricing?.priceRange?.start?.gross?.amount)}
                                   </span>
                                 </>

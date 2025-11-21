@@ -665,7 +665,7 @@ export const ReadMore = ({ text, charLimit = 120 }) => {
           style={{
             background: "none",
             border: "none",
-            color: "#a44100",
+            color: "#7d4432",
             cursor: "pointer",
             paddingLeft: "5px",
             fontSize: "14px",
@@ -747,7 +747,7 @@ export const ReadMoreList = ({ items, charLimit, itemStyle = {} }) => {
           style={{
             background: "none",
             border: "none",
-            color: "#a44100",
+            color: "#7d4432",
             cursor: "pointer",
             fontSize: "14px",
             marginTop: "5px",

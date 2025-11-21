@@ -103,7 +103,7 @@ const ProfileArea = ({ orderData, reviewList }) => {
                                 value={review.rating}
                                 edit={false}
                                 size={18}
-                                activeColor="#a44100"
+                                activeColor="#7d4432"
                               />
                               <div className="d-flex gap-2 mt-2">
                                 {review?.images.map((src, idx) => (

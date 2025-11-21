@@ -434,8 +434,8 @@ const CartMiniSidebar = () => {
                   href="/cart"
                   onClick={handleCloseCartMini}
                   className="tp-btn tp-btn-border mb-10 w-100"
-                   style={{background:"transparent", color:"#a44100", border:"none",
-                    border:"1px solid #a44100"
+                   style={{background:"transparent", color:"#7d4432", border:"none",
+                    border:"1px solid #7d4432"
                   }}
                 >
                   {" "}
@@ -465,8 +465,8 @@ const CartMiniSidebar = () => {
                     handleCloseCartMini();
                   }}
                   className="tp-btn tp-btn-border w-100 mt-10"
-                  style={{background:"transparent", color:"#a44100", border:"none",
-                    border:"1px solid #a44100"
+                  style={{background:"transparent", color:"#7d4432", border:"none",
+                    border:"1px solid #7d4432"
                   }}
                 >
                   Continue to Shop

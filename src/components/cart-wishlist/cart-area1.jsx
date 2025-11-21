@@ -221,9 +221,9 @@ const CartArea1 = () => {
               type="button"
               className="tp-btn tp-btn-border mr-10"
               style={{
-                border: "1px solid #a44100",
+                border: "1px solid #7d4432",
                 background: "transparent",
-                color: "#a44100",
+                color: "#7d4432",
               }}
               onClick={() => {
                 router.push("shop");
@@ -260,8 +260,8 @@ const CartArea1 = () => {
                   type="button"
                   className="btn btn-outline-secondary btn-sm"
                   style={{
-                    color: "#a44100",
-                    border: "1px solid #a44100",
+                    color: "#7d4432",
+                    border: "1px solid #7d4432",
                     borderRadius: "20px",
                     padding: "5px 25px",
                   }}
@@ -271,7 +271,7 @@ const CartArea1 = () => {
                 {/* <Link
                                             href="/checkout"
                                             type="button"
-                                            style={{ color: "#a44100" }}
+                                            style={{ color: "#7d4432" }}
                                             className="tp-checkout-coupon-form-reveal-btn"
                                           >
                                             Apply Coupon Code in Checkout

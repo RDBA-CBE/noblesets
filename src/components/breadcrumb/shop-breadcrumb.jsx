@@ -72,7 +72,7 @@ const ShopBreadcrumb = ({
           backgroundImage: `url(${bgImage?.src})`,
         //   background:"linear-gradient(to right,color-mix(in srgb, #fbdccc 40%, #e09a7a),#e09a7a)",
         //  borderRadius:"30px", 
-         color:"#a44100"
+         color:"#7d4432"
       }}
       >
         <div className="container-fluid">
@@ -104,21 +104,21 @@ const ShopBreadcrumb = ({
                           });
                         }
                       }}
-                      style={{ cursor: "pointer",color:"#a44100", fontSize:"18px", textTransform:"capitalize" }}
+                      style={{ cursor: "pointer",color:"#7d4432", fontSize:"18px", textTransform:"capitalize" }}
                     >
                      {""}  <NextArr/> {categories[1].toLowerCase()}
                     </span>
                   )}
                   {categories[2] && (
-                    <span style={{ cursor: "pointer",color:"#a44100", fontSize:"18px",textTransform:"capitalize" }} > {""}  <NextArr/> {categories[2].toLowerCase()}</span>
+                    <span style={{ cursor: "pointer",color:"#7d4432", fontSize:"18px",textTransform:"capitalize" }} > {""}  <NextArr/> {categories[2].toLowerCase()}</span>
                   )} */}
                 </h3>
                 {/* {title !== "Shop" && (
-                  <div style={{ color: "#a44100", textAlign: "center" }}>
+                  <div style={{ color: "#7d4432", textAlign: "center" }}>
                     <span >
-                      <a href="/" style={{color:"#a44100"}}>HOME</a>
+                      <a href="/" style={{color:"#7d4432"}}>HOME</a>
                     </span>{" "}
-                    / <span style={{color:"#a44100"}}>{subtitle}</span>
+                    / <span style={{color:"#7d4432"}}>{subtitle}</span>
                   </div>
                 )} */}
 
@@ -180,7 +180,7 @@ const ShopBreadcrumb = ({
                               catList?.map((item, index) => (
                                 <li key={index}>
                                   <h5
-                                    className="shop-banner-categoryList-title cursor-pointer" style={{color:"#a44100"}}
+                                    className="shop-banner-categoryList-title cursor-pointer" style={{color:"#7d4432"}}
                                     onClick={() => {
                                       router.push({
                                         pathname: "/shop",

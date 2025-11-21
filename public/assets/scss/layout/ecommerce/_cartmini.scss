@@ -147,7 +147,7 @@
             height: 10px;
             border-radius: 0;
             &-bar{
-                background-color:#a44100;
+                background-color:#7d4432;
             }
         }
 
@@ -193,7 +193,7 @@
         font-weight: 500;
         & a{
             &:hover{
-                color: #a44100;
+                color: #7d4432;
             }
         }
     }
@@ -287,9 +287,9 @@
                 }
                 &-border{
                     &:hover{
-                        background-color:#a44100;
+                        background-color:#7d4432;
                         color: var(--tp-common-white);
-                        border-color: #a44100;
+                        border-color: #7d4432;
                     }
                 }
                 
@@ -299,7 +299,7 @@
     &__price{
         font-size: 14px;
         font-weight: 500;
-        color: #a44100;
+        color: #7d4432;
     }
     &__quantity{
         font-size: 12px;
@@ -322,11 +322,11 @@
             background-color: var(--tp-grey-1);
             font-size: 15px;
             text-transform: capitalize;
-            color: #a44100;
+            color: #7d4432;
             padding: 10px 30px;
             text-align: center;
             &:hover{
-                background-color:#a44100;
+                background-color:#7d4432;
                 color: var(--tp-common-white);
             }
         }

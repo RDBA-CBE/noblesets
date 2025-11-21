@@ -242,9 +242,9 @@
 
                 &:hover{
                     & > a{
-                        color: #a44100;
+                        color: #7d4432;
                         &::after{
-                            color: #a44100;
+                            color: #7d4432;
                         }
                     }
                 }
@@ -253,9 +253,9 @@
                     & li{
                         &:hover{
                             & > a{
-                                color: #a44100;
+                                color: #7d4432;
                                 &::after{
-                                    color: #a44100;
+                                    color: #7d4432;
                                 }
                             }
                         }
@@ -265,12 +265,12 @@
                 & .home-menu-title{
                     & a{
                         &:hover{
-                            color: #a44100;
+                            color: #7d4432;
                         }
                     }
                 }
                 & .home-menu-item:hover .home-menu-title {
-                    color:#a44100;
+                    color:#7d4432;
                 }
             }
         }

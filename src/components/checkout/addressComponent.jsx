@@ -48,7 +48,7 @@ const BillingAddressModal = (props) => {
             padding:"20px 29px",
             borderRadius:"20px",
             border:"1px solid #e09a7a", // Set background color to your preference
-            color:"#a44100",
+            color:"#7d4432",
           }
         }}
         okButtonProps={{

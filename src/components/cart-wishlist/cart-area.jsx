@@ -194,7 +194,7 @@ const CartArea = () => {
                             <Link
                               href="/checkout"
                               type="button"
-                              style={{ color: "#a44100" }}
+                              style={{ color: "#7d4432" }}
                               className="tp-checkout-coupon-form-reveal-btn"
                             >
                               Apply Coupon Code in Checkout
