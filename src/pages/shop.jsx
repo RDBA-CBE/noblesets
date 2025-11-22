@@ -853,7 +853,9 @@ const ShopPage = () => {
     <Wrapper>
       <SEO pageTitle="Shop" />
       <HeaderSection/>
-      <div style={{background:"#f6e9d9"}}>
+      <div 
+      // style={{background:"#f6e9d9"}}
+      >
       <div >
       <ShopBreadcrumb
         title={shopTitle}

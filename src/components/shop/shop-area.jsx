@@ -256,10 +256,10 @@ const ShopArea = ({
           >
             <div>
               <span>
-                <Link href="/">Home</Link>
+                <Link href="/" style={{color:"#be8b7b"}}>Home</Link>
               </span>{" "}
                <NextArr/>{" "}
-              <span style={{ color: "black", fontWeight: "400" }}>
+              <span style={{ color: "#7d4432", fontWeight: "400" }}>
                 {/* <Link href="/shop">{categories[0]}</Link>{" "} */}
                 <span
                   onClick={() => {

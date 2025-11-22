@@ -765,7 +765,7 @@ const DetailsWrapper1 = ({
   return (
     <div className="tp-product-details-wrapper">
       <div
-        className="bg-white rounded pt-10 pb-10"
+        className="bg-peach rounded pt-10 pb-10"
         style={{
           display: "flex",
           justifyContent: "space-between",
@@ -793,7 +793,7 @@ const DetailsWrapper1 = ({
               >
                 <LeftOutlined
                   style={{
-                    color: "gray",
+                    color: "#333435",
                     paddingRight: "5px",
                     cursor: "pointer",
                   }}
@@ -879,7 +879,7 @@ const DetailsWrapper1 = ({
               <div style={{ position: "relative" }}>
                 <LeftOutlined
                   style={{
-                    color: "gray",
+                    color: "#333435",
                     paddingRight: "5px",
                     cursor: "pointer",
                   }}
@@ -891,7 +891,7 @@ const DetailsWrapper1 = ({
               <Tooltip title="Back to product">
                 <Link href="/shop">
                   <AppstoreOutlined
-                    style={{ color: "gray", paddingRight: "5px" }}
+                    style={{ color: "#333435", paddingRight: "5px" }}
                   />
                 </Link>
               </Tooltip>
@@ -904,7 +904,7 @@ const DetailsWrapper1 = ({
               >
                 <RightOutlined
                   style={{
-                    color: "gray",
+                    color: "#333435",
                     paddingRight: "5px",
                     cursor: "pointer",
                   }}
@@ -990,7 +990,7 @@ const DetailsWrapper1 = ({
               <div style={{ position: "relative" }}>
                 <RightOutlined
                   style={{
-                    color: "gray",
+                    color: "#333435",
                     paddingRight: "5px",
                     cursor: "pointer",
                   }}
@@ -1010,7 +1010,7 @@ const DetailsWrapper1 = ({
 
       <div className="product-info">
         {/* price */}
-        <div className="bg-white my-3 p-3 rounded">
+        <div className="bg-peach my-3 p-3 rounded">
           <div className="d-flex justify-content-between">
             <h3 className="tp-product-details-title product-title">
               {capitalizeFLetter(productItem?.name || productItem?.node?.name)}
@@ -1115,7 +1115,7 @@ const DetailsWrapper1 = ({
                         className="pr-5"
                         style={{
                           textDecoration: "line-through",
-                          color: "gray",
+                          color: "#333435",
                         }}
                       >
                         {variantDetails ? (
@@ -1170,7 +1170,7 @@ const DetailsWrapper1 = ({
                   ) && (
                     <span
                       className="pr-5"
-                      style={{ textDecoration: "line-through", color: "gray" }}
+                      style={{ textDecoration: "line-through", color: "#333435" }}
                     >
                       {variantDetails ? (
                         <>
@@ -1363,13 +1363,25 @@ const DetailsWrapper1 = ({
               </span>
             )}
           </p>
-          {productItem?.metadata?.length > 0 && (
+          {/* {productItem?.metadata?.length > 0 && (
             <p className="product-desc text-muted" style={{ color: "black" }}>
               {
                 productItem?.metadata?.find(
                   (item) => item.key === "short_description"
                 )?.value
               }
+            </p>
+          )} */}
+
+          {productItem?.metadata?.length > 0 && (
+            <p
+              className="product-desc text-muted"
+              style={{ color: "black", whiteSpace: "pre-line" }}
+            >
+              {productItem?.metadata
+                ?.find((item) => item.key === "short_description")
+                ?.value?.split(" || ")
+                ?.join("\n")}
             </p>
           )}
 
@@ -1400,7 +1412,7 @@ const DetailsWrapper1 = ({
                             className="pr-5"
                             style={{
                               textDecoration: "line-through",
-                              color: "gray",
+                              color: "#333435",
                             }}
                           >
                             {variantDetails ? (
@@ -1468,7 +1480,7 @@ const DetailsWrapper1 = ({
                             className="pr-5"
                             style={{
                               textDecoration: "line-through",
-                              color: "gray",
+                              color: "#333435",
                             }}
                           >
                             {variantDetails ? (
@@ -1574,14 +1586,14 @@ const DetailsWrapper1 = ({
         </div>
 
         {/* Delivery */}
-        <div className="delivery-box my-3 p-3 rounded  bg-white">
+        <div className="delivery-box my-3 p-3 rounded  bg-peach">
           <h6>Delivery Details</h6>
           <PincodeChecker />
         </div>
 
         {/* Warranty */}
 
-        {/* <div className="warranty-box my-3 p-3  rounded bg-white text-center">
+        {/* <div className="warranty-box my-3 p-3  rounded bg-peach text-center">
           <p className="mb-0 text-black">
             <strong>1 YEAR</strong> Warranty
             
@@ -1589,7 +1601,7 @@ const DetailsWrapper1 = ({
         </div> */}
 
         {/* Offers */}
-        {/* <div className="offer-box my-3 p-3 rounded bg-white">
+        {/* <div className="offer-box my-3 p-3 rounded bg-peach">
           <h6 className="">Available Offers</h6>
           <div className="bg-gold p-3 rounded d-flex justify-content-between align-items-center">
             <div>
@@ -1605,7 +1617,7 @@ const DetailsWrapper1 = ({
           </div>
         </div> */}
 
-        <div className="delivery-box my-3 p-3 rounded  bg-white">
+        <div className="delivery-box my-3 p-3 rounded  bg-peach">
           <div className="pd-tabs-container">
             <ul className="nav nav-tabs pd-nav-tabs">
               <li className="nav-item">
@@ -1640,7 +1652,7 @@ const DetailsWrapper1 = ({
               </li>
             </ul>
 
-            <div className="tab-content pd-tab-content  rounded-bottom p-3 bg-white">
+            <div className="tab-content pd-tab-content  rounded-bottom p-3 bg-peach">
               {/* Product Details */}
 
               <div className="tab-pane fade show active" id="pd-details">
@@ -1680,7 +1692,7 @@ const DetailsWrapper1 = ({
                             <div key={block.id}>
                               {block.type === "paragraph" && (
                                 <p
-                                  style={{ color: "gray", marginBottom: "5px" }}
+                                  style={{ color: "#333435", marginBottom: "5px" }}
                                 >
                                   <ReadMore
                                     text={
@@ -1701,7 +1713,7 @@ const DetailsWrapper1 = ({
                                     block.data.items &&
                                       block?.data?.items.map((item) => (
                                         <li
-                                          style={{ color: "gray" }}
+                                          style={{ color: "#333435" }}
                                           dangerouslySetInnerHTML={{
                                             __html: item.includes("<b>")
                                               ? `<b>${item}</b>`
@@ -1754,10 +1766,20 @@ const DetailsWrapper1 = ({
                         <tbody>
                           {attributeList?.map((attribute) => (
                             <tr>
-                              <td style={{ fontWeight: "bold" }}>
+                              <td
+                                style={{
+                                  fontWeight: "bold",
+                                  background: "transparent",
+                                }}
+                              >
                                 {attribute?.title}
                               </td>
-                              <td style={{ textAlign: "right" }}>
+                              <td
+                                style={{
+                                  textAlign: "right",
+                                  background: "transparent",
+                                }}
+                              >
                                 {attribute?.value}
                               </td>
                             </tr>
@@ -1900,12 +1922,12 @@ const DetailsWrapper1 = ({
                         productItem?.node?.brand?.name}
                     </h4>
 
-                    <p className="mt-2" style={{ color: "#55585b" }}>
+                    <p className="mt-2" style={{ color: "#333435" }}>
                       {productItem?.brand?.description ? (
                         <>
                           {limitChar(productItem?.brand?.description, 200)}{" "}
                           <span
-                            style={{ color: "#7d4432", cursor:"pointer" }}
+                            style={{ color: "#7d4432", cursor: "pointer" }}
                             onClick={() => {
                               router.push({
                                 pathname: "/brand",
@@ -1928,7 +1950,7 @@ const DetailsWrapper1 = ({
                             200
                           )}
                           <span
-                            style={{ color: "#7d4432", cursor:"pointer" }}
+                            style={{ color: "#7d4432", cursor: "pointer" }}
                             onClick={() => {
                               router.push({
                                 pathname: "/brand",
@@ -1975,16 +1997,16 @@ const DetailsWrapper1 = ({
           </div>
         </div>
 
-        <div className="delivery-box my-3 p-3 rounded  bg-white">
+        <div className="delivery-box my-3 p-3 rounded  bg-peach">
           <div>
-            <p style={{ color: "#55585b" }}>
+            <p style={{ color: "#333435" }}>
               <b>SKU:</b>{" "}
               {variantDetails
                 ? variantDetails?.sku
                 : productItem?.defaultVariant?.sku}
             </p>
             {productItem?.category?.length > 0 && (
-              <p style={{ color: "#55585b", cursor: "pointer" }}>
+              <p style={{ color: "#333435", cursor: "pointer" }}>
                 <b>Categories:</b>{" "}
                 {productItem?.category?.map((category, index) => {
                   return (
@@ -2010,7 +2032,7 @@ const DetailsWrapper1 = ({
               </p>
             )}
             {productItem?.tags?.length > 0 && (
-              <p style={{ color: "#55585b" }}>
+              <p style={{ color: "#333435" }}>
                 <b>Tags:</b>{" "}
                 {productItem?.tags?.map((tag, index) => {
                   return (
@@ -2053,19 +2075,19 @@ const DetailsWrapper1 = ({
                 }}
               >
                 <h5 style={{ fontWeight: "400" }}>Cancellation Policy:</h5>
-                <p style={{ color: "#55585b" }}>
+                <p style={{ color: "#333435" }}>
                   If you wish to cancel your order, we shall provide you with an
                   option to replace the ordered product with another product. In
                   no manner shall we provide any refund of the ordered product.
                 </p>
-                <p style={{ color: "#55585b" }}>
+                <p style={{ color: "#333435" }}>
                   In the case where your order gets cancelled from our end for
                   some reason, we shall notify you about the same. We will also
                   take all efforts to refund the amount paid by yourself to your
                   original payment method within 2 working days.
                 </p>
                 <h5 style={{ fontWeight: "400" }}>Return & Exchange Policy:</h5>
-                <p style={{ color: "#55585b" }} className="mb-1">
+                <p style={{ color: "#333435" }} className="mb-1">
                   {" "}
                   <svg
                     xmlns="http://www.w3.org/2000/svg"
@@ -2080,7 +2102,7 @@ const DetailsWrapper1 = ({
                   Shipping charges are not refundable.
                 </p>
 
-                <p style={{ color: "#55585b" }} className="mb-1">
+                <p style={{ color: "#333435" }} className="mb-1">
                   {" "}
                   <svg
                     xmlns="http://www.w3.org/2000/svg"
@@ -2098,7 +2120,7 @@ const DetailsWrapper1 = ({
                   vary in person, any return/ exchange on these criteria will
                   not be accepted.
                 </p>
-                <p style={{ color: "#55585b" }} className="mb-1">
+                <p style={{ color: "#333435" }} className="mb-1">
                   {" "}
                   <svg
                     xmlns="http://www.w3.org/2000/svg"
@@ -2179,18 +2201,19 @@ const DetailsWrapper1 = ({
         preventScroll={true}
         shouldCloseOnOverlayClick={true}
         contentLabel="Product Modal"
-        // className={"tp-product-details-wrapper"}
+        className={"product-det-modal"}
         ariaHideApp={false} // optional: disables appElement warning
       >
-        <div className="tp-product-modal">
-          <div className="tp-product-modal-content d-lg-flex flex-column gap-4">
+        <div className="tp-product-modal p-0">
+          <div className="tp-product-modal-content d-lg-flex flex-column gap-4 p-0">
             <button
               onClick={() => setIsModelOpen(false)}
               type="button"
-              className="btn btn-sm  align-self-end text-white"
-              style={{
-                background:
-                  "linear-gradient( to right, color-mix(in srgb, #fbdccc 40%, #e09a7a), #e09a7a )",
+              className="btn btn-sm  align-self-end text-black"
+              style={ {
+                // background:
+                //   "linear-gradient( to right, color-mix(in srgb, #fbdccc 40%, #e09a7a), #e09a7a )",
+                fontSize:"20px"
               }}
             >
               ✕
@@ -2236,9 +2259,10 @@ const DetailsWrapper1 = ({
         style={customStyles}
         contentLabel="Product Modal"
         ariaHideApp={false} // optional: disables appElement warning
+        className={"product-det-modal"}
       >
-        <div className="tp-product-modal">
-          <div className="tp-product-modal-content d-lg-flex flex-column gap-4">
+        <div className="tp-product-modal p-0">
+          <div className="tp-product-modal-content d-lg-flex flex-column gap-4 p-0">
             <button
               onClick={() => {
                 setFormData({
@@ -2252,17 +2276,17 @@ const DetailsWrapper1 = ({
                 setIsProductModelOpen(false);
               }}
               type="button"
-              className="btn btn-sm  align-self-end text-white"
+              className="btn btn-sm  align-self-end text-black"
               style={{
-                background:
-                  "linear-gradient( to right, color-mix(in srgb, #fbdccc 40%, #e09a7a), #e09a7a )",
+                // background:
+                //   "linear-gradient( to right, color-mix(in srgb, #fbdccc 40%, #e09a7a), #e09a7a )",
               }}
             >
               ✕
             </button>
 
             <div className="container mt-5">
-              <form onSubmit={handleCustomizedProduct} className="p-4 rounded">
+              <form onSubmit={handleCustomizedProduct} className=" rounded">
                 <div className="row mb-3">
                   <div className="col-md-6">
                     <label className="form-label">Your Name</label>

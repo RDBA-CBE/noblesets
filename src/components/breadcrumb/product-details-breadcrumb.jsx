@@ -49,7 +49,7 @@ const ProductDetailsBreadcrumb = ({
                 <span>
                   <>Home</>
                 </span>{" "}
-                <span>
+                <span style={{color:"#000"}}>
                   <span
                     onClick={() => {
                       if (categories[0] == "Shop") {

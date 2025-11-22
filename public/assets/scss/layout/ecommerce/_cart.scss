@@ -137,7 +137,7 @@
         font-weight: 500;
         font-size: 16px;
         color: var(--tp-common-white);
-        background: linear-gradient(to right, color-mix(in srgb, #fbdccc 40%, #e09a7a), #e09a7a);;
+        background: #9b604d;
         padding: 10px 30px;
 
         &:hover {
@@ -245,7 +245,7 @@
             width: 8px;
             height: 8px;
             border-radius: 50%;
-            background: linear-gradient(to right, color-mix(in srgb, #fbdccc 40%, #e09a7a), #e09a7a);;
+            background: #9b604d;
             visibility: hidden;
             opacity: 0;
             @extend %tp-transition;
@@ -265,12 +265,12 @@
       font-size: 14px;
       font-weight: 400;
       color: var(--tp-common-white);
-      background: linear-gradient(to right, color-mix(in srgb, #fbdccc 40%, #e09a7a), #e09a7a);;
+      background: #9b604d;
       display: inline-block;
       padding: 5px 30px;
       text-align: center;
       &:hover {
-        background: linear-gradient(to right, color-mix(in srgb, #fbdccc 40%, #e09a7a), #e09a7a);;
+        background: #9b604d;
         color: white;
       }
     }

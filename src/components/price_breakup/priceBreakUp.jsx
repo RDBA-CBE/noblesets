@@ -37,7 +37,7 @@ export default function PriceBreakup(props) {
               : ""
           }`}
           style={{
-            background: idx === breakupData.length - 1 ? "#7d443230" : "#f8f9fa",
+            background: idx === breakupData.length - 1 ? "#7d443230" : "#fff",
           }}
         >
           <div className="d-flex justify-content-between">

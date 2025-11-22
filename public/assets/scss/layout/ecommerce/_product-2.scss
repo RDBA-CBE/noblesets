@@ -199,11 +199,11 @@
             & #{$self}{
                 &-action-btn-2{
                     &.active{
-                        background: linear-gradient(to right, color-mix(in srgb, #fbdccc 40%, #e09a7a), #e09a7a);;
+                        background: #9b604d;
                         margin-right: 5px; 
                     }
                     &:hover{
-                        background: linear-gradient(to right, color-mix(in srgb, #fbdccc 40%, #e09a7a), #e09a7a);;
+                        background: #9b604d;
                     }
                 }
             }
@@ -212,7 +212,7 @@
             & #{$self}{
                 &-action-btn-3{
                     &:hover{
-                        background: linear-gradient(to right, color-mix(in srgb, #fbdccc 40%, #e09a7a), #e09a7a);;
+                        background: #9b604d;
 
                     }
                 }
@@ -249,7 +249,7 @@
             }
             &:hover{
                 color: var(--tp-common-white);
-                background: linear-gradient(to right, color-mix(in srgb, #fbdccc 40%, #e09a7a), #e09a7a);;
+                background: #9b604d;
 
                 #{$self}{
                     &-tooltip{

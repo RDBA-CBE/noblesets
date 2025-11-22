@@ -51,7 +51,7 @@ export default function PincodeChecker() {
         <button
           onClick={handleCheck}
           className="btn text-white"
-          style={{ background: "linear-gradient( to right, color-mix(in srgb, #fbdccc 40%, #e09a7a),#e09a7a)" ,
+          style={{ background: "#9b604d" ,
             border:"none"
           }}
         >

@@ -58,11 +58,11 @@
                 font-size: 14px;             
                 color: white;
                 border: 1px solid #7d4432;
-                background: linear-gradient(to right, color-mix(in srgb, #fbdccc 40%, #e09a7a), #e09a7a);;
+                background: #9b604d;
                 padding: 2px 21px;
                 &:hover{
                     color: var(--tp-common-white);
-                    background: linear-gradient(to right, color-mix(in srgb, #fbdccc 40%, #e09a7a), #e09a7a);;
+                    background: #9b604d;
                 }
             }
         }
@@ -189,7 +189,7 @@
                             background-color:#7d4432;
                         }
                         & span{
-                            background: linear-gradient(to right, color-mix(in srgb, #fbdccc 40%, #e09a7a), #e09a7a);;
+                            background: #9b604d;
                             border-color: #7d4432;
                             color: var(--tp-common-white);
                         }

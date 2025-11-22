@@ -790,7 +790,7 @@
 }
 
 .common-bg {
-  background: #f6e9d9 !important;
+  // background: #f6e9d9 !important;
 }
 
 .gift-section-le img {
@@ -1468,7 +1468,7 @@ ol.alphalist li ol li {
 
 .page-button.active {
   color: white;
-  background: linear-gradient(180deg, #9b5d34, #7a4525);
+  background: #9b604d;
   border-radius: 5px;
   padding: 0px 10px;
   font-size: 14px;
@@ -2077,6 +2077,10 @@ hr.footer-divider {
   );
 }
 
+.bg-peach {
+  background: #fff2ec;
+}
+
 .review-sec h1,
 .review-sec h4,
 .review-sec h5 {
@@ -2239,13 +2243,14 @@ hr.footer-divider {
 
 .pd-nav-tabs .nav-link {
   font-weight: 500;
-  color: #555;
+  color: #333435;
 }
 
 .pd-nav-tabs .nav-link.active {
   color: #7d4432;
   font-weight: 600;
   border-color: transparent transparent #7d4432 transparent;
+  background: transparent;
 }
 
 .pd-tab-content {
@@ -2586,7 +2591,7 @@ hr.footer-divider {
 }
 
 .cart-container .btn-outline-secondary:hover {
-  background: linear-gradient(180deg, #9b5d34, #7a4525) !important;
+  background: #9b604d !important;
   color: #fff !important;
 }
 
@@ -2615,8 +2620,8 @@ hr.footer-divider {
 
 .tp-shop-top-select .nice-select {
   background-color: transparent !important;
-  color: #7d4432 !important;
-  border: 1px solid #e09a7a !important;
+  color: #000 !important;
+  border: 1px solid #000 !important;
   border-radius: 20px !important;
 }
 
@@ -3087,7 +3092,7 @@ header .tp-product-action-btn-3:hover {
 
 .shop-page .ShopByCollections .card {
   background-image: none !important;
-  background-color: #f6e9d9 !important;
+  // background-color: #f6e9d9 !important;
 }
 
 .shop-page .ShopByCollections::before {
@@ -4453,4 +4458,35 @@ header .tp-product-action-btn-3:hover {
   .media-grid {
     gap: 0;
   }
+}
+
+.product-det-modal{
+      position: absolute;
+    inset: 40px;
+    border: 1px solid rgb(204, 204, 204);
+    background: rgb(255, 255, 255);
+    overflow: auto;
+    border-radius: 10px;
+    outline: none;
+    padding: 0px !important;
+    width: 600px;
+    max-width: 800px;
+    margin: auto;
+    z-index: 1000;
+  height: fit-content;
+}
+
+.product-det-modal{
+  position: absolute;
+    inset: 40px;
+    border: 1px solid rgb(204, 204, 204);
+    background: rgb(255, 255, 255);
+    overflow: auto;
+    border-radius: 10px;
+    outline: none;
+    padding: 0px !important;
+    max-width: 800px;
+    margin: auto;
+    z-index: 1000;
+  height: fit-content;
 }
