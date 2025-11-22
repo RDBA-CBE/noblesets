@@ -5,7 +5,9 @@ import LoginShapes from './login-shapes';
 
 const ForgotArea = () => {
   return (
-    <section className="tp-login-area pb-140 pt-120 p-relative z-index-1 fix" style={{background:"#f6e9d9"}}>
+    <section className="tp-login-area pb-140 pt-120 p-relative z-index-1 fix" 
+    // style={{background:"#f6e9d9"}}
+    >
       {/* <LoginShapes /> */}
       <div className="container">
         <div className="row justify-content-center">

@@ -2466,7 +2466,7 @@ hr.footer-divider {
 }
 
 .cart-item {
-  background-color: #fff;
+  background-color: #fff2ec;
   // border: 1px solid #eee;
   border-radius: 20px;
 }
@@ -2479,9 +2479,9 @@ hr.footer-divider {
 
 .item-name {
   font-size: 0.95rem;
-  color: #555;
+  color: #333435;
 }
-
+checkout
 .item-price {
   font-size: 1.1rem;
   font-weight: bold;
@@ -2489,7 +2489,7 @@ hr.footer-divider {
 }
 
 .cart-summary {
-  background-color: #fff;
+  background-color: #fff2ec;
   border-radius: 20px !important;
   // border: 1px solid #eee;
 }
@@ -2523,7 +2523,7 @@ hr.footer-divider {
 
 .checkout-title {
   font-weight: 600;
-  color: #333;
+  color: #000;
 }
 
 .order-summary ul li {
@@ -2567,13 +2567,46 @@ hr.footer-divider {
 }
 
 .checkoutform {
-  background-color: #fff;
+  background-color: #fff2ec;
   border-radius: 20px;
 }
 .checkoutPrice {
-  background-color: #fff;
+  background-color: #fff2ec;
   border-radius: 20px;
 }
+
+.checkoutform input {
+  background: transparent !important;
+  border: 1px solid #dcc3bc;
+}
+
+.checkoutform textarea {
+  background: transparent !important;
+  border: 1px solid #dcc3bc;
+}
+
+.checkoutform label{
+  color: #333;
+}
+
+.checkoutform .form-select{
+  background: transparent !important;
+  border: 1px solid #dcc3bc;
+}
+
+.checkoutPrice .form-check-input[type=checkbox] {
+  background: transparent !important;
+  border: 1px solid #dcc3bc;
+}
+
+.checkoutPrice ul li {
+  border-bottom: 1px solid #dcc3bc !important;
+}
+
+.checkoutPrice .tp-login-remeber label::after{
+      border: 1px solid #dcc3bc;
+}
+
 
 // .tp-btn-border{
 // // background: linear-gradient(to right, #fbdccc 40%, #e09a7a) ;
@@ -2664,20 +2697,12 @@ header .tp-product-action-btn-3:hover {
 }
 .tp-product-action-btn-3.active {
   border: none !important;
-  background: linear-gradient(
-    to right,
-    color-mix(in srgb, #fbdccc 40%, #e09a7a),
-    #e09a7a
-  ) !important;
+  background: #9b604d !important;
 }
 
 .tp-product-action-btn-3:hover {
   border: none !important;
-  background: linear-gradient(
-    to right,
-    color-mix(in srgb, #fbdccc 40%, #e09a7a),
-    #e09a7a
-  ) !important;
+  background: #9b604d !important;
 }
 
 @media (max-width: 1200px) {
@@ -2784,12 +2809,8 @@ header .tp-product-action-btn-3:hover {
 }
 
 .profile__tab .nav-tabs .nav-link.active {
-  background: linear-gradient(
-    to right,
-    color-mix(in srgb, #fbdccc 40%, #e09a7a),
-    #e09a7a
-  ) !important;
-  color: #fff !important;
+  background: #fff !important;
+  color: #7d4432 !important;
 }
 .profile__tab-content {
   border-radius: 10px !important;
@@ -2813,11 +2834,15 @@ header .tp-product-action-btn-3:hover {
 }
 
 .address-nav-tab .address-box p {
-  color: gray !important;
+  color: #000 !important;
 }
 
 .address-nav-tab .address-box-active p {
-  color: #fff !important;
+  color: #7d4432 !important;
+}
+
+.address-box p{
+  color: #7d4432 !important;
 }
 
 // .wishlist-card-container {
@@ -2870,6 +2895,7 @@ header .tp-product-action-btn-3:hover {
   border-radius: 10px !important;
   margin-bottom: 20px !important;
   padding: 30px 0;
+  background: #fff2ec;
 }
 
 .wishlist-page .table > :not(caption) > * > * {
@@ -2885,10 +2911,10 @@ header .tp-product-action-btn-3:hover {
 }
 
 .profile__ticket table thead tr th {
-  background: #e09a7a !important;
+  background: #fff !important;
   //     background: linear-gradient(to right,
   //  color-mix(in srgb, #fbdccc 40%, #e09a7a), #e09a7a) !important;
-  color: #fff !important;
+  color: #7d4432 !important;
 }
 
 .profile__ticket {
@@ -2896,17 +2922,14 @@ header .tp-product-action-btn-3:hover {
 }
 
 .pagination-controls button {
-  background: linear-gradient(
-    to right,
-    color-mix(in srgb, #fbdccc 40%, #e09a7a),
-    #e09a7a
-  ) !important;
+  background: #fff !important;
   border-radius: 5px !important;
   border: none !important;
+
 }
 
 .pagination-controls .active {
-  background: #7d4432 !important;
+  background: #9b604d !important;
   border: none !important;
 }
 
@@ -2917,6 +2940,16 @@ header .tp-product-action-btn-3:hover {
 
 .order-updates-section {
   height: auto !important;
+}
+
+.order-status th{
+  background: transparent;
+  border-bottom: 1px solid #dcc3bc;
+}
+
+.order-status td{
+  background: transparent;
+  border-bottom: 1px solid #dcc3bc;
 }
 
 @media (min-width: "768px") {
@@ -3276,10 +3309,16 @@ header .tp-product-action-btn-3:hover {
 
 .profile__ticket table thead tr {
   padding: 1rem 1rem !important;
+ 
+}
+
+.profile__ticket .table tbody tr th {
+  background: transparent;
 }
 
 .profile__ticket .table tbody tr td {
   padding: 1rem 0 !important;
+  background: transparent;
 }
 
 .offcanvas__close-btn {
@@ -4476,7 +4515,7 @@ header .tp-product-action-btn-3:hover {
   height: fit-content;
 }
 
-.product-det-modal{
+.product-cus-modal{
   position: absolute;
     inset: 40px;
     border: 1px solid rgb(204, 204, 204);

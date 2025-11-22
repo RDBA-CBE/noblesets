@@ -4,7 +4,7 @@
 /*  7.12 Profile CSS
 /*----------------------------------------*/
 
-.profile {
+.profile {.profile__tab .nav-tabs
   &__inner {
   }
   &__tab {
@@ -13,18 +13,18 @@
       margin-bottom: 50px;
     }
     & .nav-tabs {
-      background-color: var(--tp-common-white);
+      background-color: #fff2ec;
       padding: 0;
       border: 0;
       margin: 0;
-      box-shadow: 0px 30px 50px rgba(5, 47, 40, 0.12);
+      // box-shadow: 0px 15px 30px rgba(5, 47, 40, 0.12);
     
       & .nav-link {
         font-weight: 500;
         font-size: 15px;
-        color: var(--tp-text-1);
+        color: #000;
         padding: 14px 30px;
-        background-color: var(--tp-common-white);
+        background-color: #fff2ec;
         position: relative;
         border-radius: 0;
         text-align: left;
@@ -43,9 +43,9 @@
 
         &.active {
           color: #c38c36;
-          background-color: rgb(254 235 201);
+          background-color: #9b604d;
           &:hover {
-            background-color: rgb(254 235 201);
+            background-color: #9b604d ;
           }
         }
 
@@ -75,8 +75,8 @@
 
     &-content {
       padding: 25px 30px 30px;
-      background-color: var(--tp-common-white);
-      box-shadow: 0px 30px 50px rgba(5, 47, 40, 0.12);
+      background-color: #fff2ec;
+      // box-shadow: 0px 30px 50px rgba(5, 47, 40, 0.12);
     }
   }
   &__info {
@@ -239,7 +239,7 @@
             background-color: transparent;
           }
           &:not(:last-child) {
-            border-bottom: 1px solid #eaeaef;
+            border-bottom: 1px solid #dcc3bc;
           }
 
           & td,
@@ -254,7 +254,7 @@
           }
 
           & th[scope="row"] {
-            color: #c78c2c;
+            color: #7d4432;
           }
 
           & td[data-info*="status done"] {
@@ -272,13 +272,13 @@
 
           & .tp-btn {
             padding: 7px 18px;
-            background-color: var(--tp-grey-1);
+            background-color: #9b604d;
             color: var(--tp-common-black);
             font-weight: 500;
             min-width: 90px;
             &:hover {
               color: var(--tp-common-white);
-              background-color: var(--tp-theme-primary);
+              
             }
           }
         }
@@ -292,7 +292,7 @@
       }
     }
     .table > :not(:first-child) {
-      border-color: #eaeaef;
+      border-color: #dcc3bc;
       border-top-width: 1px;
     }
     .table > :not(caption) > * > * {
@@ -665,10 +665,10 @@
   & button {
     padding: 0px 10px;
     margin-right: 10px;
-    background: #c38c36;
-    border: 1px solid #c38c36;
+    background: #fff;
+    border: 1px solid #fff;
     font-size: 14px;
-    color: var(--tp-common-white);
+    color: #7d4432;
     font-weight: 500;
 
     :disabled {

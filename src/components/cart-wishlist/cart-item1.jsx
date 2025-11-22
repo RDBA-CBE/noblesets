@@ -201,11 +201,11 @@ const CartItem1 = ({
       Sub Total: {channel == "india-channel" ? (
                       <>
                         {!isQuantity ? (
-                          <span style={{ color: "gray" }}>
+                          <span style={{ color: "#333435" }}>
                             &#8377;{addCommasToNumber(price)}
                           </span>
                         ) : (
-                          <span style={{ color: "gray" }}>
+                          <span style={{ color: "#333435" }}>
                             &#8377;{addCommasToNumber(price * quantity)}
                           </span>
                         )}
@@ -213,9 +213,9 @@ const CartItem1 = ({
                     ) : (
                       <>
                         {!isQuantity ? (
-                          <span style={{ color: "gray" }}>${addCommasToNumber(price)}</span>
+                          <span style={{ color: "#333435" }}>${addCommasToNumber(price)}</span>
                         ) : (
-                          <span style={{ color: "gray" }}>
+                          <span style={{ color: "#333435" }}>
                             ${addCommasToNumber(price * quantity)}
                           </span>
                         )}

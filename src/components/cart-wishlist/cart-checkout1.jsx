@@ -55,15 +55,15 @@ const CartCheckout1 = ({ cartData,cartLength }) => {
       <h5 className="mb-3">Payment Details ({cartLength} items)</h5>
             <ul className="list-unstyled">
               <li className="d-flex justify-content-between mb-2">
-                <span>Sub Total</span>
+                <span style={{color:"#333435"}}>Sub Total</span>
                 <span>
                     {checkChannel() === "india-channel" ? (
-                              <span className="tp-cart-checkout-top-price">
+                              <span className="tp-cart-checkout-top-price" style={{color:"#333435"}}>
                                 &#8377;
                                 {addCommasToNumber(list?.data?.checkout?.totalPrice?.gross?.amount)}
                               </span>
                             ) : (
-                              <span className="tp-cart-checkout-top-price">
+                              <span className="tp-cart-checkout-top-price" style={{color:"#333435"}}>
                                 ${addCommasToNumber(list?.data?.checkout?.totalPrice?.gross?.amount)}
                               </span>
                             )}

@@ -123,19 +123,20 @@ const ProfileInfo = () => {
                 background:
                   billingAddress?.isDefaultBillingAddress ||
                   billingAddress?.isDefaultShippingAddress
-                    ? "linear-gradient(to right, color-mix(in srgb, #fbdccc 40%, #e09a7a), #e09a7a)"
-                    : "white",
+                    ? "white"
+                    : "#fff2ec",
                 color:
                   billingAddress?.isDefaultBillingAddress ||
                   billingAddress?.isDefaultShippingAddress
-                    ? "#fff"
-                    : "gray",
+                    ? "#7d4432"
+                    : "#000",
               }}
             >
               <div>
                 {billingAddress?.isDefaultBillingAddress && (
                   <div className="d-flex gap-2">
-                  <Image src={Map} alt="location"  width={25} height={25} />
+                  {/* <Image src={Map} alt="location"  width={25} height={25} /> */}
+                   <LocationTwo/>
                   <h5 style={{ color: "black", fontWeight: "500",fontSize:"20px" }}>
                     Current Billing Address
                   </h5>
@@ -198,20 +199,21 @@ const ProfileInfo = () => {
                 background:
                   shippingAddress?.isDefaultBillingAddress ||
                   shippingAddress?.isDefaultShippingAddress
-                    ? "linear-gradient(to right, color-mix(in srgb, #fbdccc 40%, #e09a7a), #e09a7a)"
-                    : "white",
+                   ? "white"
+                   : "#fff2ec",
                 color:
                   shippingAddress?.isDefaultBillingAddress ||
                   shippingAddress?.isDefaultShippingAddress
-                    ? "#fff"
-                    : "gray",
+                   ? "#7d4432"
+                   : "#000",
               }}
             >
               <div>
                 {shippingAddress?.isDefaultShippingAddress && (
                  
                    <div className="d-flex gap-2">
-                   <Image src={Map} alt="location" width={25} height={25} />
+                   {/* <Image src={Map} alt="location" width={25} height={25} /> */}
+                    <LocationTwo/>
                    <h5 style={{ color: "black", fontWeight: "500",fontSize:"20px" }}>
                    Current Shipping Address
 

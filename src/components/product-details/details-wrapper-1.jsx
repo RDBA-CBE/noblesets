@@ -1617,7 +1617,7 @@ const DetailsWrapper1 = ({
           </div>
         </div> */}
 
-        <div className="delivery-box my-3 p-3 rounded  bg-peach">
+        <div className="delivery-box my-3 p-2 p-sm-3 rounded  bg-peach">
           <div className="pd-tabs-container">
             <ul className="nav nav-tabs pd-nav-tabs">
               <li className="nav-item">
@@ -2259,7 +2259,7 @@ const DetailsWrapper1 = ({
         style={customStyles}
         contentLabel="Product Modal"
         ariaHideApp={false} // optional: disables appElement warning
-        className={"product-det-modal"}
+        className={"product-cus-modal"}
       >
         <div className="tp-product-modal p-0">
           <div className="tp-product-modal-content d-lg-flex flex-column gap-4 p-0">
@@ -2285,7 +2285,7 @@ const DetailsWrapper1 = ({
               ✕
             </button>
 
-            <div className="container mt-5">
+            <div className="container mt-5 p-4">
               <form onSubmit={handleCustomizedProduct} className=" rounded">
                 <div className="row mb-3">
                   <div className="col-md-6">

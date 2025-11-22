@@ -18,7 +18,9 @@ const CartPage = () => {
       <SEO pageTitle="Cart" />
       {/* <HeaderTwo style_2={true} /> */}
        <HeaderSection/>
-       <div style={{background:"#f6e9d9"}}>
+       <div 
+      //  style={{background:"#f6e9d9"}}
+       >
       <div >
       <CommonBreadcrumb title="Shopping Cart" subtitle="Shopping Cart" BgImage={CartBanner}/>
        </div>

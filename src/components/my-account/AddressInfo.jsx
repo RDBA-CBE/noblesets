@@ -23,6 +23,7 @@ import Swal from "sweetalert2";
 import ButtonLoader from "../loader/button-loader";
 import Image from "next/image";
 import Map from "../../../public/assets/img/map-1.png";
+import { Location, LocationTwo } from "@/svg";
 
 const { Option } = Select;
 
@@ -418,24 +419,25 @@ const AddressInfo = () => {
                       background:
                         address?.isDefaultBillingAddress ||
                         address?.isDefaultShippingAddress
-                          ? "linear-gradient(to right, color-mix(in srgb, #fbdccc 40%, #e09a7a), #e09a7a)"
-                          : "white",
+                          ? "white"
+                          : "#fff2ec",
                       color:
                         address?.isDefaultBillingAddress ||
                         address?.isDefaultShippingAddress
-                          ? "#fff"
-                          : "gray",
+                          ? "#7d4432"
+                          : "#000",
                     }}
                   >
                     <div>
                       {address?.isDefaultBillingAddress && (
                         <div className="d-flex gap-2">
-                          <Image
+                          {/* <Image
                             src={Map}
                             alt="location"
                             width={25}
                             height={25}
-                          />
+                          /> */}
+                          <LocationTwo/>
                           <h5
                             style={{
                               color: "black",
@@ -449,12 +451,13 @@ const AddressInfo = () => {
                       )}
                       {address?.isDefaultShippingAddress && (
                         <div className="d-flex gap-2">
-                          <Image
+                          {/* <Image
                             src={Map}
                             alt="location"
                             width={25}
                             height={25}
-                          />
+                          /> */}
+                          <LocationTwo/>
                           <h5
                             style={{
                               color: "black",
@@ -496,7 +499,7 @@ const AddressInfo = () => {
                           color: `${
                             address?.isDefaultBillingAddress ||
                             address?.isDefaultShippingAddress
-                              ? "#fff"
+                              ? "#7d4432"
                               : "#7d4432"
                           }`,
                           padding: "5px",

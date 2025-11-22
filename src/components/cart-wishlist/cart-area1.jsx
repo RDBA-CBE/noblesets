@@ -248,9 +248,9 @@ const CartArea1 = () => {
             <div className="cart-summary p-4 rounded">
               <div className="d-flex justify-content-between align-items-start mb-3">
                 <div>
-                  <strong>Have a coupon?</strong>
+                  <strong style={{color:"#333435"}}>Have a coupon?</strong>
                   <br />
-                  <span className="text-muted">
+                  <span  style={{color:"#333435"}}>
                     {" "}
                     Apply Coupon Code in Checkout
                   </span>

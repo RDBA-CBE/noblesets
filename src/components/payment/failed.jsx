@@ -189,8 +189,8 @@ const Failed = ({ data, orderId, fullData }) => {
 
   return (
     <section
-      className="tp-login-area pt-50 pb-50 p-relative z-index-1 fix"
-      style={{ background: "#f6e9d9" }}
+      className="tp-login-area pt-50 pb-50 p-relative z-index-1 fix order-status"
+      // style={{ background: "#f6e9d9" }}
     >
       <div className="container">
         <div className="row" style={{ justifyContent: "space-between" }}>
@@ -199,12 +199,12 @@ const Failed = ({ data, orderId, fullData }) => {
               style={{
                 padding: "20px 30px",
                 borderRadius: "30px 20px",
-                background: "#ffff",
-                boxShadow: "3px 3px 5px #f1f1f1",
+                background: "#fff2ec",
+                // boxShadow: "3px 3px 5px #f1f1f1",
               }}
             >
               <p style={{ color: "red" }}>Order Failed</p>
-              <p style={{ color: "gray" }}>
+              <p style={{ color: "#333" }}>
                 Pay with{" "}
                 {paymentMethod == CASE_ON_DELIVERY
                   ? CASE_ON_DELIVERY
@@ -215,8 +215,8 @@ const Failed = ({ data, orderId, fullData }) => {
                 <table className="table width-100">
                   <thead>
                     <tr>
-                      <th className="tp-cart-header-quantity">PRODUCT</th>
-                      <th className="tp-cart-header-quantity">TOTAL</th>
+                      <th className="tp-cart-header-quantity" style={{background: "transparent"}}>PRODUCT</th>
+                      <th className="tp-cart-header-quantity" style={{background: "transparent"}}>TOTAL</th>
                     </tr>
                   </thead>
                   <tbody>
@@ -398,8 +398,8 @@ const Failed = ({ data, orderId, fullData }) => {
               style={{
                 padding: "20px 30px",
                 borderRadius: "30px 20px",
-                background: "#ffff",
-                boxShadow: "3px 3px 5px #f1f1f1",
+                background: "#fff2ec",
+                // boxShadow: "3px 3px 5px #f1f1f1",
               }}
             >
               <h3
@@ -407,7 +407,7 @@ const Failed = ({ data, orderId, fullData }) => {
                   color: "gray",
                   fontSize: "26px",
                   fontWeight: "500",
-                  color: "#b8795b",
+                  color: "#7d4432",
                 }}
               >
                 Your order has been Failed.
