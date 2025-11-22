@@ -3561,7 +3561,7 @@ header .tp-product-action-btn-3:hover {
 
 /* Insta */
 .insta-wrapper {
-  padding: 60px 0;
+  padding: 80px 0;
   background: #fff2ec; /* same as your screenshot background */
 }
 
@@ -3847,7 +3847,7 @@ header .tp-product-action-btn-3:hover {
 
 .sbb-wrapper {
   // background: #fdf4ef;
-  padding: 70px 0;
+  padding: 70px 0 40px;
   position: relative;
 }
 
@@ -4137,6 +4137,18 @@ header .tp-product-action-btn-3:hover {
   cursor: pointer;
 }
 
+.bestSellers .tp-brand-slider-arrow button{
+  top: 65%;
+}
+
+.bestSellers .tp-brand-slider-button-next{
+  right: 0px !important;
+}
+
+.bestSellers .tp-brand-slider-button-prev{
+  left: 0px !important;
+}
+
 /* Responsive */
 @media (max-width: 768px) {
   .bs-large {
@@ -4166,7 +4178,7 @@ header .tp-product-action-btn-3:hover {
 .np-section {
   background: #fff2ec;
   padding: 40px 0;
-  margin-top: 100px;
+  margin-top: 60px;
 }
 
 /* LEFT IMAGE */

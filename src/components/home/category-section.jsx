@@ -11,7 +11,7 @@ import banner_bg_5 from "@assets/img/category-5.png";
 import banner_bg_6 from "@assets/img/category-6.png";
 import { useRouter } from "next/router";
 import { Swiper, SwiperSlide } from "swiper/react";
-import { Navigation } from "swiper";
+import { Autoplay, Navigation } from "swiper";
 import { ArrowNextSm, ArrowPrevSm } from "@/svg";
 
 const HomeCategorySection = () => {
@@ -24,6 +24,7 @@ const HomeCategorySection = () => {
       nextEl: ".tp-brand-slider-button-next",
       prevEl: ".tp-brand-slider-button-prev",
     },
+   
     breakpoints: {
       992: {
         slidesPerView: 4,
@@ -82,6 +83,7 @@ const HomeCategorySection = () => {
                 >
                   <Swiper
                     {...slider_setting}
+                    autoplay={true}
                     modules={[Navigation]}
                     className="tp-brand-slider-active swiper-container"
                   >

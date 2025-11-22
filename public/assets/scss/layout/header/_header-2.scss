@@ -251,8 +251,8 @@
     &-bottom{
         &-2{
             @media #{$lg, $md, $sm, $xs}{
-                padding-top: 15px;
-                padding-bottom: 15px;
+                padding-top: 0px;
+                padding-bottom: 0px;
             }
         }
     }

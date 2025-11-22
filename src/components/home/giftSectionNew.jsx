@@ -5,7 +5,7 @@ export default function GiftSectionNew() {
 
   const router = useRouter()
   return ( 
-    <section class="pt-80 giftSection position-relative" 
+    <section class="pt-60 giftSection position-relative" 
     // style={{ backgroundColor: "#f6e9d9" }}
     >
       <div class=" section-wd gift-section">
