@@ -1,4 +1,5 @@
 import React, { useEffect } from "react";
+import { motion } from "framer-motion";
 import SEO from "@/components/seo";
 import Wrapper from "@/layout/wrapper";
 import {
@@ -94,6 +95,7 @@ const Index = () => {
   return (
     <Wrapper>
       <SEO pageTitle="Home" />
+
       <HeaderSection />
       <div className="common-bg">
         <div className=" ">
@@ -101,22 +103,87 @@ const Index = () => {
         </div>
       </div>
 
-      <HomeCategorySection />
+      <motion.div
+        initial={{ opacity: 0, y: 30 }}
+        whileInView={{ opacity: 1, y: 0 }}
+        transition={{ duration: 0.6, delay: 0.2 }}
+        viewport={{ once: true }}
+      >
+        <HomeCategorySection />
+      </motion.div>
 
-      <ShopByBudgetNew />
+      <motion.div
+        initial={{ opacity: 0, y: 30 }}
+        whileInView={{ opacity: 1, y: 0 }}
+        transition={{ duration: 0.6, delay: 0.2 }}
+        viewport={{ once: true }}
+      >
+        <ShopByBudgetNew />
+      </motion.div>
 
-      <BestSellers />
+      <motion.div
+        initial={{ opacity: 0, y: 30 }}
+        whileInView={{ opacity: 1, y: 0 }}
+        transition={{ duration: 0.6, delay: 0.2 }}
+        viewport={{ once: true }}
+      >
+        <BestSellers />
+      </motion.div>
 
-      <GiftSectionNew />
+      <motion.div
+        initial={{ opacity: 0, y: 30 }}
+        whileInView={{ opacity: 1, y: 0 }}
+        transition={{ duration: 0.6, delay: 0.2 }}
+        viewport={{ once: true }}
+      >
+        <GiftSectionNew />
+      </motion.div>
 
-      <ShopByCollectionsNew />
-      <NoblesetPromisesNew />
+      <motion.div
+        initial={{ opacity: 0, y: 30 }}
+        whileInView={{ opacity: 1, y: 0 }}
+        transition={{ duration: 0.6, delay: 0.2 }}
+        viewport={{ once: true }}
+      >
+        <ShopByCollectionsNew />
+      </motion.div>
 
-      <MediaGallery />
-      {/* <InstaSection /> */}
-      <InstaSection1 />
+      <motion.div
+        initial={{ opacity: 0, y: 30 }}
+        whileInView={{ opacity: 1, y: 0 }}
+        transition={{ duration: 0.6, delay: 0.2 }}
+        viewport={{ once: true }}
+      >
+        <NoblesetPromisesNew />
+      </motion.div>
 
-      <HomeFooter />
+      <motion.div
+        initial={{ opacity: 0, y: 30 }}
+        whileInView={{ opacity: 1, y: 0 }}
+        transition={{ duration: 0.6, delay: 0.2 }}
+        viewport={{ once: true }}
+      >
+        <MediaGallery />
+      </motion.div>
+
+      <motion.div
+        initial={{ opacity: 0, y: 30 }}
+        whileInView={{ opacity: 1, y: 0 }}
+        transition={{ duration: 0.6, delay: 0.2 }}
+        viewport={{ once: true }}
+      >
+        {/* <InstaSection /> */}
+        <InstaSection1 />
+      </motion.div>
+
+      <motion.div
+        initial={{ opacity: 0, y: 30 }}
+        whileInView={{ opacity: 1, y: 0 }}
+        transition={{ duration: 0.6, delay: 0.2 }}
+        viewport={{ once: true }}
+      >
+        <HomeFooter />
+      </motion.div>
 
       {/* <HomeBanner /> */}
 
@@ -142,8 +209,6 @@ const Index = () => {
       {/* <JewelryCollectionBanner /> */}
       {/* <BestSellerPrd/> */}
       {/* <InstagramAreaFour /> */}
-
-      
     </Wrapper>
   );
 };
