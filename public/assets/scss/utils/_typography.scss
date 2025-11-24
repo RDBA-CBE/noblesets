@@ -9,21 +9,47 @@ $font-url: "https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@
 $font-url-two: "https://fonts.googleapis.com/css2?family=Fraunces:ital,wght@0,200..1000;1,200..1000&display=swap" ;
 
 // font family
+
+@font-face {
+  font-family: 'Osande';
+  src: url('/assets/fonts/Osande/Osande-Regular.otf') format('opentype');
+  font-weight: normal;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: 'Bagind';
+  src: url('/assets/fonts/Bagind/Bagind.ttf') format('opentype');
+  font-weight: normal;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: 'Adios-Script-Pro';
+  src: url('/assets/fonts/Adios Script/Adios-Script-Pro.otf') format('opentype');
+  font-weight: normal;
+  font-style: normal;
+}
+
+
 $font-family: (
     'ff': (
-        'body':"'Fraunces', sans-serif",
-        'heading': "'Fraunces', sans-serif",
-        'p': "'Fraunces', sans-serif",
-        'jost':"'Fraunces', sans-serif",
+        'body':"'Bagind', sans-serif",
+        'heading': "'Bagind', sans-serif",
+        'p': "'Osande', sans-serif",
+        'jost':"'Bagind', sans-serif",
         'fontawesome': '"Font Awesome 6 Pro"',
         'roboto': "'Roboto', sans-serif",
         'oregano': "'Oregano', cursive",
         'charm': "'Charm', cursive",
+        'osande': "'Osande', sans-serif", 
+        'Bagind': " 'Bagind' , sans-serif", 
+        'Adios-Script-Pro': "'Adios-Script-Pro', sans-serif"   
     )
 );
 
 .tp-header-area .main-menu > nav > ul > li > a {
-font-family: "Fraunces";
+font-family: "Osande";
 }
 
 

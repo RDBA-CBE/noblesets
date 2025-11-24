@@ -418,7 +418,7 @@ const Menus1 = () => {
           style={{
             fontWeight: "400",
             color: "#000",
-            fontFamily: "Fraunces,sans-serif",
+            fontFamily: "Bagind,sans-serif",
           }}
         >
           All Jewellery
@@ -430,7 +430,7 @@ const Menus1 = () => {
           style={{
             fontWeight: "400",
             color: "#000",
-            fontFamily: "Fraunces,sans-serif",
+            fontFamily: "Bagind,sans-serif",
           }}
           onMouseEnter={() =>
             hoverCategoryProduct(state.initalLoad ?? "diamond")
@@ -600,7 +600,7 @@ const Menus1 = () => {
           style={{
             fontWeight: "400",
             color: "#000",
-            fontFamily: "Fraunces,sans-serif",
+            fontFamily: "Bagind,sans-serif",
           }}
         >
           Silver
@@ -613,7 +613,7 @@ const Menus1 = () => {
           style={{
             fontWeight: "400",
             color: "#000",
-            fontFamily: "Fraunces,sans-serif",
+            fontFamily: "Bagind,sans-serif",
           }}
         >
           Gift Card

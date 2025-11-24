@@ -673,7 +673,7 @@ const MyOrderDetails = ({ data }) => {
           }}
           bodyStyle={{
             padding: 0, // Remove default padding
-            fontFamily: "Fraunces,sans-serif",
+            fontFamily: "Bagind,sans-serif",
           }}
         >
           <div className="mb-4">

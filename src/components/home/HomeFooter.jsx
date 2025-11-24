@@ -167,7 +167,7 @@ const HomeFooter = () => {
                    Compare 
                   </a>
                   <a className="footer-link mb-3" href="/cart">
-                  <img src="/assets/img/newlayout/Footer/2arrows-01.png" alt="" />
+                  <img src="/assets/img/newlayout/Footer/cart-01.png" alt="" />
                     Cart
                   </a>
                   {/* <a className="footer-link" href="#">
