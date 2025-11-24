@@ -97,7 +97,7 @@ be told. Our curated gifting collection caters to every emotion, relationship an
   className="position-relative d-lg-flex justify-content-lg-end ps-lg-5 p-3"
 >
               <img
-                src="/assets/img/home/gift_special/gift-img.png"
+                src="/assets/img/newlayout/Making gifiting special/bg.png"
                 alt="image-1"
                 // style={{
                 //   width: "90%",

@@ -1,0 +1,6 @@
+@font-face {
+  font-family: 'Osande'; /* name you will use in CSS */
+  src: url('/assets/fonts/Osande/Osande-extra-light.otf') format('opentype');
+  font-weight: normal;
+  font-style: normal;
+}

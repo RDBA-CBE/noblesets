@@ -24,6 +24,9 @@ const HomeCategorySection = () => {
       nextEl: ".tp-brand-slider-button-next",
       prevEl: ".tp-brand-slider-button-prev",
     },
+    autoplay: true,
+    loop: true,
+    speed: 1000,
    
     breakpoints: {
       992: {
@@ -46,11 +49,11 @@ const HomeCategorySection = () => {
     "/assets/img/newlayout/Best of Noblesets/img-2.png",
     "/assets/img/newlayout/Best of Noblesets/img-3.png",
     "/assets/img/newlayout/Best of Noblesets/img-4.png",
-    "/assets/img/newlayout/Best of Noblesets/img-1.png",
-    "/assets/img/newlayout/Best of Noblesets/img-2.png",
-    "/assets/img/newlayout/Best of Noblesets/img-3.png",
-    "/assets/img/newlayout/Best of Noblesets/img-4.png",
-     "/assets/img/newlayout/Best of Noblesets/img-1.png",
+    "/assets/img/newlayout/Best of Noblesets/img-5.png",
+    "/assets/img/newlayout/Best of Noblesets/img-6.png",
+    "/assets/img/newlayout/Best of Noblesets/img-7.png",
+    "/assets/img/newlayout/Best of Noblesets/img-8.png",
+    
   ];
 
   return (
@@ -83,7 +86,7 @@ const HomeCategorySection = () => {
                 >
                   <Swiper
                     {...slider_setting}
-                    autoplay={true}
+                    
                     modules={[Navigation]}
                     className="tp-brand-slider-active swiper-container"
                   >

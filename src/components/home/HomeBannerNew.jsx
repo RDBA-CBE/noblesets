@@ -29,7 +29,7 @@ const HomeBannerNew = () => {
     arrows: false,
     fade: true,
     centerMode: false,
-    // autoplay: true,
+    autoplay: true,
     loop: true,
     speed: 1000, // slightly slower looks smoother
     cssEase: "ease-in-out",

@@ -314,7 +314,14 @@ const HomeFooter = () => {
                 <h3 className="footer-title">Support</h3>
                 <div className="d-flex align-items-center mb-3 cursor-pointer">
                   {/* <i className="fas fa-phone me-2" style="font-size: 10px"></i> */}
-                  <PhoneTwo />
+                  {/* <PhoneTwo /> */}
+                  <img
+                      alt="Apple Pay logo white text on black background"
+                      height="14"
+                      src="/assets/img/newlayout/Footer/call-01.png"
+                      width="20"
+                      className="me-2"
+                    />
 
                   <span className="footer-link ps-2 ">
                     <a href="tellto:(0252)8345 93421"> 0421-2266885</a>
@@ -325,7 +332,14 @@ const HomeFooter = () => {
               className="fas fa-map-marker-alt me-2 mt-1"
               style="font-size: 10px"
             ></i> */}
-                  <Location />
+                  {/* <Location /> */}
+                   <img
+                      alt="Apple Pay logo white text on black background"
+                      height="14"
+                      src="/assets/img/newlayout/Footer/location-01.png"
+                      width="20"
+                      className="me-2"
+                    />
                   <span className="footer-link ps-2">
                     78, New Market Street, <br /> Tiruppur-641604 <br />
                   </span>
@@ -333,7 +347,15 @@ const HomeFooter = () => {
                 <div className="d-flex align-items-start align-items-md-center cursor-pointer support-res">
                   {/* <i className="fas fa-envelope me-2" style="font-size: 10px"/> */}
                   {/* <i class="fa-regular fa-envelope" style={{fontSize:"18px"}}></i> */}
-                  <EmailTwo />
+                  {/* <EmailTwo /> */}
+
+                  <img
+                      alt="Apple Pay logo white text on black background"
+                      height="14"
+                      src="/assets/img/newlayout/Footer/email-01.png"
+                      width="20"
+                      className="me-2"
+                    />
 
                   <span className="footer-link ps-2 ">
                     <span
