@@ -3572,13 +3572,13 @@ header .tp-product-action-btn-3:hover {
   margin: auto;
 }
 
-// .insta-item{
-//   flex: 1;
-// }
+.insta-item{
+ border-radius: 15px;
+}
 
 .insta-img {
   width: 100%;
-  // border-radius: 20px;
+  border-radius: 15px;
   object-fit: cover;
 }
 
@@ -3618,7 +3618,7 @@ header .tp-product-action-btn-3:hover {
   }
 
   /* Images grid container – 4 columns in one row */
-  .insta-item img {
+  .insta-item a img {
     width: 100%;
     height: auto;
   }

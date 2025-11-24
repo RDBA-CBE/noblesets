@@ -20,6 +20,7 @@ import BestSellers from "@/components/home/BestSellers";
 import GiftSectionNew from "@/components/home/giftSectionNew";
 import ShopByCollectionsNew from "@/components/home/shopByCollectionsNew";
 import NoblesetPromisesNew from "@/components/home/NoblesetPromisesNew";
+import InstaSection1 from "@/components/home/InstaSection1";
 
 const Index = () => {
   const [maximumPrice] = useMaxPriceMutation();
@@ -112,7 +113,8 @@ const Index = () => {
       <NoblesetPromisesNew />
 
       <MediaGallery />
-      <InstaSection />
+      {/* <InstaSection /> */}
+      <InstaSection1 />
 
       <HomeFooter />
 
