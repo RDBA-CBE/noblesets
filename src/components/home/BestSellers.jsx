@@ -148,10 +148,10 @@ const HomeCategorySection = () => {
       </div>
 
       {/* STATIC IMAGE DISPLAY */}
-      <div className="container-fluid">
+      <div className="container-fluid pt-3">
         <div className="row justify-content-center">
           <div className="col-11 col-lg-10 col-xl-9">
-            <div className="static-bs-wrapper d-none d-md-flex justify-content-between align-items-center gap-2">
+            <div className="static-bs-wrapper d-none d-md-flex justify-content-between align-items-end gap-0">
               {video_data.map((img, index) => (
                 <div
                   key={index}

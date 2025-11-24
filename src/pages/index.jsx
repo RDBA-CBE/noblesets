@@ -6,20 +6,12 @@ import {
   useGetCartListQuery,
 } from "@/redux/features/card/cardApi";
 import HomeCategorySection from "@/components/home/category-section";
-import GiftWrapSection from "@/components/home/gift-wrap";
-import FeaturedProdectsSection from "@/components/home/featured-products";
-import InstagramSection from "@/components/home/instagram-section";
-import HomeCelebritySection from "@/components/home/home-celebritysection";
-import HomeBanner from "@/components/home/Homebanner";
+
 import HeaderSection from "@/components/home/headerSection";
 import HomeFooter from "@/components/home/HomeFooter";
-import ShopByBudget from "@/components/home/shopByBudget";
-import ShopByCategory from "@/components/home/shopByCategory";
-import ShopByCollections from "@/components/home/shopByCollections";
-import GiftSection from "@/components/home/giftSection";
-import NobelsetsPromises from "@/components/home/NobelsetsPromises";
+
 import { useMaxPriceMutation } from "@/redux/features/productApi";
-import InstagramSection2 from "@/components/home/shopByCategory2";
+
 import InstaSection from "@/components/home/InstaSection";
 import MediaGallery from "@/components/home/MediaGallery";
 import HomeBannerNew from "@/components/home/HomeBannerNew";

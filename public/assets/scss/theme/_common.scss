@@ -2481,8 +2481,7 @@ hr.footer-divider {
   font-size: 0.95rem;
   color: #333435;
 }
-checkout
-.item-price {
+checkout .item-price {
   font-size: 1.1rem;
   font-weight: bold;
   color: #000;
@@ -2585,16 +2584,16 @@ checkout
   border: 1px solid #dcc3bc;
 }
 
-.checkoutform label{
+.checkoutform label {
   color: #333;
 }
 
-.checkoutform .form-select{
+.checkoutform .form-select {
   background: transparent !important;
   border: 1px solid #dcc3bc;
 }
 
-.checkoutPrice .form-check-input[type=checkbox] {
+.checkoutPrice .form-check-input[type="checkbox"] {
   background: transparent !important;
   border: 1px solid #dcc3bc;
 }
@@ -2603,10 +2602,9 @@ checkout
   border-bottom: 1px solid #dcc3bc !important;
 }
 
-.checkoutPrice .tp-login-remeber label::after{
-      border: 1px solid #dcc3bc;
+.checkoutPrice .tp-login-remeber label::after {
+  border: 1px solid #dcc3bc;
 }
-
 
 // .tp-btn-border{
 // // background: linear-gradient(to right, #fbdccc 40%, #e09a7a) ;
@@ -2841,7 +2839,7 @@ header .tp-product-action-btn-3:hover {
   color: #7d4432 !important;
 }
 
-.address-box p{
+.address-box p {
   color: #7d4432 !important;
 }
 
@@ -2925,7 +2923,6 @@ header .tp-product-action-btn-3:hover {
   background: #fff !important;
   border-radius: 5px !important;
   border: none !important;
-
 }
 
 .pagination-controls .active {
@@ -2942,12 +2939,12 @@ header .tp-product-action-btn-3:hover {
   height: auto !important;
 }
 
-.order-status th{
+.order-status th {
   background: transparent;
   border-bottom: 1px solid #dcc3bc;
 }
 
-.order-status td{
+.order-status td {
   background: transparent;
   border-bottom: 1px solid #dcc3bc;
 }
@@ -2985,9 +2982,11 @@ header .tp-product-action-btn-3:hover {
 }
 
 .ourstory-wrapper {
-  background: #f6e9d9;
+  // background: #f6e9d9;
   color: #4a2d13;
 }
+
+
 
 .ourstory-heading {
   font-size: 50px;
@@ -3012,7 +3011,7 @@ header .tp-product-action-btn-3:hover {
 }
 
 .ourstory-card {
-  background: #fff;
+  background: #fff2ec;
   border-left: 5px solid #c59a6d;
   transition: transform 0.3s ease;
 }
@@ -3031,7 +3030,7 @@ header .tp-product-action-btn-3:hover {
 }
 
 .ourstory-highlight {
-  background: #f8f1ea;
+  background: #fff2ec;
   border-left: 4px solid #a66b3f;
   border-radius: 10px;
 }
@@ -3309,7 +3308,6 @@ header .tp-product-action-btn-3:hover {
 
 .profile__ticket table thead tr {
   padding: 1rem 1rem !important;
- 
 }
 
 .profile__ticket .table tbody tr th {
@@ -3803,6 +3801,15 @@ header .tp-product-action-btn-3:hover {
   background: #6a3f32;
 }
 
+.newBan-content.reverse-sli .main-title {
+  font-size: 80px;
+  padding-bottom: 30px;
+}
+
+.newBan-content.reverse-sli .sub-title {
+  font-size: 75px;
+}
+
 @media (max-width: 1580px) {
   .newBan-content-in .main-title {
     font-size: 45px;
@@ -4109,6 +4116,23 @@ header .tp-product-action-btn-3:hover {
 
 /* Core slide behavior */
 
+.bestSellers {
+  position: relative;
+}
+
+.bestSellers::before {
+  content: "";
+  position: absolute;
+  top: -60px;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: url("/assets/img/newlayout/Best-seller/Best-seller.png");
+  background-repeat: no-repeat;
+  // background-size: contain;
+  z-index: -1;
+}
+
 .bestSellers .tp-brand-slider .swiper .swiper-wrapper {
   align-items: end;
   justify-content: center;
@@ -4116,18 +4140,18 @@ header .tp-product-action-btn-3:hover {
 
 /* Small outer slides */
 .bs-small {
-  width: 15% !important;
-  padding-bottom: 40px;
+  width: 16% !important;
+  padding-bottom: 30px;
 }
 
 /* Medium side slides */
 .bs-medium {
-  width: 20% !important;
+  width: 19% !important;
 }
 
 /* Large center highlight slide */
 .bs-large {
-  width: 25% !important;
+  width: 27% !important;
 }
 
 /* Image style */
@@ -4137,15 +4161,15 @@ header .tp-product-action-btn-3:hover {
   cursor: pointer;
 }
 
-.bestSellers .tp-brand-slider-arrow button{
+.bestSellers .tp-brand-slider-arrow button {
   top: 65%;
 }
 
-.bestSellers .tp-brand-slider-button-next{
+.bestSellers .tp-brand-slider-button-next {
   right: 0px !important;
 }
 
-.bestSellers .tp-brand-slider-button-prev{
+.bestSellers .tp-brand-slider-button-prev {
   left: 0px !important;
 }
 
@@ -4376,8 +4400,22 @@ header .tp-product-action-btn-3:hover {
 
 /* Wrapper */
 .media-section-wrapper {
+  position: relative;
   width: 100%;
   padding: 60px 0;
+}
+
+.media-section-wrapper::before {
+  content: "";
+  position: absolute;
+  top: calc(50% - 200px);
+  right: 0;
+  width: 200px;
+  height: 350px;
+  background: url("/assets/img/newlayout/Media/MH-imgbox-bg-img-2 copy.png");
+  background-repeat: no-repeat;
+  background-size: contain;
+  z-index: -1;
 }
 
 /* Hero Container */
@@ -4388,7 +4426,7 @@ header .tp-product-action-btn-3:hover {
 }
 
 .media-hero-box {
-  width: 90%;
+  width: 85%;
   margin: 0 auto;
   overflow: hidden;
   position: relative;
@@ -4426,7 +4464,7 @@ header .tp-product-action-btn-3:hover {
 
 /* Grid */
 .media-grid {
-  width: 90%;
+  width: 85%;
   margin: 0 auto;
   display: grid;
   grid-template-columns: repeat(4, 1fr);
@@ -4511,33 +4549,33 @@ header .tp-product-action-btn-3:hover {
   }
 }
 
-.product-det-modal{
-      position: absolute;
-    inset: 40px;
-    border: 1px solid rgb(204, 204, 204);
-    background: rgb(255, 255, 255);
-    overflow: auto;
-    border-radius: 10px;
-    outline: none;
-    padding: 0px !important;
-    width: 600px;
-    max-width: 800px;
-    margin: auto;
-    z-index: 1000;
+.product-det-modal {
+  position: absolute;
+  inset: 40px;
+  border: 1px solid rgb(204, 204, 204);
+  background: rgb(255, 255, 255);
+  overflow: auto;
+  border-radius: 10px;
+  outline: none;
+  padding: 0px !important;
+  width: 600px;
+  max-width: 800px;
+  margin: auto;
+  z-index: 1000;
   height: fit-content;
 }
 
-.product-cus-modal{
+.product-cus-modal {
   position: absolute;
-    inset: 40px;
-    border: 1px solid rgb(204, 204, 204);
-    background: rgb(255, 255, 255);
-    overflow: auto;
-    border-radius: 10px;
-    outline: none;
-    padding: 0px !important;
-    max-width: 800px;
-    margin: auto;
-    z-index: 1000;
+  inset: 40px;
+  border: 1px solid rgb(204, 204, 204);
+  background: rgb(255, 255, 255);
+  overflow: auto;
+  border-radius: 10px;
+  outline: none;
+  padding: 0px !important;
+  max-width: 800px;
+  margin: auto;
+  z-index: 1000;
   height: fit-content;
 }

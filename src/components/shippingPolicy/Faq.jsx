@@ -2,7 +2,9 @@ import React from "react";
 
 const FAQ = () => {
   return (
-    <section className="tp-about-area pt-30 pb-30 mt-0" style={{background:"#f6e9d9"}}>
+    <section className="tp-about-area pt-30 pb-30 mt-0" 
+    // style={{background:"#f6e9d9"}}
+    >
       <div className="container">
         <h3 className="terms-heading-ti mt-0" style={{ fontWeight: "400" }}>
           Help & FAQs

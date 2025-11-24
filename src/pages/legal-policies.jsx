@@ -14,7 +14,9 @@ const PrivacyPloicy = () => {
       <SEO pageTitle="Legal Policies" />
       {/* <HeaderTwo style_2={true} /> */}
       <HeaderSection />
-      <div style={{ background: "#f6e9d9" }}>
+      <div 
+      // style={{ background: "#f6e9d9" }}
+      >
         <div >
           <ShopBreadcrumb
             title="Legal Policies"
