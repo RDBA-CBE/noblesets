@@ -3852,6 +3852,42 @@ header .tp-product-action-btn-3:hover {
   }
 }
 
+@media (max-width: 1200px) {
+.newBan-content.reverse-sli .main-title {
+    font-size: 70px;
+    padding-bottom: 20px;
+  }
+
+  .newBan-content.reverse-sli .sub-title {
+    font-size: 50px;
+  }
+
+}
+
+@media (max-width: 760px) {
+.newBan-content.reverse-sli .main-title {
+    font-size: 45px !important;
+    padding-bottom: 0px !important;
+  }
+
+  .newBan-content.reverse-sli .sub-title {
+    font-size: 35px !important;
+  }
+
+}
+
+@media (max-width: 990px) {
+.newBan-content.reverse-sli .main-title {
+    font-size: 60px;
+    padding-bottom: 10px;
+  }
+
+  .newBan-content.reverse-sli .sub-title {
+    font-size: 40px;
+  }
+
+}
+
 .col-lg-custom-45 {
   width: 37.5%; /* 4.5 out of 12 columns */
 }

@@ -6,6 +6,7 @@ import { useRouter } from "next/router";
 import modelImg1 from "@assets/img/newlayout/Banner/model-image.png";
 import bannerProducts1 from "@assets/img/newlayout/Banner/3images.png";
 import bannerBG1 from "@assets/img/newlayout/Banner/bg-image.png";
+import bannerBG2 from "@assets/img/newlayout/Banner/banner-1.jpg";
 
 import banner_Content from "@assets/img/home/Banner/banner-content-img.png";
 

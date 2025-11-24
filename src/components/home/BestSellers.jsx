@@ -98,10 +98,12 @@ const HomeCategorySection = () => {
               {video_data.map((img, index) => (
                 <SwiperSlide key={index}>
                   <img
-                    src={img}
+                    src={img.img}
                     alt="Best Seller"
                     className="bs-img"
-                    onClick={() => router.push("/shop")}
+                    onClick={() => {
+                      handleClick(img.link);
+                    }}
                   />
                 </SwiperSlide>
               ))}
