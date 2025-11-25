@@ -3927,7 +3927,7 @@ header .tp-product-action-btn-3:hover {
   top: 182px;
   left: 0;
   width: 100%;
-  height: 67%;
+  height: 69%;
   background-color: #fff8f5;
   z-index: -1;
 }
@@ -4053,7 +4053,7 @@ header .tp-product-action-btn-3:hover {
     border-radius: 0 0 174px 162px;
   }
   .sbb-wrapper::before {
-    height: 66%;
+    height: 69%;
     top: 175px;
   }
 
@@ -4076,7 +4076,7 @@ header .tp-product-action-btn-3:hover {
 
 @media (max-width: 1199px) {
   .sbb-wrapper::before {
-    height: 63%;
+    height: 65%;
     top: 156px;
   }
 
@@ -4099,7 +4099,7 @@ header .tp-product-action-btn-3:hover {
 
 @media (max-width: 990px) {
   .sbb-wrapper::before {
-    height: 60%;
+    height: 64%;
     top: 140px;
   }
 
@@ -4122,7 +4122,7 @@ header .tp-product-action-btn-3:hover {
 
 @media (max-width: 767px) {
   .sbb-wrapper::before {
-    height: 58%;
+    height: 61%;
     top: 140px;
   }
 
@@ -4144,6 +4144,20 @@ header .tp-product-action-btn-3:hover {
 
   .sbb-wrapper .vector-img img {
     width: 50%;
+  }
+}
+
+@media (max-width: 715px) {
+  .sbb-wrapper::before {
+    height: 59%;
+    top: 140px;
+  }
+}
+
+@media (max-width: 690px) {
+  .sbb-wrapper::before {
+    height: 58%;
+    top: 140px;
   }
 }
 
