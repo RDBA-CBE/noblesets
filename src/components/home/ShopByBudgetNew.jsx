@@ -188,7 +188,7 @@ const ShopByBudgetNew = () => {
                     >
                       <div className="vector-img">
                         <img
-                          src="/assets/img/newlayout/shop by budget/vector-img.jpg"
+                          src="/assets/img/newlayout/shop by budget/vector-img.png"
                           className="sbb-img"
                           alt="30k"
                         />
@@ -280,7 +280,7 @@ const ShopByBudgetNew = () => {
                       >
                         <div className="vector-img">
                           <img
-                            src="/assets/img/newlayout/shop by budget/vector-img.jpg"
+                            src="/assets/img/newlayout/shop by budget/vector-img.png"
                             className="sbb-img"
                             alt="30k"
                           />

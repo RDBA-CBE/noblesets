@@ -9,7 +9,7 @@ import WishlistBanner from "../../public/assets/img/shop-banner.jpg";
 import PrivateRouter from '@/layout/private-router';
 import HeaderSection from '@/components/home/headerSection';
 import HomeFooter from '@/components/home/HomeFooter';
-import shopBanner from "../../public/assets/img/header-bg.webp";
+import shopBanner from "@assets/img/newlayout/shop-bg.png";
 import ShopBreadcrumb from '@/components/breadcrumb/shop-breadcrumb';
 import WishlistArea1 from '@/components/cart-wishlist/wishlist-area1';
 

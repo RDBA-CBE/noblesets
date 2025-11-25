@@ -237,7 +237,6 @@ const ProductItem1 = ({ products, style_2 = false, updateData, index }) => {
       return 0;
     }
   };
-  
 
   return (
     // <div
@@ -262,13 +261,17 @@ const ProductItem1 = ({ products, style_2 = false, updateData, index }) => {
                                 // height: "260px",
                                 borderRadius: "20px",
                               }} */}
-                            {/* /> */}
+          {/* /> */}
           <div className="tp-product-thumb-2 p-relative z-index-1 fix">
             <Link href={`/product-details/${product?.slug}`}>
               {isImage(profilePic(img)) ? (
                 <img
                   className="card-img-top"
-                  src={(profilePic(img) !== null) ? profilePic(img) : "/assets/img/image-not-included-img.png"}
+                  src={
+                    profilePic(img) !== null
+                      ? profilePic(img)
+                      : "/assets/img/image-not-included-img.png"
+                  }
                   alt="product img"
                   style={{
                     objectFit: "cover",
@@ -511,9 +514,9 @@ const ProductItem1 = ({ products, style_2 = false, updateData, index }) => {
               >
                 {product?.category[0]?.name.toLowerCase()}
               </h3>
-              <h3 className="tp-product-title-2 mt-2" >
-                <Link href={`/product-details/${product?.slug}`} >
-                   {capitalizeFLetter(product?.name)}
+              <h3 className="tp-product-title-2 mt-2">
+                <Link href={`/product-details/${product?.slug}`}>
+                  {capitalizeFLetter(product?.name)}
                 </Link>
               </h3>
 
@@ -534,7 +537,7 @@ const ProductItem1 = ({ products, style_2 = false, updateData, index }) => {
                           color: "grey",
                           fontWeight: 400,
                           marginRight: "10px",
-                          fontSize:"14px"
+                          fontSize: "14px",
                         }}
                       >
                         &#8377;
@@ -553,7 +556,7 @@ const ProductItem1 = ({ products, style_2 = false, updateData, index }) => {
                   </span>
                   {product?.pricing?.discount !== null && (
                     <div
-                    className="save-off"
+                      className="save-off"
                       style={{
                         color: "#7d4432",
                         fontSize: "16px",
@@ -608,7 +611,7 @@ const ProductItem1 = ({ products, style_2 = false, updateData, index }) => {
                   </span>
                   {product?.pricing?.discount !== null && (
                     <div
-                    className="save-off"
+                      className="save-off"
                       style={{
                         color: "#7d4432",
                         fontSize: "16px",

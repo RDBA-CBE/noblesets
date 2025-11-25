@@ -2336,6 +2336,16 @@ hr.footer-divider {
   z-index: -1000;
 }
 
+.bestofnoblesets .tp-product-title-2 a {
+  font-size: 24px !important;
+}
+
+@media (max-width : 780px){
+  .bestofnoblesets .tp-product-title-2 a {
+  font-size: 16px !important;
+}
+}
+
 // .bestofnoblesets .feature-main {
 //   z-index: 1000;
 // }
@@ -3907,7 +3917,6 @@ header .tp-product-action-btn-3:hover {
 }
 
 .sbb-wrapper {
-  // background: #fdf4ef;
   padding: 70px 0 40px;
   position: relative;
 }
@@ -3919,7 +3928,7 @@ header .tp-product-action-btn-3:hover {
   left: 0;
   width: 100%;
   height: 67%;
-  background-color: #fdf4ef;
+  background-color: #fff8f5;
   z-index: -1;
 }
 
@@ -4028,6 +4037,10 @@ header .tp-product-action-btn-3:hover {
 
   font-size: 30px;
   font-weight: 600;
+}
+
+.vector-img{
+  margin-top: -30px;
 }
 
 /* Responsive */

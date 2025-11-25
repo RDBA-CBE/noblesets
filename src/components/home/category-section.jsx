@@ -13,6 +13,7 @@ import { useRouter } from "next/router";
 import { Swiper, SwiperSlide } from "swiper/react";
 import { Autoplay, Navigation } from "swiper";
 import { ArrowNextSm, ArrowPrevSm } from "@/svg";
+import { addCommasToNumber } from "@/utils/functions";
 
 const HomeCategorySection = () => {
   const router = useRouter();
@@ -27,7 +28,7 @@ const HomeCategorySection = () => {
     autoplay: true,
     loop: true,
     speed: 1000,
-   
+
     breakpoints: {
       992: {
         slidesPerView: 4,
@@ -53,8 +54,20 @@ const HomeCategorySection = () => {
     "/assets/img/newlayout/Best of Noblesets/img-6.png",
     "/assets/img/newlayout/Best of Noblesets/img-7.png",
     "/assets/img/newlayout/Best of Noblesets/img-8.png",
-    
   ];
+
+  //  const saveOff = () => {
+  //   const discountedPrice = product?.pricing?.priceRange?.start?.gross?.amount;
+  //   const originalPrice =
+  //     product?.pricing?.priceRangeUndiscounted?.start?.gross?.amount;
+  //   const discountPercentage =
+  //     ((originalPrice - discountedPrice) / originalPrice) * 100;
+  //   if (discountPercentage) {
+  //     return discountPercentage.toFixed(0);
+  //   } else {
+  //     return 0;
+  //   }
+  // };
 
   return (
     <>
@@ -65,38 +78,36 @@ const HomeCategorySection = () => {
         <div className="container-fluid" style={{ padding: "0px" }}>
           <div className="row">
             <div className="col-12">
-              <div className="feature-main mb-50" >
-                <h5 className="sub-ti" > <b className="pe-2">✦</b>Classic, chic & royal</h5>
-                <h4
-                  className="feature-adipisicing main-ti"
-                 
-                >
+              <div className="feature-main mb-50">
+                <h5 className="sub-ti">
+                  {" "}
+                  <b className="pe-2">✦</b>Classic, chic & royal
+                </h5>
+                <h4 className="feature-adipisicing main-ti">
                   Best of Noblesets
                 </h4>
               </div>
             </div>
           </div>
-         
 
-            <div className="row justify-content-center">
-              <div className="col-11">
-                <div
-                  className="tp-brand-slider p-relative"
-                  // style={{ height: "300px" }}
+          <div className="row justify-content-center">
+            <div className="col-11">
+              <div
+                className="tp-brand-slider p-relative"
+                // style={{ height: "300px" }}
+              >
+                <Swiper
+                  {...slider_setting}
+                  modules={[Navigation]}
+                  className="tp-brand-slider-active swiper-container"
                 >
-                  <Swiper
-                    {...slider_setting}
-                    
-                    modules={[Navigation]}
-                    className="tp-brand-slider-active swiper-container"
-                  >
-                    {video_data.map((video, i) => (
-                      <SwiperSlide
-                        key={i}
-                        className="tp-brand-item text-center"
-                        // style={{ width: "350px", height: "500px" }}
-                      >
-                        {/* <div className="col-xl-6 col-lg-6  category-section-5"> */}
+                  {video_data.map((video, i) => (
+                    <SwiperSlide
+                      key={i}
+                      className="tp-brand-item text-center"
+                      // style={{ width: "350px", height: "500px" }}
+                    >
+                      <div className=" category-section-5">
                         <img
                           src={video}
                           alt="image-5"
@@ -112,24 +123,159 @@ const HomeCategorySection = () => {
                             });
                           }}
                         />
-                        {/* </div> */}
-                      </SwiperSlide>
-                    ))}
-                  </Swiper>
-                  <div className="tp-brand-slider-arrow">
-                    <button className="tp-brand-slider-button-prev">
-                      <ArrowPrevSm />
-                      
-                    </button>
-                    <button className="tp-brand-slider-button-next">
-                      <ArrowNextSm />
-                    </button>
-                  </div>
+
+                        <div>
+                          <div className="tp-product-content-2  pt-20">
+                            <div style={{ textAlign: "center" }}>
+                              <h3 className="tp-product-title-2 mt-2">
+                                <Link href={`/`}>Grace Diamond Necklace</Link>
+                              </h3>
+
+                              <div className="tp-product-price-wrapper-2">
+                                <span
+                                  className=""
+                                  style={{
+                                    textDecoration: "line-through",
+                                    color: "grey",
+                                    fontWeight: 400,
+                                    marginRight: "10px",
+                                  }}
+                                >
+                                  &#8377;
+                                  {addCommasToNumber(100200) || 0}
+                                </span>
+
+                                <span
+                                  className="tp-product-price-2 new-price text-black"
+                                  style={{ fontSize: "18px" }}
+                                >
+                                  &#8377;
+                                  {addCommasToNumber(100200) || 0}
+                                </span>
+
+                                <div
+                                  className="save-off"
+                                  style={{
+                                    color: "#000",
+                                    fontSize: "16px",
+                                  }}
+                                >{`Save 20% OFF`}</div>
+                              </div>
+
+                              {/* <h3 className="tp-product-title-2 mt-2">
+                                <Link
+                                  href={`/product-details/${product?.slug}`}
+                                >
+                                  {capitalizeFLetter(product?.name)}
+                                </Link>
+                              </h3> */}
+
+                              {/* {channel == "india-channel" ? (
+                                <div className="tp-product-price-wrapper mt-2">
+                                  <span
+                                    className="tp-product-price-2 new-price items-center"
+                                    style={{
+                                      display: "flex",
+                                      justifyContent: "center",
+                                    }}
+                                  >
+                                    {product?.pricing?.discount !== null && (
+                                      <div
+                                        className=""
+                                        style={{
+                                          textDecoration: "line-through",
+                                          color: "grey",
+                                          fontWeight: 400,
+                                          marginRight: "10px",
+                                          fontSize: "14px",
+                                        }}
+                                      >
+                                        &#8377;
+                                        {addCommasToNumber(
+                                          product?.pricing
+                                            ?.priceRangeUndiscounted?.start
+                                            ?.gross?.amount
+                                        ) || 0}
+                                      </div>
+                                    )}
+                                    <div>
+                                      &#8377;
+                                      {addCommasToNumber(
+                                        product?.pricing?.priceRange?.start
+                                          ?.gross?.amount
+                                      ) || 0}
+                                    </div>
+                                  </span>
+                                  {product?.pricing?.discount !== null && (
+                                    <div
+                                      className="save-off"
+                                      style={{
+                                        color: "#7d4432",
+                                        fontSize: "16px",
+                                      }}
+                                    >{`Save ${saveOff()}% OFF`}</div>
+                                  )}
+                                </div>
+                              ) : (
+                                <div className="tp-product-price-wrapper-2">
+                                  {product?.pricing?.discount !== null && (
+                                    <div
+                                      className=""
+                                      style={{
+                                        textDecoration: "line-through",
+                                        color: "grey",
+                                        fontWeight: 400,
+                                        marginRight: "10px",
+                                      }}
+                                    >
+                                      {"$"}
+                                      {addCommasToNumber(
+                                        product?.pricing?.priceRangeUndiscounted
+                                          ?.start?.gross?.amount
+                                      ) || 0}
+                                    </div>
+                                  )}
+
+                              
+                                  <span
+                                    className="tp-product-price-2 new-price"
+                                    style={{ fontSize: "14px" }}
+                                  >
+                                    {"$"}
+                                    {addCommasToNumber(
+                                      product?.pricing?.priceRange?.start?.gross
+                                        ?.amount
+                                    ) || 0}
+                                  </span>
+                                  {product?.pricing?.discount !== null && (
+                                    <div
+                                      className="save-off"
+                                      style={{
+                                        color: "#7d4432",
+                                        fontSize: "16px",
+                                      }}
+                                    >{`Save ${saveOff()}% OFF`}</div>
+                                  )}
+                                </div>
+                              )} */}
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+                    </SwiperSlide>
+                  ))}
+                </Swiper>
+                <div className="tp-brand-slider-arrow">
+                  <button className="tp-brand-slider-button-prev">
+                    <ArrowPrevSm />
+                  </button>
+                  <button className="tp-brand-slider-button-next">
+                    <ArrowNextSm />
+                  </button>
                 </div>
               </div>
             </div>
-
-           
+          </div>
         </div>
       </section>
     </>

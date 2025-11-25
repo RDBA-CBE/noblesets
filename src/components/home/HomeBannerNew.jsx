@@ -56,50 +56,7 @@ const HomeBannerNew = () => {
                 className=""
                 style={{
                   width: "100%",
-        
-                  objectFit: "cover",
-                  cursor: "pointer",
-                  // objectPosition: "bottom",
-                }}
-                unoptimized
-              />
-            </Link>
-          </div>
-          <div className="newBan-content">
-            <div className="newBan-content-in">
-              <div className=" con d-none d-sm-flex">
-                <div>
-                  <p className="main-title">Bespoke</p>
-                  <p className="sub-title">Brilliance for You</p>
-                </div>
-                <Image className="d-none d-md-block"
-                  src={bannerProducts1}
-                  alt="Jewelry Collection"
-                  
-                />
 
-                <button className="ljb-shop-btn ">Shop Now</button>
-              </div>
-
-              <div className="newBan-content-img ">
-                <Image src={modelImg1} alt="Model" className="" />
-              </div>
-            </div>
-          </div>
-        </div>
-
-         <div className="tp-slider-item-4 tp-slider-height-4 p-relative d-flex align-items-center ">
-           
-
-          <div className="tp-slider-thumb-4 ">
-            <Link href="/">
-              <Image
-                src={bannerBG1}
-                alt="slider img"
-                className=""
-                style={{
-                  width: "100%",
-        
                   objectFit: "cover",
                   cursor: "pointer",
                   // objectPosition: "bottom",
@@ -111,7 +68,6 @@ const HomeBannerNew = () => {
 
           <div className="newBan-content reverse-sli">
             <div className="newBan-content-in">
-
               <div className="newBan-content-img ">
                 <Image src={modelImg1} alt="Model" className="" />
               </div>
@@ -129,11 +85,49 @@ const HomeBannerNew = () => {
 
                 <button className="ljb-shop-btn mt-4 ">Shop Now</button>
               </div>
-
-              
             </div>
           </div>
-         
+        </div>
+
+        <div className="tp-slider-item-4 tp-slider-height-4 p-relative d-flex align-items-center ">
+          <div className="tp-slider-thumb-4 ">
+            <Link href="/">
+              <Image
+                src={bannerBG1}
+                alt="slider img"
+                className=""
+                style={{
+                  width: "100%",
+
+                  objectFit: "cover",
+                  cursor: "pointer",
+                  // objectPosition: "bottom",
+                }}
+                unoptimized
+              />
+            </Link>
+          </div>
+          <div className="newBan-content">
+            <div className="newBan-content-in">
+              <div className=" con d-none d-sm-flex">
+                <div>
+                  <p className="main-title">Bespoke</p>
+                  <p className="sub-title">Brilliance for You</p>
+                </div>
+                <Image
+                  className="d-none d-md-block"
+                  src={bannerProducts1}
+                  alt="Jewelry Collection"
+                />
+
+                <button className="ljb-shop-btn ">Shop Now</button>
+              </div>
+
+              <div className="newBan-content-img ">
+                <Image src={modelImg1} alt="Model" className="" />
+              </div>
+            </div>
+          </div>
         </div>
       </Slider>
     </section>
