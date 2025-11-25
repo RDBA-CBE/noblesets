@@ -172,8 +172,8 @@ const Index = () => {
         transition={{ duration: 0.6, delay: 0.2 }}
         viewport={{ once: true }}
       >
-        {/* <InstaSection /> */}
-        <InstaSection1 />
+        <InstaSection />
+        {/* <InstaSection1 /> */}
       </motion.div>
 
       <motion.div
