@@ -18,7 +18,7 @@ import { useRouter } from "next/router";
 import { getValueByKey } from "@/utils/functions";
 import HeaderSection from "@/components/home/headerSection";
 import HomeFooter from "@/components/home/HomeFooter";
-import CartBanner from "@assets/img/header-bg.webp";
+import CartBanner from "@assets/img/newlayout/shop-bg.png";
 
 import CommonBreadcrumb from "@/components/breadcrumb/common-breadcrumb";
 

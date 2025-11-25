@@ -55,7 +55,7 @@ const WishlistArea = () => {
         <div className="container">
           {list?.length === 0 && (
             <div className="text-center pb-20">
-              <h3 style={{ paddingBottom: "15px" }}>This wishlist is empty.</h3>
+              <h3 style={{ paddingBottom: "15px", fontWeight:"500" }}>This wishlist is empty.</h3>
               <p style={{ color: "gray" }}>
                 You dont have any products in the wishlist yet.
                 <br /> You will find a lot of interesting products on our Shop

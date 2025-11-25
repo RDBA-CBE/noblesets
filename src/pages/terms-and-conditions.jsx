@@ -6,7 +6,7 @@ import HomeFooter from "@/components/home/HomeFooter";
 import TermsAndConditionsMain from "@/components/terms/terms-main";
 import HeaderSection from "@/components/home/headerSection";
 import ShopBreadcrumb from "@/components/breadcrumb/shop-breadcrumb";
-import shopBanner from "@assets/img/header-bg.webp";
+import shopBanner from "@assets/img/newlayout/shop-bg.png";
 
 const TermsAndConditions = () => {
   return (

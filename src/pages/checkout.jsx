@@ -9,7 +9,7 @@ import CommonBreadcrumb from '@/components/breadcrumb/common-breadcrumb';
 import CheckoutArea from '@/components/checkout/checkout-area';
 import FooterTwo from '@/layout/footers/footer-2';
 import { useGetCartListQuery } from '@/redux/features/card/cardApi';
-import CheckoutBanner from "@assets/img/header-bg.webp";
+import CheckoutBanner from "@assets/img/newlayout/shop-bg.png";
 import { useCountryListQuery } from '../redux/features/productApi';
 import HeaderSection from '@/components/home/headerSection';
 import HomeFooter from '@/components/home/HomeFooter';

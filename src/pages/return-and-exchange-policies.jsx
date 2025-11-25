@@ -6,7 +6,7 @@ import HomeFooter from "@/components/home/HomeFooter";
 import ShippingAndExchangePolicyMain from "../components/shippingPolicy/shippingPolicyMain";
 import HeaderSection from "@/components/home/headerSection";
 import ShopBreadcrumb from "@/components/breadcrumb/shop-breadcrumb";
-import shopBanner from "@assets/img/header-bg.webp";
+import shopBanner from "@assets/img/newlayout/shop-bg.png";
 
 const ShippingAndExchangePolicy = () => {
   return (

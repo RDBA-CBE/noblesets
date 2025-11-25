@@ -5,7 +5,7 @@ import StorySec from "@/components/our-story/StorySec";
 import ShopBreadcrumb from "@/components/breadcrumb/shop-breadcrumb";
 import HomeFooter from "@/components/home/HomeFooter";
 import HeaderSection from "@/components/home/headerSection";
-import shopBanner from "@assets/img/header-bg.webp";
+import shopBanner from "@assets/img/newlayout/shop-bg.png";
 
 
 

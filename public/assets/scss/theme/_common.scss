@@ -3660,6 +3660,13 @@ header .tp-product-action-btn-3:hover {
   }
 }
 
+@media (max-width: 600px) {
+.insta-desc {
+  font-size: 18px;
+  padding: 0 0px;
+}
+}
+
 /* Nobleset Promise */
 .nobleset-container {
   display: flex;
@@ -4036,7 +4043,7 @@ header .tp-product-action-btn-3:hover {
   color: #fff;
 
   font-size: 30px;
-  font-weight: 600;
+  font-weight: 500;
 }
 
 .vector-img{
@@ -4482,6 +4489,9 @@ header .tp-product-action-btn-3:hover {
 
   .np-content-wrap {
     text-align: center;
+  }
+  .np-desc {
+    font-size: 18px;
   }
 }
 
