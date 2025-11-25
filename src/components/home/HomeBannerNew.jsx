@@ -83,7 +83,7 @@ const HomeBannerNew = () => {
                   
                 /> */}
 
-                <button className="ljb-shop-btn mt-4 ">Shop Now</button>
+                <button className="ljb-shop-btn mt-0 mt-lg-4">Shop Now</button>
               </div>
             </div>
           </div>

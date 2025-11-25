@@ -10,7 +10,7 @@ export default function GiftSectionNew() {
     >
       <div class=" section-wd gift-section">
         <div class="row align-items-center justify-content-center g-5 px-3">
-          <div class="col-12 col-lg-6 px-3 px-lg-5 gift-section-le" data-aos="fade-right">
+          <div class="col-12 col-lg-6 px-0 px-sm-3 px-lg-5 gift-section-le" data-aos="fade-right">
             <div className="">
               <h5 className="sub-ti ps-1" > <b className="pe-2">✦</b> Thoughtful moments</h5>
               <h4
@@ -21,13 +21,13 @@ export default function GiftSectionNew() {
               </h4>
             </div>
 
-            <p class="text sub-ti text-black mb-5">
+            <p class="text sub-ti text-black mb-3 mb-lg-5">
             At Noble Sets, we believe gifting is an art; hence, every piece we craft is a story waiting to
 be told. Our curated gifting collection caters to every emotion, relationship and occasion.
             </p>
 
-            <div class="row  gap-3  gap-sm-0 pt-4 pt-md-2">
-              <div class="col-12 col-sm-4 text-center" data-aos="zoom-in" data-aos-delay="200" onClick={() => {
+            <div class="row  gap-0  gap-sm-0   pt-0 pt-lg-2 ">
+              <div class="col-4 col-sm-4 p-1" data-aos="zoom-in" data-aos-delay="200" onClick={() => {
                   
                   
                  router.push("/gift-card");
@@ -44,7 +44,7 @@ be told. Our curated gifting collection caters to every emotion, relationship an
                 />
                 {/* <p class="small mt-2">Birthday</p> */}
               </div>
-              <div class="col-12 col-sm-4 text-center" data-aos="zoom-in" data-aos-delay="300" onClick={() => {
+              <div class="col-4 col-sm-4 p-1" data-aos="zoom-in" data-aos-delay="300" onClick={() => {
                   
                   
                  router.push("/gift-card");
@@ -61,7 +61,7 @@ be told. Our curated gifting collection caters to every emotion, relationship an
                 />
                 {/* <p class="small mt-2">Anniversary</p> */}
               </div>
-              <div class="col-12 col-sm-4 text-center" data-aos="zoom-in" data-aos-delay="400" onClick={() => {
+              <div class="col-4 col-sm-4 p-1" data-aos="zoom-in" data-aos-delay="400" onClick={() => {
                  
                  router.push("/gift-card");
                   }}>

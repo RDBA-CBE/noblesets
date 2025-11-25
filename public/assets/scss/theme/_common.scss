@@ -2340,9 +2340,15 @@ hr.footer-divider {
   font-size: 24px !important;
 }
 
+@media (max-width : 1024px){
+  .bestofnoblesets .tp-product-title-2 a {
+  font-size: 18px !important;
+}
+}
+
 @media (max-width : 780px){
   .bestofnoblesets .tp-product-title-2 a {
-  font-size: 16px !important;
+  font-size: 18px !important;
 }
 }
 
@@ -3117,9 +3123,9 @@ header .tp-product-action-btn-3:hover {
 
 .ShopByCollections .card-body p {
   // font-family: "Playfair Display", sans-serif;
-  font-size: 14px !important;
+  font-size: 16px !important;
   letter-spacing: 1px;
-  color: #7d4432;
+  color: #000;
   line-height: 1.2;
 }
 
