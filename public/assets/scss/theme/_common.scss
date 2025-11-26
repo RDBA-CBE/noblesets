@@ -1307,11 +1307,7 @@ ol.alphalist li ol li {
   padding: 5px 8px;
   font-size: 16px;
   color: white;
-  background: linear-gradient(
-    to right,
-    color-mix(in srgb, #fbdccc 40%, #e09a7a),
-    #e09a7a
-  );
+  background: #9b604d;
   border: none;
   border-radius: 50px;
   cursor: pointer;
@@ -1336,7 +1332,7 @@ ol.alphalist li ol li {
 }
 
 .animated-button.hover {
-  width: 145px;
+  width: 160px;
 }
 
 .animated-button.hover .icon {
@@ -1350,6 +1346,7 @@ ol.alphalist li ol li {
 
 .animated-button.hover .text {
   transform: translateX(-100%);
+  margin-left: 20px !important;
 }
 
 .wishlistOpacity0 {
@@ -3178,6 +3175,23 @@ header .tp-product-action-btn-3:hover {
   background-size: contain;
   background-repeat: no-repeat;
   //  z-index: 100;
+  animation: sparkleBlink 2.5s ease-in-out infinite;
+  transform-origin: center;
+}
+
+@keyframes sparkleBlink {
+    0% {
+        opacity: 0.5;
+        transform: scale(0.98);
+    }
+    50% {
+        opacity: 1;
+        transform: scale(1);
+    }
+    100% {
+        opacity: 0.5;
+        transform: scale(0.98);
+    }
 }
 
 .shop-page-in {
@@ -3198,6 +3212,7 @@ header .tp-product-action-btn-3:hover {
   background-image: url("/assets/img/newlayout/Making gifiting special/gift-bg.jpg");
   background-size: cover !important;
   background-repeat: no-repeat !important;
+  
 }
 
 @media (max-width: 1440px) {
