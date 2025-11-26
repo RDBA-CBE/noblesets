@@ -1,4 +1,5 @@
 import React, { useEffect, useState } from "react";
+import { motion } from "framer-motion";
 // internal
 import SEO from "@/components/seo";
 import HeaderTwo from "@/layout/headers/header-2";
@@ -150,8 +151,6 @@ const ProductDetailsPage = ({ query }) => {
     }
   };
 
-  
-
   const product = productData?.data?.product;
   const [getCategoryName] = useGetCategoryNameMutation();
 
@@ -204,38 +203,65 @@ const ProductDetailsPage = ({ query }) => {
     content = (
       <>
         {/* <ProductDetailsBreadcrumb category={product.category.name} title={product.title} /> */}
-         <div 
+        <div
         //  style={{background:"#f6e9d9"}}
-         >
-      <div >
-       <CommonBreadcrumb 
-       title={product.name} 
-      // title="Product Detail" 
-       subtitle="Product Detail" BgImage={CartBanner}/>
-       </div>
-       </div>
-        <ProductDetailsArea
-          productItem={product}
-          pageTitle={shopTitle}
-          detailsRefetch={detailProductRefetch}
-          youMayLikeData={youMayLikeData}
-          isGiftCard={false}
-          parentSlug={parentSlug}
-        />
+        >
+          <div>
+            <motion.div
+              initial={{ opacity: 0, y: 30 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.6, delay: 0.2 }}
+              viewport={{ once: true }}
+            >
+              <CommonBreadcrumb
+                title={product.name}
+                // title="Product Detail"
+                subtitle="Product Detail"
+                BgImage={CartBanner}
+              />
+            </motion.div>
+          </div>
+        </div>
+        <motion.div
+          initial={{ opacity: 0, y: 30 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.6, delay: 0.2 }}
+          viewport={{ once: true }}
+        >
+          <ProductDetailsArea
+            productItem={product}
+            pageTitle={shopTitle}
+            detailsRefetch={detailProductRefetch}
+            youMayLikeData={youMayLikeData}
+            isGiftCard={false}
+            parentSlug={parentSlug}
+          />
+        </motion.div>
       </>
     );
   }
 
-  
-
   return (
     <Wrapper>
       <SEO pageTitle="Product Details" />
-      <HeaderSection />
-      
-      
+      <motion.div
+        initial={{ opacity: 0, y: 30 }}
+        whileInView={{ opacity: 1, y: 0 }}
+        transition={{ duration: 0.6, delay: 0.2 }}
+        viewport={{ once: true }}
+      >
+        <HeaderSection />
+      </motion.div>
+
       {content}
-      <HomeFooter />
+      <motion.div
+        initial={{ opacity: 0, y: 30 }}
+        whileInView={{ opacity: 1, y: 0 }}
+        transition={{ duration: 0.6, delay: 0.2 }}
+        viewport={{ once: true }}
+      >
+        <HomeFooter />
+      </motion.div>
     </Wrapper>
   );
 };

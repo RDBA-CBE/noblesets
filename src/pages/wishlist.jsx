@@ -1,42 +1,71 @@
-import React from 'react';
-import SEO from '@/components/seo';
-import HeaderTwo from '@/layout/headers/header-2';
-import Wrapper from '@/layout/wrapper';
-import WishlistArea from '@/components/cart-wishlist/wishlist-area';
-import CommonBreadcrumb from '@/components/breadcrumb/common-breadcrumb';
-import FooterTwo from '@/layout/footers/footer-2';
+import React from "react";
+import { motion } from "framer-motion";
+import SEO from "@/components/seo";
+import HeaderTwo from "@/layout/headers/header-2";
+import Wrapper from "@/layout/wrapper";
+import WishlistArea from "@/components/cart-wishlist/wishlist-area";
+import CommonBreadcrumb from "@/components/breadcrumb/common-breadcrumb";
+import FooterTwo from "@/layout/footers/footer-2";
 import WishlistBanner from "../../public/assets/img/shop-banner.jpg";
-import PrivateRouter from '@/layout/private-router';
-import HeaderSection from '@/components/home/headerSection';
-import HomeFooter from '@/components/home/HomeFooter';
+import PrivateRouter from "@/layout/private-router";
+import HeaderSection from "@/components/home/headerSection";
+import HomeFooter from "@/components/home/HomeFooter";
 import shopBanner from "@assets/img/newlayout/shop-bg.png";
-import ShopBreadcrumb from '@/components/breadcrumb/shop-breadcrumb';
-import WishlistArea1 from '@/components/cart-wishlist/wishlist-area1';
-
-
+import ShopBreadcrumb from "@/components/breadcrumb/shop-breadcrumb";
+import WishlistArea1 from "@/components/cart-wishlist/wishlist-area1";
 
 const WishlistPage = () => {
   return (
     <Wrapper>
       <SEO pageTitle="Wishlist" />
       {/* <HeaderTwo style_2={true} /> */}
-      <HeaderSection />
-       <div 
+      <motion.div
+        initial={{ opacity: 0, y: 30 }}
+        whileInView={{ opacity: 1, y: 0 }}
+        transition={{ duration: 0.6, delay: 0.2 }}
+        viewport={{ once: true }}
+      >
+         <HeaderSection />
+      </motion.div>
+     
+      <div
       //  style={{background:"#f6e9d9"}}
-       >
-      <div >
-      <ShopBreadcrumb
-       title="Wishlist" subtitle="Wishlist"
-        bgImage={shopBanner}
-        // catList={categoryList}
-        // product={productList}
-      />
-      </div>
+      >
+        <div>
+          <motion.div
+            initial={{ opacity: 0, y: 30 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.6, delay: 0.2 }}
+            viewport={{ once: true }}
+          >
+            <ShopBreadcrumb
+              title="Wishlist"
+              subtitle="Wishlist"
+              bgImage={shopBanner}
+              // catList={categoryList}
+              // product={productList}
+            />
+          </motion.div>
+        </div>
       </div>
       {/* <CommonBreadcrumb title="WISHLIST" subtitle="WISHLIST" BgImage={WishlistBanner} /> */}
-      <WishlistArea/>
+      <motion.div
+        initial={{ opacity: 0, y: 30 }}
+        whileInView={{ opacity: 1, y: 0 }}
+        transition={{ duration: 0.6, delay: 0.2 }}
+        viewport={{ once: true }}
+      >
+        <WishlistArea />
+      </motion.div>
       {/* <WishlistArea1/> */}
+      <motion.div
+        initial={{ opacity: 0, y: 30 }}
+        whileInView={{ opacity: 1, y: 0 }}
+        transition={{ duration: 0.6, delay: 0.2 }}
+        viewport={{ once: true }}
+      >
       <HomeFooter />
+      </motion.div>
     </Wrapper>
   );
 };

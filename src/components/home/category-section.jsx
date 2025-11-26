@@ -13,7 +13,7 @@ import { useRouter } from "next/router";
 import { Swiper, SwiperSlide } from "swiper/react";
 import { Autoplay, Navigation } from "swiper";
 import { ArrowNextSm, ArrowPrevSm } from "@/svg";
-import { addCommasToNumber } from "@/utils/functions";
+import { addCommasToNumber, capitalizeFLetter } from "@/utils/functions";
 
 const HomeCategorySection = () => {
   const router = useRouter();
@@ -46,15 +46,16 @@ const HomeCategorySection = () => {
   };
 
   const video_data = [
-    "/assets/img/newlayout/Best of Noblesets/img-1.png",
-    "/assets/img/newlayout/Best of Noblesets/img-2.png",
-    "/assets/img/newlayout/Best of Noblesets/img-3.png",
-    "/assets/img/newlayout/Best of Noblesets/img-4.png",
-    "/assets/img/newlayout/Best of Noblesets/img-5.png",
-    "/assets/img/newlayout/Best of Noblesets/img-6.png",
-    "/assets/img/newlayout/Best of Noblesets/img-7.png",
-    "/assets/img/newlayout/Best of Noblesets/img-8.png",
-  ];
+  { src: "/assets/img/newlayout/Best of Noblesets/img-1.png", title: "FANCY NECKLACE 2" , category: "necklace" },
+  { src: "/assets/img/newlayout/Best of Noblesets/img-2.png", title: "18KT NS PENDANT CHAIN" , category: "chain" },
+  { src: "/assets/img/newlayout/Best of Noblesets/img-3.png", title: "FANCY NECKLACE 2" , category: "necklace" },
+  { src: "/assets/img/newlayout/Best of Noblesets/img-4.png", title: "18KT NS PENDANT CHAIN" , category: "chain" },
+  { src: "/assets/img/newlayout/Best of Noblesets/img-5.png", title: "FANCY NECKLACE 2" , category: "necklace" },
+  { src: "/assets/img/newlayout/Best of Noblesets/img-6.png", title: "18KT NS PENDANT CHAIN" , category: "chain" },
+  { src: "/assets/img/newlayout/Best of Noblesets/img-7.png", title: "FANCY NECKLACE 2" , category: "necklace" },
+  { src: "/assets/img/newlayout/Best of Noblesets/img-8.png", title: "18KT NS PENDANT CHAIN" , category: "chain" },
+];
+
 
   //  const saveOff = () => {
   //   const discountedPrice = product?.pricing?.priceRange?.start?.gross?.amount;
@@ -109,7 +110,7 @@ const HomeCategorySection = () => {
                     >
                       <div className=" category-section-5">
                         <img
-                          src={video}
+                          src={video.src}
                           alt="image-5"
                           style={{
                             width: "95%",
@@ -127,9 +128,10 @@ const HomeCategorySection = () => {
                         <div>
                           <div className="tp-product-content-2  pt-20">
                             <div style={{ textAlign: "center" }}>
-                              <h3 className="tp-product-title-2 mt-5">
-                                <Link href={`/`}>Grace Diamond Necklace</Link>
+                              <h3 className="tp-product-title-2 mt-5 ">
+                                <Link href={`/`}>{video.title.toLowerCase()}</Link>
                               </h3>
+                              
 
                               <div className="tp-product-price-wrapper-2">
                                 {/* <span
@@ -149,8 +151,7 @@ const HomeCategorySection = () => {
                                   className="tp-product-price-2 new-price text-black pt-3"
                                   style={{ fontSize: "20px" }}
                                 >
-                                  &#8377;
-                                  {addCommasToNumber(100200) || 0}
+                                 {capitalizeFLetter(video.category)}
                                 </span>
 
                                 {/* <div

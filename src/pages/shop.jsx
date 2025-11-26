@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from "react";
+import { motion } from "framer-motion";
 import SEO from "@/components/seo";
 import Wrapper from "@/layout/wrapper";
 import HeaderTwo from "@/layout/headers/header-2";
@@ -828,7 +829,7 @@ const ShopPage = () => {
 
   const finalFilterOptionList = (res) => {
     console.log("res", res);
-    
+
     let parsedFilterData;
     if (res?.data?.data?.attributefilter?.filterData) {
       parsedFilterData = JSON?.parse(
@@ -847,27 +848,40 @@ const ShopPage = () => {
   };
 
   console.log("attributeList", attributeList);
-  
 
   return (
     <Wrapper>
       <SEO pageTitle="Shop" />
-      <HeaderSection/>
-      <div 
+      <motion.div
+        initial={{ opacity: 0, y: 30 }}
+        whileInView={{ opacity: 1, y: 0 }}
+        transition={{ duration: 0.6, delay: 0.2 }}
+        viewport={{ once: true }}
+      >
+        <HeaderSection />
+      </motion.div>
+      <div
       // style={{background:"#f6e9d9"}}
       >
-      <div >
-      <ShopBreadcrumb
-        title={shopTitle}
-        parentSlug={parentSlug}
-        // title="Shop"
-        subtitle="Shop"
-        bgImage={shopBanner}
-        catList={categoryList}
-        product={productList}
-      />
-      </div>
-      {/* {isLoading || categoryLoading || filterLoading ? (
+        <div>
+          <motion.div
+            initial={{ opacity: 0, y: 30 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.6, delay: 0.2 }}
+            viewport={{ once: true }}
+          >
+            <ShopBreadcrumb
+              title={shopTitle}
+              parentSlug={parentSlug}
+              // title="Shop"
+              subtitle="Shop"
+              bgImage={shopBanner}
+              catList={categoryList}
+              product={productList}
+            />
+          </motion.div>
+        </div>
+        {/* {isLoading || categoryLoading || filterLoading ? (
         <ShopLoader loading={isLoading} />
       ) : (
         <> */}
@@ -962,8 +976,14 @@ const ShopPage = () => {
           attributeList={attributeList}
         />
       </div>
-
-      <HomeFooter />
+      <motion.div
+        initial={{ opacity: 0, y: 30 }}
+        whileInView={{ opacity: 1, y: 0 }}
+        transition={{ duration: 0.6, delay: 0.2 }}
+        viewport={{ once: true }}
+      >
+        <HomeFooter />
+      </motion.div>
       {/* </>
       )} */}
     </Wrapper>

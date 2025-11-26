@@ -1,4 +1,5 @@
 import React, { useEffect, useState } from "react";
+import { motion } from "framer-motion";
 import Pagination from "@/ui/Pagination";
 import ProductItem from "../products/fashion/product-item";
 import CategoryFilter from "./shop-filter/category-filter";
@@ -12,7 +13,10 @@ import ShopTopLeft from "./shop-top-left";
 import ShopTopRight from "./shop-top-right";
 import ResetButton from "./shop-filter/reset-button";
 import { useDispatch, useSelector } from "react-redux";
-import { filterByHomePage, filterData } from "@/redux/features/shop-filter-slice";
+import {
+  filterByHomePage,
+  filterData,
+} from "@/redux/features/shop-filter-slice";
 import Link from "next/link";
 import { useRouter } from "next/router";
 import { objIsEmpty } from "../../utils/functions";
@@ -70,7 +74,6 @@ const ShopArea = ({
       const updatedFilter = { ...filter, price: updatedPriceFilter };
       dispatch(filterData(updatedFilter));
       dispatch(filterByHomePage(updatedFilter));
-
     }
     // Remove attribute filter
     else if (filterType === "attribute") {
@@ -90,7 +93,6 @@ const ShopArea = ({
       // Update the filter state
       const updatedFilter = { ...filter, attributes: updatedAttributes };
       dispatch(filterData(updatedFilter));
-
     }
   };
 
@@ -122,7 +124,6 @@ const ShopArea = ({
   const [categoryId, setCategoryId] = useState("earrings");
 
   console.log("categoryId", categoryId);
-  
 
   // Initialize ParentCategoryId
   useEffect(() => {
@@ -139,8 +140,7 @@ const ShopArea = ({
       ParentCategoryId = "finger_rings";
     } else if (categories[1] === "Anklets data") {
       ParentCategoryId = "anklets";
-    } 
-    else if (categories[1] === "Other Accessories") {
+    } else if (categories[1] === "Other Accessories") {
       // ParentCategoryId = "other_accessories";
     } else {
       ParentCategoryId = parentSlug;
@@ -176,20 +176,32 @@ const ShopArea = ({
                     </div>
                   ))}
                 </div> */}
+                <motion.div
+                        initial={{ opacity: 0, y: 30 }}
+                        whileInView={{ opacity: 1, y: 0 }}
+                        transition={{ duration: 0.6, delay: 0.2 }}
+                        viewport={{ once: true }}
+                      >
                 <div className=" position-relative ShopByCollections row  d-flex flex-wrap align-items-stretch">
                   {/* <div
                       className="swiper-wrapper "
                      
                     > */}
-                  {products.map((item, index) => (
-                    <ProductItem1
-                      products={item}
-                      updateData={updateData}
-                      index={index}
-                    />
-                  ))}
+
+                 
+                    {products.map((item, index) => (
+                      <ProductItem1
+                        products={item}
+                        updateData={updateData}
+                        index={index}
+                      />
+                    ))}
+                 
+
                   {/* </div> */}
                 </div>
+
+                </motion.div>
               </div>
               <div
                 className="tab-pane fade"
@@ -244,7 +256,18 @@ const ShopArea = ({
 
   return (
     <>
-      <section className="tp-shop-area  mt-30 shop-page" style={{zIndex:"10"}}>
+    <motion.div
+                    initial={{ opacity: 0, y: 30 }}
+                    whileInView={{ opacity: 1, y: 0 }}
+                    transition={{ duration: 0.6, delay: 0.2 }}
+                    viewport={{ once: true }}
+                  >
+      <section
+        className="tp-shop-area  mt-30 shop-page"
+        style={{ zIndex: "10" }}
+      >
+
+        
         <div className="container-fluid shop-page-in">
           <div
             className="section-wd"
@@ -256,9 +279,11 @@ const ShopArea = ({
           >
             <div>
               <span>
-                <Link href="/" style={{color:"#be8b7b"}}>Home</Link>
+                <Link href="/" style={{ color: "#be8b7b" }}>
+                  Home
+                </Link>
               </span>{" "}
-               <NextArr/>{" "}
+              <NextArr />{" "}
               <span style={{ color: "#7d4432", fontWeight: "400" }}>
                 {/* <Link href="/shop">{categories[0]}</Link>{" "} */}
                 <span
@@ -283,13 +308,18 @@ const ShopArea = ({
                         });
                       }
                     }}
-                    style={{ cursor: "pointer" , textTransform:"capitalize"}}
+                    style={{ cursor: "pointer", textTransform: "capitalize" }}
                   >
-                    {""} <NextArr/> {categories[1].toLowerCase()}
+                    {""} <NextArr /> {categories[1].toLowerCase()}
                   </span>
                 )}
                 {categories[2] && (
-                  <span style={{ cursor: "pointer",textTransform:"capitalize" }}> {""}  <NextArr/> {categories[2].toLowerCase()}</span>
+                  <span
+                    style={{ cursor: "pointer", textTransform: "capitalize" }}
+                  >
+                    {" "}
+                    {""} <NextArr /> {categories[2].toLowerCase()}
+                  </span>
                 )}
               </span>
             </div>
@@ -339,7 +369,7 @@ const ShopArea = ({
                           </div> */}
                           <div onClick={() => clearFilter()}>
                             <i className="fa-regular fa-xmark " />
-                            <span style={{ paddingLeft: "5px",  }}>
+                            <span style={{ paddingLeft: "5px" }}>
                               Clear filter
                             </span>
                           </div>
@@ -347,7 +377,12 @@ const ShopArea = ({
                       )}
                       <div
                         className=""
-                        style={{ display: "flex", gap: 10, cursor: "pointer", color:"black"}}
+                        style={{
+                          display: "flex",
+                          gap: 10,
+                          cursor: "pointer",
+                          color: "black",
+                        }}
                       >
                         {/* Price Filter */}
                         {filter.price && (
@@ -419,7 +454,10 @@ const ShopArea = ({
             </div>
           </div>
         </div>
+
+       
       </section>
+       </motion.div>
     </>
   );
 };

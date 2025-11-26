@@ -1,4 +1,5 @@
 import React, { useState, useEffect, useRef } from "react";
+import { motion } from "framer-motion";
 import DetailsThumbWrapper from "./details-thumb-wrapper";
 import DetailsWrapper from "./details-wrapper";
 import { useDispatch } from "react-redux";
@@ -191,6 +192,12 @@ const ProductDetailsArea = ({
         <></>
       ) : (
         <>
+        <motion.div
+                  initial={{ opacity: 0, y: 30 }}
+                  whileInView={{ opacity: 1, y: 0 }}
+                  transition={{ duration: 0.6, delay: 0.2 }}
+                  viewport={{ once: true }}
+                >
           {/* related products start */}
           {relatedproducts?.length > 0 && (
             <section
@@ -224,6 +231,15 @@ const ProductDetailsArea = ({
               </div>
             </section>
           )}
+
+          </motion.div>
+
+          <motion.div
+                  initial={{ opacity: 0, y: 30 }}
+                  whileInView={{ opacity: 1, y: 0 }}
+                  transition={{ duration: 0.6, delay: 0.2 }}
+                  viewport={{ once: true }}
+                >
 
           {youMayLikeData?.length > 0 && (
             <section className="tp-related-product pt-40 pb-40 you-may-like">
@@ -266,6 +282,8 @@ const ProductDetailsArea = ({
               </div>
             </section>
           )}
+          </motion.div>
+          
           {reviewList?.length > 0 && <ReviewSection reviewList={reviewList} />}
         </>
       )}

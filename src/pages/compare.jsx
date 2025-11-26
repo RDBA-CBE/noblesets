@@ -1,4 +1,5 @@
 import React, { useEffect } from "react";
+import { motion } from "framer-motion";
 import SEO from "@/components/seo";
 import HeaderTwo from "@/layout/headers/header-2";
 import Wrapper from "@/layout/wrapper";
@@ -36,23 +37,52 @@ const ComparePage = () => {
     <Wrapper>
       <SEO pageTitle="Shop" />
       {/* <HeaderTwo style_2={true} /> */}
-      <HeaderSection />
-       <div style={{background:"#f6e9d9"}}>
-      <div >
-      <ShopBreadcrumb
-        title="Compare"
-        subtitle="Compare"
-        bgImage={shopBanner}
-        // catList={categoryList}
-        // product={productList}
-      />
-      </div>
+      <motion.div
+        initial={{ opacity: 0, y: 30 }}
+        whileInView={{ opacity: 1, y: 0 }}
+        transition={{ duration: 0.6, delay: 0.2 }}
+        viewport={{ once: true }}
+      >
+        <HeaderSection />
+      </motion.div>
+      <div style={{ background: "#f6e9d9" }}>
+        <div>
+          <motion.div
+            initial={{ opacity: 0, y: 30 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.6, delay: 0.2 }}
+            viewport={{ once: true }}
+          >
+            <ShopBreadcrumb
+              title="Compare"
+              subtitle="Compare"
+              bgImage={shopBanner}
+              // catList={categoryList}
+              // product={productList}
+            />
+          </motion.div>
+        </div>
       </div>
       {/* <CommonBreadcrumb title="Compare" subtitle="Compare" BgImage={banner}/> */}
       {/* <CompareArea /> */}
       {/* <CompareArea1/> */}
-      <CompareArea2/>
-      <HomeFooter />
+      <motion.div
+        initial={{ opacity: 0, y: 30 }}
+        whileInView={{ opacity: 1, y: 0 }}
+        transition={{ duration: 0.6, delay: 0.2 }}
+        viewport={{ once: true }}
+      >
+        <CompareArea2 />
+      </motion.div>
+
+      <motion.div
+        initial={{ opacity: 0, y: 30 }}
+        whileInView={{ opacity: 1, y: 0 }}
+        transition={{ duration: 0.6, delay: 0.2 }}
+        viewport={{ once: true }}
+      >
+        <HomeFooter />
+      </motion.div>
     </Wrapper>
   );
 };

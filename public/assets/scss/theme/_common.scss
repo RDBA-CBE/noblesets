@@ -2322,6 +2322,7 @@ hr.footer-divider {
 }
 
 .bestofnoblesets .tp-product-title-2 a {
+  text-transform: capitalize !important;
   font-size: 24px !important;
   margin-bottom: 10px;
 }
@@ -3103,6 +3104,24 @@ header .tp-product-action-btn-3:hover {
   background-size: contain;
   background-repeat: no-repeat;
   z-index: -100;
+
+  animation: sparkleBlink 2.5s ease-in-out infinite;
+    transform-origin: center;
+}
+
+@keyframes sparkleBlink {
+    0% {
+        opacity: 0.5;
+        transform: scale(0.98);
+    }
+    50% {
+        opacity: 1;
+        transform: scale(1);
+    }
+    100% {
+        opacity: 0.5;
+        transform: scale(0.98);
+    }
 }
 
 .ShopByCollections .card-body p {
@@ -3161,7 +3180,7 @@ header .tp-product-action-btn-3:hover {
   left: 0;
   height: 100%;
   width: 100%;
-  background-image: url("/assets/img/home/nobletset_promises/nobel-promise-bg.png");
+  background-image: url("/assets/img/newlayout/Making gifiting special/gift-bg.jpg");
   background-size: cover !important;
   background-repeat: no-repeat !important;
 }
@@ -3194,6 +3213,21 @@ header .tp-product-action-btn-3:hover {
   //  z-index: 400;
 }
 
+// .product-detail-page::before {
+//   content: "";
+//   position: absolute;
+//   top: 30px;
+//   right: 20px;
+//   height: 200px;
+//   width: 100px;
+//   // background-color:#000;
+//   //  background-image: url("/assets/img/all-bg-img/flower-elem-1.png");
+//   background-image: url("/assets/img/home/bg-ele/flower-ele-2.png");
+//   background-size: contain;
+//   background-repeat: no-repeat;
+//   //  z-index: -100;
+// }
+
 .product-detail-page::before {
   content: "";
   position: absolute;
@@ -3207,22 +3241,60 @@ header .tp-product-action-btn-3:hover {
   background-size: contain;
   background-repeat: no-repeat;
   //  z-index: -100;
+
+  /* Add animation */
+    animation: sparkleBlink 2.5s ease-in-out infinite;
+    transform-origin: center;
 }
 
+// .product-detail-page::after {
+//   content: "";
+//   position: absolute;
+//   bottom: 0px;
+//   left: 20px;
+//   height: 150px;
+//   width: 100px;
+  
+//   background-image: url("/assets/img/home/bg-ele/star-ele-3.png");
+//   background-size: contain;
+//   background-repeat: no-repeat;
+ 
+// }
+
 .product-detail-page::after {
-  content: "";
-  position: absolute;
-  bottom: 60px;
-  left: 20px;
-  height: 200px;
-  width: 100px;
-  // background-color:#000;
-  //  background-image: url("/assets/img/all-bg-img/flower-elem-1.png");
-  background-image: url("/assets/img/home/bg-ele/star-ele-3.png");
-  background-size: contain;
-  background-repeat: no-repeat;
-  //  z-index: -100;
+    content: "";
+    position: absolute;
+    bottom: 0px;
+    left: 20px;
+    height: 150px;
+    width: 100px;
+    background-image: url(/assets/img/home/bg-ele/star-ele-3.png);
+    background-size: contain;
+    background-repeat: no-repeat;
+
+    /* Add animation */
+   animation: sparkleBlink 2.5s ease-in-out infinite;
+    transform-origin: center;
 }
+
+/* Animation keyframes */
+@keyframes sparkleBlink {
+    0% {
+        opacity: 0.5;
+        transform: scale(0.98);
+    }
+    50% {
+        opacity: 1;
+        transform: scale(1);
+    }
+    100% {
+        opacity: 0.5;
+        transform: scale(0.98);
+    }
+}
+
+
+
 
 .cart-page {
   position: relative;
@@ -3242,6 +3314,24 @@ header .tp-product-action-btn-3:hover {
   background-size: contain;
   background-repeat: no-repeat;
   //  z-index: 100;
+
+  animation: sparkleBlink 2.5s ease-in-out infinite;
+  transform-origin: center;
+}
+
+@keyframes sparkleBlink {
+    0% {
+        opacity: 0.5;
+        transform: scale(0.98);
+    }
+    50% {
+        opacity: 1;
+        transform: scale(1);
+    }
+    100% {
+        opacity: 0.5;
+        transform: scale(0.98);
+    }
 }
 
 .cart-page::after {
@@ -3257,6 +3347,24 @@ header .tp-product-action-btn-3:hover {
   background-size: contain;
   background-repeat: no-repeat;
   //  z-index: 100;
+
+   animation: sparkleBlink 2.5s ease-in-out infinite;
+  transform-origin: center;
+}
+
+@keyframes sparkleBlink {
+    0% {
+        opacity: 0.5;
+        transform: scale(0.98);
+    }
+    50% {
+        opacity: 1;
+        transform: scale(1);
+    }
+    100% {
+        opacity: 0.5;
+        transform: scale(0.98);
+    }
 }
 
 @media (max-width: 1300px) {
@@ -3289,7 +3397,11 @@ header .tp-product-action-btn-3:hover {
   background-size: contain;
   background-repeat: no-repeat;
   //  z-index: -100;
+
+  animation: sparkleBlink 2.5s ease-in-out infinite;
+  transform-origin: center;
 }
+
 
 .checkout-page-main::after {
   content: "";
@@ -3304,7 +3416,25 @@ header .tp-product-action-btn-3:hover {
   background-size: contain;
   background-repeat: no-repeat;
   //  z-index: -100;
+  animation: sparkleBlink 2.5s ease-in-out infinite;
+  transform-origin: center;
 }
+
+@keyframes sparkleBlink {
+    0% {
+        opacity: 0.5;
+        transform: scale(0.98);
+    }
+    50% {
+        opacity: 1;
+        transform: scale(1);
+    }
+    100% {
+        opacity: 0.5;
+        transform: scale(0.98);
+    }
+}
+
 
 .profile__ticket table thead tr {
   padding: 1rem 1rem !important;

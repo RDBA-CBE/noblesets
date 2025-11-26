@@ -1,4 +1,5 @@
 import React, { useEffect } from "react";
+import { motion } from "framer-motion";
 import { useRouter } from "next/router";
 // internal
 import SEO from "@/components/seo";
@@ -37,7 +38,9 @@ const ProfilePage = () => {
         userId: user?.user?.id,
       });
       if (res?.data?.data?.productReviews?.edges?.length > 0) {
-        const reviewsData = res?.data?.data?.productReviews?.edges?.map((item)=>item?.node);
+        const reviewsData = res?.data?.data?.productReviews?.edges?.map(
+          (item) => item?.node
+        );
         setState({ reviewList: reviewsData });
       }
     } catch (error) {
@@ -59,9 +62,31 @@ const ProfilePage = () => {
   return (
     <Wrapper>
       <SEO pageTitle="Profile" />
-      <HeaderSection />
-      <ProfileArea orderData={orderData} reviewList={state.reviewList} />
-      <HomeFooter/>
+      <motion.div
+        initial={{ opacity: 0, y: 30 }}
+        whileInView={{ opacity: 1, y: 0 }}
+        transition={{ duration: 0.6, delay: 0.2 }}
+        viewport={{ once: true }}
+      >
+        <HeaderSection />
+      </motion.div>
+      <motion.div
+        initial={{ opacity: 0, y: 30 }}
+        whileInView={{ opacity: 1, y: 0 }}
+        transition={{ duration: 0.6, delay: 0.2 }}
+        viewport={{ once: true }}
+      >
+        <ProfileArea orderData={orderData} reviewList={state.reviewList} />
+      </motion.div>
+
+      <motion.div
+        initial={{ opacity: 0, y: 30 }}
+        whileInView={{ opacity: 1, y: 0 }}
+        transition={{ duration: 0.6, delay: 0.2 }}
+        viewport={{ once: true }}
+      >
+        <HomeFooter />
+      </motion.div>
     </Wrapper>
   );
 };

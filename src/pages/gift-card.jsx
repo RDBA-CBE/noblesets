@@ -1,4 +1,5 @@
 import React, { useEffect, useState } from "react";
+import { motion } from "framer-motion";
 import SEO from "@/components/seo";
 import HeaderTwo from "@/layout/headers/header-2";
 import Wrapper from "@/layout/wrapper";
@@ -102,7 +103,10 @@ export default function GiftCart() {
             parentSlug={parentSlug}
           />
         ) : ( */}
-      <div className="container-fluid tp-compare-area pb-50 pt-50" style={{background:"#f6e9d9"}}>
+      <div
+        className="container-fluid tp-compare-area pb-50 pt-50"
+        style={{ background: "#f6e9d9" }}
+      >
         <div className="row">
           <div className="col-xl-12">
             <div className="text-center pt-0 pb-0 pt-md-50 pb-md-50 ">
@@ -131,50 +135,76 @@ export default function GiftCart() {
         BgImage={banner}
         parentSlug={parentSlug}
       /> */}
-      <div style={{background:"#f6e9d9"}}>
-      <div>
-      <ShopBreadcrumb
-        title="Gift Card"
-        // parentSlug={parentSlug}
-        // title="Shop"
-        subtitle="Gift Card"
-        bgImage={shopBanner}
-        // catList={categoryList}
-        // product={productList}
-      />
+      <div style={{ background: "#f6e9d9" }}>
+        <div>
+          <motion.div
+            initial={{ opacity: 0, y: 30 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.6, delay: 0.2 }}
+            viewport={{ once: true }}
+          >
+            <ShopBreadcrumb
+              title="Gift Card"
+              // parentSlug={parentSlug}
+              // title="Shop"
+              subtitle="Gift Card"
+              bgImage={shopBanner}
+              // catList={categoryList}
+              // product={productList}
+            />
+          </motion.div>
+        </div>
       </div>
-      </div>
-      {isLoading ? (
-        <PrdDetailsLoader loading={isLoading} />
-      ) : product ? (
-        <ProductDetailsArea
-          productItem={product}
-          pageTitle={shopTitle}
-          detailsRefetch={productRefetch}
-          isGiftCard={true}
-          parentSlug={parentSlug}
-        />
-      ) : (
-        <div className="container-fluid tp-compare-area pb-50 pt-50" style={{background:"#f6e9d9"}}>
-          <div className="row">
-            <div className="col-xl-12">
-              <div className="text-center pt-0 pb-0 pt-md-50 pb-md-50 ">
-                <h3 className="pb-20">No Gift Card Found</h3>
-                <Link href="/shop" className="gradient-btn ">
-                  Continue Shipping
-                </Link>
+
+      <motion.div
+        initial={{ opacity: 0, y: 30 }}
+        whileInView={{ opacity: 1, y: 0 }}
+        transition={{ duration: 0.6, delay: 0.2 }}
+        viewport={{ once: true }}
+      >
+        {isLoading ? (
+          <PrdDetailsLoader loading={isLoading} />
+        ) : product ? (
+          <ProductDetailsArea
+            productItem={product}
+            pageTitle={shopTitle}
+            detailsRefetch={productRefetch}
+            isGiftCard={true}
+            parentSlug={parentSlug}
+          />
+        ) : (
+          <div
+            className="container-fluid tp-compare-area pb-50 pt-50"
+            style={{ background: "#f6e9d9" }}
+          >
+            <div className="row">
+              <div className="col-xl-12">
+                <div className="text-center pt-0 pb-0 pt-md-50 pb-md-50 ">
+                  <h3 className="pb-20">No Gift Card Found</h3>
+                  <Link href="/shop" className="gradient-btn ">
+                    Continue Shipping
+                  </Link>
+                </div>
               </div>
             </div>
           </div>
-        </div>
-      )}
+        )}
+      </motion.div>
 
       {/* <ProductDetailsArea
         productItem={product}
         detailsRefetch={productRefetch}
       /> */}
       {/* {content} */}
-      <HomeFooter />
+
+      <motion.div
+        initial={{ opacity: 0, y: 30 }}
+        whileInView={{ opacity: 1, y: 0 }}
+        transition={{ duration: 0.6, delay: 0.2 }}
+        viewport={{ once: true }}
+      >
+        <HomeFooter />
+      </motion.div>
     </Wrapper>
   );
 }
