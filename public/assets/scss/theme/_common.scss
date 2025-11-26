@@ -3,38 +3,23 @@
     1.2 Common Classes
 ---------------------------------*/
 
-// h1 {
-//     font-family: "Marcellus SC", Arial, Helvetica, sans-serif;
-// }
-// h2 {
-//     font-family: "Marcellus SC", Arial, Helvetica, sans-serif;
-// }
-// h3 {
-//     font-family: "Marcellus SC", Arial, Helvetica, sans-serif;
-// }
-// h4 {
-//     font-family: "Marcellus SC", Arial, Helvetica, sans-serif;
-// }
-// h5 {
-//     font-family: "Marcellus SC", Arial, Helvetica, sans-serif;
-// }
-// h6 {
-//     font-family: "Marcellus SC", Arial, Helvetica, sans-serif;
-// }
-
-// p {
-//     font-family: "Lora", Arial, Helvetica, sans-serif;
-// }
-
-// div{
-//     font-family: "Lora", Arial, Helvetica, sans-serif;
-// }
-
-// span{
-
-// 		font-family: "Lora", Arial, Helvetica, sans-serif;
-
-// }
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+p,
+a,
+li,
+span,
+div,
+button,
+input,
+select,
+textarea {
+  letter-spacing: 0.8px;
+}
 
 .w-img {
   & img {
@@ -2338,18 +2323,23 @@ hr.footer-divider {
 
 .bestofnoblesets .tp-product-title-2 a {
   font-size: 24px !important;
+  margin-bottom: 10px;
 }
 
-@media (max-width : 1024px){
-  .bestofnoblesets .tp-product-title-2 a {
-  font-size: 18px !important;
-}
+.bestofnoblesets .tp-product-price-2.new-price {
+  font-weight: 500;
 }
 
-@media (max-width : 780px){
+@media (max-width: 1024px) {
   .bestofnoblesets .tp-product-title-2 a {
-  font-size: 18px !important;
+    font-size: 18px !important;
+  }
 }
+
+@media (max-width: 780px) {
+  .bestofnoblesets .tp-product-title-2 a {
+    font-size: 18px !important;
+  }
 }
 
 // .bestofnoblesets .feature-main {
@@ -2803,11 +2793,7 @@ header .tp-product-action-btn-3:hover {
 }
 
 .submenu-pro .tp-product-action-btn-3:hover {
-  background: linear-gradient(
-    to right,
-    color-mix(in srgb, #fbdccc 40%, #e09a7a),
-    #e09a7a
-  ) !important;
+  background: #9b604d !important;
 }
 
 .profile__tab .nav-tabs {
@@ -3001,8 +2987,6 @@ header .tp-product-action-btn-3:hover {
   // background: #f6e9d9;
   color: #4a2d13;
 }
-
-
 
 .ourstory-heading {
   font-size: 50px;
@@ -3588,8 +3572,8 @@ header .tp-product-action-btn-3:hover {
   margin: auto;
 }
 
-.insta-item{
- border-radius: 15px;
+.insta-item {
+  border-radius: 15px;
 }
 
 .insta-img {
@@ -3667,10 +3651,10 @@ header .tp-product-action-btn-3:hover {
 }
 
 @media (max-width: 600px) {
-.insta-desc {
-  font-size: 18px;
-  padding: 0 0px;
-}
+  .insta-desc {
+    font-size: 18px;
+    padding: 0 0px;
+  }
 }
 
 /* Nobleset Promise */
@@ -3796,17 +3780,17 @@ header .tp-product-action-btn-3:hover {
 .newBan-content-in .main-title {
   font-size: 85px;
   color: #7d4432;
-   font-family: "Adios-Script-Pro", sans-serif;
-   font-weight: 600;
-   padding-bottom: 15px;
- 
+  font-family: "Adios-Script-Pro", sans-serif;
+  font-weight: 600;
+  padding-bottom: 15px;
+  letter-spacing: normal;
 }
 
 .newBan-content-in .sub-title {
   font-size: 45px;
   color: #7d4432;
   margin-bottom: 0;
-   font-family: "Bagind", sans-serif;
+  font-family: "Bagind", sans-serif;
   // margin-bottom: 40px;
 }
 
@@ -3831,8 +3815,8 @@ header .tp-product-action-btn-3:hover {
 .newBan-content.reverse-sli .main-title {
   font-size: 120px;
   padding-bottom: 50px;
-   font-family: "Adios-Script-Pro", sans-serif;
-   font-weight: 600;
+  font-family: "Adios-Script-Pro", sans-serif;
+  font-weight: 600;
 }
 
 .newBan-content.reverse-sli .sub-title {
@@ -3850,7 +3834,7 @@ header .tp-product-action-btn-3:hover {
     font-size: 35px;
   }
 
-   .newBan-content.reverse-sli .main-title {
+  .newBan-content.reverse-sli .main-title {
     font-size: 90px;
     padding-bottom: 30px;
   }
@@ -3876,7 +3860,7 @@ header .tp-product-action-btn-3:hover {
 }
 
 @media (max-width: 1200px) {
-.newBan-content.reverse-sli .main-title {
+  .newBan-content.reverse-sli .main-title {
     font-size: 70px;
     padding-bottom: 20px;
   }
@@ -3884,11 +3868,10 @@ header .tp-product-action-btn-3:hover {
   .newBan-content.reverse-sli .sub-title {
     font-size: 50px;
   }
-
 }
 
 @media (max-width: 760px) {
-.newBan-content.reverse-sli .main-title {
+  .newBan-content.reverse-sli .main-title {
     font-size: 45px !important;
     padding-bottom: 0px !important;
   }
@@ -3896,11 +3879,10 @@ header .tp-product-action-btn-3:hover {
   .newBan-content.reverse-sli .sub-title {
     font-size: 35px !important;
   }
-
 }
 
 @media (max-width: 990px) {
-.newBan-content.reverse-sli .main-title {
+  .newBan-content.reverse-sli .main-title {
     font-size: 60px;
     padding-bottom: 10px;
   }
@@ -3908,7 +3890,6 @@ header .tp-product-action-btn-3:hover {
   .newBan-content.reverse-sli .sub-title {
     font-size: 40px;
   }
-
 }
 
 .col-lg-custom-45 {
@@ -4007,7 +3988,7 @@ header .tp-product-action-btn-3:hover {
 .sbb-card-1 {
   position: relative;
   // border-radius: 162px 183px 0 0;
-  border-radius:  170px 190px 0 0;
+  border-radius: 170px 190px 0 0;
   overflow: hidden;
 }
 
@@ -4052,7 +4033,7 @@ header .tp-product-action-btn-3:hover {
   font-weight: 500;
 }
 
-.vector-img{
+.vector-img {
   margin-top: -30px;
 }
 
@@ -4196,6 +4177,12 @@ header .tp-product-action-btn-3:hover {
 
   .sbb-label {
     font-size: 16px;
+  }
+}
+
+@media (max-width: 400px) {
+  .sbb-label {
+    font-size: 14px;
   }
 }
 
@@ -4623,12 +4610,9 @@ header .tp-product-action-btn-3:hover {
 
 @media (max-width: 1200px) {
   .media-video-title {
-  font-size: 16px;
-  
+    font-size: 16px;
+  }
 }
-}
-
-
 
 /* Responsive */
 @media (max-width: 992px) {

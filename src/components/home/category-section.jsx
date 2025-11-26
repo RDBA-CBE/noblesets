@@ -127,12 +127,12 @@ const HomeCategorySection = () => {
                         <div>
                           <div className="tp-product-content-2  pt-20">
                             <div style={{ textAlign: "center" }}>
-                              <h3 className="tp-product-title-2 mt-2">
+                              <h3 className="tp-product-title-2 mt-5">
                                 <Link href={`/`}>Grace Diamond Necklace</Link>
                               </h3>
 
                               <div className="tp-product-price-wrapper-2">
-                                <span
+                                {/* <span
                                   className=""
                                   style={{
                                     textDecoration: "line-through",
@@ -143,23 +143,23 @@ const HomeCategorySection = () => {
                                 >
                                   &#8377;
                                   {addCommasToNumber(100200) || 0}
-                                </span>
+                                </span> */}
 
                                 <span
-                                  className="tp-product-price-2 new-price text-black"
-                                  style={{ fontSize: "18px" }}
+                                  className="tp-product-price-2 new-price text-black pt-3"
+                                  style={{ fontSize: "20px" }}
                                 >
                                   &#8377;
                                   {addCommasToNumber(100200) || 0}
                                 </span>
 
-                                <div
+                                {/* <div
                                   className="save-off"
                                   style={{
                                     color: "#000",
                                     fontSize: "16px",
                                   }}
-                                >{`Save 20% OFF`}</div>
+                                >{`Save 20% OFF`}</div> */}
                               </div>
 
                               {/* <h3 className="tp-product-title-2 mt-2">

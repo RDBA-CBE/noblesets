@@ -29,7 +29,7 @@ const NoblesetPromisesNew = () => {
             Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed eiusmod
             tempor incididunt ut labore et dolore magna. Ut enim ad minim
             veniam, quis nostrud exercitation ullamco laboris nisi ut ullamco
-            laboris nisi ut
+            laboris nisi
           </p>
 
           {/* Icons Row */}
