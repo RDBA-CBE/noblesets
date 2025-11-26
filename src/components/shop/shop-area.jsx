@@ -177,18 +177,17 @@ const ShopArea = ({
                   ))}
                 </div> */}
                 <motion.div
-                        initial={{ opacity: 0, y: 30 }}
-                        whileInView={{ opacity: 1, y: 0 }}
-                        transition={{ duration: 0.6, delay: 0.2 }}
-                        viewport={{ once: true }}
-                      >
-                <div className=" position-relative ShopByCollections row  d-flex flex-wrap align-items-stretch">
-                  {/* <div
+                  initial={{ opacity: 0, y: 30 }}
+                  whileInView={{ opacity: 1, y: 0 }}
+                  transition={{ duration: 0.6, delay: 0.2 }}
+                  viewport={{ once: true }}
+                >
+                  <div className=" position-relative ShopByCollections row  d-flex flex-wrap align-items-stretch">
+                    {/* <div
                       className="swiper-wrapper "
                      
                     > */}
 
-                 
                     {products.map((item, index) => (
                       <ProductItem1
                         products={item}
@@ -196,11 +195,9 @@ const ShopArea = ({
                         index={index}
                       />
                     ))}
-                 
 
-                  {/* </div> */}
-                </div>
-
+                    {/* </div> */}
+                  </div>
                 </motion.div>
               </div>
               <div
@@ -256,85 +253,83 @@ const ShopArea = ({
 
   return (
     <>
-    <motion.div
-                    initial={{ opacity: 0, y: 30 }}
-                    whileInView={{ opacity: 1, y: 0 }}
-                    transition={{ duration: 0.6, delay: 0.2 }}
-                    viewport={{ once: true }}
-                  >
-      <section
-        className="tp-shop-area  mt-30 shop-page"
-        style={{ zIndex: "10" }}
+      <motion.div
+        initial={{ opacity: 0, y: 30 }}
+        whileInView={{ opacity: 1, y: 0 }}
+        transition={{ duration: 0.6, delay: 0.2 }}
+        viewport={{ once: true }}
       >
-
-        
-        <div className="container-fluid shop-page-in">
-          <div
-            className="section-wd"
-            style={{
-              // borderBottom: "1px solid #eee",
-              paddingBottom: "10px",
-              // marginBottom: "20px",
-            }}
-          >
-            <div>
-              <span>
-                <Link href="/" style={{ color: "#be8b7b" }}>
-                  Home
-                </Link>
-              </span>{" "}
-              <NextArr />{" "}
-              <span style={{ color: "#7d4432", fontWeight: "400" }}>
-                {/* <Link href="/shop">{categories[0]}</Link>{" "} */}
-                <span
-                  onClick={() => {
-                    if (categories[0] == "Shop") {
-                      router.push({
-                        pathname: "/shop",
-                      });
-                    }
-                  }}
-                  style={{ cursor: "pointer" }}
-                >
-                  {categories[0]}
-                </span>
-                {categories[1] && (
+        <section
+          className="tp-shop-area  mt-30 shop-page"
+          style={{ zIndex: "10" }}
+        >
+          <div className="container-fluid shop-page-in">
+            <div
+              className="section-wd"
+              style={{
+                // borderBottom: "1px solid #eee",
+                paddingBottom: "10px",
+                // marginBottom: "20px",
+              }}
+            >
+              <div>
+                <span>
+                  <Link href="/" style={{ color: "#be8b7b" }}>
+                    Home
+                  </Link>
+                </span>{" "}
+                <NextArr />{" "}
+                <span style={{ color: "#7d4432", fontWeight: "400" }}>
+                  {/* <Link href="/shop">{categories[0]}</Link>{" "} */}
                   <span
                     onClick={() => {
-                      if (parentSlug) {
+                      if (categories[0] == "Shop") {
                         router.push({
                           pathname: "/shop",
-                          query: { category: categoryId }, // Your parameters
                         });
                       }
                     }}
-                    style={{ cursor: "pointer", textTransform: "capitalize" }}
+                    style={{ cursor: "pointer" }}
                   >
-                    {""} <NextArr /> {categories[1].toLowerCase()}
+                    {categories[0]}
                   </span>
-                )}
-                {categories[2] && (
-                  <span
-                    style={{ cursor: "pointer", textTransform: "capitalize" }}
-                  >
-                    {" "}
-                    {""} <NextArr /> {categories[2].toLowerCase()}
-                  </span>
-                )}
-              </span>
+                  {categories[1] && (
+                    <span
+                      onClick={() => {
+                        if (parentSlug) {
+                          router.push({
+                            pathname: "/shop",
+                            query: { category: categoryId }, // Your parameters
+                          });
+                        }
+                      }}
+                      style={{ cursor: "pointer", textTransform: "capitalize" }}
+                    >
+                      {""} <NextArr /> {categories[1].toLowerCase()}
+                    </span>
+                  )}
+                  {categories[2] && (
+                    <span
+                      style={{ cursor: "pointer", textTransform: "capitalize" }}
+                    >
+                      {" "}
+                      {""} <NextArr /> {categories[2].toLowerCase()}
+                    </span>
+                  )}
+                </span>
+              </div>
             </div>
-          </div>
 
-          <div className="row justify-content-center">
-            {/*  */}
-            <div className="section-wd">
-              <div className="col-xl-12">
-                <div className="tp-shop-main-wrapper">
-                  <div className="tp-shop-top mb-10">
-                    <div className="row">
-                      <div className="col-md-6">
-                        <ShopTopLeft showing={page} total={totalCount} />
-                        {/* <ShopTopLeft
+            <div className="row justify-content-center">
+              {/*  */}
+              <div className="section-wd">
+                <div className="col-xl-12">
+                  <div className="tp-shop-main-wrapper">
+                    <div className="tp-shop-top mb-10">
+                      <div className="row">
+                        <div className="col-md-6">
+                          <ShopTopLeft showing={page} total={totalCount} />
+                          {/* <ShopTopLeft
                         showing={
                           products?.length === 0
                             ? 0
@@ -345,21 +340,23 @@ const ShopArea = ({
                         }
                         total={all_products?.length}
                       /> */}
-                      </div>
-                      <div className="col-md-6">
-                        <ShopTopRight selectHandleFilter={selectHandleFilter} />
+                        </div>
+                        <div className="col-md-6">
+                          <ShopTopRight
+                            selectHandleFilter={selectHandleFilter}
+                          />
+                        </div>
                       </div>
                     </div>
-                  </div>
-                  {filter && (
-                    <div
-                      className="d-flex cursor"
-                      style={{ gap: 20, cursor: "pointer" }}
-                    >
-                      {(!objIsEmpty(filter?.price) ||
-                        filter?.attributes?.length > 0) && (
-                        <>
-                          {/* <div className="cartmini__close">
+                    {filter && (
+                      <div
+                        className="d-flex cursor"
+                        style={{ gap: 20, cursor: "pointer" }}
+                      >
+                        {(!objIsEmpty(filter?.price) ||
+                          filter?.attributes?.length > 0) && (
+                          <>
+                            {/* <div className="cartmini__close">
                             <button
                               type="button"
                               className="cartmini__close-btn cartmini-close-btn"
@@ -367,97 +364,95 @@ const ShopArea = ({
                               <i className="fal fa-times"></i>
                             </button>
                           </div> */}
-                          <div onClick={() => clearFilter()}>
-                            <i className="fa-regular fa-xmark " />
-                            <span style={{ paddingLeft: "5px" }}>
-                              Clear filter
-                            </span>
-                          </div>
-                        </>
-                      )}
-                      <div
-                        className=""
-                        style={{
-                          display: "flex",
-                          gap: 10,
-                          cursor: "pointer",
-                          color: "black",
-                        }}
-                      >
-                        {/* Price Filter */}
-                        {filter.price && (
-                          <>
-                            {filter.price.min !== undefined && (
-                              <div
-                                style={{
-                                  display: "flex",
-                                  gap: 5,
-                                  cursor: "pointer",
-                                  alignItems: "center",
-                                }}
-                                onClick={() =>
-                                  removeFilter("gte", null, "price")
-                                }
-                              >
-                                <i className="fa-regular fa-xmark " />
-                                <span>Min {filter.price.min}</span>
-                              </div>
-                            )}
-                            {filter.price.max !== undefined && (
-                              <div
-                                style={{
-                                  display: "flex",
-                                  gap: 5,
-                                  cursor: "pointer",
-                                  alignItems: "center",
-                                }}
-                                onClick={() =>
-                                  removeFilter("lte", null, "price")
-                                }
-                              >
-                                <i className="fa-regular fa-xmark " />
-                                <span>Max {filter.price.max}</span>
-                              </div>
-                            )}
-                          </>
-                        )}
-
-                        {/* Attribute Filters */}
-                        {filter?.attributes?.map((item) =>
-                          item.values.map((value) => (
-                            <div
-                              key={`${item.slug}-${value}`} // Unique key for each choice
-                              style={{
-                                display: "flex",
-                                gap: 5,
-                                cursor: "pointer",
-                                alignItems: "center",
-                              }}
-                              onClick={() =>
-                                removeFilter(item.slug, value, "attribute")
-                              }
-                            >
+                            <div onClick={() => clearFilter()}>
                               <i className="fa-regular fa-xmark " />
                               <span style={{ paddingLeft: "5px" }}>
-                                {value}
+                                Clear filter
                               </span>
                             </div>
-                          ))
+                          </>
                         )}
-                      </div>
-                    </div>
-                  )}
+                        <div
+                          className=""
+                          style={{
+                            display: "flex",
+                            gap: 10,
+                            cursor: "pointer",
+                            color: "black",
+                          }}
+                        >
+                          {/* Price Filter */}
+                          {filter.price && (
+                            <>
+                              {filter.price.min !== undefined && (
+                                <div
+                                  style={{
+                                    display: "flex",
+                                    gap: 5,
+                                    cursor: "pointer",
+                                    alignItems: "center",
+                                  }}
+                                  onClick={() =>
+                                    removeFilter("gte", null, "price")
+                                  }
+                                >
+                                  <i className="fa-regular fa-xmark " />
+                                  <span>Min {filter.price.min}</span>
+                                </div>
+                              )}
+                              {filter.price.max !== undefined && (
+                                <div
+                                  style={{
+                                    display: "flex",
+                                    gap: 5,
+                                    cursor: "pointer",
+                                    alignItems: "center",
+                                  }}
+                                  onClick={() =>
+                                    removeFilter("lte", null, "price")
+                                  }
+                                >
+                                  <i className="fa-regular fa-xmark " />
+                                  <span>Max {filter.price.max}</span>
+                                </div>
+                              )}
+                            </>
+                          )}
 
-                  {content}
+                          {/* Attribute Filters */}
+                          {filter?.attributes?.map((item) =>
+                            item.values.map((value) => (
+                              <div
+                                key={`${item.slug}-${value}`} // Unique key for each choice
+                                style={{
+                                  display: "flex",
+                                  gap: 5,
+                                  cursor: "pointer",
+                                  alignItems: "center",
+                                }}
+                                onClick={() =>
+                                  removeFilter(item.slug, value, "attribute")
+                                }
+                              >
+                                <i className="fa-regular fa-xmark " />
+                                <span style={{ paddingLeft: "5px" }}>
+                                  {value}
+                                </span>
+                              </div>
+                            ))
+                          )}
+                        </div>
+                      </div>
+                    )}
+
+                    {content}
+                  </div>
                 </div>
               </div>
             </div>
           </div>
-        </div>
-
-       
-      </section>
-       </motion.div>
+        </section>
+      </motion.div>
     </>
   );
 };

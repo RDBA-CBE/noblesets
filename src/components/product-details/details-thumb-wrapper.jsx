@@ -219,7 +219,7 @@ const DetailsThumbWrapper = ({ product, relatedClick }) => {
         </nav> */}
         {product?.media?.length > 1 && (
           <nav className="product-side-nav-img p-relative">
-            <div className="nav nav-tabs flex-md-column flex-nowrap justify-content-start">
+            <div className="nav nav-tabs flex-md-column flex-nowrap justify-content-start gap-0 gap-sm-1 gap-md-0">
               {product?.media
                 ?.slice(startIndex, startIndex + 4)
                 .map((item, i) => (

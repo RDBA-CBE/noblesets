@@ -2937,12 +2937,12 @@ header .tp-product-action-btn-3:hover {
   height: auto !important;
 }
 
-.order-updates-section th{
-   background: transparent;
+.order-updates-section th {
+  background: transparent;
   border-bottom: 1px solid #dcc3bc;
 }
-.order-updates-section td{
-   background: transparent;
+.order-updates-section td {
+  background: transparent;
   border-bottom: 1px solid #dcc3bc;
 }
 
@@ -3118,22 +3118,22 @@ header .tp-product-action-btn-3:hover {
   z-index: -100;
 
   animation: sparkleBlink 2.5s ease-in-out infinite;
-    transform-origin: center;
+  transform-origin: center;
 }
 
 @keyframes sparkleBlink {
-    0% {
-        opacity: 0.5;
-        transform: scale(0.98);
-    }
-    50% {
-        opacity: 1;
-        transform: scale(1);
-    }
-    100% {
-        opacity: 0.5;
-        transform: scale(0.98);
-    }
+  0% {
+    opacity: 0.5;
+    transform: scale(0.98);
+  }
+  50% {
+    opacity: 1;
+    transform: scale(1);
+  }
+  100% {
+    opacity: 0.5;
+    transform: scale(0.98);
+  }
 }
 
 .ShopByCollections .card-body p {
@@ -3180,18 +3180,18 @@ header .tp-product-action-btn-3:hover {
 }
 
 @keyframes sparkleBlink {
-    0% {
-        opacity: 0.5;
-        transform: scale(0.98);
-    }
-    50% {
-        opacity: 1;
-        transform: scale(1);
-    }
-    100% {
-        opacity: 0.5;
-        transform: scale(0.98);
-    }
+  0% {
+    opacity: 0.5;
+    transform: scale(0.98);
+  }
+  50% {
+    opacity: 1;
+    transform: scale(1);
+  }
+  100% {
+    opacity: 0.5;
+    transform: scale(0.98);
+  }
 }
 
 .shop-page-in {
@@ -3212,7 +3212,6 @@ header .tp-product-action-btn-3:hover {
   background-image: url("/assets/img/newlayout/Making gifiting special/gift-bg.jpg");
   background-size: cover !important;
   background-repeat: no-repeat !important;
-  
 }
 
 @media (max-width: 1440px) {
@@ -3273,8 +3272,8 @@ header .tp-product-action-btn-3:hover {
   //  z-index: -100;
 
   /* Add animation */
-    animation: sparkleBlink 2.5s ease-in-out infinite;
-    transform-origin: center;
+  animation: sparkleBlink 2.5s ease-in-out infinite;
+  transform-origin: center;
 }
 
 // .product-detail-page::after {
@@ -3284,47 +3283,44 @@ header .tp-product-action-btn-3:hover {
 //   left: 20px;
 //   height: 150px;
 //   width: 100px;
-  
+
 //   background-image: url("/assets/img/home/bg-ele/star-ele-3.png");
 //   background-size: contain;
 //   background-repeat: no-repeat;
- 
+
 // }
 
 .product-detail-page::after {
-    content: "";
-    position: absolute;
-    bottom: 0px;
-    left: 20px;
-    height: 150px;
-    width: 100px;
-    background-image: url(/assets/img/home/bg-ele/star-ele-3.png);
-    background-size: contain;
-    background-repeat: no-repeat;
+  content: "";
+  position: absolute;
+  bottom: 0px;
+  left: 20px;
+  height: 150px;
+  width: 100px;
+  background-image: url(/assets/img/home/bg-ele/star-ele-3.png);
+  background-size: contain;
+  background-repeat: no-repeat;
 
-    /* Add animation */
-   animation: sparkleBlink 2.5s ease-in-out infinite;
-    transform-origin: center;
+  /* Add animation */
+  animation: sparkleBlink 2.5s ease-in-out infinite;
+  transform-origin: center;
 }
 
 /* Animation keyframes */
 @keyframes sparkleBlink {
-    0% {
-        opacity: 0.5;
-        transform: scale(0.98);
-    }
-    50% {
-        opacity: 1;
-        transform: scale(1);
-    }
-    100% {
-        opacity: 0.5;
-        transform: scale(0.98);
-    }
+  0% {
+    opacity: 0.5;
+    transform: scale(0.98);
+  }
+  50% {
+    opacity: 1;
+    transform: scale(1);
+  }
+  100% {
+    opacity: 0.5;
+    transform: scale(0.98);
+  }
 }
-
-
-
 
 .cart-page {
   position: relative;
@@ -3350,18 +3346,18 @@ header .tp-product-action-btn-3:hover {
 }
 
 @keyframes sparkleBlink {
-    0% {
-        opacity: 0.5;
-        transform: scale(0.98);
-    }
-    50% {
-        opacity: 1;
-        transform: scale(1);
-    }
-    100% {
-        opacity: 0.5;
-        transform: scale(0.98);
-    }
+  0% {
+    opacity: 0.5;
+    transform: scale(0.98);
+  }
+  50% {
+    opacity: 1;
+    transform: scale(1);
+  }
+  100% {
+    opacity: 0.5;
+    transform: scale(0.98);
+  }
 }
 
 .cart-page::after {
@@ -3378,23 +3374,23 @@ header .tp-product-action-btn-3:hover {
   background-repeat: no-repeat;
   //  z-index: 100;
 
-   animation: sparkleBlink 2.5s ease-in-out infinite;
+  animation: sparkleBlink 2.5s ease-in-out infinite;
   transform-origin: center;
 }
 
 @keyframes sparkleBlink {
-    0% {
-        opacity: 0.5;
-        transform: scale(0.98);
-    }
-    50% {
-        opacity: 1;
-        transform: scale(1);
-    }
-    100% {
-        opacity: 0.5;
-        transform: scale(0.98);
-    }
+  0% {
+    opacity: 0.5;
+    transform: scale(0.98);
+  }
+  50% {
+    opacity: 1;
+    transform: scale(1);
+  }
+  100% {
+    opacity: 0.5;
+    transform: scale(0.98);
+  }
 }
 
 @media (max-width: 1300px) {
@@ -3432,7 +3428,6 @@ header .tp-product-action-btn-3:hover {
   transform-origin: center;
 }
 
-
 .checkout-page-main::after {
   content: "";
   position: absolute;
@@ -3451,20 +3446,19 @@ header .tp-product-action-btn-3:hover {
 }
 
 @keyframes sparkleBlink {
-    0% {
-        opacity: 0.5;
-        transform: scale(0.98);
-    }
-    50% {
-        opacity: 1;
-        transform: scale(1);
-    }
-    100% {
-        opacity: 0.5;
-        transform: scale(0.98);
-    }
+  0% {
+    opacity: 0.5;
+    transform: scale(0.98);
+  }
+  50% {
+    opacity: 1;
+    transform: scale(1);
+  }
+  100% {
+    opacity: 0.5;
+    transform: scale(0.98);
+  }
 }
-
 
 .profile__ticket table thead tr {
   padding: 1rem 1rem !important;
@@ -4427,6 +4421,23 @@ header .tp-product-action-btn-3:hover {
   .bs-small {
     width: 130px !important;
   }
+  .bestSellers .tp-brand-slider-button-next {
+    right: 20px !important;
+  }
+
+  .bestSellers .tp-brand-slider-button-prev {
+    left: 20px !important;
+  }
+}
+
+@media (max-width: 575px) {
+    .bestSellers .tp-brand-slider-button-next {
+  right: 0px !important;
+}
+
+.bestSellers .tp-brand-slider-button-prev {
+  left: 0px !important;
+}
 }
 
 @media (max-width: 480px) {
@@ -4439,6 +4450,7 @@ header .tp-product-action-btn-3:hover {
   .bs-small {
     width: 120px !important;
   }
+
 }
 
 /* MAIN SECTION */
@@ -4834,4 +4846,8 @@ header .tp-product-action-btn-3:hover {
   margin: auto;
   z-index: 1000;
   height: fit-content;
+}
+
+.legal-policies a{
+  word-break: break-all !important;
 }

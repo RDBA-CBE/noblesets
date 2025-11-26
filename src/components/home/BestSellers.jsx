@@ -9,26 +9,25 @@ const HomeCategorySection = () => {
 
   const video_data = [
     {
-      img:"/assets/img/newlayout/Best-seller/image-3.png",
-      link:"earring"
+      img: "/assets/img/newlayout/Best-seller/image-3.png",
+      link: "earring",
     },
     {
-      img:"/assets/img/newlayout/Best-seller/image-2.png",
-      link:"Chain"
+      img: "/assets/img/newlayout/Best-seller/image-2.png",
+      link: "Chain",
     },
     {
-      img:"/assets/img/newlayout/Best-seller/image-1.png",
-      link:"rings"
+      img: "/assets/img/newlayout/Best-seller/image-1.png",
+      link: "rings",
     },
     {
-      img:"/assets/img/newlayout/Best-seller/image-4.png",
-      link:"earring"
+      img: "/assets/img/newlayout/Best-seller/image-4.png",
+      link: "earring",
     },
     {
-      img:"/assets/img/newlayout/Best-seller/image-5.png",
-      link:"necklace"
-    }
-  
+      img: "/assets/img/newlayout/Best-seller/image-5.png",
+      link: "necklace",
+    },
   ];
 
   const handleClick = (category) => {
@@ -82,9 +81,9 @@ const HomeCategorySection = () => {
             </div>
           </div>
 
-          <div className="d-md-none">
+          <div className="d-md-none px-3">
             <Swiper
-              slidesPerView={2}
+              slidesPerView={3}
               spaceBetween={12}
               loop={true}
               autoplay={true}
@@ -92,6 +91,15 @@ const HomeCategorySection = () => {
               navigation={{
                 nextEl: ".tp-brand-slider-button-next",
                 prevEl: ".tp-brand-slider-button-prev",
+              }}
+              breakpoints={{
+              
+                576: {
+                  slidesPerView: 3,
+                },
+                0: {
+                  slidesPerView: 2,
+                },
               }}
               className="bs-mobile-slider"
             >

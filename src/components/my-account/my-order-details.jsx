@@ -324,7 +324,7 @@ const MyOrderDetails = ({ data }) => {
           </div>
 
           <div className="col-lg-6 col-md-6">
-            <div className="order-updates-section py-4 px-2">
+            <div className="order-updates-section py-4 px-2 mt-4 mt-md-0">
               <h3
                 className="ps-3"
                 style={{ fontWeight: "400", fontSize: "18px" }}

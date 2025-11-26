@@ -246,7 +246,7 @@ const ProductItem1 = ({ products, style_2 = false, updateData, index }) => {
     // >
 
     <div
-      className={`tp-product-item-2 col-xl-3 col-lg-4 col-md-6  col-12 p-0  d-flex ${
+      className={`tp-product-item-2 col-xl-3 col-lg-4 col-md-4 col-sm-4 col-12 p-0  d-flex ${
         style_2 ? "" : "mb-40"
       }${product?.defaultVariant?.quantityAvailable == 0 && "bg-opacity-100"}`}
     >

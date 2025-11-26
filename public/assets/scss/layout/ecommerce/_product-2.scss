@@ -72,27 +72,41 @@
                        
                     }
                 }
-                @media ( max-width:480px){
+
+                @media ( max-width:500px){
                     &-action-2{
                         left: 120px !important;
                        
                     }
                 }
-                @media ( max-width:460px){
+                @media ( max-width:480px){
                     &-action-2{
                         left: 110px !important;
                        
                     }
                 }
-                @media ( max-width:430px){
+
+                 @media ( max-width:470px){
                     &-action-2{
                         left: 100px !important;
                        
                     }
                 }
+                @media ( max-width:460px){
+                    &-action-2{
+                        left: 90px !important;
+                       
+                    }
+                }
+                @media ( max-width:430px){
+                    &-action-2{
+                        left: 75px !important;
+                       
+                    }
+                }
                  @media ( max-width:400px){
                     &-action-2{
-                        left: 80px !important;
+                        left: 50px !important;
                        
                     }
                 }
