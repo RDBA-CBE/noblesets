@@ -248,7 +248,7 @@ const MyOrderDetails = ({ data }) => {
         </p>
         <div
           style={{
-            background: "#fff",
+            background: "#f1e7e1",
             borderRadius: "20px",
           }}
         >

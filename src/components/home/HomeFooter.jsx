@@ -35,8 +35,6 @@ const HomeFooter = () => {
                 
               </div> */}
 
-              
-
               <div className="col-6 col-md-4 col-lg-3 col-xl-2 ps-xl-3">
                 <h3 className="footer-title">Quick Links</h3>
                 <nav className="nav flex-column">
@@ -46,14 +44,20 @@ const HomeFooter = () => {
                   <a className="footer-link01 mb-3" href="/legal-policies">
                     Legal Policies
                   </a>
-                  <a className="footer-link01 mb-3" href="/terms-and-conditions">
+                  <a
+                    className="footer-link01 mb-3"
+                    href="/terms-and-conditions"
+                  >
                     Terms & Conditionss
                   </a>
-                  <a className="footer-link01 mb-3" href="/return-and-exchange-policies ">
-                   Return & Exchange Policies
+                  <a
+                    className="footer-link01 mb-3"
+                    href="/return-and-exchange-policies "
+                  >
+                    Return & Exchange Policies
                   </a>
                   <a className="footer-link01 mb-3" href="/faq">
-                    Help &amp; FAQS  
+                    Help &amp; FAQS
                   </a>
                   {/* <a className="footer-link" href="#">
                     Testimonials
@@ -71,7 +75,11 @@ const HomeFooter = () => {
                       handleClick("bracelets");
                     }}
                   >
-                   <img src="/assets/img/newlayout/Footer/bracelet-01.png" alt="" /> Bracelets
+                    <img
+                      src="/assets/img/newlayout/Footer/bracelet-01.png"
+                      alt=""
+                    />{" "}
+                    Bracelets
                   </a>
                   <a
                     className="footer-link mb-3"
@@ -80,7 +88,10 @@ const HomeFooter = () => {
                       handleClick("Chain");
                     }}
                   >
-                     <img src="/assets/img/newlayout/Footer/necklace-01.png" alt="" />
+                    <img
+                      src="/assets/img/newlayout/Footer/necklace-01.png"
+                      alt=""
+                    />
                     Chains
                   </a>
                   <a
@@ -90,7 +101,10 @@ const HomeFooter = () => {
                       handleClick("Bangle");
                     }}
                   >
-                    <img src="/assets/img/newlayout/Footer/bangles-01.png" alt="" />
+                    <img
+                      src="/assets/img/newlayout/Footer/bangles-01.png"
+                      alt=""
+                    />
                     Bangles
                   </a>
                   <a
@@ -100,13 +114,23 @@ const HomeFooter = () => {
                       handleClick("necklace");
                     }}
                   >
-                    <img src="/assets/img/newlayout/Footer/chains-01.png" alt="" />
+                    <img
+                      src="/assets/img/newlayout/Footer/chains-01.png"
+                      alt=""
+                    />
                     Necklace
                   </a>
-                  <a className="footer-link mb-3" href="#" onClick={() => {
+                  <a
+                    className="footer-link mb-3"
+                    href="#"
+                    onClick={() => {
                       handleClick("rings");
-                    }}>
-                      <img src="/assets/img/newlayout/Footer/rings-01.png" alt="" />
+                    }}
+                  >
+                    <img
+                      src="/assets/img/newlayout/Footer/rings-01.png"
+                      alt=""
+                    />
                     Rings
                   </a>
                   {/* <a className="footer-link" href="#">
@@ -118,26 +142,50 @@ const HomeFooter = () => {
               <div className="col-6 col-md-4 col-lg-3 col-xl-2 ps-xl-3">
                 <h3 className="footer-title">Collections</h3>
                 <nav className="nav flex-column">
-                  <a className="footer-link mb-3" href="#" onClick={() => {
+                  <a
+                    className="footer-link mb-3"
+                    href="#"
+                    onClick={() => {
                       handleClick("diamond");
-                    }}>
-                      <img src="/assets/img/newlayout/Footer/diamond-01.png" alt="" />
+                    }}
+                  >
+                    <img
+                      src="/assets/img/newlayout/Footer/diamond-01.png"
+                      alt=""
+                    />
                     Diamond
                   </a>
-                  <a className="footer-link mb-3" href="#" onClick={() => {
+                  <a
+                    className="footer-link mb-3"
+                    href="#"
+                    onClick={() => {
                       handleClick("gold");
-                    }}>
-                      <img src="/assets/img/newlayout/Footer/goldbar-01.png" alt="" />
+                    }}
+                  >
+                    <img
+                      src="/assets/img/newlayout/Footer/goldbar-01.png"
+                      alt=""
+                    />
                     Gold
                   </a>
-                  <a className="footer-link mb-3" href="#" onClick={() => {
+                  <a
+                    className="footer-link mb-3"
+                    href="#"
+                    onClick={() => {
                       handleClick("silver");
-                    }}>
-                      <img src="/assets/img/newlayout/Footer/bars-01.png" alt="" />
+                    }}
+                  >
+                    <img
+                      src="/assets/img/newlayout/Footer/bars-01.png"
+                      alt=""
+                    />
                     Silver
                   </a>
                   <a className="footer-link mb-3" href="/gift-card">
-                  <img src="/assets/img/newlayout/Footer/giftcard-01.png" alt="" />
+                    <img
+                      src="/assets/img/newlayout/Footer/giftcard-01.png"
+                      alt=""
+                    />
                     Gift Crad
                   </a>
 
@@ -147,27 +195,39 @@ const HomeFooter = () => {
                 </nav>
               </div>
 
-               <div className="col-6 col-md-4 col-lg-3 col-xl-2 ps-xl-3">
+              <div className="col-6 col-md-4 col-lg-3 col-xl-2 ps-xl-3">
                 <h3 className="footer-title">My Accounts</h3>
                 <nav className="nav flex-column">
                   <a className="footer-link mb-3" href="/profile">
-                  <img src="/assets/img/newlayout/Footer/profile-01.png" alt="" />
+                    <img
+                      src="/assets/img/newlayout/Footer/profile-01.png"
+                      alt=""
+                    />
                     My Profile
                   </a>
                   <a className="footer-link mb-3" href="/profile">
-                  <img src="/assets/img/newlayout/Footer/bag-01.png" alt="" />
-                    My Orders 
+                    <img src="/assets/img/newlayout/Footer/bag-01.png" alt="" />
+                    My Orders
                   </a>
                   <a className="footer-link mb-3" href="/wishlist">
-                  <img src="/assets/img/newlayout/Footer/heart-01.png" alt="" />
-                    Wishlist 
+                    <img
+                      src="/assets/img/newlayout/Footer/heart-01.png"
+                      alt=""
+                    />
+                    Wishlist
                   </a>
                   <a className="footer-link mb-3" href="/compare">
-                  <img src="/assets/img/newlayout/Footer/2arrows-01.png" alt="" />
-                   Compare 
+                    <img
+                      src="/assets/img/newlayout/Footer/2arrows-01.png"
+                      alt=""
+                    />
+                    Compare
                   </a>
                   <a className="footer-link mb-3" href="/cart">
-                  <img src="/assets/img/newlayout/Footer/cart-01.png" alt="" />
+                    <img
+                      src="/assets/img/newlayout/Footer/cart-01.png"
+                      alt=""
+                    />
                     Cart
                   </a>
                   {/* <a className="footer-link" href="#">
@@ -176,7 +236,6 @@ const HomeFooter = () => {
                 </nav>
               </div>
 
-             
               {/* <div className="col-6 col-lg-3 col-xl-2 ps-xl-5">
                 <h3 className="footer-title">Collections</h3>
                 <nav className="nav flex-column">
@@ -316,14 +375,18 @@ const HomeFooter = () => {
                   {/* <i className="fas fa-phone me-2" style="font-size: 10px"></i> */}
                   {/* <PhoneTwo /> */}
                   <img
-                      alt="Apple Pay logo white text on black background"
-                      height="14"
-                      src="/assets/img/newlayout/Footer/call-01.png"
-                      width="20"
-                      className="me-2"
-                    />
+                    alt="Apple Pay logo white text on black background"
+                    height="14"
+                    src="/assets/img/newlayout/Footer/call-01.png"
+                    width="20"
+                    className="me-2"
+                    style={{
+                      width: " 20px",
+                      height: "20px",
+                    }}
+                  />
 
-                  <span className="footer-link ps-2 ">
+                  <span className="footer-link">
                     <a href="tellto:(0252)8345 93421"> 0421-2266885</a>
                   </span>
                 </div>
@@ -333,14 +396,18 @@ const HomeFooter = () => {
               style="font-size: 10px"
             ></i> */}
                   {/* <Location /> */}
-                   <img
-                      alt="Apple Pay logo white text on black background"
-                      height="14"
-                      src="/assets/img/newlayout/Footer/location-01.png"
-                      width="20"
-                      className="me-2"
-                    />
-                  <span className="footer-link ps-2">
+                  <img
+                    alt="Apple Pay logo white text on black background"
+                    height="14"
+                    src="/assets/img/newlayout/Footer/location-01.png"
+                    width="20"
+                    className="me-2"
+                    style={{
+                      width: " 20px",
+                      height: "20px",
+                    }}
+                  />
+                  <span className="footer-link">
                     78, New Market Street, <br /> Tiruppur-641604 <br />
                   </span>
                 </div>
@@ -350,14 +417,18 @@ const HomeFooter = () => {
                   {/* <EmailTwo /> */}
 
                   <img
-                      alt="Apple Pay logo white text on black background"
-                      height="14"
-                      src="/assets/img/newlayout/Footer/email-01.png"
-                      width="20"
-                      className="me-2"
-                    />
+                    alt="Apple Pay logo white text on black background"
+                    height="14"
+                    src="/assets/img/newlayout/Footer/email-01.png"
+                    width="20"
+                    className="me-2"
+                    style={{
+                      width: " 20px",
+                      height: "20px",
+                    }}
+                  />
 
-                  <span className="footer-link ps-2 ">
+                  <span className="footer-link  ">
                     <span
                       className="d-block d-md-none"
                       style={{ marginTop: "-5px" }}
@@ -368,14 +439,12 @@ const HomeFooter = () => {
                       href="mailto:online@noblesets.com"
                       className="d-none d-md-block ps-0"
                     >
-                     online@noblesets.com
+                      online@noblesets.com
                     </a>
                   </span>
                 </div>
                 <span className="d-block d-md-none ps-0 footer-link">
-                  <a href="mailto:online@noblesets.com">
-                   online@noblesets.com
-                  </a>
+                  <a href="mailto:online@noblesets.com">online@noblesets.com</a>
                 </span>
               </div>
             </div>
@@ -473,7 +542,6 @@ const HomeFooter = () => {
                   {/* <i class="fa-brands fa-x-twitter"></i> */}
                   𝕩
                 </button>
-                
               </div>
             </div>
 

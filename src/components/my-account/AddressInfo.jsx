@@ -420,7 +420,7 @@ const AddressInfo = () => {
                         address?.isDefaultBillingAddress ||
                         address?.isDefaultShippingAddress
                           ? "white"
-                          : "#fff2ec",
+                          : "#f1e7e1",
                       color:
                         address?.isDefaultBillingAddress ||
                         address?.isDefaultShippingAddress

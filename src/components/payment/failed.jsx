@@ -199,7 +199,7 @@ const Failed = ({ data, orderId, fullData }) => {
               style={{
                 padding: "20px 30px",
                 borderRadius: "30px 20px",
-                background: "#fff2ec",
+                background: "#f1e7e1",
                 // boxShadow: "3px 3px 5px #f1f1f1",
               }}
             >
@@ -398,7 +398,7 @@ const Failed = ({ data, orderId, fullData }) => {
               style={{
                 padding: "20px 30px",
                 borderRadius: "30px 20px",
-                background: "#fff2ec",
+                background: "#f1e7e1",
                 // boxShadow: "3px 3px 5px #f1f1f1",
               }}
             >

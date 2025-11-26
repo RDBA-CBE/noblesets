@@ -124,7 +124,7 @@ const ProfileInfo = () => {
                   billingAddress?.isDefaultBillingAddress ||
                   billingAddress?.isDefaultShippingAddress
                     ? "white"
-                    : "#fff2ec",
+                    : "#f1e7e1",
                 color:
                   billingAddress?.isDefaultBillingAddress ||
                   billingAddress?.isDefaultShippingAddress
@@ -200,7 +200,7 @@ const ProfileInfo = () => {
                   shippingAddress?.isDefaultBillingAddress ||
                   shippingAddress?.isDefaultShippingAddress
                    ? "white"
-                   : "#fff2ec",
+                   : "#f1e7e1",
                 color:
                   shippingAddress?.isDefaultBillingAddress ||
                   shippingAddress?.isDefaultShippingAddress

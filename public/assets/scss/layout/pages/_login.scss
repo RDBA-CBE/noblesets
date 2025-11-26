@@ -8,7 +8,7 @@
     &-wrapper{
         box-shadow: 0px 15px 30px rgba(1, 15, 28, 0.1);
         padding: 50px 60px 70px;
-        background-color: #fff2ec;
+        background-color: #f1e7e1;
 
         @media #{$xs}{
             padding-left: 20px;
@@ -102,7 +102,7 @@
             padding: 0 20px;
             position: relative;
             display: inline-block;
-            background-color: #fff2ec;
+            background-color: #f1e7e1;
             
 
             & a{
@@ -152,7 +152,7 @@
                 top: -7px;
                 left: 20px;
                 padding: 0 5px;
-                background-color: #fff2ec;
+                background-color: #f1e7e1;
                 line-height: 1;
             }
         }

@@ -2063,7 +2063,7 @@ hr.footer-divider {
 }
 
 .bg-peach {
-  background: #fff2ec;
+  background: #f1e7e1;
 }
 
 .review-sec h1,
@@ -2473,7 +2473,7 @@ hr.footer-divider {
 }
 
 .cart-item {
-  background-color: #fff2ec;
+  background-color: #f1e7e1;
   // border: 1px solid #eee;
   border-radius: 20px;
 }
@@ -2495,7 +2495,7 @@ checkout .item-price {
 }
 
 .cart-summary {
-  background-color: #fff2ec;
+  background-color: #f1e7e1;
   border-radius: 20px !important;
   // border: 1px solid #eee;
 }
@@ -2573,11 +2573,11 @@ checkout .item-price {
 }
 
 .checkoutform {
-  background-color: #fff2ec;
+  background-color: #f1e7e1;
   border-radius: 20px;
 }
 .checkoutPrice {
-  background-color: #fff2ec;
+  background-color: #f1e7e1;
   border-radius: 20px;
 }
 
@@ -2896,7 +2896,7 @@ header .tp-product-action-btn-3:hover {
   border-radius: 10px !important;
   margin-bottom: 20px !important;
   padding: 30px 0;
-  background: #fff2ec;
+  background: #f1e7e1;
 }
 
 .wishlist-page .table > :not(caption) > * > * {
@@ -2935,11 +2935,28 @@ header .tp-product-action-btn-3:hover {
 
 .order-updates-section {
   border-radius: 20px;
-  background-color: #fff;
+  background-color: #f1e7e1;
 }
 
 .order-updates-section {
   height: auto !important;
+}
+
+.order-updates-section th{
+   background: transparent;
+  border-bottom: 1px solid #dcc3bc;
+}
+.order-updates-section td{
+   background: transparent;
+  border-bottom: 1px solid #dcc3bc;
+}
+
+.timeline-content {
+  border: none;
+}
+.order-updates-section .timeline-item:nth-child(even) .timeline-content {
+  background: #7d443230;
+  color: #000;
 }
 
 .order-status th {
@@ -3012,7 +3029,7 @@ header .tp-product-action-btn-3:hover {
 }
 
 .ourstory-card {
-  background: #fff2ec;
+  background: #f1e7e1;
   border-left: 5px solid #c59a6d;
   transition: transform 0.3s ease;
 }
@@ -3031,7 +3048,7 @@ header .tp-product-action-btn-3:hover {
 }
 
 .ourstory-highlight {
-  background: #fff2ec;
+  background: #f1e7e1;
   border-left: 4px solid #a66b3f;
   border-radius: 10px;
 }
@@ -3690,7 +3707,7 @@ header .tp-product-action-btn-3:hover {
 /* Insta */
 .insta-wrapper {
   padding: 80px 0;
-  background: #fff2ec; /* same as your screenshot background */
+  background: #f1e7e1; /* same as your screenshot background */
 }
 
 .insta-container {
@@ -4413,7 +4430,7 @@ header .tp-product-action-btn-3:hover {
 
 /* MAIN SECTION */
 .np-section {
-  background: #fff2ec;
+  background: #f1e7e1;
   padding: 40px 0;
   margin-top: 60px;
 }
