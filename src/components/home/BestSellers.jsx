@@ -6,7 +6,6 @@ import { ArrowNextSm, ArrowPrevSm } from "@/svg";
 
 const HomeCategorySection = () => {
   const router = useRouter();
-  
 
   const video_data = [
     {
