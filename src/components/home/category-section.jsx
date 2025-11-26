@@ -148,7 +148,7 @@ const HomeCategorySection = () => {
                                 </span> */}
 
                                 <span
-                                  className="tp-product-price-2 new-price text-black pt-3"
+                                  className="tp-product-price-2 new-price  pt-3"
                                   style={{ fontSize: "20px" }}
                                 >
                                  {capitalizeFLetter(video.category)}

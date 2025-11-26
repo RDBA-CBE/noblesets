@@ -2324,11 +2324,13 @@ hr.footer-divider {
 .bestofnoblesets .tp-product-title-2 a {
   text-transform: capitalize !important;
   font-size: 24px !important;
-  margin-bottom: 10px;
+  // margin-bottom: 10px;
 }
 
 .bestofnoblesets .tp-product-price-2.new-price {
   font-weight: 500;
+  color: #7d4432;
+  font-family: "Osande", sans-serif;
 }
 
 @media (max-width: 1024px) {
