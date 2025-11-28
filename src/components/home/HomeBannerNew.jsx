@@ -3,10 +3,13 @@ import Image from "next/image";
 import Slider from "react-slick";
 import { useRouter } from "next/router";
 
-import modelImg1 from "@assets/img/newlayout/Banner/model-image.png";
+import modelImg1 from "@assets/img/newlayout/Banner/banner-1-image.webp";
+import modelImg2 from "@assets/img/newlayout/Banner/banner-2-image.webp";
+import modelImg3 from "@assets/img/newlayout/Banner/banner-3-image.webp";
 import bannerProducts1 from "@assets/img/newlayout/Banner/3images.png";
-import bannerBG1 from "@assets/img/newlayout/Banner/bg-image.png";
-import bannerBG2 from "@assets/img/newlayout/Banner/banner-1.jpg";
+import bannerBG1 from "@assets/img/newlayout/Banner/banner-1-bg.webp";
+import bannerBG2 from "@assets/img/newlayout/Banner/banner-2-bg.webp";
+import bannerBG3 from "@assets/img/newlayout/Banner/banner-3-bg.webp";
 
 import banner_Content from "@assets/img/home/Banner/banner-content-img.png";
 
@@ -93,7 +96,7 @@ const HomeBannerNew = () => {
           <div className="tp-slider-thumb-4 ">
             <Link href="/">
               <Image
-                src={bannerBG1}
+                src={bannerBG3}
                 alt="slider img"
                 className=""
                 style={{
@@ -107,28 +110,31 @@ const HomeBannerNew = () => {
               />
             </Link>
           </div>
-          <div className="newBan-content">
+
+          <div className="newBan-content reverse-sli">
             <div className="newBan-content-in">
               <div className=" con d-none d-sm-flex">
                 <div>
                   <p className="main-title">Bespoke</p>
                   <p className="sub-title">Brilliance for You</p>
                 </div>
-                <Image
-                  className="d-none d-md-block"
+                {/* <Image className="d-none d-md-block"
                   src={bannerProducts1}
                   alt="Jewelry Collection"
-                />
+                  
+                /> */}
 
-                <button className="ljb-shop-btn ">Shop Now</button>
+                <button className="ljb-shop-btn mt-0 mt-lg-4">Shop Now</button>
               </div>
 
               <div className="newBan-content-img ">
-                <Image src={modelImg1} alt="Model" className="" />
+                <Image src={modelImg3} alt="Model" className="" />
               </div>
             </div>
           </div>
         </div>
+
+      
       </Slider>
     </section>
   );
