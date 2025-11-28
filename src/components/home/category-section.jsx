@@ -46,14 +46,14 @@ const HomeCategorySection = () => {
   };
 
   const video_data = [
-  { src: "/assets/img/newlayout/Best of Noblesets/img-1.png", title: "FANCY NECKLACE 2" , category: "necklace" },
-  { src: "/assets/img/newlayout/Best of Noblesets/img-2.png", title: "18KT NS PENDANT CHAIN" , category: "chain" },
-  { src: "/assets/img/newlayout/Best of Noblesets/img-3.png", title: "FANCY NECKLACE 2" , category: "necklace" },
-  { src: "/assets/img/newlayout/Best of Noblesets/img-4.png", title: "18KT NS PENDANT CHAIN" , category: "chain" },
-  { src: "/assets/img/newlayout/Best of Noblesets/img-5.png", title: "FANCY NECKLACE 2" , category: "necklace" },
-  { src: "/assets/img/newlayout/Best of Noblesets/img-6.png", title: "18KT NS PENDANT CHAIN" , category: "chain" },
-  { src: "/assets/img/newlayout/Best of Noblesets/img-7.png", title: "FANCY NECKLACE 2" , category: "necklace" },
-  { src: "/assets/img/newlayout/Best of Noblesets/img-8.png", title: "18KT NS PENDANT CHAIN" , category: "chain" },
+  { src: "/assets/img/newlayout/Best of Noblesets/img-1.png", title: "FANCY CHAIN 2" , category: "chain" },
+  { src: "/assets/img/newlayout/Best of Noblesets/img-2.png", title: "18KT NS RING" , category: "ring" },
+  { src: "/assets/img/newlayout/Best of Noblesets/img-3.png", title: "FANCY EARRING 2" , category: "earring" },
+  { src: "/assets/img/newlayout/Best of Noblesets/img-4.png", title: "FANCY BRACELET 2" , category: "bracelet" },
+  { src: "/assets/img/newlayout/Best of Noblesets/img-5.png", title: "18KT NS CHAIN 2" , category: "chain" },
+  { src: "/assets/img/newlayout/Best of Noblesets/img-6.png", title: "GOLD EARRING" , category: "earring" },
+  { src: "/assets/img/newlayout/Best of Noblesets/img-7.png", title: "GOLD BRACELET " , category: "bracelet" },
+  { src: "/assets/img/newlayout/Best of Noblesets/img-8.png", title: "18KT EARRING" , category: "earring" },
 ];
 
 
