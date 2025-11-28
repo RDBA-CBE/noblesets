@@ -765,11 +765,12 @@ const DetailsWrapper1 = ({
   return (
     <div className="tp-product-details-wrapper">
       <div
-        className="bg-peach rounded pt-10 pb-10"
+        className=" rounded pt-10 pb-10"
         style={{
           display: "flex",
           justifyContent: "space-between",
           alignItems: "center",
+          background:"#efeeee"
         }}
       >
         <div>
@@ -1010,7 +1011,7 @@ const DetailsWrapper1 = ({
 
       <div className="product-info">
         {/* price */}
-        <div className="bg-peach my-3 p-3 rounded">
+        <div className=" my-3 p-3 rounded" style={{background:"#efeeee"}}>
           <div className="d-flex justify-content-between">
             <h3 className="tp-product-details-title product-title">
               {capitalizeFLetter(productItem?.name || productItem?.node?.name)}
@@ -1586,7 +1587,7 @@ const DetailsWrapper1 = ({
         </div>
 
         {/* Delivery */}
-        <div className="delivery-box my-3 p-3 rounded  bg-peach">
+        <div className="delivery-box my-3 p-3 rounded " style={{background:"#efeeee"}}>
           <h6>Delivery Details</h6>
           <PincodeChecker />
         </div>
@@ -1617,7 +1618,7 @@ const DetailsWrapper1 = ({
           </div>
         </div> */}
 
-        <div className="delivery-box my-3 p-2 p-sm-3 rounded  bg-peach">
+        <div className="delivery-box my-3 p-2 p-sm-3 rounded  " style={{background:"#efeeee"}}>
           <div className="pd-tabs-container">
             <ul className="nav nav-tabs pd-nav-tabs">
               <li className="nav-item">
@@ -1652,7 +1653,7 @@ const DetailsWrapper1 = ({
               </li>
             </ul>
 
-            <div className="tab-content pd-tab-content  rounded-bottom p-3 bg-peach">
+            <div className="tab-content pd-tab-content  rounded-bottom p-3 " style={{background:"#efeeee"}}>
               {/* Product Details */}
 
               <div className="tab-pane fade show active" id="pd-details">
@@ -1997,7 +1998,7 @@ const DetailsWrapper1 = ({
           </div>
         </div>
 
-        <div className="delivery-box my-3 p-3 rounded  bg-peach">
+        <div className="delivery-box my-3 p-3 rounded  " style={{background:"#efeeee"}}>
           <div>
             <p style={{ color: "#333435" }}>
               <b>SKU:</b>{" "}

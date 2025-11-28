@@ -90,7 +90,7 @@ const ShopBreadcrumb = ({
                         });
                       }
                     }}
-                    style={{ cursor: "pointer" , color:"#fff"}}
+                    style={{ cursor: "pointer" , color:"#541816"}}
                   >
                     {categories[0]}
                   </span>

@@ -28,7 +28,7 @@ const CommonBreadcrumb = ({
           <div className="col-xxl-12">
             <div
               className="breadcrumb__content p-relative z-index-1"
-              style={{ textAlign: "center",  color: "#fff", paddingBottom: "15px", paddingTop: "15px", fontSize:"25px", fontWeight:"normal"}}
+              style={{ textAlign: "center",  color: "#541816", paddingBottom: "15px", paddingTop: "15px", fontSize:"25px", fontWeight:"normal"}}
             >
               
                        

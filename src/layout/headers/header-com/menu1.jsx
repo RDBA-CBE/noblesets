@@ -93,7 +93,7 @@ const CategoryContent = ({
                     className="sub-sub-menu"
                     style={{
                       cursor: "pointer",
-                      background: "#fbdccc",
+                      background: "#f1e7e1",
                       // borderBottom: "1px solid #e8e3e3",
                       // marginBottom: "10px",
                       display: "flex",
