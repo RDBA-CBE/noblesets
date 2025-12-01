@@ -157,6 +157,45 @@ const RegisterForm = () => {
           {loading ? <ButtonLoader /> : "Sign Up"}
         </button>
       </div>
+
+      {/* sign in with google */}
+     
+      <div className="w-100 d-flex align-items-center justify-content-center my-2">
+        <small className="mx-10">or</small>
+      </div>
+
+      <div className="tp-login-mail sign-in text-center">
+        <span className=" tp-btn-google " style={{ gap: 10 }}>
+          {/* Google icon */}
+          <svg
+            width="18"
+            height="18"
+            viewBox="0 0 48 48"
+            xmlns="http://www.w3.org/2000/svg"
+            aria-hidden="true"
+            focusable="false"
+          >
+            <path
+              fill="#EA4335"
+              d="M24 9.5c3.54 0 6.59 1.22 8.97 3.22l6.7-6.7C35.99 2.8 30.34 0 24 0 14.73 0 6.96 5.57 3.02 13.68l7.78 6.03C12.9 13.1 18.9 9.5 24 9.5z"
+            />
+            <path
+              fill="#34A853"
+              d="M46.5 24c0-1.6-.14-2.8-.43-4H24v8h12.63c-.55 3-2.7 5.6-5.63 7.2l8.6 6.6C44.5 37 46.5 31 46.5 24z"
+            />
+            <path
+              fill="#4A90E2"
+              d="M10.8 28.7A14.9 14.9 0 0 1 9.5 24c0-1.4.25-2.8.74-4.1L3.02 13.68C1.08 16.9 0 20.37 0 24c0 3.63 1.08 7.1 3.02 10.32l7.78-6.02z"
+            />
+            <path
+              fill="#FBBC05"
+              d="M24 48c6.34 0 11.99-2.8 16.24-7.25l-8.6-6.6C30.59 33.98 27.54 35.2 24 35.2c-5.1 0-11.1-3.6-13.2-8.21L3.02 34.32C6.96 42.43 14.73 48 24 48z"
+            />
+          </svg>
+
+          <span className="ps-2">Sign Up with Google</span>
+        </span>
+      </div>
     </form>
   );
 };

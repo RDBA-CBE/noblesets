@@ -518,14 +518,14 @@ const CheckoutBillingArea1 = () => {
       let arr = filterExceptCOD?.map((item, index) => ({
         id: index + 1,
         name: item.node.name,
-        checked: false,
+        checked: index === 0, // Set first item as default selected
       }));
 
       if (findCOD?.node?.isActive) {
         arr.push({
           id: arr.length + 1,
           name: CASE_ON_DELIVERY,
-          checked: false,
+          checked: arr.length === 0, // Set as default if it's the only option
         });
       }
 
@@ -577,8 +577,12 @@ const CheckoutBillingArea1 = () => {
       }
       console.log("✌️arr --->", arr);
 
+      // Set selectedPaymentType to the first checked item
+      const defaultSelected = arr.find((item) => item.checked);
+
       setState({
         paymentType: arr,
+        selectedPaymentType: defaultSelected?.name || "",
       });
     } catch (error) {
       console.log("error: ", error);
@@ -743,9 +747,10 @@ const CheckoutBillingArea1 = () => {
 
   const updateEmail = async (checkoutId) => {
     try {
+      const emailToUse = state.diffAddress ? state.email1 : state.email;
       const res = await emailUpdate({
         checkoutId,
-        email: state.diffAddress ? state.email1 : state.email,
+        email: emailToUse,
       });
       if (res?.data?.data?.checkoutEmailUpdate?.errors?.length > 0) {
         setState({ orderLoading: false });
@@ -1105,7 +1110,7 @@ const CheckoutBillingArea1 = () => {
       { name: "streetAddress1", label: "Street address" },
       { name: "city", label: "City" },
       { name: "postalCode", label: "PostalCode" },
-      { name: "email", label: "Email" },
+
       { name: "selectedState", label: "State" },
     ];
     // if (state.stateList?.length > 0) {
@@ -1125,6 +1130,10 @@ const CheckoutBillingArea1 = () => {
         errors[name] = `${label} is required`;
       }
     });
+
+    if (!state.diffAddress && !state.email.trim()) {
+      errors.email = "Email is required";
+    }
 
     if (state.selectedPaymentType == "") {
       errors.paymentType = "Payment type is required";
@@ -2136,6 +2145,7 @@ const CheckoutBillingArea1 = () => {
                       )}
                       {/* <input type="tel" className="form-control" /> */}
                     </div>
+                    { !state.diffAddress &&
                     <div className="col-12 mb-3">
                       <label>Email Address *</label>
                       <input
@@ -2150,7 +2160,8 @@ const CheckoutBillingArea1 = () => {
                       {state.errors.email && (
                         <ErrorMsg msg={state.errors.email} />
                       )}
-                    </div>
+                    </div>}
+                    
 
                     {!validLoginAndReg() && (
                       <>
@@ -2324,9 +2335,10 @@ const CheckoutBillingArea1 = () => {
                             id="remeber"
                             type="checkbox"
                             checked={state.diffAddress}
-                            onChange={(e) =>
-                              handleCheckDifferentAddress(e.target.checked)
-                            }
+                            onChange={(e) => {
+                              handleCheckDifferentAddress(e.target.checked);
+                              setState({ email: "" });
+                            }}
                           />
                           <label
                             className="ms-2 "
@@ -2350,7 +2362,7 @@ const CheckoutBillingArea1 = () => {
                                 type="button"
                                 style={{
                                   padding: "5px 20px 5px 20px",
-                                  backgroundColor: "#e09a7a",
+                                  backgroundColor: "#9b604d",
                                   borderRadius: 20,
                                   color: "white",
                                   marginBottom: 30,
@@ -2885,7 +2897,7 @@ const CheckoutBillingArea1 = () => {
                                 >
                                   <input
                                     id={`payment-${item.id}`}
-                                    type="checkbox"
+                                    type="radio"
                                     className="form-check-input m-0"
                                     checked={item.checked}
                                     onChange={() =>

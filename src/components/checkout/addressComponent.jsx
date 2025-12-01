@@ -47,7 +47,7 @@ const BillingAddressModal = (props) => {
           style:{
             padding:"20px 29px",
             borderRadius:"20px",
-            border:"1px solid #e09a7a", // Set background color to your preference
+            border:"1px solid #9b604d", // Set background color to your preference
             color:"#7d4432",
           }
         }}
@@ -55,7 +55,7 @@ const BillingAddressModal = (props) => {
           style: {
             padding:"20px 29px",
             borderRadius:"20px",
-             background: "linear-gradient(to right,color-mix(in srgb, #fbdccc 40%, #e09a7a),#e09a7a)",
+             background: "#9b604d",
             color: "white", // Set text color to white
             border: "none", // Optional: Remove border
           },
