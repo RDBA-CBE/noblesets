@@ -7,7 +7,6 @@ import { ArrowNextSm, ArrowPrevSm } from "@/svg";
 const HomeCategorySection = () => {
   const router = useRouter();
 
-
   const video_data = [
     {
       img: "/assets/img/newlayout/Best-seller/image-3.png",
