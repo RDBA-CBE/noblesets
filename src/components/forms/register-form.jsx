@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useRef, useEffect } from "react";
 import { useForm } from "react-hook-form";
 import { yupResolver } from "@hookform/resolvers/yup";
 import * as Yup from "yup";
@@ -10,6 +10,7 @@ import { notifyError, notifySuccess } from "@/utils/toast";
 import { useRegisterUserMutation } from "@/redux/features/auth/authApi";
 import ButtonLoader from "../loader/button-loader";
 import { FRONTEND_URL } from "@/utils/functions";
+import Captcha from "captcha-mini";
 
 // schema
 const schema = Yup.object().shape({
@@ -36,14 +37,51 @@ const RegisterForm = () => {
   } = useForm({
     resolver: yupResolver(schema),
   });
+
+  const generateCaptcha = () => {
+    const captcha = new Captcha({
+      lineWidth: 1,
+      lineNum: 3,
+      dotR: 2,
+      dotNum: 20,
+      preGroundColor: [200, 200],
+      backGroundColor: [255, 255],
+      fontSize: 30,
+      length: 5,
+    });
+
+    captcha.draw(captchaRef.current, (text) => {
+      setCaptchaText(text); // store the generated text
+    });
+  };
+
+  useEffect(() => {
+    generateCaptcha();
+  }, []);
+
+  const [userCaptcha, setUserCaptcha] = useState("");
+  const [captchaText, setCaptchaText] = useState("");
+  const captchaRef = useRef(null);
   // on submit
   const onSubmit = (data) => {
+    
+    if (!userCaptcha) {
+      notifyError("Enter the Captcha");
+      return;
+    } else {
+      if (userCaptcha.toLowerCase() !== captchaText.toLowerCase()) {
+        notifyError("Captcha is incorrect!");
+        generateCaptcha();
+        return;
+      }
+    }
+
     registerUser({
       firstName: data.firstName,
       lastName: data.lastName,
       email: data.email,
       password: data.password,
-      redirectUrl:`${FRONTEND_URL}/email_verify`
+      redirectUrl: `${FRONTEND_URL}/email_verify`,
     }).then((result) => {
       if (result?.data?.data?.accountRegister?.errors?.length > 0) {
         notifyError(result?.data?.data?.accountRegister?.errors[0].message);
@@ -152,6 +190,36 @@ const RegisterForm = () => {
           <ErrorMsg msg={errors.remember?.message} />
         </div>
       </div>
+
+      <div className="my-3 text-center">
+        <div className="d-flex gap-2 justify-content-center align-items-center mb-3">
+          <canvas
+            ref={captchaRef}
+            width="180"
+            height="60"
+            style={{ border: "1px solid #ccc", borderRadius: "5px" }}
+          />
+
+          <button
+            type="button"
+            className="btn btn-sm btn-light d-block "
+            onClick={generateCaptcha}
+          >
+            <i className="fa fa-refresh"></i>
+          </button>
+        </div>
+
+        <div className="tp-login-input">
+          <input
+            type="text"
+            className="tp-login-input"
+            placeholder="Enter captcha"
+            value={userCaptcha}
+            onChange={(e) => setUserCaptcha(e.target.value)}
+          />
+        </div>
+      </div>
+
       <div className="tp-login-bottom">
         <button type="submit" className="gradient-btn w-100">
           {loading ? <ButtonLoader /> : "Sign Up"}
@@ -159,7 +227,7 @@ const RegisterForm = () => {
       </div>
 
       {/* sign in with google */}
-     
+
       <div className="w-100 d-flex align-items-center justify-content-center my-2">
         <small className="mx-10">or</small>
       </div>

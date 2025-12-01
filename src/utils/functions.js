@@ -19,7 +19,7 @@ export const DELIVERY_ID_OTHER_TN = "U2hpcHBpbmdNZXRob2Q6ODk=";
 
 export const DELIVERY_ID_OTHER_IN = "U2hpcHBpbmdNZXRob2Q6OTI=";
 
-export const FRONTEND_URL = "https://noblesets.irepute.co.in";
+export const FRONTEND_URL = "https://file.noblesets.com/";
 
 export const encrypt12 = (text) => {
   const encrypted = CryptoJS.AES.encrypt(text, SECRET_KEY).toString(); // full base64

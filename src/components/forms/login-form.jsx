@@ -255,7 +255,7 @@
 //       </div>
 
 //       {/* sign in with google */}
-     
+
 //       <div className="w-100 d-flex align-items-center justify-content-center my-2">
 //         <small className="mx-10">or</small>
 //       </div>
@@ -298,18 +298,19 @@
 
 // export default LoginForm;
 
-
 "use client";
 
-import React, { useState } from "react";
+import React, { useState, useEffect, useRef } from "react";
 import { useForm } from "react-hook-form";
 import { yupResolver } from "@hookform/resolvers/yup";
 import * as Yup from "yup";
 import { useRouter } from "next/router";
 import Link from "next/link";
 
-// captcha
-import ReCAPTCHA from "react-google-recaptcha";
+// google captcha
+// import ReCAPTCHA from "react-google-recaptcha";
+
+import Captcha from "captcha-mini";
 
 // internal
 import { CloseEye, OpenEye } from "@/svg";
@@ -339,7 +340,12 @@ const schema = Yup.object().shape({
 const LoginForm = () => {
   const [showPass, setShowPass] = useState(false);
 
-  const [captchaToken, setCaptchaToken] = useState(null); // <--- ADDED
+  // -- Google Captcha
+  // const [captchaToken, setCaptchaToken] = useState(null);
+
+  const [userCaptcha, setUserCaptcha] = useState("");
+  const [captchaText, setCaptchaText] = useState("");
+  const captchaRef = useRef(null);
 
   const cart = useSelector((state) => state.cart.cart_list);
   const dispatch = useDispatch();
@@ -364,17 +370,50 @@ const LoginForm = () => {
     resolver: yupResolver(schema),
   });
 
+  const generateCaptcha = () => {
+    const captcha = new Captcha({
+      lineWidth: 1,
+      lineNum: 3,
+      dotR: 2,
+      dotNum: 20,
+      preGroundColor: [200, 200],
+      backGroundColor: [255, 255],
+      fontSize: 30,
+      length: 5,
+    });
+
+    captcha.draw(captchaRef.current, (text) => {
+      setCaptchaText(text); // store the generated text
+    });
+  };
+
+  useEffect(() => {
+    generateCaptcha();
+  }, []);
+
   // onSubmit
   const onSubmit = (data) => {
-    if (!captchaToken) {
-      notifyError("Please verify you're not a robot.");
-      return;
+    // google captcha
+
+    // if (!captchaToken) {
+    //   notifyError("Please verify you're not a robot.");
+    //   return;
+    // }
+
+    if (!userCaptcha) {
+      notifyError("Enter the Captcha");
+      return
+    } else {
+      if (userCaptcha.toLowerCase() !== captchaText.toLowerCase()) {
+        notifyError("Captcha is incorrect!");
+        generateCaptcha();
+        return;
+      }
     }
 
     loginUser({
       email: data.email,
       password: data.password,
-      captcha: captchaToken,
     }).then(async (data) => {
       if (data?.data?.data?.tokenCreate?.errors?.length > 0) {
         notifyError(data?.data?.data?.tokenCreate?.errors[0]?.message);
@@ -463,9 +502,7 @@ const LoginForm = () => {
       });
 
       if (response.data?.data?.checkoutLinesAdd?.errors?.length > 0) {
-        notifyError(
-          response.data?.data?.checkoutLinesAdd?.errors[0]?.message
-        );
+        notifyError(response.data?.data?.checkoutLinesAdd?.errors[0]?.message);
       }
     } catch (error) {
       console.error("Error:", error);
@@ -511,10 +548,7 @@ const LoginForm = () => {
             </div>
 
             <div className="tp-login-input-eye" id="password-show-toggle">
-              <span
-                className="open-eye"
-                onClick={() => setShowPass(!showPass)}
-              >
+              <span className="open-eye" onClick={() => setShowPass(!showPass)}>
                 {showPass ? <CloseEye /> : <OpenEye />}
               </span>
             </div>
@@ -537,13 +571,43 @@ const LoginForm = () => {
         </div>
       </div>
 
-      {/* CAPTCHA */}
-      <div className="my-3 d-flex justify-content-center">
+      {/* GOOGLE CAPTCHA */}
+      {/* <div className="my-3 d-flex justify-content-center">
         <ReCAPTCHA
           sitekey="YOUR_RECAPTCHA_SITE_KEY"
           onChange={(token) => setCaptchaToken(token)}
-          // className="recaptcha w-100"
+          
         />
+      </div> */}
+
+      {/* FRONTEND CAPTCHA */}
+      <div className="my-3 text-center">
+        <div className="d-flex gap-2 justify-content-center align-items-center mb-3">
+          <canvas
+            ref={captchaRef}
+            width="180"
+            height="60"
+            style={{ border: "1px solid #ccc", borderRadius: "5px" }}
+          />
+
+          <button
+            type="button"
+            className="btn btn-sm btn-light d-block "
+            onClick={generateCaptcha}
+          >
+            <i className="fa fa-refresh"></i>
+          </button>
+        </div>
+
+        <div className="tp-login-input">
+          <input
+            type="text"
+            className="tp-login-input"
+            placeholder="Enter captcha"
+            value={userCaptcha}
+            onChange={(e) => setUserCaptcha(e.target.value)}
+          />
+        </div>
       </div>
 
       <div className="tp-login-bottom">
@@ -592,4 +656,3 @@ const LoginForm = () => {
 };
 
 export default LoginForm;
-

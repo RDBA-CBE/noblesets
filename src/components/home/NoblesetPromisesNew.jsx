@@ -20,16 +20,13 @@ const NoblesetPromisesNew = () => {
         <div className="col-12 col-md-7 col-lg-6 col-xl-7  np-content-wrap">
           <div className="mb-0 ">
             <h5 className="sub-ti ps-2">
-              <b className="pe-1">✦ </b>Trusted craftsmanship
+              <b className="pe-1">✦ </b>Trusted craftmanship
             </h5>
             <h4 className="feature-adipisicing main-ti">Noblesets Promises</h4>
           </div>
 
           <p className="np-desc">
-            Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed eiusmod
-            tempor incididunt ut labore et dolore magna. Ut enim ad minim
-            veniam, quis nostrud exercitation ullamco laboris nisi ut ullamco
-            laboris nisi
+            Our collections are authentic and thoughtfully designed with precision to deliver lasting value to our customers. We are committed to creating jewellery that not only looks extraordinary but also instills confidence in our customers with every purchase.
           </p>
 
           {/* Icons Row */}
@@ -51,7 +48,7 @@ const NoblesetPromisesNew = () => {
                   alt="logo"
                 />
               </div>
-              <p className="np-icon-label">BIS Hallmarked</p>
+              <p className="np-icon-label">BIS Halmaked</p>
             </div>
 
             <div className=" np-icon-col">
@@ -61,7 +58,7 @@ const NoblesetPromisesNew = () => {
                   alt="logo"
                 />
               </div>
-              <p className="np-icon-label">Crafted Product</p>
+              <p className="np-icon-label">Crafted product</p>
             </div>
 
             <div className=" np-icon-col">
