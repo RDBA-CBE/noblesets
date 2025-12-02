@@ -676,6 +676,12 @@ const CheckoutBillingArea1 = () => {
         countryArea: state.selectedState,
         phone: state.phone,
         postalCode: state.postalCode,
+        metadata: [
+          {
+            key: "shipping_email",
+            value: state.email,
+          },
+        ],
       };
 
       let shippingAddress = {};
@@ -693,6 +699,13 @@ const CheckoutBillingArea1 = () => {
           countryArea: state.selectedState1,
           phone: state.phone1,
           postalCode: state.postalCode1,
+          metadata: [
+            {
+              key: "shipping_email",
+              value: state.email1,
+
+            },
+          ],
         };
       } else {
         shippingAddress = sample;
@@ -959,7 +972,7 @@ const CheckoutBillingArea1 = () => {
         .slice(0, 18);
       let paymentData = {
         merchant_id: MERCHANT_ID,
-        order_id: "NOB"+orderId,
+        order_id: "NOB" + orderId,
         amount: amount,
         currency: "INR",
         billing_email: state.email,
@@ -2145,23 +2158,23 @@ const CheckoutBillingArea1 = () => {
                       )}
                       {/* <input type="tel" className="form-control" /> */}
                     </div>
-                    { !state.diffAddress &&
-                    <div className="col-12 mb-3">
-                      <label>Email Address *</label>
-                      <input
-                        type="email"
-                        className="form-control"
-                        name="email"
-                        id="email"
-                        placeholder="Email"
-                        value={state.email}
-                        onChange={(e) => handleInputChange(e, "email")}
-                      />
-                      {state.errors.email && (
-                        <ErrorMsg msg={state.errors.email} />
-                      )}
-                    </div>}
-                    
+                    {!state.diffAddress && (
+                      <div className="col-12 mb-3">
+                        <label>Email Address *</label>
+                        <input
+                          type="email"
+                          className="form-control"
+                          name="email"
+                          id="email"
+                          placeholder="Email"
+                          value={state.email}
+                          onChange={(e) => handleInputChange(e, "email")}
+                        />
+                        {state.errors.email && (
+                          <ErrorMsg msg={state.errors.email} />
+                        )}
+                      </div>
+                    )}
 
                     {!validLoginAndReg() && (
                       <>
