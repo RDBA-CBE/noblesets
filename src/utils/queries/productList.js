@@ -74,6 +74,10 @@ query getOrderDetails($orderId: ID!) {
       postalCode
       phone
       countryArea
+      metadata {
+      key
+      value
+      }
     }
     shippingAddress {
       firstName
@@ -87,6 +91,10 @@ query getOrderDetails($orderId: ID!) {
       postalCode
       phone
       countryArea
+       metadata {
+      key
+      value
+      }
     }
     courierPartner {
       name

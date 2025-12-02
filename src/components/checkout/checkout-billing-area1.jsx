@@ -676,6 +676,12 @@ const CheckoutBillingArea1 = () => {
         countryArea: state.selectedState,
         phone: state.phone,
         postalCode: state.postalCode,
+         metadata: [
+          {
+            key: "shipping_email",
+            value: state.email,
+          },
+        ],
       };
 
       let shippingAddress = {};
@@ -693,6 +699,13 @@ const CheckoutBillingArea1 = () => {
           countryArea: state.selectedState1,
           phone: state.phone1,
           postalCode: state.postalCode1,
+          metadata: [
+            {
+              key: "shipping_email",
+              value: state.email1,
+
+            },
+          ],
         };
       } else {
         shippingAddress = sample;
