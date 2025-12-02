@@ -676,7 +676,7 @@ const CheckoutBillingArea1 = () => {
         countryArea: state.selectedState,
         phone: state.phone,
         postalCode: state.postalCode,
-        metadata: [
+         metadata: [
           {
             key: "shipping_email",
             value: state.email,
