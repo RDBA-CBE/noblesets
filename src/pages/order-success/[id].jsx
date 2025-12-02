@@ -13,6 +13,7 @@ import HeaderSection from '@/components/home/headerSection';
 
 const PaymentSucess = () => {
   const router = useRouter();
+  
   const orderId = router?.query?.id;
   const { data } = useOrderListQuery({ orderId: orderId });
 
