@@ -356,7 +356,6 @@ const ShopPage = () => {
 
   const getProductMaxPrice = () => {
     const filter = commonFilter();
-    console.log("getProductMaxPrice --->", filter);
     maximumPrice({
       filter,
       first: 1,
@@ -828,8 +827,6 @@ const ShopPage = () => {
   };
 
   const finalFilterOptionList = (res) => {
-    console.log("res", res);
-
     let parsedFilterData;
     if (res?.data?.data?.attributefilter?.filterData) {
       parsedFilterData = JSON?.parse(
@@ -847,7 +844,6 @@ const ShopPage = () => {
     // setProductStyles(data?.productStyles);
   };
 
-  console.log("attributeList", attributeList);
 
   return (
     <Wrapper>

@@ -79,6 +79,7 @@ export const CART_LIST = ({ checkoutToken }) => {
           id
           name
           slug
+          isPublishedInIndia
           thumbnail {
             url
             alt
@@ -831,6 +832,7 @@ export const GET_WISHLIST_LIST = ({ userEmail }) => {
             id
           name
           slug
+          isPublishedInIndia
           pricing {
             priceRange {
               start {
@@ -869,6 +871,7 @@ export const GET_WISHLIST_LIST_DEFAULT_CHANNEL = ({ userEmail }) => {
           id
           name
           slug
+          isPublishedInIndia
           pricing {
             priceRange {
               start {

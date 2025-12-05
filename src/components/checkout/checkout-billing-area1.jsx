@@ -643,8 +643,87 @@ const CheckoutBillingArea1 = () => {
     }
   };
 
+  const isNotPushlishProduct = () => {
+    const isNotPushlishProduct = state.orderData?.lines?.some(
+      (item) => !item.variant?.product?.isPublishedInIndia
+    );
+    if (isNotPushlishProduct) {
+      return true;
+    } else {
+      return false;
+    }
+  };
+
+  const redirectCart = () => {
+    router.push("cart");
+  };
+
+  const CustomCloseButton = () => {
+    return (
+      <button
+        aria-label="CartList"
+        type="button"
+        onClick={() => {
+          router.push("cart");
+        }}
+        style={{
+          backgroundColor: "#9b604d",
+          color: "#fff",
+          padding: "10px 15px",
+          marginLeft: "8px",
+          borderRadius: "10px",
+          border: "none",
+          cursor: "pointer",
+          fontSize: "11px",
+          fontWeight: "600",
+          lineHeight: "1.2",
+          height: "fit-content",
+          alignSelf: "center",
+        }}
+      >
+        CartPage
+      </button>
+    );
+  };
+
+  const removeCheckoutProduct = (products) => {
+    return (
+      <div>
+        {products} is unavailable right now. Click{" "}
+        <a
+          href="/cart"
+          onClick={(e) => {
+            e.preventDefault();
+            window.location.href = "/cart"; 
+          }}
+          style={{
+            color: "#9b604d",
+            textDecoration: "underline",
+            fontWeight: "bold",
+            cursor: "pointer",
+          }}
+        >
+          Here
+        </a>{" "}
+        to review available products or explore similar items you'll love.
+      </div>
+    );
+  };
+
   const handleSubmit = async (data) => {
     try {
+      if (isNotPushlishProduct()) {
+        const allCheckNotPublishedProduct = state.orderData?.lines
+          ?.filter(
+            (item) => item?.variant?.product?.isPublishedInIndia == false
+          )
+          ?.map((val) => val?.variant?.product?.name || val?.node?.name)
+          ?.join(", ");
+        return notifyError(
+          removeCheckoutProduct(allCheckNotPublishedProduct),
+          false
+        );
+      }
       const errors = await validateInputs();
       if (Object.keys(errors).length === 0) {
         if (state.createAccount) {
@@ -676,7 +755,7 @@ const CheckoutBillingArea1 = () => {
         countryArea: state.selectedState,
         phone: state.phone,
         postalCode: state.postalCode,
-         metadata: [
+        metadata: [
           {
             key: "shipping_email",
             value: state.email,
@@ -703,7 +782,6 @@ const CheckoutBillingArea1 = () => {
             {
               key: "shipping_email",
               value: state.email1,
-
             },
           ],
         };
@@ -2690,6 +2768,11 @@ const CheckoutBillingArea1 = () => {
                         <li
                           key={item.id}
                           className="d-flex justify-content-between border-bottom py-2"
+                          style={{
+                            opacity: item.variant?.product?.isPublishedInIndia
+                              ? 1
+                              : 0.45,
+                          }}
                         >
                           <span>
                             {item?.variant?.product?.name}{" "}

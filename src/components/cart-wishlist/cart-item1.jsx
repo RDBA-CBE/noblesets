@@ -23,7 +23,7 @@ import {
   checkChannel,
   roundOff,
 } from "../../utils/functions";
-import { profilePic } from "@/utils/constant";
+import { NOT_PUBLISHED_PRODUCT, profilePic } from "@/utils/constant";
 import { ClipLoader } from "react-spinners";
 
 const CartItem1 = ({
@@ -40,7 +40,6 @@ const CartItem1 = ({
   quantityAvailable,
   refetch,
 }) => {
-
   const cartData = useSelector((state) => state.cart.cart_list);
   const cart = cartData?.node || cartData;
 
@@ -100,134 +99,168 @@ const CartItem1 = ({
     return /\.(jpg|webp|jpeg|png|gif)$/i.test(url);
   };
 
+  const isPublishedInIndia = Boolean(
+    product?.variant?.product?.isPublishedInIndia
+  );
+
   return (
-   <>
-    {/* )} */}
-          <div className="cart-item mb-4 p-3  d-flex position-relative" >
-  {/* Remove Button */}
-  <button
-    className=" position-absolute"
-    style={{ top: '10px', right: '20px' }}
-    onClick={() => handleRemovePrd()}
-  >
-    {removeLoading ? (
-                      <ClipLoader color="red" size={13} />
-                    ) : (
-                      <Close />
-                    )}
-  </button>
+    <>
+      <div
+        className="cart-item mb-4 p-3  d-flex position-relative"
+        style={{ opacity: isPublishedInIndia ? 1 : 0.45 }}
+      >
+        {!isPublishedInIndia && (
+          <div
+            style={{
+              position: "absolute",
+              inset: 0,
+              display: "flex",
+              alignItems: "center",
+              justifyContent: "center",
+              zIndex: 3,
+              pointerEvents: "none",
+            }}
+          >
+            <div
+              style={{
+                background: "rgba(255,255,255,0.85)",
+                padding: "10px 16px",
+                borderRadius: 6,
+                boxShadow: "0 2px 6px rgba(0,0,0,0.12)",
+                pointerEvents: "none",
+                color: "red",
+              }}
+            >
+              <strong style={{ color: "#9b604d" }}>
+                {NOT_PUBLISHED_PRODUCT}
+              </strong>
+            </div>
+          </div>
+        )}
+        {/* Remove Button */}
+        <button
+          className=" position-absolute"
+          style={{ top: "10px", right: "20px" }}
+          onClick={() => handleRemovePrd()}
+        >
+          {removeLoading ? <ClipLoader color="red" size={13} /> : <Close />}
+        </button>
 
-  {/* Image or Video */}
-  {isImage(profilePic(img)) ? (
-    <img
-      // src="/assets/img/blog.webp"
-       src={profilePic(img)}
-      alt="product img"
-      width={70}
-      height={100}
-      className="item-img rounded"
-    />
-  ) : (
-    <video
-      src={img}
-      width={70}
-      height={100}
-      style={{ height: "100%" }}
-      muted
-      loop
-    />
-  )}
+        {/* Image or Video */}
+        {isImage(profilePic(img)) ? (
+          <img
+            // src="/assets/img/blog.webp"
+            src={profilePic(img)}
+            alt="product img"
+            width={70}
+            height={100}
+            className="item-img rounded"
+          />
+        ) : (
+          <video
+            src={img}
+            width={70}
+            height={100}
+            style={{ height: "100%" }}
+            muted
+            loop
+          />
+        )}
 
-  {/* Details */}
-  <div className="item-details ms-3 flex-grow-1">
-    <h5 className="item-price mb-1">
-      {channel === "india-channel" ? (
-        <span>&#8377;{addCommasToNumber(price)}</span>
-      ) : (
-        <span>${addCommasToNumber(price)}</span>
-      )}
-    </h5>
-    <p className="item-name mb-2">
-      <Link href={`/product-details/${product?.variant?.product?.slug}`}>
-        {title}
-      </Link>
-    </p>
+        {/* Details */}
+        <div className="item-details ms-3 flex-grow-1">
+          <h5 className="item-price mb-1">
+            {channel === "india-channel" ? (
+              <span>&#8377;{addCommasToNumber(price)}</span>
+            ) : (
+              <span>${addCommasToNumber(price)}</span>
+            )}
+          </h5>
+          <p className="item-name mb-2">
+            <Link href={`/product-details/${product?.variant?.product?.slug}`}>
+              {title}
+            </Link>
+          </p>
 
-    {/* Quantity + Weight */}
-    <div className="d-flex align-items-center gap-3 flex-wrap">
-      {isQuantity && (
-                  <td className="tp-cart-quantity">
-                    <div className="tp-product-quantity mt-10 mb-10">
-                      <span
-                        onClick={() => {
-                          if (quantity != 1) {
-                            setQuantity(quantity - 1);
-                            decQuantity(quantity - 1);
-                          }
-                        }}
-                        className="tp-cart-minus"
-                      >
-                        <Minus />
-                      </span>
-                      <input
-                        className="tp-cart-input"
-                        type="text"
-                        value={quantity}
-                        readOnly
-                      />
-                      <span
-                        onClick={() => {
-                          if (quantity >= 1 && quantity < quantityAvailable) {
-                            setQuantity(quantity + 1);
-                            incQuantity(quantity + 1);
-                          } else {
-                            notifyError(
-                              "Only " + quantityAvailable + " left in stock"
-                            );
-                          }
-                        }}
-                        className="tp-cart-plus"
-                      >
-                        <Plus />
-                      </span>
-                    </div>
-                  </td>
+          {/* Quantity + Weight */}
+          <div className="d-flex align-items-center gap-3 flex-wrap">
+            {isQuantity && (
+              <td className="tp-cart-quantity">
+                <div className="tp-product-quantity mt-10 mb-10">
+                  <span
+                    onClick={() => {
+                      if (isPublishedInIndia) {
+                        if (quantity != 1) {
+                          setQuantity(quantity - 1);
+                          decQuantity(quantity - 1);
+                        }
+                      }
+                    }}
+                    className="tp-cart-minus"
+                  >
+                    <Minus />
+                  </span>
+                  <input
+                    className="tp-cart-input"
+                    type="text"
+                    value={quantity}
+                    readOnly
+                  />
+                  <span
+                    onClick={() => {
+                      if (isPublishedInIndia) {
+                        if (quantity >= 1 && quantity < quantityAvailable) {
+                          setQuantity(quantity + 1);
+                          incQuantity(quantity + 1);
+                        } else {
+                          notifyError(
+                            "Only " + quantityAvailable + " left in stock"
+                          );
+                        }
+                      }
+                    }}
+                    className="tp-cart-plus"
+                  >
+                    <Plus />
+                  </span>
+                </div>
+              </td>
+            )}
+            {/* <span className="badge bg-light text-dark">Weight:  200g</span> */}
+          </div>
+
+          {/* Total Price */}
+          <div className="item-total mt-2">
+            Sub Total:{" "}
+            {channel == "india-channel" ? (
+              <>
+                {!isQuantity ? (
+                  <span style={{ color: "#333435" }}>
+                    &#8377;{addCommasToNumber(price)}
+                  </span>
+                ) : (
+                  <span style={{ color: "#333435" }}>
+                    &#8377;{addCommasToNumber(price * quantity)}
+                  </span>
                 )}
-      {/* <span className="badge bg-light text-dark">Weight:  200g</span> */}
-    </div>
-
-    {/* Total Price */}
-    <div className="item-total mt-2">
-      Sub Total: {channel == "india-channel" ? (
-                      <>
-                        {!isQuantity ? (
-                          <span style={{ color: "#333435" }}>
-                            &#8377;{addCommasToNumber(price)}
-                          </span>
-                        ) : (
-                          <span style={{ color: "#333435" }}>
-                            &#8377;{addCommasToNumber(price * quantity)}
-                          </span>
-                        )}
-                      </>
-                    ) : (
-                      <>
-                        {!isQuantity ? (
-                          <span style={{ color: "#333435" }}>${addCommasToNumber(price)}</span>
-                        ) : (
-                          <span style={{ color: "#333435" }}>
-                            ${addCommasToNumber(price * quantity)}
-                          </span>
-                        )}
-                      </>
-                    )}
-    </div>
-  </div>
-</div>
-
-
-          
-   </>
+              </>
+            ) : (
+              <>
+                {!isQuantity ? (
+                  <span style={{ color: "#333435" }}>
+                    ${addCommasToNumber(price)}
+                  </span>
+                ) : (
+                  <span style={{ color: "#333435" }}>
+                    ${addCommasToNumber(price * quantity)}
+                  </span>
+                )}
+              </>
+            )}
+          </div>
+        </div>
+      </div>
+    </>
   );
 };
 

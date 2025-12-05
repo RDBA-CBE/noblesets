@@ -10,7 +10,7 @@ import {
   useGetCartListQuery,
   useUpdateCartQuantityMutation,
 } from "@/redux/features/card/cardApi";
-import { notifySuccess } from "@/utils/toast";
+import { notifyError, notifySuccess } from "@/utils/toast";
 import { useGetCartAllListQuery } from "../../redux/features/card/cardApi";
 import { useRouter } from "next/router";
 import ProductItem from "../products/beauty/product-item";
@@ -23,6 +23,9 @@ import CartItem1 from "./cart-item1";
 import CartCheckout1 from "./cart-checkout1";
 import { Cart } from "@/svg";
 import Loader from "../loader/loader";
+import {
+  removeCartProduct,
+} from "@/utils/constant";
 
 const CartArea1 = () => {
   const router = useRouter();
@@ -56,24 +59,37 @@ const CartArea1 = () => {
   const [updateCartQuantity, {}] = useUpdateCartQuantityMutation();
 
   const updateCart = () => {
-    cartData?.map((item) =>
-      updateCartQuantity({
-        checkoutId: list?.data?.checkout?.id,
-        lineId: item.id,
-        quantity: item.quantity,
-      }).then((data) => {
-        allcartData?.map((item) =>
-          updateCartQuantity({
-            checkoutId: allList?.data?.checkout?.id,
-            lineId: item.id,
-            quantity: item.quantity,
-          }).then((data) => {})
-        );
-        refetch();
-        cartAllList();
-      })
+    const checkNotPublishedProduct = cartData?.some(
+      (item) => !item?.variant?.product?.isPublishedInIndia
     );
-    notifySuccess("Quantity update completed");
+
+    if (checkNotPublishedProduct) {
+      const allCheckNotPublishedProduct = cartData
+        ?.filter((item) => item?.variant?.product?.isPublishedInIndia == false)
+        ?.map((val) => val?.variant?.product?.name || val?.node?.name)
+        ?.join(", ");
+      notifyError(removeCartProduct(allCheckNotPublishedProduct));
+    } else {
+      cartData?.map((item) =>
+        updateCartQuantity({
+          checkoutId: list?.data?.checkout?.id,
+          lineId: item.id,
+          quantity: item.quantity,
+        }).then((data) => {
+          allcartData?.map((item) =>
+            updateCartQuantity({
+              checkoutId: allList?.data?.checkout?.id,
+              lineId: item.id,
+              quantity: item.quantity,
+            }).then((data) => {})
+          );
+          refetch();
+          cartAllList();
+        })
+      );
+
+      notifySuccess("Quantity update completed");
+    }
   };
 
   const Quantity = (quantity, val) => {
@@ -147,7 +163,7 @@ const CartArea1 = () => {
 
   return CartList?.length == 0 ? (
     <>
-      <div className="text-center pb-20" style={{padding:"100px 0"}}>
+      <div className="text-center pb-20" style={{ padding: "100px 0" }}>
         <h3 style={{ paddingBottom: "15px" }}>Your Cart is empty.</h3>
         <p style={{ color: "gray" }}>
           You dont have any products in the cart yet.
@@ -248,9 +264,9 @@ const CartArea1 = () => {
             <div className="cart-summary p-4 rounded">
               <div className="d-flex justify-content-between align-items-start mb-3">
                 <div>
-                  <strong style={{color:"#333435"}}>Have a coupon?</strong>
+                  <strong style={{ color: "#333435" }}>Have a coupon?</strong>
                   <br />
-                  <span  style={{color:"#333435"}}>
+                  <span style={{ color: "#333435" }}>
                     {" "}
                     Apply Coupon Code in Checkout
                   </span>

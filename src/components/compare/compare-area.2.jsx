@@ -43,7 +43,6 @@ const CompareArea2 = () => {
   const [getProducts] = useGetProductByIdMutation();
   const [compareData, setCompareData] = useState([]);
   const [attributes, setAttributes] = useState([]);
-  console.log("✌️compareData --->", compareData);
 
   const dispatch = useDispatch();
 

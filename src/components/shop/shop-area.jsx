@@ -123,7 +123,6 @@ const ShopArea = ({
   const categories = subtitle.split(" / ");
   const [categoryId, setCategoryId] = useState("earrings");
 
-  console.log("categoryId", categoryId);
 
   // Initialize ParentCategoryId
   useEffect(() => {

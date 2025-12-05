@@ -12,10 +12,10 @@ const notifySuccess = (message) =>
     progress: undefined,
   });
 
-const notifyError = (message) =>
+const notifyError = (message,autoClose) =>
   toast.error(message, {
     position: 'top-center',
-    autoClose: 3000,
+    autoClose:autoClose?? 3000,
     hideProgressBar: false,
     closeOnClick: true,
     pauseOnHover: true,

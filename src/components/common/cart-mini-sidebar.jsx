@@ -22,10 +22,15 @@ import {
   checkChannel,
   roundOff,
 } from "../../utils/functions";
-import { profilePic } from "@/utils/constant";
+import {
+  NOT_PUBLISHED_PRODUCT,
+  profilePic,
+  removeCartProduct,
+} from "@/utils/constant";
 import { isPreOrderAndGiftCart } from "../../redux/features/cartSlice";
 import ButtonLoader from "../loader/button-loader";
 import { COLORS } from "../../utils/constant";
+import { notifyError } from "@/utils/toast";
 
 const CartMiniSidebar = () => {
   const { cartMiniOpen } = useSelector((state) => state.cart);
@@ -138,6 +143,30 @@ const CartMiniSidebar = () => {
     return loading;
   };
 
+  const isPublished = (item) => {
+    if (item.variant?.product?.isPublishedInIndia) {
+      return true;
+    } else {
+      false;
+    }
+  };
+
+  const checkout = () => {
+    const isNotPushlishProduct = CartList?.some(
+      (item) => !item.variant?.product?.isPublishedInIndia
+    );
+    if (isNotPushlishProduct) {
+      const allCheckNotPublishedProduct = cartData
+        ?.filter((item) => item?.variant?.product?.isPublishedInIndia == false)
+        ?.map((val) => val?.variant?.product?.name || val?.node?.name)
+        ?.join(", ");
+      notifyError(removeCartProduct(allCheckNotPublishedProduct));
+    } else {
+      handleCloseCartMini();
+      router.push("/checkout");
+    }
+  };
+
   return (
     <>
       <div
@@ -170,8 +199,43 @@ const CartMiniSidebar = () => {
                   return (
                     <>
                       {item.variant.quantityAvailable >= item.quantity ? (
-                        <div key={item.id} className="cartmini__widget-item">
-                          <div className="cartmini__thumb" style={{borderRadius:"10px"}}>
+                        <div
+                          key={item.id}
+                          className="cartmini__widget-item"
+                          style={{ opacity: isPublished(item) ? 1 : 0.45 }}
+                        >
+                          {!isPublished(item) && (
+                            <div
+                              style={{
+                                position: "absolute",
+                                inset: 0,
+                                display: "flex",
+                                alignItems: "center",
+                                justifyContent: "center",
+                                zIndex: 3,
+                                pointerEvents: "none",
+                              }}
+                            >
+                              <div
+                                style={{
+                                  background: "rgba(255,255,255,0.85)",
+                                  padding: "10px 16px",
+                                  borderRadius: 6,
+                                  boxShadow: "0 2px 6px rgba(0,0,0,0.12)",
+                                  pointerEvents: "none",
+                                  color: "red",
+                                }}
+                              >
+                                <strong style={{ color: "#9b604d" }}>
+                                  {NOT_PUBLISHED_PRODUCT}
+                                </strong>
+                              </div>
+                            </div>
+                          )}
+                          <div
+                            className="cartmini__thumb"
+                            style={{ borderRadius: "10px" }}
+                          >
                             <div
                               onClick={() => {
                                 dispatch(closeCartMini());
@@ -179,7 +243,7 @@ const CartMiniSidebar = () => {
                                   `/product-details/${item?.variant?.product?.slug}`
                                 );
                               }}
-                              style={{borderRadius:"10px"}}
+                              style={{ borderRadius: "10px" }}
                             >
                               {/* <Image
                                 src={profilePic(
@@ -206,11 +270,12 @@ const CartMiniSidebar = () => {
                                   width={100}
                                   height={100}
                                   alt="product img"
-                                  style={{width: "100px",
-                                    height:"100px",
-                                    objectFit:"cover",
+                                  style={{
+                                    width: "100px",
+                                    height: "100px",
+                                    objectFit: "cover",
                                     objectPosition: "center",
-                                    borderRadius:"10px"
+                                    borderRadius: "10px",
                                   }}
                                 />
                               ) : (
@@ -259,7 +324,10 @@ const CartMiniSidebar = () => {
                                 </span>
                               ) : (
                                 <span className="cartmini__price">
-                                  ${addCommasToNumber(item?.totalPrice?.gross?.amount)}
+                                  $
+                                  {addCommasToNumber(
+                                    item?.totalPrice?.gross?.amount
+                                  )}
                                 </span>
                               )}
                               {/* )} */}
@@ -365,14 +433,12 @@ const CartMiniSidebar = () => {
                 <Image src={empty_cart_img} alt="empty-cart-img" />
                 <p>Your Cart is empty</p>
                 <button
-                
                   onClick={() => {
                     router.push("/shop");
                     handleCloseCartMini();
                   }}
                   className={`tp-btn tp-btn-border text-white `}
-            
-                  style={{padding:"8px 28px"}}
+                  style={{ padding: "8px 28px" }}
                 >
                   Go to Shop
                 </button>
@@ -434,8 +500,11 @@ const CartMiniSidebar = () => {
                   href="/cart"
                   onClick={handleCloseCartMini}
                   className="tp-btn tp-btn-border mb-10 w-100"
-                   style={{background:"transparent", color:"#7d4432", border:"none",
-                    border:"1px solid #7d4432"
+                  style={{
+                    background: "transparent",
+                    color: "#7d4432",
+                    border: "none",
+                    border: "1px solid #7d4432",
                   }}
                 >
                   {" "}
@@ -450,13 +519,12 @@ const CartMiniSidebar = () => {
                     Checkout
                   </button>
                 ) : (
-                  <Link
-                    href="/checkout"
-                    onClick={handleCloseCartMini}
+                  <button
+                    onClick={() => checkout()}
                     className="tp-btn tp-btn-border w-100"
                   >
                     Checkout
-                  </Link>
+                  </button>
                 )}
 
                 <button
@@ -465,8 +533,11 @@ const CartMiniSidebar = () => {
                     handleCloseCartMini();
                   }}
                   className="tp-btn tp-btn-border w-100 mt-10"
-                  style={{background:"transparent", color:"#7d4432", border:"none",
-                    border:"1px solid #7d4432"
+                  style={{
+                    background: "transparent",
+                    color: "#7d4432",
+                    border: "none",
+                    border: "1px solid #7d4432",
                   }}
                 >
                   Continue to Shop

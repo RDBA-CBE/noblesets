@@ -513,6 +513,7 @@ export const PRODUCT_FILTER = ({
         id
         name
         slug
+        isPublishedInIndia
         pricing {
           priceRange {
             start {

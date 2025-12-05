@@ -3,6 +3,7 @@ fragment ProductListItem on Product {
   id
   name
   slug
+  isPublishedInIndia
   pricing {
     priceRange {
       start {

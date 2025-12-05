@@ -46,7 +46,7 @@ import {
   AppstoreOutlined,
 } from "@ant-design/icons";
 import { Tooltip } from "antd";
-import { profilePic } from "@/utils/constant";
+import { NOT_PUBLISHED_PRODUCT, profilePic } from "@/utils/constant";
 import Image from "next/image";
 import WishlistFill from "@/svg/WishListFill";
 
@@ -876,26 +876,23 @@ const DetailsWrapper = ({
           {productItem?.defaultVariant?.quantityAvailable != 0 && (
             <button
               onClick={() => {
-                // if (isAddedToCart) {
-                //   dispatch(handleModalClose());
-                //   router.push("/cart");
-                // } else {
-                addToCartProductINR();
-                addToCartProductUSD();
-                // }
+                if (productItem?.isPublishedInIndia) {
+                  addToCartProductINR();
+                  addToCartProductUSD();
+                } else {
+                  notifyError(NOT_PUBLISHED_PRODUCT);
+                }
               }}
               disabled={status === "out-of-stock"}
-             
-                        style={{
-                          padding: "5px 17px 5px 17px",
-                          fontSize:"14px",
-                          borderRadius: "20px",
-                          color: "white",
-                          // marginBottom:,
-                          
-                          marginTop:"0px",
-                        }}
-                        className="tp-btn tp-btn-border "
+              style={{
+                padding: "5px 17px 5px 17px",
+                fontSize: "14px",
+                borderRadius: "20px",
+                color: "white",
+                // marginBottom:,
+                marginTop: "0px",
+              }}
+              className="tp-btn tp-btn-border "
             >
               {cartLoader ? (
                 <ButtonLoader loader={cartLoader} />

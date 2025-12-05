@@ -49,7 +49,12 @@ import {
   HeartFilled,
 } from "@ant-design/icons";
 import { Tooltip } from "antd";
-import { cleanHTML, customStyles, profilePic } from "@/utils/constant";
+import {
+  cleanHTML,
+  customStyles,
+  NOT_PUBLISHED_PRODUCT,
+  profilePic,
+} from "@/utils/constant";
 import { RWebShare } from "react-web-share";
 import PincodeChecker from "../pincode_checker/pincodeChecker";
 import PriceBreakup from "../price_breakup/priceBreakUp";
@@ -770,7 +775,7 @@ const DetailsWrapper1 = ({
           display: "flex",
           justifyContent: "space-between",
           alignItems: "center",
-          background:"#efeeee"
+          background: "#efeeee",
         }}
       >
         <div>
@@ -1011,7 +1016,7 @@ const DetailsWrapper1 = ({
 
       <div className="product-info">
         {/* price */}
-        <div className=" my-3 p-3 rounded" style={{background:"#efeeee"}}>
+        <div className=" my-3 p-3 rounded" style={{ background: "#efeeee" }}>
           <div className="d-flex justify-content-between">
             <h3 className="tp-product-details-title product-title">
               {capitalizeFLetter(productItem?.name || productItem?.node?.name)}
@@ -1171,7 +1176,10 @@ const DetailsWrapper1 = ({
                   ) && (
                     <span
                       className="pr-5"
-                      style={{ textDecoration: "line-through", color: "#333435" }}
+                      style={{
+                        textDecoration: "line-through",
+                        color: "#333435",
+                      }}
                     >
                       {variantDetails ? (
                         <>
@@ -1552,12 +1560,12 @@ const DetailsWrapper1 = ({
                 <div className="tp-product-details-add-to-cart">
                   <button
                     onClick={() => {
-                      // if (isAddedToCart) {
-                      //   dispatch(handleModalClose());
-                      //   router.push("/cart");
-                      // } else {
-                      addToCartProductINR();
-                      addToCartProductUSD();
+                      if (productItem?.isPublishedInIndia) {
+                        addToCartProductINR();
+                        addToCartProductUSD();
+                      } else {
+                        notifyError(NOT_PUBLISHED_PRODUCT);
+                      }
                       // }
                     }}
                     disabled={status === "out-of-stock"}
@@ -1587,7 +1595,10 @@ const DetailsWrapper1 = ({
         </div>
 
         {/* Delivery */}
-        <div className="delivery-box my-3 p-3 rounded " style={{background:"#efeeee"}}>
+        <div
+          className="delivery-box my-3 p-3 rounded "
+          style={{ background: "#efeeee" }}
+        >
           <h6>Delivery Details</h6>
           <PincodeChecker />
         </div>
@@ -1618,7 +1629,10 @@ const DetailsWrapper1 = ({
           </div>
         </div> */}
 
-        <div className="delivery-box my-3 p-2 p-sm-3 rounded  " style={{background:"#efeeee"}}>
+        <div
+          className="delivery-box my-3 p-2 p-sm-3 rounded  "
+          style={{ background: "#efeeee" }}
+        >
           <div className="pd-tabs-container">
             <ul className="nav nav-tabs pd-nav-tabs">
               <li className="nav-item">
@@ -1653,7 +1667,10 @@ const DetailsWrapper1 = ({
               </li>
             </ul>
 
-            <div className="tab-content pd-tab-content  rounded-bottom p-3 " style={{background:"#efeeee"}}>
+            <div
+              className="tab-content pd-tab-content  rounded-bottom p-3 "
+              style={{ background: "#efeeee" }}
+            >
               {/* Product Details */}
 
               <div className="tab-pane fade show active" id="pd-details">
@@ -1693,7 +1710,10 @@ const DetailsWrapper1 = ({
                             <div key={block.id}>
                               {block.type === "paragraph" && (
                                 <p
-                                  style={{ color: "#333435", marginBottom: "5px" }}
+                                  style={{
+                                    color: "#333435",
+                                    marginBottom: "5px",
+                                  }}
                                 >
                                   <ReadMore
                                     text={
@@ -1998,7 +2018,10 @@ const DetailsWrapper1 = ({
           </div>
         </div>
 
-        <div className="delivery-box my-3 p-3 rounded  " style={{background:"#efeeee"}}>
+        <div
+          className="delivery-box my-3 p-3 rounded  "
+          style={{ background: "#efeeee" }}
+        >
           <div>
             <p style={{ color: "#333435" }}>
               <b>SKU:</b>{" "}
@@ -2211,10 +2234,10 @@ const DetailsWrapper1 = ({
               onClick={() => setIsModelOpen(false)}
               type="button"
               className="btn btn-sm  align-self-end text-black"
-              style={ {
+              style={{
                 // background:
                 //   "linear-gradient( to right, color-mix(in srgb, #fbdccc 40%, #e09a7a), #e09a7a )",
-                fontSize:"20px"
+                fontSize: "20px",
               }}
             >
               ✕
@@ -2278,10 +2301,12 @@ const DetailsWrapper1 = ({
               }}
               type="button"
               className="btn btn-sm  align-self-end text-black"
-              style={{
-                // background:
-                //   "linear-gradient( to right, color-mix(in srgb, #fbdccc 40%, #e09a7a), #e09a7a )",
-              }}
+              style={
+                {
+                  // background:
+                  //   "linear-gradient( to right, color-mix(in srgb, #fbdccc 40%, #e09a7a), #e09a7a )",
+                }
+              }
             >
               ✕
             </button>

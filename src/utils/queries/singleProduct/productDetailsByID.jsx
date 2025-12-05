@@ -6,6 +6,7 @@ export const SINGLE_PRODUCT = ({ productId, channel }) => {
     id
     name
     slug
+    isPublishedInIndia
     pricing {
       priceRange {
         start {

@@ -34,7 +34,6 @@ const WishlistArea = () => {
       ? wishlistData?.data?.wishlists?.edges?.map((item) => item?.node)
       : wishlistDefaultData?.data?.wishlists?.edges?.map((item) => item?.node);
 
-
   const getWishlistList = async (prd) => {
     try {
       if (wishlistData?.data?.wishlists?.edges?.length > 0) {
@@ -47,34 +46,50 @@ const WishlistArea = () => {
     }
   };
 
+ 
+
   return (
     <>
-      <section className="tp-cart-area pb-50 pt-30 wishlist-page"  
-      // style={{background:"#f6e9d9"}}
+      <section
+        className="tp-cart-area pb-50 pt-30 wishlist-page"
+        // style={{background:"#f6e9d9"}}
       >
         <div className="container">
           {list?.length === 0 && (
-            <div className="text-center pb-20">
-              <h3 style={{ paddingBottom: "15px", fontWeight:"500" }}>This wishlist is empty.</h3>
+            <div
+              className="text-center pb-20"
+            >
+              <h3 style={{ paddingBottom: "15px", fontWeight: "500" }}>
+                This wishlist is empty.
+              </h3>
               <p style={{ color: "gray" }}>
                 You dont have any products in the wishlist yet.
                 <br /> You will find a lot of interesting products on our Shop
                 page.
               </p>
               <Link href="/shop" className="gradient-btn">
-               Return to shop
+                Return to shop
               </Link>
             </div>
           )}
           {list?.length > 0 && (
             <>
-              <div className="row">
+              <div className="row"
+              
+              >
                 <div className="col-xl-12">
                   <div className="tp-cart-list mb-3 mb-md-5 ">
                     <table className="table">
                       <thead>
                         <tr className="wishlist-page-tr">
-                          <th colSpan="2" className="tp-cart-header-product py-4" style={{borderTopLeftRadius:"10px", borderBottomLeftRadius:"10px"}}>
+                          <th
+                            colSpan="2"
+                            className="tp-cart-header-product py-4"
+                            style={{
+                              borderTopLeftRadius: "10px",
+                              borderBottomLeftRadius: "10px",
+                            }}
+                          >
                             PRODUCT
                           </th>
                           <th className="tp-cart-header-quantity">
@@ -82,7 +97,12 @@ const WishlistArea = () => {
                           </th>
                           <th className="tp-cart-header-price">PRICE</th>
                           <th>ADD TO CART</th>
-                          <th style={{borderBottomRightRadius:"10px", borderTopRightRadius:"10px"}}></th>
+                          <th
+                            style={{
+                              borderBottomRightRadius: "10px",
+                              borderTopRightRadius: "10px",
+                            }}
+                          ></th>
                         </tr>
                       </thead>
                       <tbody>
@@ -92,9 +112,7 @@ const WishlistArea = () => {
                               key={i}
                               product={item}
                               refetchWishlist={wishlistRefetch}
-                              refetchWishlistDefault={
-                                wishlistDefaultRefetch
-                              }
+                              refetchWishlistDefault={wishlistDefaultRefetch}
                             />
                           );
                         })}
@@ -107,8 +125,8 @@ const WishlistArea = () => {
                         <div className=" d-flex tp-cart-new">
                           <Link
                             href="/cart"
-                             className=" tp-btn tp-btn-border"
-                style={{borderRadius:"20px"}}
+                            className=" tp-btn tp-btn-border"
+                            style={{ borderRadius: "20px" }}
                           >
                             Go To Cart
                           </Link>

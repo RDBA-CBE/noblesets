@@ -29,7 +29,7 @@ import {
   checkChannel,
   roundOff,
 } from "../../utils/functions";
-import { profilePic } from "@/utils/constant";
+import { NOT_PUBLISHED_PRODUCT, profilePic } from "@/utils/constant";
 import ButtonLoader from "../loader/button-loader";
 import { ClipLoader } from "react-spinners";
 
@@ -152,8 +152,8 @@ const WishlistItem = ({ product, refetchWishlist, refetchWishlistDefault }) => {
       const response = await addToCartMutation({
         checkoutToken: checkoutTokenINR,
         variantId:
-        product?.product?.defaultVariant.id ||
-        product?.defaultChannelProduct?.defaultVariant?.id,
+          product?.product?.defaultVariant.id ||
+          product?.defaultChannelProduct?.defaultVariant?.id,
       });
       if (response.data?.data?.checkoutLinesAdd?.errors?.length > 0) {
         const err = response.data?.data?.checkoutLinesAdd?.errors[0]?.message;
@@ -178,8 +178,8 @@ const WishlistItem = ({ product, refetchWishlist, refetchWishlistDefault }) => {
       const response = await addToCartMutation({
         checkoutToken: checkoutTokenUSD,
         variantId:
-        product?.product?.defaultVariant.id ||
-        product?.defaultChannelProduct?.defaultVariant?.id,
+          product?.product?.defaultVariant.id ||
+          product?.defaultChannelProduct?.defaultVariant?.id,
       });
       if (response.data?.data?.checkoutLinesAdd?.errors?.length > 0) {
         const err = response.data?.data?.checkoutLinesAdd?.errors[0]?.message;
@@ -200,6 +200,15 @@ const WishlistItem = ({ product, refetchWishlist, refetchWishlistDefault }) => {
   const isImage = (url) => {
     return /\.(jpg|webp|jpeg|png|gif)$/i.test(url);
   };
+  console.log("✌️product?.product --->", product?.product);
+
+  const isPublished = () => {
+    if (product?.product?.isPublishedInIndia) {
+      return true;
+    } else {
+      false;
+    }
+  };
 
   return (
     <>
@@ -209,6 +218,7 @@ const WishlistItem = ({ product, refetchWishlist, refetchWishlistDefault }) => {
             className={`${
               isHiddenCategory ? "wishlistOpacity0" : "wishlistOpacity1"
             }`}
+            style={{ opacity: !isPublished() ? 0.45 : 1 }}
           >
             <td className="tp-cart-img">
               <Link href={`/product-details/${product?.product?.slug}`}>
@@ -229,7 +239,12 @@ const WishlistItem = ({ product, refetchWishlist, refetchWishlistDefault }) => {
                     }
                     width={70}
                     height={100}
-                    style={{ borderRadius: "10px" }}
+                    style={{
+                      borderRadius: "10px",
+                      filter: !isPublished()
+                        ? "grayscale(1) opacity(0.5)"
+                        : "none",
+                    }}
                   />
                 ) : (
                   <video
@@ -244,6 +259,9 @@ const WishlistItem = ({ product, refetchWishlist, refetchWishlistDefault }) => {
                       width: "100%",
                       height: "100%",
                       borderRadius: "10px",
+                      filter: !isPublished()
+                        ? "grayscale(1) opacity(0.5)"
+                        : "none",
                     }}
                   />
                 )}
@@ -251,14 +269,33 @@ const WishlistItem = ({ product, refetchWishlist, refetchWishlistDefault }) => {
             </td>
             <td className="tp-cart-title">
               <Link href={`/product-details/${product?.product?.slug}`}>
-                {product?.product?.name}
+                <span
+                  style={{
+                    color: !isPublished() ? "#999" : "inherit",
+                    opacity: !isPublished() ? 0.6 : 1,
+                  }}
+                >
+                  {product?.product?.name}
+                </span>
               </Link>
             </td>
             <td>
-              <span>{product?.product?.name || data?.name}</span>
+              <span
+                style={{
+                  color: !isPublished() ? "#999" : "inherit",
+                  opacity: !isPublished() ? 0.6 : 1,
+                }}
+              >
+                {product?.product?.name || data?.name}
+              </span>
             </td>
             <td className="tp-cart-price">
-              <span>
+              <span
+                style={{
+                  color: !isPublished() ? "#999" : "inherit",
+                  opacity: !isPublished() ? 0.6 : 1,
+                }}
+              >
                 ₹{roundOff(data?.pricing?.priceRange?.start?.gross?.amount)}
               </span>
             </td>
@@ -289,7 +326,8 @@ const WishlistItem = ({ product, refetchWishlist, refetchWishlistDefault }) => {
             <td
               className="tp-cart-add-to-cart"
               style={{
-                pointerEvents: isHiddenCategory ? "none" : "auto",
+                pointerEvents:
+                  isHiddenCategory || !isPublished() ? "none" : "auto",
               }}
             >
               <button
@@ -298,12 +336,17 @@ const WishlistItem = ({ product, refetchWishlist, refetchWishlistDefault }) => {
                     router.push("/cart");
                   } else {
                     addToCartProductINR();
-                    addToCartProductUSD()
+                    addToCartProductUSD();
                   }
                 }}
                 type="button"
                 className=" tp-btn tp-btn-border"
-                style={{ borderRadius: "20px" }}
+                style={{
+                  borderRadius: "20px",
+                  opacity: !isPublished() ? 0.6 : 1,
+                  color: !isPublished() ? "#999" : "",
+                  borderColor: !isPublished() ? "#999" : "",
+                }}
               >
                 {isAddToCart ? (
                   "View Cart"
@@ -365,7 +408,12 @@ const WishlistItem = ({ product, refetchWishlist, refetchWishlistDefault }) => {
                     }
                     width={70}
                     height={100}
-                    style={{ borderRadius: "10px" }}
+                    style={{
+                      borderRadius: "10px",
+                      filter: !isPublished()
+                        ? "grayscale(1) opacity(0.5)"
+                        : "none",
+                    }}
                   />
                 ) : (
                   <video
@@ -381,6 +429,9 @@ const WishlistItem = ({ product, refetchWishlist, refetchWishlistDefault }) => {
                       width: "100%",
                       height: "100%",
                       borderRadius: "10px",
+                      filter: !isPublished()
+                        ? "grayscale(1) opacity(0.5)"
+                        : "none",
                     }}
                   />
                 )}
@@ -390,14 +441,33 @@ const WishlistItem = ({ product, refetchWishlist, refetchWishlistDefault }) => {
               <Link
                 href={`/product-details/${product?.defaultChannelProduct?.slug}`}
               >
-                {product?.defaultChannelProduct?.name}
+                <span
+                  style={{
+                    color: !isPublished() ? "#999" : "inherit",
+                    opacity: !isPublished() ? 0.6 : 1,
+                  }}
+                >
+                  {product?.defaultChannelProduct?.name}
+                </span>
               </Link>
             </td>
             <td>
-              <span>{product?.defaultChannelProduct?.name || data?.name}</span>
+              <span
+                style={{
+                  color: !isPublished() ? "#999" : "inherit",
+                  opacity: !isPublished() ? 0.6 : 1,
+                }}
+              >
+                {product?.defaultChannelProduct?.name || data?.name}
+              </span>
             </td>
             <td className="tp-cart-price">
-              <span>
+              <span
+                style={{
+                  color: !isPublished() ? "#999" : "inherit",
+                  opacity: !isPublished() ? 0.6 : 1,
+                }}
+              >
                 $
                 {addCommasToNumber(
                   data?.pricing?.priceRange?.start?.gross?.amount
@@ -431,7 +501,8 @@ const WishlistItem = ({ product, refetchWishlist, refetchWishlistDefault }) => {
             <td
               className="tp-cart-add-to-cart"
               style={{
-                pointerEvents: isHiddenCategory ? "none" : "auto",
+                pointerEvents:
+                  isHiddenCategory || !isPublished() ? "none" : "auto",
               }}
             >
               <button
@@ -440,12 +511,17 @@ const WishlistItem = ({ product, refetchWishlist, refetchWishlistDefault }) => {
                     router.push("/cart");
                   } else {
                     addToCartProductINR();
-                    addToCartProductUSD()
+                    addToCartProductUSD();
                   }
                 }}
                 type="button"
                 className=" tp-btn tp-btn-border"
-                style={{ borderRadius: "20px" }}
+                style={{
+                  borderRadius: "20px",
+                  opacity: !isPublished() ? 0.6 : 1,
+                  color: !isPublished() ? "#999" : "inherit",
+                  borderColor: !isPublished() ? "#999" : "inherit",
+                }}
               >
                 {isAddToCart ? (
                   "View Cart"
