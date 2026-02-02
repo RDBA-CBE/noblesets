@@ -15,6 +15,7 @@ import {
   resizingImage,
   roundIndianRupee,
   roundOff,
+  toValidJSON,
   useSetState,
 } from "@/utils/functions";
 import moment from "moment/moment";
@@ -25,12 +26,17 @@ import { notifyError, notifySuccess } from "@/utils/toast";
 import Resizer from "react-image-file-resizer";
 import ReviewSection from "../product-details/ReviewSection";
 import { Modal, Radio, Button } from "antd";
-import { CASE_ON_DELIVERY } from "@/utils/constant";
+import { BLUE_DART, BLUE_DART_LIVE, CASE_ON_DELIVERY } from "@/utils/constant";
 import { useRouter } from "next/router";
+import axios from "axios";
+import Steps from "../common/Steps";
 
 const MyOrderDetails = ({ data }) => {
   const router = useRouter();
   const [giftCard, setGiftCard] = useState(0);
+  const [loadings, setLoading] = useState(0);
+  const [expectedDate, setExpectedDate] = useState(null);
+  const [awbData, setAwbData] = useState(null);
 
   const Data = data?.data?.order;
   const SubTotal = data?.data?.order?.subtotal.gross;
@@ -55,6 +61,7 @@ const MyOrderDetails = ({ data }) => {
     reviewList: [],
     isOpen: false,
     productId: "",
+    cancel_reason: "",
   });
 
   const [formData, setFormData] = useState({
@@ -71,6 +78,28 @@ const MyOrderDetails = ({ data }) => {
     }
     if (Data) {
       total();
+    }
+
+    if (Data?.metadata?.length > 0) {
+      const waybillItem = Data?.metadata?.find(
+        (item) => item.key === "waybill_response"
+      );
+
+      const cancel_reason = Data?.metadata?.find(
+        (item) => item.key === "cancel_reason"
+      );
+
+      if (cancel_reason) {
+        setState({ cancel_reason });
+      }
+      if (waybillItem) {
+        setAwbData(waybillItem);
+        if (Data?.shippingAddress?.postalCode) {
+          getDomesticTransitTime();
+        }
+        const waybillData = JSON.parse(toValidJSON(waybillItem.value));
+        trackShipment(waybillData?.GenerateWayBillResult);
+      }
     }
   }, [Data]);
 
@@ -89,6 +118,84 @@ const MyOrderDetails = ({ data }) => {
       if (final !== 0) {
         setGiftCard(final);
       }
+    }
+  };
+
+  const trackShipment = async (waybillData) => {
+    console.log("✌️trackShipment --->", waybillData);
+    try {
+      setLoading(true);
+      const jwtToken = await axios.get(BLUE_DART_LIVE.TokenUrl);
+
+      const AWB_NO = waybillData?.AWBNo || "90001526591";
+
+      const res = await axios.get(`${BLUE_DART_LIVE.BaseUrl}/tracking/v1/shipment`, {
+        params: {
+          handler: "tnt",
+          loginid: BLUE_DART_LIVE.LoginID,
+          lickey: BLUE_DART_LIVE.TrackingLicKey,
+          numbers: AWB_NO,
+          format: "json",
+          scan: 1,
+          action: "custawbquery",
+          verno: 1,
+        },
+        headers: {
+          "Content-Type": "application/json",
+          accept: "application/json",
+          JWTToken: jwtToken?.data?.JWTToken,
+        },
+      });
+      console.log("Tracking Response 👉", res);
+
+      setLoading(false);
+    } catch (error) {
+      setLoading(false);
+      console.error("Tracking Error ❌", error);
+    }
+  };
+
+  const getDomesticTransitTime = async () => {
+    try {
+      setLoading(true);
+      const jwtToken = await axios.get(BLUE_DART.TokenUrl);
+
+      const res = await axios.post(
+        `${BLUE_DART.BaseUrl}/transit/v1/GetDomesticTransitTimeForPinCodeandProduct`,
+        {
+          pPinCodeFrom: "400012",
+          pPinCodeTo: Data?.shippingAddress?.postalCode,
+          // pPinCodeTo: Data?.shippingAddress?.postalCode,
+
+          pProductCode: "A",
+          pSubProductCode: "P",
+          pPudate: `/Date(${Date.now()})/`, // Blue Dart format
+          pPickupTime: "16:00",
+          profile: {
+            Api_type: BLUE_DART.Api_type,
+            LicenceKey: BLUE_DART.LicenceKey,
+            LoginID: BLUE_DART.LoginID,
+          },
+        },
+        {
+          headers: {
+            "Content-Type": "application/json",
+            accept: "application/json",
+            JWTToken: jwtToken?.data?.JWTToken,
+          },
+        }
+      );
+
+      setExpectedDate(
+        res.data?.GetDomesticTransitTimeForPinCodeandProductResult
+      );
+
+      setLoading(false);
+      return res.data;
+    } catch (error) {
+      console.error("❌ Transit Time Error:", error);
+      setLoading(false);
+      return null;
     }
   };
 
@@ -221,6 +328,15 @@ const MyOrderDetails = ({ data }) => {
   };
 
   const FormatDate = moment(Data?.created).format("MMMM D, YYYY");
+
+  const statusMap = {
+    placed: 0,
+    confirmed: 1,
+    shipped: 2,
+    delivered: 3,
+  };
+  const steps = ["Order Placed", "confirmed", "shipped", "delivered"];
+
   return (
     <section className="tp-checkout-area pb-50 pt-50 common-bg">
       <div className="container">
@@ -229,23 +345,67 @@ const MyOrderDetails = ({ data }) => {
             color: "black",
             borderBottom: "1px solid #e6e6e6",
             paddingBottom: "10px",
+            display: "flex",
+            justifyContent: "space-between",
+            alignItems: "center",
+            flexWrap: "wrap",
+            gap: "10px",
           }}
         >
-          Order
-          <span style={{ color: "black", fontWeight: "bold" }}>
-            {" "}
-            #{Data?.number}
-          </span>{" "}
-          was placed on{" "}
-          <span style={{ color: "black", fontWeight: "bold" }}>
-            {FormatDate}
-          </span>{" "}
-          and is currently{" "}
-          <span style={{ color: "black", fontWeight: "bold" }}>
-            {Data?.statusDisplay}
+          <span>
+            Order
+            <span style={{ color: "black", fontWeight: "bold" }}>
+              {" "}
+              #{Data?.number}
+            </span>{" "}
+            was placed on{" "}
+            <span style={{ color: "black", fontWeight: "bold" }}>
+              {FormatDate}
+            </span>{" "}
+            and is currently{" "}
+            <span style={{ color: "black", fontWeight: "bold" }}>
+              {Data?.status}
+            </span>
           </span>
-          .
+          {expectedDate && (
+            <span>
+              <strong>Expected Delivery Date:</strong>
+              <span
+                style={{
+                  marginLeft: "10px",
+                  color: "#7d4432",
+                  fontWeight: "bold",
+                }}
+              >
+                {expectedDate.ExpectedDateDelivery}
+              </span>
+            </span>
+          )}
         </p>
+
+        {state.cancel_reason?.value && (
+          <div style={{
+            backgroundColor: '#fff3cd',
+            border: '1px solid #ffeaa7',
+            borderRadius: '8px',
+            padding: '15px',
+            marginBottom: '20px'
+          }}>
+            <h5 style={{ color: '#856404', marginBottom: '10px', fontSize: '16px' }}>
+              Cancellation Reason:
+            </h5>
+            <p style={{ color: '#856404', marginBottom: '0', fontSize: '14px' }}>
+              {state.cancel_reason.value}
+            </p>
+          </div>
+        )}
+
+        {awbData && (
+          <Steps
+            current={statusMap[Data?.status] || statusMap["shipped"]}
+            items={steps.map((title) => ({ title }))}
+          />
+        )}
         <div
           style={{
             background: "#f1e7e1",

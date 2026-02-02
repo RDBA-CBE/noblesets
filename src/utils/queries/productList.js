@@ -61,6 +61,10 @@ export const ORDER_LIST = ({ orderId }) => {
     query: `
 query getOrderDetails($orderId: ID!) {
   order(id: $orderId) {
+  metadata {
+      key
+      value
+    }
     id
     billingAddress {
       firstName
@@ -877,6 +881,21 @@ export const ORDER_CANCEL = ({ id }) => {
     }
     `,
     variables: { id },
+  });
+};
+
+export const UPDATE_ORDER_CANCEL_NOTE = ({ id, note }) => {
+  return JSON.stringify({
+    query: `mutation UpdateOrderCancelNote($id: ID!, $note: String!) {
+      updateMetadata(id: $id, input: [{ key: "cancel_reason", value: $note }]) {
+        errors {
+          field
+          message
+        }
+      }
+    }
+    `,
+    variables: { id, note },
   });
 };
 

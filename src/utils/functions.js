@@ -769,3 +769,12 @@ export const formatIndianRupees = (amount) => {
     maximumFractionDigits: 0,
   }).format(amount);
 };
+
+
+export const toValidJSON = (str) => {
+  return str
+    .replace(/'/g, '"')          // single quote → double quote
+    .replace(/\bFalse\b/g, "false")
+    .replace(/\bTrue\b/g, "true")
+    .replace(/\bNone\b/g, "null");
+};

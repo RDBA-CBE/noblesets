@@ -23,6 +23,17 @@ const notifyError = (message,autoClose) =>
     progress: undefined,
   });
 
+  const notifyInfo = (message,autoClose) =>
+    toast.info(message, {
+      position: 'top-center',
+      autoClose:autoClose?? 3000,
+      hideProgressBar: false,
+      closeOnClick: true,
+      pauseOnHover: true,
+      draggable: true,
+      progress: undefined,
+    });
+
 <ToastContainer
   position="top-center"
   autoClose={3000}
@@ -35,4 +46,4 @@ const notifyError = (message,autoClose) =>
   pauseOnHover
 />;
 
-export { ToastContainer, notifySuccess, notifyError };
+export { ToastContainer, notifySuccess, notifyError, notifyInfo};

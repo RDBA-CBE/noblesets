@@ -3,22 +3,66 @@ import { EnvironmentOutlined } from "@ant-design/icons";
 import { usePincodeListMutation } from "@/redux/features/productApi";
 import Loader from "../loader/loader";
 import ButtonLoader from "../loader/button-loader";
+import axios from "axios";
+import { BLUE_DART, BLUE_DART_LIVE } from "@/utils/constant";
 
 export default function PincodeChecker() {
   const [picodeCheck, { isLoading: loading }] = usePincodeListMutation();
 
   const [pincode, setPincode] = useState("");
   const [isAvailable, setIsAvailable] = useState(null);
+  const [btnLoading, setLoading] = useState(false);
+
+  // const handleCheck = async () => {
+  //   try {
+
+  //     const res = await picodeCheck({ code: pincode });
+  //     if (res?.data?.data?.pincodes?.edges.length > 0) {
+  //       setIsAvailable(true);
+  //     } else {
+  //       setIsAvailable(false);
+  //     }
+  //   } catch (error) {}
+  // };
 
   const handleCheck = async () => {
     try {
-      const res = await picodeCheck({ code: pincode });
-      if (res?.data?.data?.pincodes?.edges.length > 0) {
+      setLoading(true);
+
+      const jwtToken = await axios.get(BLUE_DART_LIVE.TokenUrl);
+      console.log("first", jwtToken);
+      const res = await axios.post(
+        `${BLUE_DART_LIVE.BaseUrl}/finder/v1/GetServicesforPincode`,
+        {
+          pinCode: pincode,
+          profile: {
+            Api_type: "S",
+            LicenceKey: BLUE_DART_LIVE.LicenceKey,
+            LoginID: BLUE_DART_LIVE.LoginID,
+          },
+        },
+        {
+          headers: {
+            "Content-Type": "application/json",
+            accept: "application/json",
+            JWTToken: jwtToken?.data?.JWTToken,
+          },
+        }
+      );
+
+      console.log("✌️res --->", res);
+      if (res?.data) {
         setIsAvailable(true);
       } else {
         setIsAvailable(false);
       }
-    } catch (error) {}
+      setLoading(false);
+    } catch (error) {
+      setIsAvailable(false);
+      setLoading(false);
+
+      console.log("✌️error --->", error);
+    }
   };
 
   useEffect(() => {
@@ -51,11 +95,9 @@ export default function PincodeChecker() {
         <button
           onClick={handleCheck}
           className="btn text-white"
-          style={{ background: "#9b604d" ,
-            border:"none"
-          }}
+          style={{ background: "#9b604d", border: "none" }}
         >
-          {loading ? <ButtonLoader /> : "Check"}
+          {btnLoading ? <ButtonLoader /> : "Check"}
         </button>
       </div>
 

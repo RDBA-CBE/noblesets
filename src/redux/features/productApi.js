@@ -50,6 +50,7 @@ import {
   DELETE_GIFT_VOUCHER,
   PRICE_RANGE,
   CHILD_CATEGORY,
+  UPDATE_ORDER_CANCEL_NOTE,
 } from "@/utils/queries/productList";
 import {
   RELATED_PRODUCT,
@@ -663,6 +664,19 @@ export const productApi = apiSlice.injectEndpoints({
       },
     }),
 
+    updateorderCancelNote: builder.mutation({
+      query: ({ id,note }) => {
+        return configuration(
+          UPDATE_ORDER_CANCEL_NOTE({
+            id,
+            note
+          })
+        );
+      },
+    }),
+
+    
+
     getYouMayLike: builder.mutation({
       query: ({ productId }) => {
         let channel = "";
@@ -1003,4 +1017,5 @@ export const {
   usePriceRangeMutation,
   useChildCategoryListMutation,
   useGetOrderDetailMutation,
+  useUpdateorderCancelNoteMutation
 } = productApi;

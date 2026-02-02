@@ -1,61 +1,107 @@
-import placeholder from "@assets/img/placeholder.png";
+import placeholder from '@assets/img/placeholder.png'
 
-export const CASE_ON_DELIVERY = "Cash On Delivery";
+export const CASE_ON_DELIVERY = 'Cash On Delivery'
 
-export const RAZORPAY_ID = "UGF5bWVudF9HYXRld2F5OjI=";
+export const RAZORPAY_ID = 'UGF5bWVudF9HYXRld2F5OjI='
 
-export const CCAVENUE_ID = "UGF5bWVudF9HYXRld2F5OjM=";
+export const CCAVENUE_ID = 'UGF5bWVudF9HYXRld2F5OjM='
 
-export const COD_ID = "UGF5bWVudF9HYXRld2F5OjE=";
+export const COD_ID = 'UGF5bWVudF9HYXRld2F5OjE='
 
-export const MERCHANT_ID = "315511";
+export const MERCHANT_ID = '315511'
 
-export const ACCESS_CODE = "AVCO85MJ40CG11OCGC";
+export const ACCESS_CODE = 'AVCO85MJ40CG11OCGC'
 
-export const WORKING_KEY = "CEBF1F11B534AE3E0EF367C10FC055D1";
+export const WORKING_KEY = 'CEBF1F11B534AE3E0EF367C10FC055D1'
 
-export const CCAVENUE_URL = "https://www.noblesets.com";
+export const CCAVENUE_URL = 'https://www.noblesets.com'
+
+export const BLUE_DART = {
+  // LIVE DATA
+  // "customerCode": "TRP048366",
+  // "customerName": "SHIVAM TRADERS",
+  // "loginId": "TRP67122",
+  // "liveApiKey": "evgkukoko6p3iosfktj76klhvkgmqol",
+  // "liveTrackKey": "hisihnfjlq70qiqkhhkkqtjvqulmhqkt"
+
+  API_KEY:"3K5LxWWJnBpC92pQI29exNqRfIuKvSJl",
+  API_SECRET:"SDnWsfLstFqLTXGG",
+  TRACKING_KEY:"itjueshurqqufeglhnfsnmthtpm0ph3e",
+  CUSTOMER_CODE:"048366",
+  ORGINE_AREA:"TRP",
+  CLIENT_ID:"3K5LxWWJnBpC92pQI29exNqRfIuKvSJl",
+  CLIENT_SECRET:"SDnWsfLstFqLTXGG",
+  BaseUrl:"https://apigateway-sandbox.bluedart.com/in/transportation",
+  Api_type: 'S',
+  LicenceKey: 'rhmrguukf3lmpsoksogknlfjxrkk0ppi',
+  LoginID: 'TRP46786',
+  TokenUrl:"https://nobledemo.irepute.co.in/api/bluedart-token",
+  JWTToken:
+    'eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJzdWJqZWN0LXN1YmplY3QiLCJhdWQiOlsiYXVkaWVuY2UxIiwiYXVkaWVuY2UyIl0sImlzcyI6InVybjovL2FwaWdlZS1lZGdlLUpXVC1wb2xpY3ktdGVzdCIsImV4cCI6MTc2OTg0Mzc0NSwiaWF0IjoxNzY5NzU3MzQ1LCJqdGkiOiI0ZTNiYWIyMi0zMzE2LTRlMjgtOWM0OS1lNDljODEzNDRlNTQifQ.XgFMU_5ZTUhsKjqjRQK39QPyvUnVtclwt4m7aCEYfcQ' // 🔴 IMPORTANT
+}
+
+
+export const BLUE_DART_LIVE = {
+  // LIVE DATA
+  // "customerCode": "TRP048366",
+  // "customerName": "SHIVAM TRADERS",
+  // "loginId": "TRP67122",
+  // "liveApiKey": "evgkukoko6p3iosfktj76klhvkgmqol",
+  // "liveTrackKey": "hisihnfjlq70qiqkhhkkqtjvqulmhqkt"
+
+  API_KEY:"3K5LxWWJnBpC92pQI29exNqRfIuKvSJl",
+  API_SECRET:"SDnWsfLstFqLTXGG",
+  TRACKING_KEY:"itjueshurqqufeglhnfsnmthtpm0ph3e",
+  CUSTOMER_CODE:"048366",
+  ORGINE_AREA:"TRP",
+  CLIENT_ID:"3K5LxWWJnBpC92pQI29exNqRfIuKvSJl",
+  CLIENT_SECRET:"SDnWsfLstFqLTXGG",
+  BaseUrl:"https://apigateway.bluedart.com/in/transportation",
+  Api_type: 'S',
+  LicenceKey: "evgkukoko6p3iosfktj76klhrvkgmqol",
+  TrackingLicKey:"hisihnfjlq70qiqkhhkkqtjvqulmhqkt",
+  LoginID: "TRP67122",
+  TokenUrl:"https://nobledemo.irepute.co.in/api/bluedart-token",
+  JWTToken:
+    'eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJzdWJqZWN0LXN1YmplY3QiLCJhdWQiOlsiYXVkaWVuY2UxIiwiYXVkaWVuY2UyIl0sImlzcyI6InVybjovL2FwaWdlZS1lZGdlLUpXVC1wb2xpY3ktdGVzdCIsImV4cCI6MTc2OTg0Mzc0NSwiaWF0IjoxNzY5NzU3MzQ1LCJqdGkiOiI0ZTNiYWIyMi0zMzE2LTRlMjgtOWM0OS1lNDljODEzNDRlNTQifQ.XgFMU_5ZTUhsKjqjRQK39QPyvUnVtclwt4m7aCEYfcQ' // 🔴 IMPORTANT
+}
 
 // export const CCAVENUE_URL="http://localhost:3000"
 
-export const NOT_PUBLISHED_PRODUCT = "Product not available!";
+export const NOT_PUBLISHED_PRODUCT = 'Product not available!'
 
-export const REMOVE_UNPUBLISHED_PRODUCT = "Please Remove not published Product";
+export const REMOVE_UNPUBLISHED_PRODUCT = 'Please Remove not published Product'
 
-export const configuration = (body) => {
-  const token = localStorage.getItem("token");
+export const configuration = body => {
+  const token = localStorage.getItem('token')
   const config = {
-    method: "POST",
+    method: 'POST',
     headers: {
-      "Content-Type": "application/json",
-      Authorization: "JWT " + token,
+      'Content-Type': 'application/json',
+      Authorization: 'JWT ' + token
     },
-    body: body,
-  };
-  return config;
-};
-
-
-export const removeCartProduct = (products) => {
-  const REMOVE_CART_PRODUCT = `(${products}) is unavailable right now.`;
-  
-  return REMOVE_CART_PRODUCT;
-};
-
-
-
-
-export const profilePic = (profile) => {
-  let profiles;
-  if (profile) {
-    profiles = profile;
-  } else if (profile == undefined) {
-    profiles = "/assets/img/placeholder-portrait.png";
-  } else {
-    profiles = "/assets/img/placeholder-portrait.png";
+    body: body
   }
-  return profiles;
-};
+  return config
+}
+
+export const removeCartProduct = products => {
+  const REMOVE_CART_PRODUCT = `(${products}) is unavailable right now.`
+
+  return REMOVE_CART_PRODUCT
+}
+
+export const profilePic = profile => {
+  let profiles
+  if (profile) {
+    profiles = profile
+  } else if (profile == undefined) {
+    profiles = '/assets/img/placeholder-portrait.png'
+  } else {
+    profiles = '/assets/img/placeholder-portrait.png'
+  }
+  return profiles
+}
 
 export const pincode = [
   110001, 110002, 110003, 110004, 110005, 110006, 110007, 110008, 110009,
@@ -1272,40 +1318,40 @@ export const pincode = [
   382230, 233003, 233005, 581342, 802312, 581341, 761143, 761121, 764061,
   741223, 764086, 764087, 764076, 764074, 761042, 765019, 781126, 670708,
   635115, 741316, 636803, 360020, 515455, 788115, 788161, 788104, 788106,
-  799013, 384160, 384135, 481990, 370150, 481776, 815302, 475330, 276141,
-];
+  799013, 384160, 384135, 481990, 370150, 481776, 815302, 475330, 276141
+]
 
 export const filterByStock = [
   {
-    id: "IN_STOCK",
-    type: "stock",
-    name: "In Stock",
+    id: 'IN_STOCK',
+    type: 'stock',
+    name: 'In Stock'
   },
   {
-    id: "OUT_OF_STOCK",
-    type: "stock",
-    name: "Out Of Stock",
-  },
-];
+    id: 'OUT_OF_STOCK',
+    type: 'stock',
+    name: 'Out Of Stock'
+  }
+]
 
 export const COLORS = {
-  primary: "#7d4432",
-};
+  primary: '#7d4432'
+}
 
 export const customStyles = {
   content: {
-    maxWidth: "800px",
-    margin: "auto",
-    borderRadius: "10px",
-    padding: "20px",
-    zIndex: 1000,
+    maxWidth: '800px',
+    margin: 'auto',
+    borderRadius: '10px',
+    padding: '20px',
+    zIndex: 1000
   },
   overlay: {
     zIndex: 999,
-    backgroundColor: "rgba(0, 0, 0, 0.6)",
-  },
-};
+    backgroundColor: 'rgba(0, 0, 0, 0.6)'
+  }
+}
 
-export const cleanHTML = (html) => {
-  return html?.replace(/<td>\s*<\/td>/g, "");
-};
+export const cleanHTML = html => {
+  return html?.replace(/<td>\s*<\/td>/g, '')
+}

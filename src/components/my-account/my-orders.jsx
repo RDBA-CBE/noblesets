@@ -5,6 +5,7 @@ import {
   useOrderCancelMutation,
   useOrderListQuery,
   useGetOrderDetailMutation,
+  useUpdateorderCancelNoteMutation,
 } from "@/redux/features/productApi";
 import { useRouter } from "next/router";
 import useRazorpay from "react-razorpay";
@@ -13,8 +14,9 @@ import {
   addCommasToNumber,
   roundIndianRupee,
   showDeleteAlert,
+  useSetState,
 } from "@/utils/functions";
-import { notifySuccess } from "@/utils/toast";
+import { notifyError, notifyInfo, notifySuccess } from "@/utils/toast";
 import ButtonLoader from "../loader/button-loader";
 import Swal from "sweetalert2";
 import {
@@ -25,6 +27,7 @@ import {
 } from "@/utils/constant";
 import CCAvenue from "@/utils/CCAvenue";
 import { createHash } from "crypto";
+import { Modal } from "antd";
 
 const OrderList = () => {
   const {
@@ -42,7 +45,15 @@ const OrderList = () => {
   const [currentPage, setCurrentPage] = useState(1);
   const itemsPerPage = 10; // Number of items per page
 
-  const [orderCancel] = useOrderCancelMutation();
+  const [orderCancel, { isLoading: orderCancelLoading }] =
+    useOrderCancelMutation();
+  const [updateorderCancelNote, { isLoading: updateCancelLoading }] =
+    useUpdateorderCancelNoteMutation();
+
+  const [state, setState] = useSetState({
+    isOpen: false,
+  });
+
   const router = useRouter();
   const [Razorpay] = useRazorpay();
   const [successPayment] = usePaymentMutation();
@@ -180,23 +191,52 @@ const OrderList = () => {
   };
 
   const cancelOrder = (item) => {
-    showDeleteAlert(
-      async () => {
-        try {
-          setCancelLoading(true);
-          await orderCancel({ id: item.id });
+    setState({ isOpen: true, orderData: item });
+    // showDeleteAlert(
+    //   async () => {
+    //     try {
+    //       setCancelLoading(true);
+    //       await updateorderCancelNote({
+    //         id: item.id,
+    //         note: "Cancel by user",
+    //       });
+    //       await orderCancel({ id: item.id });
+    //       orderListRefetch();
+    //     } catch (error) {
+    //       console.log("error: ", error);
+    //     } finally {
+    //       setCancelLoading(false);
+    //     }
+    //     Swal.fire("Cancelled!", "Your file has been deleted.", "success");
+    //   },
+    //   () => {
+    //     Swal.fire("Order", "Your Order is safe :)", "info");
+    //   }
+    // );
+  };
+
+  const handleSubmit = async () => {
+    try {
+      const response = await updateorderCancelNote({
+        id: state.orderData?.id,
+        note: state.cancel_reason,
+      });
+      if (response?.data?.updateMetadata?.errors?.length > 0) {
+        notifyError(response?.data?.updateMetadata?.errors[0]?.message);
+      } else {
+        const res = await orderCancel({ id: state.orderData?.id });
+
+        if (res?.data?.data?.customerOrderCancel?.errors?.length > 0) {
+          notifyError(res?.data?.data?.customerOrderCancel?.errors[0]?.message);
+        } else {
+          notifyInfo("Order Cancellation Successfull");
           orderListRefetch();
-        } catch (error) {
-          console.log("error: ", error);
-        } finally {
-          setCancelLoading(false);
+          setState({ cancel_reason: "", orderData: null, isOpen: false });
         }
-        Swal.fire("Cancelled!", "Your file has been deleted.", "success");
-      },
-      () => {
-        Swal.fire("Order", "Your Order is safe :)", "info");
       }
-    );
+    } catch (error) {
+      console.log("error", error);
+    }
   };
 
   // Pagination Logic
@@ -414,6 +454,78 @@ const OrderList = () => {
             </div>
           </div>
         )}
+
+        <Modal
+          title={"Order Cancellation"}
+          visible={state.isOpen}
+          onOk={handleSubmit}
+          onCancel={() => setState({ isOpen: false, cancel_reason: "" })}
+          okText={
+            orderCancelLoading || updateCancelLoading ? (
+              <ButtonLoader />
+            ) : (
+              "Confirm Cancellation"
+            )
+          }
+          cancelText="Cancel"
+          width={800}
+          okButtonProps={{
+            disabled: !state.cancel_reason || state.cancel_reason.length < 40,
+            className: " tp-btn tp-btn-border text-white",
+            style: {
+              backgroundColor: "#7d4432",
+              color: "white",
+              borderRadius: "20px",
+              padding: "3px 14px",
+              fontSize: "14px",
+              border: "none",
+            },
+          }}
+          cancelButtonProps={{
+            className: " tp-btn tp-btn-border text-white",
+            style: {
+              backgroundColor: "#7d4432",
+              color: "white",
+              borderRadius: "20px",
+              padding: "3px 14px",
+              fontSize: "14px",
+              border: "none",
+            },
+          }}
+          bodyStyle={{
+            padding: 0,
+            fontFamily: "Bagind,sans-serif",
+          }}
+        >
+          <div className="mb-4">
+            <div className="mb-3 text-lg font-semibold text-gray-800">
+              Why do you want to cancel this order?
+            </div>
+            <div className="mb-3 text-sm text-gray-600">
+              Please provide a detailed reason for cancelling this order. This
+              information will help us improve our service.
+            </div>
+            <textarea
+              className={`form-control mb-2 ${
+                !state.cancel_reason || state.cancel_reason.length < 40
+                  ? "is-invalid"
+                  : ""
+              }`}
+              placeholder="Please provide at least 40 characters explaining your reason for cancellation"
+              value={state.cancel_reason}
+              onChange={(e) => setState({ cancel_reason: e.target.value })}
+              required
+              rows={4}
+            />
+            {state.showValidation &&
+              (!state.cancel_reason || state.cancel_reason.length < 40) && (
+                <div className="text-danger small">
+                  Cancellation reason is required (minimum 40 characters).
+                  Current: {state.cancel_reason?.length || 0}/40
+                </div>
+              )}
+          </div>
+        </Modal>
       </section>
     </>
   );

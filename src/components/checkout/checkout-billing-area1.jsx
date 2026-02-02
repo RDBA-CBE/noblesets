@@ -80,6 +80,8 @@ import {
   RAZORPAY_ID,
   SHIPPING_ZONE,
   CCAVENUE_URL,
+  BLUE_DART,
+  BLUE_DART_LIVE,
 } from "@/utils/constant";
 import { DeleteOutlined } from "@ant-design/icons";
 import PhoneInput, { isValidPhoneNumber } from "react-phone-number-input";
@@ -95,6 +97,7 @@ import CcAvenue from "../../../public/assets/img/CCAvenue.webp";
 import cod from "../../../public/assets/img/cash-on-delivery.png";
 import Image from "next/image";
 import { createHash } from "crypto";
+import axios from "axios";
 
 const CheckoutBillingArea1 = () => {
   const { user } = useSelector((state) => state.auth);
@@ -241,78 +244,83 @@ const CheckoutBillingArea1 = () => {
 
   const addressList = getAddressList?.data?.me?.addresses;
 
+  const checkPincode = async (pinCode) => {
+    const jwtToken = await axios.get(BLUE_DART_LIVE.TokenUrl);
+
+    return axios.post(
+      `${BLUE_DART_LIVE.BaseUrl}/finder/v1/GetServicesforPincode`,
+
+      {
+        pinCode,
+        profile: {
+          Api_type: BLUE_DART.Api_type,
+          LicenceKey: BLUE_DART_LIVE.LicenceKey,
+          LoginID: BLUE_DART_LIVE.LoginID,
+        },
+      },
+      {
+        headers: {
+          "Content-Type": "application/json",
+          Accept: "application/json",
+          JWTToken: jwtToken?.data?.JWTToken,
+        },
+      }
+    );
+  };
+
   const handleInputChange = (e, fieldName) => {
-    setState({ [fieldName]: e.target.value });
-    if (fieldName == "postalCode") {
-      const timer = setTimeout(() => {
-        if (e?.target?.value?.trim().length >= 3) {
-          picodeCheck({ code: [e?.target?.value.trim()] })
-            .then((res) => {
-              if (res?.data?.data?.pincodes?.edges.length > 0) {
-                setState({ errors: { postalCode: "" } });
-              } else {
-                setState({
-                  errors: {
-                    postalCode: "Delivery is not available to this area",
-                  },
-                });
-              }
-              // Handle success
-            })
-            .catch((error) => {
-              setState({
-                errors: {
-                  postalCode: "Delivery is not available to this area",
-                },
-              });
+    const value = e.target.value;
 
-              // Handle error
-            });
-        } else {
-          setState({
-            errors: {
-              postalCode: "Postal code is required",
-            },
-          });
-        }
-      }, 1000);
+    setState({ [fieldName]: value });
 
-      return () => clearTimeout(timer);
+    if (fieldName !== "postalCode" && fieldName !== "postalCode1") return;
+
+    if (value.trim().length < 5) {
+      setState({
+        errors: {
+          [fieldName]: "Postal code is required",
+        },
+      });
+      return;
     }
 
-    if (fieldName == "postalCode1") {
-      const timer = setTimeout(() => {
-        if (e?.target?.value?.trim().length >= 3) {
-          picodeCheck({ code: [e?.target?.value.trim()] })
-            .then((res) => {
-              if (res?.data?.data?.pincodes?.edges.length > 0) {
-                setState({ errors: { postalCode1: "" } });
-              } else {
-                setState({
-                  errors: {
-                    postalCode1: "Delivery is not available to this area",
-                  },
-                });
-              }
-            })
-            .catch((error) => {
-              setState({
-                errors: {
-                  postalCode1: "Delivery is not available to this area",
-                },
-              });
-            });
-        } else {
-          setState({
-            errors: {
-              postalCode1: "Postal code is required",
-            },
-          });
-        }
-      }, 1000);
+    const timer = setTimeout(() => {
+      checkPincode(value.trim())
+        .then((res) => {
+          const edges = res?.data;
 
-      return () => clearTimeout(timer);
-    }
+          if (edges) {
+            setState({ errors: { [fieldName]: "" } });
+          } else {
+            setState({
+              errors: {
+                [fieldName]: "Delivery is not available to this area",
+              },
+            });
+          }
+        })
+        .catch((error) => {
+          console.log("✌️error --->", error);
+          const apiError =
+            error?.response?.data?.["error-response"]?.[0]?.ErrorMessage;
+
+          if (apiError === "InvalidPinCode") {
+            setState({
+              errors: {
+                [fieldName]: "Delivery is not available to this area",
+              },
+            });
+          } else {
+            setState({
+              errors: {
+                [fieldName]: "Delivery is not available to this area",
+              },
+            });
+          }
+        });
+    }, 1000);
+
+    return () => clearTimeout(timer);
   };
 
   useEffect(() => {
@@ -339,34 +347,34 @@ const CheckoutBillingArea1 = () => {
     orderData();
   }, [linelist]);
 
-  useEffect(() => {
-    const timer = setTimeout(() => {
-      if (state.postalCode1?.trim().length >= 3) {
-        picodeCheck({ code: [state.postalCode1.trim()] })
-          .then((res) => {
-            if (res?.data?.data?.pincodes?.edges.length > 0) {
-              setState({ errors: { postalCode1: "" } });
-            } else {
-              setState({
-                errors: {
-                  postalCode1: "Delivery is not available to this area",
-                },
-              });
-            }
-            // Handle success
-          })
-          .catch((error) => {
-            setState({
-              errors: { postalCode1: "Delivery is not available to this area" },
-            });
+  // useEffect(() => {
+  //   const timer = setTimeout(() => {
+  //     if (state.postalCode1?.trim().length >= 3) {
+  //       picodeCheck({ code: [state.postalCode1.trim()] })
+  //         .then((res) => {
+  //           if (res?.data?.data?.pincodes?.edges.length > 0) {
+  //             setState({ errors: { postalCode1: "" } });
+  //           } else {
+  //             setState({
+  //               errors: {
+  //                 postalCode1: "Delivery is not available to this area",
+  //               },
+  //             });
+  //           }
+  //           // Handle success
+  //         })
+  //         .catch((error) => {
+  //           setState({
+  //             errors: { postalCode1: "Delivery is not available to this area" },
+  //           });
 
-            // Handle error
-          });
-      }
-    }, 500);
+  //           // Handle error
+  //         });
+  //     }
+  //   }, 500);
 
-    return () => clearTimeout(timer);
-  }, [state.postalCode1]);
+  //   return () => clearTimeout(timer);
+  // }, [state.postalCode1]);
 
   const orderData = async () => {
     try {
@@ -467,17 +475,74 @@ const CheckoutBillingArea1 = () => {
 
   const handleCheck = async (code) => {
     try {
-      let isTrue = false;
-      const res = await picodeCheck({ code: [code] });
-      if (res?.data?.data?.pincodes?.edges.length > 0) {
-        isTrue = true;
-      } else {
-        isTrue = false;
+      const res = await checkPincode(code.trim());
+      console.log("✌️res --->", res);
+
+      // Blue Dart success response
+      const edges = res?.data;
+
+      if (edges) {
+        return true;
       }
 
-      return isTrue;
-    } catch (error) {}
+      return false;
+
+      // const res = await picodeCheck({ code: [code] });
+      // if (res?.data?.data?.pincodes?.edges.length > 0) {
+      //   isTrue = true;
+      // } else {
+      //   isTrue = false;
+      // }
+    } catch (error) {
+      const apiError =
+        error?.response?.data?.["error-response"]?.[0]?.ErrorMessage;
+
+      if (apiError === "InvalidPinCode") {
+        return false;
+      }
+
+      return false;
+    }
   };
+
+  // const handleCheck = async (code) => {
+  //   console.log("✌️code --->", code);
+  //   try {
+  //     let isTrue = false;
+
+  //     checkPincode(code.trim())
+  //       .then((res) => {
+  //         console.log("✌️res --->", res);
+  //         const edges = res?.data;
+
+  //         if (edges) {
+  //           isTrue = true;
+  //         } else {
+  //           isTrue = false;
+  //         }
+  //       })
+  //       .catch((error) => {
+  //         console.log("✌️error --->", error);
+  //         const apiError =
+  //           error?.response?.data?.["error-response"]?.[0]?.ErrorMessage;
+
+  //         if (apiError === "InvalidPinCode") {
+  //           isTrue = false;
+  //         } else {
+  //           isTrue = false;
+  //         }
+  //       });
+
+  //     // const res = await picodeCheck({ code: [code] });
+  //     // if (res?.data?.data?.pincodes?.edges.length > 0) {
+  //     //   isTrue = true;
+  //     // } else {
+  //     //   isTrue = false;
+  //     // }
+
+  //     return isTrue;
+  //   } catch (error) {}
+  // };
 
   useEffect(() => {
     enableCOD();
@@ -694,7 +759,7 @@ const CheckoutBillingArea1 = () => {
           href="/cart"
           onClick={(e) => {
             e.preventDefault();
-            window.location.href = "/cart"; 
+            window.location.href = "/cart";
           }}
           style={{
             color: "#9b604d",
@@ -725,6 +790,7 @@ const CheckoutBillingArea1 = () => {
         );
       }
       const errors = await validateInputs();
+      console.log("✌️errors --->", errors);
       if (Object.keys(errors).length === 0) {
         if (state.createAccount) {
           await createAccount();
@@ -1253,6 +1319,7 @@ const CheckoutBillingArea1 = () => {
     }
     if (state.postalCode) {
       const isValidPostalCode = await handleCheck(state.postalCode);
+      console.log("✌️isValidPostalCode --->", isValidPostalCode);
       if (!isValidPostalCode) {
         errors.postalCode = "Delivery is not available to this area";
       }
