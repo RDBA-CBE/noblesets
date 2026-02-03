@@ -50,9 +50,16 @@ export default function PincodeChecker() {
         }
       );
 
-      console.log("✌️res --->", res);
+      console.log("✌️res --->", res?.data);
       if (res?.data) {
-        setIsAvailable(true);
+        if (
+          res?.data?.GetServicesforPincodeResult?.eTailPrePaidAirInbound ==
+          "Yes"
+        ) {
+          setIsAvailable(true);
+        } else {
+          setIsAvailable(false);
+        }
       } else {
         setIsAvailable(false);
       }

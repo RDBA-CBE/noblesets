@@ -288,8 +288,11 @@ const CheckoutBillingArea1 = () => {
       checkPincode(value.trim())
         .then((res) => {
           const edges = res?.data;
+          console.log("✌️edges --->", edges);
 
-          if (edges) {
+          if (
+            edges?.GetServicesforPincodeResult?.eTailPrePaidAirInbound == "Yes"
+          ) {
             setState({ errors: { [fieldName]: "" } });
           } else {
             setState({
@@ -481,7 +484,7 @@ const CheckoutBillingArea1 = () => {
       // Blue Dart success response
       const edges = res?.data;
 
-      if (edges) {
+      if (edges?.GetServicesforPincodeResult?.eTailPrePaidAirInbound == "Yes") {
         return true;
       }
 
