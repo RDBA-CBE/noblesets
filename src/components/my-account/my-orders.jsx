@@ -246,6 +246,8 @@ const OrderList = () => {
     currentPage * itemsPerPage
   );
 
+  console.log("✌️paginatedOrders --->", paginatedOrders);
+
   const handlePageChange = (pageNumber) => {
     setCurrentPage(pageNumber);
   };
@@ -332,7 +334,8 @@ const OrderList = () => {
                         } item`}
                       </td>
                       <td style={{ display: "flex", gap: 10 }}>
-                        {item?.paymentStatus === "NOT_CHARGED" &&
+                        {item?.status !== "CANCELED" &&
+                          item?.paymentStatus === "NOT_CHARGED" &&
                           item?.paymentMethod?.name != CASE_ON_DELIVERY && (
                             <button
                               type="button"
