@@ -66,6 +66,28 @@ export const BLUE_DART_LIVE = {
     'eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJzdWJqZWN0LXN1YmplY3QiLCJhdWQiOlsiYXVkaWVuY2UxIiwiYXVkaWVuY2UyIl0sImlzcyI6InVybjovL2FwaWdlZS1lZGdlLUpXVC1wb2xpY3ktdGVzdCIsImV4cCI6MTc2OTg0Mzc0NSwiaWF0IjoxNzY5NzU3MzQ1LCJqdGkiOiI0ZTNiYWIyMi0zMzE2LTRlMjgtOWM0OS1lNDljODEzNDRlNTQifQ.XgFMU_5ZTUhsKjqjRQK39QPyvUnVtclwt4m7aCEYfcQ' // 🔴 IMPORTANT
 }
 
+
+export const STATUS_MAP = {
+  placed: 0,
+  confirmed: 1,
+  shipped: 2,
+  delivered: 3,
+  returned: 5,
+  cancelled: 4,
+};
+
+export const BLUEDART_STATUS_TO_ORDER_STATUS = {
+  NF: 'placed', // No Info Found
+  // PU: 'confirmed', // Online booked / Picked up
+  IT: 'shipped', // In Transit
+  OD: 'shipped', // Out for Delivery
+  UD: 'shipped', // Generic transit updates
+  DL: 'delivered', // Delivered
+
+  RT: 'returned', // Returned
+  PU: 'cancelled', // Cancelled
+};
+
 // export const CCAVENUE_URL="http://localhost:3000"
 
 export const NOT_PUBLISHED_PRODUCT = 'Product not available!'

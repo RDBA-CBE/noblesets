@@ -26,7 +26,13 @@ import { notifyError, notifySuccess } from "@/utils/toast";
 import Resizer from "react-image-file-resizer";
 import ReviewSection from "../product-details/ReviewSection";
 import { Modal, Radio, Button } from "antd";
-import { BLUE_DART, BLUE_DART_LIVE, CASE_ON_DELIVERY } from "@/utils/constant";
+import {
+  BLUE_DART,
+  BLUE_DART_LIVE,
+  BLUEDART_STATUS_TO_ORDER_STATUS,
+  CASE_ON_DELIVERY,
+  STATUS_MAP,
+} from "@/utils/constant";
 import { useRouter } from "next/router";
 import axios from "axios";
 import Steps from "../common/Steps";
@@ -62,6 +68,10 @@ const MyOrderDetails = ({ data }) => {
     isOpen: false,
     productId: "",
     cancel_reason: "",
+    trackingData: null,
+    shippingStatus: "placed",
+    currentStep: 0,
+    orderCancel: false,
   });
 
   const [formData, setFormData] = useState({
@@ -95,7 +105,6 @@ const MyOrderDetails = ({ data }) => {
       if (waybillItem) {
         setAwbData(waybillItem);
         if (Data?.shippingAddress?.postalCode) {
-          getDomesticTransitTime();
         }
         const waybillData = JSON.parse(toValidJSON(waybillItem.value));
         trackShipment(waybillData?.GenerateWayBillResult);
@@ -129,55 +138,20 @@ const MyOrderDetails = ({ data }) => {
 
       const AWB_NO = waybillData?.AWBNo || "90001526591";
 
-      const res = await axios.get(`${BLUE_DART_LIVE.BaseUrl}/tracking/v1/shipment`, {
-        params: {
-          handler: "tnt",
-          loginid: BLUE_DART_LIVE.LoginID,
-          lickey: BLUE_DART_LIVE.TrackingLicKey,
-          numbers: AWB_NO,
-          format: "json",
-          scan: 1,
-          action: "custawbquery",
-          verno: 1,
-        },
-        headers: {
-          "Content-Type": "application/json",
-          accept: "application/json",
-          JWTToken: jwtToken?.data?.JWTToken,
-        },
-      });
-      console.log("Tracking Response 👉", res);
-
-      setLoading(false);
-    } catch (error) {
-      setLoading(false);
-      console.error("Tracking Error ❌", error);
-    }
-  };
-
-  const getDomesticTransitTime = async () => {
-    try {
-      setLoading(true);
-      const jwtToken = await axios.get(BLUE_DART.TokenUrl);
-
-      const res = await axios.post(
-        `${BLUE_DART.BaseUrl}/transit/v1/GetDomesticTransitTimeForPinCodeandProduct`,
+      const res = await axios.get(
+        `${BLUE_DART_LIVE.BaseUrl}/tracking/v1/shipment`,
         {
-          pPinCodeFrom: "400012",
-          pPinCodeTo: Data?.shippingAddress?.postalCode,
-          // pPinCodeTo: Data?.shippingAddress?.postalCode,
-
-          pProductCode: "A",
-          pSubProductCode: "P",
-          pPudate: `/Date(${Date.now()})/`, // Blue Dart format
-          pPickupTime: "16:00",
-          profile: {
-            Api_type: BLUE_DART.Api_type,
-            LicenceKey: BLUE_DART.LicenceKey,
-            LoginID: BLUE_DART.LoginID,
+          params: {
+            handler: "tnt",
+            loginid: BLUE_DART_LIVE.LoginID,
+            lickey: BLUE_DART_LIVE.TrackingLicKey,
+            numbers: AWB_NO,
+            format: "json",
+            scan: 1,
+            action: "custawbquery",
+            verno: 1,
+            awb: "awb",
           },
-        },
-        {
           headers: {
             "Content-Type": "application/json",
             accept: "application/json",
@@ -186,12 +160,120 @@ const MyOrderDetails = ({ data }) => {
         }
       );
 
-      setExpectedDate(
-        res.data?.GetDomesticTransitTimeForPinCodeandProductResult
+      const shipment = res?.data?.ShipmentData?.Shipment?.[0];
+      console.log("✌️shipment --->", shipment);
+
+      if (!shipment) return;
+
+      const scans = shipment.Scans || [];
+      let currentStep = 0;
+      let steps = [];
+
+      // Check scan codes to determine status
+      const hasScanCode030 = scans.some(
+        (scan) => scan.ScanDetail?.ScanCode === "030"
+      );
+      const hasScanCode015 = scans.some(
+        (scan) => scan.ScanDetail?.ScanCode === "015"
       );
 
+      const hasScanCode000 = scans.some(
+        (scan) => scan.ScanDetail?.ScanCode === "000"
+      );
+      const hasCancelledScan = scans.some(
+        (scan) => scan.ScanDetail?.ScanCode == "503"
+      );
+
+      if (hasCancelledScan) {
+        setState({ orderCancel: true });
+        const hasCancelledScanData = scans.find(
+          (scan) => scan.ScanDetail?.ScanCode == "503"
+        );
+
+        getDomesticTransitTime(hasCancelledScanData);
+      } else {
+        setState({ orderCancel: false });
+
+        getDomesticTransitTime(false);
+      }
+
+      if (hasCancelledScan) {
+        if (hasScanCode015) {
+          steps = ["Order Placed", "Confirmed", "Shipped", "Cancelled"];
+          currentStep = 3;
+        } else {
+          steps = ["Order Placed", "Confirmed", "Cancelled"];
+          currentStep = 2;
+        }
+      } else if (hasScanCode000) {
+        steps = ["Order Placed", "Confirmed", "Shipped", "Delivered"];
+        currentStep = 3;
+      } else if (hasScanCode015) {
+        steps = ["Order Placed", "Confirmed", "Shipped", "Delivered"];
+        currentStep = 2;
+      } else if (hasScanCode030) {
+        steps = ["Order Placed", "Confirmed", "Shipped", "Delivered"];
+        currentStep = 1;
+      } else {
+        steps = ["Order Placed"];
+        currentStep = 0;
+      }
+
+      setState({
+        trackingData: shipment,
+        currentStep,
+        steps,
+      });
+
+      console.log("Tracking Response 👉", res);
       setLoading(false);
-      return res.data;
+    } catch (error) {
+      setLoading(false);
+      console.error("Tracking Error ❌", error);
+    }
+  };
+
+  const getDomesticTransitTime = async (hasCancelledScan) => {
+    try {
+      setLoading(true);
+      if (hasCancelledScan) {
+        setExpectedDate({
+          ExpectedDateDelivery: hasCancelledScan?.ScanDetail?.ScanDate,
+        });
+      } else {
+        const jwtToken = await axios.get(BLUE_DART_LIVE.TokenUrl);
+
+        const res = await axios.post(
+          `${BLUE_DART_LIVE.BaseUrl}/transit/v1/GetDomesticTransitTimeForPinCodeandProduct`,
+          {
+            pPinCodeFrom: "400012",
+            pPinCodeTo: Data?.shippingAddress?.postalCode,
+            // pPinCodeTo: Data?.shippingAddress?.postalCode,
+
+            pProductCode: "A",
+            pSubProductCode: "P",
+            pPudate: `/Date(${Date.now()})/`, // Blue Dart format
+            pPickupTime: "16:00",
+            profile: {
+              Api_type: BLUE_DART.Api_type,
+              LicenceKey: BLUE_DART_LIVE.LicenceKey,
+              LoginID: BLUE_DART_LIVE.LoginID,
+            },
+          },
+          {
+            headers: {
+              "Content-Type": "application/json",
+              accept: "application/json",
+              JWTToken: jwtToken?.data?.JWTToken,
+            },
+          }
+        );
+
+        setExpectedDate(
+          res.data?.GetDomesticTransitTimeForPinCodeandProductResult
+        );
+      }
+      setLoading(false);
     } catch (error) {
       console.error("❌ Transit Time Error:", error);
       setLoading(false);
@@ -329,14 +411,6 @@ const MyOrderDetails = ({ data }) => {
 
   const FormatDate = moment(Data?.created).format("MMMM D, YYYY");
 
-  const statusMap = {
-    placed: 0,
-    confirmed: 1,
-    shipped: 2,
-    delivered: 3,
-  };
-  const steps = ["Order Placed", "confirmed", "shipped", "delivered"];
-
   return (
     <section className="tp-checkout-area pb-50 pt-50 common-bg">
       <div className="container">
@@ -369,7 +443,11 @@ const MyOrderDetails = ({ data }) => {
           </span>
           {expectedDate && (
             <span>
-              <strong>Expected Delivery Date:</strong>
+              {state.orderCancel ? (
+                <strong>Order Cancel Date:</strong>
+              ) : (
+                <strong>Expected Delivery Date:</strong>
+              )}
               <span
                 style={{
                   marginLeft: "10px",
@@ -384,17 +462,27 @@ const MyOrderDetails = ({ data }) => {
         </p>
 
         {state.cancel_reason?.value && (
-          <div style={{
-            backgroundColor: '#fff3cd',
-            border: '1px solid #ffeaa7',
-            borderRadius: '8px',
-            padding: '15px',
-            marginBottom: '20px'
-          }}>
-            <h5 style={{ color: '#856404', marginBottom: '10px', fontSize: '16px' }}>
+          <div
+            style={{
+              backgroundColor: "#fff3cd",
+              border: "1px solid #ffeaa7",
+              borderRadius: "8px",
+              padding: "15px",
+              marginBottom: "20px",
+            }}
+          >
+            <h5
+              style={{
+                color: "#856404",
+                marginBottom: "10px",
+                fontSize: "16px",
+              }}
+            >
               Cancellation Reason:
             </h5>
-            <p style={{ color: '#856404', marginBottom: '0', fontSize: '14px' }}>
+            <p
+              style={{ color: "#856404", marginBottom: "0", fontSize: "14px" }}
+            >
               {state.cancel_reason.value}
             </p>
           </div>
@@ -402,8 +490,13 @@ const MyOrderDetails = ({ data }) => {
 
         {awbData && (
           <Steps
-            current={statusMap[Data?.status] || statusMap["shipped"]}
-            items={steps.map((title) => ({ title }))}
+            current={state.currentStep}
+            items={
+              state.steps?.map((title) => ({ title })) ||
+              ["Order Placed", "Confirmed", "Shipped", "Delivered"].map(
+                (title) => ({ title })
+              )
+            }
           />
         )}
         <div

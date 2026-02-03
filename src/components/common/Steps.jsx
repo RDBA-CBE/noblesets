@@ -4,7 +4,7 @@ const Steps = ({ current, items }) => {
   return (
     <div className="steps-container" style={{ margin: '30px 0' }}>
       <div className="steps-wrapper">
-        {items.map((item, index) => (
+        {items?.map((item, index) => (
           <div key={index} className="step-item">
             <div className="step-content">
               <div 
