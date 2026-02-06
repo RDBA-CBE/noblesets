@@ -432,6 +432,7 @@ const CheckoutBillingArea1 = () => {
   };
 
   const [checkoutAllData, setCheckoutAllData] = useState({});
+console.log('tax --->', state.tax);
 
   useEffect(() => {
     if (checkoutAllData?.voucherCode) {
@@ -1457,6 +1458,7 @@ const CheckoutBillingArea1 = () => {
             promoCode: "",
             isOpen: false,
             showVoucherMessage: true,
+            tax:res.totalPrice?.tax?.amount
           });
           getDetails(res?.id);
 
