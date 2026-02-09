@@ -446,7 +446,7 @@ const MyOrderDetails = ({ data }) => {
           </span>
           {expectedDate && (
             <span>
-              {state.orderCancel ? (
+              {state.cancel_reason?.value || state.orderCancel ? (
                 <strong>Order Cancellation Date :</strong>
               ) : (
                 <strong>Expected Delivery Date:</strong>
