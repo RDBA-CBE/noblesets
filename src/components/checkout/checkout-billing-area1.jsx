@@ -432,7 +432,7 @@ const CheckoutBillingArea1 = () => {
   };
 
   const [checkoutAllData, setCheckoutAllData] = useState({});
-console.log('tax --->', state.tax);
+  console.log("tax --->", state.tax);
 
   useEffect(() => {
     if (checkoutAllData?.voucherCode) {
@@ -868,9 +868,16 @@ console.log('tax --->', state.tax);
 
         if (res?.data?.data?.checkoutBillingAddressUpdate?.errors?.length > 0) {
           setState({ orderLoading: false });
-          notifyError(
-            res?.data?.data?.checkoutBillingAddressUpdate?.errors[0]?.message
-          );
+          if (
+            res?.data?.data?.checkoutBillingAddressUpdate?.errors[0]?.message ==
+            "This value is not valid for the address."
+          ) {
+            notifyError("The PIN code does not match the selected state. Please check your address details.");
+          } else {
+            notifyError(
+              res?.data?.data?.checkoutBillingAddressUpdate?.errors[0]?.message
+            );
+          }
         } else {
           if (state.allLinesGiftCard) {
             updateEmail(checkoutId);
@@ -1458,7 +1465,7 @@ console.log('tax --->', state.tax);
             promoCode: "",
             isOpen: false,
             showVoucherMessage: true,
-            tax:res.totalPrice?.tax?.amount
+            tax: res.totalPrice?.tax?.amount,
           });
           getDetails(res?.id);
 
