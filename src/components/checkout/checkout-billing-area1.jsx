@@ -640,10 +640,11 @@ const CheckoutBillingArea1 = () => {
           isShowCOD = true;
         }
       }
+      console.log('✌️isShowCOD --->', arr);
 
-      if (!isShowCOD) {
-        arr = arr.filter((item) => item.name !== CASE_ON_DELIVERY);
-      }
+      // if (!isShowCOD) {
+      //   arr = arr.filter((item) => item.name !== CASE_ON_DELIVERY);
+      // }
       console.log("✌️arr --->", arr);
 
       // Set selectedPaymentType to the first checked item
@@ -872,7 +873,7 @@ const CheckoutBillingArea1 = () => {
             res?.data?.data?.checkoutBillingAddressUpdate?.errors[0]?.message ==
             "This value is not valid for the address."
           ) {
-            notifyError("The PIN code does not match the selected state. Please check your address details.");
+            notifyError("Address mismatch detected. Please verify your address and PIN code");
           } else {
             notifyError(
               res?.data?.data?.checkoutBillingAddressUpdate?.errors[0]?.message
@@ -1965,6 +1966,8 @@ const CheckoutBillingArea1 = () => {
       console.log("error: ", error);
     }
   };
+
+
 
   return (
     <>

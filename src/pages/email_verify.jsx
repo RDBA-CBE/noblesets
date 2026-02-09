@@ -56,17 +56,34 @@ const EmailVerifyPage = () => {
       {/* <HeaderTwo style_2={true} /> */}
       <HeaderSection />
 
-      <div className="tp-login-input-wrapper pb-140 pt-120 common-bg" >
+      <div className="tp-login-input-wrapper pb-140 pt-120 common-bg">
         <div className="tp-login-input-box">
           <section className="tp-login-area pb-140 pt-120 p-relative z-index-1 fix">
             <div className="container">
               <div className="row justify-content-center">
                 <div className="col-xl-6 col-lg-8">
                   <div className="tp-login-wrapper items-center">
+                    <div
+                      onClick={() => router.reload()}
+
+                      style={{
+                        display: "flex",
+                        justifyContent: "flex-end",
+                        width: "100%",
+                        textDecoration: "underline",
+                        color:"#9b604d",
+                        cursor:"pointer"
+                      }}
+                    >
+                      Reload
+                    </div>
+
                     {loading ? (
                       <CommonLoader />
                     ) : errorMessage ? (
-                      <h4 style={{ color: "red" }}>{errorMessage}</h4>
+                      <>
+                        <h4 style={{ color: "red" }}>{errorMessage}</h4>
+                      </>
                     ) : successMessage ? (
                       <div className="items-center justify-center text-center">
                         <h4 style={{ color: "green" }}>{successMessage}</h4>

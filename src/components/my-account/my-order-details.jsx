@@ -107,7 +107,7 @@ const MyOrderDetails = ({ data }) => {
         if (Data?.shippingAddress?.postalCode) {
         }
         const waybillData = JSON.parse(toValidJSON(waybillItem.value));
-        trackShipment(waybillData?.GenerateWayBillResult);
+        trackShipment(waybillData?.GenerateWayBillResult, cancel_reason);
       }
     }
   }, [Data]);
@@ -130,7 +130,7 @@ const MyOrderDetails = ({ data }) => {
     }
   };
 
-  const trackShipment = async (waybillData) => {
+  const trackShipment = async (waybillData, cancel_reason) => {
     console.log("✌️trackShipment --->", waybillData);
     try {
       setLoading(true);
@@ -196,29 +196,32 @@ const MyOrderDetails = ({ data }) => {
 
         getDomesticTransitTime(false);
       }
-
-      if (hasCancelledScan) {
-        if (hasScanCode015) {
-          steps = ["Order Placed", "Confirmed", "Shipped", "Cancelled"];
-          currentStep = 3;
-        } else {
-          steps = ["Order Placed", "Confirmed", "Cancelled"];
-          currentStep = 2;
-        }
-      } else if (hasScanCode000) {
-        steps = ["Order Placed", "Confirmed", "Shipped", "Delivered"];
+      if (cancel_reason) {
+        steps = ["Order Placed", "Confirmed", "Shipped", "Cancelled"];
         currentStep = 3;
-      } else if (hasScanCode015) {
-        steps = ["Order Placed", "Confirmed", "Shipped", "Delivered"];
-        currentStep = 2;
-      } else if (hasScanCode030) {
-        steps = ["Order Placed", "Confirmed", "Shipped", "Delivered"];
-        currentStep = 1;
       } else {
-        steps = ["Order Placed"];
-        currentStep = 0;
+        if (hasCancelledScan) {
+          if (hasScanCode015) {
+            steps = ["Order Placed", "Confirmed", "Shipped", "Cancelled"];
+            currentStep = 3;
+          } else {
+            steps = ["Order Placed", "Confirmed", "Cancelled"];
+            currentStep = 2;
+          }
+        } else if (hasScanCode000) {
+          steps = ["Order Placed", "Confirmed", "Shipped", "Delivered"];
+          currentStep = 3;
+        } else if (hasScanCode015) {
+          steps = ["Order Placed", "Confirmed", "Shipped", "Delivered"];
+          currentStep = 2;
+        } else if (hasScanCode030) {
+          steps = ["Order Placed", "Confirmed", "Shipped", "Delivered"];
+          currentStep = 1;
+        } else {
+          steps = ["Order Placed", "Confirmed", "Shipped", "Delivered"];
+          currentStep = 0;
+        }
       }
-
       setState({
         trackingData: shipment,
         currentStep,

@@ -155,7 +155,6 @@ const MenusProductSlider1 = ({ product, loginPopup, loading }) => {
     localStorage.setItem("compareList", JSON.stringify(arr));
     dispatch(compare_list(arr));
     notifySuccess("Product to added to compare list");
-
   };
   const img = product?.node?.thumbnail?.url;
   const Product_name = product?.node?.name;
@@ -219,18 +218,19 @@ const MenusProductSlider1 = ({ product, loginPopup, loading }) => {
 
   return (
     <>
-      <div className="tp-category-item-7 p-relative z-index-1 fix text-center submenu-pro">
+      <div className="tp-category-item-7 p-relative z-index-1 fix text-center submenu-pro cursor-pointer">
         <Link href={`/product-details/${product?.node?.slug}`}>
           <div
             className="tp-category-thumb-4 include-bg"
+            onClick={()=>router.push(`/product-details/${product?.node?.slug}`)}
+
             style={{
               backgroundImage: `url(${profilePic(img)})`,
               backgroundColor: "#FFFFFF",
               // backgroundPosition: "0px -80px",
-              borderRadius:"10px",
-              width:"100%",
-              height:"300px"
-            
+              borderRadius: "10px",
+              width: "100%",
+              height: "300px",
             }}
           ></div>
           <div className="tp-product-badge-2">
@@ -270,15 +270,18 @@ const MenusProductSlider1 = ({ product, loginPopup, loading }) => {
                 ))}
           </div>
         </Link>
-       
-       {/* removed action buttons */}
 
-       
+        {/* removed action buttons */}
+
         <div className="text-center  mt-5 tp-menu-product-name">
-          <p style={{ color: "white", fontWeight: "400", margin: "0px" }}>
+          <p style={{ color: "white", fontWeight: "400", margin: "0px" }}
+           onClick={()=>router.push(`/product-details/${product?.node?.slug}`)}
+          >
             {Product_name}
           </p>
-          <p style={{ color: "white", margin: "0px", fontSize: "14px" }}>
+          <p style={{ color: "white", margin: "0px", fontSize: "14px" }}
+           onClick={()=>router.push(`/product-details/${product?.node?.slug}`)}
+          >
             {Category_Name}
           </p>
           {checkChannel() === "india-channel" ? (
@@ -295,6 +298,9 @@ const MenusProductSlider1 = ({ product, loginPopup, loading }) => {
                     textDecoration: "line-through",
                   }}
                   className="tp-product-price-1 pr-5 line-through "
+                  onClick={() =>
+                    router.push(`/product-details/${product?.node?.slug}`)
+                  }
                 >
                   ₹{roundOff(RelatedProduct?.defaultVariant?.costPrice)}
                 </span>
@@ -302,6 +308,9 @@ const MenusProductSlider1 = ({ product, loginPopup, loading }) => {
               <span
                 className="tp-product-price-2 new-price"
                 style={{ color: "White", margin: "0px", fontSize: "14px" }}
+                onClick={() =>
+                  router.push(`/product-details/${product?.node?.slug}`)
+                }
               >
                 ₹{roundOff(Price)}
               </span>
@@ -320,6 +329,9 @@ const MenusProductSlider1 = ({ product, loginPopup, loading }) => {
                     textDecoration: "line-through",
                   }}
                   className="tp-product-price-1 pr-5 line-through "
+                  onClick={() =>
+                    router.push(`/product-details/${product?.node?.slug}`)
+                  }
                 >
                   ${roundOff(RelatedProduct?.defaultVariant?.costPrice)}
                 </span>
@@ -331,141 +343,146 @@ const MenusProductSlider1 = ({ product, loginPopup, loading }) => {
                   fontSize: "14px",
                   fontWeight: "500",
                 }}
+                onClick={() =>
+                  router.push(`/product-details/${product?.node?.slug}`)
+                }
               >
                 ${roundOff(Price)}
               </span>
             </>
           )}
 
-           <div className="tp-product-action-7  tp-product-action-blackStyle tp-product-action-brownStyle">
-                    <div className="tp-product-action-item-7 d-flex">
-                      {RelatedProduct?.defaultVariant?.quantityAvailable != 0 && (
-                        <>
-                          {isAddedToCart ? (
-                            <Link
-                              href="/cart"
-                              className={`tp-product-action-btn-3 ${
-                                isAddedToCart ? "active" : ""
-                              } tp-product-add-cart-btn`}
-                            >
-                              <Cart />
-                              <span className="tp-product-tooltip tp-product-tooltip-top">
-                                View Cart
-                              </span>
-                            </Link>
-                          ) : (
-                            <>
-                              {cartLoader ? (
-                                <button
-                                  type="button"
-                                  className={`tp-product-action-btn-3 ${
-                                    isAddedToCart ? "active" : ""
-                                  } tp-product-add-cart-btn`}
-                                >
-                                  <ButtonLoader loader={cartLoader} />
-                                </button>
-                              ) : (
-                                <button
-                                  type="button"
-                                  onClick={() => {
-                                    addToCartProductINR();
-                                    addToCartProductUSD();
-                                  }}
-                                  className={`tp-product-action-btn-3 ${
-                                    isAddedToCart ? "active" : ""
-                                  } tp-product-add-cart-btn`}
-                                >
-                                  <Cart />
-                                  <span className="tp-product-tooltip tp-product-tooltip-top">
-                                    Add to Cart
-                                  </span>
-                                </button>
-                              )}
-                            </>
-                          )}
-                        </>
+          <div className="tp-product-action-7  tp-product-action-blackStyle tp-product-action-brownStyle">
+            <div className="tp-product-action-item-7 d-flex">
+              {RelatedProduct?.defaultVariant?.quantityAvailable != 0 && (
+                <>
+                  {isAddedToCart ? (
+                    <Link
+                      href="/cart"
+                      className={`tp-product-action-btn-3 ${
+                        isAddedToCart ? "active" : ""
+                      } tp-product-add-cart-btn`}
+                    >
+                      <Cart />
+                      <span className="tp-product-tooltip tp-product-tooltip-top">
+                        View Cart
+                      </span>
+                    </Link>
+                  ) : (
+                    <>
+                      {cartLoader ? (
+                        <button
+                          type="button"
+                          className={`tp-product-action-btn-3 ${
+                            isAddedToCart ? "active" : ""
+                          } tp-product-add-cart-btn`}
+                        >
+                          <ButtonLoader loader={cartLoader} />
+                        </button>
+                      ) : (
+                        <button
+                          type="button"
+                          onClick={() => {
+                            addToCartProductINR();
+                            addToCartProductUSD();
+                          }}
+                          className={`tp-product-action-btn-3 ${
+                            isAddedToCart ? "active" : ""
+                          } tp-product-add-cart-btn`}
+                        >
+                          <Cart />
+                          <span className="tp-product-tooltip tp-product-tooltip-top">
+                            Add to Cart
+                          </span>
+                        </button>
                       )}
-          
+                    </>
+                  )}
+                </>
+              )}
+
+              <button
+                type="button"
+                className="tp-product-action-btn-3 tp-product-quick-view-btn"
+                onClick={() => openModal()}
+              >
+                <QuickView />
+                <span className="tp-product-tooltip tp-product-tooltip-top">
+                  Quick View
+                </span>
+              </button>
+
+              <>
+                {isAddedToWishlist === true ? (
+                  <button
+                    type="button"
+                    onClick={() => {
+                      if (token) {
+                        router.push("/wishlist");
+                      } else {
+                        notifyError(
+                          "Only logged-in users can add items to their wishlist or view it"
+                        );
+                      }
+                      // router.push("/wishlist");
+                    }}
+                    className={`tp-product-action-btn-3 active tp-product-add-to-wishlist-btn`}
+                  >
+                    <Wishlist />
+                    <span className="tp-product-tooltip tp-product-tooltip-top">
+                      View Wishlist
+                    </span>
+                  </button>
+                ) : (
+                  <>
+                    {wishlistLoader ? (
                       <button
                         type="button"
-                        className="tp-product-action-btn-3 tp-product-quick-view-btn"
-                        onClick={() => openModal()}
+                        className={`tp-product-action-btn-3 active tp-product-add-to-wishlist-btn`}
                       >
-                        <QuickView />
-                        <span className="tp-product-tooltip tp-product-tooltip-top">
-                          Quick View
-                        </span>
+                        <ButtonLoader loader={wishlistLoader} />
                       </button>
-          
-                      <>
-                        {isAddedToWishlist === true ? (
-                          <button
-                            type="button"
-                            onClick={() => {
-                              if (token) {
-                                router.push("/wishlist");
-                              } else {
-                                notifyError(
-                                  "Only logged-in users can add items to their wishlist or view it"
-                                );
-                              }
-                              // router.push("/wishlist");
-                            }}
-                            className={`tp-product-action-btn-3 active tp-product-add-to-wishlist-btn`}
-                          >
-                            <Wishlist />
-                            <span className="tp-product-tooltip tp-product-tooltip-top">
-                              View Wishlist
-                            </span>
-                          </button>
-                        ) : (
-                          <>
-                            {wishlistLoader ? (
-                              <button
-                                type="button"
-                                className={`tp-product-action-btn-3 active tp-product-add-to-wishlist-btn`}
-                              >
-                                <ButtonLoader loader={wishlistLoader} />
-                              </button>
-                            ) : (
-                              <button
-                                type="button"
-                                onClick={() => handleWishlist(product)}
-                                className={`tp-product-action-btn-3 tp-product-add-to-wishlist-btn`}
-                              >
-                                <Wishlist />
-                                <span className="tp-product-tooltip tp-product-tooltip-top">
-                                  Add To Wishlist
-                                </span>
-                              </button>
-                            )}
-                          </>
-                        )}
-                      </>
-          
+                    ) : (
                       <button
                         type="button"
-                        className={`tp-product-action-btn-3 ${
-                          isAddWishlist ? "active" : ""
-                        } tp-product-add-to-wishlist-btn`}
-                        onClick={() => {
-                          if (compareList?.some((prd) => prd?.id === product?.node?.id)) {
-                            router.push("/compare");
-                          } else {
-                            handleCompareProduct(product);
-                          }
-                        }}
-                        // onClick={() => handleCompare()}
+                        onClick={() => handleWishlist(product)}
+                        className={`tp-product-action-btn-3 tp-product-add-to-wishlist-btn`}
                       >
-                        <CompareThree />
+                        <Wishlist />
                         <span className="tp-product-tooltip tp-product-tooltip-top">
-                          {compareList?.some((prd) => prd?.id === product?.node?.id)
-                            ? "View Compare"
-                            : "Add To Compare"}
+                          Add To Wishlist
                         </span>
                       </button>
-                    </div>
-                  </div>
+                    )}
+                  </>
+                )}
+              </>
+
+              <button
+                type="button"
+                className={`tp-product-action-btn-3 ${
+                  isAddWishlist ? "active" : ""
+                } tp-product-add-to-wishlist-btn`}
+                onClick={() => {
+                  if (
+                    compareList?.some((prd) => prd?.id === product?.node?.id)
+                  ) {
+                    router.push("/compare");
+                  } else {
+                    handleCompareProduct(product);
+                  }
+                }}
+                // onClick={() => handleCompare()}
+              >
+                <CompareThree />
+                <span className="tp-product-tooltip tp-product-tooltip-top">
+                  {compareList?.some((prd) => prd?.id === product?.node?.id)
+                    ? "View Compare"
+                    : "Add To Compare"}
+                </span>
+              </button>
+            </div>
+          </div>
         </div>
       </div>
     </>
