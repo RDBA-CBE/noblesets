@@ -45,16 +45,18 @@ const HomeCategorySection = () => {
     },
   };
 
-  const video_data = [
-  { src: "/assets/img/newlayout/Best of Noblesets/img-1.png", title: "FANCY CHAIN 2" , category: "chain" },
-  { src: "/assets/img/newlayout/Best of Noblesets/img-2.png", title: "18KT NS RING" , category: "ring" },
-  { src: "/assets/img/newlayout/Best of Noblesets/img-3.png", title: "FANCY EARRING 2" , category: "earring" },
-  { src: "/assets/img/newlayout/Best of Noblesets/img-4.png", title: "FANCY BRACELET 2" , category: "bracelet" },
-  { src: "/assets/img/newlayout/Best of Noblesets/img-5.png", title: "18KT NS CHAIN 2" , category: "chain" },
-  { src: "/assets/img/newlayout/Best of Noblesets/img-6.png", title: "GOLD EARRING" , category: "earring" },
-  { src: "/assets/img/newlayout/Best of Noblesets/img-7.png", title: "GOLD BRACELET " , category: "bracelet" },
-  { src: "/assets/img/newlayout/Best of Noblesets/img-8.png", title: "18KT EARRING" , category: "earring" },
+ const video_data = [
+  { src: "/assets/img/newlayout/Best of Noblesets/img-1.png", title: "Fancy Chain 2", category: "chain" },
+  { src: "/assets/img/newlayout/Best of Noblesets/img-2.png", title: "18KT NS Ring", category: "ring" },
+  { src: "/assets/img/newlayout/Best of Noblesets/img-3.png", title: "Fancy Earring 2", category: "earring" },
+  { src: "/assets/img/newlayout/Best of Noblesets/img-4.png", title: "Fancy Bracelet 2", category: "bracelet" },
+  { src: "/assets/img/newlayout/Best of Noblesets/img-5.png", title: "18KT NS Chain 2", category: "chain" },
+  { src: "/assets/img/newlayout/Best of Noblesets/img-6.png", title: "Gold Earring", category: "earring" },
+  { src: "/assets/img/newlayout/Best of Noblesets/img-7.png", title: "Gold Bracelet", category: "bracelet" },
+  { src: "/assets/img/newlayout/Best of Noblesets/img-8.png", title: "18KT Earring", category: "earring" },
 ];
+
+
 
 
   //  const saveOff = () => {
@@ -129,7 +131,7 @@ const HomeCategorySection = () => {
                           <div className="tp-product-content-2  pt-20">
                             <div style={{ textAlign: "center" }}>
                               <h3 className="tp-product-title-2 mt-5 ">
-                                <Link href={`/`}>{video.title.toLowerCase()}</Link>
+                                <Link href={`/`}>{video.title}</Link>
                               </h3>
                               
 
