@@ -2146,7 +2146,7 @@ hr.footer-divider {
 
 .tp-product-title-2 a {
   font-size: 18px !important;
-  text-transform: uppercase;
+  // text-transform: capitalize;
 }
 .tp-product-title-3 {
   font-size: 15px !important;
@@ -2319,7 +2319,7 @@ hr.footer-divider {
 }
 
 .bestofnoblesets .tp-product-title-2 a {
-  text-transform: capitalize !important;
+  // text-transform: capitalize !important;
   font-size: 24px !important;
   // margin-bottom: 10px;
 }
