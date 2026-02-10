@@ -1,6 +1,5 @@
-import React, { useEffect, useState } from "react";
+import React, { useEffect, useState, useRef } from "react";
 import SEO from "@/components/seo";
-import HeaderTwo from "@/layout/headers/header-2";
 import Wrapper from "@/layout/wrapper";
 import HomeFooter from "@/components/home/HomeFooter";
 import { useRouter } from "next/router";
@@ -9,95 +8,93 @@ import HeaderSection from "@/components/home/headerSection";
 
 const EmailVerifyPage = () => {
   const router = useRouter();
-  const { email, token } = router.query; // Destructure the query params
-  const [emailVerify, { isLoading: loading }] = useVerifyEmailMutation();
+  const { email, token } = router.query;
+
+  const [emailVerify, { isLoading }] = useVerifyEmailMutation();
   const [errorMessage, setErrorMessage] = useState("");
   const [successMessage, setSuccessMessage] = useState("");
 
+  const hasVerified = useRef(false);
+
   useEffect(() => {
-    localStorage.clear();
-    if (email && token) {
+    // ✅ Wait until router is ready
+    if (!router.isReady) return;
+
+    // ✅ Ensure correct types & run only once
+    if (
+      typeof email === "string" &&
+      typeof token === "string" &&
+      !hasVerified.current
+    ) {
+      hasVerified.current = true;
       verifyEmail(email, token);
     }
-  }, [email, token]); // Trigger when email and token are available
+  }, [router.isReady, email, token]);
 
-  const verifyEmail = (email, token) => {
-    emailVerify({
-      email,
-      token,
-    }).then((result) => {
-      let error = result?.data?.data?.confirmAccount?.errors;
-      if (error?.length > 0) {
-        setErrorMessage(error[0]?.message);
+  const verifyEmail = async (email, token) => {
+    try {
+      const result = await emailVerify({ email, token });
+
+      const errors = result?.data?.confirmAccount?.errors;
+
+      if (errors?.length > 0) {
+        setErrorMessage(errors[0].message);
       } else {
         setSuccessMessage("Email verification successful. You can login");
       }
-    });
+    } catch (error) {
+      setErrorMessage("Something went wrong. Please try again.");
+    }
   };
 
-  function CommonLoader() {
-    return (
-      <div
-        style={{
-          height: "100vh",
-          display: "flex",
-          justifyContent: "center",
-          alignItems: "center",
-        }}
-      >
-        <img src="/assets/img/nobelset-gif-3.gif" alt="Loading..." />
-      </div>
-    );
-  }
+  const CommonLoader = () => (
+    <div
+      style={{
+        height: "100vh",
+        display: "flex",
+        justifyContent: "center",
+        alignItems: "center",
+      }}
+    >
+      <img src="/assets/img/nobelset-gif-3.gif" alt="Loading..." />
+    </div>
+  );
 
   return (
     <Wrapper>
-      <SEO pageTitle="Login" />
-      {/* <HeaderTwo style_2={true} /> */}
+      <SEO pageTitle="Email Verification" />
       <HeaderSection />
 
       <div className="tp-login-input-wrapper pb-140 pt-120 common-bg">
         <div className="tp-login-input-box">
-          <section className="tp-login-area pb-140 pt-120 p-relative z-index-1 fix">
+          <section className="tp-login-area pb-140 pt-120">
             <div className="container">
               <div className="row justify-content-center">
                 <div className="col-xl-6 col-lg-8">
                   <div className="tp-login-wrapper items-center">
-                    <div
-                      onClick={() => router.reload()}
 
-                      style={{
-                        display: "flex",
-                        justifyContent: "flex-end",
-                        width: "100%",
-                        textDecoration: "underline",
-                        color:"#9b604d",
-                        cursor:"pointer"
-                      }}
-                    >
-                      Reload
-                    </div>
+                    {isLoading && <CommonLoader />}
 
-                    {loading ? (
-                      <CommonLoader />
-                    ) : errorMessage ? (
-                      <>
-                        <h4 style={{ color: "red" }}>{errorMessage}</h4>
-                      </>
-                    ) : successMessage ? (
-                      <div className="items-center justify-center text-center">
+                    {!isLoading && errorMessage && (
+                      <h4 style={{ color: "red", textAlign: "center" }}>
+                        {errorMessage}
+                      </h4>
+                    )}
+
+                    {!isLoading && successMessage && (
+                      <div className="text-center">
                         <h4 style={{ color: "green" }}>{successMessage}</h4>
                         <div className="tp-login-bottom">
                           <button
-                            type="submit"
-                            className="gradient-btn  w-100"
+                            className="gradient-btn w-100"
                             onClick={() => router.push("/login")}
                           >
-                            {"Login"}
+                            Login
                           </button>
                         </div>
                       </div>
-                    ) : null}
+                    )}
+
                   </div>
                 </div>
               </div>
@@ -105,6 +102,7 @@ const EmailVerifyPage = () => {
           </section>
         </div>
       </div>
+
       <HomeFooter />
     </Wrapper>
   );
