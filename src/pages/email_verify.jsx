@@ -34,18 +34,36 @@ const EmailVerifyPage = () => {
   const verifyEmail = async (email, token) => {
     try {
       const result = await emailVerify({ email, token });
-
-      const errors = result?.data?.confirmAccount?.errors;
-
-      if (errors?.length > 0) {
-        setErrorMessage(errors[0].message);
-      } else {
-        setSuccessMessage("Email verification successful. You can login");
+  
+      // ✅ Correct response path
+      const confirmAccount = result?.data?.data?.confirmAccount;
+  
+      if (!confirmAccount) {
+        setErrorMessage("Invalid server response.");
+        return;
       }
+  
+      const { user, errors } = confirmAccount;
+  
+      // ❌ Error from backend
+      if (errors && errors.length > 0) {
+        setErrorMessage(errors[0].message);
+        return;
+      }
+  
+      // ❌ Safety: no user means not verified
+      if (!user) {
+        setErrorMessage("Email verification failed.");
+        return;
+      }
+  
+      // ✅ REAL SUCCESS
+      setSuccessMessage("Email verification successful. You can login");
     } catch (error) {
       setErrorMessage("Something went wrong. Please try again.");
     }
   };
+  
 
   const CommonLoader = () => (
     <div
