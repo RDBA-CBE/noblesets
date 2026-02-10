@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import React, { useEffect, useState, useRef } from "react";
 import SEO from "@/components/seo";
 import HeaderTwo from "@/layout/headers/header-2";
 import Wrapper from "@/layout/wrapper";
@@ -13,10 +13,12 @@ const EmailVerifyPage = () => {
   const [emailVerify, { isLoading: loading }] = useVerifyEmailMutation();
   const [errorMessage, setErrorMessage] = useState("");
   const [successMessage, setSuccessMessage] = useState("");
+  const hasVerified = useRef(false);
 
   useEffect(() => {
     localStorage.clear();
-    if (email && token) {
+    if (email && token && !hasVerified.current) {
+      hasVerified.current = true;
       verifyEmail(email, token);
     }
   }, [email, token]); // Trigger when email and token are available
