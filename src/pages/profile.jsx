@@ -13,6 +13,9 @@ import PrivateRouter from "@/layout/private-router";
 import HeaderSection from "@/components/home/headerSection";
 import { useUserReviewsListMutation } from "@/redux/features/productApi";
 import { useSetState } from "@/utils/functions";
+import ShopBreadcrumb from "@/components/breadcrumb/shop-breadcrumb";
+import shopBanner from "@assets/img/newlayout/shop-bg.png";
+
 
 const ProfilePage = () => {
   const router = useRouter();
@@ -70,6 +73,22 @@ const ProfilePage = () => {
       >
         <HeaderSection />
       </motion.div>
+      <div>
+          <motion.div
+            initial={{ opacity: 0, y: 30 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.6, delay: 0.2 }}
+            viewport={{ once: true }}
+          >
+            <ShopBreadcrumb
+              title="Profile"
+              subtitle=""
+              bgImage={shopBanner}
+              // catList={categoryList}
+              // product={productList}
+            />
+          </motion.div>
+        </div>
       <motion.div
         initial={{ opacity: 0, y: 30 }}
         whileInView={{ opacity: 1, y: 0 }}
