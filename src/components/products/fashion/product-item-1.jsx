@@ -342,7 +342,7 @@ const ProductItem1 = ({ products, style_2 = false, updateData, index }) => {
                         className="product-trending text-center"
                         style={{
                           padding:
-                            item?.value === "New" ? "16px 10px" : "15px 11px",
+                            item?.value == "New" || "new" || "NEW" ? "16px 10px" : "15px 11px",
                           textTransform: "capitalize",
                         }}
                       >
