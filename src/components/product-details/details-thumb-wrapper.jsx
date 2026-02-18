@@ -154,7 +154,7 @@ const DetailsThumbWrapper = ({ product, relatedClick }) => {
     <>
       <div
         className={`tp-product-details-thumb-wrapper tp-tab d-md-flex
-        w-100`}
+        w-100 quick-view`}
       >
         {/* {product?.media?.length > 1 && ( */}
         {/* <nav className="product-side-nav-img p-relative">

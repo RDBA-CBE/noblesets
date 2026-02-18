@@ -64,7 +64,7 @@ const ProductModal = () => {
         <div className="tp-product-modal"
         style={{overflowY:"scroll"}}
         >
-          <div className="tp-product-modal-content ">
+          <div className="tp-product-modal-content px-0">
             <button
               onClick={() => dispatch(handleModalClose())}
               type="button"
