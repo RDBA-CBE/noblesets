@@ -269,7 +269,7 @@ const DetailsThumbWrapper = ({ product, relatedClick }) => {
                             width: "100%",
                             height: "100%",
                             borderRadius: "20px",
-                            backgroundSize: "cover",
+                            objectFit: "cover",
                           }}
                         />
                       </figure>
@@ -292,7 +292,10 @@ const DetailsThumbWrapper = ({ product, relatedClick }) => {
           </nav>
         )}
 
-        <div className={`tab-content m-img full-width-image`}>
+        <div
+          className={`tab-content m-img full-width-image`}
+          style={{ width: "100%" }}
+        >
           <div className="tab-pane fade show active">
             <div
               className="tp-product-details-nav-main-thumb p-relative"
@@ -354,21 +357,32 @@ const DetailsThumbWrapper = ({ product, relatedClick }) => {
                         style={{ marginBottom: "0px" }}
                         className="detail-single-image"
                       >
-                        <video
-                          className="product-details-image product-vd"
-                          // src="/assets/img/blog.webp"
-                          src={activeImg?.url}
-                          autoPlay
-                          muted // Ensure it's muted to autoplay without user interaction
-                          loop // Ensure it loops indefinitely
-                          playsInline // Ensure it plays inline on iOS devices
-                          onLoadedData={() => setLoading(false)}
-                          onError={() => setLoading(false)}
-                          aria-label={activeImg?.alt}
-                          description={activeImg?.description}
-                          caption={activeImg?.caption}
-                          title={activeImg?.title}
-                        />
+                        <div className="video-wrapper">
+                          {/* Blurred background video */}
+                          <video
+                            className="video-bg"
+                            src={activeImg?.url}
+                            autoPlay
+                            muted
+                            loop
+                            playsInline
+                          />
+
+                          {/* Foreground main video */}
+                          <video
+                            className="product-details-image product-vd"
+                            src={activeImg?.url}
+                            autoPlay
+                            muted
+                            loop
+                            playsInline
+                            onLoadedData={() => setLoading(false)}
+                            onError={() => setLoading(false)}
+                            aria-label={activeImg?.alt}
+                            title={activeImg?.title}
+                          />
+                        </div>
+
                         {/* <figcaption className="hidden-for-seo">
                           <strong>{activeImg?.title}</strong> 
                           <p>{activeImg?.description}</p> 
