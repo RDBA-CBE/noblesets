@@ -640,10 +640,9 @@ const Menus1 = () => {
       </li>
       <li>
         <Link
-          href={{
-            pathname: "/shop",
-            query: { category: "silver" },
-          }}
+          href="/contact"
+
+       
           style={{
             fontWeight: "400",
             color: "#000",

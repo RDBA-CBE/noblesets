@@ -174,7 +174,7 @@ const ContactArea = () => {
                     />
                   </div>
                   <p style={{ color: "rgb(85 85 85)", fontSize: "16px" }}>
-                    <Link href="mailto:support@nobleset.in">support@nobleset.in</Link>
+                    <Link href="mailto:online@noblesets.com">online@noblesets.com</Link>
                   </p>
                 </div>
                 <div className="contacr-social-links">
@@ -196,11 +196,13 @@ const ContactArea = () => {
                       href="https://maps.app.goo.gl/qLfBEz7ZVkcsiSxt6"
                       target="_blank"
                     >
-                      Noblesets jewels and Drapes private Limited
-                      <br /> No.28, 1st floor, Vijay building,
-                      <br /> Near Andhra club, Vijaya Raghava road,
-                      <br />
-                      Chennai – 600017
+                    
+                     
+                    SREE THANGAM JEWELLERY
+                    <br />(A Unit of Shivam Traders)
+
+                      <br />  78, NEW MARKET STREET,
+                      <br /> TIRUPPUR-641604
                     </Link>
                   </p>
                 </div>
@@ -220,7 +222,7 @@ const ContactArea = () => {
                     />
                   </div>
                   <p style={{ color: "rgb(85 85 85)" }}>
-                    <Link href="tel:+91 73052 63999">+91 73052 63999</Link>
+                    <Link href="tel: 0421 2266885">0421 2266885</Link>
                   </p>
                 </div>
 
@@ -237,7 +239,7 @@ const ContactArea = () => {
                   <div style={{ display: "flex" }}>
                     <div style={{ paddingRight: "15px" }}>
                       <Link
-                        href="#"
+                        href="https://www.facebook.com/noblesets/"
                         target="_blank"
                       >
                         <FacebookIcon />
@@ -245,7 +247,7 @@ const ContactArea = () => {
                     </div>
                     <div style={{ paddingRight: "15px" }}>
                       <Link
-                        href="#"
+                        href="https://www.instagram.com/noble_sets/"
                         target="_blank"
                       >
                         <InstagramIcon />
@@ -255,7 +257,7 @@ const ContactArea = () => {
                       className="printer-outline "
                       style={{ backgroundColor: "gray" }}
                     >
-                      <Link href="https://pin.it/2RQl6pL" target="_blank">
+                      <Link href="https://www.threads.com/@noble_sets" target="_blank">
                         <PinterestOutlined />
                       </Link>
                     </div>

@@ -191,10 +191,7 @@ const MobileMenus = () => {
         </li>
         <li>
           <Link
-            href={{
-              pathname: "/shop",
-              query: { category: "silver" },
-            }}
+            href="/contact"
             style={{
               fontWeight: "500",
             }}
