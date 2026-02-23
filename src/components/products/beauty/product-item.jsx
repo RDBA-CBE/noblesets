@@ -300,7 +300,11 @@ height={320}
                 <span
                   key={index}
                   className="product-trending text-center"
-                  style={{ padding: "18px 15px", textTransform: "capitalize" }}
+                 style={{
+                          padding:
+                            item?.value == "New" || "new" || "NEW" ? "16px 10px" : "15px 11px",
+                          textTransform: "capitalize",
+                        }}
                 >
                   {item.value}
                 </span>

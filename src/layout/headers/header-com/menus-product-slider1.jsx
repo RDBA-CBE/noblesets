@@ -50,7 +50,7 @@ const MenusProductSlider1 = ({ product, loginPopup, loading }) => {
   const isAddedToWishlist = wishlistData?.data?.wishlists?.edges?.some(
     (prd) => {
       return prd?.node?.variant === product?.node?.id;
-    }
+    },
   );
 
   const [addWishlist, {}] = useAddWishlistMutation();
@@ -66,7 +66,7 @@ const MenusProductSlider1 = ({ product, loginPopup, loading }) => {
   const compareList = useSelector((state) => state.cart.compare_list);
 
   const isAddedToCart = cart?.some(
-    (prd) => prd?.variant?.product?.id == product?.node?.id
+    (prd) => prd?.variant?.product?.id == product?.node?.id,
   );
 
   const dispatch = useDispatch();
@@ -137,7 +137,7 @@ const MenusProductSlider1 = ({ product, loginPopup, loading }) => {
       }
     } else {
       notifyError(
-        "Only logged-in users can add items to their wishlist or view it"
+        "Only logged-in users can add items to their wishlist or view it",
       );
     }
   };
@@ -222,8 +222,9 @@ const MenusProductSlider1 = ({ product, loginPopup, loading }) => {
         <Link href={`/product-details/${product?.node?.slug}`}>
           <div
             className="tp-category-thumb-4 include-bg"
-            onClick={()=>router.push(`/product-details/${product?.node?.slug}`)}
-
+            onClick={() =>
+              router.push(`/product-details/${product?.node?.slug}`)
+            }
             style={{
               backgroundImage: `url(${profilePic(img)})`,
               backgroundColor: "#FFFFFF",
@@ -261,7 +262,7 @@ const MenusProductSlider1 = ({ product, loginPopup, loading }) => {
                     key={index}
                     className="product-trending text-center"
                     style={{
-                      padding: "18px 15px",
+                      padding: item?.value == "New" || "new" || "NEW" ? "16px 10px" : "15px 11px",
                       textTransform: "capitalize",
                     }}
                   >
@@ -274,13 +275,19 @@ const MenusProductSlider1 = ({ product, loginPopup, loading }) => {
         {/* removed action buttons */}
 
         <div className="text-center  mt-5 tp-menu-product-name">
-          <p style={{ color: "white", fontWeight: "400", margin: "0px" }}
-           onClick={()=>router.push(`/product-details/${product?.node?.slug}`)}
+          <p
+            style={{ color: "white", fontWeight: "400", margin: "0px" }}
+            onClick={() =>
+              router.push(`/product-details/${product?.node?.slug}`)
+            }
           >
             {Product_name}
           </p>
-          <p style={{ color: "white", margin: "0px", fontSize: "14px" }}
-           onClick={()=>router.push(`/product-details/${product?.node?.slug}`)}
+          <p
+            style={{ color: "white", margin: "0px", fontSize: "14px" }}
+            onClick={() =>
+              router.push(`/product-details/${product?.node?.slug}`)
+            }
           >
             {Category_Name}
           </p>
@@ -288,7 +295,7 @@ const MenusProductSlider1 = ({ product, loginPopup, loading }) => {
             <>
               {RegularPrice(
                 RelatedProduct?.defaultVariant?.costPrice,
-                Price
+                Price,
               ) && (
                 <span
                   style={{
@@ -319,7 +326,7 @@ const MenusProductSlider1 = ({ product, loginPopup, loading }) => {
             <>
               {RegularPrice(
                 RelatedProduct?.defaultVariant?.costPrice,
-                Price
+                Price,
               ) && (
                 <span
                   style={{
@@ -421,7 +428,7 @@ const MenusProductSlider1 = ({ product, loginPopup, loading }) => {
                         router.push("/wishlist");
                       } else {
                         notifyError(
-                          "Only logged-in users can add items to their wishlist or view it"
+                          "Only logged-in users can add items to their wishlist or view it",
                         );
                       }
                       // router.push("/wishlist");

@@ -49,7 +49,7 @@ const SimilarProductItem = ({
   const { wishlist } = useSelector((state) => state.wishlist);
 
   const isAddedToCart = cart?.some(
-    (prd) => prd?.variant?.product?.id === product?.id
+    (prd) => prd?.variant?.product?.id === product?.id,
   );
   // const isAddedToCart = cart_products.some((prd) => prd.id === id);
   // const isAddedToWishlist = data?.some((prd) => prd.id === id);
@@ -58,12 +58,12 @@ const SimilarProductItem = ({
   const [wishlistLoader, setWishlistLoader] = useState(false);
   // wishlist added and show
   const { data: wishlistData, refetch: wishlistRefetch } = useGetWishlistQuery(
-    {}
+    {},
   );
   const isAddedToWishlist = wishlistData?.data?.wishlists?.edges?.some(
     (prd) => {
       return prd?.node?.variant === product?.id;
-    }
+    },
   );
   const [addWishlist, {}] = useAddWishlistMutation();
   const addToCartProductINR = async () => {
@@ -128,7 +128,7 @@ const SimilarProductItem = ({
         wishlistRefetch();
       } else {
         notifyError(
-          "Only logged-in users can add items to their wishlist or view it"
+          "Only logged-in users can add items to their wishlist or view it",
         );
         // const addedWishlist = handleWishlistProduct(prd);
         // dispatch(add_to_wishlist(addedWishlist));
@@ -306,7 +306,10 @@ height={320}
                 <span
                   key={index}
                   className="product-trending text-center"
-                  style={{ padding: "18px 15px", textTransform: "capitalize" }}
+                  style={{
+                    padding: item?.value == "New" || "new" || "NEW" ? "16px 10px" : "15px 11px",
+                    textTransform: "capitalize",
+                  }}
                 >
                   {item.value}
                 </span>
@@ -398,7 +401,7 @@ height={320}
                   compareList?.some(
                     (prd) =>
                       (prd?.node?.id || prd?.id) ==
-                      (product?.node?.id || product?.id)
+                      (product?.node?.id || product?.id),
                   )
                 ) {
                   router.push("/compare");
@@ -413,7 +416,7 @@ height={320}
                 {compareList?.some(
                   (prd) =>
                     (prd?.node?.id || prd?.id) ==
-                    (product?.node?.id || product?.id)
+                    (product?.node?.id || product?.id),
                 )
                   ? "View Compare"
                   : "Add To Compare"}
@@ -468,8 +471,8 @@ Add To Cart
               {RegularPrice(
                 addCommasToNumber(product?.defaultVariant?.costPrice),
                 addCommasToNumber(
-                  product?.pricing?.priceRange?.start?.gross?.amount
-                )
+                  product?.pricing?.priceRange?.start?.gross?.amount,
+                ),
               ) && (
                 <span
                   className="pr-5"
@@ -482,7 +485,7 @@ Add To Cart
                   {" "}
                   &#8377;
                   {addCommasToNumber(
-                    roundOff(product?.defaultVariant?.costPrice)
+                    roundOff(product?.defaultVariant?.costPrice),
                   )}
                 </span>
               )}
@@ -507,7 +510,7 @@ Add To Cart
             <>
               {RegularPrice(
                 product?.defaultVariant?.costPrice,
-                product?.pricing?.priceRange?.start?.gross?.amount
+                product?.pricing?.priceRange?.start?.gross?.amount,
               ) && (
                 <span
                   className="pr-5"

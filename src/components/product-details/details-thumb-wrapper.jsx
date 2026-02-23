@@ -78,7 +78,7 @@ const DetailsThumbWrapper = ({ product, relatedClick }) => {
 
   const handleNavigationClicking = (direction) => {
     const currentIndex = product?.media?.findIndex(
-      (item) => item.url === activeImg?.url
+      (item) => item.url === activeImg?.url,
     );
     let newIndex;
     if (direction === "prev") {
@@ -154,7 +154,7 @@ const DetailsThumbWrapper = ({ product, relatedClick }) => {
     <>
       <div
         className={`tp-product-details-thumb-wrapper tp-tab d-md-flex
-        w-100`}
+        w-100 quick-view`}
       >
         {/* {product?.media?.length > 1 && ( */}
         {/* <nav className="product-side-nav-img p-relative">
@@ -253,19 +253,24 @@ const DetailsThumbWrapper = ({ product, relatedClick }) => {
                         <video
                           // src="/assets/img/blog.webp"
                           src={item?.url}
+                          // autoPlay
+                          muted // Ensure it's muted to autoplay without user interaction
+                          loop // Ensure it loops indefinitely
+                          playsInline // Ensure it plays inline on iOS devices
+                          onLoadedData={() => setLoading(false)}
+                          onError={() => setLoading(false)}
+                          description={item?.description}
+                          caption={item?.caption}
+                          title={item?.title}
                           aria-label={item?.alt}
-                          width={78}
+                          // width={78}
                           height={100}
                           style={{
                             width: "100%",
                             height: "100%",
                             borderRadius: "20px",
+                            objectFit: "cover",
                           }}
-                          muted
-                          loop
-                          description={item?.description}
-                          caption={item?.caption}
-                          title={item?.title}
                         />
                       </figure>
                     )}
@@ -287,7 +292,10 @@ const DetailsThumbWrapper = ({ product, relatedClick }) => {
           </nav>
         )}
 
-        <div className={`tab-content m-img full-width-image`}>
+        <div
+          className={`tab-content m-img full-width-image`}
+          style={{ width: "100%" }}
+        >
           <div className="tab-pane fade show active">
             <div
               className="tp-product-details-nav-main-thumb p-relative"
@@ -349,21 +357,32 @@ const DetailsThumbWrapper = ({ product, relatedClick }) => {
                         style={{ marginBottom: "0px" }}
                         className="detail-single-image"
                       >
-                        <video
-                          className="product-details-image"
-                          src="/assets/img/blog.webp"
-                          // src={activeImg?.url}
-                          autoPlay
-                          muted // Ensure it's muted to autoplay without user interaction
-                          loop // Ensure it loops indefinitely
-                          playsInline // Ensure it plays inline on iOS devices
-                          onLoadedData={() => setLoading(false)}
-                          onError={() => setLoading(false)}
-                          aria-label={activeImg?.alt}
-                          description={activeImg?.description}
-                          caption={activeImg?.caption}
-                          title={activeImg?.title}
-                        />
+                        <div className="video-wrapper">
+                          {/* Blurred background video */}
+                          <video
+                            className="video-bg"
+                            src={activeImg?.url}
+                            autoPlay
+                            muted
+                            loop
+                            playsInline
+                          />
+
+                          {/* Foreground main video */}
+                          <video
+                            className="product-details-image product-vd"
+                            src={activeImg?.url}
+                            autoPlay
+                            muted
+                            loop
+                            playsInline
+                            onLoadedData={() => setLoading(false)}
+                            onError={() => setLoading(false)}
+                            aria-label={activeImg?.alt}
+                            title={activeImg?.title}
+                          />
+                        </div>
+
                         {/* <figcaption className="hidden-for-seo">
                           <strong>{activeImg?.title}</strong> 
                           <p>{activeImg?.description}</p> 
@@ -459,25 +478,54 @@ const DetailsThumbWrapper = ({ product, relatedClick }) => {
             >
               {product?.media
                 ?.slice(startIndex, startIndex + 4)
-                .map((item, i) => (
-                  <img
-                    key={i}
-                    src={profilePic(item?.url) || item?.url}
-                    alt="thumb"
-                    onClick={() => handleImageActive(item, i)}
-                    style={{
-                      width: "50px",
-                      height: "50px",
-                      objectFit: "cover",
-                      borderRadius: "8px",
-                      border:
-                        i === imageIndex
-                          ? "2px solid white"
-                          : "2px solid transparent",
-                      cursor: "pointer",
-                    }}
-                  />
-                ))}
+                .map((item, i) =>
+                  isImage(profilePic(item?.url)) ? (
+                    <img
+                      key={i}
+                      src={profilePic(item?.url) || item?.url}
+                      alt="thumb"
+                      onClick={() => handleImageActive(item, i)}
+                      style={{
+                        width: "50px",
+                        height: "50px",
+                        objectFit: "cover",
+                        borderRadius: "8px",
+                        border:
+                          i === imageIndex
+                            ? "2px solid white"
+                            : "2px solid transparent",
+                        cursor: "pointer",
+                      }}
+                    />
+                  ) : (
+                    <video
+                      // src="/assets/img/blog.webp"
+                      src={item?.url}
+                      // autoPlay
+                      muted // Ensure it's muted to autoplay without user interaction
+                      loop // Ensure it loops indefinitely
+                      onClick={() => handleImageActive(item, i)}
+                      // onLoadedData={() => setLoading(false)}
+                      // onError={() => setLoading(false)}
+                      // aria-label={activeImg?.alt}
+                      description={item?.description}
+                      caption={item?.caption}
+                      title={item?.title}
+                      style={{
+                        width: "50px",
+                        height: "50px",
+                        objectFit: "cover",
+                        borderRadius: "8px",
+                        border:
+                          i === imageIndex
+                            ? "2px solid white"
+                            : "2px solid transparent",
+                        cursor: "pointer",
+                      }}
+                      // controls
+                    />
+                  ),
+                )}
             </div>
 
             {/* Prev Button */}
@@ -518,7 +566,18 @@ const DetailsThumbWrapper = ({ product, relatedClick }) => {
                 />
               ) : (
                 <video
-                  src="/assets/img/blog.webp"
+                  // src="/assets/img/blog.webp"
+                  src={activeImg?.url}
+                  autoPlay
+                  muted // Ensure it's muted to autoplay without user interaction
+                  loop // Ensure it loops indefinitely
+                  playsInline // Ensure it plays inline on iOS devices
+                  onLoadedData={() => setLoading(false)}
+                  onError={() => setLoading(false)}
+                  aria-label={activeImg?.alt}
+                  description={activeImg?.description}
+                  caption={activeImg?.caption}
+                  title={activeImg?.title}
                   style={{
                     width: "100%",
                     height: "100%",

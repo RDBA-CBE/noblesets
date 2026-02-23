@@ -50,7 +50,7 @@ const MenusProductSlider = ({ product, loginPopup, loading }) => {
   const isAddedToWishlist = wishlistData?.data?.wishlists?.edges?.some(
     (prd) => {
       return prd?.node?.variant === product?.node?.id;
-    }
+    },
   );
 
   const [addWishlist, {}] = useAddWishlistMutation();
@@ -66,7 +66,7 @@ const MenusProductSlider = ({ product, loginPopup, loading }) => {
   const compareList = useSelector((state) => state.cart.compare_list);
 
   const isAddedToCart = cart?.some(
-    (prd) => prd?.variant?.product?.id == product?.node?.id
+    (prd) => prd?.variant?.product?.id == product?.node?.id,
   );
 
   const dispatch = useDispatch();
@@ -137,7 +137,7 @@ const MenusProductSlider = ({ product, loginPopup, loading }) => {
       }
     } else {
       notifyError(
-        "Only logged-in users can add items to their wishlist or view it"
+        "Only logged-in users can add items to their wishlist or view it",
       );
     }
   };
@@ -155,7 +155,6 @@ const MenusProductSlider = ({ product, loginPopup, loading }) => {
     localStorage.setItem("compareList", JSON.stringify(arr));
     dispatch(compare_list(arr));
     notifySuccess("Product to added to compare list");
-
   };
   const img = product?.node?.thumbnail?.url;
   const Product_name = product?.node?.name;
@@ -227,10 +226,9 @@ const MenusProductSlider = ({ product, loginPopup, loading }) => {
               backgroundImage: `url(${profilePic(img)})`,
               backgroundColor: "#FFFFFF",
               // backgroundPosition: "0px -80px",
-              borderRadius:"10px",
-              width:"100%",
-              height:"250px"
-            
+              borderRadius: "10px",
+              width: "100%",
+              height: "250px",
             }}
           ></div>
           <div className="tp-product-badge-2">
@@ -261,7 +259,7 @@ const MenusProductSlider = ({ product, loginPopup, loading }) => {
                     key={index}
                     className="product-trending text-center"
                     style={{
-                      padding: "18px 15px",
+                      padding: item?.value == "New" || "new" || "NEW" ? "16px 10px" : "15px 11px",
                       textTransform: "capitalize",
                     }}
                   >
@@ -339,7 +337,7 @@ const MenusProductSlider = ({ product, loginPopup, loading }) => {
                       router.push("/wishlist");
                     } else {
                       notifyError(
-                        "Only logged-in users can add items to their wishlist or view it"
+                        "Only logged-in users can add items to their wishlist or view it",
                       );
                     }
                     // router.push("/wishlist");
@@ -410,7 +408,7 @@ const MenusProductSlider = ({ product, loginPopup, loading }) => {
             <>
               {RegularPrice(
                 RelatedProduct?.defaultVariant?.costPrice,
-                Price
+                Price,
               ) && (
                 <span
                   style={{
@@ -435,7 +433,7 @@ const MenusProductSlider = ({ product, loginPopup, loading }) => {
             <>
               {RegularPrice(
                 RelatedProduct?.defaultVariant?.costPrice,
-                Price
+                Price,
               ) && (
                 <span
                   style={{

@@ -52,6 +52,7 @@ const DetailsThumbWrapperQuick = ({ videoId = false, status, product }) => {
           style={{
             height: imageUrls?.length > 4 ? "420px" : "auto",
             overflow: "hidden",
+            paddingRight:"30px"
           }}
         >
           {" "}
@@ -83,12 +84,12 @@ const DetailsThumbWrapperQuick = ({ videoId = false, status, product }) => {
                   />
                   </figure>
                 ) : (
-                   <figure style={{height:"100%"}}>
+                   <figure >
                   <video
                     src={profilePic(item)}
                     width={78}
                         height={100}
-                        style={{ width: "100%", height: "100%" ,borderRadius:"20px",objectFit:"cover" }}
+                        style={{ width: "100%" ,borderRadius:"20px",objectFit:"cover" }}
                     muted
                     loop
                   />
@@ -152,7 +153,7 @@ const DetailsThumbWrapperQuick = ({ videoId = false, status, product }) => {
                       playsInline // Ensure it plays inline on iOS devices
                       style={{borderRadius:"20px",
                         width:"100%",
-                        height:"100%",
+                        // height:"100%",
                         objectFit:"cover"
                        }}
                     />

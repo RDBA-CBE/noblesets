@@ -1327,7 +1327,9 @@ ol.alphalist li ol li {
   overflow: hidden;
   left: 135px;
   opacity: 0;
-  transition: opacity 0.3s ease-in-out, transform 0.3s ease-in-out;
+  transition:
+    opacity 0.3s ease-in-out,
+    transform 0.3s ease-in-out;
   font-weight: 500;
 }
 
@@ -2609,7 +2611,7 @@ checkout .item-price {
 // }
 
 .checkoutPrice .form-check-input[type="radio"] {
-  appearance: none;          /* Remove default browser style */
+  appearance: none; /* Remove default browser style */
   -webkit-appearance: none;
   width: 18px;
   height: 18px;
@@ -2627,7 +2629,7 @@ checkout .item-price {
   position: absolute;
   width: 10px;
   height: 10px;
-  background: #9b604d;  /* ← your theme color here */
+  background: #9b604d; /* ← your theme color here */
   border-radius: 50%;
   top: 50%;
   left: 50%;
@@ -2639,7 +2641,6 @@ checkout .item-price {
 .checkoutPrice .form-check-input[type="radio"]:checked::after {
   transform: translate(-50%, -50%) scale(1);
 }
-
 
 .checkoutPrice ul li {
   border-bottom: 1px solid #dcc3bc !important;
@@ -3343,7 +3344,7 @@ header .tp-product-action-btn-3:hover {
   transform-origin: center;
 }
 
-.you-may-like{
+.you-may-like {
   position: relative;
 }
 
@@ -4948,7 +4949,7 @@ header .tp-product-action-btn-3:hover {
 }
 
 .tp-btn-google {
-  cursor:pointer;
+  cursor: pointer;
   background: transparent;
   color: #7d4432;
   padding: 10px 20px;
@@ -4977,7 +4978,6 @@ header .tp-product-action-btn-3:hover {
   z-index: -1;
 }
 
-
 // .recaptcha div div{
 //   width: 100% !important;
 // }
@@ -4985,3 +4985,36 @@ header .tp-product-action-btn-3:hover {
 // .recaptcha iframe{
 //   width: 100%;
 // }
+
+.video-wrapper {
+  position: relative;
+  width: 100%;
+  height: 680px;
+  overflow: hidden;
+  background: #000;
+}
+
+/* Blurred background */
+.video-bg {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  filter: blur(25px);
+  transform: scale(1.1); /* prevents blur edges */
+  opacity: 0.6;
+}
+
+/* Main video */
+.product-vd {
+  position: relative;
+  z-index: 1;
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+}
+
+.quick-view .tp-product-modal-content {
+  padding: 0;
+}
