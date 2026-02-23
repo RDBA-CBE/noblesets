@@ -293,8 +293,10 @@ const HomeFooter = () => {
                     <img
                       alt="Paypal logo with blue text on white background"
                       height="14"
-                      src="/assets/img/footer/rupay.svg"
+                      src="/assets/img/footer/RuPay.webp"
                       width="30"
+                      style={{ width: "30px", height: "20px" }}
+
                       className="me-2"
                     />
                     RuPay
@@ -303,18 +305,19 @@ const HomeFooter = () => {
                     <img
                       alt="Visa logo white text on dark blue background"
                       height="14"
-                      src="/assets/img/footer/visa.svg"
+                      src="/assets/img/footer/Visa.webp"
                       width="20"
+                      style={{ width: "30px", height: "20px" }}
+
                       className="me-2"
                     />
                     Visa
                   </div>
                   <div className="payment-item">
                     <img
-                      alt="Amazon Pay logo white text on dark background"
-                      height="14"
-                      src="/assets/img/footer/mastercard.svg"
-                      width="20"
+                      alt="Master Card"
+                      src="/assets/img/footer/master-card.webp"
+                      style={{ width: "30px", height: "20px" }}
                       className="me-2"
                     />
                     Master Card
@@ -323,8 +326,10 @@ const HomeFooter = () => {
                     <img
                       alt="Gpay logo black text on white background"
                       height="14"
-                      src="/assets/img/footer/upi.svg"
+                      src="/assets/img/footer/upi.webp"
                       width="20"
+                      style={{ width: "30px", height: "20px" }}
+
                       className="me-2"
                     />
                     UPI
@@ -333,8 +338,10 @@ const HomeFooter = () => {
                     <img
                       alt="Apple Pay logo white text on black background"
                       height="14"
-                      src="/assets/img/footer/netbanking.svg"
+                      src="/assets/img/footer/net-banking.webp"
                       width="20"
+                      style={{ width: "30px", height: "20px" }}
+
                       className="me-2"
                     />
                     Net Banking

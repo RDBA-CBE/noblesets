@@ -7,7 +7,7 @@ import contact_icon_2 from "@assets/img/contact/contact-icon-2.png";
 import contact_icon_3 from "@assets/img/contact/contact-icon-3.png";
 import Mail from "@assets/img/contact/mail.png";
 import Phone from "@assets/img/contact/phone.png";
-import ContactSideImage from "@assets/img/contact/contact-side-image.jpg";
+import ContactSideImage from "@assets/img/newlayout/Best-seller/image-2.png";
 import Link from "next/link";
 import Address from "@assets/img/contact/address.png";
 import {
@@ -268,7 +268,8 @@ const ContactArea = () => {
                 <Image
                   src={ContactSideImage}
                   alt="mail"
-                  style={{ width: "100%", height: "420px" }}
+                  className="w-100"
+                  // style={{ width: "100%", height: "420px" }}
                 />
               </div>
             </div>
