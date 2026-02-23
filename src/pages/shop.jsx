@@ -560,7 +560,7 @@ const ShopPage = () => {
 
       setPriceValue([priceValue[0], priceValue[1]]);
       setFilterList([...filterList, price]);
-      dispatch(handleFilterSidebarClose());
+      // dispatch(handleFilterSidebarClose());
     });
 
     filterOptions({
