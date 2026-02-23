@@ -42,7 +42,6 @@ const ShopFilterOffCanvas = ({
         }`}
       >
         <div className="tp-filter-offcanvas-wrapper">
-          
           <div className="tp-filter-offcanvas-close">
             <ResetButton
               shop_right={right_side}
@@ -53,7 +52,7 @@ const ShopFilterOffCanvas = ({
               onClick={() => dispatch(handleFilterSidebarClose())}
               className="tp-filter-offcanvas-close-btn filter-close-btn"
             >
-              <i className="fa-solid fa-xmark"></i> 
+              <i className="fa-solid fa-xmark"></i>
             </button>
           </div>
           <div className="tp-shop-sidebar">
@@ -83,7 +82,7 @@ const ShopFilterOffCanvas = ({
                     </span>
                     <button
                       className="tp-btn tp-btn-border"
-                      style={{padding:"2px 25px"}}
+                      style={{ padding: "2px 25px" }}
                       type="button"
                       onClick={() => filterByPrice(priceValue)}
                     >
@@ -99,8 +98,27 @@ const ShopFilterOffCanvas = ({
               shop_right={right_side}
               attributeList={attributeList}
             />
-{/* 
-            <ResetButton
+
+            <div
+              className="p-3 border-top bg-white"
+              style={{
+                position: "sticky",
+                bottom: 0,
+                zIndex: 10,
+              }}
+            >
+              <button
+                className="tp-btn w-100 tp-btn-border"
+                type="button"
+                onClick={() => {
+                  dispatch(handleFilterSidebarClose());
+                }}
+              >
+                Show Result
+              </button>
+            </div>
+
+            {/* <ResetButton
               shop_right={right_side}
               onClick={() => resetFilter()}
             /> */}
