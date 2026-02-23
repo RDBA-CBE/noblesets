@@ -508,7 +508,7 @@ const ShopPage = () => {
       setTotalPages(totalPages);
       setTotalCount(data?.totalCount);
       setCursorAndList(res);
-      dispatch(handleFilterSidebarClose());
+      // dispatch(handleFilterSidebarClose());
     });
 
     filterOptions({

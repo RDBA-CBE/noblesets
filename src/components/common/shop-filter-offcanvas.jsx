@@ -87,7 +87,7 @@ const ShopFilterOffCanvas = ({
                       type="button"
                       onClick={() => filterByPrice(priceValue)}
                     >
-                      Filter
+                      Apply
                       {/* {productLoading ? <ButtonLoader /> : "Filter"} */}
                     </button>
                   </div>
