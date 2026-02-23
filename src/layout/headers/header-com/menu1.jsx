@@ -412,7 +412,29 @@ const Menus1 = () => {
 
   return (
     <ul style={{ display: "flex" }}>
+      {/* <li>
+        <Link href="/"  style={{
+            fontWeight: "400",
+            color: "#000",
+            fontFamily: "Bagind,sans-serif",
+          }}>
+         Home
+        </Link>
+      </li> */}
+
       <li>
+        <Link
+          href="/shop"
+          style={{
+            fontWeight: "400",
+            color: "#000",
+            fontFamily: "Bagind,sans-serif",
+          }}
+        >
+          Shop
+        </Link>
+      </li>
+      {/* <li>
         <Link
           href="/shop"
           style={{
@@ -423,7 +445,7 @@ const Menus1 = () => {
         >
           All Jewellery
         </Link>
-      </li>
+      </li> */}
       <li className="has-dropdown has-mega-menu">
         <Link
           href="/shop"
@@ -591,6 +613,31 @@ const Menus1 = () => {
         </div>
       </li>
 
+      {/* {state.token && ( */}
+      <li>
+        <Link
+          href="/gift-card"
+          style={{
+            fontWeight: "400",
+            color: "#000",
+            fontFamily: "Bagind,sans-serif",
+          }}
+        >
+          Gift Card
+        </Link>
+      </li>
+      <li>
+        <Link
+          href="/our-story"
+          style={{
+            fontWeight: "400",
+            color: "#000",
+            fontFamily: "Bagind,sans-serif",
+          }}
+        >
+          About
+        </Link>
+      </li>
       <li>
         <Link
           href={{
@@ -603,20 +650,7 @@ const Menus1 = () => {
             fontFamily: "Bagind,sans-serif",
           }}
         >
-          Silver
-        </Link>
-      </li>
-      {/* {state.token && ( */}
-      <li>
-        <Link
-          href="/gift-card"
-          style={{
-            fontWeight: "400",
-            color: "#000",
-            fontFamily: "Bagind,sans-serif",
-          }}
-        >
-          Gift Card
+          Contact
         </Link>
       </li>
       {/* )} */}

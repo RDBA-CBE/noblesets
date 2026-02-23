@@ -64,7 +64,7 @@ const MobileMenus = () => {
             slug: item?.node?.slug,
           })
         );
-       const excludeGiftCard = categoryList?.filter(
+        const excludeGiftCard = categoryList?.filter(
           (item) => item.slug !== "gift-card"
         );
         setState({ categoryList: excludeGiftCard });
@@ -80,36 +80,47 @@ const MobileMenus = () => {
     <>
       <ul>
         <li>
+          <Link
+            href="/shop"
+            style={{
+              fontWeight: "400",
+              color: "#000",
+              fontFamily: "Bagind,sans-serif",
+            }}
+          >
+            Shop
+          </Link>
+        </li>
+        {/* <li>
           <Link href="/shop" style={{ fontWeight: "500" }}>
             All Jewellery 
           </Link>
-        </li>
+        </li> */}
 
         <li className="has-dropdown has-mega-menu">
           <a href="#">
             <button
-            useNobelsetCategoryListMutation
-            // onMouseEnter={() => categoryList()}
-            // onMouseLeave={() => setIsActiveMenu(false)}
-            onClick={() => categoryList()}
-            style={{
-              width:"100%",
-              fontWeight: "500",
-              // paddingTop: "18px",
-              // paddingBottom: "10px",
-              fontSize: "16px",
-              color: "black",
-              display:"flex",
-              justifyContent:"space-between",
-              alignItems:"cemter"
-              
-            }}
-          >
-            Collections
-            <DropdownIcon />
-          </button>
+              useNobelsetCategoryListMutation
+              // onMouseEnter={() => categoryList()}
+              // onMouseLeave={() => setIsActiveMenu(false)}
+              onClick={() => categoryList()}
+              style={{
+                width: "100%",
+                fontWeight: "500",
+                // paddingTop: "18px",
+                // paddingBottom: "10px",
+                fontSize: "16px",
+                color: "black",
+                display: "flex",
+                justifyContent: "space-between",
+                alignItems: "cemter",
+              }}
+            >
+              Collections
+              <DropdownIcon />
+            </button>
           </a>
-          
+
           {isActiveMenu && (
             <div
               className={`transition-all duration-300 ease-in-out overflow-hidden ${
@@ -128,7 +139,7 @@ const MobileMenus = () => {
                           .replace("&", "")
                           .split(" ")
                           .join("-")}`}
-                          style={{textTransform:"capitalize"}}
+                        style={{ textTransform: "capitalize" }}
                       >
                         {item?.name.toLowerCase()}
                       </Link>
@@ -142,11 +153,12 @@ const MobileMenus = () => {
           )}
         </li>
 
-        <li>
+        {/* <li>
           <Link href="/shop?category=silver" style={{ fontWeight: "500" }}>
             Silver
           </Link>
-        </li>
+        </li> */}
+       
 
         <li>
           <Link href="/gift-card" style={{ fontWeight: "500" }}>
@@ -167,7 +179,29 @@ const MobileMenus = () => {
             Compare
           </Link>
         </li>
-
+        <li>
+          <Link
+            href="/our-story"
+            style={{
+              fontWeight: "500",
+            }}
+          >
+            About
+          </Link>
+        </li>
+        <li>
+          <Link
+            href={{
+              pathname: "/shop",
+              query: { category: "silver" },
+            }}
+            style={{
+              fontWeight: "500",
+            }}
+          >
+            Contact
+          </Link>
+        </li>
         <li>
           <Link href="/login" style={{ fontWeight: "500" }}>
             <button style={{ fontWeight: "500" }} onClick={closeCart}>

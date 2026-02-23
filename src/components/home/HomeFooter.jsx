@@ -186,7 +186,7 @@ const HomeFooter = () => {
                       src="/assets/img/newlayout/Footer/giftcard-01.png"
                       alt=""
                     />
-                    Gift Crad
+                    Gift Card
                   </a>
 
                   {/* <a className="footer-link" href="#">
@@ -293,7 +293,7 @@ const HomeFooter = () => {
                     <img
                       alt="Paypal logo with blue text on white background"
                       height="14"
-                      src="/assets/img/footer/RuPay.webp"
+                      src="/assets/img/footer/rupay.svg"
                       width="30"
                       className="me-2"
                     />
@@ -303,7 +303,7 @@ const HomeFooter = () => {
                     <img
                       alt="Visa logo white text on dark blue background"
                       height="14"
-                      src="/assets/img/footer/Visa.webp"
+                      src="/assets/img/footer/visa.svg"
                       width="20"
                       className="me-2"
                     />
@@ -313,7 +313,7 @@ const HomeFooter = () => {
                     <img
                       alt="Amazon Pay logo white text on dark background"
                       height="14"
-                      src="/assets/img/footer/master-card.webp"
+                      src="/assets/img/footer/mastercard.svg"
                       width="20"
                       className="me-2"
                     />
@@ -323,7 +323,7 @@ const HomeFooter = () => {
                     <img
                       alt="Gpay logo black text on white background"
                       height="14"
-                      src="/assets/img/footer/upi.webp"
+                      src="/assets/img/footer/upi.svg"
                       width="20"
                       className="me-2"
                     />
@@ -333,7 +333,7 @@ const HomeFooter = () => {
                     <img
                       alt="Apple Pay logo white text on black background"
                       height="14"
-                      src="/assets/img/footer/net-banking.webp"
+                      src="/assets/img/footer/netbanking.svg"
                       width="20"
                       className="me-2"
                     />

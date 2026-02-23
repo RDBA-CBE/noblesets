@@ -337,8 +337,18 @@ const Menus = () => {
   return (
     <ul style={{ display: "flex" }}>
       <li>
+        <Link href="/" style={{ fontWeight: "500", color: "black" }}>
+         Home
+        </Link>
+      </li>
+      <li>
+        <Link href="/our-story" style={{ fontWeight: "500", color: "black" }}>
+         About Us
+        </Link>
+      </li>
+      <li>
         <Link href="/shop" style={{ fontWeight: "500", color: "black" }}>
-          All Jewellery
+          Shop
         </Link>
       </li>
       <li className="has-dropdown has-mega-menu">
@@ -477,7 +487,7 @@ const Menus = () => {
         </div>
       </li>
 
-      <li>
+      {/* <li>
         <Link
           href={{
             pathname: "/shop",
@@ -487,7 +497,7 @@ const Menus = () => {
         >
           Silver
         </Link>
-      </li>
+      </li> */}
       {/* {state.token && ( */}
       <li>
         <Link href="/gift-card" style={{ fontWeight: "500", color: "black" }}>
