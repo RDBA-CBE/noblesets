@@ -123,7 +123,6 @@ const ShopArea = ({
   const categories = subtitle.split(" / ");
   const [categoryId, setCategoryId] = useState("earrings");
 
-
   // Initialize ParentCategoryId
   useEffect(() => {
     let ParentCategoryId = "";
@@ -363,9 +362,12 @@ const ShopArea = ({
                               <i className="fal fa-times"></i>
                             </button>
                           </div> */}
-                            <div onClick={() => clearFilter()}>
-                              <i className="fa-regular fa-xmark " />
-                              <span style={{ paddingLeft: "5px" }}>
+                            <div
+                              onClick={() => clearFilter()}
+                              className="clear-filter-btn"
+                            >
+                              <i className="fa-regular fa-xmark" />
+                              <span className="clear-filter-text">
                                 Clear filter
                               </span>
                             </div>
@@ -378,6 +380,7 @@ const ShopArea = ({
                             gap: 10,
                             cursor: "pointer",
                             color: "black",
+                            flexWrap: "wrap",
                           }}
                         >
                           {/* Price Filter */}

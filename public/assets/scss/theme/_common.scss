@@ -5018,3 +5018,17 @@ header .tp-product-action-btn-3:hover {
 .quick-view .tp-product-modal-content {
   padding: 0;
 }
+
+
+/* Default (Desktop) */
+.clear-filter-text {
+  padding-left: 5px;
+}
+
+/* Mobile Only */
+@media (max-width: 767px) {
+  .clear-filter-text {
+    padding-left: 10px;
+
+  }
+}

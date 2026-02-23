@@ -32,7 +32,8 @@ const ShopTopRight = ({ selectHandleFilter }) => {
         <button
           
           type="button"
-          className=" tp-btn tp-btn-border"
+          className=" tp-btn tp-btn-border "
+          style={{gap: "10px",display: "flex",alignItems: "center"}}
         >
           <span>
             <Filter />
