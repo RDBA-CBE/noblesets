@@ -168,7 +168,7 @@ const HomeFooter = () => {
                     />
                     Gold
                   </a>
-                  <a
+                  {/* <a
                     className="footer-link mb-3"
                     href="#"
                     onClick={() => {
@@ -180,7 +180,7 @@ const HomeFooter = () => {
                       alt=""
                     />
                     Silver
-                  </a>
+                  </a> */}
                   <a className="footer-link mb-3" href="/gift-card">
                     <img
                       src="/assets/img/newlayout/Footer/giftcard-01.png"
