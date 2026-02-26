@@ -427,6 +427,7 @@ const HeaderSection = ({ style_2 = false, data }) => {
                         <div className="tp-header-action-item d-none d-lg-block">
                           <div
                             onClick={() => setIsOpen3(!isOpen3)}
+                             title="Search"
                             className="tp-header-action-btn  "
                             style={{
                               // backgroundColor: "#e09a7b", background: linear-gradient(180deg, #1e1a1a, #5a2b23);
@@ -436,7 +437,8 @@ const HeaderSection = ({ style_2 = false, data }) => {
                               alignItems: "center",
                               justifyContent: "center",
                               display: "flex",
-                              borderRadius:"5px"
+                              borderRadius:"5px",
+                              cursor:"pointer"
                             }}
                           >
                             <Search />
@@ -463,6 +465,8 @@ const HeaderSection = ({ style_2 = false, data }) => {
                           style={{ position: "relative" }}
                         >
                           <button
+                             title="My Account"
+
                             onClick={toggleDropdown}
                             className="tp-header-action-btn cartmini-open-btn "
                             style={{
@@ -587,6 +591,8 @@ const HeaderSection = ({ style_2 = false, data }) => {
                         </div>
                         <div className="tp-header-action-item">
                           <button
+                             title="Cart"
+
                             onClick={() => {
                               dispatch(openCartMini());
                               cartRefetch();

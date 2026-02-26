@@ -130,8 +130,11 @@ const HomeCategorySection = () => {
                         <div>
                           <div className="tp-product-content-2  pt-20">
                             <div style={{ textAlign: "center" }}>
-                              <h3 className="tp-product-title-2 mt-5 ">
-                                <Link href={`/`}>{video.title}</Link>
+                              <h3 className="tp-product-title-2 mt-5  "
+                                  style={{cursor:"pointer" }}
+                              
+                              >
+                                <Link href={"/shop"}>{video.title}</Link>
                               </h3>
                               
 
@@ -151,7 +154,14 @@ const HomeCategorySection = () => {
 
                                 <span
                                   className="tp-product-price-2 new-price  pt-3"
-                                  style={{ fontSize: "20px" }}
+                                  style={{ fontSize: "20px",cursor:"pointer" }}
+                                  onClick={()=>{
+                                    router.push({
+                                      pathname: "/shop",
+                                      // query: { category: "other_accessories" }, // Your parameters
+                                    });
+                                  }}
+                             
                                 >
                                  {capitalizeFLetter(video.category)}
                                 </span>
