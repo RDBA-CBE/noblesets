@@ -5032,3 +5032,30 @@ header .tp-product-action-btn-3:hover {
 
   }
 }
+
+.insta-id{
+  color:#e1303f;   /* Instagram pink */
+  font-weight:600;
+}
+.insta-btn-wrapper{
+  margin-top:15px;
+}
+
+.insta-btn{
+  display:inline-flex;
+  align-items:center;
+  gap:8px;
+  background:#7d4432;
+  color:#fff;
+  padding:10px 18px;
+  border-radius:30px;
+  text-decoration:none;
+  font-weight:500;
+  transition:0.3s; font-size:18px;
+}
+
+.insta-btn:hover{
+  background:#7d4432;
+  color:#fff;
+}
+
