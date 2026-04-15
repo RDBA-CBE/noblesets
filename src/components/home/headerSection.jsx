@@ -50,6 +50,15 @@ const HeaderSection = ({ style_2 = false, data }) => {
   const router = useRouter();
   const cart = useSelector((state) => state.cart?.cart_list);
   const compareList = useSelector((state) => state.cart.compare_list);
+  const [isMobileSearchOpen, setIsMobileSearchOpen] = useState(false);
+  const [isMobile, setIsMobile] = useState(null);
+
+  useEffect(() => {
+    const checkMobile = () => setIsMobile(window.innerWidth <= 800);
+    checkMobile();
+    window.addEventListener('resize', checkMobile);
+    return () => window.removeEventListener('resize', checkMobile);
+  }, []);
 
   const { wishlist } = useSelector((state) => state.wishlist);
 
@@ -158,6 +167,25 @@ const HeaderSection = ({ style_2 = false, data }) => {
   const [isOpen2, setIsOpen2] = useState(false);
   const [isOpen3, setIsOpen3] = useState(false);
 
+  const closeMobileSearch = () => {
+    setIsMobileSearchOpen(false);
+    setSearchText('');
+    setSearchOption([]);
+    setIsOpen2(false);
+  };
+
+  const handleSearchIconClick = (e) => {
+    e.stopPropagation();
+    if (window.innerWidth <= 800) {
+      setIsMobileSearchOpen(true);
+      setSearchText('');
+      setSearchOption([]);
+      setIsOpen2(false);
+    } else {
+      setIsOpen3((prev) => !prev);
+    }
+  };
+
   useEffect(() => {
     const handleOutsideClick = (event) => {
       if (
@@ -165,38 +193,16 @@ const HeaderSection = ({ style_2 = false, data }) => {
         !event.target.closest(".dropdown-content")
       ) {
         setIsOpen(false);
-        setIsOpen2(false);
       }
     };
-
     document.addEventListener("click", handleOutsideClick);
-
-    return () => {
-      document.removeEventListener("click", handleOutsideClick);
-    };
+    return () => document.removeEventListener("click", handleOutsideClick);
   }, []);
 
-  // Function to toggle the dropdown
-  const toggleDropdown = () => {
-    setIsOpen(!isOpen);
+  const toggleDropdown = (e) => {
+    e.stopPropagation();
+    setIsOpen((prev) => !prev);
   };
-
-  // Close the dropdown if the user clicks outside of it
-  const handleOutsideClick = (event) => {
-    if (!event.target.closest(".tp-header-action-item")) {
-      setIsOpen(false);
-    }
-  };
-
-  // Attach event listener for clicks outside the dropdown
-  useEffect(() => {
-    document.addEventListener("click", handleOutsideClick);
-
-    // Cleanup function to remove the event listener when component unmounts
-    return () => {
-      document.removeEventListener("click", handleOutsideClick);
-    };
-  }, []);
 
   const handleLogout = async () => {
     try {
@@ -261,6 +267,111 @@ const HeaderSection = ({ style_2 = false, data }) => {
 
   return (
     <>
+      {/* Mobile search overlay */}
+      <div
+        style={{
+          position: 'fixed',
+          top: 0,
+          left: 0,
+          right: 0,
+          zIndex: 9999,
+          transform: isMobileSearchOpen ? 'translateY(0)' : 'translateY(-110%)',
+          transition: 'transform 0.35s cubic-bezier(0.4, 0, 0.2, 1)',
+          background: '#fff',
+          boxShadow: '0 4px 20px rgba(0,0,0,0.15)',
+          padding: '12px 16px',
+        }}
+      >
+        <div style={{ display: 'flex', alignItems: 'center', gap: '10px' }}>
+          <input
+            autoFocus={isMobileSearchOpen}
+            onChange={(e) => handleSearch(e.target.value)}
+            value={searchText}
+            type="text"
+            placeholder="Search for Products..."
+            onKeyPress={(e) => { if (e.key === 'Enter') handleSearch(searchText); }}
+            style={{
+              flex: 1,
+              border: '1px solid #e0e0e0',
+              borderRadius: '8px',
+              padding: '10px 14px',
+              fontSize: '14px',
+              outline: 'none',
+            }}
+          />
+          <button
+            onClick={() => { setIsMobileSearchOpen(false); setSearchText(''); setSearchOption([]); setIsOpen2(false); }}
+            style={{
+              background: 'none',
+              border: 'none',
+              fontSize: '22px',
+              cursor: 'pointer',
+              color: '#7d4432',
+              lineHeight: 1,
+              padding: '4px 8px',
+            }}
+          >
+            ✕
+          </button>
+        </div>
+        {isOpen2 && (
+          <div
+            style={{
+              background: 'white',
+              borderRadius: '8px',
+              boxShadow: '0 4px 16px rgba(0,0,0,0.12)',
+              marginTop: '8px',
+              maxHeight: '60vh',
+              overflowY: 'auto',
+              padding: '10px',
+            }}
+          >
+            {searchLoading ? (
+              <ButtonLoader color="#7d4432" size={30} />
+            ) : searchOption?.length > 0 ? (
+              searchOption.map((item, index) => (
+                <div
+                  key={index}
+                  className="d-flex align-items-center justify-content-between"
+                  style={{ marginBottom: '10px', paddingBottom: '10px', borderBottom: '1px solid #dadada' }}
+                >
+                  <div style={{ marginRight: '10px', width: '30px', height: '30px', flexShrink: 0 }}>
+                    {isImage(profilePic(item?.img)) ? (
+                      <img className="w-100 h-100" src={profilePic(item?.img)} alt="Product" width={50} height={50} style={{ borderRadius: '50%', objectFit: 'cover' }} />
+                    ) : (
+                      <video src={item?.img} width={50} height={50} muted loop style={{ borderRadius: '50%' }} />
+                    )}
+                  </div>
+                  <div className="d-flex flex-wrap">
+                    <Link
+                    href={`/product-details/${item?.slug}`}
+                    className="dropdown-item"
+                    onClick={() => { setIsMobileSearchOpen(false); setSearchText(''); setSearchOption([]); setIsOpen2(false); }}
+                    style={{ flex: 1, fontSize: '13px' }}
+                  >
+                    {item?.name}
+                  </Link>
+                  <p style={{ color: 'black', margin: '0', fontSize: '13px', flexShrink: 0 }}>
+                    {checkChannel() === 'india-channel' ? `₹${item?.price}` : `$${item?.price}`}
+                  </p>
+                  </div>
+                  
+                </div>
+              ))
+            ) : (
+              <span style={{ color: '#888', fontSize: '14px' }}>No Data Found</span>
+            )}
+          </div>
+        )}
+      </div>
+      {/* Mobile search backdrop */}
+      {isMobileSearchOpen && (
+        <div
+          onClick={() => { setIsMobileSearchOpen(false); setSearchText(''); setSearchOption([]); setIsOpen2(false); }}
+          style={{ position: 'fixed', inset: 0, zIndex: 9998, background: 'rgba(0,0,0,0.3)' }}
+        />
+      )}
+
       <header >
         <div
           className={`tp-header-area tp-header-style-${
@@ -308,7 +419,7 @@ const HeaderSection = ({ style_2 = false, data }) => {
                     <div className="tp-header-bottom-right d-flex align-items-center justify-content-end pl-30">
                       {isOpen3 && (
                         <div
-                          className="tp-header-search-2 d-none d-sm-block"
+                          className="tp-header-search-2  d-block"
                           style={{ position: "relative" }}
                         >
                           <input
@@ -424,9 +535,9 @@ const HeaderSection = ({ style_2 = false, data }) => {
                         </div>
                       )}
                       <div className="tp-header-action d-flex align-items-center ml-30">
-                        <div className="tp-header-action-item d-none d-lg-block">
+                        <div className="tp-header-action-item  d-block">
                           <div
-                            onClick={() => setIsOpen3(!isOpen3)}
+                            onClick={handleSearchIconClick}
                              title="Search"
                             className="tp-header-action-btn  "
                             style={{

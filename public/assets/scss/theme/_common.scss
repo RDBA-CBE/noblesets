@@ -4924,6 +4924,17 @@ header .tp-product-action-btn-3:hover {
 }
 
 @media (max-width: 670px) {
+
+  .product-det-modal{
+    width: auto;
+    height: fit-content;
+  }
+
+  .product-det-modal img{ 
+    object-fit: contain;
+    height: revert-layer;
+  }
+
   .shop-page .tp-product-action-btn-2 {
     width: 30px;
     height: 30px;

@@ -228,13 +228,13 @@ const RegisterForm = () => {
 
       {/* sign in with google */}
 
-      <div className="w-100 d-flex align-items-center justify-content-center my-2">
+      {/* <div className="w-100 d-flex align-items-center justify-content-center my-2">
         <small className="mx-10">or</small>
-      </div>
+      </div> */}
 
-      <div className="tp-login-mail sign-in text-center">
+      {/* <div className="tp-login-mail sign-in text-center">
         <span className=" tp-btn-google " style={{ gap: 10 }}>
-          {/* Google icon */}
+         
           <svg
             width="18"
             height="18"
@@ -263,7 +263,7 @@ const RegisterForm = () => {
 
           <span className="ps-2">Sign Up with Google</span>
         </span>
-      </div>
+      </div> */}
     </form>
   );
 };
