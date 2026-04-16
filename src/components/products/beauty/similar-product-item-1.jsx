@@ -494,7 +494,7 @@ Add To Cart
                 style={{ fontSize: "22px", fontWeight: "700" }}
               >
                 &#8377;
-                {roundOff(product?.pricing?.priceRange?.start?.gross?.amount)}
+                {roundOff(product?.pricing?.priceRange?.start?.gross?.amount ?? 0)}
               </span>
               {product?.pricing?.discount !== null && (
                 <div
@@ -528,7 +528,7 @@ Add To Cart
                 className="tp-product-price-3"
                 style={{ fontSize: "22px", fontWeight: "700" }}
               >
-                ${roundOff(pricing?.priceRange?.start?.gross?.amount)}
+                ${roundOff(pricing?.priceRange?.start?.gross?.amount ?? 0)}
               </span>
               {product?.pricing?.discount !== null && (
                 <div
