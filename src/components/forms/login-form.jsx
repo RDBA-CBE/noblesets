@@ -616,11 +616,11 @@ const LoginForm = () => {
         </button>
       </div>
 
-      <div className="w-100 d-flex align-items-center justify-content-center my-2">
+      {/* <div className="w-100 d-flex align-items-center justify-content-center my-2">
         <small className="mx-10">or</small>
-      </div>
+      </div> */}
 
-      <div className="tp-login-mail sign-in text-center">
+      {/* <div className="tp-login-mail sign-in text-center">
         <span className=" tp-btn-google " style={{ gap: 10 }}>
           <svg
             width="18"
@@ -650,7 +650,7 @@ const LoginForm = () => {
 
           <span className="ps-2">Sign in with Google</span>
         </span>
-      </div>
+      </div> */}
     </form>
   );
 };

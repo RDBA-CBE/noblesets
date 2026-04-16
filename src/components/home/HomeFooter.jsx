@@ -394,7 +394,7 @@ const HomeFooter = () => {
                   />
 
                   <span className="footer-link">
-                    <a href="tellto:(0252)8345 93421"> 0421-2266885</a>
+                    <a href="tel:04212266885"> 0421-2266885</a>
                   </span>
                 </div>
                 <div className="d-flex align-items-start mb-3">

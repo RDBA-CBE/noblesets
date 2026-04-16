@@ -5,26 +5,22 @@ const videos = [
   {
     url: "https://www.youtube.com/watch?v=gKG6G_WAfzg",
     thumb: "/assets/img/newlayout/Media/small-image-1.jpg",
-    title:
-      "Lorem ipsum dolor sit consectetur adipiscing elit sed eiusmod tempor incididunt ut labore",
+    title: "Elegant Jewellery Collection Showcase – Premium Designs & Craftsmanship",
   },
   {
     url: "https://www.youtube.com/watch?v=QYLVneoDeMA",
     thumb: "/assets/img/newlayout/Media/small-image-2.jpg",
-    title:
-      "Excepteur sint occaecat cupidatat non proident sunt in culpa qui officia deserunt mollit anim",
+    title: "Behind the Scenes – Creating Beautiful Jewellery with Precision",
   },
   {
     url: "https://www.youtube.com/watch?v=UQ9N-A_YClQ",
     thumb: "/assets/img/newlayout/Media/small-image-3.jpg",
-    title:
-      "Duis aute irure dolor in reprehenderit voluptate velit esse cillum dolore eu fugiat nulla pariatur.",
+    title: "Exclusive Jewellery Styling Ideas for Special Occasions",
   },
   {
     url: "https://www.youtube.com/watch?v=QG4q2q9p9v0",
     thumb: "/assets/img/newlayout/Media/small-image-4.jpg",
-    title:
-      "Ut enim ad minim veniam, quis nostrud quis exercitation ullamco laboris nisi ut aliquip",
+    title: "Latest Jewellery Trends – Discover Our New Collection",
   },
 ];
 

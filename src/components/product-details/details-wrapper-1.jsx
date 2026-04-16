@@ -2225,7 +2225,7 @@ const DetailsWrapper1 = ({
         preventScroll={true}
         shouldCloseOnOverlayClick={true}
         contentLabel="Product Modal"
-        className={"product-det-modal"}
+        className={"product-det-modal si"}
         ariaHideApp={false} // optional: disables appElement warning
       >
         <div className="tp-product-modal p-0">
