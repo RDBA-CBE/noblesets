@@ -47,7 +47,7 @@ const ShopByBudgetNew = () => {
 
       const budgetItems = [
         {
-          label: `Under ₹${addCommasToNumber(minPrice)}`,
+          label: `Onwards ₹${addCommasToNumber(minPrice)}`,
           img: "/assets/img/newlayout/shop by budget/img-1.png",
           price: minPrice
         },
