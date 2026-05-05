@@ -3,22 +3,26 @@ import React from "react";
 
 const videos = [
   {
-    url: "https://www.youtube.com/watch?v=gKG6G_WAfzg",
+    // url: "https://www.youtube.com/watch?v=gKG6G_WAfzg",
+    url:"https://youtu.be/eSUGX5j1MP8?si=aOxLxOxlxxARyDGF",
     thumb: "/assets/img/newlayout/Media/small-image-1.jpg",
     title: "Elegant Jewellery Collection Showcase – Premium Designs & Craftsmanship",
   },
   {
-    url: "https://www.youtube.com/watch?v=QYLVneoDeMA",
+    // url: "https://www.youtube.com/watch?v=QYLVneoDeMA",
+    url:"https://youtu.be/gCdG1XATztY?si=XrLwKmTAWh29d84V",
     thumb: "/assets/img/newlayout/Media/small-image-2.jpg",
     title: "Behind the Scenes – Creating Beautiful Jewellery with Precision",
   },
   {
-    url: "https://www.youtube.com/watch?v=UQ9N-A_YClQ",
+    // url: "https://www.youtube.com/watch?v=UQ9N-A_YClQ",
+    url:"https://youtu.be/g6108lTGMcw?si=xbQAiM85cK2hbYjK",
     thumb: "/assets/img/newlayout/Media/small-image-3.jpg",
     title: "Exclusive Jewellery Styling Ideas for Special Occasions",
   },
   {
-    url: "https://www.youtube.com/watch?v=QG4q2q9p9v0",
+    // url: "https://www.youtube.com/watch?v=QG4q2q9p9v0",
+    url:"https://youtu.be/SvyZepgSHeM?si=qA-7UC8bhCiH4Brw",
     thumb: "/assets/img/newlayout/Media/small-image-4.jpg",
     title: "Latest Jewellery Trends – Discover Our New Collection",
   },
@@ -48,7 +52,8 @@ export default function MediaSection() {
 
           {/* Play Button */}
           <a
-            href="https://www.youtube.com/watch?v=aFXiHz1DH_0"
+            // href="https://www.youtube.com/watch?v=aFXiHz1DH_0"
+            href="https://youtu.be/SvyZepgSHeM?si=qA-7UC8bhCiH4Brw"
             target="_blank"
             rel="noopener noreferrer"
             className="media-hero-play-btn"
