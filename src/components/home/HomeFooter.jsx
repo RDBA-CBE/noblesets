@@ -48,7 +48,7 @@ const HomeFooter = () => {
                     className="footer-link01 mb-3"
                     href="/terms-and-conditions"
                   >
-                    Terms & Conditionss
+                    Terms & Conditions
                   </a>
                   <a
                     className="footer-link01 mb-3"

@@ -20,6 +20,13 @@ import { formatIndianRupees } from "@/utils/functions";
 
 const collections = [
   {
+    title: "Pendant",
+    slug: "pendant",
+    desc: "Sleek, shiny & stylish",
+    price: "₹15000 - ₹20000",
+    img: "/assets/img/newlayout/Shop By collections/image-3.png",
+  },
+  {
     title: "Bracelet",
     slug: "bracelets",
     desc: "Simple, chic & wearable",
@@ -269,14 +276,14 @@ export default function ShopByCollectionsNew() {
                           <h5
                             className="cursor-pointer"
                             style={{
-                              
+                              textTransform: "capitalize",
                               fontWeight: "400",
                             }}
                             onClick={() => {
                               handleClick(item);
                             }}
                           >
-                            {item.title}
+                            {(item.title).toLowerCase()}
                           </h5>
                           <p
                             className="mt-3"

@@ -81,6 +81,18 @@ const MobileMenus = () => {
       <ul>
         <li>
           <Link
+            href="/"
+            style={{
+              fontWeight: "400",
+              color: "#000",
+              fontFamily: "Bagind,sans-serif",
+            }}
+          >
+            Home
+          </Link>
+        </li>
+        <li>
+          <Link
             href="/shop"
             style={{
               fontWeight: "400",

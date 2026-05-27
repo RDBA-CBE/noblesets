@@ -112,7 +112,7 @@ export default function GiftCart() {
             <div className="text-center pt-0 pb-0 pt-md-50 pb-md-50 ">
               <h3>No Gift Card Found</h3>
               <Link href="/shop" className="tp-cart-checkout-btn mt-20">
-                Continue Shipping
+                Continue Shopping
               </Link>
             </div>
           </div>
@@ -182,7 +182,7 @@ export default function GiftCart() {
                 <div className="text-center pt-0 pb-0 pt-md-50 pb-md-50 ">
                   <h3 className="pb-20">No Gift Card Found</h3>
                   <Link href="/shop" className="gradient-btn ">
-                    Continue Shipping
+                    Continue Shopping
                   </Link>
                 </div>
               </div>

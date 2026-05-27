@@ -412,7 +412,7 @@ const Menus1 = () => {
 
   return (
     <ul style={{ display: "flex" }}>
-      {/* <li>
+      <li>
         <Link href="/"  style={{
             fontWeight: "400",
             color: "#000",
@@ -420,7 +420,7 @@ const Menus1 = () => {
           }}>
          Home
         </Link>
-      </li> */}
+      </li>
 
       <li>
         <Link
