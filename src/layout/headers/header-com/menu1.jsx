@@ -345,30 +345,35 @@ const Menus1 = () => {
   const categoryList = async () => {
     try {
       const res = await categoryLists();
+  
       const category = res?.data?.data?.categories?.edges;
       if (category?.length > 0) {
-        const categoryList = res?.data?.data?.categories?.edges?.map(
-          (item) => ({
-            name: item?.node?.name,
-            id: item?.node?.id,
-            slug: item?.node?.slug,
-            productCount: item?.node?.products?.totalCount,
-          })
-        );
-        const excludeGiftCard = categoryList?.filter(
-          (item) => item.slug !== "gift-card"
-        );
-        const filterWithoutProduct = excludeGiftCard?.filter(
-          (item) => item.productCount > 0
-        );
-        if (filterWithoutProduct?.length > 0) {
-          setState({ initalLoad: filterWithoutProduct[0]?.slug });
+        const categoryList = category.map((item) => ({
+          name: item?.node?.name,
+          id: item?.node?.id,
+          slug: item?.node?.slug,
+          productCount: item?.node?.products?.totalCount,
+        }));
+  
+        // Exclude categories
+        const excludedSlugs = ["gift-card", "best-of-noblesets"];
+  
+        const filteredCategories = categoryList
+          ?.filter((item) => !excludedSlugs.includes(item.slug))
+          ?.filter((item) => item.productCount > 0);
+  
+        if (filteredCategories?.length > 0) {
+          setState({
+            initalLoad: filteredCategories[0]?.slug,
+          });
         }
-
-        setState({ categoryList: filterWithoutProduct });
+  
+        setState({
+          categoryList: filteredCategories,
+        });
       }
     } catch (error) {
-      console.log("✌️error --->", error);
+      console.log("✌️ error --->", error);
     }
   };
 
