@@ -298,7 +298,7 @@ const CategoryComponent = (props) => {
 function SingleLoader({ loading }) {
   return (
     <div
-      className="col-xl-3 col-lg-3 col-sm-6 d-flex align-items-center"
+      className="col-xl-3 col-lg-3 col-sm-6 d-flex align-items-center justify-content-center"
       style={{ height: "300px" }}
     >
       <Loader loading={loading} />
@@ -409,6 +409,9 @@ const Menus1 = () => {
     const list = res?.data?.data?.productsSearch?.edges?.slice(0, 11);
     setState({ productList: list });
   };
+
+  // console.log("productList", state.productList);
+  
 
   return (
     <ul style={{ display: "flex" }}>
@@ -638,7 +641,7 @@ const Menus1 = () => {
           About
         </Link>
       </li>
-      <li>
+      {/* <li>
         <Link
           href="/contact"
 
@@ -651,7 +654,7 @@ const Menus1 = () => {
         >
           Contact
         </Link>
-      </li>
+      </li> */}
       {/* )} */}
     </ul>
   );

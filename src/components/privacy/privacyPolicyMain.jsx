@@ -529,7 +529,7 @@ const PrivacyPolicyMain = () => {
                   >
                     www.allaboutcookies.org
                   </a>
-                </u>
+                </u>{" "}
                 . You can learn more about opting out of receiving
                 interest-based ads from other companies at{" "}
                 <u>
@@ -542,6 +542,7 @@ const PrivacyPolicyMain = () => {
                   </a>
                 </u>{" "}
                 and
+                {" "}
                 <u>
                   <a
                     href="https://www.networkadvertising.org/choices"
@@ -549,8 +550,8 @@ const PrivacyPolicyMain = () => {
                     rel="noopener noreferrer"
                   >
                     www.networkadvertising.org/choices
-                  </a>
-                </u>
+                  </a> 
+                </u> 
                 . In addition, certain third party advertising networks, like
                 Facebook (pixels) and Google, permit users to opt out of or
                 customize preferences associated with your internet browsing. To

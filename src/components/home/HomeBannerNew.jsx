@@ -14,7 +14,7 @@ import bannerBG3 from "@assets/img/newlayout/Banner/banner-3-bg.webp";
 import banner_Content from "@assets/img/home/Banner/banner-content-img.png";
 
 // SVG icons
-import { ArrowNextTwo, ArrowPrevTwo } from "@/svg";
+import { ArrowNextSm, ArrowPrevSm } from "@/svg";
 import Link from "next/link";
 import { Autoplay } from "swiper";
 
@@ -136,6 +136,33 @@ const HomeBannerNew = () => {
 
       
       </Slider>
+
+      <div className="d-flex shp-nav" style={{ position: 'absolute', bottom: '20px', right: '40px', zIndex: 10 }}>
+        <button
+          className="btn btn-sm rounded-5 me-3"
+          style={{
+            background: "#be978b",
+            color: "white",
+            fontSize: "15px",
+            padding: "7px 10px",
+          }}
+          onClick={() => slider1?.slickPrev()}
+        >
+          <ArrowPrevSm />
+        </button>
+        <button
+          className="btn btn-sm rounded-5"
+          style={{
+            background: "#be978b",
+            color: "white",
+            fontSize: "15px",
+            padding: "7px 10px",
+          }}
+          onClick={() => slider1?.slickNext()}
+        >
+          <ArrowNextSm />
+        </button>
+      </div>
     </section>
   );
 };

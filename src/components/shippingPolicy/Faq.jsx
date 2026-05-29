@@ -19,7 +19,6 @@ const FAQ = () => {
           <p className="terms-sub-heading">How can I know the status of my order?</p>
           <p className="terms-para">
           All users have the option to track their orders by clicking on Track Order. You need to enter the email address used while placing the order and the order number to track the order. Registered users can sign in and track their orders from the order history section on the account page.
-All users have the option to track their orders by clicking on Track Order. You need to enter the email address used while placing the order and the order number to track the order. Registered users can sign in and track their orders from the order history section on the account page.
           </p>
              <p className="terms-sub-heading">What happens if my order is lost in transit?</p>
           <p className="terms-para">In the unlikely event that an order gets lost during transit, we wait for 15 days to track your lost order and if we are still unsuccessful, then we process your refund through the payment mode that you had opted for at the time of placing the order.
