@@ -176,7 +176,7 @@ const HeaderSection = ({ style_2 = false, data }) => {
 
   const handleSearchIconClick = (e) => {
     e.stopPropagation();
-    if (window.innerWidth <= 800) {
+    if (window.innerWidth <= 1500) {
       setIsMobileSearchOpen(true);
       setSearchText('');
       setSearchOption([]);
@@ -188,11 +188,16 @@ const HeaderSection = ({ style_2 = false, data }) => {
 
   useEffect(() => {
     const handleOutsideClick = (event) => {
+      // Close My Account dropdown
       if (
         !event.target.closest(".tp-header-area") &&
         !event.target.closest(".dropdown-content")
       ) {
         setIsOpen(false);
+      }
+      // Close search results dropdown when clicking outside
+      if (!event.target.closest(".tp-header-search-2")) {
+        setIsOpen2(false);
       }
     };
     document.addEventListener("click", handleOutsideClick);
@@ -332,7 +337,7 @@ const HeaderSection = ({ style_2 = false, data }) => {
               searchOption.map((item, index) => (
                 <div
                   key={index}
-                  className="d-flex align-items-center justify-content-between"
+                  className="d-flex align-items-center "
                   style={{ marginBottom: '10px', paddingBottom: '10px', borderBottom: '1px solid #dadada' }}
                 >
                   <div style={{ marginRight: '10px', width: '30px', height: '30px', flexShrink: 0 }}>
@@ -385,7 +390,7 @@ const HeaderSection = ({ style_2 = false, data }) => {
               sticky ? "header-sticky" : ""
             }`}
           >
-            <div className="section-wd" style={{ padding: "10px 30px 10px 30px" }}>
+            <div className="section-wd" style={{ padding: "10px 20px 10px 20px" }}>
               <div className="tp-mega-menu-wrapper p-relative">
                 <div className="row align-items-center">
                   <div className="col-xl-5 d-none d-xl-block">
@@ -443,7 +448,7 @@ const HeaderSection = ({ style_2 = false, data }) => {
                                 background: "white",
                                 padding: "30px 20px",
                                 // right: "-10px",
-                                zIndex: "2",
+                                zIndex: "200",
                                 width: "100%",
                                 borderRadius:"10px",
                                 boxShadow: "0px 8px 16px 0px rgba(0,0,0,0.2)",
@@ -534,8 +539,28 @@ const HeaderSection = ({ style_2 = false, data }) => {
                           ) : null}
                         </div>
                       )}
-                      <div className="tp-header-action d-flex align-items-center ml-30">
+                      <div className="tp-header-action d-flex align-items-center ml-30 ">
+                        <div className="tp-header-action-item  d-none d-xl-block">
+                          <Link
+                             href={"/contact"}
+                            className="tp-header-action-btn cartmini-open-btn "
+                            style={{
+                             background: "#7d4432",
+                              fontSize:"16px",
+                              alignItems: "center",
+                              justifyContent: "center",
+                              display: "flex",
+                              borderRadius:"5px",
+                              color:"#FFF",
+                              padding:"6px 10px"
+                            }}
+                          >
+                            Contact
+                           
+                          </Link>
+                        </div>
                         <div className="tp-header-action-item  d-block">
+                          
                           <div
                             onClick={handleSearchIconClick}
                              title="Search"

@@ -1,6 +1,8 @@
 import { Email, EmailTwo, Location, Phone, PhoneTwo } from "@/svg";
 import { useRouter } from "next/router";
 import React from "react";
+import Link from "next/link";
+
 
 const HomeFooter = () => {
   const router = useRouter();
@@ -57,7 +59,7 @@ const HomeFooter = () => {
                     Return & Exchange Policies
                   </a>
                   <a className="footer-link01 mb-3" href="/faq">
-                    Help &amp; FAQS
+                    Help &amp; FAQs
                   </a>
                   {/* <a className="footer-link" href="#">
                     Testimonials
@@ -552,11 +554,11 @@ const HomeFooter = () => {
               </div>
             </div>
 
-            <div
+            <Link href="/"
               className="d-flex justify-content-center mt-4"
               // style={{height:"330px",overflow:"hidden"}}
             >
-              {/* <div> */}
+              {/* <Link href="/" className="p-0 m-0 w-100 h-100"> */}
               <img
                 src="/assets/img/footer/footer-logo.png"
                 alt=""
@@ -567,8 +569,8 @@ const HomeFooter = () => {
                   objectPosition: "top",
                 }}
               />
-              {/* </div> */}
-            </div>
+              {/* </Link> */}
+            </Link>
           </div>
         </div>
       </footer>

@@ -25,7 +25,10 @@ const HomeCategorySection = () => {
       nextEl: ".tp-brand-slider-button-next",
       prevEl: ".tp-brand-slider-button-prev",
     },
-    autoplay: true,
+    autoplay: {
+      delay: 3000,
+      disableOnInteraction: false,
+    },
     loop: true,
     speed: 1000,
 
@@ -101,7 +104,7 @@ const HomeCategorySection = () => {
               >
                 <Swiper
                   {...slider_setting}
-                  modules={[Navigation]}
+                  modules={[Navigation, Autoplay]}
                   className="tp-brand-slider-active swiper-container"
                 >
                   {video_data.map((video, i) => (

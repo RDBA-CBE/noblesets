@@ -189,9 +189,9 @@ const CompareArea2 = () => {
           <div className="row">
             <div className="col-xl-12">
               {compareData?.length === 0 && (
-                <div className="text-center pt-0 pb-0 pt-md-50 pb-md-50 ">
-                  <h3>No Compare Items Found</h3>
-                  <Link href="/shop" className="tp-cart-checkout-btn mt-20">
+                <div className="text-center  " style={{padding:"100px 0"}}>
+                  <h3 className="pb-20">No Compare Items Found</h3>
+                  <Link href="/shop" className="gradient-btn">
                     Continue Shopping
                   </Link>
                 </div>

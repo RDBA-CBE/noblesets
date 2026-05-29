@@ -20,7 +20,7 @@ const NoblesetPromisesNew = () => {
         <div className="col-12 col-md-7 col-lg-6 col-xl-7  np-content-wrap">
           <div className="mb-0 ">
             <h5 className="sub-ti ps-2">
-              <b className="pe-1">✦ </b>Trusted craftmanship
+              <b className="pe-1">✦ </b>Trusted craftsmanship
             </h5>
             <h4 className="feature-adipisicing main-ti">Noblesets Promises</h4>
           </div>
@@ -48,7 +48,7 @@ const NoblesetPromisesNew = () => {
                   alt="logo"
                 />
               </div>
-              <p className="np-icon-label">BIS Halmaked</p>
+              <p className="np-icon-label">BIS Hallmarked</p>
             </div>
 
             <div className=" np-icon-col">

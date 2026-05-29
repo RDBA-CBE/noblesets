@@ -22,6 +22,7 @@ import GiftSectionNew from "@/components/home/giftSectionNew";
 import ShopByCollectionsNew from "@/components/home/shopByCollectionsNew";
 import NoblesetPromisesNew from "@/components/home/NoblesetPromisesNew";
 import InstaSection1 from "@/components/home/InstaSection1";
+import IframeMediaGallery from "@/components/home/IframeMediaGallery";
 
 const Index = () => {
   const [maximumPrice] = useMaxPriceMutation();
@@ -163,7 +164,8 @@ const Index = () => {
         transition={{ duration: 0.6, delay: 0.2 }}
         viewport={{ once: true }}
       >
-        <MediaGallery />
+        {/* <MediaGallery /> */}
+        <IframeMediaGallery/>
       </motion.div>
 
       <motion.div

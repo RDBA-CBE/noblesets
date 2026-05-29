@@ -38,6 +38,7 @@ const MenusProductSlider1 = ({ product, loginPopup, loading }) => {
 
   const [cartLoader, setCartLoader] = useState(false);
   const [wishlistLoader, setWishlistLoader] = useState(false);
+  const [isImgLoading, setIsImgLoading] = useState(true);
 
   const RelatedProduct = product.node;
 
@@ -227,7 +228,7 @@ const MenusProductSlider1 = ({ product, loginPopup, loading }) => {
             }
             style={{
               backgroundImage: `url("${encodeURI(profilePic(img))}")`,
-              backgroundColor: "#FFFFFF",
+              // backgroundColor: "#FFFFFF",
               // backgroundPosition: "0px -80px",
               borderRadius: "10px",
               width: "100%",
