@@ -1,7 +1,7 @@
 import React from "react";
 import { useRouter } from "next/router";
 import { Swiper, SwiperSlide } from "swiper/react";
-import { Navigation } from "swiper";
+import { Navigation, Autoplay } from "swiper";
 import { ArrowNextSm, ArrowPrevSm } from "@/svg";
 
 const HomeCategorySection = () => {
@@ -87,8 +87,11 @@ const HomeCategorySection = () => {
               slidesPerView={3}
               spaceBetween={12}
               loop={true}
-              autoplay={true}
-              modules={[Navigation]}
+              autoplay={{
+                delay: 3000,
+                disableOnInteraction: false,
+              }}
+              modules={[Navigation, Autoplay]}
               navigation={{
                 nextEl: ".tp-brand-slider-button-next",
                 prevEl: ".tp-brand-slider-button-prev",

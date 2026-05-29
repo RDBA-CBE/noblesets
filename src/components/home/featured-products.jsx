@@ -1,6 +1,6 @@
 import React from "react";
 import { Swiper, SwiperSlide } from 'swiper/react';
-import { Navigation } from 'swiper';
+import { Navigation, Autoplay } from 'swiper';
 import { ArrowNextSm, ArrowPrevSm } from '@/svg';
 import { useRouter } from "next/router";
 
@@ -24,6 +24,11 @@ const slider_setting = {
         nextEl: ".tp-brand-slider-button-next",
         prevEl: ".tp-brand-slider-button-prev",
     },
+    autoplay: {
+        delay: 3000,
+        disableOnInteraction: false,
+    },
+    loop: true,
     breakpoints: {
         '992': {
             slidesPerView: 4,
@@ -64,7 +69,11 @@ const FeaturedProdectsSection = () => {
                 <div className="row">
                     <div className="col-xl-12">
                         <div className="tp-brand-slider p-relative">
-                            <Swiper {...slider_setting} modules={[Navigation]} className="tp-brand-slider-active swiper-container">
+                            <Swiper 
+                                {...slider_setting} 
+                                modules={[Navigation, Autoplay]} 
+                                className="tp-brand-slider-active swiper-container"
+                            >
                                 {video_data.map((video, i) => (
                                     <SwiperSlide key={i} className="tp-brand-item text-center" style={{ width: "308px", height: "462px" }}>
                                         <video

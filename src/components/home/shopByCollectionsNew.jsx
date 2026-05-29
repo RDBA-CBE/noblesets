@@ -2,7 +2,7 @@
 
 import React, { useEffect, useRef, useState } from "react";
 import { Swiper, SwiperSlide } from "swiper/react";
-import { Navigation } from "swiper";
+import { Navigation, Autoplay } from "swiper";
 import "swiper/css";
 import "swiper/css/navigation";
 import { ArrowNextSm, ArrowPrevSm } from "@/svg";
@@ -24,7 +24,7 @@ const collections = [
     slug: "pendant",
     desc: "Sleek, shiny & stylish",
     price: "₹15000 - ₹20000",
-    img: "/assets/img/newlayout/Shop By collections/image-3.png",
+    img: "/assets/img/newlayout/Shop By collections/image-2.png",
   },
   {
     title: "Bracelet",
@@ -38,7 +38,7 @@ const collections = [
     slug: "rings",
     desc: "Unique, bold & beautiful",
     price: "₹25000 - ₹30000",
-    img: "/assets/img/newlayout/Shop By collections/image-2.png",
+    img: "/assets/img/newlayout/Shop By collections/image-6.png",
   },
   {
     title: "Chains",
@@ -52,7 +52,7 @@ const collections = [
     slug: "earring",
     desc: "Stunning and fashionable",
     price: "₹25000 - ₹30000",
-    img: "/assets/img/newlayout/Shop By collections/image-4.png",
+    img: "/assets/img/newlayout/Shop By collections/image-5.png",
   },
 
   {
@@ -93,13 +93,28 @@ export default function ShopByCollectionsNew() {
   const getChildCatList = async () => {
     try {
       const res = await childCatList({});
-      const filter = res?.data?.data?.categories?.edges?.map((item) => ({
+      const rawFilter = res?.data?.data?.categories?.edges?.map((item) => ({
         slug: item?.node?.slug,
         title: item?.node?.name,
       }));
+
+      // Display only unique categories by keeping the 1st entry for each title
+      const filter = rawFilter?.filter((value, index, self) =>
+        index === self.findIndex((t) => 
+          t.title.toLowerCase().trim() === value.title.toLowerCase().trim()
+        )
+      );
+
+      console.log("shop filter", filter);
+      
       const filterWithImages = filter?.map((filterItem) => {
+        const cleanTitle = filterItem.title.toLowerCase().trim().replace(/s$/, ""); // normalize plural/singular
+        
         const matchingCollection = collections?.find(
-          (collectionItem) => collectionItem.slug == filterItem.slug
+          (collectionItem) =>
+            collectionItem.slug === filterItem.slug || 
+            collectionItem.title.toLowerCase().trim().startsWith(cleanTitle) ||
+            filterItem.title.toLowerCase().trim().startsWith(collectionItem.title.toLowerCase().trim().replace(/s$/, ""))
         );
 
         return {
@@ -227,11 +242,17 @@ export default function ShopByCollectionsNew() {
           <div className="section-wd">
             <div className="position-relative row">
               <Swiper
-                modules={[Navigation]}
+                key={filter?.length}
+                modules={[Navigation, Autoplay]}
                 // spaceBetween={30}
                 slidesPerView={1.1}
                 slidesOffsetAfter={16}
                 slidesOffsetBefore={0}
+                autoplay={{
+                  delay: 3000,
+                  disableOnInteraction: false,
+                }}
+                loop
                 onInit={(swiper) => {
                   swiper.params.navigation.prevEl = prevRef.current;
                   swiper.params.navigation.nextEl = nextRef.current;
@@ -244,6 +265,7 @@ export default function ShopByCollectionsNew() {
                   768: { slidesPerView: 3 },
                   992: { slidesPerView: 4 },
                 }}
+                
               >
                 {filter?.map((item, index) => (
                   <SwiperSlide key={index}>
