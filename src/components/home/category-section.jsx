@@ -36,13 +36,13 @@ const HomeCategorySection = () => {
   useEffect(() => {
     categoryList();
   }, []);
-  
+
 
   const categoryList = async () => {
     const res = await priceFilter({
       filter: { categorySlugs: "best-of-noblesets" },
       sortBy: { direction: "DESC", field: "CREATED_AT" },
-      page: 1,
+      first: 20,
       after: null,
       pageSize:20
     });

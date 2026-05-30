@@ -23,7 +23,7 @@ const HomeCategorySection = () => {
     const res = await priceFilter({
       filter: { categorySlugs: "our-best-sellers" },
       sortBy: { direction: "DESC", field: "CREATED_AT" },
-      page: 1,
+      first: 20,
       after: null,
       pageSize:20
     });

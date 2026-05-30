@@ -118,14 +118,14 @@ export default function ShopByCollections() {
       try {
         const minRes = await maximumPrice({
           channel: "india-channel",
-          first: 1,
+          first: 10,
           filter: { categorySlugs: [cat.slug] },
           sortBy: { direction: "ASC", field: "PRICE" },
         });
 
         const maxRes = await maximumPrice({
           channel: "india-channel",
-          first: 1,
+          first: 10,
           filter: { categorySlugs: [cat.slug] },
           sortBy: { direction: "DESC", field: "PRICE" },
         });
