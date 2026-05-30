@@ -1,11 +1,51 @@
-import React from "react";
+import React, { useEffect } from "react";
 import { useRouter } from "next/router";
 import { Swiper, SwiperSlide } from "swiper/react";
 import { Navigation, Autoplay } from "swiper";
 import { ArrowNextSm, ArrowPrevSm } from "@/svg";
+import { useSetState } from "@/utils/functions";
+import { usePriceFilterMutation } from "@/redux/features/productApi";
 
 const HomeCategorySection = () => {
   const router = useRouter();
+
+  const [state, setState] = useSetState({
+    categoryList: [],
+  });
+
+  const [priceFilter, { isLoading: productLoading }] = usePriceFilterMutation();
+
+  useEffect(() => {
+    categoryList();
+  }, []);
+
+  const categoryList = async () => {
+    const res = await priceFilter({
+      filter: { categorySlugs: "our-best-sellers" },
+      sortBy: { direction: "DESC", field: "CREATED_AT" },
+      page: 1,
+      after: null,
+      pageSize:20
+    });
+    console.log("best seller",res)
+    const list = res?.data?.data?.productsSearch?.edges?.map(
+      (item) => item?.node,
+    );
+    console.log(list, "list");
+    if (list?.length > 0) {
+      const response = list
+        ?.filter((item) => item?.media?.length > 1)
+        ?.map((item) => ({
+          id: item?.id,
+          name: item?.name,
+          image: item?.media?.[1]?.url,
+          price: item?.defaultVariant?.pricing?.price?.gross?.amount,
+          slug: item?.slug,
+        }));
+      setState({ categoryList: response });
+    }
+  };
+
 
   
   const video_data = [
@@ -33,10 +73,9 @@ const HomeCategorySection = () => {
 
   const handleClick = (category) => {
     router.push({
-      pathname: "/shop",
-      query: {
-        category: category.toLowerCase().replace("&", "").split(" ").join("-"),
-      },
+      pathname: `product-details/${
+        category?.slug}`
+    
     });
   };
 
@@ -60,7 +99,7 @@ const HomeCategorySection = () => {
         <div className="row justify-content-center">
           <div className="col-11 col-lg-10 col-xl-9">
             <div className="static-bs-wrapper d-none d-md-flex justify-content-between align-items-end gap-0">
-              {video_data.map((img, index) => (
+              {state.categoryList.map((img, index) => (
                 <div
                   key={index}
                   className={`bs-slide 
@@ -70,11 +109,11 @@ const HomeCategorySection = () => {
                   `}
                 >
                   <img
-                    src={img.img}
+                    src={img.image}
                     alt="Best Seller"
                     className="bs-img"
                     onClick={() => {
-                      handleClick(img.link);
+                      handleClick(img);
                     }}
                   />
                 </div>
@@ -107,14 +146,14 @@ const HomeCategorySection = () => {
               }}
               className="bs-mobile-slider"
             >
-              {video_data.map((img, index) => (
+              {state.categoryList.map((img, index) => (
                 <SwiperSlide key={index}>
                   <img
-                    src={img.img}
+                    src={img.image}
                     alt="Best Seller"
                     className="bs-img"
                     onClick={() => {
-                      handleClick(img.link);
+                      handleClick(img);
                     }}
                   />
                 </SwiperSlide>
