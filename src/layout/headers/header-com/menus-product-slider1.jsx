@@ -227,7 +227,7 @@ const MenusProductSlider1 = ({ product, loginPopup, loading }) => {
               router.push(`/product-details/${product?.node?.slug}`)
             }
             style={{
-               backgroundImage: `url("${encodeURI(profilePic(img))}")`,
+              backgroundImage: `url("${encodeURI(profilePic(img))}")`,
               // backgroundColor: "#FFFFFF",
               // backgroundPosition: "0px -80px",
               borderRadius: "10px",

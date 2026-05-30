@@ -56,20 +56,23 @@ const MobileMenus = () => {
     try {
       const res = await categoryLists();
       const category = res?.data?.data?.categories?.edges;
+  
       if (category?.length > 0) {
-        const categoryList = res?.data?.data?.categories?.edges?.map(
-          (item) => ({
-            name: item?.node?.name,
-            id: item?.node?.id,
-            slug: item?.node?.slug,
-          })
+        const categoryList = category.map((item) => ({
+          name: item?.node?.name,
+          id: item?.node?.id,
+          slug: item?.node?.slug,
+        }));
+  
+        const excludeCategories = categoryList.filter(
+          (item) =>
+            item.slug !== "gift-card" &&
+            item.slug !== "best-of-noblesets"
         );
-        const excludeGiftCard = categoryList?.filter(
-          (item) => item.slug !== "gift-card"
-        );
-        setState({ categoryList: excludeGiftCard });
+  
+        setState({ categoryList: excludeCategories });
       }
-
+  
       setIsActiveMenu(!isActiveMenu);
     } catch (error) {
       console.log("✌️error --->", error);
