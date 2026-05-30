@@ -23,9 +23,10 @@ const collections = [
   {
     title: "Pendant",
     slug: "pendant",
-    desc: "Sleek, shiny & stylish",
+    desc: "Elegant, Sleek & Stylish",
     price: "₹15000 - ₹20000",
     img: "/assets/img/newlayout/Shop By collections/image-2.png",
+    // img:"/assets/img/newlayout/Shop By collections/shopping-1.webp"
   },
   {
     title: "Bracelet",
