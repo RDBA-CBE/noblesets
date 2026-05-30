@@ -2746,6 +2746,7 @@ header .tp-product-action-btn-3:hover {
 .tp-product-action-btn-3:hover {
   border: none !important;
   background: #9b604d !important;
+  color: #fff !important;
 }
 
 @media (max-width: 1200px) {
@@ -2829,6 +2830,7 @@ header .tp-product-action-btn-3:hover {
 
 .submenu-pro .tp-product-action-btn-3:hover {
   background: #9b604d !important;
+  color: #fff !important;
 }
 
 .profile__tab .nav-tabs {
@@ -5083,5 +5085,64 @@ header .tp-product-action-btn-3:hover {
   margin-right: 20px !important;
   
 }
+}
+
+.header-in-wid{
+  flex: 0 0 auto;
+  width: 50%;
+}
+
+@media(max-width:1500px){
+  .header-in-wid{
+  flex: 0 0 auto;
+   width: 66.66666667%;
+}
+}
+
+@media(min-width:1600px){
+.header-in-wid-two{
+  flex: 0 0 auto;
+  width: 66.33333333%;
+}
+}
+
+@media(min-width:1800px){
+.header-in-wid-two{
+  flex: 0 0 auto;
+  width: 68.33333333%;
+}
+}
+
+
+.gold-rate-bar {
+  overflow: hidden;
+  white-space: nowrap;
+}
+
+.ticker-track {
+  display: flex;
+  width: max-content;
+  animation: scroll-ticker 20s linear infinite;
+}
+
+.ticker-group {
+  display: flex;
+  align-items: center;
+  gap: 30px;
+  padding-right: 30px;
+  flex-shrink: 0;
+}
+
+@keyframes scroll-ticker {
+  from {
+    transform: translateX(100%);
+  }
+  to {
+    transform: translateX(-100%);
+  }
+}
+
+.ticker-track:hover {
+  animation-play-state: paused;
 }
 

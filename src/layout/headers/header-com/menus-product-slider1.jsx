@@ -370,6 +370,7 @@ const MenusProductSlider1 = ({ product, loginPopup, loading }) => {
                       className={`tp-product-action-btn-3 ${
                         isAddedToCart ? "active" : ""
                       } tp-product-add-cart-btn`}
+                      style={{color:"#fff"}}
                     >
                       <Cart />
                       <span className="tp-product-tooltip tp-product-tooltip-top">
@@ -397,6 +398,7 @@ const MenusProductSlider1 = ({ product, loginPopup, loading }) => {
                           className={`tp-product-action-btn-3 ${
                             isAddedToCart ? "active" : ""
                           } tp-product-add-cart-btn`}
+                          style={{color:"#7d4432"}}
                         >
                           <Cart />
                           <span className="tp-product-tooltip tp-product-tooltip-top">
@@ -413,6 +415,7 @@ const MenusProductSlider1 = ({ product, loginPopup, loading }) => {
                 type="button"
                 className="tp-product-action-btn-3 tp-product-quick-view-btn"
                 onClick={() => openModal()}
+                style={{color:"#7d4432"}}
               >
                 <QuickView />
                 <span className="tp-product-tooltip tp-product-tooltip-top">
@@ -435,6 +438,7 @@ const MenusProductSlider1 = ({ product, loginPopup, loading }) => {
                       // router.push("/wishlist");
                     }}
                     className={`tp-product-action-btn-3 active tp-product-add-to-wishlist-btn`}
+                    style={{color:"#fff"}}
                   >
                     <Wishlist />
                     <span className="tp-product-tooltip tp-product-tooltip-top">
@@ -455,6 +459,7 @@ const MenusProductSlider1 = ({ product, loginPopup, loading }) => {
                         type="button"
                         onClick={() => handleWishlist(product)}
                         className={`tp-product-action-btn-3 tp-product-add-to-wishlist-btn`}
+                        style={{color:"#7d4432"}}
                       >
                         <Wishlist />
                         <span className="tp-product-tooltip tp-product-tooltip-top">
@@ -471,6 +476,7 @@ const MenusProductSlider1 = ({ product, loginPopup, loading }) => {
                 className={`tp-product-action-btn-3 ${
                   isAddWishlist ? "active" : ""
                 } tp-product-add-to-wishlist-btn`}
+                style={{color:"#7d4432"}}
                 onClick={() => {
                   if (
                     compareList?.some((prd) => prd?.id === product?.node?.id)

@@ -1,11 +1,11 @@
 import React from "react";
 
-const CartTwo = () => {
+const CartTwo = ({size}) => {
   return (
     <svg
     style={{color:"#9b604d"}}
-      width="18"
-      height="18"
+      width={`${size ? size : "18"}`}
+      height={`${size ? size : "18"}`}
       viewBox="0 0 21 22"
       fill="none"
       xmlns="http://www.w3.org/2000/svg"

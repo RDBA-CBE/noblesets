@@ -45,6 +45,8 @@ import { profilePic } from "@/utils/constant";
 import ButtonLoader from "../../components/loader/button-loader";
 import { useLogoutMutation } from "../../redux/features/productApi";
 import Menus1 from "@/layout/headers/header-com/menu1";
+import GoldRateBar from "../GoldRateBar";
+import GoldRateBarHead from "../GoldRateBarHead";
 
 const HeaderSection = ({ style_2 = false, data }) => {
   const router = useRouter();
@@ -56,8 +58,8 @@ const HeaderSection = ({ style_2 = false, data }) => {
   useEffect(() => {
     const checkMobile = () => setIsMobile(window.innerWidth <= 800);
     checkMobile();
-    window.addEventListener('resize', checkMobile);
-    return () => window.removeEventListener('resize', checkMobile);
+    window.addEventListener("resize", checkMobile);
+    return () => window.removeEventListener("resize", checkMobile);
   }, []);
 
   const { wishlist } = useSelector((state) => state.wishlist);
@@ -124,7 +126,7 @@ const HeaderSection = ({ style_2 = false, data }) => {
       });
       localStorage.setItem(
         "checkoutTokenINR",
-        data?.data?.data?.checkoutCreate?.checkout?.token
+        data?.data?.data?.checkoutCreate?.checkout?.token,
       );
     } catch (error) {
       console.error("Error:", error);
@@ -138,7 +140,7 @@ const HeaderSection = ({ style_2 = false, data }) => {
       });
       localStorage.setItem(
         "checkoutTokenUSD",
-        data?.data?.data?.checkoutCreate?.checkout?.token
+        data?.data?.data?.checkoutCreate?.checkout?.token,
       );
     } catch (error) {
       console.error("Error:", error);
@@ -154,8 +156,8 @@ const HeaderSection = ({ style_2 = false, data }) => {
 
         dispatch(
           add_to_wishlist(
-            wishlistData?.data?.wishlists?.edges?.map((item) => item?.node)
-          )
+            wishlistData?.data?.wishlists?.edges?.map((item) => item?.node),
+          ),
         );
       }
     } catch (error) {
@@ -169,7 +171,7 @@ const HeaderSection = ({ style_2 = false, data }) => {
 
   const closeMobileSearch = () => {
     setIsMobileSearchOpen(false);
-    setSearchText('');
+    setSearchText("");
     setSearchOption([]);
     setIsOpen2(false);
   };
@@ -178,7 +180,7 @@ const HeaderSection = ({ style_2 = false, data }) => {
     e.stopPropagation();
     if (window.innerWidth <= 1500) {
       setIsMobileSearchOpen(true);
-      setSearchText('');
+      setSearchText("");
       setSearchOption([]);
       setIsOpen2(false);
     } else {
@@ -275,45 +277,52 @@ const HeaderSection = ({ style_2 = false, data }) => {
       {/* Mobile search overlay */}
       <div
         style={{
-          position: 'fixed',
+          position: "fixed",
           top: 0,
           left: 0,
           right: 0,
           zIndex: 9999,
-          transform: isMobileSearchOpen ? 'translateY(0)' : 'translateY(-110%)',
-          transition: 'transform 0.35s cubic-bezier(0.4, 0, 0.2, 1)',
-          background: '#fff',
-          boxShadow: '0 4px 20px rgba(0,0,0,0.15)',
-          padding: '12px 16px',
+          transform: isMobileSearchOpen ? "translateY(0)" : "translateY(-110%)",
+          transition: "transform 0.35s cubic-bezier(0.4, 0, 0.2, 1)",
+          background: "#fff",
+          boxShadow: "0 4px 20px rgba(0,0,0,0.15)",
+          padding: "12px 16px",
         }}
       >
-        <div style={{ display: 'flex', alignItems: 'center', gap: '10px' }}>
+        <div style={{ display: "flex", alignItems: "center", gap: "10px" }}>
           <input
             autoFocus={isMobileSearchOpen}
             onChange={(e) => handleSearch(e.target.value)}
             value={searchText}
             type="text"
             placeholder="Search for Products..."
-            onKeyPress={(e) => { if (e.key === 'Enter') handleSearch(searchText); }}
+            onKeyPress={(e) => {
+              if (e.key === "Enter") handleSearch(searchText);
+            }}
             style={{
               flex: 1,
-              border: '1px solid #e0e0e0',
-              borderRadius: '8px',
-              padding: '10px 14px',
-              fontSize: '14px',
-              outline: 'none',
+              border: "1px solid #e0e0e0",
+              borderRadius: "8px",
+              padding: "10px 14px",
+              fontSize: "14px",
+              outline: "none",
             }}
           />
           <button
-            onClick={() => { setIsMobileSearchOpen(false); setSearchText(''); setSearchOption([]); setIsOpen2(false); }}
+            onClick={() => {
+              setIsMobileSearchOpen(false);
+              setSearchText("");
+              setSearchOption([]);
+              setIsOpen2(false);
+            }}
             style={{
-              background: 'none',
-              border: 'none',
-              fontSize: '22px',
-              cursor: 'pointer',
-              color: '#7d4432',
+              background: "none",
+              border: "none",
+              fontSize: "22px",
+              cursor: "pointer",
+              color: "#7d4432",
               lineHeight: 1,
-              padding: '4px 8px',
+              padding: "4px 8px",
             }}
           >
             ✕
@@ -322,13 +331,13 @@ const HeaderSection = ({ style_2 = false, data }) => {
         {isOpen2 && (
           <div
             style={{
-              background: 'white',
-              borderRadius: '8px',
-              boxShadow: '0 4px 16px rgba(0,0,0,0.12)',
-              marginTop: '8px',
-              maxHeight: '60vh',
-              overflowY: 'auto',
-              padding: '10px',
+              background: "white",
+              borderRadius: "8px",
+              boxShadow: "0 4px 16px rgba(0,0,0,0.12)",
+              marginTop: "8px",
+              maxHeight: "60vh",
+              overflowY: "auto",
+              padding: "10px",
             }}
           >
             {searchLoading ? (
@@ -338,33 +347,73 @@ const HeaderSection = ({ style_2 = false, data }) => {
                 <div
                   key={index}
                   className="d-flex align-items-center "
-                  style={{ marginBottom: '10px', paddingBottom: '10px', borderBottom: '1px solid #dadada' }}
+                  style={{
+                    marginBottom: "10px",
+                    paddingBottom: "10px",
+                    borderBottom: "1px solid #dadada",
+                  }}
                 >
-                  <div style={{ marginRight: '10px', width: '30px', height: '30px', flexShrink: 0 }}>
+                  <div
+                    style={{
+                      marginRight: "10px",
+                      width: "30px",
+                      height: "30px",
+                      flexShrink: 0,
+                    }}
+                  >
                     {isImage(profilePic(item?.img)) ? (
-                      <img className="w-100 h-100" src={profilePic(item?.img)} alt="Product" width={50} height={50} style={{ borderRadius: '50%', objectFit: 'cover' }} />
+                      <img
+                        className="w-100 h-100"
+                        src={profilePic(item?.img)}
+                        alt="Product"
+                        width={50}
+                        height={50}
+                        style={{ borderRadius: "50%", objectFit: "cover" }}
+                      />
                     ) : (
-                      <video src={item?.img} width={50} height={50} muted loop style={{ borderRadius: '50%' }} />
+                      <video
+                        src={item?.img}
+                        width={50}
+                        height={50}
+                        muted
+                        loop
+                        style={{ borderRadius: "50%" }}
+                      />
                     )}
                   </div>
                   <div className="d-flex flex-wrap">
                     <Link
-                    href={`/product-details/${item?.slug}`}
-                    className="dropdown-item"
-                    onClick={() => { setIsMobileSearchOpen(false); setSearchText(''); setSearchOption([]); setIsOpen2(false); }}
-                    style={{ flex: 1, fontSize: '13px' }}
-                  >
-                    {item?.name}
-                  </Link>
-                  <p style={{ color: 'black', margin: '0', fontSize: '13px', flexShrink: 0 }}>
-                    {checkChannel() === 'india-channel' ? `₹${item?.price}` : `$${item?.price}`}
-                  </p>
+                      href={`/product-details/${item?.slug}`}
+                      className="dropdown-item"
+                      onClick={() => {
+                        setIsMobileSearchOpen(false);
+                        setSearchText("");
+                        setSearchOption([]);
+                        setIsOpen2(false);
+                      }}
+                      style={{ flex: 1, fontSize: "13px" }}
+                    >
+                      {item?.name}
+                    </Link>
+                    <p
+                      style={{
+                        color: "black",
+                        margin: "0",
+                        fontSize: "13px",
+                        flexShrink: 0,
+                      }}
+                    >
+                      {checkChannel() === "india-channel"
+                        ? `₹${item?.price}`
+                        : `$${item?.price}`}
+                    </p>
                   </div>
-                  
                 </div>
               ))
             ) : (
-              <span style={{ color: '#888', fontSize: '14px' }}>No Data Found</span>
+              <span style={{ color: "#888", fontSize: "14px" }}>
+                No Data Found
+              </span>
             )}
           </div>
         )}
@@ -372,402 +421,436 @@ const HeaderSection = ({ style_2 = false, data }) => {
       {/* Mobile search backdrop */}
       {isMobileSearchOpen && (
         <div
-          onClick={() => { setIsMobileSearchOpen(false); setSearchText(''); setSearchOption([]); setIsOpen2(false); }}
-          style={{ position: 'fixed', inset: 0, zIndex: 9998, background: 'rgba(0,0,0,0.3)' }}
+          onClick={() => {
+            setIsMobileSearchOpen(false);
+            setSearchText("");
+            setSearchOption([]);
+            setIsOpen2(false);
+          }}
+          style={{
+            position: "fixed",
+            inset: 0,
+            zIndex: 9998,
+            background: "rgba(0,0,0,0.3)",
+          }}
         />
       )}
 
-      <header >
+      <header
+        className={`bg-white tp-header-area tp-header-style-${
+          style_2 ? "primary" : "darkRed"
+        } tp-header-height`}
+      >
+        
         <div
-          className={`tp-header-area tp-header-style-${
-            style_2 ? "primary" : "darkRed"
-          } tp-header-height`}
+          id="header-sticky"
+          className={`tp-header-bottom-2 tp-header-sticky ${
+            sticky ? "header-sticky" : ""
+          }`}
+          // className="container-fluid px-5 py-3"
         >
-          <div
-            id="header-sticky"
-            // style={{ backgroundColor: "#3b021e" }}
-            className={`tp-header-bottom-2 tp-header-sticky ${
-              sticky ? "header-sticky" : ""
-            }`}
+          {/* Top Bar */}
+          <div className="section-wd row d-flex align-items-center justify-content-between justify-content-lg-center py-2 " 
           >
-            <div className="section-wd" style={{ padding: "10px 20px 10px 20px" }}>
-              <div className="tp-mega-menu-wrapper p-relative">
-                <div className="row align-items-center">
-                  <div className="col-xl-5 d-none d-xl-block">
-                    <div className="main-menu">
-                      <nav className="tp-main-menu-content">
-                        {/* <Menus /> */}
-                        <Menus1/>
-                      </nav>
-                    </div>
+            <div className=" d-flex header-in-wid">
+              {/* Logo */}
+              <div className="logo">
+                <Link href="/">
+                  <Image src={pradeLogo} alt="logo" width={95} height={55} />
+                </Link>
+              </div>
+
+              {/* Search */}
+              <div className="ps-4 pe-3   col-6 d-none d-lg-block ">
+                <div className="position-relative w-100 mt-2 tp-header-input-new  ">
+                  <input
+                    className=""
+                    type="text"
+                    placeholder="Shop for Products"
+                    value={searchText}
+                    onChange={(e) => handleSearch(e.target.value)}
+                    onKeyPress={(e) => {
+                      if (e.key === "Enter") {
+                        handleSearch(searchText);
+                      }
+                    }}
+                    style={{
+                      height: "40px",
+                      borderRadius: "25px",
+                      border: "1px solid #ddd",
+                      padding: "0 50px 0 50px",
+                      outline: "none",
+                    }}
+                  />
+                  <div
+                    style={{
+                      position: "absolute",
+                      left: "20px",
+                      top: "20px",
+                      transform: "translateY(-50%)",
+                      color: "#c84a62",
+                    }}
+                  >
+                    {" "}
+                    <Search size={18} />
                   </div>
-                  <div className="col-xl-2 col-lg-5 col-md-5 col-sm-4 col-6 d-flex justify-content-xl-center">
-                    <div className="logo" style={{height:"auto"}}>
-                      <Link href="/">
-                        <Image
-                        width={150}
-                        height={90}
-                          src={pradeLogo}
-                          alt="logo"
-                          priority
-                          className="prade-navbar-logo"
+
+                  {isOpen2 == true ? (
+                    <div
+                      className="dropdown-content  d-flex flex-column"
+                      style={{
+                        position: "absolute",
+                        top: "50px",
+                        background: "white",
+                        padding: "30px 20px",
+                        // right: "-10px",
+                        zIndex: "200",
+                        width: "100%",
+                        borderRadius: "10px",
+                        boxShadow: "0px 8px 16px 0px rgba(0,0,0,0.2)",
+                        height: searchLoading
+                          ? "60px"
+                          : searchOption?.length > 5
+                            ? "400px"
+                            : "auto",
+                        overflowY: "scroll",
+                      }}
+                    >
+                      {searchLoading ? (
+                        <ButtonLoader color="#7d4432" size={30} />
+                      ) : searchOption?.length > 0 ? (
+                        searchOption?.map((item, index) => (
+                          <div
+                            key={index}
+                            className="d-flex align-items-center justify-content-between"
+                            style={{
+                              marginBottom: "10px",
+                              paddingBottom: "10px",
+                              borderBottom: "1px solid #dadada",
+                            }}
+                          >
+                            <div
+                              style={{
+                                marginRight: "10px",
+                                width: "50px",
+                                height: "50px",
+                              }}
+                            >
+                              {isImage(profilePic(item?.img)) ? (
+                                <img
+                                  src={profilePic(item?.img)}
+                                  alt="Product Image"
+                                  width={50}
+                                  height={50}
+                                  style={{ borderRadius: "50%" }}
+                                />
+                              ) : (
+                                <video
+                                  src={item?.img}
+                                  width={50}
+                                  muted
+                                  loop
+                                  height={50}
+                                  style={{ borderRadius: "50%" }}
+                                />
+                              )}
+                            </div>
+
+                            <Link
+                              href={`/product-details/${item?.slug}`}
+                              key={item?.id}
+                              className="dropdown-item"
+                            >
+                              {item?.name}
+                            </Link>
+                            {checkChannel() === "india-channel" ? (
+                              <p
+                                style={{
+                                  marginLeft: "10px !important",
+                                  color: "black",
+                                  margin: "0",
+                                }}
+                              >
+                                ₹{item?.price}
+                              </p>
+                            ) : (
+                              <p
+                                style={{
+                                  marginLeft: "10px !important",
+                                  color: "black",
+                                  margin: "0",
+                                }}
+                              >
+                                ${item?.price}
+                              </p>
+                            )}
+                          </div>
+                        ))
+                      ) : (
+                        <span className="item-center justify-center">
+                          No Data Found
+                        </span>
+                      )}
+                    </div>
+                  ) : null}
+                </div>
+              </div>
+              <div className="col-9 ps-4 ps-xl-0 col-xl-6 col-xxl-7 header-in-wid-two mt-2 d-none d-xl-block">
+                 <GoldRateBarHead/>
+              </div>
+             
+            </div>
+
+            {/* Right Actions */}
+            <div className="col-3 col-xl-3  d-flex align-items-center justify-content-end gap-4">
+              {/* <button
+                style={{
+                  background: "#f3e8b5",
+                  border: "none",
+                  borderRadius: "25px",
+                  padding: "8px 18px",
+                  fontSize: "14px",
+                  fontWeight: 500,
+                }}
+              >
+                Gold Price
+              </button> */}
+
+              <div
+                onClick={handleSearchIconClick}
+                title="Search"
+                className="tp-header-action-btn d-block d-lg-none "
+              >
+                <Search size={20} />
+              </div>
+
+              <div
+                onClick={() => {
+                  dispatch(openCartMini());
+                  cartRefetch();
+                  AllListChannelREfresh();
+                }}
+                title="Cart"
+                className="tp-header-action-btn cartmini-open-btn "
+              >
+                <CartTwo size={24} />
+                <span className="tp-header-action-badge">
+                  {cart?.length || 0}
+                </span>
+              </div>
+
+              <div
+                className="tp-header-action-btn cartmini-open-btn "
+                style={{ position: "relative" }}
+              >
+                <div onClick={toggleDropdown} title="My Account">
+                  <UserThree size={24} />
+                </div>
+
+                {isOpen && (
+                  <div
+                    className="dropdown-content  d-flex flex-column"
+                    style={{
+                      position: "absolute",
+                      top: "35px",
+                      background: "white",
+                      padding: "30px 20px",
+                      right: "-10px",
+                      zIndex: "2000",
+                      width: "250px",
+                      boxShadow: "0px 8px 16px 0px rgba(0,0,0,0.2)",
+                      borderRadius: "10px",
+                    }}
+                  >
+                    {/* Content of the dropdown menu goes here */}
+                    {/* For example: */}
+                    <div className="pb-20">
+                      <p
+                        style={{
+                          color: "black",
+                          fontWeight: "500",
+                          color: "gray",
+                          margin: "0px",
+                        }}
+                      >
+                        Welcome {userName}
+                      </p>
+                      <p style={{ color: "gray", margin: "0px" }}>
+                        To access account and manage orders
+                      </p>
+                    </div>
+                    {!token ? (
+                      <div className="pb-20">
+                        <button
+                          className="tp-login-btn "
                           style={{
-                            // height:"70px",
-                            // width:'12px'
+                            padding: "5px 10px",
+                            background: "none",
+                            border: "1px solid gray",
+                            color: "gray",
+                            fontSize: "14px",
+                            borderRadius: "5px",
                           }}
-                        />
+                          onClick={() => router.push("/login")}
+                        >
+                          LOGIN / SIGNUP
+                        </button>
+                      </div>
+                    ) : (
+                      <div className="pb-20">
+                        <button
+                          className="tp-login-btn "
+                          style={{
+                            padding: "5px 10px",
+                            background: "none",
+                            border: "1px solid gray",
+                            color: "gray",
+                            fontSize: "14px",
+                            borderRadius: "5px",
+                          }}
+                          onClick={handleLogout}
+                        >
+                          LOGOUT
+                        </button>
+                      </div>
+                    )}
+
+                    <div className="d-flex flex-column">
+                      {token && (
+                        <>
+                          <Link
+                            href="/profile"
+                            style={{
+                              fontSize: "14px",
+                              color: "#55585b",
+                              paddingBottom: "5px",
+                            }}
+                          >
+                            My Profile
+                          </Link>
+                          <Link
+                            href="/profile"
+                            style={{
+                              fontSize: "14px",
+                              color: "#55585b",
+                              paddingBottom: "5px",
+                            }}
+                          >
+                            My Orders
+                          </Link>
+                        </>
+                      )}
+
+                      <Link
+                        href="/wishlist"
+                        style={{
+                          fontSize: "14px",
+                          color: "#55585b",
+                          paddingBottom: "5px",
+                        }}
+                      >
+                        WishList
+                      </Link>
+                      <Link
+                        href="/compare"
+                        style={{
+                          fontSize: "14px",
+                          color: "#55585b",
+                          paddingBottom: "5px",
+                        }}
+                      >
+                        Compare
+                      </Link>
+                      <Link
+                        href="/gift-card"
+                        style={{
+                          fontSize: "14px",
+                          color: "#55585b",
+                          paddingBottom: "5px",
+                        }}
+                      >
+                        Gift Cards
                       </Link>
                     </div>
                   </div>
+                )}
+              </div>
+              <div
+                className="tp-header-action-btn tp-offcanvas-open-btn cartmini-open-btn tp-header-hamburger ps-0 d-xl-none"
+                style={{ position: "relative" }}
+                 onClick={() => setIsCanvasOpen(true)}
+              >
+              <Menu />  
+              </div>
 
-                  <div className="col-xl-5 col-lg-7 col-md-7 col-sm-8 col-6">
-                    <div className="tp-header-bottom-right d-flex align-items-center justify-content-end pl-30">
-                      {isOpen3 && (
-                        <div
-                          className="tp-header-search-2  d-block"
-                          style={{ position: "relative" }}
-                        >
-                          <input
-                            onChange={(e) => handleSearch(e.target.value)}
-                            value={searchText}
-                            type="text"
-                            placeholder="Search for Products..."
-                            onKeyPress={(e) => {
-                              if (e.key === "Enter") {
-                                handleSearch(searchText);
-                              }
-                            }}
-                            style={{borderRadius:"10px"}}
-                          />
-                          {isOpen2 == true ? (
-                            <div
-                              className="dropdown-content  d-flex flex-column"
-                              style={{
-                                position: "absolute",
-                                top: "50px",
-                                background: "white",
-                                padding: "30px 20px",
-                                // right: "-10px",
-                                zIndex: "200",
-                                width: "100%",
-                                borderRadius:"10px",
-                                boxShadow: "0px 8px 16px 0px rgba(0,0,0,0.2)",
-                                height: searchLoading
-                                  ? "60px"
-                                  : searchOption?.length > 5
-                                  ? "400px"
-                                  : "auto",
-                                overflowY: "scroll",
-                              }}
-                            >
-                              {searchLoading ? (
-                                <ButtonLoader color="#7d4432" size={30} />
-                              ) : searchOption?.length > 0 ? (
-                                searchOption?.map((item, index) => (
-                                  <div
-                                    key={index}
-                                    className="d-flex align-items-center justify-content-between"
-                                    style={{
-                                      marginBottom: "10px",
-                                      paddingBottom: "10px",
-                                      borderBottom: "1px solid #dadada",
-                                    }}
-                                  >
-                                    <div
-                                      style={{
-                                        marginRight: "10px",
-                                        width: "50px",
-                                        height: "50px",
-                                      }}
-                                    >
-                                      {isImage(profilePic(item?.img)) ? (
-                                        <img
-                                          src={profilePic(item?.img)}
-                                          alt="Product Image"
-                                          width={50}
-                                          height={50}
-                                          style={{ borderRadius: "50%" }}
-                                        />
-                                      ) : (
-                                        <video
-                                          src={item?.img}
-                                          width={50}
-                                          muted
-                                          loop
-                                          height={50}
-                                          style={{ borderRadius: "50%" }}
-                                        />
-                                      )}
-                                    </div>
+              {!token ? (
+                <span
+                  className="cursor-pointer d-none d-xl-block"
+                  style={{
+                    color: "#7d4432",
+                    fontSize: "16px",
+                    fontWeight: "500",
+                  }}
+                  onClick={() => router.push("/login")}
+                >
+                  Login
+                </span>
+              ) : (
+                <span
+                  className="cursor-pointer d-none d-xl-block"
+                  style={{
+                    color: "#7d4432",
+                    fontSize: "16px",
+                    fontWeight: "500",
+                  }}
+                  onClick={handleLogout}
+                >
+                  Logout
+                </span>
+              )}
+            </div>
+          </div>
 
-                                    <Link
-                                      href={`/product-details/${item?.slug}`}
-                                      key={item?.id}
-                                      className="dropdown-item"
-                                    >
-                                      {item?.name}
-                                    </Link>
-                                    {checkChannel() === "india-channel" ? (
-                                      <p
-                                        style={{
-                                          marginLeft: "10px !important",
-                                          color: "black",
-                                          margin: "0",
-                                        }}
-                                      >
-                                        ₹{item?.price}
-                                      </p>
-                                    ) : (
-                                      <p
-                                        style={{
-                                          marginLeft: "10px !important",
-                                          color: "black",
-                                          margin: "0",
-                                        }}
-                                      >
-                                        ${item?.price}
-                                      </p>
-                                    )}
-                                  </div>
-                                ))
-                              ) : (
-                                <span className="item-center justify-center">
-                                  No Data Found
-                                </span>
-                              )}
-                            </div>
-                          ) : null}
-                        </div>
-                      )}
-                      <div className="tp-header-action d-flex align-items-center ml-30 ">
-                        <div className="tp-header-action-item  d-none d-xl-block">
-                          <Link
-                             href={"/contact"}
-                            className="tp-header-action-btn cartmini-open-btn "
-                            style={{
-                             background: "#7d4432",
-                              fontSize:"16px",
-                              alignItems: "center",
-                              justifyContent: "center",
-                              display: "flex",
-                              borderRadius:"5px",
-                              color:"#FFF",
-                              padding:"6px 10px"
-                            }}
-                          >
-                            Contact
-                           
-                          </Link>
-                        </div>
-                        <div className="tp-header-action-item  d-block">
-                          
-                          <div
-                            onClick={handleSearchIconClick}
-                             title="Search"
-                            className="tp-header-action-btn  "
-                            style={{
-                              // backgroundColor: "#e09a7b", background: linear-gradient(180deg, #1e1a1a, #5a2b23);
-                               background: "#fffae8",
-                              width: "40px",
-                              height: "40px",
-                              alignItems: "center",
-                              justifyContent: "center",
-                              display: "flex",
-                              borderRadius:"5px",
-                              cursor:"pointer"
-                            }}
-                          >
-                            <Search />
-                            {/* <span className="tp-header-action-badge">
-                              {compareList?.length || 0}
-                            </span> */}
-                          </div>
-                        </div>
-                        {/* {token && (
-                          <div className="tp-header-action-item d-none d-lg-block">
-                            <Link
-                              href="/wishlist"
-                              className="tp-header-action-btn"
-                            >
-                              <Wishlist />
-                              <span className="tp-header-action-badge">
-                                {WishListLength?.length || 0}
-                              </span>
-                            </Link>
-                          </div>
-                        )} */}
-                        <div
-                          className="tp-header-action-item "
-                          style={{ position: "relative" }}
-                        >
-                          <button
-                             title="My Account"
-
-                            onClick={toggleDropdown}
-                            className="tp-header-action-btn cartmini-open-btn "
-                            style={{
-                              background: "#fffae8",
-                              width: "40px",
-                              height: "40px",
-                              alignItems: "center",
-                              justifyContent: "center",
-                              display: "flex",
-                              borderRadius:"5px"
-                            }}
-                          >
-                            <UserThree />
-                          </button>
-                          {isOpen && (
-                            <div
-                              className="dropdown-content  d-flex flex-column"
-                              style={{
-                                position: "absolute",
-                                top: "35px",
-                                background: "white",
-                                padding: "30px 20px",
-                                right: "-10px",
-                                zIndex: "2000",
-                                width: "250px",
-                                boxShadow: "0px 8px 16px 0px rgba(0,0,0,0.2)",
-                                borderRadius:"10px"
-                              }}
-                            >
-                              {/* Content of the dropdown menu goes here */}
-                              {/* For example: */}
-                              <div className="pb-20">
-                                <p
-                                  style={{
-                                    color: "black",
-                                    fontWeight: "500",
-                                    color: "gray",
-                                    margin: "0px",
-                                  }}
-                                >
-                                  Welcome {userName}
-                                </p>
-                                <p style={{ color: "gray", margin: "0px" }}>
-                                  To access account and manage orders
-                                </p>
-                              </div>
-                              {!token ? (
-                                <div className="pb-20">
-                                  <button
-                                    className="tp-login-btn "
-                                    style={{
-                                      padding: "5px 10px",
-                                      background: "none",
-                                      border: "1px solid gray",
-                                      color: "gray",
-                                      fontSize: "14px",
-                                      borderRadius:"5px"
-                                    }}
-                                    onClick={() => router.push("/login")}
-                                  >
-                                    LOGIN / SIGNUP
-                                  </button>
-                                </div>
-                              ) : (
-                                <div className="pb-20">
-                                  <button
-                                    className="tp-login-btn "
-                                    style={{
-                                      padding: "5px 10px",
-                                      background: "none",
-                                      border: "1px solid gray",
-                                      color: "gray",
-                                      fontSize: "14px",
-                                       borderRadius:"5px"
-                                    }}
-                                    onClick={handleLogout}
-                                  >
-                                    LOGOUT
-                                  </button>
-                                </div>
-                              )}
-
-                              <div className="d-flex flex-column">
-                                {token && (
-                                  <>
-                                    <Link
-                                      href="/profile"
-                                      style={{ paddingBottom: "5px" }}
-                                    >
-                                      My Profile
-                                    </Link>
-                                    <Link
-                                      href="/profile"
-                                      style={{ paddingBottom: "5px" }}
-                                    >
-                                      My Orders
-                                    </Link>
-                                  </>
-                                )}
-
-                                <Link
-                                  href="/wishlist"
-                                  style={{ paddingBottom: "5px" }}
-                                >
-                                  WishList
-                                </Link>
-                                <Link
-                                  href="/compare"
-                                  style={{ paddingBottom: "5px" }}
-                                >
-                                  Compare
-                                </Link>
-                                <Link
-                                  href="/gift-card"
-                                  style={{ paddingBottom: "5px" }}
-                                >
-                                  Gift Cards
-                                </Link>
-                              </div>
-                            </div>
-                          )}
-                        </div>
-                        <div className="tp-header-action-item">
-                          <button
-                             title="Cart"
-
-                            onClick={() => {
-                              dispatch(openCartMini());
-                              cartRefetch();
-                              AllListChannelREfresh();
-                            }}
-                            className="tp-header-action-btn cartmini-open-btn "
-                            style={{
-                             background: "#fffae8",
-                              width: "40px",
-                              height: "40px",
-                              alignItems: "center",
-                              justifyContent: "center",
-                              display: "flex",
-                              borderRadius:"5px"
-                            }}
-                          >
-                            <CartTwo />
-                            <span className="tp-header-action-badge">
-                              {cart?.length || 0}
-                            </span>
-                          </button>
-                        </div>
-                        {/* {token && ( */}
-
-                        {/* )} */}
-                        <div className="tp-header-action-item tp-header-hamburger ps-3 d-xl-none">
-                          <button
-                            onClick={() => setIsCanvasOpen(true)}
-                            type="button"
-                            className="tp-offcanvas-open-btn"
-                          >
-                            <Menu />
-                          </button>
-                        </div>
-                      </div>
-                    </div>
+          {/* Navigation */}
+          <div
+            className="d-none d-xl-block"
+            style={{
+              background: "#7d4432 ",
+              height: "44px",
+            }}
+          >
+            <div className="section-wd">
+              <div className="tp-mega-menu-wrapper p-relative">
+                <div className="row justify-content-center align-items-center mb-0">
+                  <div className="main-menu">
+                    <nav className="tp-main-menu-content">
+                      <Menus1 />
+                    </nav>
                   </div>
                 </div>
               </div>
+
+              {/* <ul
+                className="d-flex justify-content-center align-items-center mb-0"
+                style={{
+                  listStyle: "none",
+                  height: "44px",
+                  gap: "50px",
+                  color: "#fff",
+                  fontSize: "15px",
+                  fontWeight: 500,
+                }}
+              >
+                <li>Earrings</li>
+                <li>Rings</li>
+                <li>Bracelet & Bangles</li>
+                <li>Necklaces & Pendants</li>
+                <li>Mangalsutra</li>
+                <li>Silver Jewellery</li>
+                <li>Collections</li>
+                <li>Gifting</li>
+                <li>More Jewellery</li>
+              </ul> */}
             </div>
           </div>
         </div>

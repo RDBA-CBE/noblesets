@@ -306,7 +306,7 @@ function SingleLoader({ loading }) {
   );
 }
 
-const Menus1 = () => {
+const MenuBackup = () => {
   const router = useRouter();
 
   const [state, setState] = useSetState({
@@ -327,7 +327,7 @@ const Menus1 = () => {
   const [lastHoveredCategory, setLastHoveredCategory] = useState("necklaces");
 
   const filterByHomePage = useSelector(
-    (state) => state.shopFilter.filterByHomePage,
+    (state) => state.shopFilter.filterByHomePage
   );
 
   useEffect(() => {
@@ -353,13 +353,13 @@ const Menus1 = () => {
             id: item?.node?.id,
             slug: item?.node?.slug,
             productCount: item?.node?.products?.totalCount,
-          }),
+          })
         );
         const excludeGiftCard = categoryList?.filter(
-          (item) => item.slug !== "gift-card",
+          (item) => item.slug !== "gift-card"
         );
         const filterWithoutProduct = excludeGiftCard?.filter(
-          (item) => item.productCount > 0,
+          (item) => item.productCount > 0
         );
         if (filterWithoutProduct?.length > 0) {
           setState({ initalLoad: filterWithoutProduct[0]?.slug });
@@ -389,7 +389,7 @@ const Menus1 = () => {
       setState({
         subCategoryList:
           subcategory?.data?.data?.category?.children?.edges?.filter(
-            (item) => item?.node?.products?.totalCount > 0,
+            (item) => item?.node?.products?.totalCount > 0
           ),
       });
     } else {
@@ -411,29 +411,17 @@ const Menus1 = () => {
   };
 
   // console.log("productList", state.productList);
+  
 
   return (
-    <ul
-      className="d-flex justify-content-center align-items-center mb-0"
-      style={{
-        listStyle: "none",
-        height: "44px",
-        gap: "40px",
-        color: "#fff",
-        fontSize: "15px",
-        fontWeight: 500,
-      }}
-    >
+    <ul style={{ display: "flex" }}>
       <li>
-        <Link
-          href="/"
-          style={{
+        <Link href="/"  style={{
             fontWeight: "400",
-            color: "#fff",
+            color: "#000",
             fontFamily: "Bagind,sans-serif",
-          }}
-        >
-          Home
+          }}>
+         Home
         </Link>
       </li>
 
@@ -442,7 +430,7 @@ const Menus1 = () => {
           href="/shop"
           style={{
             fontWeight: "400",
-            color: "#fff",
+            color: "#000",
             fontFamily: "Bagind,sans-serif",
           }}
         >
@@ -454,7 +442,7 @@ const Menus1 = () => {
           href="/shop"
           style={{
             fontWeight: "400",
-            color: "#fff",
+            color: "#000",
             fontFamily: "Bagind,sans-serif",
           }}
         >
@@ -466,7 +454,7 @@ const Menus1 = () => {
           href="/shop"
           style={{
             fontWeight: "400",
-            color: "#fff",
+            color: "#000",
             fontFamily: "Bagind,sans-serif",
           }}
           onMouseEnter={() =>
@@ -634,7 +622,7 @@ const Menus1 = () => {
           href="/gift-card"
           style={{
             fontWeight: "400",
-            color: "#fff",
+            color: "#000",
             fontFamily: "Bagind,sans-serif",
           }}
         >
@@ -646,28 +634,30 @@ const Menus1 = () => {
           href="/our-story"
           style={{
             fontWeight: "400",
-            color: "#fff",
+            color: "#000",
             fontFamily: "Bagind,sans-serif",
           }}
         >
           About
         </Link>
       </li>
-      <li>
+      {/* <li>
         <Link
           href="/contact"
+
+       
           style={{
             fontWeight: "400",
-            color: "#fff",
+            color: "#000",
             fontFamily: "Bagind,sans-serif",
           }}
         >
           Contact
         </Link>
-      </li>
+      </li> */}
       {/* )} */}
     </ul>
   );
 };
 
-export default Menus1;
+export default MenuBackup;

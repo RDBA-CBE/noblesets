@@ -1,6 +1,6 @@
 import React from "react";
 
-const Cart = () => {
+const Cart = ({style}) => {
   return (
     <svg
       width="20"
@@ -8,6 +8,7 @@ const Cart = () => {
       viewBox="0 0 20 20"
       fill="none"
       xmlns="http://www.w3.org/2000/svg"
+      style={style}
     >
       <path
         fillRule="evenodd"

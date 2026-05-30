@@ -23,6 +23,8 @@ import ShopByCollectionsNew from "@/components/home/shopByCollectionsNew";
 import NoblesetPromisesNew from "@/components/home/NoblesetPromisesNew";
 import InstaSection1 from "@/components/home/InstaSection1";
 import IframeMediaGallery from "@/components/home/IframeMediaGallery";
+import GoldRateBar from "@/components/GoldRateBar";
+import NewsletterPopup from "@/components/common/NewsletterPopup";
 
 const Index = () => {
   const [maximumPrice] = useMaxPriceMutation();
@@ -96,7 +98,12 @@ const Index = () => {
   return (
     <Wrapper>
       <SEO pageTitle="Home" />
+      {/* <NewsletterPopup /> */}
 
+      <div className="d-block d-xl-none">
+        <GoldRateBar/>
+      </div>
+      
       <HeaderSection />
       <div className="common-bg">
         <div className=" ">
@@ -148,6 +155,8 @@ const Index = () => {
       >
         <ShopByCollectionsNew />
       </motion.div>
+
+      
 
       <motion.div
         initial={{ opacity: 0, y: 30 }}

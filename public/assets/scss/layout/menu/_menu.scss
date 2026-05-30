@@ -17,10 +17,10 @@
             }
             & > a{
                 display: inline-block;
-                font-size: 20px;
+                font-size: 16px;
                 // color: var(--tp-common-black);
                 color:#eee;
-                padding: 23px 0;
+                padding: 0px 0;
             }
 			&.has-dropdown{
 				& > a{
@@ -30,7 +30,7 @@
                         @include transform(translateY(1px));
                         font-size: 14px;
                         // color: var(--tp-common-black);
-                        color:black !important;
+                        color:#fff !important;
                         font-family: var(--tp-ff-fontawesome);
                         font-weight: 400;
                         margin-left: 5px;
