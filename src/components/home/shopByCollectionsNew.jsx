@@ -100,8 +100,10 @@ export default function ShopByCollectionsNew() {
   const getChildCatList = async () => {
     try {
       const res = await childCatList({});
+      
       // const response = await useGetCategoryListRefetch();
 
+      console.log("getChildCatList",res)
       
       // console.log("getChildCatList",response)
       const rawFilter = res?.data?.data?.categories?.edges?.map((item) => ({

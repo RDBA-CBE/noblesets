@@ -857,6 +857,8 @@ export const CHILD_CATEGORY = () => {
           id
           name 
         }
+          description
+          backgroundImageUrl
       }
     }
   }
