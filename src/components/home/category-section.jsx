@@ -36,6 +36,7 @@ const HomeCategorySection = () => {
   useEffect(() => {
     categoryList();
   }, []);
+  
 
   const categoryList = async () => {
     const res = await priceFilter({
