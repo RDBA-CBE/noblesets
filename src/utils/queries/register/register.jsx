@@ -128,3 +128,61 @@ export const RESET_PASSWORD = ({ token, email, password }) => {
     variables: { token, email, password },
   };
 };
+
+
+export const USER_DETAILS = () => {
+  return {
+    query: `
+
+    query {
+      me {
+        id
+        email
+        firstName
+        lastName
+        newsletter
+      }
+    }
+    `,
+    variables: { },
+  };
+};
+
+
+export const UPDATE_USER_DETAILS = ({ firstName, lastName,email, newsletter }) => {
+  return {
+    query: `
+
+   mutation UpdateMyAccount(
+        $firstName: String!
+        $lastName: String!
+        $newsletter: Boolean!
+      ) {
+        accountUpdate(
+          input: {
+            firstName: $firstName
+            lastName: $lastName
+            newsletter: $newsletter
+          }
+        ) {
+          user {
+            email
+            firstName
+            lastName
+            newsletter
+          }
+          errors {
+            field
+            message
+            code
+          }
+        }
+      }
+    `,
+    variables: { firstName, lastName,email, newsletter },
+  };
+};
+
+
+
+
