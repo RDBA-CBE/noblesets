@@ -264,7 +264,7 @@ const GoldRateBar = () => {
 
      <div className="ticker-content ticker-track w-100">
         <div className="ticker-group">
-          <span>
+          <span >
             <strong>GOLD 22K:</strong> ₹ 150000
             {/* {rates.GOLD22?.toLocaleString("en-IN")}
           {renderTrend(rateInfo.GoldMode)} */}

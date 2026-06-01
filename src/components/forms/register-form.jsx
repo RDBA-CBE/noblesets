@@ -81,6 +81,7 @@ const RegisterForm = () => {
       lastName: data.lastName,
       email: data.email,
       password: data.password,
+      newsletter: data.newsletter ? true : false,
       redirectUrl: `${FRONTEND_URL}/email_verify`,
     }).then((result) => {
       if (result?.data?.data?.accountRegister?.errors?.length > 0) {
@@ -172,6 +173,20 @@ const RegisterForm = () => {
             </div>
           </div>
           <ErrorMsg msg={errors.password?.message} />
+        </div>
+      </div>
+      <div className="tp-login-suggetions d-sm-flex align-items-center justify-content-between mb-20">
+        <div className="tp-login-remeber">
+          <input
+           {...register("newsletter")}
+            id="newsletter"
+            name="newsletter"
+            type="checkbox"
+          />
+          <label htmlFor="newsletter">
+            Subscribe to our newsletter.
+          </label>
+          
         </div>
       </div>
       <div className="tp-login-suggetions d-sm-flex align-items-center justify-content-between mb-20">

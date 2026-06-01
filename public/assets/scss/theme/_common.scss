@@ -5134,6 +5134,15 @@ header .tp-product-action-btn-3:hover {
   flex-shrink: 0;
 }
 
+.ticker-group span{
+  color: #7d4432;
+}
+
+.ticker-group span strong{
+  font-weight: 500;
+  color: #000;
+}
+
 @keyframes scroll-ticker {
   from {
     transform: translateX(100%);

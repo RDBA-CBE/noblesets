@@ -16,8 +16,8 @@ export const authApi = apiSlice.injectEndpoints({
   overrideExisting: true,
   endpoints: (builder) => ({
     registerUser: builder.mutation({
-      query: ({ firstName, lastName, email, password,redirectUrl }) =>
-        configuration(REGISTER({ firstName, lastName, email, password,redirectUrl })),
+      query: ({ firstName, lastName, email, password,redirectUrl , newsletter}) =>
+        configuration(REGISTER({ firstName, lastName, email, password,redirectUrl , newsletter: newsletter })),
       async onQueryStarted(arg, { queryFulfilled, dispatch }) {
         try {
           const result = await queryFulfilled;

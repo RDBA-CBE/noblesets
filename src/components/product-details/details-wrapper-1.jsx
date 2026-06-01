@@ -862,8 +862,8 @@ const DetailsWrapper1 = ({
                         }}
                       >
                         <div>
-                          <p style={{ color: "gray", marginBottom: "0px" }}>
-                            {previousProduct?.name}
+                          <p style={{ color: "gray", marginBottom: "0px" , lineHeight: "1.2"}}>
+                            {limitChar(previousProduct?.name, 38)}
                           </p>
                           <p
                             style={{
@@ -973,8 +973,8 @@ const DetailsWrapper1 = ({
                         }}
                       >
                         <div>
-                          <p style={{ color: "gray", marginBottom: "0px" }}>
-                            {nextProduct?.name}
+                          <p style={{ color: "gray", marginBottom: "0px" , lineHeight: "1.2"}}>
+                            {limitChar(nextProduct?.name, 38)}
                           </p>
                           <p
                             style={{
@@ -2229,11 +2229,12 @@ const DetailsWrapper1 = ({
         ariaHideApp={false} // optional: disables appElement warning
       >
         <div className="tp-product-modal p-0">
-          <div className="tp-product-modal-content d-lg-flex flex-column gap-4 p-0">
+          <div className="tp-product-modal-content d-lg-flex flex-column gap-2 p-0">
+            
             <button
               onClick={() => setIsModelOpen(false)}
               type="button"
-              className="btn btn-sm  align-self-end text-black"
+              className="btn btn-sm  align-self-end text-black p-0 pe-2"
               style={{
                 // background:
                 //   "linear-gradient( to right, color-mix(in srgb, #fbdccc 40%, #e09a7a), #e09a7a )",
@@ -2242,6 +2243,7 @@ const DetailsWrapper1 = ({
             >
               ✕
             </button>
+            <h6 className="text-center pb-0" style={{paddingTop: "-10px" , color:"#541816"}}>Size Chart</h6>
             {/* Product Image */}
             {productItem?.sizeGuide?.sizeimg && (
               <div className="text-center">
@@ -2254,6 +2256,8 @@ const DetailsWrapper1 = ({
                 />
               </div>
             )}
+
+            
 
             {productItem?.sizeGuide?.sizedetail && (
               <div

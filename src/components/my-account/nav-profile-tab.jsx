@@ -1,17 +1,9 @@
 import React, { useEffect, useState } from "react";
-import { yupResolver } from "@hookform/resolvers/yup";
-import { useForm } from "react-hook-form";
-import { useSelector } from "react-redux";
-import * as Yup from "yup";
 // internal
-import ErrorMsg from "../common/error-msg";
-import { EmailTwo, LocationTwo, PhoneThree, UserThree } from "@/svg";
+import { LocationTwo } from "@/svg";
 import { useUpdateProfileMutation } from "@/redux/features/auth/authApi";
 import { notifyError, notifySuccess } from "@/utils/toast";
-import ProfileImage from "@assets/img/profile-1.webp";
-import Image from "next/image";
 import { useGetAddressListQuery } from "@/redux/features/productApi";
-import Map from "../../../public/assets/img/map-1.png";
 
 const ProfileInfo = () => {
   const [userFirstName, setUserFirstName] = useState("");
@@ -19,6 +11,9 @@ const ProfileInfo = () => {
   const [userEmail, setUserEmail] = useState("");
   const [shippingAddress, setShippingAddress] = useState("");
   const [billingAddress, setBillingAddress] = useState("");
+  const [isSubscribed, setIsSubscribed] = useState(false);
+
+  const [updateProfile] = useUpdateProfileMutation();
 
   const {
     data: getAddressList,
@@ -30,25 +25,46 @@ const ProfileInfo = () => {
 
   useEffect(() => {
     const user = localStorage.getItem("userInfo");
-    const JsonUSer = JSON.parse(user);
+    if (user) {
+      const JsonUSer = JSON.parse(user);
 
-    const UserFirstName = JsonUSer?.user?.firstName;
-    setUserFirstName(UserFirstName);
+      const UserFirstName = JsonUSer?.user?.firstName;
+      setUserFirstName(UserFirstName);
 
-    const UserLastName = JsonUSer?.user?.lastName;
-    setUserLastName(UserLastName);
+      const UserLastName = JsonUSer?.user?.lastName;
+      setUserLastName(UserLastName);
 
-    const UserEmail = JsonUSer?.user?.email;
-    setUserEmail(UserEmail);
+      const UserEmail = JsonUSer?.user?.email;
+      setUserEmail(UserEmail);
+
+      setIsSubscribed(JsonUSer?.user?.newsletter || false);
+    }
   }, []);
+
+  const handleNewsletterToggle = async () => {
+    // Static toggle logic
+    const newStatus = !isSubscribed;
+    setIsSubscribed(newStatus);
+    notifySuccess(
+      `Successfully ${newStatus ? "subscribed to" : "unsubscribed from"} newsletter`,
+    );
+
+    // Update local storage to persist the UI state
+    const userInfo = localStorage.getItem("userInfo");
+    if (userInfo) {
+      const userData = JSON.parse(userInfo);
+      userData.user.newsletter = newStatus;
+      localStorage.setItem("userInfo", JSON.stringify(userData));
+    }
+  };
 
   useEffect(() => {
     if (AddressData?.length > 0) {
       const billingAddress = AddressData?.find(
-        (item) => item?.isDefaultBillingAddress === true
+        (item) => item?.isDefaultBillingAddress === true,
       );
       const shippingAddress = AddressData?.find(
-        (item) => item?.isDefaultShippingAddress === true
+        (item) => item?.isDefaultShippingAddress === true,
       );
       if (shippingAddress) {
         setShippingAddress(shippingAddress);
@@ -90,6 +106,28 @@ const ProfileInfo = () => {
             >
               <b>Email</b> : {userEmail}
             </p>
+            <div className="mt-3 d-flex align-items-center">
+              <p
+                className="profile__info-text mb-0"
+                style={{ color: "gray", fontWeight: "500" }}
+              >
+                <b>Newsletter</b> :{" "}
+                {isSubscribed ? "Subscribed" : "Not Subscribed"}
+              </p>
+              <button
+                onClick={handleNewsletterToggle}
+                className=" tp-btn tp-btn-border text-white ms-3"
+                style={{
+                  borderRadius: "20px",
+                  padding: "2px 14px",
+                  fontSize: "14px",
+                  border: "none",
+                  marginTop: "-4px",
+                }}
+              >
+                {isSubscribed ? "Unsubscribe" : "Subscribe"}
+              </button>
+            </div>
           </div>
         </div>
       </div>
@@ -135,11 +173,17 @@ const ProfileInfo = () => {
               <div>
                 {billingAddress?.isDefaultBillingAddress && (
                   <div className="d-flex gap-2">
-                  {/* <Image src={Map} alt="location"  width={25} height={25} /> */}
-                   <LocationTwo/>
-                  <h5 style={{ color: "black", fontWeight: "500",fontSize:"20px" }}>
-                    Current Billing Address
-                  </h5>
+                    {/* <Image src={Map} alt="location"  width={25} height={25} /> */}
+                    <LocationTwo />
+                    <h5
+                      style={{
+                        color: "black",
+                        fontWeight: "500",
+                        fontSize: "20px",
+                      }}
+                    >
+                      Current Billing Address
+                    </h5>
                   </div>
                 )}
 
@@ -199,26 +243,30 @@ const ProfileInfo = () => {
                 background:
                   shippingAddress?.isDefaultBillingAddress ||
                   shippingAddress?.isDefaultShippingAddress
-                   ? "white"
-                   : "#f1e7e1",
+                    ? "white"
+                    : "#f1e7e1",
                 color:
                   shippingAddress?.isDefaultBillingAddress ||
                   shippingAddress?.isDefaultShippingAddress
-                   ? "#7d4432"
-                   : "#000",
+                    ? "#7d4432"
+                    : "#000",
               }}
             >
               <div>
                 {shippingAddress?.isDefaultShippingAddress && (
-                 
-                   <div className="d-flex gap-2">
-                   {/* <Image src={Map} alt="location" width={25} height={25} /> */}
-                    <LocationTwo/>
-                   <h5 style={{ color: "black", fontWeight: "500",fontSize:"20px" }}>
-                   Current Shipping Address
-
-                   </h5>
-                   </div>
+                  <div className="d-flex gap-2">
+                    {/* <Image src={Map} alt="location" width={25} height={25} /> */}
+                    <LocationTwo />
+                    <h5
+                      style={{
+                        color: "black",
+                        fontWeight: "500",
+                        fontSize: "20px",
+                      }}
+                    >
+                      Current Shipping Address
+                    </h5>
+                  </div>
                 )}
                 <p style={{ marginBottom: "0px" }}>
                   {shippingAddress?.firstName} {billingAddress?.lastName}

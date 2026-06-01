@@ -3,13 +3,14 @@ export const REGISTER = ({
   lastName,
   email,
   password,
+  newsletter,
   redirectUrl,
 }) => {
   return {
     query: `
-   mutation RegisterMutation($firstName: String!, $lastName: String!, $email: String!, $password: String!, $redirectUrl: String = "") {
+   mutation RegisterMutation($firstName: String!, $lastName: String!, $email: String!, $password: String!, $redirectUrl: String = "",$newsletter: Boolean) {
   accountRegister(
-    input: {email: $email, password: $password, channel: "india-channel", firstName: $firstName, lastName: $lastName, redirectUrl: $redirectUrl}
+    input: {email: $email, password: $password, channel: "india-channel", firstName: $firstName, lastName: $lastName, redirectUrl: $redirectUrl, newsletter: $newsletter}
   ) {
     errors {
       field
@@ -20,6 +21,7 @@ export const REGISTER = ({
       email
       isActive
       isConfirmed
+      newsletter
       lastName
       firstName
       id
@@ -27,7 +29,7 @@ export const REGISTER = ({
   }
 }
     `,
-    variables: { firstName, lastName, email, password, redirectUrl },
+    variables: { firstName, lastName, email, password, redirectUrl, newsletter },
   };
 };
 

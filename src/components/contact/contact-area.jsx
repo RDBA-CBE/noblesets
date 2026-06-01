@@ -110,7 +110,7 @@ const ContactArea = () => {
         <div className="container">
           <div className="row justify-content-center">
             <div className="col-xl-8">
-              <div className="feature-main text-center mb-50">
+              <div className="feature-main text-center mb-4 mb-md-5">
                 <h5 className="sub-ti">
                   <b className="pe-1">✦ </b>Get in touch
                 </h5>
