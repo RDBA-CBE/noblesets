@@ -461,7 +461,7 @@ const HeaderSection = ({ style_2 = false, data }) => {
               </div>
 
               {/* Search */}
-              <div className="ps-4 pe-3   col-6 d-none d-lg-block ">
+              <div className={`ps-4 pe-3 ${token? "col-7": "col-6"}  col-6 d-none d-lg-block `}>
                 <div className="position-relative w-100 mt-2 tp-header-input-new  ">
                   <input
                     className=""
@@ -795,19 +795,7 @@ const HeaderSection = ({ style_2 = false, data }) => {
                 >
                   Login
                 </span>
-              ) : (
-                <span
-                  className="cursor-pointer d-none d-xl-block"
-                  style={{
-                    color: "#7d4432",
-                    fontSize: "16px",
-                    fontWeight: "500",
-                  }}
-                  onClick={handleLogout}
-                >
-                  Logout
-                </span>
-              )}
+              ) : null}
             </div>
           </div>
 
