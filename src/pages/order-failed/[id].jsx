@@ -9,6 +9,7 @@ import { useOrderListQuery } from "@/redux/features/productApi";
 import Failed from "@/components/payment/failed";
 import { useCreateCheckoutTokenWithoutEmailMutation } from "@/redux/features/card/cardApi";
 import HeaderSection from "@/components/home/headerSection";
+import GoldRateBar from "@/components/GoldRateBar";
 
 const PaymentFailed = () => {
   const router = useRouter();
@@ -37,7 +38,7 @@ const PaymentFailed = () => {
       });
       localStorage.setItem(
         "checkoutTokenINR",
-        data?.data?.data?.checkoutCreate?.checkout?.token
+        data?.data?.data?.checkoutCreate?.checkout?.token,
       );
     } catch (error) {
       console.error("Error:", error);
@@ -51,7 +52,7 @@ const PaymentFailed = () => {
       });
       localStorage.setItem(
         "checkoutTokenUSD",
-        data?.data?.data?.checkoutCreate?.checkout?.token
+        data?.data?.data?.checkoutCreate?.checkout?.token,
       );
     } catch (error) {
       console.error("Error:", error);
@@ -61,8 +62,8 @@ const PaymentFailed = () => {
     <Wrapper>
       <SEO pageTitle="Order Success" />
       <div className="d-block d-xl-none">
-              <GoldRateBar/>
-            </div>
+        <GoldRateBar />
+      </div>
       {/* <HeaderTwo style_2={true} /> */}
       <HeaderSection />
 

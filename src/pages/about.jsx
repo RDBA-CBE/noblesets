@@ -9,6 +9,7 @@ import AboutArea from "@/components/about/about-area";
 import JewelryAbout from "@/components/about/jewelry-about";
 import aboutBanner from "../../public/assets/img/shop-banner.jpg";
 import HeaderSection from "@/components/home/headerSection";
+import GoldRateBar from "@/components/GoldRateBar";
 
 const about = () => {
   return (
