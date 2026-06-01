@@ -7,18 +7,22 @@ import ShippingAndExchangePolicyMain from "../components/shippingPolicy/shipping
 import HeaderSection from "@/components/home/headerSection";
 import ShopBreadcrumb from "@/components/breadcrumb/shop-breadcrumb";
 import shopBanner from "@assets/img/newlayout/shop-bg.png";
+import GoldRateBar from "@/components/GoldRateBar";
 
 const ShippingAndExchangePolicy = () => {
   return (
     <Wrapper>
       <SEO pageTitle="Return and Exchange Policies" />
       {/* <HeaderTwo style_2={true} /> */}
+      <div className="d-block d-xl-none">
+        <GoldRateBar />
+      </div>
       <HeaderSection />
 
-       <div
-        // style={{ background: "#f6e9d9" }}
-        >
-        <div >
+      <div
+      // style={{ background: "#f6e9d9" }}
+      >
+        <div>
           <ShopBreadcrumb
             title="Return and Exchange Policies"
             subtitle="Return and Exchange Policies"
@@ -28,7 +32,6 @@ const ShippingAndExchangePolicy = () => {
           />
         </div>
       </div>
-
 
       <ShippingAndExchangePolicyMain />
       <HomeFooter />

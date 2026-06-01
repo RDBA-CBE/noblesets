@@ -14,6 +14,7 @@ import CheckoutBanner from "@assets/img/newlayout/shop-bg.png";
 import { useCountryListQuery } from "../redux/features/productApi";
 import HeaderSection from "@/components/home/headerSection";
 import HomeFooter from "@/components/home/HomeFooter";
+import GoldRateBar from "@/components/GoldRateBar";
 
 const CheckoutPage = () => {
   const { data: tokens } = useGetCartListQuery();
@@ -22,6 +23,9 @@ const CheckoutPage = () => {
   return (
     <Wrapper>
       <SEO pageTitle="Checkout" />
+      <div className="d-block d-xl-none">
+        <GoldRateBar />
+      </div>
       <motion.div
         initial={{ opacity: 0, y: 30 }}
         whileInView={{ opacity: 1, y: 0 }}
@@ -66,7 +70,7 @@ const CheckoutPage = () => {
         transition={{ duration: 0.6, delay: 0.2 }}
         viewport={{ once: true }}
       >
-      <HomeFooter />
+        <HomeFooter />
       </motion.div>
     </Wrapper>
   );

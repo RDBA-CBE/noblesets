@@ -15,7 +15,7 @@ import { useUserReviewsListMutation } from "@/redux/features/productApi";
 import { useSetState } from "@/utils/functions";
 import ShopBreadcrumb from "@/components/breadcrumb/shop-breadcrumb";
 import shopBanner from "@assets/img/newlayout/shop-bg.png";
-
+import GoldRateBar from "@/components/GoldRateBar";
 
 const ProfilePage = () => {
   const router = useRouter();
@@ -42,7 +42,7 @@ const ProfilePage = () => {
       });
       if (res?.data?.data?.productReviews?.edges?.length > 0) {
         const reviewsData = res?.data?.data?.productReviews?.edges?.map(
-          (item) => item?.node
+          (item) => item?.node,
         );
         setState({ reviewList: reviewsData });
       }
@@ -65,6 +65,9 @@ const ProfilePage = () => {
   return (
     <Wrapper>
       <SEO pageTitle="Profile" />
+      <div className="d-block d-xl-none">
+        <GoldRateBar />
+      </div>
       <motion.div
         initial={{ opacity: 0, y: 30 }}
         whileInView={{ opacity: 1, y: 0 }}
@@ -74,21 +77,21 @@ const ProfilePage = () => {
         <HeaderSection />
       </motion.div>
       <div>
-          <motion.div
-            initial={{ opacity: 0, y: 30 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.6, delay: 0.2 }}
-            viewport={{ once: true }}
-          >
-            <ShopBreadcrumb
-              title="Profile"
-              subtitle=""
-              bgImage={shopBanner}
-              // catList={categoryList}
-              // product={productList}
-            />
-          </motion.div>
-        </div>
+        <motion.div
+          initial={{ opacity: 0, y: 30 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.6, delay: 0.2 }}
+          viewport={{ once: true }}
+        >
+          <ShopBreadcrumb
+            title="Profile"
+            subtitle=""
+            bgImage={shopBanner}
+            // catList={categoryList}
+            // product={productList}
+          />
+        </motion.div>
+      </div>
       <motion.div
         initial={{ opacity: 0, y: 30 }}
         whileInView={{ opacity: 1, y: 0 }}

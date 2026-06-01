@@ -14,6 +14,7 @@ import { useGetUserOrderByIdQuery } from "@/redux/features/order/orderApi";
 import PrdDetailsLoader from "@/components/loader/prd-details-loader";
 import { roundOff } from "@/utils/functions";
 import HeaderSection from "@/components/home/headerSection";
+import GoldRateBar from "@/components/GoldRateBar";
 
 const SingleOrder = ({ params }) => {
   const orderId = params.id;
@@ -195,6 +196,9 @@ const SingleOrder = ({ params }) => {
     <>
       <Wrapper>
         <SEO pageTitle={"Order Details"} />
+        <div className="d-block d-xl-none">
+                <GoldRateBar/>
+              </div>
         {/* <HeaderTwo style_2={true} /> */}
         <HeaderSection />
 

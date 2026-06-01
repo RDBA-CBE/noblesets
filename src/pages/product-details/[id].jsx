@@ -22,6 +22,7 @@ import HomeFooter from "@/components/home/HomeFooter";
 import CartBanner from "@assets/img/newlayout/shop-bg.png";
 
 import CommonBreadcrumb from "@/components/breadcrumb/common-breadcrumb";
+import GoldRateBar from "@/components/GoldRateBar";
 
 const ProductDetailsPage = ({ query }) => {
   const router = useRouter();
@@ -244,6 +245,9 @@ const ProductDetailsPage = ({ query }) => {
   return (
     <Wrapper>
       <SEO pageTitle="Product Details" />
+      <div className="d-block d-xl-none">
+              <GoldRateBar/>
+            </div>
       <motion.div
         initial={{ opacity: 0, y: 30 }}
         whileInView={{ opacity: 1, y: 0 }}

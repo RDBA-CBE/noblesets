@@ -11,12 +11,16 @@ import CartBanner from "@assets/img/newlayout/shop-bg.png";
 import HeaderSection from "@/components/home/headerSection";
 import CartArea1 from "@/components/cart-wishlist/cart-area1";
 import HomeFooter from "@/components/home/HomeFooter";
+import GoldRateBar from "@/components/GoldRateBar";
 
 const CartPage = () => {
   return (
     <Wrapper>
       <SEO pageTitle="Cart" />
       {/* <HeaderTwo style_2={true} /> */}
+      <div className="d-block d-xl-none">
+        <GoldRateBar />
+      </div>
       <motion.div
         initial={{ opacity: 0, y: 30 }}
         whileInView={{ opacity: 1, y: 0 }}

@@ -34,6 +34,7 @@ import {
 } from "../redux/features/productApi";
 import HeaderSection from "@/components/home/headerSection";
 import HomeFooter from "@/components/home/HomeFooter";
+import GoldRateBar from "@/components/GoldRateBar";
 
 const ShopPage = () => {
   const dispatch = useDispatch();
@@ -43,7 +44,7 @@ const ShopPage = () => {
   const filter = useSelector((state) => state.shopFilter.filterData);
 
   const filterByHomePages = useSelector(
-    (state) => state.shopFilter.filterByHomePage
+    (state) => state.shopFilter.filterByHomePage,
   );
 
   const [after, setAfter] = useState(null);
@@ -82,7 +83,7 @@ const ShopPage = () => {
       dispatch(
         filterData({
           price: filterByHomePages?.price,
-        })
+        }),
       ); // Dispatching the current checked state
     }
   }, [filterByHomePages, router]);
@@ -314,7 +315,7 @@ const ShopPage = () => {
       });
       localStorage.setItem(
         "checkoutTokenINR",
-        data?.data?.data?.checkoutCreate?.checkout?.token
+        data?.data?.data?.checkoutCreate?.checkout?.token,
       );
     } catch (error) {
       console.error("Error:", error);
@@ -328,7 +329,7 @@ const ShopPage = () => {
       });
       localStorage.setItem(
         "checkoutTokenUSD",
-        data?.data?.data?.checkoutCreate?.checkout?.token
+        data?.data?.data?.checkoutCreate?.checkout?.token,
       );
     } catch (error) {
       console.error("Error:", error);
@@ -569,7 +570,6 @@ const ShopPage = () => {
       finalFilterOptionList(res);
     });
   };
-  
 
   const filterByCategoryName = async () => {
     try {
@@ -831,7 +831,7 @@ const ShopPage = () => {
     let parsedFilterData;
     if (res?.data?.data?.attributefilter?.filterData) {
       parsedFilterData = JSON?.parse(
-        res?.data?.data?.attributefilter?.filterData
+        res?.data?.data?.attributefilter?.filterData,
       );
     }
     if (parsedFilterData?.edges?.length > 0) {
@@ -845,10 +845,12 @@ const ShopPage = () => {
     // setProductStyles(data?.productStyles);
   };
 
-
   return (
     <Wrapper>
       <SEO pageTitle="Shop" />
+      <div className="d-block d-xl-none">
+        <GoldRateBar />
+      </div>
       <motion.div
         initial={{ opacity: 0, y: 30 }}
         whileInView={{ opacity: 1, y: 0 }}

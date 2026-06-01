@@ -14,6 +14,7 @@ import MyOrderDetails from "../../components/my-account/my-order-details";
 import PrivateRouter from "@/layout/private-router";
 import HeaderSection from "@/components/home/headerSection";
 import HomeFooter from "@/components/home/HomeFooter";
+import GoldRateBar from "@/components/GoldRateBar";
 
 const OrderDetails = () => {
   const router = useRouter();
@@ -27,6 +28,9 @@ const OrderDetails = () => {
     <Wrapper>
       <SEO pageTitle="Cart" />
       {/* <HeaderTwo style_2={true} /> */}
+      <div className="d-block d-xl-none">
+              <GoldRateBar/>
+            </div>
       <HeaderSection />
       <div className="common-bg">
         <div >

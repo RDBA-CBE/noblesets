@@ -9,6 +9,7 @@ import { useGetProductQuery } from "@/redux/features/productApi";
 import ProductDetailsArea from "@/components/product-details/product-details-area";
 import { useSetState } from "../utils/functions";
 import HeaderSection from "@/components/home/headerSection";
+import GoldRateBar from "@/components/GoldRateBar";
 
 const CouponPage = () => {
   const {
@@ -21,7 +22,6 @@ const CouponPage = () => {
   const [state, setState] = useSetState({
     data: {},
   });
-
 
   useEffect(() => {
     getData();
@@ -40,13 +40,12 @@ const CouponPage = () => {
     <Wrapper>
       <SEO pageTitle="Coupon" />
       {/* <HeaderTwo style_2={true} /> */}
+      <div className="d-block d-xl-none">
+        <GoldRateBar />
+      </div>
       <HeaderSection />
 
-      <CommonBreadcrumb
-        title="Gift Cart"
-        subtitle="Coupon"
-        BgImage={banner}
-      />
+      <CommonBreadcrumb title="Gift Cart" subtitle="Coupon" BgImage={banner} />
       <ProductDetailsArea productItem={product} />
       <HomeFooter />
     </Wrapper>

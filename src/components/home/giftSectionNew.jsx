@@ -47,12 +47,12 @@ be told. Our curated gifting collection caters to every emotion, relationship an
             <div class="row  gap-0  gap-sm-0   pt-0 pt-lg-2 ">
               {productLoading ? (
                 <div class="col-12 text-center"><span>Loading...</span></div>
-              ) : giftCategories.map((cat, i) => (
+              ) : giftCategories?.slice(0, 3)?.map((cat, i) => (
                 <div key={cat.id} class="col-4 col-sm-4 p-1 text-center cursor-pointer" data-aos="zoom-in" data-aos-delay={200 + i * 100}
                   onClick={() => router.push(`/shop?category=${cat.slug}`)}>
                   <div className="position-relative">
                     <img src={cat.backgroundImageUrl} alt={cat.name} className="w-100" style={{ borderRadius: '10px' }} />
-                    <span className="gift-batch position-absolute bottom-0 start-50 translate-middle-x mb-2 d-inline-block rounded-pill px-2 px-xl-3 shadow-sm fs-12 fs-sm-14" style={{ border: "1px solid #be978b", color: "#571806",whiteSpace: "nowrap", zIndex: 1, backgroundColor: "#ffffffb8" }}>
+                    <span className="gift-batch position-absolute bottom-0 start-50 translate-middle-x mb-2 d-inline-block rounded-pill px-1 px-sm-2 px-xl-3 shadow-sm fs-12 fs-sm-14" style={{ border: "1px solid #be978b", color: "#571806",whiteSpace: "nowrap", zIndex: 1, backgroundColor: "#ffffffb8" }}>
                       {cat.name}
                     </span>
                   </div>

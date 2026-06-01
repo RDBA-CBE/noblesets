@@ -17,6 +17,7 @@ import HeaderSection from "@/components/home/headerSection";
 import Link from "next/link";
 import ShopBreadcrumb from "@/components/breadcrumb/shop-breadcrumb";
 import shopBanner from "@assets/img/newlayout/shop-bg.png";
+import GoldRateBar from "@/components/GoldRateBar";
 
 export default function GiftCart() {
   const {
@@ -109,7 +110,10 @@ export default function GiftCart() {
       >
         <div className="row">
           <div className="col-xl-12">
-            <div className="text-center pt-0 pb-0 pt-md-50 pb-md-50 " style={{padding:"200px 0"}}>
+            <div
+              className="text-center pt-0 pb-0 pt-md-50 pb-md-50 "
+              style={{ padding: "200px 0" }}
+            >
               <h3>No Gift Card Found</h3>
               <Link href="/shop" className="tp-cart-checkout-btn mt-20">
                 Continue Shopping
@@ -127,6 +131,10 @@ export default function GiftCart() {
     <Wrapper>
       <SEO pageTitle="Gift Card" />
       {/* <HeaderTwo style_2={true} /> */}
+
+      <div className="d-block d-xl-none">
+        <GoldRateBar />
+      </div>
       <HeaderSection />
       {/* 
       <CommonBreadcrumb
@@ -179,8 +187,8 @@ export default function GiftCart() {
           >
             <div className="row">
               <div className="col-xl-12">
-                <div className="text-center " style={{padding:"100px 0"}}>
-                  <h3 className="pb-20" >No Gift Card Found</h3>
+                <div className="text-center " style={{ padding: "100px 0" }}>
+                  <h3 className="pb-20">No Gift Card Found</h3>
                   <Link href="/shop" className="gradient-btn ">
                     Continue Shopping
                   </Link>

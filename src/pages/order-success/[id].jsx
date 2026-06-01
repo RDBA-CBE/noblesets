@@ -10,6 +10,7 @@ import { useCreateCheckoutTokenWithoutEmailMutation } from "@/redux/features/car
 import HeaderSection from "@/components/home/headerSection";
 import { BLUE_DART } from "@/utils/constant";
 import axios from "axios";
+import GoldRateBar from "@/components/GoldRateBar";
 
 const PaymentSucess = () => {
   const router = useRouter();
@@ -166,6 +167,9 @@ const PaymentSucess = () => {
   return (
     <Wrapper>
       <SEO pageTitle="Payment Success" />
+      <div className="d-block d-xl-none">
+              <GoldRateBar/>
+            </div>
       {/* <HeaderTwo style_2={true} /> */}
       <HeaderSection />
 

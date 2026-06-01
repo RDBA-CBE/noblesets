@@ -10,14 +10,16 @@ import HeaderSection from "@/components/home/headerSection";
 import { motion } from "framer-motion";
 import ShopBreadcrumb from "@/components/breadcrumb/shop-breadcrumb";
 import shopBanner from "@assets/img/newlayout/shop-bg.png";
-
-
+import GoldRateBar from "@/components/GoldRateBar";
 
 const ContactPage = () => {
   return (
     <Wrapper>
       <SEO pageTitle="Contact" />
       {/* <HeaderTwo style_2={true} /> */}
+      <div className="d-block d-xl-none">
+        <GoldRateBar />
+      </div>
       <HeaderSection />
 
       {/* <ContactBreadcrumb /> */}
@@ -40,8 +42,8 @@ const ContactPage = () => {
           </motion.div>
         </div>
       </div>
-      <ContactArea/>
-      <ContactMap/>
+      <ContactArea />
+      <ContactMap />
       <HomeFooter />
     </Wrapper>
   );
