@@ -88,7 +88,7 @@ const MobileMenus = () => {
         const excludeCategories = categoryList.filter(
           (item) =>
             item.slug !== "gift-card" &&
-            item.slug !== "best-of-noblesets" && item.slug !== "our-best-sellers" && item.slug !== "gifting-special"
+            item.slug !== "best-of-noblesets" && item.slug !== "best-sellers" && item.slug !== "gifting-special" && item.slug !== "our-best-sellers"
         );
         console.log("categoryList",excludeCategories)
   
