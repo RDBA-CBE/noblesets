@@ -949,7 +949,6 @@ export const productApi = apiSlice.injectEndpoints({
 
     getChildCatByParentId: builder.mutation({
       query: ({ slug }) => {
-        
         return configuration(CHILD_CAT_LIST_BY_PARENT_ID({ slug }));
       },
       providesTags: ["Products"],

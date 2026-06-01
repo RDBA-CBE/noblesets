@@ -4,24 +4,28 @@ import { Swiper, SwiperSlide } from "swiper/react";
 import { Navigation, Autoplay } from "swiper";
 import { ArrowNextSm, ArrowPrevSm } from "@/svg";
 import { useSetState } from "@/utils/functions";
-import { usePriceFilterMutation } from "@/redux/features/productApi";
+import { useGetChildCatByParentIdMutation, usePriceFilterMutation } from "@/redux/features/productApi";
 
 const HomeCategorySection = () => {
   const router = useRouter();
 
   const [state, setState] = useSetState({
     categoryList: [],
+    giftCategories: []
   });
 
   const [priceFilter, { isLoading: productLoading }] = usePriceFilterMutation();
+      const [subCatList, { isLoading: productLoadings }] = useGetChildCatByParentIdMutation();
+  
 
   useEffect(() => {
-    categoryList();
+    // categoryList();
+    categoryLists()
   }, []);
 
   const categoryList = async () => {
     const res = await priceFilter({
-      filter: { categorySlugs: "our-best-sellers" },
+      filter: { categorySlugs: "best-sellers" },
       sortBy: { direction: "DESC", field: "CREATED_AT" },
       first: 20,
       after: null,
@@ -44,6 +48,15 @@ const HomeCategorySection = () => {
         }));
       setState({ categoryList: response });
     }
+  };
+
+  const categoryLists = async () => {
+    const res = await subCatList({slug:"best-sellers"});
+    const children = res?.data?.data?.category?.children?.edges || [];
+    console.log("children",children)
+    setState({ giftCategories: children });
+
+    // setGiftCategories(children.map((e) => e.node));
   };
 
 
@@ -72,11 +85,13 @@ const HomeCategorySection = () => {
   ];
 
   const handleClick = (category) => {
-    router.push({
-      pathname: `product-details/${
-        category?.slug}`
+    router.push(`/shop?category=${category?.slug}`)
+    // router.push({
+
+    //   pathname: `product-details/${
+    //     category?.slug}`
     
-    });
+    // });
   };
 
   return (
@@ -99,7 +114,7 @@ const HomeCategorySection = () => {
         <div className="row justify-content-center">
           <div className="col-11 col-lg-10 col-xl-9">
             <div className="static-bs-wrapper d-none d-md-flex justify-content-between align-items-end gap-0">
-              {state.categoryList.map((img, index) => (
+              {state.giftCategories?.map((img, index) => (
                 <div
                   key={index}
                   className={`bs-slide 
@@ -109,11 +124,11 @@ const HomeCategorySection = () => {
                   `}
                 >
                   <img
-                    src={img.image}
+                    src={img.node?.backgroundImageUrl}
                     alt="Best Seller"
                     className="bs-img"
                     onClick={() => {
-                      handleClick(img);
+                      handleClick(img?.node);
                     }}
                   />
                 </div>
@@ -146,7 +161,7 @@ const HomeCategorySection = () => {
               }}
               className="bs-mobile-slider"
             >
-              {state.categoryList.map((img, index) => (
+              {state.categoryList?.slice(0,5)?.map((img, index) => (
                 <SwiperSlide key={index}>
                   <img
                     src={img.image}
