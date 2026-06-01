@@ -60,6 +60,9 @@ const PaymentFailed = () => {
   return (
     <Wrapper>
       <SEO pageTitle="Order Success" />
+      <div className="d-block d-xl-none">
+              <GoldRateBar/>
+            </div>
       {/* <HeaderTwo style_2={true} /> */}
       <HeaderSection />
 

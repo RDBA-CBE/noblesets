@@ -15,6 +15,9 @@ const about = () => {
     <Wrapper>
       <SEO pageTitle="About Us" />
       {/* <HeaderTwo style_2={true} /> */}
+      <div className="d-block d-xl-none">
+        <GoldRateBar/>
+      </div>
       <HeaderSection />
 
       <CommonBreadcrumb

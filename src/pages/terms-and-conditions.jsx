@@ -7,18 +7,22 @@ import TermsAndConditionsMain from "@/components/terms/terms-main";
 import HeaderSection from "@/components/home/headerSection";
 import ShopBreadcrumb from "@/components/breadcrumb/shop-breadcrumb";
 import shopBanner from "@assets/img/newlayout/shop-bg.png";
+import GoldRateBar from "@/components/GoldRateBar";
 
 const TermsAndConditions = () => {
   return (
     <Wrapper>
       <SEO pageTitle="Terms and Conditions" />
+      <div className="d-block d-xl-none">
+        <GoldRateBar />
+      </div>
       {/* <HeaderTwo style_2={true} /> */}
       <HeaderSection />
 
-      <div 
+      <div
       // style={{ background: "#f6e9d9" }}
       >
-        <div >
+        <div>
           <ShopBreadcrumb
             title="Terms and Conditions"
             subtitle="Terms and Conditions"
@@ -28,7 +32,6 @@ const TermsAndConditions = () => {
           />
         </div>
       </div>
-
 
       <TermsAndConditionsMain />
       <HomeFooter />

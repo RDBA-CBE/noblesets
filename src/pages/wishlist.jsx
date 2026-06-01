@@ -13,11 +13,15 @@ import HomeFooter from "@/components/home/HomeFooter";
 import shopBanner from "@assets/img/newlayout/shop-bg.png";
 import ShopBreadcrumb from "@/components/breadcrumb/shop-breadcrumb";
 import WishlistArea1 from "@/components/cart-wishlist/wishlist-area1";
+import GoldRateBar from "@/components/GoldRateBar";
 
 const WishlistPage = () => {
   return (
     <Wrapper>
       <SEO pageTitle="Wishlist" />
+      <div className="d-block d-xl-none">
+        <GoldRateBar/>
+      </div>
       {/* <HeaderTwo style_2={true} /> */}
       <motion.div
         initial={{ opacity: 0, y: 30 }}

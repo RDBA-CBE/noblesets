@@ -16,6 +16,7 @@ import ShopBreadcrumb from "@/components/breadcrumb/shop-breadcrumb";
 import shopBanner from "@assets/img/newlayout/shop-bg.png";
 import CompareArea1 from "@/components/compare/compare-area-1";
 import CompareArea2 from "@/components/compare/compare-area.2";
+import GoldRateBar from "@/components/GoldRateBar";
 
 const ComparePage = () => {
   const { data: wishlistData, isError, isLoading } = useGetWishlistQuery();
@@ -37,6 +38,9 @@ const ComparePage = () => {
     <Wrapper>
       <SEO pageTitle="Shop" />
       {/* <HeaderTwo style_2={true} /> */}
+      <div className="d-block d-xl-none">
+        <GoldRateBar />
+      </div>
       <motion.div
         initial={{ opacity: 0, y: 30 }}
         whileInView={{ opacity: 1, y: 0 }}

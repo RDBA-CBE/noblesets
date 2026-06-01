@@ -222,7 +222,7 @@ export default function ShopByCollectionsNew() {
     >
       <div className="">
         <div
-          className="section-wd d-flex flex-column flex-md-row justify-content-between align-items-start align-items-md-center shp-by-col"
+          className="section-wd d-flex flex-column flex-sm-row justify-content-between align-items-start align-items-md-center shp-by-col"
           style={{ padding: "0 95px" }}
         >
           <div className=" mb-md-0">

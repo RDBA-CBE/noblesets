@@ -6,19 +6,21 @@ import ShopBreadcrumb from "@/components/breadcrumb/shop-breadcrumb";
 import HomeFooter from "@/components/home/HomeFooter";
 import HeaderSection from "@/components/home/headerSection";
 import shopBanner from "@assets/img/newlayout/shop-bg.png";
-
-
+import GoldRateBar from "@/components/GoldRateBar";
 
 const OurStory = () => {
   return (
-     <Wrapper>
-          <SEO pageTitle="Our Story" />
-          {/* <HeaderTwo style_2={true} /> */}
-          <HeaderSection />
-           <div
-            // style={{background:"#f6e9d9"}}
-            >
-          <div >
+    <Wrapper>
+      <SEO pageTitle="Our Story" />
+      <div className="d-block d-xl-none">
+        <GoldRateBar />
+      </div>
+      {/* <HeaderTwo style_2={true} /> */}
+      <HeaderSection />
+      <div
+      // style={{background:"#f6e9d9"}}
+      >
+        <div>
           <ShopBreadcrumb
             title="Our Story"
             subtitle="Our Story"
@@ -26,13 +28,12 @@ const OurStory = () => {
             // catList={categoryList}
             // product={productList}
           />
-          </div>
-          </div>
-          
-          <StorySec/>
-          <HomeFooter />
-        </Wrapper>
-   
+        </div>
+      </div>
+
+      <StorySec />
+      <HomeFooter />
+    </Wrapper>
   );
 };
 

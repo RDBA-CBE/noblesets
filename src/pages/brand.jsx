@@ -17,6 +17,7 @@ import Pagination from "@/pagination/pagination";
 import ProductItem1 from "@/components/products/fashion/product-item-1";
 import SimilarProductItem from "@/components/products/beauty/similar-product-item-1";
 import ProductItem from "@/components/products/beauty/product-item";
+import GoldRateBar from "@/components/GoldRateBar";
 
 const Page = () => {
   const router = useRouter();
@@ -193,9 +194,12 @@ const Page = () => {
     <Wrapper>
       <SEO pageTitle="Cart" />
       {/* <HeaderTwo style_2={true} /> */}
+      <div className="d-block d-xl-none">
+        <GoldRateBar />
+      </div>
       <HeaderSection />
       <div className="common-bg">
-        <div className="section-wd">
+        <div className="section-wd mt-20">
           <BrandBanner logo={state.brandData?.logo} />
         </div>
 
@@ -210,10 +214,7 @@ const Page = () => {
               </div>
             </div>
             <div className="col-10 col-lg-5 m-auto d-flex justify-content-center">
-              <img
-                src="/assets/img/home/best_of_nobletset/img-3.png"
-                alt=""
-              />
+              <img src="/assets/img/home/best_of_nobletset/img-3.png" alt="" />
             </div>
           </div>
           {shopPaginationLoading || productPagiLoading ? (

@@ -7,17 +7,21 @@ import PrivacyPolicyMain from "../components/privacy/privacyPolicyMain";
 import HeaderSection from "@/components/home/headerSection";
 import ShopBreadcrumb from "@/components/breadcrumb/shop-breadcrumb";
 import shopBanner from "@assets/img/newlayout/shop-bg.png";
+import GoldRateBar from "@/components/GoldRateBar";
 
 const PrivacyPloicy = () => {
   return (
     <Wrapper>
       <SEO pageTitle="Legal Policies" />
+      <div className="d-block d-xl-none">
+        <GoldRateBar />
+      </div>
       {/* <HeaderTwo style_2={true} /> */}
       <HeaderSection />
-      <div 
+      <div
       // style={{ background: "#f6e9d9" }}
       >
-        <div >
+        <div>
           <ShopBreadcrumb
             title="Legal Policies"
             subtitle="Legal Policies"

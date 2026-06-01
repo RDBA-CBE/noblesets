@@ -123,7 +123,7 @@ const HomeBannerNew = () => {
               <div className=" con d-none d-sm-flex">
                 <div>
                   <p className="main-title">Bespoke</p>
-                  <p className="sub-title">Brilliance for You</p>
+                  <p className="sub-title"> Designed for You</p>
                 </div>
                 {/* <Image className="d-none d-md-block"
                   src={bannerProducts1}
