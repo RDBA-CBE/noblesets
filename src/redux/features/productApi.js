@@ -51,6 +51,7 @@ import {
   PRICE_RANGE,
   CHILD_CATEGORY,
   UPDATE_ORDER_CANCEL_NOTE,
+  CHILD_CAT_LIST_BY_PARENT_ID,
 } from "@/utils/queries/productList";
 import {
   RELATED_PRODUCT,
@@ -945,6 +946,16 @@ export const productApi = apiSlice.injectEndpoints({
       },
       providesTags: ["Products"],
     }),
+
+    getChildCatByParentId: builder.mutation({
+      query: ({ slug }) => {
+        
+        return configuration(CHILD_CAT_LIST_BY_PARENT_ID({ slug }));
+      },
+      providesTags: ["Products"],
+    }),
+
+    
   }),
 });
 
@@ -1018,5 +1029,6 @@ export const {
   usePriceRangeMutation,
   useChildCategoryListMutation,
   useGetOrderDetailMutation,
-  useUpdateorderCancelNoteMutation
+  useUpdateorderCancelNoteMutation,
+  useGetChildCatByParentIdMutation
 } = productApi;

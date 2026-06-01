@@ -356,7 +356,7 @@ const Menus1 = () => {
         }));
   
         // Exclude categories
-        const excludedSlugs = ["gift-card", "best-of-noblesets","our-best-sellers"];
+        const excludedSlugs = ["gift-card", "best-of-noblesets","our-best-sellers","gifting-special"];
   
         const filteredCategories = categoryList
           ?.filter((item) => !excludedSlugs.includes(item.slug))

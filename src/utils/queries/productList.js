@@ -471,6 +471,35 @@ export const CATEGORY_LIST = ({ channel, first }) => {
   });
 };
 
+export const CHILD_CAT_LIST_BY_PARENT_ID = ({ slug }) => {
+  return JSON.stringify({
+    query: `
+   query GetChildCategories($slug: String!) {
+  category(slug: $slug) {
+    id
+    name
+    slug
+    children(first: 100) {
+      edges {
+        node {
+          id
+          name
+          slug
+          level
+          backgroundImageUrl
+        }
+      }
+    }
+  }
+}
+    `,
+    variables: { slug},
+  });
+};
+
+
+
+
 export const PARENT_CATEGORY_LIST = ({ channel }) => {
   return JSON.stringify({
     query: `

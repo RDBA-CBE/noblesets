@@ -83,10 +83,9 @@ export default function PincodeChecker() {
 
   const formatDeliveryDate = () => {
     if (!deliveryData?.expectedDate) return null;
-    const match = deliveryData.expectedDate.match(/\d+/);
-    if (!match) return null;
-    const date = new Date(parseInt(match[0]));
-    return date.toLocaleDateString("en-IN", { day: "numeric", month: "long" });
+    const date = new Date(deliveryData.expectedDate);
+    if (isNaN(date)) return deliveryData.expectedDate;
+    return date.toLocaleDateString("en-IN", { day: "numeric", month: "long", year: "numeric" });
   };
 
   if (deliveryData) {
