@@ -1,27 +1,9 @@
-import { useGetChildCatByParentIdMutation } from "@/redux/features/productApi";
 import { useRouter } from "next/router";
-import React, { useEffect, useState } from "react";
+import React from "react";
 
 export default function GiftSectionNew() {
 
-    const [subCatList, { isLoading: productLoading }] = useGetChildCatByParentIdMutation();
-    const [giftCategories, setGiftCategories] = useState([]);
-
   const router = useRouter()
-
-   useEffect(() => {
-      categoryList();
-    }, []);
-  
-  
-    const categoryList = async () => {
-      const res = await subCatList({slug:"gifting-special"});
-      const children = res?.data?.data?.category?.children?.edges || [];
-      setGiftCategories(children.map((e) => e.node));
-    };
-
-    console.log("giftCategories", giftCategories);
-
   return ( 
     <section class="pt-60 giftSection position-relative" 
     // style={{ backgroundColor: "#f6e9d9" }}
@@ -45,19 +27,56 @@ be told. Our curated gifting collection caters to every emotion, relationship an
             </p>
 
             <div class="row  gap-0  gap-sm-0   pt-0 pt-lg-2 ">
-              {productLoading ? (
-                <div class="col-12 text-center"><span>Loading...</span></div>
-              ) : giftCategories.map((cat, i) => (
-                <div key={cat.id} class="col-4 col-sm-4 p-1 text-center cursor-pointer" data-aos="zoom-in" data-aos-delay={200 + i * 100}
-                  onClick={() => router.push(`/shop?category=${cat.slug}`)}>
-                  <div className="position-relative">
-                    <img src={cat.backgroundImageUrl} alt={cat.name} className="w-100" style={{ borderRadius: '10px' }} />
-                    <span className="gift-batch position-absolute bottom-0 start-50 translate-middle-x mb-2 d-inline-block rounded-pill px-2 px-xl-3 shadow-sm fs-12 fs-sm-14" style={{ border: "1px solid #be978b", color: "#571806",whiteSpace: "nowrap", zIndex: 1, backgroundColor: "#ffffffb8" }}>
-                      {cat.name}
-                    </span>
-                  </div>
-                </div>
-              ))}
+              <div class="col-4 col-sm-4 p-1" data-aos="zoom-in" data-aos-delay="200" onClick={() => {
+                  
+                  
+                 router.push("/gift-card");
+                  }}>
+                <img
+                  src="/assets/img/newlayout/Making gifiting special/image-1.png"
+                  alt="image-1"
+                  // style={{
+                  //   width: "100%",
+                  //   borderRadius: "20px",
+                  //   cursor: "pointer",
+                  // }}
+                  
+                />
+                {/* <p class="small mt-2">Birthday</p> */}
+              </div>
+              <div class="col-4 col-sm-4 p-1" data-aos="zoom-in" data-aos-delay="300" onClick={() => {
+                  
+                  
+                 router.push("/gift-card");
+                  }}>
+                <img
+                  src="/assets/img/newlayout/Making gifiting special/image-2.png"
+                  alt="image-1"
+                  // style={{
+                  //   width: "100%",
+                  //   borderRadius: "20px",
+                  //   cursor: "pointer",
+                  // }}
+                 
+                />
+                {/* <p class="small mt-2">Anniversary</p> */}
+              </div>
+              <div class="col-4 col-sm-4 p-1" data-aos="zoom-in" data-aos-delay="400" onClick={() => {
+                 
+                 router.push("/gift-card");
+                  }}>
+                <img
+                  src="/assets/img/newlayout/Making gifiting special/image-3.png"
+                  alt="image-1"
+                  // style={{
+                  //   width: "100%",
+                  //   borderRadius: "20px",
+                  //   cursor: "pointer",
+                  // }}
+                  
+                />
+                {/* <p class="small mt-2">Valentine’s Day</p> */}
+              </div>
             </div>
 
             <div className="justify-content-center justify-content-md-start"
@@ -68,7 +87,7 @@ be told. Our curated gifting collection caters to every emotion, relationship an
             >
               <button className="gradient-btn" onClick={() => {
                   
-                  router.push(`/shop?category=gifting-special`)
+                 router.push("/shop");
                   }}>✦ Explore Products ✦</button>
             </div>
           </div>

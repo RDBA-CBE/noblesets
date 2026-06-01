@@ -5146,3 +5146,13 @@ header .tp-product-action-btn-3:hover {
   animation-play-state: paused;
 }
 
+.gift-batch{
+  font-size: 14px;
+}
+
+@media(max-width:1100px){
+  .gift-batch{
+  font-size: 10px;
+
+}
+}

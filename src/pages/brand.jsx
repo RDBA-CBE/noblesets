@@ -195,7 +195,7 @@ const Page = () => {
       {/* <HeaderTwo style_2={true} /> */}
       <HeaderSection />
       <div className="common-bg">
-        <div className="section-wd">
+        <div className="section-wd mt-20">
           <BrandBanner logo={state.brandData?.logo} />
         </div>
 
