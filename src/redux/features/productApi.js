@@ -916,6 +916,7 @@ export const productApi = apiSlice.injectEndpoints({
       },
       providesTags: ["Products"],
     }),
+    
 
     brandData: builder.mutation({
       query: ({ slug }) => {

@@ -9,6 +9,7 @@ import { ArrowNextSm, ArrowPrevSm } from "@/svg";
 import { useRouter } from "next/router";
 import {
   useChildCategoryListMutation,
+  useGetCategoryListQuery,
   useMaxPriceMutation,
   usePriceFilterMutation,
 } from "@/redux/features/productApi";
@@ -82,25 +83,43 @@ export default function ShopByCollectionsNew() {
   const [childCatList, { isLoading: loading1 }] =
     useChildCategoryListMutation();
 
+  const { data: categoryData,refetch:useGetCategoryListRefetch } = useGetCategoryListQuery();
+
+
+
+
   const router = useRouter();
   const dispatch = useDispatch();
 
   useEffect(() => {
-    if (filter?.length == 0) {
+    // if (filter?.length == 0) {
       getChildCatList();
-    }
+    // }
   }, []);
 
   const getChildCatList = async () => {
     try {
       const res = await childCatList({});
+      
+      // const response = await useGetCategoryListRefetch();
+
+      console.log("getChildCatList",res)
+      
+      // console.log("getChildCatList",response)
       const rawFilter = res?.data?.data?.categories?.edges?.map((item) => ({
         slug: item?.node?.slug,
         title: item?.node?.name,
+        image:item?.node?.backgroundImageUrl,
+        description: JSON.parse(item?.node?.description || "{}")?.blocks?.[0]?.data?.text || ""
+
+
       }));
+      console.log("rawFilter",rawFilter)
+      const except_new_product=rawFilter?.filter((item)=>item?.slug != "new-products")
+
 
       // Display only unique categories by keeping the 1st entry for each title
-      const filter = rawFilter?.filter((value, index, self) =>
+      const filter = except_new_product?.filter((value, index, self) =>
         index === self.findIndex((t) => 
           t.title.toLowerCase().trim() === value.title.toLowerCase().trim()
         )
@@ -108,25 +127,25 @@ export default function ShopByCollectionsNew() {
 
       console.log("shop filter", filter);
       
-      const filterWithImages = filter?.map((filterItem) => {
-        const cleanTitle = filterItem.title.toLowerCase().trim().replace(/s$/, ""); // normalize plural/singular
-        
-        const matchingCollection = collections?.find(
-          (collectionItem) =>
-            collectionItem.slug === filterItem.slug || 
-            collectionItem.title.toLowerCase().trim().startsWith(cleanTitle) ||
-            filterItem.title.toLowerCase().trim().startsWith(collectionItem.title.toLowerCase().trim().replace(/s$/, ""))
-        );
+      // const filterWithImages = filter?.map((filterItem) => {
+      //   const cleanTitle = filterItem.title.toLowerCase().trim().replace(/s$/, ""); // normalize plural/singular
+      //   console.log("filterWithImages",filterWithImages)
+      //   const matchingCollection = collections?.find(
+      //     (collectionItem) =>
+      //       collectionItem.slug === filterItem.slug || 
+      //       collectionItem.title.toLowerCase().trim().startsWith(cleanTitle) ||
+      //       filterItem.title.toLowerCase().trim().startsWith(collectionItem.title.toLowerCase().trim().replace(/s$/, ""))
+      //   );
 
-        return {
-          ...filterItem,
-          image: matchingCollection ? matchingCollection.img : null,
-          desc: matchingCollection ? matchingCollection.desc : null, // or a default image path
-        };
-      });
+      //   return {
+      //     ...filterItem,
+      //     image: matchingCollection ? matchingCollection.img : null,
+      //     desc: matchingCollection ? matchingCollection.desc : null, // or a default image path
+      //   };
+      // });
 
-      if (filterWithImages?.length > 0) {
-        getProductMaxPrice(filterWithImages);
+      if (filter?.length > 0) {
+        getProductMaxPrice(filter);
       }
     } catch (error) {
       console.log("✌️error --->", error);
@@ -171,6 +190,7 @@ export default function ShopByCollectionsNew() {
     const filteredCollection = filterWithImages.filter(
       (item) => item.price !== "₹0 - ₹0"
     );
+    console.log("filteredCollection",filteredCollection)
     dispatch(childCategory(filteredCollection));
   };
 
@@ -294,7 +314,7 @@ export default function ShopByCollectionsNew() {
                             className=" mb-2 mt-20 cursor-pointer"
                             // style={{ fontSize: "18px" }}
                           >
-                            {item.desc}
+                            {item.description}
                           </p>
                           <h5
                             className="cursor-pointer"

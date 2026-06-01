@@ -841,6 +841,7 @@ export const PRICE_RANGE = () => {
   });
 };
 
+
 export const CHILD_CATEGORY = () => {
   return JSON.stringify({
     query: `
@@ -856,6 +857,8 @@ export const CHILD_CATEGORY = () => {
           id
           name 
         }
+          description
+          backgroundImageUrl
       }
     }
   }

@@ -1,6 +1,10 @@
 import React, { useEffect, useState } from "react";
 import Link from "next/link";
-import { useGetCategoryListQuery } from "@/redux/features/productApi";
+import {
+  useGetCategoryListQuery,
+  useNobelsetCategoryListMutation,
+  usePriceFilterMutation,
+} from "@/redux/features/productApi";
 // internal
 import { ArrowRightLong } from "@/svg";
 import banner_bg_1 from "@assets/img/category-1.jpg";
@@ -13,10 +17,53 @@ import { useRouter } from "next/router";
 import { Swiper, SwiperSlide } from "swiper/react";
 import { Autoplay, Navigation } from "swiper";
 import { ArrowNextSm, ArrowPrevSm } from "@/svg";
-import { addCommasToNumber, capitalizeFLetter } from "@/utils/functions";
+import {
+  addCommasToNumber,
+  capitalizeFLetter,
+  useSetState,
+} from "@/utils/functions";
+import Loader from "../loader/loader";
 
 const HomeCategorySection = () => {
   const router = useRouter();
+
+  const [state, setState] = useSetState({
+    categoryList: [],
+  });
+
+  const [priceFilter, { isLoading: productLoading }] = usePriceFilterMutation();
+
+  useEffect(() => {
+    categoryList();
+  }, []);
+
+
+  const categoryList = async () => {
+    const res = await priceFilter({
+      filter: { categorySlugs: "best-of-noblesets" },
+      sortBy: { direction: "DESC", field: "CREATED_AT" },
+      first: 20,
+      after: null,
+      pageSize:20
+    });
+    console.log("res",res)
+    const list = res?.data?.data?.productsSearch?.edges?.map(
+      (item) => item?.node,
+    );
+    console.log(list, "list");
+    if (list?.length > 0) {
+      const response = list
+        ?.filter((item) => item?.media?.length > 1)
+        ?.map((item) => ({
+          id: item?.id,
+          name: item?.name,
+          image: item?.media?.[1]?.url,
+          price: item?.defaultVariant?.pricing?.price?.gross?.amount,
+          slug: item?.slug,
+        }));
+      setState({ categoryList: response });
+    }
+  };
 
   const slider_setting = {
     slidesPerView: 4,
@@ -48,19 +95,48 @@ const HomeCategorySection = () => {
     },
   };
 
- const video_data = [
-  { src: "/assets/img/newlayout/Best of Noblesets/img-1.png", title: "Fancy Chain 2", category: "chain" },
-  { src: "/assets/img/newlayout/Best of Noblesets/img-2.png", title: "18KT NS Ring", category: "ring" },
-  { src: "/assets/img/newlayout/Best of Noblesets/img-3.png", title: "Fancy Earring 2", category: "earring" },
-  { src: "/assets/img/newlayout/Best of Noblesets/img-4.png", title: "Fancy Bracelet 2", category: "bracelet" },
-  { src: "/assets/img/newlayout/Best of Noblesets/img-5.png", title: "18KT NS Chain 2", category: "chain" },
-  { src: "/assets/img/newlayout/Best of Noblesets/img-6.png", title: "Gold Earring", category: "earring" },
-  { src: "/assets/img/newlayout/Best of Noblesets/img-7.png", title: "Gold Bracelet", category: "bracelet" },
-  { src: "/assets/img/newlayout/Best of Noblesets/img-8.png", title: "18KT Earring", category: "earring" },
-];
-
-
-
+  const video_data = [
+    {
+      src: "/assets/img/newlayout/Best of Noblesets/img-1.png",
+      title: "Fancy Chain 2",
+      category: "chain",
+    },
+    {
+      src: "/assets/img/newlayout/Best of Noblesets/img-2.png",
+      title: "18KT NS Ring",
+      category: "ring",
+    },
+    {
+      src: "/assets/img/newlayout/Best of Noblesets/img-3.png",
+      title: "Fancy Earring 2",
+      category: "earring",
+    },
+    {
+      src: "/assets/img/newlayout/Best of Noblesets/img-4.png",
+      title: "Fancy Bracelet 2",
+      category: "bracelet",
+    },
+    {
+      src: "/assets/img/newlayout/Best of Noblesets/img-5.png",
+      title: "18KT NS Chain 2",
+      category: "chain",
+    },
+    {
+      src: "/assets/img/newlayout/Best of Noblesets/img-6.png",
+      title: "Gold Earring",
+      category: "earring",
+    },
+    {
+      src: "/assets/img/newlayout/Best of Noblesets/img-7.png",
+      title: "Gold Bracelet",
+      category: "bracelet",
+    },
+    {
+      src: "/assets/img/newlayout/Best of Noblesets/img-8.png",
+      title: "18KT Earring",
+      category: "earring",
+    },
+  ];
 
   //  const saveOff = () => {
   //   const discountedPrice = product?.pricing?.priceRange?.start?.gross?.amount;
@@ -98,51 +174,54 @@ const HomeCategorySection = () => {
 
           <div className="row justify-content-center">
             <div className="col-11">
-              <div
-                className="tp-brand-slider p-relative"
-                // style={{ height: "300px" }}
-              >
-                <Swiper
-                  {...slider_setting}
-                  modules={[Navigation, Autoplay]}
-                  className="tp-brand-slider-active swiper-container"
+              {productLoading ? (
+                <Loader />
+              ) : (
+                <div
+                  className="tp-brand-slider p-relative"
+                  // style={{ height: "300px" }}
                 >
-                  {video_data.map((video, i) => (
-                    <SwiperSlide
-                      key={i}
-                      className="tp-brand-item text-center"
-                      // style={{ width: "350px", height: "500px" }}
-                    >
-                      <div className=" category-section-5">
-                        <img
-                          src={video.src}
-                          alt="image-5"
-                          style={{
-                            width: "95%",
-                            borderRadius: "20px",
-                            cursor: "pointer",
-                          }}
-                          onClick={() => {
-                            router.push({
-                              pathname: "/shop",
-                              // query: { category: "other_accessories" }, // Your parameters
-                            });
-                          }}
-                        />
+                  <Swiper
+                    {...slider_setting}
+                    modules={[Navigation, Autoplay]}
+                    className="tp-brand-slider-active swiper-container"
+                  >
+                    {state.categoryList.map((item, i) => (
+                      <SwiperSlide
+                        key={i}
+                        className="tp-brand-item text-center"
+                        // style={{ width: "350px", height: "500px" }}
+                      >
+                        <div className=" category-section-5">
+                          <img
+                            src={item?.image}
+                            alt="image-5"
+                            style={{
+                              width: "95%",
+                              borderRadius: "20px",
+                              cursor: "pointer",
+                            }}
+                            onClick={() => {
+                              router.push({
+                                pathname: `/product-details/${item?.slug}`,
+                              });
+                            }}
+                          />
 
-                        <div>
-                          <div className="tp-product-content-2  pt-20">
-                            <div style={{ textAlign: "center" }}>
-                              <h3 className="tp-product-title-2 mt-5  "
-                                  style={{cursor:"pointer" }}
-                              
-                              >
-                                <Link href={"/shop"}>{video.title}</Link>
-                              </h3>
-                              
+                          <div>
+                            <div className="tp-product-content-2  pt-20">
+                              <div style={{ textAlign: "center" }}>
+                                <h3
+                                  className="tp-product-title-2 mt-5  "
+                                  style={{ cursor: "pointer" }}
+                                >
+                                  <Link href={`/product-details/${item?.slug}`}>
+                                    {item.name}
+                                  </Link>
+                                </h3>
 
-                              <div className="tp-product-price-wrapper-2">
-                                {/* <span
+                                <div className="tp-product-price-wrapper-2">
+                                  {/* <span
                                   className=""
                                   style={{
                                     textDecoration: "line-through",
@@ -155,30 +234,32 @@ const HomeCategorySection = () => {
                                   {addCommasToNumber(100200) || 0}
                                 </span> */}
 
-                                <span
-                                  className="tp-product-price-2 new-price  pt-3"
-                                  style={{ fontSize: "20px",cursor:"pointer" }}
-                                  onClick={()=>{
-                                    router.push({
-                                      pathname: "/shop",
-                                      // query: { category: "other_accessories" }, // Your parameters
-                                    });
-                                  }}
-                             
-                                >
-                                 {capitalizeFLetter(video.category)}
-                                </span>
+                                  <span
+                                    className="tp-product-price-2 new-price  pt-3"
+                                    style={{
+                                      fontSize: "20px",
+                                      cursor: "pointer",
+                                    }}
+                                    onClick={() => {
+                                      router.push({
+                                        pathname: `/product-details/${item?.slug}`,
+                                        // query: { category: "other_accessories" }, // Your parameters
+                                      });
+                                    }}
+                                  >
+                                    ₹{addCommasToNumber(item.price)}
+                                  </span>
 
-                                {/* <div
+                                  {/* <div
                                   className="save-off"
                                   style={{
                                     color: "#000",
                                     fontSize: "16px",
                                   }}
                                 >{`Save 20% OFF`}</div> */}
-                              </div>
+                                </div>
 
-                              {/* <h3 className="tp-product-title-2 mt-2">
+                                {/* <h3 className="tp-product-title-2 mt-2">
                                 <Link
                                   href={`/product-details/${product?.slug}`}
                                 >
@@ -186,7 +267,7 @@ const HomeCategorySection = () => {
                                 </Link>
                               </h3> */}
 
-                              {/* {channel == "india-channel" ? (
+                                {/* {channel == "india-channel" ? (
                                 <div className="tp-product-price-wrapper mt-2">
                                   <span
                                     className="tp-product-price-2 new-price items-center"
@@ -274,22 +355,23 @@ const HomeCategorySection = () => {
                                   )}
                                 </div>
                               )} */}
+                              </div>
                             </div>
                           </div>
                         </div>
-                      </div>
-                    </SwiperSlide>
-                  ))}
-                </Swiper>
-                <div className="tp-brand-slider-arrow">
-                  <button className="tp-brand-slider-button-prev">
-                    <ArrowPrevSm />
-                  </button>
-                  <button className="tp-brand-slider-button-next">
-                    <ArrowNextSm />
-                  </button>
+                      </SwiperSlide>
+                    ))}
+                  </Swiper>
+                  <div className="tp-brand-slider-arrow">
+                    <button className="tp-brand-slider-button-prev">
+                      <ArrowPrevSm />
+                    </button>
+                    <button className="tp-brand-slider-button-next">
+                      <ArrowNextSm />
+                    </button>
+                  </div>
                 </div>
-              </div>
+              )}
             </div>
           </div>
         </div>

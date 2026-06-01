@@ -569,6 +569,7 @@ const ShopPage = () => {
       finalFilterOptionList(res);
     });
   };
+  
 
   const filterByCategoryName = async () => {
     try {

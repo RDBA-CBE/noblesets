@@ -86,24 +86,51 @@ export default function ShopByCollections() {
   const getChildCatList = async () => {
     try {
       const res = await childCatList({});
-      const filter = res?.data?.data?.categories?.edges?.map((item) => ({
+      
+      // const response = await useGetCategoryListRefetch();
+
+      
+      // console.log("getChildCatList",response)
+      const rawFilter = res?.data?.data?.categories?.edges?.map((item) => ({
         slug: item?.node?.slug,
         title: item?.node?.name,
+        image:item?.node?.backgroundImageUrl,
+        description: JSON.parse(item?.node?.description || "{}")?.blocks?.[0]?.data?.text || ""
+
+
       }));
-      const filterWithImages = filter?.map((filterItem) => {
-        const matchingCollection = collections?.find(
-          (collectionItem) => collectionItem.slug == filterItem.slug
-        );
+      console.log("rawFilter",rawFilter)
+      const except_new_product=rawFilter?.filter((item)=>item?.slug != "new-products")
 
-        return {
-          ...filterItem,
-          image: matchingCollection ? matchingCollection.img : null,
-          desc: matchingCollection ? matchingCollection.desc : null, // or a default image path
-        };
-      });
 
-      if (filterWithImages?.length > 0) {
-        getProductMaxPrice(filterWithImages);
+      // Display only unique categories by keeping the 1st entry for each title
+      const filter = except_new_product?.filter((value, index, self) =>
+        index === self.findIndex((t) => 
+          t.title.toLowerCase().trim() === value.title.toLowerCase().trim()
+        )
+      );
+
+      console.log("shop filter", filter);
+      
+      // const filterWithImages = filter?.map((filterItem) => {
+      //   const cleanTitle = filterItem.title.toLowerCase().trim().replace(/s$/, ""); // normalize plural/singular
+      //   console.log("filterWithImages",filterWithImages)
+      //   const matchingCollection = collections?.find(
+      //     (collectionItem) =>
+      //       collectionItem.slug === filterItem.slug || 
+      //       collectionItem.title.toLowerCase().trim().startsWith(cleanTitle) ||
+      //       filterItem.title.toLowerCase().trim().startsWith(collectionItem.title.toLowerCase().trim().replace(/s$/, ""))
+      //   );
+
+      //   return {
+      //     ...filterItem,
+      //     image: matchingCollection ? matchingCollection.img : null,
+      //     desc: matchingCollection ? matchingCollection.desc : null, // or a default image path
+      //   };
+      // });
+
+      if (filter?.length > 0) {
+        getProductMaxPrice(filter);
       }
     } catch (error) {
       console.log("✌️error --->", error);
@@ -118,14 +145,14 @@ export default function ShopByCollections() {
       try {
         const minRes = await maximumPrice({
           channel: "india-channel",
-          first: 1,
+          first: 10,
           filter: { categorySlugs: [cat.slug] },
           sortBy: { direction: "ASC", field: "PRICE" },
         });
 
         const maxRes = await maximumPrice({
           channel: "india-channel",
-          first: 1,
+          first: 10,
           filter: { categorySlugs: [cat.slug] },
           sortBy: { direction: "DESC", field: "PRICE" },
         });

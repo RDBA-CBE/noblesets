@@ -25,6 +25,7 @@ import InstaSection1 from "@/components/home/InstaSection1";
 import IframeMediaGallery from "@/components/home/IframeMediaGallery";
 import GoldRateBar from "@/components/GoldRateBar";
 import NewsletterPopup from "@/components/common/NewsletterPopup";
+import ShopByCollections from "@/components/home/shopByCollections";
 
 const Index = () => {
   const [maximumPrice] = useMaxPriceMutation();
