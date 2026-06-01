@@ -16,17 +16,17 @@ import banner_Content from "@assets/img/home/Banner/banner-content-img.png";
 // SVG icons
 import { ArrowNextSm, ArrowPrevSm } from "@/svg";
 import Link from "next/link";
-import { Autoplay } from "swiper";
 
 // Slider data
 
 const HomeBannerNew = () => {
   const [slider1, setSlider1] = useState(null);
-  const [slider2, setSlider2] = useState(null);
   const router = useRouter();
 
   // Slider settings
   const main_slider_setting = {
+    dots: true,
+    dotsClass: "slick-dots custom-dots",
     infinite: true,
     slidesToShow: 1,
     slidesToScroll: 1,
@@ -37,6 +37,14 @@ const HomeBannerNew = () => {
     loop: true,
     speed: 1000, // slightly slower looks smoother
     cssEase: "ease-in-out",
+    appendDots: (dots) => (
+      <div className="custom-dots-container" style={{ position: 'absolute', bottom: '25px', left: '40px', width: 'auto', textAlign: 'left', zIndex: 10 }}>
+        <ul className="custom-dots" style={{ margin: "0px", padding: "0px", display: "flex", gap: "10px", alignItems: "center" }}> {dots} </ul>
+      </div>
+    ),
+    customPaging: (i) => (
+      <div className="diamond-dot"></div>
+    ),
   };
 
   return (
@@ -46,7 +54,6 @@ const HomeBannerNew = () => {
     >
       <Slider
         {...main_slider_setting}
-        asNavFor={slider2}
         ref={(slider) => setSlider1(slider)}
         className="tp-slider-active-4 "
       >

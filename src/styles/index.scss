@@ -3,3 +3,33 @@
 @import "swiper/css/bundle";
 @import 'node_modules/react-modal-video/scss/modal-video.scss';
 @import '../../public/assets/scss/main.scss';
+
+/* Home Banner Diamond Pagination */
+.custom-dots {
+    li {
+        list-style: none;
+        width: auto !important;
+        height: auto !important;
+        margin: 0 6px !important;
+        button {
+            background: transparent;
+            border: none;
+            padding: 0;
+            &::before {
+                display: none !important; /* Hide default slick dots */
+            }
+        }
+        .diamond-dot {
+            width: 10px;
+            height: 10px;
+            border: 1.5px solid #be978b;
+            transform: rotate(45deg);
+            background-color: transparent;
+            transition: all 0.3s ease;
+            cursor: pointer;
+        }
+        &.slick-active .diamond-dot {
+            background-color: #be978b;
+        }
+    }
+}
