@@ -885,6 +885,7 @@ export const CHILD_CATEGORY = () => {
         parent {
           id
           name 
+          slug
         }
           description
           backgroundImageUrl

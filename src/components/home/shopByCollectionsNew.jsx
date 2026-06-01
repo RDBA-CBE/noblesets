@@ -83,56 +83,61 @@ export default function ShopByCollectionsNew() {
   const [childCatList, { isLoading: loading1 }] =
     useChildCategoryListMutation();
 
-  const { data: categoryData,refetch:useGetCategoryListRefetch } = useGetCategoryListQuery();
-
-
-
+  const { data: categoryData, refetch: useGetCategoryListRefetch } =
+    useGetCategoryListQuery();
 
   const router = useRouter();
   const dispatch = useDispatch();
 
   useEffect(() => {
     // if (filter?.length == 0) {
-      getChildCatList();
+    getChildCatList();
     // }
   }, []);
 
   const getChildCatList = async () => {
     try {
       const res = await childCatList({});
-      
+
       // const response = await useGetCategoryListRefetch();
 
-      console.log("getChildCatList",res)
-      
+      console.log("getChildCatList", res)
+
       // console.log("getChildCatList",response)
       const rawFilter = res?.data?.data?.categories?.edges?.map((item) => ({
         slug: item?.node?.slug,
         title: item?.node?.name,
-        image:item?.node?.backgroundImageUrl,
-        description: JSON.parse(item?.node?.description || "{}")?.blocks?.[0]?.data?.text || ""
-
-
+        image: item?.node?.backgroundImageUrl,
+        description:
+          JSON.parse(item?.node?.description || "{}")?.blocks?.[0]?.data
+            ?.text || "",
+        parent_slug: item?.node?.parent?.slug,
       }));
-      console.log("rawFilter",rawFilter)
-      const except_new_product=rawFilter?.filter((item)=>item?.slug != "new-products")
-
-
-      // Display only unique categories by keeping the 1st entry for each title
-      const filter = except_new_product?.filter((value, index, self) =>
-        index === self.findIndex((t) => 
-          t.title.toLowerCase().trim() === value.title.toLowerCase().trim()
-        )
+      console.log("rawFilter", rawFilter);
+      const except_new_product = rawFilter?.filter((item) =>
+        ["diamond", "gold"].includes(item?.parent_slug)
       );
 
-      console.log("shop filter", filter);
-      
+      console.log("except_new_product", except_new_product);
+
+      // Display only unique categories by keeping the 1st entry for each title
+      // const filter = except_new_product?.filter(
+      //   (value, index, self) =>
+      //     index ===
+      //     self.findIndex(
+      //       (t) =>
+      //         t.title.toLowerCase().trim() === value.title.toLowerCase().trim()
+      //     )
+      // );
+
+      // console.log("shop filter", filter);
+
       // const filterWithImages = filter?.map((filterItem) => {
       //   const cleanTitle = filterItem.title.toLowerCase().trim().replace(/s$/, ""); // normalize plural/singular
       //   console.log("filterWithImages",filterWithImages)
       //   const matchingCollection = collections?.find(
       //     (collectionItem) =>
-      //       collectionItem.slug === filterItem.slug || 
+      //       collectionItem.slug === filterItem.slug ||
       //       collectionItem.title.toLowerCase().trim().startsWith(cleanTitle) ||
       //       filterItem.title.toLowerCase().trim().startsWith(collectionItem.title.toLowerCase().trim().replace(/s$/, ""))
       //   );
@@ -144,8 +149,8 @@ export default function ShopByCollectionsNew() {
       //   };
       // });
 
-      if (filter?.length > 0) {
-        getProductMaxPrice(filter);
+      if (except_new_product?.length > 0) {
+        getProductMaxPrice(except_new_product);
       }
     } catch (error) {
       console.log("✌️error --->", error);
@@ -190,8 +195,11 @@ export default function ShopByCollectionsNew() {
     const filteredCollection = filterWithImages.filter(
       (item) => item.price !== "₹0 - ₹0"
     );
-    console.log("filteredCollection",filteredCollection)
-    dispatch(childCategory(filteredCollection));
+    console.log("filteredCollection", filteredCollection);
+    const filterbyNotImage = filteredCollection?.filter(
+      (item) => item.image != ""
+    );
+    dispatch(childCategory(filterbyNotImage));
   };
 
   const handleClick = (item) => {
@@ -232,7 +240,7 @@ export default function ShopByCollectionsNew() {
               ref={prevRef}
               className="btn btn-sm rounded-3  me-2"
               style={{
-                background: "#9b604d", 
+                background: "#9b604d",
                 color: "white",
                 fontSize: "15px",
                 // fontWeight: "bold",
@@ -286,16 +294,17 @@ export default function ShopByCollectionsNew() {
                   768: { slidesPerView: 3 },
                   992: { slidesPerView: 4 },
                 }}
-                
               >
                 {filter?.map((item, index) => (
                   <SwiperSlide key={index}>
                     <div
                       className="card border-0 h-100 shadow-sm w-100 col-3 "
                       onClick={() => handleClick(item)}
-                      
                     >
-                      <div className=" card-in" style={{background:"#f2efec", borderRadius: "20px" }}>
+                      <div
+                        className=" card-in"
+                        style={{ background: "#f2efec", borderRadius: "20px" }}
+                      >
                         <img
                           src={item.image}
                           className="card-img-top cursor-pointer"
@@ -326,11 +335,11 @@ export default function ShopByCollectionsNew() {
                               handleClick(item);
                             }}
                           >
-                            {(item.title).toLowerCase()}
+                            {item.title.toLowerCase()}
                           </h5>
                           <p
                             className="mt-3"
-                            style={{letterSpacing: "1px" }}
+                            style={{ letterSpacing: "1px" }}
                             onClick={() => {
                               handleClick(item);
                             }}
