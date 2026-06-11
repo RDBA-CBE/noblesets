@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from "react";
 // internal
 import { LocationTwo } from "@/svg";
-import { useUpdateProfileMutation } from "@/redux/features/auth/authApi";
+import { useGetUserDetailsMutation, useUpdateProfileMutation, useUpdateUserDetailsMutation } from "@/redux/features/auth/authApi";
 import { notifyError, notifySuccess } from "@/utils/toast";
 import { useGetAddressListQuery } from "@/redux/features/productApi";
 
@@ -12,9 +12,11 @@ const ProfileInfo = () => {
   const [shippingAddress, setShippingAddress] = useState("");
   const [billingAddress, setBillingAddress] = useState("");
   const [isSubscribed, setIsSubscribed] = useState(false);
+  const [isEditModalOpen, setIsEditModalOpen] = useState(false);
+  const [editForm, setEditForm] = useState({ firstName: "", lastName: "", email: "", newsletter: false });
 
-  const [updateProfile] = useUpdateProfileMutation();
-
+  const [updateUserDetails, { isLoading: updateUserDetailsLoading }] = useUpdateUserDetailsMutation();
+  const [getUserDetails] = useGetUserDetailsMutation();
   const {
     data: getAddressList,
     loading: getAddressListLoading,
@@ -24,39 +26,20 @@ const ProfileInfo = () => {
   const AddressData = getAddressList?.data?.me?.addresses;
 
   useEffect(() => {
-    const user = localStorage.getItem("userInfo");
-    if (user) {
-      const JsonUSer = JSON.parse(user);
-
-      const UserFirstName = JsonUSer?.user?.firstName;
-      setUserFirstName(UserFirstName);
-
-      const UserLastName = JsonUSer?.user?.lastName;
-      setUserLastName(UserLastName);
-
-      const UserEmail = JsonUSer?.user?.email;
-      setUserEmail(UserEmail);
-
-      setIsSubscribed(JsonUSer?.user?.newsletter || false);
-    }
+    getUserDetailsData();
   }, []);
 
-  const handleNewsletterToggle = async () => {
-    // Static toggle logic
-    const newStatus = !isSubscribed;
-    setIsSubscribed(newStatus);
-    notifySuccess(
-      `Successfully ${newStatus ? "subscribed to" : "unsubscribed from"} newsletter`,
-    );
-
-    // Update local storage to persist the UI state
-    const userInfo = localStorage.getItem("userInfo");
-    if (userInfo) {
-      const userData = JSON.parse(userInfo);
-      userData.user.newsletter = newStatus;
-      localStorage.setItem("userInfo", JSON.stringify(userData));
+  const getUserDetailsData = async () => {
+    const res = await getUserDetails();
+    const me = res?.data?.data?.me;
+    if (me) {
+      setUserFirstName(me.firstName);
+      setUserLastName(me.lastName);
+      setUserEmail(me.email);
+      setIsSubscribed(me.newsletter);
     }
-  };
+  }
+
 
   useEffect(() => {
     if (AddressData?.length > 0) {
@@ -75,9 +58,125 @@ const ProfileInfo = () => {
     }
   }, [getAddressList]);
 
+  const handleEdit = async () => {
+    const res = await getUserDetails();
+    const me = res?.data?.data?.me;
+    if (me) {
+      setUserFirstName(me.firstName);
+      setUserLastName(me.lastName);
+      setUserEmail(me.email);
+      setIsSubscribed(me.newsletter);
+      setEditForm({ firstName: me.firstName, lastName: me.lastName, email: me.email, newsletter: me.newsletter });
+    } else {
+      setEditForm({ firstName: userFirstName, lastName: userLastName, email: userEmail, newsletter: isSubscribed });
+    }
+    setIsEditModalOpen(true);
+  };
+
+  const handleEditSubmit = async (e) => {
+    try {
+      e.preventDefault();
+      const userInfo = localStorage.getItem("userInfo");
+      const userId = userInfo ? JSON.parse(userInfo)?.user?.id : null;
+      if (!userId) return notifyError("User not found");
+      const res = await updateUserDetails({ firstName: editForm.firstName, lastName: editForm.lastName, email: editForm.email, newsletter: editForm.newsletter });
+      if (res?.data?.data?.accountUpdate?.user) {
+        notifySuccess("Profile updated successfully");
+        setIsEditModalOpen(false);
+        getUserDetailsData();
+      } else {
+        notifyError(res?.data?.data?.accountUpdate?.errors?.message);
+      }
+    }
+
+    catch (error) {
+
+    }
+
+  };
+
   return (
     <div className="profile__info">
-      <h3 className="profile__info-title">Personal Details</h3>
+      {isEditModalOpen && (
+        <div
+          style={{
+            position: "fixed", top: 0, left: 0, width: "100%", height: "100%",
+            background: "rgba(0,0,0,0.5)", zIndex: 9999,
+            display: "flex", alignItems: "center", justifyContent: "center",
+          }}
+        >
+          <div style={{ background: "#fff", borderRadius: "12px", padding: "30px", width: "420px", position: "relative" }}>
+            <button
+              onClick={() => setIsEditModalOpen(false)}
+              style={{ position: "absolute", top: "12px", right: "16px", background: "none", border: "none", fontSize: "20px", cursor: "pointer" }}
+            >
+              &times;
+            </button>
+            <h5 style={{ marginBottom: "20px", fontWeight: "600" }}>Edit Profile</h5>
+            <form onSubmit={handleEditSubmit}>
+              <div className="mb-3">
+                <label style={{ fontWeight: "500" }}>First Name</label>
+                <input
+                  className="form-control"
+                  value={editForm.firstName}
+                  onChange={(e) => setEditForm({ ...editForm, firstName: e.target.value })}
+                />
+              </div>
+              <div className="mb-3">
+                <label style={{ fontWeight: "500" }}>Last Name</label>
+                <input
+                  className="form-control"
+                  value={editForm.lastName}
+                  onChange={(e) => setEditForm({ ...editForm, lastName: e.target.value })}
+                />
+              </div>
+              <div className="mb-3">
+                <label style={{ fontWeight: "500" }}>Email</label>
+                <input
+                  className="form-control"
+                  type="email"
+                  value={editForm.email}
+                  onChange={(e) => setEditForm({ ...editForm, email: e.target.value })}
+                />
+              </div>
+              <div className="mb-4 d-flex align-items-center gap-2">
+                <input
+                  type="checkbox"
+                  id="newsletter"
+                  checked={editForm.newsletter}
+                  onChange={(e) => setEditForm({ ...editForm, newsletter: e.target.checked })}
+                />
+                <label htmlFor="newsletter" style={{ fontWeight: "500", marginBottom: 0 }}>Subscribe to Newsletter</label>
+              </div>
+              <button type="submit"
+                className=" tp-btn tp-btn-border text-white ms-3"
+                style={{
+                  borderRadius: "20px",
+                  padding: "2px 14px",
+                  fontSize: "14px",
+                  border: "none",
+                  marginTop: "-4px",
+                }}
+                disabled={updateUserDetailsLoading}>{updateUserDetailsLoading ? "Saving..." : "Save Changes"}</button>
+            </form>
+          </div>
+        </div>
+      )}
+      <div style={{ display: "flex", justifyContent: "space-between", alignItems: "center", marginBottom: "16px" }}>
+        <h3 className="profile__info-title" style={{ marginBottom: 0 }}>Personal Details</h3>
+        <button
+          onClick={handleEdit}
+          style={{
+            display: "flex", alignItems: "center", gap: "6px",
+            background: "#7d4432", color: "#fff", border: "none",
+            borderRadius: "8px", padding: "6px 14px", fontSize: "13px",
+            fontWeight: "500", cursor: "pointer",
+          }}
+        >
+          <i className="fas fa-edit" style={{ fontSize: "13px" }} />
+          Edit
+        </button>
+      </div>
       <div className="profile__info-content">
         <div style={{ display: "flex", justifyContent: "space-between" }}>
           <div style={{ width: "22%" }}>
@@ -114,7 +213,7 @@ const ProfileInfo = () => {
                 <b>Newsletter</b> :{" "}
                 {isSubscribed ? "Subscribed" : "Not Subscribed"}
               </p>
-              <button
+              {/* <button
                 onClick={handleNewsletterToggle}
                 className=" tp-btn tp-btn-border text-white ms-3"
                 style={{
@@ -126,7 +225,7 @@ const ProfileInfo = () => {
                 }}
               >
                 {isSubscribed ? "Unsubscribe" : "Subscribe"}
-              </button>
+              </button> */}
             </div>
           </div>
         </div>
@@ -139,33 +238,32 @@ const ProfileInfo = () => {
             style={{ marginBottom: "20px" }}
           >
             <div
-              className={`${
-                billingAddress?.isDefaultBillingAddress ||
-                billingAddress?.isDefaultShippingAddress
+              className={`${billingAddress?.isDefaultBillingAddress ||
+                  billingAddress?.isDefaultShippingAddress
                   ? "address-box-active"
                   : ""
-              }`}
+                }`}
               style={{
                 display: "flex",
                 justifyContent: "space-between",
                 padding:
                   billingAddress?.isDefaultBillingAddress ||
-                  billingAddress?.isDefaultShippingAddress
+                    billingAddress?.isDefaultShippingAddress
                     ? "15px"
                     : "0",
                 borderRadius:
                   billingAddress?.isDefaultBillingAddress ||
-                  billingAddress?.isDefaultShippingAddress
+                    billingAddress?.isDefaultShippingAddress
                     ? "10px"
                     : "0",
                 background:
                   billingAddress?.isDefaultBillingAddress ||
-                  billingAddress?.isDefaultShippingAddress
+                    billingAddress?.isDefaultShippingAddress
                     ? "white"
                     : "#f1e7e1",
                 color:
                   billingAddress?.isDefaultBillingAddress ||
-                  billingAddress?.isDefaultShippingAddress
+                    billingAddress?.isDefaultShippingAddress
                     ? "#7d4432"
                     : "#000",
               }}
@@ -221,33 +319,32 @@ const ProfileInfo = () => {
             style={{ marginBottom: "50px" }}
           >
             <div
-              className={`${
-                shippingAddress?.isDefaultBillingAddress ||
-                shippingAddress?.isDefaultShippingAddress
+              className={`${shippingAddress?.isDefaultBillingAddress ||
+                  shippingAddress?.isDefaultShippingAddress
                   ? "address-box-active"
                   : ""
-              }`}
+                }`}
               style={{
                 display: "flex",
                 justifyContent: "space-between",
                 padding:
                   shippingAddress?.isDefaultBillingAddress ||
-                  shippingAddress?.isDefaultShippingAddress
+                    shippingAddress?.isDefaultShippingAddress
                     ? "15px"
                     : "0",
                 borderRadius:
                   shippingAddress?.isDefaultBillingAddress ||
-                  shippingAddress?.isDefaultShippingAddress
+                    shippingAddress?.isDefaultShippingAddress
                     ? "10px"
                     : "0",
                 background:
                   shippingAddress?.isDefaultBillingAddress ||
-                  shippingAddress?.isDefaultShippingAddress
+                    shippingAddress?.isDefaultShippingAddress
                     ? "white"
                     : "#f1e7e1",
                 color:
                   shippingAddress?.isDefaultBillingAddress ||
-                  shippingAddress?.isDefaultShippingAddress
+                    shippingAddress?.isDefaultShippingAddress
                     ? "#7d4432"
                     : "#000",
               }}

@@ -9,6 +9,8 @@ import {
   GET_ORDER_LIST_BY_EMAIL,
   REGISTER,
   RESET_PASSWORD,
+  UPDATE_USER_DETAILS,
+  USER_DETAILS,
   VERIFY_EMAIL
 } from "@/utils/queries/register/register";
 
@@ -219,6 +221,20 @@ export const authApi = apiSlice.injectEndpoints({
       },
       providesTags: ["UserOrders"],
     }),
+
+    getUserDetails: builder.mutation({
+      query: () => {
+        return configuration(USER_DETAILS({}));
+      },
+      providesTags: ["User"],
+    }),
+
+    updateUserDetails: builder.mutation({
+      query: ({ firstName, lastName,email, newsletter }) => {
+        return configuration(UPDATE_USER_DETAILS({ firstName, lastName,email, newsletter }));
+      },
+      providesTags: ["User"],
+    }),
   }),
 });
 
@@ -233,5 +249,7 @@ export const {
   useGetOrderListQuery,
   useForgetPasswordMutation,
   useResetPasswordMutation,
-  useVerifyEmailMutation
+  useVerifyEmailMutation,
+  useGetUserDetailsMutation,
+  useUpdateUserDetailsMutation
 } = authApi;
