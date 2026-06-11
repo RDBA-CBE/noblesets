@@ -135,6 +135,21 @@ const HomeFooter = () => {
                     />
                     Rings
                   </a>
+
+                  <a
+                    className="footer-link mb-3"
+                    href="#"
+                    onClick={() => {
+                      handleClick("pendant");
+                    }}
+                  >
+                    <img
+                      src="/assets/img/newlayout/Footer/pendant.png"
+                      alt=""
+                      // className="p-1"
+                    />
+                    Pendants
+                  </a>
                   {/* <a className="footer-link" href="#">
                     Testimonials
                   </a> */}
@@ -170,11 +185,11 @@ const HomeFooter = () => {
                     />
                     Gold
                   </a>
-                  {/* <a
+                  <a
                     className="footer-link mb-3"
                     href="#"
                     onClick={() => {
-                      handleClick("silver");
+                      handleClick("Silver");
                     }}
                   >
                     <img
@@ -182,7 +197,7 @@ const HomeFooter = () => {
                       alt=""
                     />
                     Silver
-                  </a> */}
+                  </a>
                   <a className="footer-link mb-3" href="/gift-card">
                     <img
                       src="/assets/img/newlayout/Footer/giftcard-01.png"

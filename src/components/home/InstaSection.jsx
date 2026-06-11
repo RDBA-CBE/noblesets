@@ -24,9 +24,11 @@ export default function InstaSection() {
 <h4 className="feature-adipisicing main-ti">Follow Us on Instagram</h4>
 <p className="insta-desc">
   Discover our latest jewellery collections, styling inspiration, and new arrivals. 
-  Follow <a href="https://www.instagram.com/noble_sets/" target="_blank" rel="noopener noreferrer">
+  Follow 
+  {/* <a href="https://www.instagram.com/noble_sets/" target="_blank" rel="noopener noreferrer">
     <span className="insta-id">@noble_sets</span>
-  </a> to stay updated with our newest designs and exclusive showcases.
+  </a> */}
+   to stay updated with our newest designs and exclusive showcases.
 </p>
 <div className="insta-btn-wrapper">
   <a
