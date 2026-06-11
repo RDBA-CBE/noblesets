@@ -48,7 +48,7 @@ const promises = [
   { title: "Trusted by Buyers", icon: "/icons/buyer.svg" },
   { title: "BIS Hallmarked", icon: "/icons/hallmark.svg" },
   { title: "Crafted Product", icon: "/icons/crafted.svg" },
-  { title: "30 Days Return", icon: "/icons/return.svg" },
+  { title: "7 Days Return", icon: "/icons/return.svg" },
   { title: "Certified Natural Diamonds", icon: "/icons/certificate.svg" }
 ];
 
