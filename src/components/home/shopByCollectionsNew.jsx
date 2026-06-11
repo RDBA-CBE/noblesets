@@ -22,7 +22,7 @@ import { formatIndianRupees } from "@/utils/functions";
 const collections = [
   {
     title: "Pendant",
-    slug: "pendant",
+    slug: "Pendant",
     desc: "Elegant, Sleek & Stylish",
     price: "₹15000 - ₹20000",
     img: "/assets/img/newlayout/Shop By collections/image-2.png",

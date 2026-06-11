@@ -320,25 +320,29 @@ const ShopByBudgetNew = () => {
   const getProductMaxPrices = () => {
     setBudgetItems([
       {
-        label: "Under 10k",
+        // label: "Under 10k",
+        label: "Under ₹10,000",
         img: "/assets/img/newlayout/shop by budget/img-1.png",
         price: 10000,
         min: 0,
       },
       {
-        label: "Under 50k",
+        // label: "Under 50k",
+        label: "Under ₹50,000",
         img: "/assets/img/newlayout/shop by budget/img-2.png",
         price: 50000,
         min: 0,
       },
       {
-        label: "Under 90k",
+        // label: "Under 90k",
+        label: "Under ₹90,000",
         img: "assets/img/newlayout/shop by budget/img-3.png",
         price: 90000,
         min: 0,
       },
       {
-        label: "Above 90K",
+        // label: "Above 90K",
+        label: "Above ₹90,000",
         img: "assets/img/newlayout/shop by budget/img-4.png",
         price: 99999999,
         min: 90000,
