@@ -104,6 +104,7 @@ const ShopPage = () => {
       getAttributeDetail().then((attrPayload) => {
         if (attrPayload) {
           filterByCategory(attrPayload);
+          filterOptionWithPayload(attrPayload);
         } else if (categoryId) {
           filterByCategory(null);
         }
@@ -113,6 +114,17 @@ const ShopPage = () => {
     }
     if (router?.query?.tag) filterByTags();
   }, [router]);
+
+  useEffect(() => {
+    if (!filter || Object.keys(filter).length === 0) return;
+
+    if (attribute || categoryId || router?.query?.tag) {
+      filterByCategory(null);
+      filterOptionWithPayload(null);
+    } else {
+      filters();
+    }
+  }, [filter]);
 
   // useEffect(() => {
   // dispatch(filterData({}));
@@ -182,21 +194,13 @@ const ShopPage = () => {
     }
 
     if (filter?.attributes) {
-      filters = {
-        ...filters, // Keep the existing price filter
-        attributes: filter?.attributes, // Merge other filters
-      };
+      filters.attributes = filter.attributes;
+    } else if (attributeFilter) {
+      filters.attributes = attributeFilter.attributes;
     }
 
     if (categorySlug) {
       filters.categorySlugs = categorySlug;
-    }
-
-    if (attributeFilter) {
-      filters = {
-        ...filters,
-        ...attributeFilter,
-      };
     }
 
     if (router?.query?.tag) {
@@ -277,7 +281,7 @@ const ShopPage = () => {
   const [createCheckoutTokenWithoutEmail] =
     useCreateCheckoutTokenWithoutEmailMutation();
 
-  const [attributeLists] = useAttributeListMutation();
+  const [fetchAttributeList] = useAttributeListMutation();
 
   let products = productsData?.data?.productsSearch?.edges;
 
@@ -373,6 +377,22 @@ const ShopPage = () => {
       filterByTags();
     }
   }, [router]);
+
+  useEffect(() => {
+    const getAttributeList = async () => {
+      try {
+        const res = await fetchAttributeList();
+        const data = res?.data?.data?.attributes?.edges?.map(
+          (item) => item?.node,
+        );
+        setAttributeList(data || []);
+      } catch (error) {
+        console.log("Error fetching attribute list:", error);
+      }
+    };
+
+    getAttributeList();
+  }, [fetchAttributeList]);
 
   const createCheckoutTokenINR = async () => {
     try {
@@ -665,15 +685,26 @@ const ShopPage = () => {
 
   const filterByCategoryName = async () => {
     try {
-      const res = await getCategoryName({
-        slug: categoryId,
-      });
-      const list = res?.data?.data?.category?.name;
-      setCatName(list);
-
-      if (res?.data?.data?.category?.parent?.name) {
-        setParentCatName(res?.data?.data?.category?.parent?.name);
-        setParentSlug(res?.data?.data?.category?.parent?.slug);
+      if (subCategoryId) {
+        const subRes = await getCategoryName({ slug: subCategoryId });
+        setCatName(subRes?.data?.data?.category?.name);
+        const parentName = subRes?.data?.data?.category?.parent?.name;
+        const parentSlugVal = subRes?.data?.data?.category?.parent?.slug;
+        if (parentName) {
+          setParentCatName(parentName);
+          setParentSlug(parentSlugVal);
+        } else if (categoryId) {
+          const parentRes = await getCategoryName({ slug: categoryId });
+          setParentCatName(parentRes?.data?.data?.category?.name);
+          setParentSlug(categoryId);
+        }
+      } else {
+        const res = await getCategoryName({ slug: categoryId });
+        setCatName(res?.data?.data?.category?.name);
+        if (res?.data?.data?.category?.parent?.name) {
+          setParentCatName(res?.data?.data?.category?.parent?.name);
+          setParentSlug(res?.data?.data?.category?.parent?.slug);
+        }
       }
     } catch (err) {
       console.log(err);
@@ -903,6 +934,17 @@ const ShopPage = () => {
       top: 0,
       behavior: "smooth",
     });
+  };
+
+  const filterOptionWithPayload = async (attrPayload) => {
+    try {
+      const datas = commonFilter();
+      if (attrPayload) Object.assign(datas, attrPayload);
+      const res = await filterOptions({ filter: datas });
+      finalFilterOptionList(res);
+    } catch (error) {
+      console.log("error: ", error);
+    }
   };
 
   const filterOption = async () => {
