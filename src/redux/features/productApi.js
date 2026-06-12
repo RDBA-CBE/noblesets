@@ -52,6 +52,8 @@ import {
   CHILD_CATEGORY,
   UPDATE_ORDER_CANCEL_NOTE,
   CHILD_CAT_LIST_BY_PARENT_ID,
+  GET_PRODUCT_BY_CATEGORY,
+  ATTRIBUTE_BY_SLUG
 } from "@/utils/queries/productList";
 import {
   RELATED_PRODUCT,
@@ -954,6 +956,23 @@ export const productApi = apiSlice.injectEndpoints({
       providesTags: ["Products"],
     }),
 
+    getProductsByCategory: builder.mutation({
+      query: ({ categoryId }) => {
+        return configuration(GET_PRODUCT_BY_CATEGORY({ categoryId }));
+      },
+      providesTags: ["Products"],
+    }),
+
+    getAttributeBySlug: builder.mutation({
+      query: ({ slug }) => {
+        console.log("getAttributeBySlug",slug)
+        return configuration(ATTRIBUTE_BY_SLUG({ slug }));
+      },
+      providesTags: ["Products"],
+    }),
+
+    
+
     
   }),
 });
@@ -1029,5 +1048,7 @@ export const {
   useChildCategoryListMutation,
   useGetOrderDetailMutation,
   useUpdateorderCancelNoteMutation,
-  useGetChildCatByParentIdMutation
+  useGetChildCatByParentIdMutation,
+  useGetProductsByCategoryMutation,
+  useGetAttributeBySlugMutation
 } = productApi;

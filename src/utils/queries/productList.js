@@ -2770,3 +2770,73 @@ export const BRAND_DATA = ({ slug }) => {
     variables: { slug },
   };
 };
+
+export const GET_PRODUCT_BY_CATEGORY = ({ categoryId }) => {
+  return {
+    query: `
+ query GetProductsByCategory($categoryId: ID!) {
+  products(
+
+    channel: "india-channel"
+    filter: {
+      categories: [$categoryId]
+    }
+  ) {
+    totalCount
+    edges {
+      node {
+        id
+        name
+        attributes {
+          attribute {
+            id
+            name
+            slug
+          }
+          values {
+            id
+            name
+            slug
+          }
+        }
+      }
+    }
+  }
+}
+
+    `,
+    variables: { categoryId },
+  };
+};
+
+
+
+export const ATTRIBUTE_BY_SLUG = ({ slug }) => {
+  return {
+    query: `
+
+    query GetAttributeBySlug($slug: String!) {
+      attribute(slug: $slug) {
+        id
+        name
+        slug
+        choices(first: 100) {
+          edges {
+            node {
+              id
+              name
+              slug
+            }
+          }
+        }
+      }
+    }
+
+    `,
+    variables: { slug },
+  };
+};
+
+
+
+
