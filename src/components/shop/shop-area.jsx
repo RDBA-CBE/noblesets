@@ -66,15 +66,13 @@ const ShopArea = ({
       if (slugOrType === "gte") {
         delete updatedPriceFilter.min;
         delete newQuery.minPrice;
-        const currentMax = maxPriceQuery !== undefined ? Number(maxPriceQuery) : (filter?.price?.max !== undefined ? filter.price.max : maxPrice);
-        range = [0, currentMax];
-
-        // Remove the min price
+        const currentMax = maxPriceQuery !== undefined ? Number(maxPriceQuery) : (filter?.price?.max !== undefined ? Number(filter.price.max) : maxPrice);
+        range = [0, currentMax || maxPrice || 0];
       } else if (slugOrType === "lte") {
-        delete updatedPriceFilter.max; // Remove the max price
+        delete updatedPriceFilter.max;
         delete newQuery.maxPrice;
-        const currentMin = minPriceQuery !== undefined ? Number(minPriceQuery) : (filter?.price?.min !== undefined ? filter.price.min : 0);
-        range = [currentMin, maxPrice];
+        const currentMin = minPriceQuery !== undefined ? Number(minPriceQuery) : (filter?.price?.min !== undefined ? Number(filter.price.min) : 0);
+        range = [currentMin || 0, maxPrice || 0];
       }
       updateRange(range);
 

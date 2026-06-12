@@ -95,9 +95,9 @@ const ShopPage = () => {
           ...filter,
           price: filterByHomePages?.price,
         }),
-      ); // Dispatching the current checked state
+      );
     }
-  }, [filterByHomePages, router, dispatch, filter]);
+  }, [filterByHomePages]);
 
   useEffect(() => {
     if (attribute) {

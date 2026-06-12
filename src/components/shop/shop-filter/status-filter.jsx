@@ -16,15 +16,15 @@ const FinishFilter = ({ attributeList }) => {
 
   useEffect(() => {
     const initialState = {};
-    const attributes = filter?.attributes || []; // Ensure attributes is an array
+    const attributes = filter?.attributes || [];
     attributes.forEach((attr) => {
-      initialState[attr?.slug] = Array.isArray(attr.values)
-        ? attr.values
-        : []; // Ensure values is an array
+      initialState[attr?.slug] = Array.isArray(attr.values) ? attr.values : [];
     });
-    initialState;
-    setCheckedItems(initialState);
-  }, [filter]);
+    setCheckedItems((prev) => {
+      if (JSON.stringify(prev) === JSON.stringify(initialState)) return prev;
+      return initialState;
+    });
+  }, [filter?.attributes]);
 
 
   const handleCheckboxChange = (attributeSlug, choiceSlug) => {

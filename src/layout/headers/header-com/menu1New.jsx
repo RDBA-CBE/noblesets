@@ -958,7 +958,7 @@ const Menus1New = () => {
                               {state.dynamicBudget?.map((b) => (
                                 <a
                                   key={b.label}
-                                  href={`/shop?minPrice=${b.min}&maxPrice=${b.max}`}
+                                  href={`/shop?category=${lastHoveredCategory}&minPrice=${b.min}&maxPrice=${b.max}`}
                                   style={pill}
                                   className="menu-pill"
                                 >
