@@ -167,12 +167,12 @@ const SubCategoryPanel = ({ subCat, parentCatSlug, onBack }) => {
       </div>
 
       {/* Featured / All */}
-      <span style={sectionLabel}>Featured</span>
+      {/* <span style={sectionLabel}>Featured</span>
       <div style={{ display: "flex", flexWrap: "wrap" }}>
         <a href={`/shop?category=${subCat.node.slug}`} style={pill}>All {subCat.node.name}</a>
         <a href={`/shop?category=${subCat.node.slug}&sort=new`} style={pill}>New Arrival</a>
         <a href={`/shop?category=${subCat.node.slug}&sort=bestseller`} style={pill}>Best Seller</a>
-      </div>
+      </div>*/}
 
       {loading ? (
         <div style={{ padding: "20px 0", textAlign: "center" }}><Loader loading={true} /></div>
