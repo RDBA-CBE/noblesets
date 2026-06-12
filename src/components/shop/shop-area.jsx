@@ -387,7 +387,7 @@ const ShopArea = ({
                           </>
                         )}
                         <div
-                          className="mt-2 lg:mt-0"
+                          className="mt-2 mt-lg-0"
                           style={{
                             display: "flex",
                             gap: 10,
