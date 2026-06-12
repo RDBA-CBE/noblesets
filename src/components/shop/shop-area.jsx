@@ -377,10 +377,10 @@ const ShopArea = ({
                           </div> */}
                             <div
                               onClick={() => clearFilter()}
-                              className="clear-filter-btn"
+                              className="clear-filter-btn mt-2 mt-lg-0"
                             >
                               <i className="fa-regular fa-xmark" />
-                              <span className="clear-filter-text mt-2 mt-lg-0">
+                              <span className="clear-filter-text">
                                 Clear filter
                               </span>
                             </div>
