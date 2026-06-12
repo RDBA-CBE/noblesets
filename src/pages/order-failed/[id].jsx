@@ -58,6 +58,7 @@ const PaymentFailed = () => {
       console.error("Error:", error);
     }
   };
+  
   return (
     <Wrapper>
       <SEO pageTitle="Order Success" />

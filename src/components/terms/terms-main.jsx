@@ -416,9 +416,9 @@ const TermsAndConditionsMain = () => {
   </tbody>
 </table>
 <p className="terms-para"></p>
-<u><b>30 - Days Return Policy for Domestic orders only
+<u><b>7 - Days Return Policy for Domestic orders only
 </b></u>In the unlikely event that the order delivered is in damaged condition, or you have changed your mind about the product - you can return the product unused and in the same condition as you received it, in its original packaging, along with the invoice and get the refund. Our courier partner will collect the order from the address provided by you.
-<p className="terms-para">To initiate a return, please contact us through our official contact page within 30 days of delivery. Our team will assist you with the return or replacement process.</p>
+<p className="terms-para">To initiate a return, please contact us through our official contact page within 7 days of delivery. Our team will assist you with the return or replacement process.</p>
 <p className="terms-para"><u><b>Non-Returnable Product Categories</b></u></p>
 <p className="terms-para">NOTE: The following categories are not eligible for return or exchange, regardless of the reason for return:</p>
 
@@ -450,7 +450,7 @@ Domestic Order: Our logistics service provider will collect the order from the p
 <p className="terms-para">Customers should not return the product before receiving a confirmation mail from Noblestes about the delivery of the same.</p>
 <p className="terms-para">All the products must be returned in their original condition, unaltered and unused in its original packaging.</p>
 <p className="terms-para">Provide the invoice, Certificate of Authenticity into the package for return process. Without the above, returns will not be processed.</p>
-<p className="terms-para">NOTE: We shall not entertain any request after 30 days from the date of receipt of the product.</p>
+<p className="terms-para">NOTE: We shall not entertain any request after 7 days from the date of receipt of the product.</p>
 <p className="terms-para"><b>22. FRAUDULENT TRANSACTIONS:</b></p>
 <p className="terms-para">Noblestes reserves the right to recover the cost of goods, collection charges, damages caused to Noblestes and legal expenses from persons using the site fraudulently. Noblestes reserves the right to initiate legal proceedings against such persons for fraudulent use of the website and any other unlawful acts or acts or omissions in breach of these terms and conditions.</p>
 <p className="terms-heading"><b>23. DISCLAIMER:</b></p>

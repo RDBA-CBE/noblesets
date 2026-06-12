@@ -60,7 +60,7 @@ export default function NobelsetsPromises() {
                       width="48"
                     />
                   </div>
-                  <span class="ms-2" style={{fontSize:"18px",color:"#000"}}>30 Days Return</span>
+                  <span class="ms-2" style={{fontSize:"18px",color:"#000"}}>7 Days Return</span>
                 </div>
                 <div class="d-flex align-items-center" style={{gap:"20px"}}>
                   <div
@@ -197,7 +197,7 @@ export default function NobelsetsPromises() {
                       width="48"
                     />
                   </div>
-                  <span class="ms-2" style={{fontSize:"18px",color:"#000"}}>30 Days Return</span>
+                  <span class="ms-2" style={{fontSize:"18px",color:"#000"}}>7 Days Return</span>
                 </div>
                  <div class="d-flex align-items-center mb-5" style={{gap:"20px"}}>
                   <div

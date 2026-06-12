@@ -68,7 +68,7 @@ const NoblesetPromisesNew = () => {
                   alt="logo"
                 />
               </div>
-              <p className="np-icon-label">30 Days Return</p>
+              <p className="np-icon-label">7 Days Return</p>
             </div>
 
             <div className="np-icon-col">
@@ -124,7 +124,7 @@ const NoblesetPromisesNew = () => {
               alt="logo"
             />
           </div>
-          <p className="np-icon-label">30 Days Return</p>
+          <p className="np-icon-label">7 Days Return</p>
         </div>
 
         <div className="np-icon-col">

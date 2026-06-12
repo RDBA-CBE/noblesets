@@ -358,9 +358,18 @@ const Menus1 = () => {
         // Exclude categories
         const excludedSlugs = ["gift-card", "best-of-noblesets","best-sellers","gifting-special"];
   
+        const categoryOrder = ["gold", "diamond", "silver"];
+
         const filteredCategories = categoryList
           ?.filter((item) => !excludedSlugs.includes(item.slug))
-          ?.filter((item) => item.productCount > 0);
+          ?.filter((item) => item.productCount > 0)
+          ?.sort((a, b) => {
+            const aIndex = categoryOrder.findIndex((o) => a.slug.toLowerCase().includes(o));
+            const bIndex = categoryOrder.findIndex((o) => b.slug.toLowerCase().includes(o));
+            const aOrder = aIndex === -1 ? 999 : aIndex;
+            const bOrder = bIndex === -1 ? 999 : bIndex;
+            return aOrder - bOrder;
+          });
   
         if (filteredCategories?.length > 0) {
           setState({
