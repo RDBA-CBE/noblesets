@@ -380,7 +380,7 @@ const ShopArea = ({
                               className="clear-filter-btn"
                             >
                               <i className="fa-regular fa-xmark" />
-                              <span className="clear-filter-text">
+                              <span className="clear-filter-text mt-2 mt-lg-0">
                                 Clear filter
                               </span>
                             </div>
