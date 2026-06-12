@@ -5,6 +5,7 @@ import { useRouter } from "next/router";
 import { RightOutlined } from "@ant-design/icons";
 import {
   useFeatureProductQuery,
+  useGetProductsByCategoryMutation,
   useGetProductTypeQuery,
   useGetSubCategoryListQuery,
   useNobelsetCategoryListMutation,
@@ -144,46 +145,46 @@ const CategoryContent = ({
         ) : (
           <></>
           // <div>
-          //   <div>
-          //     {commonImage ? (
-          //       <img
-          //         src={commonImage}
-          //         // src="assets/img/blog.webp"
-          //         alt="category image"
-          //         style={{
-          //           width: "100%",
-          //           height: "250px",
-          //           objectFit: "cover",
-          //           objectPosition: "center",
-          //           borderRadius: "10px",
-          //         }}
-          //       />
-          //     ) : (
-          //       <img
-          //         src={"/assets/img/earring-menu-pic-1.png"}
-          //         alt="category image"
-          //         style={{ width: "100%", height: "250px" }}
-          //       />
-          //     )}
-          //   </div>
-          //   <div style={{ textAlign: "center", padding: "20px 0px" }}>
-          //     <h5 style={{ fontWeight: "400", fontSize: "20px" }}>
-          //       Excepteur sint occaecat
-          //       <br /> cupidatat
-          //     </h5>
-          //     <button
-          //       className="tp-btn tp-btn-border"
-          //       onClick={() => {
-          //         router?.push({
-          //           pathname: "/shop",
-          //           // query: { category: parentCategoryId }, // Your parameters
-          //         });
-          //       }}
-          //       style={{ padding: "5px 18px" }}
-          //     >
-          //       Shop Now
-          //     </button>
-          //   </div>
+          // <div>
+          // {commonImage ? (
+          // <img
+          // src={commonImage}
+          // // src="assets/img/blog.webp"
+          // alt="category image"
+          // style={{
+          // width: "100%",
+          // height: "250px",
+          // objectFit: "cover",
+          // objectPosition: "center",
+          // borderRadius: "10px",
+          // }}
+          // />
+          // ) : (
+          // <img
+          // src={"/assets/img/earring-menu-pic-1.png"}
+          // alt="category image"
+          // style={{ width: "100%", height: "250px" }}
+          // />
+          // )}
+          // </div>
+          // <div style={{ textAlign: "center", padding: "20px 0px" }}>
+          // <h5 style={{ fontWeight: "400", fontSize: "20px" }}>
+          // Excepteur sint occaecat
+          // <br /> cupidatat
+          // </h5>
+          // <button
+          // className="tp-btn tp-btn-border"
+          // onClick={() => {
+          // router?.push({
+          // pathname: "/shop",
+          // // query: { category: parentCategoryId }, // Your parameters
+          // });
+          // }}
+          // style={{ padding: "5px 18px" }}
+          // >
+          // Shop Now
+          // </button>
+          // </div>
           // </div>
         )}
       </div>
@@ -212,20 +213,20 @@ const CategoryComponent = (props) => {
       <SingleLoader loading={productLoading} />
     ) : productList?.length > 0 ? (
       // <Swiper
-      //   {...slider_setting}
-      //   modules={[Pagination]}
-      //   className="tp-category-slider-active-4 swiper-container"
+      // {...slider_setting}
+      // modules={[Pagination]}
+      // className="tp-category-slider-active-4 swiper-container"
       // >
-      //   {productList?.map((item) => (
-      //     <SwiperSlide key={item?.node?.id}>
-      //       <div
-      //         className="col-lg-3 menus-product-list"
-      //         style={{ padding: "0px 8px 0px 0px", width: "250px" }}
-      //       >
-      //         <MenusProductSlider product={item} />
-      //       </div>
-      //     </SwiperSlide>
-      //   ))}
+      // {productList?.map((item) => (
+      // <SwiperSlide key={item?.node?.id}>
+      // <div
+      // className="col-lg-3 menus-product-list"
+      // style={{ padding: "0px 8px 0px 0px", width: "250px" }}
+      // >
+      // <MenusProductSlider product={item} />
+      // </div>
+      // </SwiperSlide>
+      // ))}
       // </Swiper>
       <Swiper
         slidesPerView={productList?.length > 0 ? 3 : 4}
@@ -323,6 +324,9 @@ const Menus1 = () => {
 
   const [subCatList, { isLoading: subCatLoading }] = useSubCatListMutation();
 
+  const [getProductsByCategory, { isLoading: catLoading }] =
+    useGetProductsByCategoryMutation();
+
   const dispatch = useDispatch();
   const [lastHoveredCategory, setLastHoveredCategory] = useState("necklaces");
 
@@ -345,7 +349,7 @@ const Menus1 = () => {
   const categoryList = async () => {
     try {
       const res = await categoryLists();
-  
+
       const category = res?.data?.data?.categories?.edges;
       if (category?.length > 0) {
         const categoryList = category.map((item) => ({
@@ -354,29 +358,39 @@ const Menus1 = () => {
           slug: item?.node?.slug,
           productCount: item?.node?.products?.totalCount,
         }));
-  
+
         // Exclude categories
-        const excludedSlugs = ["gift-card", "best-of-noblesets","best-sellers","gifting-special"];
-  
+        const excludedSlugs = [
+          "gift-card",
+          "best-of-noblesets",
+          "best-sellers",
+          "gifting-special",
+        ];
+
         const categoryOrder = ["gold", "diamond", "silver"];
 
         const filteredCategories = categoryList
           ?.filter((item) => !excludedSlugs.includes(item.slug))
           ?.filter((item) => item.productCount > 0)
           ?.sort((a, b) => {
-            const aIndex = categoryOrder.findIndex((o) => a.slug.toLowerCase().includes(o));
-            const bIndex = categoryOrder.findIndex((o) => b.slug.toLowerCase().includes(o));
+            const aIndex = categoryOrder.findIndex((o) =>
+              a.slug.toLowerCase().includes(o),
+            );
+            const bIndex = categoryOrder.findIndex((o) =>
+              b.slug.toLowerCase().includes(o),
+            );
             const aOrder = aIndex === -1 ? 999 : aIndex;
             const bOrder = bIndex === -1 ? 999 : bIndex;
             return aOrder - bOrder;
           });
-  
+
         if (filteredCategories?.length > 0) {
           setState({
+            initalLoadId: filteredCategories[0]?.id,
             initalLoad: filteredCategories[0]?.slug,
           });
         }
-  
+
         setState({
           categoryList: filteredCategories,
         });
@@ -411,6 +425,45 @@ const Menus1 = () => {
     }
     const list = res?.data?.data?.productsSearch?.edges?.slice(0, 11);
     setState({ productList: list });
+  };
+
+  const getAttribute = async (id) => {
+    const response = await getProductsByCategory({
+      categoryId: id,
+    });
+
+    const products = response?.data?.data?.products?.edges || [];
+
+    const attributeMap = new Map();
+
+    products.forEach(({ node }) => {
+      node.attributes.forEach((attr) => {
+        // values irukkaradhu mattum
+        if (!attr.values?.length) return;
+
+        const key = attr.attribute.id;
+
+        if (!attributeMap.has(key)) {
+          attributeMap.set(key, {
+            ...attr.attribute,
+            values: [],
+          });
+        }
+
+        const existing = attributeMap.get(key);
+
+        attr.values.forEach((value) => {
+          if (!existing.values.some((v) => v.id === value.id)) {
+            existing.values.push(value);
+          }
+        });
+      });
+    });
+
+    const uniqueAttributes = Array.from(attributeMap.values());
+
+    console.log("uniqueAttributes", uniqueAttributes);
+    // return uniqueAttributes;
   };
 
   const SubCatProduct = async (item) => {
@@ -464,17 +517,17 @@ const Menus1 = () => {
         </Link>
       </li>
       {/* <li>
-        <Link
-          href="/shop"
-          style={{
-            fontWeight: "400",
-            color: "#fff",
-            fontFamily: "Bagind,sans-serif",
-          }}
-        >
-          All Jewellery
-        </Link>
-      </li> */}
+ <Link
+ href="/shop"
+ style={{
+ fontWeight: "400",
+ color: "#fff",
+ fontFamily: "Bagind,sans-serif",
+ }}
+ >
+ All Jewellery
+ </Link>
+ </li> */}
       <li className="has-dropdown has-mega-menu">
         <Link
           href="/shop"
@@ -483,9 +536,10 @@ const Menus1 = () => {
             color: "#fff",
             fontFamily: "Bagind,sans-serif",
           }}
-          onMouseEnter={() =>
-            hoverCategoryProduct(state.initalLoad ?? "diamond")
-          }
+          onMouseEnter={() => {
+            hoverCategoryProduct(state.initalLoad ?? "diamond");
+            getAttribute(state.initalLoadId);
+          }}
         >
           Collections
         </Link>
@@ -508,7 +562,10 @@ const Menus1 = () => {
                       className={`shop-submenu-catageroy-list ${
                         lastHoveredCategory == item?.slug ? "active" : ""
                       }`}
-                      onMouseEnter={() => hoverCategoryProduct(item?.slug)}
+                      onMouseEnter={() => {
+                        getAttribute(item?.id);
+                        hoverCategoryProduct(item?.slug);
+                      }}
                       style={{
                         display: "flex",
                         alignItems: "center",
@@ -520,18 +577,32 @@ const Menus1 = () => {
                         router.push({
                           pathname: "/shop",
                           query: {
-                            category: item?.slug
-                              .toLowerCase()
-                              .replace("&", "")
-                              .split(" ")
-                              .join("-"),
+                            attribute: `Shop-For/women`
+                              // .toLowerCase()
+                              // .toLowerCase()
+                              .replace(/&/g, "")
+                              .replace(/\s+/g, "-"),
                           },
+
+                          // query: {
+                          // category: item?.slug
+                          // .toLowerCase()
+                          // .replace("&", "")
+                          // .split(" ")
+                          // .join("-"),
+                          // },
                         });
                       }}
                     >
                       <a
-                        href={`/shop?category=${item?.slug
-                          .toLowerCase()
+                        // href={`/shop?category=${item?.slug
+                        // .toLowerCase()
+                        // .replace("&", "")
+                        // .split(" ")
+                        // .join("-")
+
+                        href={`/shop?attribute=${"Shop-For/women"
+                          // .toLowerCase()
                           .replace("&", "")
                           .split(" ")
                           .join("-")}`}
@@ -580,7 +651,11 @@ const Menus1 = () => {
                     productLoading={productLoading}
                     subCategoryList={state.subCategoryList}
                     subCategoryLoading={subCatLoading}
-                    SubCatProduct={SubCatProduct}
+                    SubCatProduct={(item) => {
+                      getAttribute(item?.node?.id);
+
+                      SubCatProduct(item);
+                    }}
                     style={{ height: "100%" }}
                   />
                 ) : productLoading ? (

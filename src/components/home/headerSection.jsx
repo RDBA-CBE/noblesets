@@ -47,6 +47,7 @@ import { useLogoutMutation } from "../../redux/features/productApi";
 import Menus1 from "@/layout/headers/header-com/menu1";
 import GoldRateBar from "../GoldRateBar";
 import GoldRateBarHead from "../GoldRateBarHead";
+import Menus1New from "@/layout/headers/header-com/menu1New";
 
 const HeaderSection = ({ style_2 = false, data }) => {
   const router = useRouter();
@@ -812,7 +813,8 @@ const HeaderSection = ({ style_2 = false, data }) => {
                 <div className="row justify-content-center align-items-center mb-0">
                   <div className="main-menu">
                     <nav className="tp-main-menu-content">
-                      <Menus1 />
+                      {/* <Menus1 /> */}
+                      <Menus1New/>
                     </nav>
                   </div>
                 </div>

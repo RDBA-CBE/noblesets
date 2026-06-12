@@ -232,7 +232,7 @@ const MenusProductSlider1 = ({ product, loginPopup, loading }) => {
               // backgroundPosition: "0px -80px",
               borderRadius: "10px",
               width: "100%",
-              height: "300px",
+              // height: "300px",
             }}
           ></div>
           <div className="tp-product-badge-2">
@@ -360,8 +360,8 @@ const MenusProductSlider1 = ({ product, loginPopup, loading }) => {
             </>
           )}
 
-          <div className="tp-product-action-7  tp-product-action-blackStyle tp-product-action-brownStyle">
-            <div className="tp-product-action-item-7 d-flex">
+          <div className="tp-product-action-7  tp-product-action-blackStyle tp-product-action-brownStyle" >
+            <div className="tp-product-action-item-7 d-flex" >
               {RelatedProduct?.defaultVariant?.quantityAvailable != 0 && (
                 <>
                   {isAddedToCart ? (
@@ -385,6 +385,7 @@ const MenusProductSlider1 = ({ product, loginPopup, loading }) => {
                           className={`tp-product-action-btn-3 ${
                             isAddedToCart ? "active" : ""
                           } tp-product-add-cart-btn`}
+                         
                         >
                           <ButtonLoader loader={cartLoader} />
                         </button>

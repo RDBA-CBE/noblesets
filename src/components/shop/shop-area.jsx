@@ -54,19 +54,27 @@ const ShopArea = ({
   const [pageStart, setPageStart] = useState(0);
   const [countOfPage, setCountOfPage] = useState(12);
 
+  const minPriceQuery = router?.query?.minPrice;
+  const maxPriceQuery = router?.query?.maxPrice;
+
   const removeFilter = (slugOrType, value, filterType) => {
     // Remove price filter
     let range = [];
     if (filterType === "price") {
+      const newQuery = { ...router.query };
       const updatedPriceFilter = { ...filter.price }; // Copy the price filter
       if (slugOrType === "gte") {
         delete updatedPriceFilter.min;
-        range = [0, filter?.price?.max ? filter?.price?.max : maxPrice];
+        delete newQuery.minPrice;
+        const currentMax = maxPriceQuery !== undefined ? Number(maxPriceQuery) : (filter?.price?.max !== undefined ? filter.price.max : maxPrice);
+        range = [0, currentMax];
 
         // Remove the min price
       } else if (slugOrType === "lte") {
         delete updatedPriceFilter.max; // Remove the max price
-        range = [filter?.price?.min ? filter?.price?.min : 0, maxPrice];
+        delete newQuery.maxPrice;
+        const currentMin = minPriceQuery !== undefined ? Number(minPriceQuery) : (filter?.price?.min !== undefined ? filter.price.min : 0);
+        range = [currentMin, maxPrice];
       }
       updateRange(range);
 
@@ -74,6 +82,11 @@ const ShopArea = ({
       const updatedFilter = { ...filter, price: updatedPriceFilter };
       dispatch(filterData(updatedFilter));
       dispatch(filterByHomePage(updatedFilter));
+
+      router.push({
+        pathname: router.pathname,
+        query: newQuery,
+      }, undefined, { shallow: true });
     }
     // Remove attribute filter
     else if (filterType === "attribute") {
@@ -374,7 +387,7 @@ const ShopArea = ({
                           </>
                         )}
                         <div
-                          className=""
+                          className="mt-2 lg:mt-0"
                           style={{
                             display: "flex",
                             gap: 10,
@@ -384,9 +397,9 @@ const ShopArea = ({
                           }}
                         >
                           {/* Price Filter */}
-                          {filter.price && (
+                          {(filter?.price || minPriceQuery !== undefined || maxPriceQuery !== undefined) && (
                             <>
-                              {filter.price.min !== undefined && (
+                              {(filter?.price?.min !== undefined || minPriceQuery !== undefined) && (
                                 <div
                                   style={{
                                     display: "flex",
@@ -399,10 +412,12 @@ const ShopArea = ({
                                   }
                                 >
                                   <i className="fa-regular fa-xmark " />
-                                  <span>Min {filter.price.min}</span>
+                                  <span>
+                                    Min {minPriceQuery !== undefined ? minPriceQuery : filter?.price?.min}
+                                  </span>
                                 </div>
                               )}
-                              {filter.price.max !== undefined && (
+                              {(filter?.price?.max !== undefined || maxPriceQuery !== undefined) && (
                                 <div
                                   style={{
                                     display: "flex",
@@ -415,7 +430,9 @@ const ShopArea = ({
                                   }
                                 >
                                   <i className="fa-regular fa-xmark " />
-                                  <span>Max {filter.price.max}</span>
+                                  <span>
+                                    Max {maxPriceQuery !== undefined ? maxPriceQuery : filter?.price?.max}
+                                  </span>
                                 </div>
                               )}
                             </>

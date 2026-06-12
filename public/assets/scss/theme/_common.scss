@@ -2113,6 +2113,9 @@ hr.footer-divider {
   .ShopByCollections {
     padding: 50px 20px !important;
   }
+  .tp-shop-item-primary .ShopByCollections {
+    padding: 20px 20px !important;
+  }
 }
 
 .tp-shop-items-wrapper .ShopByCollections .card {
@@ -5174,4 +5177,10 @@ header .tp-product-action-btn-3:hover {
     align-items: center;
     margin-bottom: 10px !important;
   }
+}
+
+
+.menu-pill:hover{
+  background-color:#7d4432 !important;
+  color: #fff !important;
 }

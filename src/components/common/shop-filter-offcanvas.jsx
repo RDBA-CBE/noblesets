@@ -24,6 +24,8 @@ const ShopFilterOffCanvas = ({
   maxPrice,
   resetFilter,
   attributeList,
+  minPrice,
+  selectedMaxPrice,
 }) => {
   const filter = useSelector((state) => state.shopFilter.filterData);
 
@@ -73,11 +75,11 @@ const ShopFilterOffCanvas = ({
                   <div className="tp-shop-widget-filter-info d-flex align-items-center justify-content-between">
                     <span className="input-range">
                       {checkChannel() == "india-channel" ? "₹" : "$"}
-                      {priceValue[0]
-                        ? addCommasToNumber(priceValue[0])
+                      {minPrice !== undefined
+                        ? addCommasToNumber(minPrice)
                         : 0} - {checkChannel() == "india-channel" ? "₹" : "$"}
-                      {priceValue[1]
-                        ? addCommasToNumber(priceValue[1])
+                      {selectedMaxPrice !== undefined && selectedMaxPrice !== 0
+                        ? addCommasToNumber(selectedMaxPrice)
                         : addCommasToNumber(maxPrice)}
                     </span>
                     <button

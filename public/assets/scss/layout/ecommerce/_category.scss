@@ -415,12 +415,31 @@
       .tp-product-action-7 {
         visibility: visible;
         opacity: 1;
-        right: 20px;
+        right: 20%;
       }
       .tp-menu-product-name {
         visibility: visible;
         opacity: 1;
       }
+
+      @media (max-width: 1560px) {
+      .tp-product-action-7 {
+          right: 12%;
+      }
+    }
+       @media (max-width: 1530px) {
+          .tp-product-action-7 {
+              right: 13%;
+          }
+      }
+
+       @media (max-width: 1380px) {
+          .tp-product-action-7 {
+              right: 5%;
+          }
+      }
+
+
     }
   }
 
@@ -873,6 +892,10 @@
     right: 10px;
   }
 }
+
+
+
+
 .tp-menu-product-name {
     position: absolute;
     /* top: 100px; */

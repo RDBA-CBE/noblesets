@@ -14,6 +14,7 @@ import {
   useNewProductListMutation,
   useShopPaginationMutation,
   useAttributeListMutation,
+  useGetAttributeBySlugMutation,
 } from "@/redux/features/productApi";
 import ShopFilterOffCanvas from "@/components/common/shop-filter-offcanvas";
 import shopBanner from "@assets/img/newlayout/shop-bg.png";
@@ -42,6 +43,8 @@ const ShopPage = () => {
   const router = useRouter();
 
   const filter = useSelector((state) => state.shopFilter.filterData);
+
+  const [getAttributes] = useGetAttributeBySlugMutation();
 
   const filterByHomePages = useSelector(
     (state) => state.shopFilter.filterByHomePage,
@@ -72,9 +75,16 @@ const ShopPage = () => {
   const [isPrev, setIsPrev] = useState(false);
   const [sortBy, setSortBy] = useState(null);
 
+  const [attributeFilter, setAttributeFilter] = useState(null);
+
   const [attributeList, setAttributeList] = useState([]);
 
   const categoryId = router?.query?.category;
+  const subCategoryId = router?.query?.subCategory;
+  const attribute = router?.query?.attribute;
+  const minPriceQuery = router?.query?.minPrice;
+  const maxPriceQuery = router?.query?.maxPrice;
+  const categorySlug = subCategoryId || categoryId;
 
   const PAGE_LIMIT = 20;
 
@@ -82,23 +92,92 @@ const ShopPage = () => {
     if (filterByHomePages) {
       dispatch(
         filterData({
+          ...filter,
           price: filterByHomePages?.price,
         }),
       ); // Dispatching the current checked state
     }
-  }, [filterByHomePages, router]);
+  }, [filterByHomePages, router, dispatch, filter]);
 
-  //  useEffect(() => {
-  //   dispatch(filterData({}));
+  useEffect(() => {
+    if (attribute) {
+      getAttributeDetail().then((attrPayload) => {
+        if (attrPayload) {
+          filterByCategory(attrPayload);
+        } else if (categoryId) {
+          filterByCategory(null);
+        }
+      });
+    } else if (categoryId) {
+      filterByCategory(null);
+    }
+    if (router?.query?.tag) filterByTags();
+  }, [router]);
+
+  // useEffect(() => {
+  // dispatch(filterData({}));
   // }, [router]);
+
+  const getAttributeDetail = async () => {
+    try {
+      const slug = attribute?.split("/")[0];
+
+      const choice = attribute?.split("/")[1];
+
+      const res = await getAttributes({ slug });
+
+      const attributeSlug = res?.data?.data?.attribute?.slug;
+
+      const selectedValue = res?.data?.data?.attribute?.choices?.edges?.find(
+        (item) => item?.node?.slug === choice,
+      )?.node;
+
+      if (!attributeSlug || !selectedValue?.slug) {
+        return null;
+      }
+
+      const filterPayload = {
+        attributes: [
+          {
+            slug: attributeSlug,
+            values: [selectedValue.slug],
+          },
+        ],
+      };
+
+      const mergedFilterData = {
+        ...filter,
+        ...filterPayload,
+      };
+
+      setAttributeFilter(filterPayload);
+      dispatch(filterData(mergedFilterData));
+      return filterPayload;
+    } catch (error) {
+      console.log("error: ", error);
+    }
+  };
 
   const commonFilter = () => {
     let filters = {};
 
-    if (filter?.price) {
+    const min = minPriceQuery !== undefined ? minPriceQuery : filter?.price?.min;
+    const max = maxPriceQuery !== undefined ? maxPriceQuery : filter?.price?.max;
+
+    if (min !== undefined || max !== undefined) {
       filters.price = {
-        gte: filter?.price?.min ? filter?.price?.min : priceValue[0],
-        lte: filter?.price?.max ? filter?.price?.max : priceValue[1],
+        gte: Number(min) >= 0 ? Number(min) : 0,
+        lte: Number(max) >= 0 ? Number(max) : 0,
+      };
+    } else if (filter?.price) {
+      filters.price = {
+        gte: filter?.price?.min || priceValue[0],
+        lte: filter?.price?.max || priceValue[1],
+      };
+    } else if (filter?.price) {
+      filters.price = {
+        gte: filter?.price?.min || priceValue[0],
+        lte: filter?.price?.max || priceValue[1],
       };
     }
 
@@ -109,8 +188,15 @@ const ShopPage = () => {
       };
     }
 
-    if (categoryId) {
-      filters.categorySlugs = categoryId;
+    if (categorySlug) {
+      filters.categorySlugs = categorySlug;
+    }
+
+    if (attributeFilter) {
+      filters = {
+        ...filters,
+        ...attributeFilter,
+      };
     }
 
     if (router?.query?.tag) {
@@ -137,8 +223,15 @@ const ShopPage = () => {
       };
     }
 
-    if (categoryId) {
-      filters.categorySlugs = categoryId;
+    if (categorySlug) {
+      filters.categorySlugs = categorySlug;
+    }
+
+    if (attributeFilter) {
+      filters = {
+        ...filters, // Keep the existing filters
+        ...attributeFilter, // Merge attribute filter
+      };
     }
 
     if (router?.query?.tag) {
@@ -201,20 +294,20 @@ const ShopPage = () => {
   }
 
   // useEffect(() => {
-  //   getAttributeList();
+  // getAttributeList();
   // }, []);
 
   // const getAttributeList = async () => {
-  //   try {
-  //     const res = await attributeLists();
-  //     console.log("res: ", res);
-  //     const data = res?.data?.data?.attributes?.edges?.map(
-  //       (item) => item?.node
-  //     );
-  //     setAttributeList(data);
-  //   } catch (error) {
-  //     console.log("error: ", error);
-  //   }
+  // try {
+  // const res = await attributeLists();
+  // console.log("res: ", res);
+  // const data = res?.data?.data?.attributes?.edges?.map(
+  // (item) => item?.node
+  // );
+  // setAttributeList(data);
+  // } catch (error) {
+  // console.log("error: ", error);
+  // }
   // };
 
   useEffect(() => {
@@ -273,34 +366,7 @@ const ShopPage = () => {
     getCategoryList();
   }, [categoryData]);
 
-  // useEffect(() => {
-  //   console.log("filter: ", filter);
-
-  //   if (filter) {
-  //     filters();
-  //   } else {
-  //     if (categoryId) {
-  //       filterByCategory();
-  //     } else if (router?.query?.tag) {
-  //       filterByTags();
-  //     } else {
-  //       productLists();
-  //     }
-  //     filterOption();
-  //   }
-  // }, [filter]);
-
-  useEffect(() => {
-    if (filter) {
-      filters();
-    }
-  }, [filter]);
-
-  useEffect(() => {
-    if (categoryId) {
-      filterByCategory();
-    }
-  }, [router]);
+  //
 
   useEffect(() => {
     if (router?.query?.tag) {
@@ -366,13 +432,28 @@ const ShopPage = () => {
       if (list?.length > 0) {
         const maxPrice =
           list[0]?.node?.pricing?.priceRange?.start?.gross?.amount;
-        if (filterByHomePages?.price?.min) {
-          setPriceValue([filterByHomePages?.price?.min, maxPrice]);
-        } else {
-          setPriceValue([0, maxPrice]);
+
+        let newMinPrice = 0;
+        let newMaxPrice = maxPrice; // Default to the fetched maxPrice
+
+        // Prioritize URL parameters for minPrice
+        if (minPriceQuery !== undefined) {
+          newMinPrice = Number(minPriceQuery);
+        } else if (filterByHomePages?.price?.min !== undefined) {
+          newMinPrice = filterByHomePages.price.min;
         }
-        setInitialMaxPrice(maxPrice);
-        setMaxPrice(maxPrice);
+
+        // Prioritize URL parameters for maxPrice
+        if (maxPriceQuery !== undefined) {
+          newMaxPrice = Number(maxPriceQuery);
+        } else {
+          // If maxPriceQuery is not present, use filterByHomePages.max or the fetched maxPrice
+          newMaxPrice = filterByHomePages?.price?.max || maxPrice;
+        }
+
+        setPriceValue([newMinPrice, newMaxPrice]);
+        setInitialMaxPrice(maxPrice); // Overall max for the category
+        setMaxPrice(maxPrice); // Overall max for the category
       } else {
         setPriceValue([0, 0]);
         setMaxPrice(0);
@@ -439,10 +520,11 @@ const ShopPage = () => {
     setCurrPage,
   };
 
-  const filterByCategory = () => {
-    const datas = {
-      categorySlugs: categoryId,
-    };
+  const filterByCategory = (attrPayload) => {
+    const datas = commonFilter();
+    if (attrPayload) {
+      Object.assign(datas, attrPayload);
+    }
 
     priceFilter({
       filter: datas,
@@ -458,9 +540,7 @@ const ShopPage = () => {
   };
 
   const filterByTags = () => {
-    const datas = {
-      tag: router?.query?.tag,
-    };
+    const datas = commonFilter();
 
     priceFilter({
       filter: datas,
@@ -491,8 +571,15 @@ const ShopPage = () => {
       };
     }
 
-    if (categoryId) {
-      filters.categorySlugs = categoryId;
+    if (attributeFilter) {
+      filters = {
+        ...filters,
+        ...attributeFilter,
+      };
+    }
+
+    if (categorySlug) {
+      filters.categorySlugs = categorySlug;
     }
 
     if (router?.query?.tag) {
@@ -525,9 +612,14 @@ const ShopPage = () => {
     const bodyData = {
       price: { gte: priceValue[0], lte: priceValue[1] },
     };
-    if (categoryId) {
-      bodyData.categorySlugs = categoryId;
+    if (categorySlug) {
+      bodyData.categorySlugs = categorySlug;
     }
+
+    if (attributeFilter) {
+      bodyData.attributes = attributeFilter;
+    }
+
     if (router?.query?.tag) {
       bodyData.tag = router?.query?.tag;
     }
@@ -552,7 +644,7 @@ const ShopPage = () => {
       let filteredList = { ...filter, price };
 
       // if (type === "priceRange") {
-      //   filteredList = filter?.filter((item) => item.type !== "price");
+      // filteredList = filter?.filter((item) => item.type !== "price");
       // }
 
       // const listd = [...filteredList, body];
@@ -881,9 +973,9 @@ const ShopPage = () => {
           </motion.div>
         </div>
         {/* {isLoading || categoryLoading || filterLoading ? (
-        <ShopLoader loading={isLoading} />
-      ) : (
-        <> */}
+ <ShopLoader loading={isLoading} />
+ ) : (
+ <> */}
         <ShopArea
           all_products={productList}
           products={productList}
@@ -901,17 +993,18 @@ const ShopPage = () => {
           maxPrice={maxPrice}
           totalCount={totalCount}
           page={currentPage}
+          attributeFilter={attributeFilter}
           // clearFilter={() => {
-          //   if (categoryId || router?.query?.tag) {
-          //     refreshFilterData(sortBy);
-          //   } else {
-          //     refresh();
-          //   }
-          //   dispatch(filterData({}));
-          //   setPriceValue([0, initialMaxPrice]);
-          //   setInitialMaxPrice(initialMaxPrice);
-          //   dispatch(handleFilterSidebarClose());
-          //   filterOption();
+          // if (categoryId || router?.query?.tag) {
+          // refreshFilterData(sortBy);
+          // } else {
+          // refresh();
+          // }
+          // dispatch(filterData({}));
+          // setPriceValue([0, initialMaxPrice]);
+          // setInitialMaxPrice(initialMaxPrice);
+          // dispatch(handleFilterSidebarClose());
+          // filterOption();
           // }}
 
           clearFilter={() => {
@@ -953,9 +1046,20 @@ const ShopPage = () => {
         <ShopFilterOffCanvas
           all_products={products}
           otherProps={otherProps}
+          attributeFilter={attributeFilter}
           filterByPrice={(val) => filterByPrice("priceRange")}
           maxPrice={maxPrice}
+          minPrice={priceValue[0]}
+          selectedMaxPrice={priceValue[1]}
           resetFilter={() => {
+            const { category, subCategory, tag } = router.query;
+            const newQuery = {};
+            if (category) newQuery.category = category;
+            if (subCategory) newQuery.subCategory = subCategory;
+            if (tag) newQuery.tag = tag;
+            
+            router.push({ pathname: "/shop", query: newQuery }, undefined, { shallow: true });
+
             if (categoryId || router?.query?.tag) {
               refreshFilterData(sortBy);
             } else {
@@ -984,7 +1088,7 @@ const ShopPage = () => {
         <HomeFooter />
       </motion.div>
       {/* </>
-      )} */}
+ )} */}
     </Wrapper>
   );
 };
