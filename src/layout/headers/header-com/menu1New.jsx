@@ -22,6 +22,7 @@ import { useDispatch, useSelector } from "react-redux";
 import { filterData } from "@/redux/features/shop-filter-slice";
 import { useSetState } from "@/utils/functions";
 import MenusProductSlider1 from "./menus-product-slider1";
+import { ArrowNextSm } from "@/svg";
 
 const slider_setting = {
   slidesPerView: 4,
@@ -83,14 +84,31 @@ const pill = {
   display: "inline-block",
 };
 
+const att = {
+  fontSize: "14px",
+  // padding: "0px 15px",
+  borderRadius: "20px",
+  // border: "1px solid #e0d0c8",
+  color: "#643333",
+  // background: "#fff5f0",
+  fontWeight: 500,
+  cursor: "pointer",
+  whiteSpace: "nowrap",
+  textDecoration: "none",
+  display: "inline-block",
+};
+
 const sectionLabel = {
-  fontSize: "12px",
-  fontWeight: 600,
-  color: "#7d4432",
-  textTransform: "uppercase",
+  fontSize: "13px",
+  fontWeight: 500,
+  color: "#000",
+  // textTransform: "uppercase",
   letterSpacing: "1px",
   marginBottom: "8px",
   display: "block",
+  borderBottom:"1px solid #000",
+  width: "fit-content",
+  lineHeight: "20px"
 };
 
 const CategoryContent = ({
@@ -120,7 +138,7 @@ const CategoryContent = ({
   return (
     <div className="row m-0" style={{ paddingBottom: "30px", height: "100%" }}>
       <div
-        className="col-3"
+        className="col-2 "
         style={{
           // paddingLeft: "30px",
           height: "100%",
@@ -265,8 +283,8 @@ const CategoryContent = ({
           // </div>
         )}
       </div>
-      <div className="col-9" style={{ height: "350px" }}>
-        <div className="row h-100" style={{ padding: "0px 20px" }}>
+      <div className="col-10 col-2xl-9" style={{ height: "350px" }}>
+        <div className="row h-100" style={{ padding: "0px 0px 0 5px" }}>
           {children}
         </div>
       </div>
@@ -312,76 +330,76 @@ const CategoryComponent = (props) => {
     }
 
     const hasProducts = productList?.length > 0;
+
+    // Split attrs: Karatage + Cent share one column; others get their own
+    const pairedNames = ["Karatage", "Cent"];
+    const pairedAttrs = uniqueAttributes?.filter((a) => pairedNames.includes(a.name));
+    const soloAttrs = uniqueAttributes?.filter((a) => !pairedNames.includes(a.name));
+
     return hasProducts ? (
-      //   modules={[Pagination]}
-      //   className="tp-category-slider-active-4 swiper-container"
-      // >
-      //   {productList?.map((item) => (
-      //     <SwiperSlide key={item?.node?.id}>
-      //       <div
-      //         className="col-lg-3 menus-product-list"
-      //         style={{ padding: "0px 8px 0px 0px", width: "250px" }}
-      //       >
-      //         <MenusProductSlider product={item} />
-      //       </div>
-      //     </SwiperSlide>
-      //   ))}
-      // </Swiper>
       <>
-        {/* <div className="row m-0" style={{ height: "100%" }}> */}
         <div className="col-8">
-          <div className="row">
-            {uniqueAttributes?.map((attr) => (
-              <div
-                className="col-6"
-                key={attr.id}
-                style={{ marginBottom: "16px" }}
-              >
+          <div className="row gap-3">
+            {/* Solo attrs — Occasion, Stone Type each in own col */}
+            {soloAttrs?.map((attr) => (
+              <div className="col-2" key={attr.id} style={{ marginBottom: "16px" }}>
                 <span style={sectionLabel}>{attr.name}</span>
-                <div
-                  style={{
-                    display: "flex",
-                    flexWrap: "wrap",
-                    gap: "5px",
-                  }}
-                >
-                  {attr.values.map((val) => (
+                <div style={{ display: "flex", flexDirection: "column", gap: "3px" }}>
+                  {attr.values.slice(0, 7).map((val) => (
                     <a
                       key={val.id}
                       href={`/shop?category=${lastHoveredCategory}&attribute=${attr.slug}/${val.slug}${subCategoryParam}`}
-                      style={pill}
+                      style={att}
                       className="menu-pill"
                     >
-                      {val.name}
+                     <ArrowNextSm className="att-icon" /> {val.name}
                     </a>
                   ))}
                 </div>
               </div>
             ))}
-            <div className="col-12">
+
+            {/* Karatage + Cent paired in one col, stacked vertically */}
+            {pairedAttrs?.length > 0 && (
+              <div className="col-2" style={{ marginBottom: "16px" }}>
+                {pairedAttrs.map((attr) => (
+                  <div key={attr.id} style={{ marginBottom: "10px" }}>
+                    <span style={sectionLabel}>{attr.name}</span>
+                    <div style={{ display: "flex", flexDirection: "column", gap: "3px" }}>
+                      {attr.values.slice(0, 7).map((val) => (
+                        <a
+                          key={val.id}
+                          href={`/shop?category=${lastHoveredCategory}&attribute=${attr.slug}/${val.slug}${subCategoryParam}`}
+                          style={att}
+                          className="menu-pill "
+                        >
+                          <ArrowNextSm className="att-icon" /> {val.name}
+                        </a>
+                      ))}
+                    </div>
+                  </div>
+                ))}
+              </div>
+            )}
+
+            {/* Price col */}
+            <div className="col-2">
               <span style={sectionLabel}>Price</span>
-              <div
-                style={{
-                  display: "flex",
-                  flexWrap: "wrap",
-                  gap: "5px",
-                }}
-              >
+              <div style={{ display: "flex", flexDirection: "column", gap: "3px" }}>
                 {dynamicBudget?.map((b) => (
                   <a
                     key={b.label}
                     href={`/shop?category=${lastHoveredCategory}&minPrice=${b.min}&maxPrice=${b.max}${subCategoryParam}`}
-                    style={pill}
+                    style={att}
                     className="menu-pill"
                   >
-                    {b.label}
+                    <ArrowNextSm  className="att-icon "/> {b.label}
                   </a>
                 ))}
               </div>
             </div>
           </div>
         </div>
-        {/* </div> */}
 
         <Swiper
           slidesPerView={productList?.length > 0 ? 1 : 1}
@@ -589,7 +607,7 @@ const Menus1New = () => {
     });
 
     const uniqueAttributes = Array.from(attributeMap.values());
-    const order = ["Occasion", "Karat","Stone Type", "Cent"];
+    const order = ["Occasion", "Karat","Stone Type", "Cent", "Metal Color"];
     return uniqueAttributes
       .filter((attr) => order.includes(attr.name))
       .sort((a, b) => order.indexOf(a.name) - order.indexOf(b.name))
@@ -890,7 +908,7 @@ const Menus1New = () => {
               </ul>
             </div>
 
-            <div className="col-lg-10 h-100">
+            <div className="col-lg-10 h-100 pe-0">
               <div className="tp-mega-menu-item h-100 ">
                 {subCatLoading ? (
                   <SingleLoader loading={true} />
@@ -914,7 +932,7 @@ const Menus1New = () => {
                   <>
                     <div className="d-flex">
                       <div
-                        className="col-lg-6"
+                        className="col-lg-7"
                         style={{
                           backgroundColor: "#fff",
                           padding: "14px 12px",
@@ -924,54 +942,68 @@ const Menus1New = () => {
                         }}
                       >
                         <div className="row m-0" style={{ height: "100%" }}>
-                          {state.uniqueAttributes?.map((attr) => (
-                            <div
-                              className="col-lg-6"
-                              key={attr.id}
-                              style={{ marginBottom: "16px" }}
-                            >
-                              <span style={sectionLabel}>{attr.name}</span>
-                              <div
-                                style={{
-                                  display: "flex",
-                                  flexWrap: "wrap",
-                                  gap: "5px",
-                                }}
-                              >
-                                {attr.values.map((val) => (
-                                  <a
-                                    key={val.id}
-                                    href={`/shop?category=${lastHoveredCategory}&attribute=${attr.slug}/${val.slug}${subCategoryParam}`} // Now subCategoryParam is defined
-                                    style={pill}
-                                    className="menu-pill"
-                                  >
-                                    {val.name}
-                                  </a>
+                          {(() => {
+                            const pairedNames = ["Karatage", "Cent"];
+                            const pairedAttrs = state.uniqueAttributes?.filter((a) => pairedNames.includes(a.name));
+                            const soloAttrs = state.uniqueAttributes?.filter((a) => !pairedNames.includes(a.name));
+                            return (
+                              <>
+                                {soloAttrs?.map((attr) => (
+                                  <div className="col-lg-2" key={attr.id} style={{ marginBottom: "16px" }}>
+                                    <span style={sectionLabel}>{attr.name}</span>
+                                    <div style={{ display: "flex", flexDirection: "column", gap: "3px" }}>
+                                      {attr.values.slice(0, 7).map((val) => (
+                                        <a
+                                          key={val.id}
+                                          href={`/shop?category=${lastHoveredCategory}&attribute=${attr.slug}/${val.slug}${subCategoryParam}`}
+                                          style={att}
+                                          className="menu-pill"
+                                        >
+                                          <ArrowNextSm className="att-icon" /> {val.name}
+                                        </a>
+                                      ))}
+                                    </div>
+                                  </div>
                                 ))}
-                              </div>
-                            </div>
-                          ))}
-                          <div className="col-lg-12">
-                            <span style={sectionLabel}>Price</span>
-                            <div
-                              style={{
-                                display: "flex",
-                                flexWrap: "wrap",
-                                gap: "5px",
-                              }}
-                            >
-                              {state.dynamicBudget?.map((b) => (
-                                <a
-                                  key={b.label}
-                                  href={`/shop?category=${lastHoveredCategory}&minPrice=${b.min}&maxPrice=${b.max}${subCategoryParam}`} // Now subCategoryParam is defined
-                                  style={pill}
-                                  className="menu-pill"
-                                >
-                                  {b.label}
-                                </a>
-                              ))}
-                            </div>
-                          </div>
+                                {pairedAttrs?.length > 0 && (
+                                  <div className="col-lg-2" style={{ marginBottom: "16px" }}>
+                                    {pairedAttrs.map((attr) => (
+                                      <div key={attr.id} style={{ marginBottom: "10px" }}>
+                                        <span style={sectionLabel}>{attr.name}</span>
+                                        <div style={{ display: "flex", flexDirection: "column", gap: "3px" }}>
+                                          {attr.values.slice(0, 7).map((val) => (
+                                            <a
+                                              key={val.id}
+                                              href={`/shop?category=${lastHoveredCategory}&attribute=${attr.slug}/${val.slug}${subCategoryParam}`}
+                                              style={att}
+                                              className="menu-pill"
+                                            >
+                                             <ArrowNextSm  className="att-icon"/> {val.name}
+                                            </a>
+                                          ))}
+                                        </div>
+                                      </div>
+                                    ))}
+                                  </div>
+                                )}
+                                <div className="col-lg-2">
+                                  <span style={sectionLabel}>Price</span>
+                                  <div style={{ display: "flex", flexDirection: "column", gap: "3px" }}>
+                                    {state.dynamicBudget?.map((b) => (
+                                      <a
+                                        key={b.label}
+                                        href={`/shop?category=${lastHoveredCategory}&minPrice=${b.min}&maxPrice=${b.max}${subCategoryParam}`}
+                                        style={att}
+                                        className="menu-pill "
+                                      >
+                                        <ArrowNextSm className="att-icon me-1"  />{b.label}
+                                      </a>
+                                    ))}
+                                  </div>
+                                </div>
+                              </>
+                            );
+                          })()}
                         </div>
                       </div>
                       <div className="col-lg-3">

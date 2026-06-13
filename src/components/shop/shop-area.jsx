@@ -350,8 +350,8 @@ const ShopArea = ({
                     </div>
                     {filter && (
                       <div
-                        className="d-flex cursor"
-                        style={{ gap: 20, cursor: "pointer" }}
+                        className="d-flex flex-column flex-lg-row cursor gap-1 gap-lg-3"
+                        style={{  cursor: "pointer" }}
                       >
                         {
                         (

@@ -44,7 +44,7 @@ const pill = {
 
 const sectionLabel = {
   fontSize: "11px",
-  fontWeight: 700,
+  fontWeight: 500,
   color: "#555",
   textTransform: "uppercase",
   letterSpacing: "1px",
@@ -90,7 +90,7 @@ const SubCategoryPanel = ({ subCat, parentCatSlug, onBack }) => {
         const parsed = JSON.parse(raw);
         const uniqueAttributes = parsed?.edges?.map((e) => e.node) || [];
 
-        const order = ["Occasion", "Karat", "Cent", "Stone Type"];
+        const order = ["Occasion", "Karat", "Cent", "Stone Type", "Metal Color"];
         const filteredAttributes = uniqueAttributes
           .filter((attr) => order.includes(attr.name))
           .sort((a, b) => order.indexOf(a.name) - order.indexOf(b.name))
