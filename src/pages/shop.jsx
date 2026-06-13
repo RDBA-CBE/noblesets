@@ -117,13 +117,7 @@ const ShopPage = () => {
 
   useEffect(() => {
     if (!filter || Object.keys(filter).length === 0) return;
-
-    if (attribute || categoryId || router?.query?.tag) {
-      filterByCategory(null);
-      filterOptionWithPayload(null);
-    } else {
-      filters();
-    }
+    filters();
   }, [filter]);
 
   // useEffect(() => {
@@ -340,7 +334,10 @@ const ShopPage = () => {
   }, []);
 
   useEffect(() => {
-    if (categoryId) {
+    setCatName("");
+    setParentCatName("");
+    setParentSlug("");
+    if (categoryId || subCategoryId) {
       filterByCategoryName();
     }
   }, [router]);
@@ -353,7 +350,11 @@ const ShopPage = () => {
 
   useEffect(() => {
     getProductMaxPrice();
-    filterOption();
+    // If attribute param exists, filterOptionWithPayload is called after getAttributeDetail resolves
+    // Calling filterOption() here without the attribute payload would return wrong attribute list
+    if (!attribute) {
+      filterOption();
+    }
   }, [router]);
 
   useEffect(() => {
@@ -688,15 +689,18 @@ const ShopPage = () => {
       if (subCategoryId) {
         const subRes = await getCategoryName({ slug: subCategoryId });
         setCatName(subRes?.data?.data?.category?.name);
-        const parentName = subRes?.data?.data?.category?.parent?.name;
-        const parentSlugVal = subRes?.data?.data?.category?.parent?.slug;
-        if (parentName) {
-          setParentCatName(parentName);
-          setParentSlug(parentSlugVal);
-        } else if (categoryId) {
+        // Always use categoryId from URL as parent when present — API parent may belong to a different category
+        if (categoryId) {
           const parentRes = await getCategoryName({ slug: categoryId });
-          setParentCatName(parentRes?.data?.data?.category?.name);
+          setParentCatName(parentRes?.data?.data?.category?.name || categoryId);
           setParentSlug(categoryId);
+        } else {
+          const parentName = subRes?.data?.data?.category?.parent?.name;
+          const parentSlugVal = subRes?.data?.data?.category?.parent?.slug;
+          if (parentName) {
+            setParentCatName(parentName);
+            setParentSlug(parentSlugVal);
+          }
         }
       } else {
         const res = await getCategoryName({ slug: categoryId });
@@ -1049,17 +1053,32 @@ const ShopPage = () => {
           // filterOption();
           // }}
 
-          clearFilter={() => {
-            if (categoryId || router?.query?.tag) {
-              refreshFilterData(sortBy);
-            } else {
-              refresh();
-            }
+                    clearFilter={() => {
+            // Reset all filter state
+            setAttributeFilter(null);
             dispatch(filterData({}));
+            dispatch(filterByHomePage(null));
             setPriceValue([0, initialMaxPrice]);
-            setInitialMaxPrice(initialMaxPrice);
             dispatch(handleFilterSidebarClose());
-            filterOption();
+
+            // Build clean filter — only keep categoryId/tag, strip attribute+subCategory+price
+            const cleanFilter = {};
+            if (subCategoryId) cleanFilter.categorySlugs = subCategoryId;
+            else if (categoryId) cleanFilter.categorySlugs = categoryId;
+            if (router?.query?.tag) cleanFilter.tag = router?.query?.tag;
+
+            priceFilter({
+              filter: cleanFilter,
+              first: PAGE_LIMIT,
+              after: null,
+              sortBy: sortBy || { direction: "DESC", field: "CREATED_AT" },
+            }).then((res) => setCursorAndList(res));
+
+            filterOptions({ filter: cleanFilter }).then((res) => finalFilterOptionList(res));
+
+            // Strip attribute/subCategory/minPrice/maxPrice from URL without re-fetch
+            const { attribute: _a, minPrice: _min, maxPrice: _max, ...restQuery } = router.query;
+            router.replace({ pathname: router.pathname, query: restQuery }, undefined, { shallow: true });
           }}
         />
         {productList?.length > 0 &&

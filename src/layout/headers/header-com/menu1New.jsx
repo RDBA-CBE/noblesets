@@ -596,7 +596,7 @@ const Menus1New = () => {
     });
 
     const uniqueAttributes = Array.from(attributeMap.values());
-    const order = ["Occasion", "Karat", "Cent", "Shop For"];
+    const order = ["Occasion", "Karat","Stone Type", "Cent"];
     return uniqueAttributes
       .filter((attr) => order.includes(attr.name))
       .sort((a, b) => order.indexOf(a.name) - order.indexOf(b.name))
@@ -623,6 +623,19 @@ const Menus1New = () => {
                 name: !isNaN(num) ? `${Math.round(num * 100)}CT` : v.name,
               };
             }),
+          };
+        }
+
+        if (attr.name === "Stone Type") {
+          return {
+            ...attr,
+            name: "Stone Type",
+            values: attr.values.map((v) => ({
+              ...v,
+              name: v.name
+                .toLowerCase()
+                .replace(/\b\w/g, (char) => char.toUpperCase()),
+            })),
           };
         }
         return attr;
