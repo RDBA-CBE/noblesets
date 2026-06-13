@@ -13,7 +13,6 @@ import {
   usePriceFilterMutation,
   useNewProductListMutation,
   useShopPaginationMutation,
-  useAttributeListMutation,
   useGetAttributeBySlugMutation,
 } from "@/redux/features/productApi";
 import ShopFilterOffCanvas from "@/components/common/shop-filter-offcanvas";
@@ -275,7 +274,6 @@ const ShopPage = () => {
   const [createCheckoutTokenWithoutEmail] =
     useCreateCheckoutTokenWithoutEmailMutation();
 
-  const [fetchAttributeList] = useAttributeListMutation();
 
   let products = productsData?.data?.productsSearch?.edges;
 
@@ -379,23 +377,6 @@ const ShopPage = () => {
     }
   }, [router]);
 
-  useEffect(() => {
-    const getAttributeList = async () => {
-      try {
-        const res = await fetchAttributeList();
-        const data = res?.data?.data?.attributes?.edges?.map(
-          (item) => item?.node,
-        );
-        setAttributeList(data || []);
-        console.log("data", data);
-        
-      } catch (error) {
-        console.log("Error fetching attribute list:", error);
-      }
-    };
-
-    getAttributeList();
-  }, [fetchAttributeList]);
 
   const createCheckoutTokenINR = async () => {
     try {
