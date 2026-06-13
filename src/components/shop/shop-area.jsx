@@ -353,7 +353,11 @@ const ShopArea = ({
                         className="d-flex cursor"
                         style={{ gap: 20, cursor: "pointer" }}
                       >
-                        {(!objIsEmpty(filter?.price) ||
+                        {
+                        (
+                          !objIsEmpty(filter?.price) ||
+                          minPriceQuery !== undefined ||
+                          maxPriceQuery !== undefined ||
                           filter?.attributes?.length > 0) && (
                           <>
                             {/* <div className="cartmini__close">
@@ -388,6 +392,16 @@ const ShopArea = ({
                           {/* Price Filter */}
                           {(filter?.price || minPriceQuery !== undefined || maxPriceQuery !== undefined) && (
                             <>
+                            {/* <div
+                              onClick={() => clearFilter()}
+                              className="clear-filter-btn mt-2 mt-lg-0"
+                              style={{color:"#55585b"}}
+                            >
+                              <i className="fa-regular fa-xmark" />
+                              <span className="clear-filter-text">
+                                Clear filter
+                              </span>
+                            </div> */}
                               {(filter?.price?.min !== undefined || minPriceQuery !== undefined) && (
                                 <div
                                   style={{

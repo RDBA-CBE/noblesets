@@ -616,6 +616,13 @@ const ShopPage = () => {
     const bodyData = {
       price: { gte: priceValue[0], lte: priceValue[1] },
     };
+    // Use the parent category ID if available to ensure we filter at the parent level
+    // if (categoryId) {
+    //   bodyData.categorySlugs = categoryId;
+    // } else if (categorySlug) {
+    //   bodyData.categorySlugs = categorySlug;
+    // }
+
     if (categorySlug) {
       bodyData.categorySlugs = categorySlug;
     }
@@ -628,6 +635,8 @@ const ShopPage = () => {
       bodyData.tag = router?.query?.tag;
     }
 
+    // If we are filtering by price from the sidebar, we usually want to reset 
+    // to the parent category level if one is present, removing sub-category filters.
     priceFilter({
       filter: bodyData,
       first: PAGE_LIMIT,
@@ -645,19 +654,33 @@ const ShopPage = () => {
         max: priceValue[1],
       };
 
-      let filteredList = { ...filter, price };
-
-      // if (type === "priceRange") {
-      // filteredList = filter?.filter((item) => item.type !== "price");
+      // Create a clean filter state for Redux
+      let filteredList = { 
+        ...filter, 
+        price 
+      };
+      
+      // if (categoryId) {
+      //   delete filteredList.subCategory;
+      //   delete filteredList.attributes;
       // }
 
-      // const listd = [...filteredList, body];
       dispatch(filterData(filteredList));
       dispatch(filterByHomePage(null));
 
       setPriceValue([priceValue[0], priceValue[1]]);
       setFilterList([...filterList, price]);
-      // dispatch(handleFilterSidebarClose());
+
+      // Update URL to reflect new price and remove stale subCategory/attribute
+      const newQuery = { ...router.query };
+      newQuery.minPrice = priceValue[0];
+      newQuery.maxPrice = priceValue[1];
+      
+      // Forcefully remove subCategory and attribute from URL when applying price at category level
+      delete newQuery.subCategory;
+      delete newQuery.attribute;
+      
+      router.push({ pathname: router.pathname, query: newQuery }, undefined, { shallow: true });
     });
 
     filterOptions({
@@ -1044,8 +1067,9 @@ const ShopPage = () => {
             setPriceValue([0, initialMaxPrice]);
             dispatch(handleFilterSidebarClose());
 
-            // Build clean filter — only keep categoryId/tag, strip attribute+subCategory+price
+            // Build clean filter — only keep category context (parent/sub) / tag
             const cleanFilter = {};
+            // if (categorySlug) cleanFilter.categorySlugs = categorySlug;
             if (subCategoryId) cleanFilter.categorySlugs = subCategoryId;
             else if (categoryId) cleanFilter.categorySlugs = categoryId;
             if (router?.query?.tag) cleanFilter.tag = router?.query?.tag;
@@ -1059,7 +1083,7 @@ const ShopPage = () => {
 
             filterOptions({ filter: cleanFilter }).then((res) => finalFilterOptionList(res));
 
-            // Strip attribute/subCategory/minPrice/maxPrice from URL without re-fetch
+            // Strip attribute/minPrice/maxPrice from URL, keep category/subCategory
             const { attribute: _a, minPrice: _min, maxPrice: _max, ...restQuery } = router.query;
             router.replace({ pathname: router.pathname, query: restQuery }, undefined, { shallow: true });
           }}

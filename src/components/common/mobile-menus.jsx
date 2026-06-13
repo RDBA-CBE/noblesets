@@ -90,7 +90,7 @@ const SubCategoryPanel = ({ subCat, parentCatSlug, onBack }) => {
         const parsed = JSON.parse(raw);
         const uniqueAttributes = parsed?.edges?.map((e) => e.node) || [];
 
-        const order = ["Occasion", "Karat", "Cent", "Shop For"];
+        const order = ["Occasion", "Karat", "Cent", "Stone Type"];
         const filteredAttributes = uniqueAttributes
           .filter((attr) => order.includes(attr.name))
           .sort((a, b) => order.indexOf(a.name) - order.indexOf(b.name))

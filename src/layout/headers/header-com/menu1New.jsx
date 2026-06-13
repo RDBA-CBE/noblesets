@@ -115,11 +115,7 @@ const CategoryContent = ({
 
   const router = useRouter();
   const hoverTimer = useRef(null);
-  const subCategoryParam = hoveredSubCategory
-    ? `&subCategory=${hoveredSubCategory}`
-    : router?.query?.subCategory
-      ? `&subCategory=${router.query.subCategory}`
-      : "";
+  const subCategoryParam = hoveredSubCategory ? `&subCategory=${hoveredSubCategory}` : "";
 
   return (
     <div className="row m-0" style={{ paddingBottom: "30px", height: "100%" }}>
@@ -284,21 +280,15 @@ const CategoryContent = ({
 
 const CategoryComponent = (props) => {
   const router = useRouter();
-  const [hoveredSubCategory, setHoveredSubCategory] = useState(
-    router?.query?.subCategory || "",
-  );
+  const [hoveredSubCategory, setHoveredSubCategory] = useState("");
 
   useEffect(() => {
-    if (router?.query?.subCategory) {
-      setHoveredSubCategory(router.query.subCategory);
-    }
-  }, [router?.query?.subCategory]);
+    setHoveredSubCategory("");
+  }, [props.lastHoveredCategory]);
 
   const subCategoryParam = hoveredSubCategory
     ? `&subCategory=${hoveredSubCategory}`
-    : router?.query?.subCategory
-      ? `&subCategory=${router.query.subCategory}`
-      : "";
+    : "";
   const {
     productList,
     lastHoveredCategory,
@@ -484,9 +474,6 @@ function SingleLoader({ loading }) {
 
 const Menus1New = () => {
   const router = useRouter();
-  const subCategoryParam = router?.query?.subCategory
-    ? `&subCategory=${router.query.subCategory}`
-    : "";
 
   const [state, setState] = useSetState({
     categoryList: [],
@@ -761,6 +748,9 @@ const Menus1New = () => {
 
   // console.log("productList", state.productList);
 
+  // Define subCategoryParam for this scope. It will be an empty string
+  // when rendering products/attributes directly from Menus1New (i.e., no subcategory is actively hovered).
+  const subCategoryParam = "";
   return (
     <ul
       className="d-flex justify-content-center align-items-center mb-0"
@@ -861,29 +851,13 @@ const Menus1New = () => {
                         router.push({
                           pathname: "/shop",
                           query: {
-                            attribute: `Shop-For/women`
-                              // .toLowerCase()
-                              // .toLowerCase()
-                              .replace(/&/g, "")
-                              .replace(/\s+/g, "-"),
+                            category: item?.slug,
                           },
-
-                          // query: {
-                          // category: item?.slug
-                          // .toLowerCase()
-                          // .replace("&", "")
-                          // .split(" ")
-                          // .join("-"),
-                          // },
                         });
                       }}
                     >
                       <a
-                        href={`/shop?attribute=${"Shop-For/women"
-                          // .toLowerCase()
-                          .replace("&", "")
-                          .split(" ")
-                          .join("-")}`}
+                        href={`/shop?category=${item?.slug}`}
                         style={{
                           cursor: "pointer",
                           marginBottom: "0px",
@@ -896,11 +870,7 @@ const Menus1New = () => {
                           router.push({
                             pathname: "/shop",
                             query: {
-                              category: item?.slug
-                                .toLowerCase()
-                                .replace("&", "")
-                                .split(" ")
-                                .join("-"),
+                              category: item?.slug,
                             },
                           });
                         }}
@@ -971,7 +941,7 @@ const Menus1New = () => {
                                 {attr.values.map((val) => (
                                   <a
                                     key={val.id}
-                                    href={`/shop?category=${lastHoveredCategory}&attribute=${attr.slug}/${val.slug}${subCategoryParam}`}
+                                    href={`/shop?category=${lastHoveredCategory}&attribute=${attr.slug}/${val.slug}${subCategoryParam}`} // Now subCategoryParam is defined
                                     style={pill}
                                     className="menu-pill"
                                   >
@@ -993,7 +963,7 @@ const Menus1New = () => {
                               {state.dynamicBudget?.map((b) => (
                                 <a
                                   key={b.label}
-                                  href={`/shop?category=${lastHoveredCategory}&minPrice=${b.min}&maxPrice=${b.max}`}
+                                  href={`/shop?category=${lastHoveredCategory}&minPrice=${b.min}&maxPrice=${b.max}${subCategoryParam}`} // Now subCategoryParam is defined
                                   style={pill}
                                   className="menu-pill"
                                 >
