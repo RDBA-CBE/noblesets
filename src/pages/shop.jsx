@@ -117,7 +117,7 @@ const ShopPage = () => {
 
   useEffect(() => {
     if (!filter || Object.keys(filter).length === 0) return;
-    filters();
+      filters();
   }, [filter]);
 
   // useEffect(() => {
@@ -353,7 +353,7 @@ const ShopPage = () => {
     // If attribute param exists, filterOptionWithPayload is called after getAttributeDetail resolves
     // Calling filterOption() here without the attribute payload would return wrong attribute list
     if (!attribute) {
-      filterOption();
+    filterOption();
     }
   }, [router]);
 
@@ -387,6 +387,8 @@ const ShopPage = () => {
           (item) => item?.node,
         );
         setAttributeList(data || []);
+        console.log("data", data);
+        
       } catch (error) {
         console.log("Error fetching attribute list:", error);
       }

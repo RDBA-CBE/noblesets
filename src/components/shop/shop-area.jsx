@@ -338,23 +338,14 @@ const ShopArea = ({
                       <div className="row">
                         <div className="col-md-6">
                           <ShopTopLeft showing={page} total={totalCount} />
-                          {/* <ShopTopLeft
-                        showing={
-                          products?.length === 0
-                            ? 0
-                            : all_products?.slice(
-                                pageStart,
-                                pageStart + countOfPage
-                              ).length
-                        }
-                        total={all_products?.length}
-                      /> */}
                         </div>
-                        <div className="col-md-6">
-                          <ShopTopRight
-                            selectHandleFilter={selectHandleFilter}
-                          />
-                        </div>
+                        {!productLoading && (
+                          <div className="col-md-6">
+                            <ShopTopRight
+                              selectHandleFilter={selectHandleFilter}
+                            />
+                          </div>
+                        )}
                       </div>
                     </div>
                     {filter && (

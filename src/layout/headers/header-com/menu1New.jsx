@@ -303,6 +303,7 @@ const CategoryComponent = (props) => {
     productList,
     lastHoveredCategory,
     productLoading,
+    catLoading,
     commonImage,
     subCategoryList,
     subCategoryLoading,
@@ -312,10 +313,15 @@ const CategoryComponent = (props) => {
   } = props;
 
   const renderContent = () => {
-    const hasProducts = productList?.length > 0;
-    if (productLoading && !hasProducts) {
-      <SingleLoader loading={productLoading} />;
+    if (productLoading || catLoading) {
+      return (
+        <div className="col-12 d-flex align-items-center justify-content-center h-100">
+          <Loader loading={true} />
+        </div>
+      );
     }
+
+    const hasProducts = productList?.length > 0;
     return hasProducts ? (
       //   modules={[Pagination]}
       //   className="tp-category-slider-active-4 swiper-container"
@@ -468,7 +474,7 @@ const CategoryComponent = (props) => {
 function SingleLoader({ loading }) {
   return (
     <div
-      className="col-xl-3 col-lg-3 col-sm-6 d-flex align-items-center justify-content-center"
+      className="col-12 d-flex align-items-center justify-content-center"
       style={{ height: "300px", width:"100%" }}
     >
       <Loader loading={loading} />
@@ -677,8 +683,14 @@ const Menus1New = () => {
     }
   };
 
+  const hoverRequestId = useRef(0);
+
   const hoverCategoryProduct = async (slug, id) => {
     setLastHoveredCategory(slug);
+    const thisId = ++hoverRequestId.current;
+
+    // Clear immediately so stale data is never visible
+    setState({ subCategoryList: [], productList: [], uniqueAttributes: [] });
 
     const [subcategory, productRes, attrRes] = await Promise.all([
       subCatList({ slug: slug }),
@@ -690,6 +702,8 @@ const Menus1New = () => {
       }),
       id ? getProductsByCategory({ categoryId: id }) : Promise.resolve(null),
     ]);
+
+    if (thisId !== hoverRequestId.current) return; // stale — discard
 
     if (subcategory?.data?.data?.category?.children?.edges?.length > 0) {
       setState({
@@ -717,6 +731,9 @@ const Menus1New = () => {
   const SubCatProduct = async (item) => {
     const slug = item?.node?.slug;
     const id = item?.node?.id;
+    const thisId = ++hoverRequestId.current;
+
+    setState({ productList: [], uniqueAttributes: [] });
 
     const [productRes, attrRes] = await Promise.all([
       priceFilter({
@@ -727,6 +744,8 @@ const Menus1New = () => {
       }),
       getProductsByCategory({ categoryId: id }),
     ]);
+
+    if (thisId !== hoverRequestId.current) return; // stale — discard
 
     const list =
       productRes?.data?.data?.productsSearch?.edges?.slice(0, 11) || [];
@@ -903,12 +922,15 @@ const Menus1New = () => {
 
             <div className="col-lg-10 h-100">
               <div className="tp-mega-menu-item h-100 ">
-                {state.subCategoryList?.length > 0 ? (
+                {subCatLoading ? (
+                  <SingleLoader loading={true} />
+                ) : state.subCategoryList?.length > 0 ? (
                   <CategoryComponent
                     commonImage="/assets/img/earring-menu-pic-1.png"
                     lastHoveredCategory={lastHoveredCategory}
                     productList={state.productList}
                     productLoading={productLoading}
+                    catLoading={catLoading}
                     subCategoryList={state.subCategoryList}
                     subCategoryLoading={subCatLoading}
                     uniqueAttributes={state.uniqueAttributes}
@@ -916,8 +938,8 @@ const Menus1New = () => {
                     SubCatProduct={SubCatProduct}
                     style={{ height: "100%" }}
                   />
-                ) : productLoading && state.productList?.length === 0 ? (
-                  <SingleLoader loading={productLoading} />
+                ) : (productLoading || catLoading) ? (
+                  <SingleLoader loading={true} />
                 ) : state.productList?.length > 0 ? (
                   <>
                     <div className="d-flex">
