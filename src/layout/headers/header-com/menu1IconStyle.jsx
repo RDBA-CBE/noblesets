@@ -37,7 +37,7 @@ const SUB_CATEGORY_IMAGES = {
   "pendant-2": "/assets/img/navbar/D - pendant.svg",
   "bangle": "/assets/img/navbar/Gold Bangle.svg",
   "earring": "/assets/img/navbar/Gold Earrings.svg",
-  "ring": "/assets/img/navbar/Gold Ring.svg",
+  "rings": "/assets/img/navbar/Gold Ring.svg",
   "necklace": "/assets/img/navbar/Gold Ring-1.svg",
   "bracelets": "/assets/img/navbar/D - pendant.svg",
 
