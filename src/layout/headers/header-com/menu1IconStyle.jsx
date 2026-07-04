@@ -39,10 +39,10 @@ const SUB_CATEGORY_IMAGES = {
   "earring": "/assets/img/navbar/Gold Earrings.svg",
   "rings": "/assets/img/navbar/Gold Ring.svg",
   "necklace": "/assets/img/navbar/Gold Ring-1.svg",
-  "bracelets": "/assets/img/navbar/D - pendant.svg",
-
+  "bracelets": "/assets/img/navbar/Gold Bangle.svg",
+  "earrings-2": "/assets/img/navbar/Gold Earrings.svg",
   "bangle-1": "/assets/img/navbar/Gold Bangle.svg",
-  "earring-": "/assets/img/navbar/Gold Earrings.svg",
+  "earrings-1": "/assets/img/navbar/Gold Earrings.svg",
   "ring-1": "/assets/img/navbar/Gold Ring.svg",
   "necklace-1": "/assets/img/navbar/Gold Ring-1.svg",
   "bracelet-1": "/assets/img/navbar/Gold Bangle.svg",
