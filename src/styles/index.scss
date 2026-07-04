@@ -4,6 +4,22 @@
 @import 'node_modules/react-modal-video/scss/modal-video.scss';
 @import '../../public/assets/scss/main.scss';
 
+.mega-attr-link {
+  transition: color 0.15s;
+  &:hover {
+    color: #c8956c !important;
+    svg path { fill: #c8956c; }
+  }
+}
+
+.mega-attr-link svg {
+  opacity: 0.6;
+  transition: opacity 0.15s;
+}
+.mega-attr-link:hover svg {
+  opacity: 1;
+}
+
 /* Home Banner Diamond Pagination */
 .custom-dots {
     li {
