@@ -36,10 +36,16 @@ const SUB_CATEGORY_IMAGES = {
   "pendant": "/assets/img/navbar/Gold pendant.svg",
   "pendant-2": "/assets/img/navbar/Gold pendant.svg",
   "bangle": "/assets/img/navbar/Gold Bangle.svg",
-  "Earrings": "/assets/img/navbar/Gold Earrings.svg",
-  "Ring": "/assets/img/navbar/Gold Ring-1.svg",
+  "earring": "/assets/img/navbar/Gold Earrings.svg",
+  "rings": "/assets/img/navbar/Gold Ring-1.svg",
   "necklace": "/assets/img/navbar/D - pendant.svg",
-  "bracelet": "/assets/img/navbar/D - pendant.svg",
+  "bracelets": "/assets/img/navbar/D - pendant.svg",
+
+  "bangle-1": "/assets/img/navbar/Gold Bangle.svg",
+  "earring-1": "/assets/img/navbar/Gold Earrings.svg",
+  "ring-1": "/assets/img/navbar/Gold Ring-1.svg",
+  "necklace-1": "/assets/img/navbar/D - pendant.svg",
+  "bracelet-1": "/assets/img/navbar/D - pendant.svg",
   // add more slug: "/assets/img/navbar/your-image.png" entries here
 };
 
