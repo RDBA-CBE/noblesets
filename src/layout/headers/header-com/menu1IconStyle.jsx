@@ -34,22 +34,22 @@ const STATIC_FILTERS = {
 const SUB_CATEGORY_IMAGES = {
   // Gold subcategories
   "pendant": "/assets/img/navbar/Gold pendant.svg",
-  "pendant-2": "/assets/img/navbar/Gold pendant.svg",
+  "pendant-2": "/assets/img/navbar/D - pendant.svg",
   "bangle": "/assets/img/navbar/Gold Bangle.svg",
-  "earring": "/assets/img/navbar/Gold Earrings.svg",
-  "rings": "/assets/img/navbar/Gold Ring-1.svg",
-  "necklace": "/assets/img/navbar/D - pendant.svg",
+  "earrings": "/assets/img/navbar/Gold Earrings.svg",
+  "ring": "/assets/img/navbar/Gold Ring.svg",
+  "necklace": "/assets/img/navbar/Gold Ring-1.svg",
   "bracelets": "/assets/img/navbar/D - pendant.svg",
 
   "bangle-1": "/assets/img/navbar/Gold Bangle.svg",
   "earring-1": "/assets/img/navbar/Gold Earrings.svg",
-  "ring-1": "/assets/img/navbar/Gold Ring-1.svg",
-  "necklace-1": "/assets/img/navbar/D - pendant.svg",
-  "bracelet-1": "/assets/img/navbar/D - pendant.svg",
+  "ring-1": "/assets/img/navbar/Gold Ring.svg",
+  "necklace-1": "/assets/img/navbar/Gold Ring-1.svg",
+  "bracelet-1": "/assets/img/navbar/Gold Bangle.svg",
   // add more slug: "/assets/img/navbar/your-image.png" entries here
 };
 
-const DEFAULT_SUBCAT_IMG = "/assets/img/navbar/D - Earrings.svg";
+const DEFAULT_SUBCAT_IMG = "/assets/img/navbar/Gold Ring.svg";
 
 const CATEGORY_META = {
   gold:    { tagline: "Timeless elegance",    icon: <img src="/assets/img/navbar/Gold.svg" alt="Gold" style={{ width: 60, height: 60, objectFit: "contain" }} /> },
