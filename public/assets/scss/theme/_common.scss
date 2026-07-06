@@ -5189,3 +5189,28 @@ header .tp-product-action-btn-3:hover {
   font-size: 8px !important;
   margin-top: -3px;
 }
+
+// .menu-product{
+//   display:block
+// }
+
+// @media (max-width: 1330px) {
+//   .menu-product{
+//     display:none
+//   }
+// }
+
+.menu-product{
+  min-width: 300px;
+  max-width: 400px;
+  padding-left: 20px;
+}
+
+@media (max-width: 1550px) {
+  .menu-product {
+        min-width: 160px;
+        max-width: 230px;
+        min-height: 300px;
+        max-height: 300px;
+  }
+}

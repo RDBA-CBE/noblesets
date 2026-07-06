@@ -12,6 +12,16 @@
   }
 }
 
+/* Mega menu responsive fix for ≤1440px */
+@media (max-width: 1440px) {
+  .tp-mega-menu.home-menu {
+    .home-menu-inner-wrap {
+      max-height: calc(100vh - 120px);
+      overflow: hidden;
+    }
+  }
+}
+
 .mega-attr-link svg {
   opacity: 0.6;
   transition: opacity 0.15s;

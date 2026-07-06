@@ -120,6 +120,8 @@
                 visibility: hidden;
                 opacity: 0;
                 @include tp-transition-mul((opacity .3s ease-in-out, top .3s ease-in-out, visibility .3s ease-in-out));
+                max-height: calc(100vh - 80px);
+                overflow: hidden;
 
 
                 &.mega-menu-style-2{

@@ -95,7 +95,7 @@ const CategoryContent = ({
   return (
     <div style={{ display: "flex", height: "100%", width: "100%" }}>
       {/* Subcategory col */}
-      <div style={{ width: "240px", flexShrink: 0, overflowY: "auto", padding: "0 10px", }}>
+      <div style={{ width: "clamp(140px, 14vw, 240px)", flexShrink: 0, overflowY: "auto", padding: "0 10px", }}>
         {subCategoryLoading ? (
           <SingleLoader loading />
         ) : (
@@ -192,10 +192,10 @@ const CategoryComponent = (props) => {
     const soloAttrs = uniqueAttributes?.filter((a) => !pairedNames.includes(a.name) && a.name !== "Metal Color");
 
     return (
-      <div style={{ display: "flex", gap: "0", height: "100%", padding: "16px 0 16px 16px", flex: 1 }}>
+      <div className="ps-0" style={{ display: "flex", gap: "0", height: "100%", padding: "12px 0 12px 12px", flex: 1, overflow: "hidden" }}>
         {/* Solo attrs */}
         {soloAttrs?.map((attr) => (
-          <div key={attr.id} style={{ minWidth: "160px", paddingRight: "16px", borderRight: "1px solid #f0e8e4", marginRight: "16px",  paddingLeft: "10px", }}>
+          <div className="" key={attr.id} style={{ minWidth: "clamp(100px, 9vw, 160px)", paddingRight: "10px", borderRight: "1px solid #f0e8e4", marginRight: "10px",  paddingLeft: "clamp(10px, 2vw, 16px)", flexShrink: 0 }}>
             <div style={{ display: "flex", alignItems: "center", gap: "8px",}}>
               {ATTR_ICONS[attr.name]}
               <span style={{ fontSize: "14px", fontWeight: 500, color: "#000", whiteSpace: "nowrap" ,marginBottom: "10px", paddingBottom: "6px", borderBottom: "2px solid #541816", width:"30%" }}>{attr.name}</span>
@@ -217,7 +217,7 @@ const CategoryComponent = (props) => {
 
         {/* Metal Color */}
         {metalColorAttr && (
-          <div style={{ minWidth: "160px", paddingRight: "16px", borderRight: "1px solid #f0e8e4", marginRight: "16px" , paddingLeft: "10px",}}>
+          <div style={{ minWidth: "clamp(100px, 9vw, 160px)", paddingRight: "10px", borderRight: "1px solid #f0e8e4", marginRight: "10px" , paddingLeft: "clamp(10px, 2vw, 16px)", flexShrink: 0 }}>
             <div style={{ display: "flex", alignItems: "center", gap: "8px" }}>
               {ATTR_ICONS["Metal Color"]}
               <span style={{ fontSize: "14px", fontWeight: 500, color: "#000", whiteSpace: "nowrap" ,marginBottom: "10px", paddingBottom: "6px", borderBottom: "2px solid #541816", width:"30%" }}>Metal Color</span>
@@ -242,7 +242,7 @@ const CategoryComponent = (props) => {
 
         {/* Karatage + Cent paired */}
         {pairedAttrs?.length > 0 && (
-          <div style={{ minWidth: "160px", paddingRight: "16px", borderRight: "1px solid #f0e8e4", marginRight: "16px" , paddingLeft: "10px",}}>
+          <div style={{ minWidth: "clamp(100px, 9vw, 160px)", paddingRight: "10px", borderRight: "1px solid #f0e8e4", marginRight: "10px" , paddingLeft: "clamp(10px, 2vw, 16px)", flexShrink: 0 }}>
             {pairedAttrs.map((attr) => (
               <div key={attr.id} style={{ marginBottom: "16px" }}>
                 <div style={{ display: "flex", alignItems: "center", gap: "6px" }}>
@@ -266,7 +266,7 @@ const CategoryComponent = (props) => {
         )}
 
         {/* Price */}
-        <div style={{ minWidth: "160px", paddingRight: "16px", paddingLeft: "10px", marginRight: "16px" }}>
+        <div style={{ minWidth: "clamp(100px, 9vw, 160px)", paddingRight: "10px", paddingLeft: "clamp(10px, 2vw, 16px)", marginRight: "10px", flexShrink: 0 }}>
           <div style={{ display: "flex", alignItems: "center", gap: "8px", }}>
             {ATTR_ICONS["Price"]}
             <span style={{ fontSize: "14px", fontWeight: 500, color: "#000", whiteSpace: "nowrap" ,marginBottom: "10px", paddingBottom: "6px", borderBottom: "2px solid #541816", width:"30%" }}>Price</span>
@@ -285,7 +285,7 @@ const CategoryComponent = (props) => {
         </div>
 
         {/* Featured product card */}
-        <div style={{ flex: 1, minWidth: "180px", maxWidth: "380px" }}>
+        <div className="menu-product" style={{ flex: 1, }}>
           {productList?.[0] && (
             <a
               href={`/product-details/${productList[0]?.node?.slug}`}
@@ -299,7 +299,7 @@ const CategoryComponent = (props) => {
               {/* New badge */}
               <span style={{
                 position: "absolute", top: 12, left: 12,
-                background: "#c8956c", color: "#fff", fontSize: "11px",
+                background: "#7d4432", color: "#fff", fontSize: "11px",
                 fontWeight: 600, padding: "3px 10px", borderRadius: "20px",
               }}>New</span>
               {/* Bottom overlay */}
@@ -308,11 +308,11 @@ const CategoryComponent = (props) => {
                 background: "linear-gradient(to top, rgba(30,10,5,0.85) 0%, transparent 100%)",
                 padding: "40px 14px 14px",
               }}>
-                <p style={{ color: "#e8c9b8", fontSize: "10px", fontWeight: 600, letterSpacing: "1.5px", margin: "0 0 4px", textTransform: "uppercase" }}>New Arrivals</p>
-                <p style={{ color: "#fff", fontSize: "16px", fontWeight: 600, margin: "0 0 10px", lineHeight: 1.3 }}>Radiate Elegance</p>
+                {/* <p style={{ color: "#e8c9b8", fontSize: "10px", fontWeight: 600, letterSpacing: "1.5px", margin: "0 0 4px", textTransform: "uppercase" }}>New Arrivals</p> */}
+                <p style={{ color: "#fff", fontSize: "18px", fontWeight: 500, margin: "0 0 10px", lineHeight: 1.3 }}>{productList[0]?.node?.name}</p>
                 <span style={{
                   display: "inline-flex", alignItems: "center", gap: "6px",
-                  background: "#7d4432", color: "#fff", fontSize: "12px",
+                  background: "#7d4432", color: "#fff", fontSize: "14px",
                   fontWeight: 500, padding: "7px 14px", borderRadius: "6px",
                 }}>View Product →</span>
               </div>
@@ -326,7 +326,8 @@ const CategoryComponent = (props) => {
   const renderContent = () => {
     if (productLoading || catLoading) {
       return (
-        <div className="col-12 d-flex align-items-center justify-content-center h-100">
+        <div className="col-12 d-flex align-items-center justify-content-center"
+      style={{ height: "100%", minWidth:"800px", maxWidth:"1200px" }}>
           <Loader loading={true} />
         </div>
       );
@@ -649,31 +650,31 @@ const Menu1IconStyle = () => {
     const firstProduct = state.productList?.[0];
 
     return (
-      <div style={{ display: "flex", flex: 1, padding: "16px", gap: "0", overflowX: "auto" }}>
+      <div style={{ display: "flex", flex: 1, padding: "12px", gap: "0", overflow: "hidden" }}>
         {soloAttrs?.map((attr) => (
-          <div key={attr.id} style={{ minWidth: "200px", paddingRight: "16px", borderRight: "1px solid #f0e8e4", marginRight: "16px" }}>
-            <div style={{ display: "flex", alignItems: "center", gap: "6px", marginBottom: "10px", paddingBottom: "6px", borderBottom: "2px solid #c8956c" }}>
+          <div key={attr.id} style={{ minWidth: "clamp(100px, 10vw, 160px)", paddingRight: "10px", borderRight: "1px solid #f0e8e4", marginRight: "10px", flexShrink: 0 , paddingLeft: "clamp(10px, 2vw, 16px)"}}>
+            <div style={{ display: "flex", alignItems: "center", gap: "8px", marginBottom: "10px"}}>
               {ATTR_ICONS[attr.name]}
-              <span style={{ fontSize: "13px", fontWeight: 600, color: "#2d1a0e", whiteSpace: "nowrap" }}>{attr.name}</span>
+              <span style={{ fontSize: "14px", fontWeight: 500, color: "#000", whiteSpace: "nowrap" ,marginBottom: "10px", paddingBottom: "6px", borderBottom: "2px solid #541816", width:"30%" }}>{attr.name}</span>
             </div>
             <div style={{ display: "flex", flexDirection: "column", gap: "6px" }}>
               {attr.values.slice(0, 7).map((val) => (
                 <a key={val.id}
                   href={`/shop?category=${lastHoveredCategory}&attribute=${attr.slug}/${val.slug}`}
-                  style={{ fontSize: "13px", color: "#5a3a2a", textDecoration: "none", display: "flex", alignItems: "center", gap: "5px", whiteSpace: "nowrap" }}
+                  style={{ fontSize: "10px", color: "#5a3a2a", textDecoration: "none", display: "flex", alignItems: "center", gap: "5px", whiteSpace: "nowrap" }}
                   className="mega-attr-link"
                 >
-                  <ArrowNextSm style={{ width: 6, height: 6, flexShrink: 0 }} /> {val.name}
+                  <ArrowNextSm className="me-2" style={{ width: 6, height: 6, flexShrink: 0 }} /><span style={{ fontSize: "14px" ,color: "#7d4432", }}> {val.name}</span>
                 </a>
               ))}
             </div>
           </div>
         ))}
         {metalColorAttr && (
-          <div style={{ minWidth: "180px", paddingRight: "16px", borderRight: "1px solid #f0e8e4", marginRight: "16px" }}>
-            <div style={{ display: "flex", alignItems: "center", gap: "6px", marginBottom: "10px", paddingBottom: "6px", borderBottom: "2px solid #c8956c" }}>
+          <div style={{ minWidth: "clamp(100px, 10vw, 160px)", paddingRight: "10px", borderRight: "1px solid #f0e8e4", marginRight: "10px", flexShrink: 0, paddingLeft: "clamp(10px, 2vw, 16px)", }}>
+            <div style={{ display: "flex", alignItems: "center", gap: "8px", marginBottom: "10px",  }}>
               {ATTR_ICONS["Metal Color"]}
-              <span style={{ fontSize: "13px", fontWeight: 600, color: "#2d1a0e" }}>Metal Color</span>
+              <span style={{ fontSize: "14px", fontWeight: 500, color: "#000", whiteSpace: "nowrap" ,marginBottom: "10px", paddingBottom: "6px", borderBottom: "2px solid #541816", width:"30%" }}>Metal Color</span>
             </div>
             <div style={{ display: "flex", flexDirection: "column", gap: "8px" }}>
               {metalColorAttr.values.slice(0, 5).map((val) => {
@@ -681,11 +682,11 @@ const Menu1IconStyle = () => {
                 return (
                   <a key={val.id}
                     href={`/shop?category=${lastHoveredCategory}&attribute=${metalColorAttr.slug}/${val.slug}`}
-                    style={{ fontSize: "13px", color: "#5a3a2a", textDecoration: "none", display: "flex", alignItems: "center", gap: "7px", whiteSpace: "nowrap" }}
+                    style={{ fontSize: "10px", color: "#5a3a2a", textDecoration: "none", display: "flex", alignItems: "center", gap: "7px", whiteSpace: "nowrap" }}
                     className="mega-attr-link"
                   >
-                    <span style={{ width: 12, height: 12, borderRadius: "50%", background: dotColor, border: "1px solid #ddd", flexShrink: 0, display: "inline-block" }} />
-                    {val.name}
+                     <span className="me-2" style={{ width: 15, height: 15, borderRadius: "50%", background: dotColor, border: "1px solid #ddd", flexShrink: 0, display: "inline-block" }} />
+                    <span style={{ fontSize: "14px" ,color: "#7d4432"}} >{val.name}</span>
                   </a>
                 );
               })}
@@ -693,12 +694,12 @@ const Menu1IconStyle = () => {
           </div>
         )}
         {pairedAttrs?.length > 0 && (
-          <div style={{ minWidth: "180px", paddingRight: "16px", borderRight: "1px solid #f0e8e4", marginRight: "16px" }}>
+          <div style={{ minWidth: "clamp(100px, 10vw, 160px)", paddingRight: "10px", borderRight: "1px solid #f0e8e4", marginRight: "10px", flexShrink: 0, paddingLeft: "clamp(10px, 2vw, 16px)", }}>
             {pairedAttrs.map((attr) => (
               <div key={attr.id} style={{ marginBottom: "14px" }}>
-                <div style={{ display: "flex", alignItems: "center", gap: "6px", marginBottom: "8px", paddingBottom: "6px", borderBottom: "2px solid #c8956c" }}>
+                <div style={{ display: "flex", alignItems: "center", gap: "8px", }}>
                   {ATTR_ICONS[attr.name] || ATTR_ICONS["Karatage"]}
-                  <span style={{ fontSize: "13px", fontWeight: 600, color: "#2d1a0e" }}>{attr.name}</span>
+                  <span style={{ fontSize: "14px", fontWeight: 500, color: "#000", whiteSpace: "nowrap" ,marginBottom: "10px", paddingBottom: "6px", borderBottom: "2px solid #541816", width:"30%"  }}>{attr.name}</span>
                 </div>
                 <div style={{ display: "flex", flexDirection: "column", gap: "6px" }}>
                   {attr.values.slice(0, 5).map((val) => (
@@ -707,7 +708,7 @@ const Menu1IconStyle = () => {
                       style={{ fontSize: "13px", color: "#5a3a2a", textDecoration: "none", display: "flex", alignItems: "center", gap: "5px", whiteSpace: "nowrap" }}
                       className="mega-attr-link"
                     >
-                      <ArrowNextSm style={{ width: 6, height: 6, flexShrink: 0 }} /> {val.name}
+                      <ArrowNextSm  className="me-2" style={{color: "#7d4432", }} /> <span style={{ fontSize: "14px" ,color: "#7d4432", }}> {val.name}</span>
                     </a>
                   ))}
                 </div>
@@ -715,10 +716,10 @@ const Menu1IconStyle = () => {
             ))}
           </div>
         )}
-        <div style={{ minWidth: "180px", paddingRight: "16px", borderRight: "1px solid #f0e8e4", marginRight: "16px" }}>
-          <div style={{ display: "flex", alignItems: "center", gap: "6px", marginBottom: "10px", paddingBottom: "6px", borderBottom: "2px solid #c8956c" }}>
+        <div style={{ minWidth: "clamp(100px, 10vw, 160px)", paddingRight: "10px",  marginRight: "10px", flexShrink: 0 , paddingLeft: "clamp(10px, 2vw, 16px)",}}>
+          <div style={{ display: "flex", alignItems: "center", gap: "8px", marginBottom: "10px",}}>
             {ATTR_ICONS["Price"]}
-            <span style={{ fontSize: "13px", fontWeight: 600, color: "#2d1a0e" }}>Price</span>
+           <span style={{ fontSize: "14px", fontWeight: 500, color: "#000", whiteSpace: "nowrap" ,marginBottom: "10px", paddingBottom: "6px", borderBottom: "2px solid #541816", width:"30%" }}>Price</span>
           </div>
           <div style={{ display: "flex", flexDirection: "column", gap: "6px" }}>
             {state.dynamicBudget?.map((b) => (
@@ -727,14 +728,14 @@ const Menu1IconStyle = () => {
                 style={{ fontSize: "13px", color: "#5a3a2a", textDecoration: "none", display: "flex", alignItems: "center", gap: "5px", whiteSpace: "nowrap" }}
                 className="mega-attr-link"
               >
-                <ArrowNextSm style={{ width: 6, height: 6, flexShrink: 0 }} /> {b.label}
+                <ArrowNextSm  className="me-2" style={{color: "#7d4432", }} /> <span style={{ fontSize: "14px" ,color: "#7d4432", }}> {b.label}</span>
               </a>
             ))}
           </div>
         </div>
         {/* Featured product card */}
         {firstProduct && (
-          <div style={{ flex: 1, minWidth: "180px", maxWidth: "350px" }}>
+          <div className="menu-product" style={{ flex: 1, }}>
             <a
               href={`/product-details/${firstProduct?.node?.slug}`}
               style={{ display: "block", borderRadius: "12px", overflow: "hidden", height: "100%", position: "relative", textDecoration: "none" }}
@@ -742,11 +743,11 @@ const Menu1IconStyle = () => {
               <img src={firstProduct?.node?.thumbnail?.url} alt={firstProduct?.node?.name}
                 style={{ width: "100%", height: "100%", objectFit: "cover", display: "block" }}
               />
-              <span style={{ position: "absolute", top: 12, left: 12, background: "#c8956c", color: "#fff", fontSize: "11px", fontWeight: 600, padding: "3px 10px", borderRadius: "20px" }}>New</span>
+              <span style={{ position: "absolute", top: 12, left: 12, background: "#7d4432", color: "#fff", fontSize: "11px", fontWeight: 600, padding: "3px 10px", borderRadius: "20px" }}>New</span>
               <div style={{ position: "absolute", bottom: 0, left: 0, right: 0, background: "linear-gradient(to top, rgba(30,10,5,0.85) 0%, transparent 100%)", padding: "40px 14px 14px" }}>
-                <p style={{ color: "#e8c9b8", fontSize: "10px", fontWeight: 600, letterSpacing: "1.5px", margin: "0 0 4px", textTransform: "uppercase" }}>New Arrivals</p>
-                <p style={{ color: "#fff", fontSize: "16px", fontWeight: 600, margin: "0 0 10px", lineHeight: 1.3 }}>Radiate Elegance</p>
-                <span style={{ display: "inline-flex", alignItems: "center", gap: "6px", background: "#7d4432", color: "#fff", fontSize: "12px", fontWeight: 500, padding: "7px 14px", borderRadius: "6px" }}>View Product →</span>
+                {/* <p style={{ color: "#e8c9b8", fontSize: "10px", fontWeight: 600, letterSpacing: "1.5px", margin: "0 0 4px", textTransform: "uppercase" }}>New Arrivals</p> */}
+                <p style={{ color: "#fff", fontSize: "18px", fontWeight: 500, margin: "0 0 10px", lineHeight: 1.3 }}>{firstProduct?.node?.name}</p>
+                <span style={{ display: "inline-flex", alignItems: "center", gap: "6px", background: "#7d4432", color: "#fff", fontSize: "14px", fontWeight: 500, padding: "7px 14px", borderRadius: "6px" }}>View Product →</span>
               </div>
             </a>
           </div>
@@ -827,7 +828,7 @@ const Menu1IconStyle = () => {
           <div style={{ display: "flex", flexDirection: "column", height: "100%", background: "#fff" }}>
           <div style={{ display: "flex", flex: 1, overflow: "hidden" }}>
             {/* Left: Category list */}
-            <div style={{ width: "260px", flexShrink: 0, borderRadius: "10px", background: "#fff8f5", border: "1px solid #f3eae4", padding: "0", overflowY: "auto" }}>
+            <div style={{ width: "clamp(160px, 14vw, 260px)", flexShrink: 0, borderRadius: "10px", background: "#fff8f5", border: "1px solid #f3eae4", padding: "0", overflowY: "auto" }}>
               <ul style={{ listStyle: "none", margin: 0, padding: 0, display: "flex", flexDirection: "column",  }}>
                 {state.categoryList?.map((item) => {
                   const meta = CATEGORY_META[item?.slug?.toLowerCase()] || { tagline: "", icon: "💍" };
@@ -839,7 +840,7 @@ const Menu1IconStyle = () => {
                       onClick={() => router.push({ pathname: "/shop", query: { category: item?.slug } })}
                       style={{
                         display: "flex", alignItems: "center", justifyContent: "space-between",
-                        padding: "25px 12px", borderRadius: "5px", cursor: "pointer",
+                        padding: "clamp(10px, 1.5vw, 25px) 12px", borderRadius: "5px", cursor: "pointer",
                         background: isActive ? "#fff9f4" : "transparent",
                         border: isActive ? "1px solid #fde0d1" : "1px solid transparent",
                        
@@ -900,8 +901,8 @@ const Menu1IconStyle = () => {
                 {/* <div style={{ flexShrink: 0 }}>{item.icon}</div> */}
                 <img src={item.icon} alt="" style={{ width: "100px", height: "60px" }}/>
                 <div>
-                  <div style={{ fontSize: "12px", fontWeight: 600, color: "#2d1a0e" }}>{item.title}</div>
-                  <div style={{ fontSize: "11px", color: "#9a7060" }}>{item.sub}</div>
+                  <div style={{ fontSize: "14px", fontWeight: 600, color: "#000" }}>{item.title}</div>
+                  <div style={{ fontSize: "12px", color: "#9a7060" }}>{item.sub}</div>
                 </div>
               </div>
             ))}
