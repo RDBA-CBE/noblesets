@@ -150,6 +150,20 @@ const HomeFooter = () => {
                     />
                     Pendants
                   </a>
+                  <a
+                    className="footer-link mb-3"
+                    href="#"
+                    onClick={() => {
+                      handleClick("earring");
+                    }}
+                  >
+                    <img
+                      src="/assets/img/newlayout/Footer/star-icon-01.png"
+                      alt=""
+                      // className="p-1"
+                    />
+                    Earrings
+                  </a>
                   {/* <a className="footer-link" href="#">
                     Testimonials
                   </a> */}
