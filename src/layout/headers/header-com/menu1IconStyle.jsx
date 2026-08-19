@@ -68,7 +68,7 @@ const ATTR_ICONS = {
 
 const FOOTER_ITEMS = [
   { icon: "/assets/img/navbar/Certified.svg", title: "Certified Jewellery", sub: "Hallmarked & BIS Certified" },
-  { icon: "/assets/img/navbar/Free Shiping.svg" , title: "Free Shipping", sub: "On all orders above ₹999" },
+ // { icon: "/assets/img/navbar/Free Shiping.svg" , title: "Free Shipping", sub: "On all orders above ₹999" },
   { icon: "/assets/img/navbar/Easy Returns 7.svg" , title: "Easy Returns", sub: "7 days hassle-free returns" },
   { icon: "/assets/img/navbar/Secure payment.svg" , title: "Secure Payments", sub: "100% secure & encrypted" },
 ];
