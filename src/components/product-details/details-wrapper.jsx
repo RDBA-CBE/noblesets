@@ -1250,7 +1250,7 @@ const DetailsWrapper = ({
           ))}
         </div>
       )} */}
-      {productItem?.pricing?.discount !== null && (
+      {/* {productItem?.pricing?.discount !== null && (
         <div
           style={{
             color: "#7d4432",
@@ -1258,7 +1258,7 @@ const DetailsWrapper = ({
             paddingBottom: "10px",
           }}
         >{`Save ${saveOff()}% OFF`}</div>
-      )}
+      )} */}
 
       <div>
         <p style={{ fontSize: "16px", color: "black" }}>

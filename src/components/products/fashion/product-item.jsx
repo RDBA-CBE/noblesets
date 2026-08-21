@@ -532,7 +532,7 @@ const ProductItem = ({ products, style_2 = false, updateData }) => {
                   )|| 0}
                 </div>
               </span>
-              {product?.pricing?.discount !== null && (
+              {/* {product?.pricing?.discount !== null && (
                 <div
                 className="save-off"
                   style={{
@@ -540,7 +540,7 @@ const ProductItem = ({ products, style_2 = false, updateData }) => {
                     fontSize: "16px",
                   }}
                 >{`Save ${saveOff()}% OFF`}</div>
-              )}
+              )} */}
             </div>
           ) : (
             <div className="tp-product-price-wrapper-2">
@@ -587,7 +587,7 @@ const ProductItem = ({ products, style_2 = false, updateData }) => {
                   product?.pricing?.priceRange?.start?.gross?.amount
                 )|| 0}
               </span>
-              {product?.pricing?.discount !== null && (
+              {/* {product?.pricing?.discount !== null && (
                 <div
                 className="save-off"
                   style={{
@@ -595,7 +595,7 @@ const ProductItem = ({ products, style_2 = false, updateData }) => {
                     fontSize: "16px",
                   }}
                 >{`Save ${saveOff()}% OFF`}</div>
-              )}
+              )} */}
             </div>
           )}
         </div>

@@ -488,7 +488,7 @@ Add To Cart
                 &#8377;
                 {roundOff(product?.pricing?.priceRange?.start?.gross?.amount)}
               </span>
-              {product?.pricing?.discount !== null && (
+              {/* {product?.pricing?.discount !== null && (
                 <div
                   className="save-off"
                   style={{
@@ -496,7 +496,7 @@ Add To Cart
                     fontSize: "16px",
                   }}
                 >{`Save ${saveOff()}% OFF`}</div>
-              )}
+              )} */}
             </>
           ) : (
             <>
@@ -518,7 +518,7 @@ Add To Cart
               >
                 ${roundOff(pricing?.priceRange?.start?.gross?.amount)}
               </span>
-              {product?.pricing?.discount !== null && (
+              {/* {product?.pricing?.discount !== null && (
                 <div
                   className="save-off"
                   style={{
@@ -526,7 +526,7 @@ Add To Cart
                     fontSize: "16px",
                   }}
                 >{`Save ${saveOff()}% OFF`}</div>
-              )}
+              )} */}
             </>
           )}
         </div>
