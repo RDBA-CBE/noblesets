@@ -793,7 +793,7 @@ const DetailsWrapper = ({
         )}
       </div>
 
-      {productItem?.pricing?.discount !== null && (
+      {/* {productItem?.pricing?.discount !== null && (
         <div
           className="text-danger"
           // style={{
@@ -802,7 +802,7 @@ const DetailsWrapper = ({
           //   paddingBottom: "10px",
           // }}
         >{`Save ${saveOff()}% OFF`}</div>
-      )}
+      )} */}
 
       {/* {productItem?.variants?.length > 1 && (
         <div
