@@ -260,58 +260,15 @@ const GoldRateBarHead = () => {
         `}
       </style> */}
 
-      <div className="ticker-content ticker-track w-100">
-        <div className="ticker-group">
-          <span>
-            <strong>GOLD 22K:</strong> ₹ 150000
-            {/* {rates.GOLD22?.toLocaleString("en-IN")}
-          {renderTrend(rateInfo.GoldMode)} */}
-          </span>
 
-          <span>
-            <strong>GOLD 24K:</strong> ₹ 150000
-            {/* {rates.GOLD24?.toLocaleString("en-IN")} */}
-          </span>
+ <iframe
+      title="Gold Rate"
+      src="https://irepute.co.in/gold-rate-nobleset.php"
+      width="800"
+      height="40"
+      style={{ border: "none" }}
+    />
 
-          <span>
-            <strong>SILVER:</strong> ₹ 150000
-            {/* {rates.SILVER?.toLocaleString("en-IN")}
-          {renderTrend(rateInfo.SilverMode)} */}
-          </span>
-
-          <span>
-            <strong>PLATINUM:</strong> ₹ 150000
-            {/* {rates.PLATINUM?.toLocaleString("en-IN")} */}
-          </span>
-
-          
-        </div>
-        <div className="ticker-group">
-          <span>
-            <strong>GOLD 22K:</strong> ₹ 150000
-            {/* {rates.GOLD22?.toLocaleString("en-IN")}
-          {renderTrend(rateInfo.GoldMode)} */}
-          </span>
-
-          <span>
-            <strong>GOLD 24K:</strong> ₹ 150000
-            {/* {rates.GOLD24?.toLocaleString("en-IN")} */}
-          </span>
-
-          <span>
-            <strong>SILVER:</strong> ₹ 150000
-            {/* {rates.SILVER?.toLocaleString("en-IN")}
-          {renderTrend(rateInfo.SilverMode)} */}
-          </span>
-
-          <span>
-            <strong>PLATINUM:</strong> ₹ 150000
-            {/* {rates.PLATINUM?.toLocaleString("en-IN")} */}
-          </span>
-
-         
-        </div>
-      </div>
     </div>
   );
 };
