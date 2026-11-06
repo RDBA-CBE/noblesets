@@ -83,6 +83,7 @@ const CategoryContent = ({
   onSubCategoryHover,
   children,
 }) => {
+  console.log("lists",lists)
   const router = useRouter();
   const hoverTimer = useRef(null);
 
@@ -137,7 +138,7 @@ const CategoryContent = ({
                    flexShrink: 0, width:"50px", height:"60px",
                    flex:"0.6"
                   }}>
-                    <img src={SUB_CATEGORY_IMAGES[item?.node?.slug] || DEFAULT_SUBCAT_IMG} alt={item?.node?.name} style={{ objectFit: "cover", width:"100%", height:"100%" , textAlign:"center", }} />
+                    <img src={item?.node?.menuUrl || SUB_CATEGORY_IMAGES[item?.node?.slug] || DEFAULT_SUBCAT_IMG} alt={item?.node?.name} style={{ objectFit: "cover", width:"100%", height:"100%" , textAlign:"center", }} />
                   </div>
                   <span style={{ fontSize: "16px", fontWeight: 500, color: "#000", textTransform: "capitalize",flex:1  }}>
                     {item?.node?.name?.toLowerCase()}

@@ -1733,6 +1733,7 @@ export const SUB_CAT_LIST = ({ slug }) => {
           id
           name
           slug
+          menuUrl
           products(channel: $channel) {  
             totalCount
           }
